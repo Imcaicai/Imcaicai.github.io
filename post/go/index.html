@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Huabing Blog">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="https://Imcaicai.github.io/img/home-bg-jeep.jpg">
+    <meta property="twitter:image" content="https://Imcaicai.github.io/img/home-bg-jeep.jpg" />
+    
+
+    
+    <meta name="title" content="An Example Post" />
+    <meta property="og:title" content="An Example Post" />
+    <meta property="twitter:title" content="An Example Post" />
+    
+
+    
+    <meta name="description" content="赵化冰，程序员, 开源爱好者，生活探险家 | 这里是 赵化冰 的博客，与你一起发现更大的世界。">
+    <meta property="og:description" content="赵化冰，程序员, 开源爱好者，生活探险家 | 这里是 赵化冰 的博客，与你一起发现更大的世界。" />
+    <meta property="twitter:description" content="赵化冰，程序员, 开源爱好者，生活探险家 | 这里是 赵化冰 的博客，与你一起发现更大的世界。" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="赵化冰, zhaohuabing, Zhaohuabing, , 赵化冰的网络日志, 赵化冰的博客, Zhaohuabing Blog, 博客, 个人网站, 互联网, Web, 云原生, PaaS, Istio, Kubernetes, 微服务, Microservice">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>An Example Post | 赵化冰的博客 | Zhaohuabing Blog</title>
+
+    <link rel="canonical" href="/post/go/">
+
+    
+    
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome@5.15.1/css/all.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    <script src="/js/lazysizes.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Huabing Blog</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">All Posts</a>
+                    </li>
+                    
+                        
+                        <li>
+                            <a href="/categories/tech">tech</a>
+                        </li>
+                        
+                    
+                    
+		    
+                        <li><a href="/archive/">ARCHIVE</a></li>
+                    
+                        <li><a href="/notes/">NOTES</a></li>
+                    
+                        <li><a href="/about/">ABOUT</a></li>
+                    
+		            <li>
+                        <a href="/search"><i class="fa fa-search"></i></a>
+		           </li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/home-bg-jeep.jpg')
+    }
+</style>
+
+<header class="intro-header" >
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/tag1" title="tag1">
+                            tag1
+                        </a>
+                        
+                        <a class="tag" href="/tags/tag2" title="tag2">
+                            tag2
+                        </a>
+                        
+                    </div>
+                    <h1>An Example Post</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        
+                            Posted by 
+                            
+                                     &#34;&#34;
+                             
+                            on 
+                            Monday, June 4, 2018
+                            
+                            
+                            
+                            
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <h1 id="go简单语法">Go简单语法</h1>
+<h4 id="1-结构">1 结构</h4>
+<ul>
+<li><code>go run helloworld.go</code>：执行Go代码</li>
+<li><code>go build helloworld.go</code>：编译生成二进制文件</li>
+<li><code>./helloworld</code>：运行</li>
+<li><code>import</code> 声明必须跟在文件的 <code>package</code> 声明之后</li>
+<li>Go 语言不需要在语句或者声明的末尾添加分号，除非一行上有多条语句
+<ul>
+<li>函数的左括号 <code>{</code> 必须和 <code>func</code> 函数声明在同一行上，且位于末尾，不能独占一行</li>
+<li>在表达式 <code>x+y</code> 中，可在 <code>+</code> 后换行，不能在 <code>+</code> 前换行</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-基础语法">2 基础语法</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#6272a4">//格式化字符串
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">var</span> stockcode = <span style="color:#bd93f9">123</span>
+<span style="color:#8be9fd;font-style:italic">var</span> enddate = <span style="color:#f1fa8c">&#34;2020-12-31&#34;</span>
+<span style="color:#8be9fd;font-style:italic">var</span> url = <span style="color:#f1fa8c">&#34;Code=%d&amp;endDate=%s&#34;</span>
+<span style="color:#8be9fd;font-style:italic">var</span> target_url = fmt.<span style="color:#50fa7b">Sprintf</span>(url, stockcode, enddate)
+fmt.<span style="color:#50fa7b">Println</span>(target_url)
+</code></pre></div><h4 id="3-语言类型">3 语言类型</h4>
+<ul>
+<li>
+<p>布尔型</p>
+</li>
+<li>
+<p>数字型</p>
+<ul>
+<li>整形：<code>int uint</code></li>
+<li>浮点型：<code>float complex</code></li>
+</ul>
+</li>
+<li>
+<p>字符串</p>
+</li>
+<li>
+<p>派生类型</p>
+</li>
+</ul>
+<h4 id="4-变量">4 变量</h4>
+<ul>
+<li>
+<p>变量声明</p>
+<ul>
+<li><code>var identifier type</code>（指定变量类型，如果没有初始化，则变量默认为零值</li>
+<li><code>var v_name = value</code>（根据值自行判断变量类型</li>
+<li><code>v_name := value</code>（只能在函数体中出现</li>
+</ul>
+</li>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#6272a4">// 这种因式分解关键字的写法一般用于声明全局变量
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">var</span> (
+    vname1 v_type1
+    vname2 v_type2
+)
+</code></pre></div></li>
+<li>
+<p>局部变量不允许声明但不使用，全局变量可以</p>
+</li>
+<li>
+<p><code>a, b = b, a</code> （简单交换2个变量</p>
+</li>
+<li>
+<p><code>_</code>：空白标识符，也用于被抛弃值</p>
+</li>
+</ul>
+<h4 id="5-常量">5 常量</h4>
+<ul>
+<li>
+<p><code>const identifier [type] = value</code></p>
+</li>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#6272a4">//用作枚举
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">const</span> (
+    Unknown = <span style="color:#bd93f9">0</span>
+    Female = <span style="color:#bd93f9">1</span>
+    Male = <span style="color:#bd93f9">2</span>
+)
+</code></pre></div></li>
+<li>
+<p>常量可以用<code>len(), cap(), unsafe.Sizeof()</code>函数计算表达式的值（必须是内置函数</p>
+</li>
+<li>
+<p><code>iota</code> 在<code>const</code>关键字出现时将被重置为0，const中每新增一行常量声明将使 iota 计数一次</p>
+</li>
+</ul>
+<h4 id="6-条件语句">6 条件语句</h4>
+<ul>
+<li>
+<p>switch</p>
+<ul>
+<li>
+<p>匹配项后面也不需要再加 break</p>
+</li>
+<li>
+<p><code>fallthrough</code> 执行后面的case</p>
+</li>
+<li>
+<p>case后面是类型不被局限于常量或整数，可以加多个，必须类型相同</p>
+</li>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#8be9fd;font-style:italic">func</span> <span style="color:#50fa7b">main</span>() {
+	<span style="color:#8be9fd;font-style:italic">var</span> grade <span style="color:#8be9fd">string</span> = <span style="color:#f1fa8c">&#34;B&#34;</span>
+	<span style="color:#8be9fd;font-style:italic">var</span> marks <span style="color:#8be9fd">int</span> = <span style="color:#bd93f9">90</span>
+    
+	<span style="color:#ff79c6">switch</span> marks {
+	<span style="color:#ff79c6">case</span> <span style="color:#bd93f9">90</span>:
+        grade = <span style="color:#f1fa8c">&#34;A&#34;</span>
+	<span style="color:#ff79c6">case</span> <span style="color:#bd93f9">80</span>,<span style="color:#bd93f9">70</span>:
+        grade = <span style="color:#f1fa8c">&#34;B&#34;</span>
+	<span style="color:#ff79c6">default</span>:
+        grade = <span style="color:#f1fa8c">&#34;D&#34;</span>
+	}
+    
+	<span style="color:#ff79c6">switch</span> {
+	<span style="color:#ff79c6">case</span> grade <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#34;A&#34;</span>:
+        fmt.<span style="color:#50fa7b">Println</span>(<span style="color:#f1fa8c">&#34;youxiu&#34;</span>)
+	<span style="color:#ff79c6">case</span> grade <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#34;B&#34;</span>, grade <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#34;C&#34;</span>:
+        fmt.<span style="color:#50fa7b">Println</span>(<span style="color:#f1fa8c">&#34;lianghao&#34;</span>)
+	<span style="color:#ff79c6">default</span>:
+        fmt.<span style="color:#50fa7b">Println</span>(<span style="color:#f1fa8c">&#34;cha&#34;</span>)
+	}
+}
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p><code>type switch</code>  判断某个 interface 变量中实际存储的变量类型</p>
+</li>
+<li>
+<p><code>select</code> 通信的 switch 语句</p>
+</li>
+</ul>
+<h4 id="7-循环语句">7 循环语句</h4>
+<ul>
+<li>
+<p>for循环</p>
+<ul>
+<li>
+<p><code>for init; condition; post { }</code></p>
+</li>
+<li>
+<p><code>for condition { }</code></p>
+</li>
+<li>
+<p><code>for { }</code></p>
+</li>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#6272a4">//range格式可以对 slice、map、数组、字符串等进行迭代循环
+</span><span style="color:#6272a4"></span><span style="color:#ff79c6">for</span> key, value <span style="color:#ff79c6">:=</span> <span style="color:#ff79c6">range</span> oldMap {
+    newMap[key] = value
+}
+    
+<span style="color:#ff79c6">for</span> key <span style="color:#ff79c6">:=</span> <span style="color:#ff79c6">range</span> oldMap
+<span style="color:#ff79c6">for</span> _, value <span style="color:#ff79c6">:=</span> <span style="color:#ff79c6">range</span> oldMap
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>在多重循环中，可以用标号 label 标出想 <code>break</code> 的循环</p>
+</li>
+<li>
+<p>在多重循环中，可以用标号 label 标出想 <code>continue</code> 的循环</p>
+</li>
+<li>
+<p><code>goto</code> 语句可以无条件地转移到过程中指定的行</p>
+</li>
+</ul>
+<h4 id="8-函数">8 函数</h4>
+<ul>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#8be9fd;font-style:italic">func</span> <span style="color:#50fa7b">function_name</span>( [parameter list] ) [return_types] {
+   函数体
+}
+</code></pre></div></li>
+<li>
+<p>函数可作为实参</p>
+</li>
+<li>
+<p>匿名函数，可作为闭包</p>
+</li>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#6272a4">//方法
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">func</span> (variable_name variable_data_type) <span style="color:#50fa7b">function_name</span>() [return_type]{
+   <span style="color:#6272a4">/* 函数体*/</span>
+}
+</code></pre></div></li>
+</ul>
+<h4 id="9-变量作用域">9 变量作用域</h4>
+<ul>
+<li>局部变量：作用域只在函数体内</li>
+<li>全局变量：整个包甚至外部包（被导出后）使用</li>
+<li>全局变量与局部变量名称可以相同，但是函数内的局部变量会被优先考虑</li>
+</ul>
+<h4 id="10-数组">10 数组</h4>
+<ul>
+<li>
+<p><code>var variable_name [SIZE] variable_type</code></p>
+</li>
+<li>
+<p>可以使用 <code>...</code> 代替数组的长度</p>
+</li>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#6272a4">//  将索引为 1 和 3 的元素初始化
+</span><span style="color:#6272a4"></span>balance <span style="color:#ff79c6">:=</span> [<span style="color:#ff79c6">...</span>]<span style="color:#8be9fd">float32</span>{<span style="color:#bd93f9">1</span>:<span style="color:#bd93f9">2.0</span>,<span style="color:#bd93f9">3</span>:<span style="color:#bd93f9">7.0</span>}
+</code></pre></div></li>
+<li>
+<p>多维数组</p>
+<ul>
+<li>
+<p>使用 append() 函数向空的二维数组添加两行一维数组</p>
+</li>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#6272a4">//多维数组
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">var</span> variable_name [SIZE1][SIZE2]<span style="color:#ff79c6">...</span>[SIZEN] variable_type
+</code></pre></div></li>
+<li>
+<p>可以创建各个维度元素数量不一致的多维数组</p>
+</li>
+</ul>
+</li>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#6272a4">//向函数传递数组
+</span><span style="color:#6272a4"></span>void <span style="color:#50fa7b">myFunction</span>(param [<span style="color:#bd93f9">10</span>]<span style="color:#8be9fd">int</span>)
+{
+	<span style="color:#ff79c6">...</span>
+}
+</code></pre></div></li>
+</ul>
+<h4 id="11-指针">11 指针</h4>
+<ul>
+<li>
+<p><code>var var_name *var-type</code></p>
+</li>
+<li>
+<p>指针数组</p>
+<ul>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#8be9fd;font-style:italic">var</span> ptr [MAX]<span style="color:#ff79c6">*</span><span style="color:#8be9fd">int</span>;
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>指向指针的指针</p>
+<ul>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#8be9fd;font-style:italic">var</span> ptr <span style="color:#ff79c6">**</span><span style="color:#8be9fd">int</span>;
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
+<h4 id="12-结构体">12 结构体</h4>
+<ul>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#6272a4">//定义结构体
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">type</span> struct_variable_type <span style="color:#8be9fd;font-style:italic">struct</span> {
+   member definition
+   <span style="color:#ff79c6">...</span>
+   member definition
+}
+  
+<span style="color:#6272a4">//声明变量
+</span><span style="color:#6272a4"></span>variable_name <span style="color:#ff79c6">:=</span> structure_variable_type {value1, value2<span style="color:#ff79c6">...</span>valuen}
+variable_name <span style="color:#ff79c6">:=</span> structure_variable_type { key1: value1, key2: value2<span style="color:#ff79c6">...</span>, keyn: valuen}
+</code></pre></div></li>
+<li>
+<p>访问结构体：<code>结构体.成员名</code></p>
+</li>
+<li>
+<p>结构体作为函数参数</p>
+</li>
+<li>
+<p>结构体指针</p>
+<ul>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#6272a4">//声明
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">var</span> struct_pointer <span style="color:#ff79c6">*</span>Books
+</code></pre></div></li>
+<li>
+<p>结构体指针用 <code>.</code> 访问结构体成员</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="13-切片slice">13 切片(Slice)</h4>
+<ul>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#8be9fd;font-style:italic">var</span> identifier []<span style="color:#8be9fd;font-style:italic">type</span>	<span style="color:#6272a4">//定义切片
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">var</span> slice1 []<span style="color:#8be9fd;font-style:italic">type</span> = <span style="color:#8be9fd;font-style:italic">make</span>([]<span style="color:#8be9fd;font-style:italic">type</span>, len)	<span style="color:#6272a4">//创建切片
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">make</span>([]T, length, capacity)	<span style="color:#6272a4">//capacity指定容量，为可选参数
+</span></code></pre></div></li>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">s <span style="color:#ff79c6">:=</span>[] <span style="color:#8be9fd">int</span> {<span style="color:#bd93f9">1</span>,<span style="color:#bd93f9">2</span>,<span style="color:#bd93f9">3</span> }	<span style="color:#6272a4">//直接初始化切片 
+</span><span style="color:#6272a4"></span>s <span style="color:#ff79c6">:=</span> arr[:] 	<span style="color:#6272a4">//初始化切片 s，是数组 arr 的引用
+</span><span style="color:#6272a4"></span>s <span style="color:#ff79c6">:=</span> arr[startIndex:endIndex]	<span style="color:#6272a4">//将 arr 中从下标 startIndex 到 endIndex-1 下的元素创建为一个新的切片
+</span><span style="color:#6272a4"></span>  
+</code></pre></div></li>
+<li>
+<p><code>len()</code> 方法获取长度</p>
+</li>
+<li>
+<p><code>cap()</code> 可以测量切片最长可以达到多少</p>
+</li>
+<li>
+<p>空切片(nil)：切片未初始化，默认为nil，长度为0</p>
+</li>
+<li>
+<p><code>copy()</code> 方法拷贝切片</p>
+</li>
+<li>
+<p><code>append()</code> 方法向切片追加新元素</p>
+</li>
+</ul>
+<h4 id="14-范围range">14 范围(range)</h4>
+<ul>
+<li>
+<p>关键字用于 for 循环中迭代<code>数组(array)、切片(slice)、通道(channel)或集合(map)</code>的元素</p>
+</li>
+<li>
+<p>在数组和切片中它返回元素的索引和索引对应的值，在集合中返回 key-value 对</p>
+</li>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#6272a4">//读取key,value
+</span><span style="color:#6272a4"></span><span style="color:#ff79c6">for</span> key, value <span style="color:#ff79c6">:=</span> <span style="color:#ff79c6">range</span> oldMap {
+    newMap[key] = value
+}
+<span style="color:#6272a4">//只读取key
+</span><span style="color:#6272a4"></span><span style="color:#ff79c6">for</span> key <span style="color:#ff79c6">:=</span> <span style="color:#ff79c6">range</span> oldMap
+<span style="color:#6272a4">//只读取value
+</span><span style="color:#6272a4"></span><span style="color:#ff79c6">for</span> _, value <span style="color:#ff79c6">:=</span> <span style="color:#ff79c6">range</span> oldMap
+</code></pre></div></li>
+<li>
+<p>range也可以用来枚举 Unicode 字符串</p>
+</li>
+</ul>
+<h4 id="15-集合map">15 集合(Map)</h4>
+<ul>
+<li>
+<p>无序的键值对的集合</p>
+</li>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#6272a4">/* 声明变量，默认 map 是 nil */</span>
+<span style="color:#8be9fd;font-style:italic">var</span> map_variable <span style="color:#8be9fd;font-style:italic">map</span>[key_data_type]value_data_type
+  
+<span style="color:#6272a4">/* 使用 make 函数 */</span>
+map_variable <span style="color:#ff79c6">:=</span> <span style="color:#8be9fd;font-style:italic">make</span>(<span style="color:#8be9fd;font-style:italic">map</span>[key_data_type]value_data_type)
+</code></pre></div></li>
+<li>
+<p><code>delete()</code> 函数用于删除集合的元素, 参数为 map 和其对应的 key</p>
+</li>
+</ul>
+<h4 id="16-接口">16 接口</h4>
+<ul>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#6272a4">/* 定义接口 */</span>
+<span style="color:#8be9fd;font-style:italic">type</span> interface_name <span style="color:#8be9fd;font-style:italic">interface</span> {
+  method_name1 [return_type]
+  method_name2 [return_type]
+  <span style="color:#ff79c6">...</span>
+  method_namen [return_type]
+}
+  
+<span style="color:#6272a4">/* 定义结构体 */</span>
+<span style="color:#8be9fd;font-style:italic">type</span> struct_name <span style="color:#8be9fd;font-style:italic">struct</span> {
+  <span style="color:#6272a4">/* variables */</span>
+}
+  
+<span style="color:#6272a4">/* 实现接口方法 */</span>
+<span style="color:#8be9fd;font-style:italic">func</span> (struct_name_variable struct_name) <span style="color:#50fa7b">method_name1</span>() [return_type] {
+  <span style="color:#6272a4">/* 方法实现 */</span>
+}
+<span style="color:#ff79c6">...</span>
+<span style="color:#8be9fd;font-style:italic">func</span> (struct_name_variable struct_name) <span style="color:#50fa7b">method_namen</span>() [return_type] {
+  <span style="color:#6272a4">/* 方法实现*/</span>
+}
+</code></pre></div></li>
+</ul>
+<h4 id="17-错误处理">17 错误处理</h4>
+<ul>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#8be9fd;font-style:italic">type</span> <span style="color:#8be9fd">error</span> <span style="color:#8be9fd;font-style:italic">interface</span> {
+    <span style="color:#50fa7b">Error</span>() <span style="color:#8be9fd">string</span>
+}
+  
+<span style="color:#8be9fd;font-style:italic">func</span> <span style="color:#50fa7b">Sqrt</span>(f <span style="color:#8be9fd">float64</span>) (<span style="color:#8be9fd">float64</span>, <span style="color:#8be9fd">error</span>) {
+    <span style="color:#ff79c6">if</span> f &lt; <span style="color:#bd93f9">0</span> {
+        <span style="color:#ff79c6">return</span> <span style="color:#bd93f9">0</span>, errors.<span style="color:#50fa7b">New</span>(<span style="color:#f1fa8c">&#34;math: square root of negative number&#34;</span>)
+    }
+    <span style="color:#6272a4">// 实现
+</span><span style="color:#6272a4"></span>}
+</code></pre></div></li>
+</ul>
+<h4 id="18-并发">18 并发</h4>
+<ul>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#6272a4">//goroutine语法
+</span><span style="color:#6272a4"></span><span style="color:#ff79c6">go</span> 函数名( 参数列表 )
+</code></pre></div></li>
+<li>
+<p>同一个程序中的所有 <code>goroutine</code> 共享同一个地址空间</p>
+</li>
+<li>
+<p>通道（channel）</p>
+<ul>
+<li>
+<p>是用来传递数据的一个数据结构</p>
+</li>
+<li>
+<p>通道可用于两个 <code>goroutine</code> 之间通过传递一个指定类型的值来同步运行和通讯</p>
+</li>
+<li>
+<p>操作符 <code>&lt;-</code> 用于指定通道的方向，发送或接收。如果未指定方向，则为双向通道</p>
+</li>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#6272a4">//声明通道
+</span><span style="color:#6272a4"></span>ch <span style="color:#ff79c6">:=</span> <span style="color:#8be9fd;font-style:italic">make</span>(<span style="color:#8be9fd;font-style:italic">chan</span> <span style="color:#8be9fd">int</span>)
+<span style="color:#6272a4">//设置发送缓冲区
+</span><span style="color:#6272a4"></span>ch <span style="color:#ff79c6">:=</span> <span style="color:#8be9fd;font-style:italic">make</span>(<span style="color:#8be9fd;font-style:italic">chan</span> <span style="color:#8be9fd">int</span>, <span style="color:#bd93f9">100</span>)
+<span style="color:#6272a4">//遍历通道
+</span><span style="color:#6272a4"></span>v, ok <span style="color:#ff79c6">:=</span> <span style="color:#ff79c6">&lt;-</span>ch
+<span style="color:#6272a4">//关闭通道
+</span><span style="color:#6272a4"></span>cl
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
+
+
+                
+                
+<div class="entry-shang text-center">
+    
+	    <p>「真诚赞赏，手留余香」</p>
+	
+	<button class="zs show-zs btn btn-bred">赞赏支持</button>
+</div>
+<div class="zs-modal-bg"></div>
+<div class="zs-modal-box">
+	<div class="zs-modal-head">
+		<button type="button" class="close">×</button>
+		<span class="author"><a href="https://Imcaicai.github.io"><img src="/img/favicon.png" />Huabing Blog</a></span>
+        
+	        <p class="tip"><i></i><span>真诚赞赏，手留余香</span></p>
+		
+ 
+	</div>
+	<div class="zs-modal-body">
+		<div class="zs-modal-btns">
+			<button class="btn btn-blink" data-num="2">2元</button>
+			<button class="btn btn-blink" data-num="5">5元</button>
+			<button class="btn btn-blink" data-num="10">10元</button>
+			<button class="btn btn-blink" data-num="50">50元</button>
+			<button class="btn btn-blink" data-num="100">100元</button>
+			<button class="btn btn-blink" data-num="1">任意金额</button>
+		</div>
+		<div class="zs-modal-pay">
+			<button class="btn btn-bred" id="pay-text">2元</button>
+			<p>使用<span id="pay-type">微信</span>扫描二维码完成支付</p>
+			<img src="/img/reward/wechat-2.png"  id="pay-image"/>
+		</div>
+	</div>
+	<div class="zs-modal-footer">
+		<label><input type="radio" name="zs-type" value="wechat" class="zs-type" checked="checked"><span ><span class="zs-wechat"><img src="/img/reward/wechat-btn.png"/></span></label>
+		<label><input type="radio" name="zs-type" value="alipay" class="zs-type" class="zs-alipay"><img src="/img/reward/alipay-btn.png"/></span></label>
+	</div>
+</div>
+<script type="text/javascript" src="/js/reward.js"></script>
+
+                
+
+                
+
+                
+
+
+
+            </div>
+
+            
+            
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+                <section>
+                    <hr>
+                    <h5>FRIENDS</h5>
+                    <ul class="list-inline">
+                        
+                        <li><a target="_blank" href="https://zhaozhihan.com">Linda的博客</a></li>
+                        
+                    </ul>
+                </section>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">                  
+                    
+                    <li>
+                        <a href="mailto:youremail@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		           
+                    
+                    
+                    
+                    
+
+		            
+                    
+                    <li>
+                        <a target="_blank" href="/your%20wechat%20qr%20code%20image">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-weixin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/yourgithub">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/yourlinkedinid">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		           
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://stackoverflow.com/users/yourstackoverflowid">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-stack-overflow fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+           
+                   <li>
+                       <a href='' rel="alternate" type="application/rss+xml" title="Huabing Blog" >
+                           <span class="fa-stack fa-lg">
+                               <i class="fas fa-circle fa-stack-2x"></i>
+                               <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+            
+             </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Huabing Blog 2022
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function loadAsync(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        loadAsync("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        
+        
+        
+        
+            _containerSelector = 'div.post-container'
+        
+
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    
+
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+
+
+</body>
+</html>
