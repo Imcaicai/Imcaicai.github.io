@@ -5,15 +5,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <title>Vision GNN: An Image is Worth Graph of Nodes - LoveIt</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:title" content="Vision GNN: An Image is Worth Graph of Nodes" />
-<meta property="og:description" content="本文为论文：Vision GNN: An Image is Worth Graph of Nodes 的阅读笔记。
-论文下载
+<meta property="og:description" content="本文为论文 Vision GNN: An Image is Worth Graph of Nodes 的阅读笔记。
+论文下载：https://arxiv.org/abs/2206.00272
 引言 网络架构在基于深度学习的计算机视觉中起着关键作用。广泛使用的CNN和 transformer（变换器）将图像视为 grid（网格）或 sequence（序列）结构，这对于捕捉不规则、复杂的物体来说是不灵活的。本文建议将图像表示为一个 graph 结构，并引入一个新的 Vision GNN（ViG）架构来提取视觉任务的图层特征。
 文章主要工作：
- 介绍了计算机视觉方面的现有模型方法和成果 介绍ViG模型的构建过程及工作原理，为未来的研究提供有用的灵感和经验 通过图像分类和物体检测实验证明了ViG模型在视觉任务中的有效性  ViG包括两个基本模块。图形模块具有图形卷积功能，用于聚合和更新图形信息。更新图信息的Grapher模块，以及带有两个线性层的FFN模块，用于节点特征转换。特征转换。ViG的各向同性和金字塔结构都是以不同的模型尺寸建立的。不同的模型大小。在图像识别和物体检测任务上进行了大量的实验，证明了我们的方法的优越性。在图像识别和物体检测任务上的大量实验证明了我们的ViG架构的优越性。我们希望这个在一般视觉任务上对GNN的开创性研究将为未来的研究提供有用的灵感和经验。为未来的研究提供有用的灵感和经验。
-相关研究 CNN 曾经是计算机视觉中标准的网络结构，但近来 transformer with attention mechanism 、MLP-based 等模型也在不断发展，这些正在将视觉模型推向一个前所未有的高度。
-3种图像结构 不同的网络结构以不同的方式处理输入的图像，通常有 grid structure, sequence structure, graph structure 3种，如下图所示。在 grid structure  和 sequence structure 中，节点只按空间位置排序；在 graph structure 中，节点是通过其内容连接的，不受局部位置的限制。
+ 介绍了计算机视觉方面的现有模型方法和成果 介绍ViG模型的构建过程及工作原理，为未来的研究提供有用的灵感和经验 通过图像分类和物体检测实验证明了ViG模型在视觉任务中的有效性  1 相关研究 CNN 曾经是计算机视觉中标准的网络结构，但近来 transformer with attention mechanism 、MLP-based 等模型也在不断发展，这些正在将视觉模型推向一个前所未有的高度。
+1.1 3种图像结构 不同的网络结构以不同的方式处理输入的图像，通常有grid, sequence ,graph 3种，如下图所示。在 grid  和 sequence 结构中，节点只按空间位置排序；在 graph 结构中，节点是通过其内容连接的，不受局部位置的限制。
 CNN 在图像上应用滑动窗口，并引入移位变异性和位置性；最近的 vision transformer 或 MLP 将图像视为 a sequence of patches（补丁序列）。
-由于物体形状通常不是规则的四边形，常用的 grid 或 sequence 结构处理起图像来不够灵活，所以在本文中采用 graph structure 。" />
+由于物体形状通常不是规则的四边形，常用的 grid 或 sequence 结构处理起图像来不够灵活，所以在本文中采用 graph 结构。
+1.2 3种模型  CNN：曾经是计算机视觉中的主流网络结构，已经成功地应用于各种视觉任务，如图像分类、物体检测和语义分割。CNN模型在过去的十年里发展迅速，代表性的模型包括ResNet、MobileNet和NAS。 Vision transformer：从2020年开始，被引入到视觉任务中，ViT的一些变体开始被提出来以提高视觉任务的性能。主要的改进包括金字塔结，局部注意和位置编码。 MLP：通过专门设计的模块，MLP可以达到有竞争力的性能，并且在一般的视觉任务（如物体检测和分割）上工作。  1." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://imcaicai.github.io/an-image-is-worth-graph-of-nodes/" /><meta property="og:image" content="https://imcaicai.github.io/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-10-17T00:00:00&#43;00:00" />
@@ -23,15 +23,15 @@ CNN 在图像上应用滑动窗口，并引入移位变异性和位置性；最�
 <meta name="twitter:image" content="https://imcaicai.github.io/logo.png"/>
 
 <meta name="twitter:title" content="Vision GNN: An Image is Worth Graph of Nodes"/>
-<meta name="twitter:description" content="本文为论文：Vision GNN: An Image is Worth Graph of Nodes 的阅读笔记。
-论文下载
+<meta name="twitter:description" content="本文为论文 Vision GNN: An Image is Worth Graph of Nodes 的阅读笔记。
+论文下载：https://arxiv.org/abs/2206.00272
 引言 网络架构在基于深度学习的计算机视觉中起着关键作用。广泛使用的CNN和 transformer（变换器）将图像视为 grid（网格）或 sequence（序列）结构，这对于捕捉不规则、复杂的物体来说是不灵活的。本文建议将图像表示为一个 graph 结构，并引入一个新的 Vision GNN（ViG）架构来提取视觉任务的图层特征。
 文章主要工作：
- 介绍了计算机视觉方面的现有模型方法和成果 介绍ViG模型的构建过程及工作原理，为未来的研究提供有用的灵感和经验 通过图像分类和物体检测实验证明了ViG模型在视觉任务中的有效性  ViG包括两个基本模块。图形模块具有图形卷积功能，用于聚合和更新图形信息。更新图信息的Grapher模块，以及带有两个线性层的FFN模块，用于节点特征转换。特征转换。ViG的各向同性和金字塔结构都是以不同的模型尺寸建立的。不同的模型大小。在图像识别和物体检测任务上进行了大量的实验，证明了我们的方法的优越性。在图像识别和物体检测任务上的大量实验证明了我们的ViG架构的优越性。我们希望这个在一般视觉任务上对GNN的开创性研究将为未来的研究提供有用的灵感和经验。为未来的研究提供有用的灵感和经验。
-相关研究 CNN 曾经是计算机视觉中标准的网络结构，但近来 transformer with attention mechanism 、MLP-based 等模型也在不断发展，这些正在将视觉模型推向一个前所未有的高度。
-3种图像结构 不同的网络结构以不同的方式处理输入的图像，通常有 grid structure, sequence structure, graph structure 3种，如下图所示。在 grid structure  和 sequence structure 中，节点只按空间位置排序；在 graph structure 中，节点是通过其内容连接的，不受局部位置的限制。
+ 介绍了计算机视觉方面的现有模型方法和成果 介绍ViG模型的构建过程及工作原理，为未来的研究提供有用的灵感和经验 通过图像分类和物体检测实验证明了ViG模型在视觉任务中的有效性  1 相关研究 CNN 曾经是计算机视觉中标准的网络结构，但近来 transformer with attention mechanism 、MLP-based 等模型也在不断发展，这些正在将视觉模型推向一个前所未有的高度。
+1.1 3种图像结构 不同的网络结构以不同的方式处理输入的图像，通常有grid, sequence ,graph 3种，如下图所示。在 grid  和 sequence 结构中，节点只按空间位置排序；在 graph 结构中，节点是通过其内容连接的，不受局部位置的限制。
 CNN 在图像上应用滑动窗口，并引入移位变异性和位置性；最近的 vision transformer 或 MLP 将图像视为 a sequence of patches（补丁序列）。
-由于物体形状通常不是规则的四边形，常用的 grid 或 sequence 结构处理起图像来不够灵活，所以在本文中采用 graph structure 。"/>
+由于物体形状通常不是规则的四边形，常用的 grid 或 sequence 结构处理起图像来不够灵活，所以在本文中采用 graph 结构。
+1.2 3种模型  CNN：曾经是计算机视觉中的主流网络结构，已经成功地应用于各种视觉任务，如图像分类、物体检测和语义分割。CNN模型在过去的十年里发展迅速，代表性的模型包括ResNet、MobileNet和NAS。 Vision transformer：从2020年开始，被引入到视觉任务中，ViT的一些变体开始被提出来以提高视觉任务的性能。主要的改进包括金字塔结，局部注意和位置编码。 MLP：通过专门设计的模块，MLP可以达到有竞争力的性能，并且在一般的视觉任务（如物体检测和分割）上工作。  1."/>
 <meta name="application-name" content="LoveIt">
 <meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -51,7 +51,7 @@ CNN 在图像上应用滑动窗口，并引入移位变异性和位置性；最�
                             "url": "https:\/\/imcaicai.github.io\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "深度学习","wordcount":  140 ,
+                        }],"genre": "posts","keywords": "深度学习","wordcount":  255 ,
         "url": "https:\/\/imcaicai.github.io\/an-image-is-worth-graph-of-nodes\/","datePublished": "2022-10-17T00:00:00+00:00","dateModified": "2022-10-17T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -136,8 +136,8 @@ CNN 在图像上应用滑动窗口，并引入移位变异性和位置性；最�
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Vision GNN: An Image is Worth Graph of Nodes</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>     "菜菜"</a></span>&nbsp;<span class="post-category">included in <a href="/categories/tech/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Tech</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-17">2022-10-17</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;140 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;<span id="/an-image-is-worth-graph-of-nodes/" class="leancloud_visitors" data-flag-title="Vision GNN: An Image is Worth Graph of Nodes">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-17">2022-10-17</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;255 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;<span id="/an-image-is-worth-graph-of-nodes/" class="leancloud_visitors" data-flag-title="Vision GNN: An Image is Worth Graph of Nodes">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
@@ -148,26 +148,43 @@ CNN 在图像上应用滑动窗口，并引入移位变异性和位置性；最�
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
     <li><a href="#引言">引言</a></li>
-    <li><a href="#相关研究">相关研究</a>
+    <li><a href="#1-相关研究">1 相关研究</a>
       <ul>
-        <li><a href="#3种图像结构">3种图像结构</a></li>
-        <li><a href="#3种模型">3种模型</a></li>
-        <li><a href="#gnn模型">GNN模型</a></li>
+        <li><a href="#11-3种图像结构">1.1 3种图像结构</a></li>
+        <li><a href="#12-3种模型">1.2 3种模型</a></li>
+        <li><a href="#13-gnn模型">1.3 GNN模型</a></li>
       </ul>
     </li>
-    <li><a href="#vig模型">ViG模型</a>
+    <li><a href="#2-vig模型">2 ViG模型</a>
       <ul>
-        <li><a href="#模型构建imagegraph">模型构建(Image→Graph)</a></li>
-        <li><a href="#模型处理">模型处理</a></li>
-        <li><a href="#基本模块">基本模块</a></li>
-        <li><a href="#模型优点">模型优点</a></li>
+        <li><a href="#21-模型构建">2.1 模型构建</a>
+          <ul>
+            <li><a href="#imagegraph">Image→Graph</a></li>
+            <li><a href="#图层处理">图层处理</a></li>
+            <li><a href="#vig-block">ViG block</a></li>
+          </ul>
+        </li>
+        <li><a href="#22-网络框架">2.2 网络框架</a>
+          <ul>
+            <li><a href="#各向同性结构">各向同性结构</a></li>
+            <li><a href="#金字塔结构">金字塔结构</a></li>
+            <li><a href="#位置编码">位置编码</a></li>
+          </ul>
+        </li>
+        <li><a href="#23-模型优点">2.3 模型优点</a></li>
       </ul>
     </li>
-    <li><a href="#实验">实验</a></li>
+    <li><a href="#3-实验">3 实验</a>
+      <ul>
+        <li><a href="#31-实验结果">3.1 实验结果</a></li>
+        <li><a href="#32-消融研究">3.2 消融研究</a></li>
+        <li><a href="#33-可视化">3.3 可视化</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p>本文为论文：Vision GNN: An Image is Worth Graph of Nodes 的阅读笔记。</p>
-<p>论文下载</p>
+            </div><div class="content" id="content"><p>本文为论文 <em><strong>Vision GNN: An Image is Worth Graph of Nodes</strong></em> 的阅读笔记。</p>
+<p>论文下载：<a href="https://arxiv.org/abs/2206.00272" target="_blank" rel="noopener noreffer ">https://arxiv.org/abs/2206.00272</a></p>
 <h2 id="引言">引言</h2>
 <p>网络架构在基于深度学习的计算机视觉中起着关键作用。广泛使用的<code>CNN</code>和 <code>transformer</code>（变换器）将图像视为 <code>grid</code>（网格）或 <code>sequence</code>（序列）结构，这对于捕捉不规则、复杂的物体来说是不灵活的。本文建议将图像表示为一个 <code>graph</code> 结构，并引入一个新的 <code>Vision GNN（ViG）</code>架构来提取视觉任务的图层特征。</p>
 <p>文章主要工作：</p>
@@ -176,11 +193,10 @@ CNN 在图像上应用滑动窗口，并引入移位变异性和位置性；最�
 <li>介绍ViG模型的构建过程及工作原理，为未来的研究提供有用的灵感和经验</li>
 <li>通过图像分类和物体检测实验证明了ViG模型在视觉任务中的有效性</li>
 </ul>
-<p>ViG包括两个基本模块。图形模块具有图形卷积功能，用于聚合和更新图形信息。更新图信息的Grapher模块，以及带有两个线性层的FFN模块，用于节点特征转换。特征转换。ViG的各向同性和金字塔结构都是以不同的模型尺寸建立的。不同的模型大小。在图像识别和物体检测任务上进行了大量的实验，证明了我们的方法的优越性。在图像识别和物体检测任务上的大量实验证明了我们的ViG架构的优越性。我们希望这个在一般视觉任务上对GNN的开创性研究将为未来的研究提供有用的灵感和经验。为未来的研究提供有用的灵感和经验。</p>
-<h2 id="相关研究">相关研究</h2>
+<h2 id="1-相关研究">1 相关研究</h2>
 <p><code>CNN</code> 曾经是计算机视觉中标准的网络结构，但近来 <code>transformer with attention mechanism</code> 、<code>MLP-based</code> 等模型也在不断发展，这些正在将视觉模型推向一个前所未有的高度。</p>
-<h3 id="3种图像结构">3种图像结构</h3>
-<p>不同的网络结构以不同的方式处理输入的图像，通常有 <code>grid structure, sequence structure, graph structure</code> 3种，如下图所示。在 <code>grid structure </code> 和 <code>sequence structure</code> 中，节点只按空间位置排序；在 <code>graph structure</code> 中，节点是通过其内容连接的，不受局部位置的限制。</p>
+<h3 id="11-3种图像结构">1.1 3种图像结构</h3>
+<p>不同的网络结构以不同的方式处理输入的图像，通常有<code>grid</code>, <code>sequence</code> ,<code>graph</code> 3种，如下图所示。在 <code>grid </code> 和 <code>sequence</code>  结构中，节点只按空间位置排序；在 <code>graph</code> 结构中，节点是通过其内容连接的，不受局部位置的限制。</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -190,14 +206,14 @@ CNN 在图像上应用滑动窗口，并引入移位变异性和位置性；最�
         alt="/img/GNN/image1.png"
         title="image1" /></p>
 <p><code>CNN</code> 在图像上应用滑动窗口，并引入移位变异性和位置性；最近的 <code>vision transformer</code> 或 <code>MLP</code> 将图像视为 <code>a sequence of patches</code>（补丁序列）。</p>
-<p>由于物体形状通常不是规则的四边形，常用的 <code>grid</code> 或 <code>sequence</code> 结构处理起图像来不够灵活，所以在本文中采用 <code>graph structure</code> 。</p>
-<h3 id="3种模型">3种模型</h3>
+<p>由于物体形状通常不是规则的四边形，常用的 <code>grid</code> 或 <code>sequence</code> 结构处理起图像来不够灵活，所以在本文中采用 <code>graph</code> 结构。</p>
+<h3 id="12-3种模型">1.2 3种模型</h3>
 <ul>
-<li><code>CNN</code>：曾经是计算机视觉中的主流网络结构，已经成功地应用于各种视觉任务，如图像分类、物体检测和语义分割。CNN模型在过去的十年里发展迅速，代表性的作品包括ResNet、MobileNet和NAS。</li>
-<li><code>Vision transformer</code>：从2020年开始，被引入到视觉任务中。从那时起起，ViT的一些变体被提出来以提高视觉任务的性能。主要的改进包括金字塔结，局部注意和位置编码。</li>
+<li><code>CNN</code>：曾经是计算机视觉中的主流网络结构，已经成功地应用于各种视觉任务，如图像分类、物体检测和语义分割。CNN模型在过去的十年里发展迅速，代表性的模型包括ResNet、MobileNet和NAS。</li>
+<li><code>Vision transformer</code>：从2020年开始，被引入到视觉任务中，ViT的一些变体开始被提出来以提高视觉任务的性能。主要的改进包括金字塔结，局部注意和位置编码。</li>
 <li><code>MLP</code>：通过专门设计的模块，MLP可以达到有竞争力的性能，并且在一般的视觉任务（如物体检测和分割）上工作。</li>
 </ul>
-<h3 id="gnn模型">GNN模型</h3>
+<h3 id="13-gnn模型">1.3 GNN模型</h3>
 <p><strong>1. GNN&amp;GCN</strong></p>
 <blockquote>
 <p><code>GNN</code>：图神经网络，由于传统的CNN网络无法表示顶点和边这种关系型数据，便出现了图神经网络解决这种图数据的表示问题，这属于CNN往图方向的应用扩展</p>
@@ -208,9 +224,48 @@ CNN 在图像上应用滑动窗口，并引入移位变异性和位置性；最�
 <p><strong>3. 应用</strong></p>
 <p>GCN通常被应用于图数据，如社会网络、引文网络和生化图；在计算机视觉领域的应用主要包括点云分类、场景图生成和动作识别。</p>
 <p>GCN只能解决自然形成的图的特定视觉任务，对于计算机视觉的一般应用，我们需要一个基于GCN的骨干网络来直接处理图像数据。</p>
-<h2 id="vig模型">ViG模型</h2>
-<p>ViG模型的处理流程如下：</p>
+<h2 id="2-vig模型">2 ViG模型</h2>
+<h3 id="21-模型构建">2.1 模型构建</h3>
+<h4 id="imagegraph">Image→Graph</h4>
+<p>首先基于 <code>graph </code>  结构建立视觉图形神经网络，用于视觉任务。将输入的图像划分为若干个 <code>patches</code>（补丁），并将每个斑块视为一个 <code>node</code> （节点）。<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<p>.</p>
+<p>对于一个大小为 $H×W×3$ 的图像，我们将其分为 N 个补丁，把每个补丁转化为一个特征向量 $x_i∈R^D$，得到 $X = [x_1,x_2,&hellip;,x_N ]$， 其中 $D$ 是特征维度。将特征看做无序节点$V={v_1,v_2,&hellip;,v_N}$，节点$v_i$的k邻近节点记为$N(v_i)$，对每个$v_j∈N(v_i)$添加$v_j$到$v_i$的边$e_ji$。</p>
+<p>最终得到图$G = (V,E) $，我们把图的构建过程记为$G = G(X)$。</p>
+<h4 id="图层处理">图层处理</h4>
+<p>图卷积层可以通过聚合其邻居节点的特征在节点之间交换信息。具体操作方式为：</p>
+<p>$G' = F(G, W)=Update(Aggregate(G, W_agg), W_update) $</p>
+<p>其中，$W_agg$和 $W_update$是聚合、更新操作的可学习权重。</p>
+<blockquote>
+<p><strong>聚合</strong>：通过聚合邻居节点的特征来计算一个节点的表征</p>
+<p><strong>更新</strong>：进一步合并聚合的特征</p>
+</blockquote>
+<p>通过<strong>最大相对卷积</strong>处理图层面，记为$X' = GraphConv(X)$。</p>
+<p>$x_i' = h(x_i, g(x_i, N(x_i), W_agg), W_update)$</p>
+<p>$g(·) = x_i'' = [x_i, max(${$x_j - x_i|j∈N(x_i)$}]</p>
+<p>$h(·) = x_i' = x_i'&lsquo;W_update$</p>
+<p>.</p>
+<p>接着进行图卷积的<strong>多头更新操作</strong>（有利于特征多样性），将聚合后的特征 $x_i&rsquo;'$ 分割成 $h$ 个头，然后分别以不同的权重更新这些头，得到：</p>
+<p>$x_i' = [head^1W^1update, head^2W^2update,&hellip;head^hW^hupdate]$</p>
+<h4 id="vig-block">ViG block</h4>
+<blockquote>
+<p><strong>ViG的2个基本模块</strong></p>
+<p><strong>Graph模块</strong>：是在图卷积的基础上构建的，用于聚合和更新图形信息，可以缓解传统GNN的过度平滑现象</p>
+<p><strong>FFN模块</strong>：带有两个线性层，用于节点特征转换和鼓励节点多样性</p>
+</blockquote>
+<p>以前的GCN通常重复使用卷积层来提取图形数据的聚合特征，这会导致<strong>过度平滑</strong>的现象 ，降低节点特征的显著性，如下图所示所示。为了解决这个问题，本文在ViG块中引入了更多的<strong>特征转换</strong>和<strong>非线性激活</strong>。</p>
 <p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/GNN/image3.png"
+        data-srcset="/img/GNN/image3.png, /img/GNN/image3.png 1.5x, /img/GNN/image3.png 2x"
+        data-sizes="auto"
+        alt="/img/GNN/image3.png"
+        title="image3" /></p>
+<p>我们在图卷积前后应用一个<strong>线性层</strong>，将节点特征投射到同一领域，增加特征多样性。在图卷积之后插入一个<strong>非线性激活函数</strong>以避免层崩溃。我们称升级后的模块为<strong>Grapher模块</strong>，给定输入特征$X∈R^N×^D$  ，则可得到：$Y = σ(GraphConv(XW_in))W_out + X$  <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
+<p>.</p>
+<p>其中$W_in$和$W_out$是全连接层的权重，σ是激活函数。为了进一步提高特征转换能力，我们在每个节点上利用<strong>前馈网络（FFN）</strong>：$Z = σ(YW_1)W_2 + Y$</p>
+<p>其中$W_1$和$W_2$是全连接层的权重。Graph模块和FFN模块的堆叠构成了ViG块，作为构建网络的基本单元。基于图像的<strong>graph结构</strong>和<strong>ViG块</strong>，我们可以建立ViG网络。
+<img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/img/GNN/image2.png"
@@ -218,26 +273,112 @@ CNN 在图像上应用滑动窗口，并引入移位变异性和位置性；最�
         data-sizes="auto"
         alt="/img/GNN/image2.png"
         title="image2" /></p>
-<h3 id="模型构建imagegraph">模型构建(Image→Graph)</h3>
-<p>首先基于 <code>graph structure</code>  建立视觉图形神经网络，用于视觉任务。将输入的图像划分为若干个 <code>patches</code>（补丁），并将每个斑块视为一个 <code>node</code> （节点）。（不用像素当做节点的原因：会导致节点过多）</p>
-<p>对于一个大小为 $H×W×3$ 的图像，我们将其分为 N 个补丁，把每个补丁转化为一个特征向量 $x_i∈R^D$，得到 $X = [x_1,x_2,&hellip;,x_N ]$， 其中 $D$ 是特征维度。将特征看做无序节点$V={v_1,v_2,&hellip;,v_N}$，节点$v_i$的k邻近节点记为$N(v_i)$，对每个$v_j∈N(v_i)$添加$v_j$到$v_i$的边$e_ji$，从而得到图$G = (V,E) $，我们把图的构建过程记为$G = G(X)$。</p>
-<h3 id="模型处理">模型处理</h3>
-<h3 id="基本模块">基本模块</h3>
-<p>图形器和FFN(feed-forward network)模块。图形模块是在图卷积的基础上构建的。
-图形信息处理。为了缓解传统GNN的过度平滑现象。
-FFN模块用于节点特征转换和鼓励节点多样性。利用
-Grapher和FFN模块，我们以各向同性和金字塔的方式建立我们的ViG模型。</p>
-<h3 id="模型优点">模型优点</h3>
+<h3 id="22-网络框架">2.2 网络框架</h3>
+<blockquote>
+<p>各项同性结构：指主体在整个网络中具有同等大小和形状的特征
+金字塔结构：考虑了图像的多尺度特性，提取特征的空间大小逐渐变小</p>
+</blockquote>
+<p>在计算机视觉领域，常用的结构有各向同性结构和金字塔结构。为了与其他类型的神经网络有更普遍的比较，文章分别为ViG建立了这两种网络结构。</p>
+<h4 id="各向同性结构">各向同性结构</h4>
+<p>文章建立了3个大小不同的各向同性ViG架构。为了扩大感受野，邻居结点的数量K从9线性增加到18；头的数量被设定为 h = 4。详情如下表：<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/GNN/image4.png"
+        data-srcset="/img/GNN/image4.png, /img/GNN/image4.png 1.5x, /img/GNN/image4.png 2x"
+        data-sizes="auto"
+        alt="/img/GNN/image4.png"
+        title="image4" /></p>
+<h4 id="金字塔结构">金字塔结构</h4>
+<p>文章建立了4个大小不同的金字塔ViG模型。详情如下：<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/GNN/image5.png"
+        data-srcset="/img/GNN/image5.png, /img/GNN/image5.png 1.5x, /img/GNN/image5.png 2x"
+        data-sizes="auto"
+        alt="/img/GNN/image5.png"
+        title="image5" /></p>
+<h4 id="位置编码">位置编码</h4>
+<p>为了表示节点的位置信息，文章为每个节点特征添加一个位置向量：$x_i←x_i+e_i$ ；金字塔结构中可以进一步使用相对位置编码。</p>
+<h3 id="23-模型优点">2.3 模型优点</h3>
 <ul>
 <li><code>graph</code> 是广义的数据结构，<code>grid</code> 和 <code>sequence</code> 可以看做 <code>graph</code> 的特例</li>
 <li><code>graph</code> 更灵活，可以对复杂、不规则的物体进行建模</li>
 <li>一个物体可以被看作是由各个部分组成的，<code>graph</code> 结构可以构建他们的联系</li>
 </ul>
-<h2 id="实验">实验</h2>
-<p>在实验中，我们证明了ViG模型在视觉任务中的有效性，如图像分类
-和物体检测。例如，我们的金字塔型ViG-S在ImageNet分类任务中达到了82.1%的最高准确率。
-分类任务中取得了82.1%的最高准确率，超过了具有代表性的CNN（ResNet[16]）、MLP（CycleMLP[4]）和变换器（Swin-T[4]）。
-和变换器（Swin-T[33]）的FLOPs相似（约4.5G）。</p>
+<h2 id="3-实验">3 实验</h2>
+<blockquote>
+<p><strong>top1  accuracy</strong>：预测的label取最后概率向量里面最大的那一个作为预测结果，如果预测结果中概率最大的分类正确，则预测正确，否则预测错误。</p>
+<p><strong>top5  accuracy</strong>：最后概率向量最大的前五名中，只要出现了正确概率即为预测正确，否则预测错误。</p>
+</blockquote>
+<h3 id="31-实验结果">3.1 实验结果</h3>
+<p>本文分别将各向同性结构、金字塔结构的ViG与同样结构的CNN、转化器和 MLPs对比，可以看出：</p>
+<ul>
+<li>将图片视作Graph能够在计算机视觉任务中取得非常好的结果</li>
+<li>和各向同性结构相比，金字塔结构的ViG具有更好的性能</li>
+</ul>
+<p>各向同性结构的实验结果：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/GNN/image6.png"
+        data-srcset="/img/GNN/image6.png, /img/GNN/image6.png 1.5x, /img/GNN/image6.png 2x"
+        data-sizes="auto"
+        alt="/img/GNN/image6.png"
+        title="image6" /></p>
+<p>金字塔结构的实验结果：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/GNN/image7.png"
+        data-srcset="/img/GNN/image7.png, /img/GNN/image7.png 1.5x, /img/GNN/image7.png 2x"
+        data-sizes="auto"
+        alt="/img/GNN/image7.png"
+        title="image7" /></p>
+<h3 id="32-消融研究">3.2 消融研究</h3>
+<blockquote>
+<p>消融研究：通过删除部分网络并研究网络的性能来更好的了解网络。</p>
+</blockquote>
+<p>文章以各向同性的ViG-Ti为基础架构，在ImageNet分类任务上进行了消融研究，结果如下：</p>
+<ul>
+<li>通过改变图卷积的类型，发现不同图卷积的Top-1准确率很高，说明ViG架构的灵活性。其中，最大相对卷积在计算量和精度之间实现了最佳的权衡。</li>
+<li>直接利用图卷积进行图像分类的效果很差，可以通过添加更多的特征转换，如引入FC和FFN不断提高准确性。</li>
+<li>太少的邻居结点会降低信息交流，太多会导致过度平滑。当邻居节点的数量在9-15的范围时表现较好。</li>
+<li>头的数量 h=4时，计算量和精度可以最好平衡。</li>
+</ul>
+<h3 id="33-可视化">3.3 可视化</h3>
+<p>为了更好地理解本文的ViG模型是如何工作的，作者可视化了构建的图结构，展示了两个不同深度的样本的图。五角星是中心节点，相同颜色的节点是其邻居。</p>
+<p>可以看到，在浅层，邻居节点往往是根据低层次、局部特征来选择的，如颜色和纹理；在深层层中，中心节点的邻居更具语义性，属于同一类别。而本文的ViG网络可以通过其内容和语义表征逐渐将节点联系起来，并帮助更好地识别物体。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/GNN/image8.png"
+        data-srcset="/img/GNN/image8.png, /img/GNN/image8.png 1.5x, /img/GNN/image8.png 2x"
+        data-sizes="auto"
+        alt="/img/GNN/image8.png"
+        title="image8" /></p>
+<p>参考资料：</p>
+<p><a href="https://www.cnblogs.com/SivilTaram/p/graph_neural_network_1.html" target="_blank" rel="noopener noreffer ">从图(Graph)到图卷积(Graph Convolution)：漫谈图神经网络模型 (一)</a></p>
+<p><a href="https://blog.csdn.net/liuweiyuxiang/article/details/98957612" target="_blank" rel="noopener noreffer ">图卷积神经网络(GCN)</a></p>
+<p><a href="http://tkipf.github.io/graph-convolutional-networks/" target="_blank" rel="noopener noreffer ">GRAPH CONVOLUTIONAL NETWORKS</a></p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>不用像素当做节点的原因：会导致节点过多 <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>最后加上 $X$​ 是残差连接，为了避免过拟合。 <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p>FLOPs：浮点运算数，可以用来衡量算法/模型的复杂度。 <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4" role="doc-endnote">
+<p>E是FNN中的隐藏维度 <a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
