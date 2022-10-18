@@ -11,15 +11,7 @@
                     hreflang="en"
                     href="https://imcaicai.github.io/categories/"
                     /></url><url>
-            <loc>https://imcaicai.github.io/</loc><lastmod>2022-10-17T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
-                        rel="alternate"
-                        hreflang="zh-cn"
-                        href="https://imcaicai.github.io/zh-cn/"
-                        /><xhtml:link
-                    rel="alternate"
-                    hreflang="en"
-                    href="https://imcaicai.github.io/"
-                    /></url><url>
+            <loc>https://imcaicai.github.io/tags/gnn/</loc><lastmod>2022-10-17T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://imcaicai.github.io/posts/</loc><lastmod>2022-10-17T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://imcaicai.github.io/tags/</loc><lastmod>2022-10-17T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
@@ -30,10 +22,20 @@
                     hreflang="en"
                     href="https://imcaicai.github.io/tags/"
                     /></url><url>
-            <loc>https://imcaicai.github.io/categories/tech/</loc><lastmod>2022-10-17T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://imcaicai.github.io/an-image-is-worth-graph-of-nodes/</loc><lastmod>2022-10-17T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://imcaicai.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</loc><lastmod>2022-10-17T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://imcaicai.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</loc><lastmod>2022-10-17T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://imcaicai.github.io/</loc><lastmod>2022-10-17T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="zh-cn"
+                        href="https://imcaicai.github.io/zh-cn/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="en"
+                    href="https://imcaicai.github.io/"
+                    /></url><url>
             <loc>https://imcaicai.github.io/tags/go/</loc><lastmod>2022-10-16T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://imcaicai.github.io/categories/go/</loc><lastmod>2022-10-16T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://imcaicai.github.io/go/</loc><lastmod>2022-10-16T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://imcaicai.github.io/categories/documentation/</loc><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
                         rel="alternate"

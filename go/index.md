@@ -1,7 +1,7 @@
 # Go基本语法
 
 
-#### 1 结构
+## 1 结构
 
 - `go run helloworld.go`：执行Go代码
 - `go build helloworld.go`：编译生成二进制文件
@@ -11,7 +11,7 @@
   - 函数的左括号 `{` 必须和 `func` 函数声明在同一行上，且位于末尾，不能独占一行
   - 在表达式 `x+y` 中，可在 `+` 后换行，不能在 `+` 前换行
 
-#### 2 基础语法
+## 2 基础语法
 
 ```go
 //格式化字符串
@@ -22,7 +22,7 @@ var target_url = fmt.Sprintf(url, stockcode, enddate)
 fmt.Println(target_url)
 ```
 
-#### 3 语言类型
+## 3 语言类型
 
 - 布尔型
 - 数字型
@@ -32,7 +32,7 @@ fmt.Println(target_url)
 - 字符串
 - 派生类型
 
-#### 4 变量
+## 4 变量
 
 - 变量声明
 
@@ -54,7 +54,7 @@ fmt.Println(target_url)
 
 - `_`：空白标识符，也用于被抛弃值
 
-#### 5 常量
+## 5 常量
 
 - `const identifier [type] = value`
 
@@ -71,7 +71,7 @@ fmt.Println(target_url)
 
 - `iota` 在`const`关键字出现时将被重置为0，const中每新增一行常量声明将使 iota 计数一次
 
-#### 6 条件语句
+## 6 条件语句
 
 - switch
 
@@ -110,7 +110,7 @@ fmt.Println(target_url)
 
 - `select` 通信的 switch 语句
 
-#### 7 循环语句
+## 7 循环语句
 
 - for循环
 
@@ -136,7 +136,7 @@ fmt.Println(target_url)
 
 - `goto` 语句可以无条件地转移到过程中指定的行
 
-#### 8 函数
+## 8 函数
 
 - ```go
   func function_name( [parameter list] ) [return_types] {
@@ -155,13 +155,13 @@ fmt.Println(target_url)
   }
   ```
 
-#### 9 变量作用域
+## 9 变量作用域
 
 - 局部变量：作用域只在函数体内
 - 全局变量：整个包甚至外部包（被导出后）使用
 - 全局变量与局部变量名称可以相同，但是函数内的局部变量会被优先考虑
 
-#### 10 数组
+## 10 数组
 
 - `var variable_name [SIZE] variable_type`
 
@@ -191,7 +191,7 @@ fmt.Println(target_url)
   }
   ```
 
-#### 11 指针
+## 11 指针
 
 - `var var_name *var-type`
 
@@ -207,7 +207,7 @@ fmt.Println(target_url)
     var ptr **int;
     ```
 
-#### 12 结构体
+## 12 结构体
 
 - ```go
   //定义结构体
@@ -235,7 +235,7 @@ fmt.Println(target_url)
 
   - 结构体指针用 `.` 访问结构体成员
 
-#### 13 切片(Slice)
+## 13 切片(Slice)
 
 - ```go
   var identifier []type	//定义切片
@@ -260,7 +260,7 @@ fmt.Println(target_url)
 
 - `append()` 方法向切片追加新元素 
 
-#### 14 范围(range)
+## 14 范围(range)
 
 - 关键字用于 for 循环中迭代`数组(array)、切片(slice)、通道(channel)或集合(map)`的元素
 
@@ -279,7 +279,7 @@ fmt.Println(target_url)
 
 - range也可以用来枚举 Unicode 字符串
 
-#### 15 集合(Map)
+## 15 集合(Map)
 
 - 无序的键值对的集合
 
@@ -293,48 +293,48 @@ fmt.Println(target_url)
 
 - `delete()` 函数用于删除集合的元素, 参数为 map 和其对应的 key
 
-#### 16 接口
+## 16 接口
 
-- ```go 
-  /* 定义接口 */
-  type interface_name interface {
-    method_name1 [return_type]
-    method_name2 [return_type]
-    ...
-    method_namen [return_type]
-  }
-  
-  /* 定义结构体 */
-  type struct_name struct {
-    /* variables */
-  }
-  
-  /* 实现接口方法 */
-  func (struct_name_variable struct_name) method_name1() [return_type] {
-    /* 方法实现 */
-  }
+```go 
+/* 定义接口 */
+type interface_name interface {
+  method_name1 [return_type]
+  method_name2 [return_type]
   ...
-  func (struct_name_variable struct_name) method_namen() [return_type] {
-    /* 方法实现*/
-  }
-  ```
+  method_namen [return_type]
+}
 
-#### 17 错误处理
+/* 定义结构体 */
+type struct_name struct {
+  /* variables */
+}
 
-- ```go 
-  type error interface {
-      Error() string
-  }
-  
-  func Sqrt(f float64) (float64, error) {
-      if f < 0 {
-          return 0, errors.New("math: square root of negative number")
-      }
-      // 实现
-  }
-  ```
+/* 实现接口方法 */
+func (struct_name_variable struct_name) method_name1() [return_type] {
+  /* 方法实现 */
+}
+...
+func (struct_name_variable struct_name) method_namen() [return_type] {
+  /* 方法实现*/
+}
+```
 
-#### 18 并发
+## 17 错误处理
+
+```go 
+type error interface {
+    Error() string
+}
+
+func Sqrt(f float64) (float64, error) {
+    if f < 0 {
+        return 0, errors.New("math: square root of negative number")
+    }
+    // 实现
+}
+```
+
+## 18 并发
 
 - ```go
   //goroutine语法
