@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Go简单语法 - LoveIt</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:title" content="Go简单语法" />
+<meta property="og:description" content="1 结构  go run helloworld.go：执行Go代码 go build helloworld.go：编译生成二进制文件 ./helloworld：运行 import 声明必须跟在文件的 package 声明之后 Go 语言不需要在语句或者声明的末尾添加分号，除非一行上有多条语句  函数的左括号 { 必须和 func 函数声明在同一行上，且位于末尾，不能独占一行 在表达式 x&#43;y 中，可在 &#43; 后换行，不能在 &#43; 前换行    2 基础语法 1 2 3 4 5 6  //格式化字符串 var stockcode = 123 var enddate = &#34;2020-12-31&#34; var url = &#34;Code=%d&amp;endDate=%s&#34; var target_url = fmt.Sprintf(url, stockcode, enddate) fmt.Println(target_url)   3 语言类型   布尔型
+  数字型" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://imcaicai.github.io/go/" /><meta property="og:image" content="https://imcaicai.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-10-18T11:19:22&#43;08:00" />
+<meta property="article:modified_time" content="2022-10-18T11:19:22&#43;08:00" /><meta property="og:site_name" content="LoveIt" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://imcaicai.github.io/logo.png"/>
+
+<meta name="twitter:title" content="Go简单语法"/>
+<meta name="twitter:description" content="1 结构  go run helloworld.go：执行Go代码 go build helloworld.go：编译生成二进制文件 ./helloworld：运行 import 声明必须跟在文件的 package 声明之后 Go 语言不需要在语句或者声明的末尾添加分号，除非一行上有多条语句  函数的左括号 { 必须和 func 函数声明在同一行上，且位于末尾，不能独占一行 在表达式 x&#43;y 中，可在 &#43; 后换行，不能在 &#43; 前换行    2 基础语法 1 2 3 4 5 6  //格式化字符串 var stockcode = 123 var enddate = &#34;2020-12-31&#34; var url = &#34;Code=%d&amp;endDate=%s&#34; var target_url = fmt.Sprintf(url, stockcode, enddate) fmt.Println(target_url)   3 语言类型   布尔型
+  数字型"/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://imcaicai.github.io/go/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Go简单语法",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/imcaicai.github.io\/go\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/imcaicai.github.io\/images\/Apple-Devices-Preview.png",
+                            "width":  3200 ,
+                            "height":  2048 
+                        }],"genre": "posts","wordcount":  716 ,
+        "url": "https:\/\/imcaicai.github.io\/go\/","datePublished": "2022-10-18T11:19:22+08:00","dateModified": "2022-10-18T11:19:22+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/imcaicai.github.io\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "xxxx"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="LoveIt"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span>LoveIt</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/categories/documentation/"> Docs </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/dillonzq/LoveIt" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="Select Language">
+                    <i class="fa fa-globe" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/go/" selected>English</option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="LoveIt"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span>LoveIt</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/categories/documentation/" title="">Docs</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/dillonzq/LoveIt" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="Select Language">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/go/" selected>English</option></select>
+                </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Go简单语法</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>xxxx</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-18">2022-10-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;716 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;<span id="/go/" class="leancloud_visitors" data-flag-title="Go简单语法">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#1-结构">1 结构</a></li>
+            <li><a href="#2-基础语法">2 基础语法</a></li>
+            <li><a href="#3-语言类型">3 语言类型</a></li>
+            <li><a href="#4-变量">4 变量</a></li>
+            <li><a href="#5-常量">5 常量</a></li>
+            <li><a href="#6-条件语句">6 条件语句</a></li>
+            <li><a href="#7-循环语句">7 循环语句</a></li>
+            <li><a href="#8-函数">8 函数</a></li>
+            <li><a href="#9-变量作用域">9 变量作用域</a></li>
+            <li><a href="#10-数组">10 数组</a></li>
+            <li><a href="#11-指针">11 指针</a></li>
+            <li><a href="#12-结构体">12 结构体</a></li>
+            <li><a href="#13-切片slice">13 切片(Slice)</a></li>
+            <li><a href="#14-范围range">14 范围(range)</a></li>
+            <li><a href="#15-集合map">15 集合(Map)</a></li>
+            <li><a href="#16-接口">16 接口</a></li>
+            <li><a href="#17-错误处理">17 错误处理</a></li>
+            <li><a href="#18-并发">18 并发</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h4 id="1-结构">1 结构</h4>
+<ul>
+<li><code>go run helloworld.go</code>：执行Go代码</li>
+<li><code>go build helloworld.go</code>：编译生成二进制文件</li>
+<li><code>./helloworld</code>：运行</li>
+<li><code>import</code> 声明必须跟在文件的 <code>package</code> 声明之后</li>
+<li>Go 语言不需要在语句或者声明的末尾添加分号，除非一行上有多条语句
+<ul>
+<li>函数的左括号 <code>{</code> 必须和 <code>func</code> 函数声明在同一行上，且位于末尾，不能独占一行</li>
+<li>在表达式 <code>x+y</code> 中，可在 <code>+</code> 后换行，不能在 <code>+</code> 前换行</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-基础语法">2 基础语法</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">//格式化字符串
+</span><span class="c1"></span><span class="kd">var</span> <span class="nx">stockcode</span> <span class="p">=</span> <span class="mi">123</span>
+<span class="kd">var</span> <span class="nx">enddate</span> <span class="p">=</span> <span class="s">&#34;2020-12-31&#34;</span>
+<span class="kd">var</span> <span class="nx">url</span> <span class="p">=</span> <span class="s">&#34;Code=%d&amp;endDate=%s&#34;</span>
+<span class="kd">var</span> <span class="nx">target_url</span> <span class="p">=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">stockcode</span><span class="p">,</span> <span class="nx">enddate</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">target_url</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="3-语言类型">3 语言类型</h4>
+<ul>
+<li>
+<p>布尔型</p>
+</li>
+<li>
+<p>数字型</p>
+<ul>
+<li>整形：<code>int uint</code></li>
+<li>浮点型：<code>float complex</code></li>
+</ul>
+</li>
+<li>
+<p>字符串</p>
+</li>
+<li>
+<p>派生类型</p>
+</li>
+</ul>
+<h4 id="4-变量">4 变量</h4>
+<ul>
+<li>
+<p>变量声明</p>
+<ul>
+<li><code>var identifier type</code>（指定变量类型，如果没有初始化，则变量默认为零值</li>
+<li><code>var v_name = value</code>（根据值自行判断变量类型</li>
+<li><code>v_name := value</code>（只能在函数体中出现</li>
+</ul>
+</li>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// 这种因式分解关键字的写法一般用于声明全局变量
+</span><span class="c1"></span><span class="kd">var</span> <span class="p">(</span>
+    <span class="nx">vname1</span> <span class="nx">v_type1</span>
+    <span class="nx">vname2</span> <span class="nx">v_type2</span>
+<span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>局部变量不允许声明但不使用，全局变量可以</p>
+</li>
+<li>
+<p><code>a, b = b, a</code> （简单交换2个变量</p>
+</li>
+<li>
+<p><code>_</code>：空白标识符，也用于被抛弃值</p>
+</li>
+</ul>
+<h4 id="5-常量">5 常量</h4>
+<ul>
+<li>
+<p><code>const identifier [type] = value</code></p>
+</li>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">//用作枚举
+</span><span class="c1"></span><span class="kd">const</span> <span class="p">(</span>
+    <span class="nx">Unknown</span> <span class="p">=</span> <span class="mi">0</span>
+    <span class="nx">Female</span> <span class="p">=</span> <span class="mi">1</span>
+    <span class="nx">Male</span> <span class="p">=</span> <span class="mi">2</span>
+<span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>常量可以用<code>len(), cap(), unsafe.Sizeof()</code>函数计算表达式的值（必须是内置函数</p>
+</li>
+<li>
+<p><code>iota</code> 在<code>const</code>关键字出现时将被重置为0，const中每新增一行常量声明将使 iota 计数一次</p>
+</li>
+</ul>
+<h4 id="6-条件语句">6 条件语句</h4>
+<ul>
+<li>
+<p>switch</p>
+<ul>
+<li>
+<p>匹配项后面也不需要再加 break</p>
+</li>
+<li>
+<p><code>fallthrough</code> 执行后面的case</p>
+</li>
+<li>
+<p>case后面是类型不被局限于常量或整数，可以加多个，必须类型相同</p>
+</li>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="kd">var</span> <span class="nx">grade</span> <span class="kt">string</span> <span class="p">=</span> <span class="s">&#34;B&#34;</span>
+	<span class="kd">var</span> <span class="nx">marks</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">90</span>
+    
+	<span class="k">switch</span> <span class="nx">marks</span> <span class="p">{</span>
+	<span class="k">case</span> <span class="mi">90</span><span class="p">:</span>
+        <span class="nx">grade</span> <span class="p">=</span> <span class="s">&#34;A&#34;</span>
+	<span class="k">case</span> <span class="mi">80</span><span class="p">,</span><span class="mi">70</span><span class="p">:</span>
+        <span class="nx">grade</span> <span class="p">=</span> <span class="s">&#34;B&#34;</span>
+	<span class="k">default</span><span class="p">:</span>
+        <span class="nx">grade</span> <span class="p">=</span> <span class="s">&#34;D&#34;</span>
+	<span class="p">}</span>
+    
+	<span class="k">switch</span> <span class="p">{</span>
+	<span class="k">case</span> <span class="nx">grade</span> <span class="o">==</span> <span class="s">&#34;A&#34;</span><span class="p">:</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;youxiu&#34;</span><span class="p">)</span>
+	<span class="k">case</span> <span class="nx">grade</span> <span class="o">==</span> <span class="s">&#34;B&#34;</span><span class="p">,</span> <span class="nx">grade</span> <span class="o">==</span> <span class="s">&#34;C&#34;</span><span class="p">:</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;lianghao&#34;</span><span class="p">)</span>
+	<span class="k">default</span><span class="p">:</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;cha&#34;</span><span class="p">)</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+<li>
+<p><code>type switch</code>  判断某个 interface 变量中实际存储的变量类型</p>
+</li>
+<li>
+<p><code>select</code> 通信的 switch 语句</p>
+</li>
+</ul>
+<h4 id="7-循环语句">7 循环语句</h4>
+<ul>
+<li>
+<p>for循环</p>
+<ul>
+<li>
+<p><code>for init; condition; post { }</code></p>
+</li>
+<li>
+<p><code>for condition { }</code></p>
+</li>
+<li>
+<p><code>for { }</code></p>
+</li>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">//range格式可以对 slice、map、数组、字符串等进行迭代循环
+</span><span class="c1"></span><span class="k">for</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">value</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">oldMap</span> <span class="p">{</span>
+    <span class="nx">newMap</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="p">=</span> <span class="nx">value</span>
+<span class="p">}</span>
+    
+<span class="k">for</span> <span class="nx">key</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">oldMap</span>
+<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">value</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">oldMap</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+<li>
+<p>在多重循环中，可以用标号 label 标出想 <code>break</code> 的循环</p>
+</li>
+<li>
+<p>在多重循环中，可以用标号 label 标出想 <code>continue</code> 的循环</p>
+</li>
+<li>
+<p><code>goto</code> 语句可以无条件地转移到过程中指定的行</p>
+</li>
+</ul>
+<h4 id="8-函数">8 函数</h4>
+<ul>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">function_name</span><span class="p">(</span> <span class="p">[</span><span class="nx">parameter</span> <span class="nx">list</span><span class="p">]</span> <span class="p">)</span> <span class="p">[</span><span class="nx">return_types</span><span class="p">]</span> <span class="p">{</span>
+   <span class="nx">函数体</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>函数可作为实参</p>
+</li>
+<li>
+<p>匿名函数，可作为闭包</p>
+</li>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">//方法
+</span><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">variable_name</span> <span class="nx">variable_data_type</span><span class="p">)</span> <span class="nf">function_name</span><span class="p">()</span> <span class="p">[</span><span class="nx">return_type</span><span class="p">]{</span>
+   <span class="cm">/* 函数体*/</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h4 id="9-变量作用域">9 变量作用域</h4>
+<ul>
+<li>局部变量：作用域只在函数体内</li>
+<li>全局变量：整个包甚至外部包（被导出后）使用</li>
+<li>全局变量与局部变量名称可以相同，但是函数内的局部变量会被优先考虑</li>
+</ul>
+<h4 id="10-数组">10 数组</h4>
+<ul>
+<li>
+<p><code>var variable_name [SIZE] variable_type</code></p>
+</li>
+<li>
+<p>可以使用 <code>...</code> 代替数组的长度</p>
+</li>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">//  将索引为 1 和 3 的元素初始化
+</span><span class="c1"></span><span class="nx">balance</span> <span class="o">:=</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span><span class="kt">float32</span><span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="mf">2.0</span><span class="p">,</span><span class="mi">3</span><span class="p">:</span><span class="mf">7.0</span><span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>多维数组</p>
+<ul>
+<li>
+<p>使用 append() 函数向空的二维数组添加两行一维数组</p>
+</li>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">//多维数组
+</span><span class="c1"></span><span class="kd">var</span> <span class="nx">variable_name</span> <span class="p">[</span><span class="nx">SIZE1</span><span class="p">][</span><span class="nx">SIZE2</span><span class="p">]</span><span class="o">...</span><span class="p">[</span><span class="nx">SIZEN</span><span class="p">]</span> <span class="nx">variable_type</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>可以创建各个维度元素数量不一致的多维数组</p>
+</li>
+</ul>
+</li>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">//向函数传递数组
+</span><span class="c1"></span><span class="nx">void</span> <span class="nf">myFunction</span><span class="p">(</span><span class="nx">param</span> <span class="p">[</span><span class="mi">10</span><span class="p">]</span><span class="kt">int</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="o">...</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h4 id="11-指针">11 指针</h4>
+<ul>
+<li>
+<p><code>var var_name *var-type</code></p>
+</li>
+<li>
+<p>指针数组</p>
+<ul>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">ptr</span> <span class="p">[</span><span class="nx">MAX</span><span class="p">]</span><span class="o">*</span><span class="kt">int</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+<li>
+<p>指向指针的指针</p>
+<ul>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">ptr</span> <span class="o">**</span><span class="kt">int</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+</ul>
+<h4 id="12-结构体">12 结构体</h4>
+<ul>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">//定义结构体
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">struct_variable_type</span> <span class="kd">struct</span> <span class="p">{</span>
+   <span class="nx">member</span> <span class="nx">definition</span>
+   <span class="o">...</span>
+   <span class="nx">member</span> <span class="nx">definition</span>
+<span class="p">}</span>
+  
+<span class="c1">//声明变量
+</span><span class="c1"></span><span class="nx">variable_name</span> <span class="o">:=</span> <span class="nx">structure_variable_type</span> <span class="p">{</span><span class="nx">value1</span><span class="p">,</span> <span class="nx">value2</span><span class="o">...</span><span class="nx">valuen</span><span class="p">}</span>
+<span class="nx">variable_name</span> <span class="o">:=</span> <span class="nx">structure_variable_type</span> <span class="p">{</span> <span class="nx">key1</span><span class="p">:</span> <span class="nx">value1</span><span class="p">,</span> <span class="nx">key2</span><span class="p">:</span> <span class="nx">value2</span><span class="o">...</span><span class="p">,</span> <span class="nx">keyn</span><span class="p">:</span> <span class="nx">valuen</span><span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>访问结构体：<code>结构体.成员名</code></p>
+</li>
+<li>
+<p>结构体作为函数参数</p>
+</li>
+<li>
+<p>结构体指针</p>
+<ul>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">//声明
+</span><span class="c1"></span><span class="kd">var</span> <span class="nx">struct_pointer</span> <span class="o">*</span><span class="nx">Books</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>结构体指针用 <code>.</code> 访问结构体成员</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="13-切片slice">13 切片(Slice)</h4>
+<ul>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">identifier</span> <span class="p">[]</span><span class="kd">type</span>	<span class="c1">//定义切片
+</span><span class="c1"></span><span class="kd">var</span> <span class="nx">slice1</span> <span class="p">[]</span><span class="kd">type</span> <span class="p">=</span> <span class="nb">make</span><span class="p">([]</span><span class="kd">type</span><span class="p">,</span> <span class="nx">len</span><span class="p">)</span>	<span class="c1">//创建切片
+</span><span class="c1"></span><span class="nb">make</span><span class="p">([]</span><span class="nx">T</span><span class="p">,</span> <span class="nx">length</span><span class="p">,</span> <span class="nx">capacity</span><span class="p">)</span>	<span class="c1">//capacity指定容量，为可选参数
+</span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">s</span> <span class="o">:=</span><span class="p">[]</span> <span class="kt">int</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span> <span class="p">}</span>	<span class="c1">//直接初始化切片 
+</span><span class="c1"></span><span class="nx">s</span> <span class="o">:=</span> <span class="nx">arr</span><span class="p">[:]</span> 	<span class="c1">//初始化切片 s，是数组 arr 的引用
+</span><span class="c1"></span><span class="nx">s</span> <span class="o">:=</span> <span class="nx">arr</span><span class="p">[</span><span class="nx">startIndex</span><span class="p">:</span><span class="nx">endIndex</span><span class="p">]</span>	<span class="c1">//将 arr 中从下标 startIndex 到 endIndex-1 下的元素创建为一个新的切片
+</span><span class="c1"></span>  
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><code>len()</code> 方法获取长度</p>
+</li>
+<li>
+<p><code>cap()</code> 可以测量切片最长可以达到多少</p>
+</li>
+<li>
+<p>空切片(nil)：切片未初始化，默认为nil，长度为0</p>
+</li>
+<li>
+<p><code>copy()</code> 方法拷贝切片</p>
+</li>
+<li>
+<p><code>append()</code> 方法向切片追加新元素</p>
+</li>
+</ul>
+<h4 id="14-范围range">14 范围(range)</h4>
+<ul>
+<li>
+<p>关键字用于 for 循环中迭代<code>数组(array)、切片(slice)、通道(channel)或集合(map)</code>的元素</p>
+</li>
+<li>
+<p>在数组和切片中它返回元素的索引和索引对应的值，在集合中返回 key-value 对</p>
+</li>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">//读取key,value
+</span><span class="c1"></span><span class="k">for</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">value</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">oldMap</span> <span class="p">{</span>
+    <span class="nx">newMap</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="p">=</span> <span class="nx">value</span>
+<span class="p">}</span>
+<span class="c1">//只读取key
+</span><span class="c1"></span><span class="k">for</span> <span class="nx">key</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">oldMap</span>
+<span class="c1">//只读取value
+</span><span class="c1"></span><span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">value</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">oldMap</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>range也可以用来枚举 Unicode 字符串</p>
+</li>
+</ul>
+<h4 id="15-集合map">15 集合(Map)</h4>
+<ul>
+<li>
+<p>无序的键值对的集合</p>
+</li>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="cm">/* 声明变量，默认 map 是 nil */</span>
+<span class="kd">var</span> <span class="nx">map_variable</span> <span class="kd">map</span><span class="p">[</span><span class="nx">key_data_type</span><span class="p">]</span><span class="nx">value_data_type</span>
+  
+<span class="cm">/* 使用 make 函数 */</span>
+<span class="nx">map_variable</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="nx">key_data_type</span><span class="p">]</span><span class="nx">value_data_type</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><code>delete()</code> 函数用于删除集合的元素, 参数为 map 和其对应的 key</p>
+</li>
+</ul>
+<h4 id="16-接口">16 接口</h4>
+<ul>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="cm">/* 定义接口 */</span>
+<span class="kd">type</span> <span class="nx">interface_name</span> <span class="kd">interface</span> <span class="p">{</span>
+  <span class="nx">method_name1</span> <span class="p">[</span><span class="nx">return_type</span><span class="p">]</span>
+  <span class="nx">method_name2</span> <span class="p">[</span><span class="nx">return_type</span><span class="p">]</span>
+  <span class="o">...</span>
+  <span class="nx">method_namen</span> <span class="p">[</span><span class="nx">return_type</span><span class="p">]</span>
+<span class="p">}</span>
+  
+<span class="cm">/* 定义结构体 */</span>
+<span class="kd">type</span> <span class="nx">struct_name</span> <span class="kd">struct</span> <span class="p">{</span>
+  <span class="cm">/* variables */</span>
+<span class="p">}</span>
+  
+<span class="cm">/* 实现接口方法 */</span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">struct_name_variable</span> <span class="nx">struct_name</span><span class="p">)</span> <span class="nf">method_name1</span><span class="p">()</span> <span class="p">[</span><span class="nx">return_type</span><span class="p">]</span> <span class="p">{</span>
+  <span class="cm">/* 方法实现 */</span>
+<span class="p">}</span>
+<span class="o">...</span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">struct_name_variable</span> <span class="nx">struct_name</span><span class="p">)</span> <span class="nf">method_namen</span><span class="p">()</span> <span class="p">[</span><span class="nx">return_type</span><span class="p">]</span> <span class="p">{</span>
+  <span class="cm">/* 方法实现*/</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h4 id="17-错误处理">17 错误处理</h4>
+<ul>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">type</span> <span class="kt">error</span> <span class="kd">interface</span> <span class="p">{</span>
+    <span class="nf">Error</span><span class="p">()</span> <span class="kt">string</span>
+<span class="p">}</span>
+  
+<span class="kd">func</span> <span class="nf">Sqrt</span><span class="p">(</span><span class="nx">f</span> <span class="kt">float64</span><span class="p">)</span> <span class="p">(</span><span class="kt">float64</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="nx">f</span> <span class="p">&lt;</span> <span class="mi">0</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;math: square root of negative number&#34;</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="c1">// 实现
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h4 id="18-并发">18 并发</h4>
+<ul>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">//goroutine语法
+</span><span class="c1"></span><span class="k">go</span> <span class="nx">函数名</span><span class="p">(</span> <span class="nx">参数列表</span> <span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>同一个程序中的所有 <code>goroutine</code> 共享同一个地址空间</p>
+</li>
+<li>
+<p>通道（channel）</p>
+<ul>
+<li>
+<p>是用来传递数据的一个数据结构</p>
+</li>
+<li>
+<p>通道可用于两个 <code>goroutine</code> 之间通过传递一个指定类型的值来同步运行和通讯</p>
+</li>
+<li>
+<p>操作符 <code>&lt;-</code> 用于指定通道的方向，发送或接收。如果未指定方向，则为双向通道</p>
+</li>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">//声明通道
+</span><span class="c1"></span><span class="nx">ch</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">)</span>
+<span class="c1">//设置发送缓冲区
+</span><span class="c1"></span><span class="nx">ch</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="c1">//遍历通道
+</span><span class="c1"></span><span class="nx">v</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">ch</span>
+<span class="c1">//关闭通道
+</span><span class="c1"></span><span class="nx">cl</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-10-18</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/go/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://imcaicai.github.io/go/" data-title="Go简单语法" data-via="xxxx"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://imcaicai.github.io/go/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://imcaicai.github.io/go/" data-title="Go简单语法"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://imcaicai.github.io/go/" data-title="Go简单语法"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://imcaicai.github.io/go/" data-title="Go简单语法"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.82.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

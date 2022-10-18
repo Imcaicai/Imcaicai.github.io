@@ -1,0 +1,18 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>LoveIt</title>
+        <link>https://imcaicai.github.io/</link>
+        <description>Hugo theme - LoveIt</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 18 Oct 2022 11:19:22 &#43;0800</lastBuildDate>
+            <atom:link href="https://imcaicai.github.io/index.xml" rel="self" type="application/rss+xml" />
+        <item>
+    <title>Go简单语法</title>
+    <link>https://imcaicai.github.io/go/</link>
+    <pubDate>Tue, 18 Oct 2022 11:19:22 &#43;0800</pubDate>
+    <author>xxxx</author>
+    <guid>https://imcaicai.github.io/go/</guid>
+    <description><![CDATA[1 结构  go run helloworld.go：执行Go代码 go build helloworld.go：编译生成二进制文件 ./helloworld：运行 import 声明必须跟在文件的 package 声明之后 Go 语言不需要在语句或者声明的末尾添加分号，除非一行上有多条语句  函数的左括号 { 必须和 func 函数声明在同一行上，且位于末尾，不能独占一行 在表达式 x+y 中，可在 + 后换行，不能在 + 前换行    2 基础语法 1 2 3 4 5 6  //格式化字符串 var stockcode = 123 var enddate = &#34;2020-12-31&#34; var url = &#34;Code=%d&amp;endDate=%s&#34; var target_url = fmt.Sprintf(url, stockcode, enddate) fmt.Println(target_url)   3 语言类型   布尔型
+  数字型]]></description>
+</item>
+</channel>
+</rss>
