@@ -1,11 +1,9 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>LoveIt</title>
-        <link>https://imcaicai.github.io/</link>
-        <description>Hugo theme - LoveIt</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 17 Oct 2022 00:00:00 &#43;0000</lastBuildDate>
-            <atom:link href="https://imcaicai.github.io/index.xml" rel="self" type="application/rss+xml" />
-        <item>
+        <title>Tech - Category - LoveIt</title>
+        <link>https://imcaicai.github.io/categories/tech/</link>
+        <description>Tech - Category - LoveIt</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 17 Oct 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://imcaicai.github.io/categories/tech/" rel="self" type="application/rss+xml" /><item>
     <title>Vision GNN: An Image is Worth Graph of Nodes</title>
     <link>https://imcaicai.github.io/an-image-is-worth-graph-of-nodes/</link>
     <pubDate>Mon, 17 Oct 2022 00:00:00 &#43;0000</pubDate>
