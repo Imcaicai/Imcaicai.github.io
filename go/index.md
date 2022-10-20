@@ -362,4 +362,7 @@ func Sqrt(f float64) (float64, error) {
     cl
     ```
 
+参考资料：
+
+[Go语言教程](https://www.runoob.com/go/go-tutorial.html)
 
