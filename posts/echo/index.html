@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Echo - 菜菜的秘密花园</title><meta name="Description" content="菜菜的秘密花园"><meta property="og:title" content="Echo" />
+<meta property="og:description" content="echo框架入门
+1 路由与控制器 1 路由规则  一条路由规则由：http请求方法 , url路径 , 控制器函数  组成  1.http请求方法
+ GET POST PUT DELETE  2.url路径
+ 静态url路径 带路径参数的url路径 带星号（*）模糊匹配参数的url路径  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23  // 例子1， 静态Url路径, 即不带任何参数的url路径 /users/center /user/101 /food/100 // 例子2，带路径参数的url路径，url路径上面带有参数,参数由冒号（:）跟着一个字符串定义。 // 路径参数值可以是数值，也可以是字符串  //定义参数:id， 可以匹配/user/1, /user/899 /user/xiaoli 这类Url路径 /user/:id //定义参数:id， 可以匹配/food/2, /food/100 /food/apple 这类Url路径 /food/:id //定义参数:type和:page， 可以匹配/foods/2/1, /food/100/25 /food/apple/30 这类Url路径 /foods/:type/:page // 例子3." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://imcaicai.github.io/echo/" /><meta property="og:image" content="https://imcaicai.github.io/img/avatar.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-10-20T19:56:54&#43;08:00" />
+<meta property="article:modified_time" content="2022-10-20T19:56:54&#43;08:00" /><meta property="og:site_name" content="菜菜的秘密花园" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://imcaicai.github.io/img/avatar.jpg"/>
+
+<meta name="twitter:title" content="Echo"/>
+<meta name="twitter:description" content="echo框架入门
+1 路由与控制器 1 路由规则  一条路由规则由：http请求方法 , url路径 , 控制器函数  组成  1.http请求方法
+ GET POST PUT DELETE  2.url路径
+ 静态url路径 带路径参数的url路径 带星号（*）模糊匹配参数的url路径  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23  // 例子1， 静态Url路径, 即不带任何参数的url路径 /users/center /user/101 /food/100 // 例子2，带路径参数的url路径，url路径上面带有参数,参数由冒号（:）跟着一个字符串定义。 // 路径参数值可以是数值，也可以是字符串  //定义参数:id， 可以匹配/user/1, /user/899 /user/xiaoli 这类Url路径 /user/:id //定义参数:id， 可以匹配/food/2, /food/100 /food/apple 这类Url路径 /food/:id //定义参数:type和:page， 可以匹配/foods/2/1, /food/100/25 /food/apple/30 这类Url路径 /foods/:type/:page // 例子3."/>
+<meta name="application-name" content="菜菜的秘密花园">
+<meta name="apple-mobile-web-app-title" content="菜菜的秘密花园"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://imcaicai.github.io/echo/" /><link rel="prev" href="https://imcaicai.github.io/go-net%E6%A0%87%E5%87%86%E5%BA%93%E5%BA%94%E7%94%A8/" /><link rel="next" href="https://imcaicai.github.io/git/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Echo",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/imcaicai.github.io\/echo\/"
+        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "echo, go","wordcount":  440 ,
+        "url": "https:\/\/imcaicai.github.io\/echo\/","datePublished": "2022-10-20T19:56:54+08:00","dateModified": "2022-10-20T19:56:54+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/imcaicai.github.io\/img\/avatar.jpg"},"author": {
+                "@type": "Person",
+                "name": "菜菜"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="菜菜的秘密花园"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/avatar.jpg"
+        data-srcset="/img/avatar.jpg, /img/avatar.jpg 1.5x, /img/avatar.jpg 2x"
+        data-sizes="auto"
+        alt="/img/avatar.jpg"
+        title="/img/avatar.jpg" />菜菜的秘密花园</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/categories/documentation/"> Docs </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/Imcaicai" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="Select Language">
+                    <i class="fa fa-globe" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/echo/" selected>English</option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="菜菜的秘密花园"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/avatar.jpg"
+        data-srcset="/img/avatar.jpg, /img/avatar.jpg 1.5x, /img/avatar.jpg 2x"
+        data-sizes="auto"
+        alt="/img/avatar.jpg"
+        title="/img/avatar.jpg" />菜菜的秘密花园</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/categories/documentation/" title="">Docs</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/Imcaicai" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="Select Language">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/echo/" selected>English</option></select>
+                </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Echo</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-category">included in <a href="/categories/go/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>go</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-20">2022-10-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;440 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;<span id="/echo/" class="leancloud_visitors" data-flag-title="Echo">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-路由与控制器">1 路由与控制器</a>
+      <ul>
+        <li><a href="#1-路由规则">1 路由规则</a></li>
+        <li><a href="#2-示例">2 示例</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-处理请求参数">2 处理请求参数</a>
+      <ul>
+        <li><a href="#1-绑定数据">1 绑定数据</a></li>
+        <li><a href="#2-获取post请求数据">2 获取post请求数据</a></li>
+        <li><a href="#3-获取get请求数据">3 获取get请求数据</a></li>
+        <li><a href="#4-获取path路径参数">4 获取path路径参数</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-处理请求结果">3 处理请求结果</a></li>
+    <li><a href="#4-访问静态资源文件">4 访问静态资源文件</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>echo框架入门</p>
+<h2 id="1-路由与控制器">1 路由与控制器</h2>
+<h3 id="1-路由规则">1 路由规则</h3>
+<ul>
+<li>一条路由规则由：<code>http请求方法</code> , <code>url路径</code> , <code>控制器函数 </code> 组成</li>
+</ul>
+<p><strong>1.http请求方法</strong></p>
+<ul>
+<li>GET</li>
+<li>POST</li>
+<li>PUT</li>
+<li>DELETE</li>
+</ul>
+<p><strong>2.url路径</strong></p>
+<ul>
+<li>静态url路径</li>
+<li>带路径参数的url路径</li>
+<li>带星号（*）模糊匹配参数的url路径</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// 例子1， 静态Url路径, 即不带任何参数的url路径
+</span><span class="c1"></span><span class="o">/</span><span class="nx">users</span><span class="o">/</span><span class="nx">center</span>
+<span class="o">/</span><span class="nx">user</span><span class="o">/</span><span class="mi">101</span>
+<span class="o">/</span><span class="nx">food</span><span class="o">/</span><span class="mi">100</span>
+
+<span class="c1">// 例子2，带路径参数的url路径，url路径上面带有参数,参数由冒号（:）跟着一个字符串定义。
+</span><span class="c1">// 路径参数值可以是数值，也可以是字符串
+</span><span class="c1"></span>
+<span class="c1">//定义参数:id， 可以匹配/user/1, /user/899 /user/xiaoli 这类Url路径
+</span><span class="c1"></span><span class="o">/</span><span class="nx">user</span><span class="o">/</span><span class="p">:</span><span class="nx">id</span>
+
+<span class="c1">//定义参数:id， 可以匹配/food/2, /food/100 /food/apple 这类Url路径
+</span><span class="c1"></span><span class="o">/</span><span class="nx">food</span><span class="o">/</span><span class="p">:</span><span class="nx">id</span>
+
+<span class="c1">//定义参数:type和:page， 可以匹配/foods/2/1, /food/100/25 /food/apple/30 这类Url路径
+</span><span class="c1"></span><span class="o">/</span><span class="nx">foods</span><span class="o">/</span><span class="p">:</span><span class="kd">type</span><span class="o">/</span><span class="p">:</span><span class="nx">page</span>
+
+<span class="c1">// 例子3. 带星号（*）模糊匹配参数的url路径
+</span><span class="c1">// 星号代表匹配任意路径的意思
+</span><span class="c1"></span>
+<span class="c1">//匹配：/foods/1， /foods/200, /foods/1/20, /foods/apple/1 
+</span><span class="c1">//以/foods/ 开头的所有路径都匹配
+</span><span class="c1"></span><span class="o">/</span><span class="nx">foods</span><span class="o">/*</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>3.url路径匹配顺序</strong></p>
+<p>如果出现，一个http请求路径匹配多个定义的url路径，echo框架按下面顺序匹配，先匹配到那个就用那个定义。</p>
+<ul>
+<li>匹配静态url路径</li>
+<li>匹配带路径参数的url路径</li>
+<li>匹配带星号（*）模糊匹配参数的url路径</li>
+</ul>
+<p><strong>4.控制器函数</strong></p>
+<p>控制器函数接受一个上下文参数，并返回一个错误。可以通过上下文参数，获取http请求参数，响应http请求。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">HandlerFunc</span><span class="p">(</span><span class="nx">c</span> <span class="nx">echo</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="kt">error</span><span class="p">{}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="2-示例">2 示例</h3>
+<blockquote>
+<p>实际项目开发中不要把路由定义和控制器函数都写在一个go文件，不方便维护。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">//实例化echo对象。
+</span><span class="c1"></span><span class="nx">e</span> <span class="o">:=</span> <span class="nx">echo</span><span class="p">.</span><span class="nf">New</span><span class="p">()</span>
+	
+<span class="c1">//定义post请求, url路径为：/users, 绑定saveUser控制器函数
+</span><span class="c1"></span><span class="nx">e</span><span class="p">.</span><span class="nf">POST</span><span class="p">(</span><span class="s">&#34;/users&#34;</span><span class="p">,</span> <span class="nx">saveUser</span><span class="p">)</span>
+
+<span class="c1">//定义get请求，url路径为：/users/:id  （:id是参数，例如: /users/10, 会匹配这个url模式），绑定getUser控制器函数
+</span><span class="c1"></span><span class="nx">e</span><span class="p">.</span><span class="nf">GET</span><span class="p">(</span><span class="s">&#34;/users/:id&#34;</span><span class="p">,</span> <span class="nx">getUser</span><span class="p">)</span>
+
+<span class="c1">//定义put请求
+</span><span class="c1"></span><span class="nx">e</span><span class="p">.</span><span class="nf">PUT</span><span class="p">(</span><span class="s">&#34;/users/:id&#34;</span><span class="p">,</span> <span class="nx">updateUser</span><span class="p">)</span>
+
+<span class="c1">//定义delete请求
+</span><span class="c1"></span><span class="nx">e</span><span class="p">.</span><span class="nf">DELETE</span><span class="p">(</span><span class="s">&#34;/users/:id&#34;</span><span class="p">,</span> <span class="nx">deleteUser</span><span class="p">)</span>
+
+
+<span class="c1">//控制器函数实现
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">saveUser</span><span class="p">(</span><span class="nx">c</span> <span class="nx">echo</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+    <span class="o">...</span><span class="nx">忽略实现</span><span class="o">...</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">getUser</span><span class="p">(</span><span class="nx">c</span> <span class="nx">echo</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+    <span class="o">...</span><span class="nx">忽略实现</span><span class="o">...</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">updateUser</span><span class="p">(</span><span class="nx">c</span> <span class="nx">echo</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+    <span class="o">...</span><span class="nx">忽略实现</span><span class="o">...</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">deleteUser</span><span class="p">(</span><span class="nx">c</span> <span class="nx">echo</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+    <span class="o">...</span><span class="nx">忽略实现</span><span class="o">...</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="2-处理请求参数">2 处理请求参数</h2>
+<h3 id="1-绑定数据">1 绑定数据</h3>
+<p>通过将请求参数绑定到一个struct对象的方式获取数据。这种方式获取请求参数支持json、xml、k/v键值对等多种方式。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// User 结构体定义
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">User</span> <span class="kd">struct</span> <span class="p">{</span>
+  <span class="nx">Name</span>  <span class="kt">string</span> <span class="s">`json:&#34;name&#34; form:&#34;name&#34; query:&#34;name&#34;`</span>
+  <span class="nx">Email</span> <span class="kt">string</span> <span class="s">`json:&#34;email&#34; form:&#34;email&#34; query:&#34;email&#34;`</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>控制器代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// Handler
+</span><span class="c1"></span><span class="kd">func</span><span class="p">(</span><span class="nx">c</span> <span class="nx">echo</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="p">(</span><span class="nx">err</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">u</span> <span class="o">:=</span> <span class="nb">new</span><span class="p">(</span><span class="nx">User</span><span class="p">)</span>
+  <span class="c1">//调用echo.Context的Bind函数将请求参数和User对象进行绑定。
+</span><span class="c1"></span>  <span class="k">if</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">c</span><span class="p">.</span><span class="nf">Bind</span><span class="p">(</span><span class="nx">u</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+    <span class="k">return</span>
+  <span class="p">}</span>
+  
+  <span class="c1">//请求参数绑定成功后 u 对象就保存了请求参数。
+</span><span class="c1"></span>  <span class="c1">//这里直接将请求参数以json格式显示
+</span><span class="c1"></span>  <span class="c1">//注意：User结构体,字段标签定义中，json定义的字段名，就是User对象转换成json格式对应的字段名。
+</span><span class="c1"></span>  <span class="k">return</span> <span class="nx">c</span><span class="p">.</span><span class="nf">JSON</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span><span class="p">,</span> <span class="nx">u</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="2-获取post请求数据">2 获取post请求数据</h3>
+<p>通过echo.Context对象的 <code>FormValue</code> 函数可以直接获取post请求参数。</p>
+<blockquote>
+<p>通过FormValue函数获取参数的值，数据类型都是String类型， 如果需要其他类型的数据，需要自己转换数据格式。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// Handler
+</span><span class="c1"></span><span class="kd">func</span><span class="p">(</span><span class="nx">c</span> <span class="nx">echo</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+    <span class="c1">//获取name参数
+</span><span class="c1"></span>	<span class="nx">name</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nf">FormValue</span><span class="p">(</span><span class="s">&#34;name&#34;</span><span class="p">)</span>
+	
+	<span class="c1">//直接输出name参数
+</span><span class="c1"></span>	<span class="k">return</span> <span class="nx">c</span><span class="p">.</span><span class="nf">String</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span><span class="p">,</span> <span class="nx">name</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="3-获取get请求数据">3 获取get请求数据</h3>
+<p>通过echo.Context对象的 <code>QueryParam</code> 函数可以直接获取get请求参数。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// Handler
+</span><span class="c1"></span><span class="kd">func</span><span class="p">(</span><span class="nx">c</span> <span class="nx">echo</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+    <span class="c1">//获取name参数, 通过QueryParam获取的参数值也是String类型。
+</span><span class="c1"></span>	<span class="nx">name</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nf">QueryParam</span><span class="p">(</span><span class="s">&#34;name&#34;</span><span class="p">)</span>
+	<span class="c1">//直接输出name参数
+</span><span class="c1"></span>	<span class="k">return</span> <span class="nx">c</span><span class="p">.</span><span class="nf">String</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span><span class="p">,</span> <span class="nx">name</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="4-获取path路径参数">4 获取path路径参数</h3>
+<p>通过echo.Context对象的 <code>Param</code> 获取，url路径参数。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">//例子: url路由规则为/users/:name  , :name为参数。
+</span><span class="c1"></span><span class="nx">e</span><span class="p">.</span><span class="nf">GET</span><span class="p">(</span><span class="s">&#34;/users/:name&#34;</span><span class="p">,</span> <span class="kd">func</span><span class="p">(</span><span class="nx">c</span> <span class="nx">echo</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+    <span class="c1">//获取路径参数:name的值
+</span><span class="c1"></span>	<span class="nx">name</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nf">Param</span><span class="p">(</span><span class="s">&#34;name&#34;</span><span class="p">)</span>
+	<span class="c1">//如果请求url为: /users/tizi365 则name的值为tizi365
+</span><span class="c1"></span>	<span class="c1">//Param获取的值也是String类型
+</span><span class="c1"></span>	<span class="k">return</span> <span class="nx">c</span><span class="p">.</span><span class="nf">String</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span><span class="p">,</span> <span class="nx">name</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="3-处理请求结果">3 处理请求结果</h2>
+<p><strong>1 以字符串方式响应</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="nf">String</span><span class="p">(</span><span class="nx">code</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">s</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">error</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>2 以json格式响应</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="nf">JSON</span><span class="p">(</span><span class="nx">code</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">i</span> <span class="kd">interface</span><span class="p">{})</span> <span class="kt">error</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>3 以xml格式响应</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="nf">XML</span><span class="p">(</span><span class="nx">code</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">i</span> <span class="kd">interface</span><span class="p">{})</span> <span class="kt">error</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>4 以文件格式响应</strong></p>
+<p><strong>5 设置http响应头</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span><span class="p">(</span><span class="nx">c</span> <span class="nx">echo</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+  <span class="c1">//设置http响应 header
+</span><span class="c1"></span>  <span class="nx">c</span><span class="p">.</span><span class="nf">Response</span><span class="p">().</span><span class="nf">Header</span><span class="p">().</span><span class="nf">Add</span><span class="p">(</span><span class="s">&#34;tizi&#34;</span><span class="p">,</span> <span class="s">&#34;tizi365&#34;</span><span class="p">)</span>
+  
+  <span class="k">return</span> <span class="nx">c</span><span class="p">.</span><span class="nf">String</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="s">&#34;欢迎访问tizi360.com!&#34;</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="4-访问静态资源文件">4 访问静态资源文件</h2>
+<p>echo通过static中间件支持静态资源文件的访问。我们可以通过echo.Static函数初始化static中间件。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="nf">Static</span><span class="p">(</span><span class="nx">prefix</span><span class="p">,</span> <span class="nx">root</span> <span class="kt">string</span><span class="p">)</span> <span class="o">*</span><span class="nx">Route</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">//初始化echo实例
+</span><span class="c1"></span><span class="nx">e</span> <span class="o">:=</span> <span class="nx">echo</span><span class="p">.</span><span class="nf">New</span><span class="p">()</span>
+
+<span class="c1">//设置Static中间件
+</span><span class="c1">//如果我们访问 /res/tizi.jpg这个url路径，实际上就是访问static/tizi.jpg这个路径的内容
+</span><span class="c1"></span><span class="nx">e</span><span class="p">.</span><span class="nf">Static</span><span class="p">(</span><span class="s">&#34;/res&#34;</span><span class="p">,</span> <span class="s">&#34;static&#34;</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>我们也可以通过<strong>Echo.File</strong>函数为一个url地址绑定一个静态资源文件。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">//初始化echo实例
+</span><span class="c1"></span><span class="nx">e</span> <span class="o">:=</span> <span class="nx">echo</span><span class="p">.</span><span class="nf">New</span><span class="p">()</span>
+
+<span class="c1">//访问 / 就是访问public/index.html文件， index.html相当于站点默认首页
+</span><span class="c1"></span><span class="nx">e</span><span class="p">.</span><span class="nf">File</span><span class="p">(</span><span class="s">&#34;/&#34;</span><span class="p">,</span> <span class="s">&#34;public/index.html&#34;</span><span class="p">)</span>
+
+<span class="c1">//访问/favicon.ico 就是访问images/favicon.ico文件， 相当于为站点设置了图标
+</span><span class="c1"></span><span class="nx">e</span><span class="p">.</span><span class="nf">File</span><span class="p">(</span><span class="s">&#34;/favicon.ico&#34;</span><span class="p">,</span> <span class="s">&#34;images/favicon.ico&#34;</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-10-20</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/echo/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://imcaicai.github.io/echo/" data-title="Echo" data-hashtags="echo,go"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://imcaicai.github.io/echo/" data-hashtag="echo"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://imcaicai.github.io/echo/" data-title="Echo"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://imcaicai.github.io/echo/" data-title="Echo"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://imcaicai.github.io/echo/" data-title="Echo"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/echo/">echo</a>,&nbsp;<a href="/tags/go/">go</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/go-net%E6%A0%87%E5%87%86%E5%BA%93%E5%BA%94%E7%94%A8/" class="prev" rel="prev" title="Go-net标准库应用"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Go-net标准库应用</a>
+            <a href="/git/" class="next" rel="next" title="Git基本用法">Git基本用法<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">菜菜</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

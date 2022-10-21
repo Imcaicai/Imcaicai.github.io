@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Git - Category - 菜菜的秘密花园</title>
+        <link>https://imcaicai.github.io/categories/git/</link>
+        <description>Git - Category - 菜菜的秘密花园</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 21 Oct 2022 09:44:35 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/categories/git/" rel="self" type="application/rss+xml" /><item>
+    <title>Git基本用法</title>
+    <link>https://imcaicai.github.io/git/</link>
+    <pubDate>Fri, 21 Oct 2022 09:44:35 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/git/</guid>
+    <description><![CDATA[基本流程 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20  # 初始化仓库 git init # 将本地库关联至远程仓库 git remote add origin git@github.com:....github.io.git # 查看当前修改状态  git status # 添加修改过得文件， . 表示所有，也可以指定文件  git add . # &#34;&#34;里面的内容就是提交内容的说明信息  git commit -m &#34;first commit&#34; # 第一次提交方法1 git push -u -f origin main #第一次提交方法2 git pull origin main --allow-unrelated-histories git push -u origin main # 以后提交 git push   其他用法 1.]]></description>
+</item>
+</channel>
+</rss>
