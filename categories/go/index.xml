@@ -4,13 +4,12 @@
         <link>https://imcaicai.github.io/categories/go/</link>
         <description>go - Category - 菜菜的秘密花园</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 20 Oct 2022 19:56:54 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/categories/go/" rel="self" type="application/rss+xml" /><item>
-    <title>Echo</title>
-    <link>https://imcaicai.github.io/echo/</link>
+    <title>Echo框架入门</title>
+    <link>https://imcaicai.github.io/echo%E6%A1%86%E6%9E%B6%E5%85%A5%E9%97%A8/</link>
     <pubDate>Thu, 20 Oct 2022 19:56:54 &#43;0800</pubDate>
     <author>菜菜</author>
-    <guid>https://imcaicai.github.io/echo/</guid>
-    <description><![CDATA[echo框架入门
-1 路由与控制器 1 路由规则  一条路由规则由：http请求方法 , url路径 , 控制器函数  组成  1.http请求方法
+    <guid>https://imcaicai.github.io/echo%E6%A1%86%E6%9E%B6%E5%85%A5%E9%97%A8/</guid>
+    <description><![CDATA[1 路由与控制器 1 路由规则  一条路由规则由：http请求方法 , url路径 , 控制器函数  组成  1.http请求方法
  GET POST PUT DELETE  2.url路径
  静态url路径 带路径参数的url路径 带星号（*）模糊匹配参数的url路径  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23  // 例子1， 静态Url路径, 即不带任何参数的url路径 /users/center /user/101 /food/100 // 例子2，带路径参数的url路径，url路径上面带有参数,参数由冒号（:）跟着一个字符串定义。 // 路径参数值可以是数值，也可以是字符串  //定义参数:id， 可以匹配/user/1, /user/899 /user/xiaoli 这类Url路径 /user/:id //定义参数:id， 可以匹配/food/2, /food/100 /food/apple 这类Url路径 /food/:id //定义参数:type和:page， 可以匹配/foods/2/1, /food/100/25 /food/apple/30 这类Url路径 /foods/:type/:page // 例子3.]]></description>
 </item>
@@ -27,10 +26,10 @@
 </item>
 <item>
     <title>Go基本语法</title>
-    <link>https://imcaicai.github.io/go/</link>
+    <link>https://imcaicai.github.io/go%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</link>
     <pubDate>Sun, 16 Oct 2022 00:00:00 &#43;0000</pubDate>
     <author>菜菜</author>
-    <guid>https://imcaicai.github.io/go/</guid>
+    <guid>https://imcaicai.github.io/go%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</guid>
     <description><![CDATA[1 结构  go run helloworld.go：执行Go代码 go build helloworld.go：编译生成二进制文件 ./helloworld：运行 import 声明必须跟在文件的 package 声明之后 Go 语言不需要在语句或者声明的末尾添加分号，除非一行上有多条语句  函数的左括号 { 必须和 func 函数声明在同一行上，且位于末尾，不能独占一行 在表达式 x+y 中，可在 + 后换行，不能在 + 前换行    2 基础语法 1 2 3 4 5 6  //格式化字符串 var stockcode = 123 var enddate = &#34;2020-12-31&#34; var url = &#34;Code=%d&amp;endDate=%s&#34; var target_url = fmt.Sprintf(url, stockcode, enddate) fmt.Println(target_url)   3 语言类型   布尔型
   数字型]]></description>
 </item>
