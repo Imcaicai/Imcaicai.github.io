@@ -485,6 +485,128 @@ alter table 表名 ADD [CONSTRAINT [约束名]] UNIQUE(列1,...)
 
 约束的修改一般通过先删除旧约束再重建新约束来实现。
 
+# 3存储过程与事务
+
+## 3.1 使用流程控制语句的存储过程
+
+### 变量的定义与赋值
+
+用`declare`语句定义变量，并赋予默认值或初始值，未赋默认值则初始值为null：
+
+```mysql
+DECLARE var_name [, var_name] ... type [DEFAULT value]
+```
+
+用`set`语句给变量赋值，set语句还可以设置许多MySQL的配置参数。
+
+```mysql
+SET variable = expr [, variable = expr]
+```
+
+通过`select`语句给变量赋值，select语句可以带复杂的where，group by，having等短语。
+
+```mysql
+select col into var_name from table; #将table表中的col列值赋给变量
+```
+
+### 复合语句与流程控制语句
+
+复合语句BEGIN...END
+
+```mysql
+BEGIN
+[statement_list]
+END; 
+```
+
+if语句
+
+```mysql
+IF search_condition THEN  statement_list
+[ELSEIF search_condition THEN statement_list] ...
+[ELSE statement_list]
+END IF; 
+```
+
+while语句
+
+```mysql
+WHILE search_condition DO
+   statement_list
+END WHILE; 
+```
+
+### 存储过程的定义
+
+**存储过程**是一种在数据库中存储复杂程序，以便外部程序调用的一种数据库对象。
+
+存储过程是为了完成特定功能的 `SQL` 语句集，经编译创建并保存在数据库中，用户可通过指定存储过程的名字并给定参数（需要时）来调用执行。
+
+存储过程思想上很简单，就是数据库 `SQL` 语言层面的代码**封装与重用**，即具有名字的一段代码，用来完成一个特定的功能。
+
+### 存储过程的创建和查询
+
+创建存储过程：
+
+```mysql
+create procedure 存储过程名(参数) 
+```
+
+每个存储的程序都包含一个由 `SQL` 语句组成的主体。此语句可能是由以分号（`;`）字符分隔的多个语句组成的复合语句。例如：
+
+```mysql
+CREATE PROCEDURE proc1()
+BEGIN
+SELECT * FROM user;
+END;
+```
+
+`MySQL` 本身将分号识别为语句分隔符，因此必须临时重新定义分隔符以使 MySQL 将整个存储的程序定义传递给服务器。
+
+要重新定义 `MySQL` 分隔符，请使用 `delimiter`命令。使用 `delimiter` 首先将结束符定义为`//`，完成创建存储过程后，使用`//`表示结束，然后将分隔符重新设置为分号（`;`）：
+
+```mysql
+DELIMITER //
+CREATE PROCEDURE proc1()
+BEGIN
+SELECT * FROM user;
+END //
+DELIMITER ;
+```
+
+`/`也可以换成其他符号，例如`$`;
+
+执行存储过程：
+
+```mysql
+call 存储过程名
+```
+
+存储过程的参数：
+
+- `IN`：输入参数，也是默认模式，表示该参数的值必须在调用存储过程时指定，在存储过程中修改该参数的值不能被返回；
+- `OUT`：输出参数，该值可在存储过程内部被改变，并可返回；
+- `INOUT`：输入输出参数，调用时指定，并且可被改变和返回。
+
+### 存储过程的查询和删除
+
+查询存储过程：
+
+```mysql
+SHOW PROCEDURE STATUS WHERE db='数据库名';
+```
+
+查看存储过程的详细定义信息：
+
+```mysql
+SHOW CREATE PROCEDURE 数据库.存储过程名;
+```
+
+删除存储过程：
+
+```mysql
+DROP PROCEDURE [IF EXISTS] 数据库名.存储过程名;
+```
 
 
 

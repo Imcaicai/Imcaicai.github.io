@@ -34,7 +34,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/imcaicai.github.io\/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95\/"
-        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "mysql","wordcount":  934 ,
+        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "mysql","wordcount":  1094 ,
         "url": "https:\/\/imcaicai.github.io\/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95\/","datePublished": "2022-10-28T10:15:12+08:00","dateModified": "2022-10-28T10:15:12+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/imcaicai.github.io\/img\/avatar.jpg"},"author": {
@@ -128,8 +128,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Mysql数据库基本语法</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-category">included in <a href="/categories/mysql/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>mysql</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-28">2022-10-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;934 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;<span id="/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" class="leancloud_visitors" data-flag-title="Mysql数据库基本语法">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-28">2022-10-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1094 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;6 minutes&nbsp;<span id="/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" class="leancloud_visitors" data-flag-title="Mysql数据库基本语法">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
@@ -200,6 +200,18 @@
         <li><a href="#外码的删除与添加">外码的删除与添加</a></li>
         <li><a href="#check约束的删除与添加">CHECK约束的删除与添加</a></li>
         <li><a href="#unique约束的添加与删除">UNIQUE约束的添加与删除</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#31-使用流程控制语句的存储过程">3.1 使用流程控制语句的存储过程</a>
+      <ul>
+        <li><a href="#变量的定义与赋值">变量的定义与赋值</a></li>
+        <li><a href="#复合语句与流程控制语句">复合语句与流程控制语句</a></li>
+        <li><a href="#存储过程的定义">存储过程的定义</a></li>
+        <li><a href="#存储过程的创建和查询">存储过程的创建和查询</a></li>
+        <li><a href="#存储过程的查询和删除">存储过程的查询和删除</a></li>
       </ul>
     </li>
   </ul>
@@ -853,7 +865,172 @@
 </div>
 </div><p>创建unique约束时，将同步创建unique索引，索引名与约束同名。如果未显式命名unique约束或索引，MySQL将按一定规则自动命名（单列的unique索引或约束与列同名）。</p>
 <p>约束的修改一般通过先删除旧约束再重建新约束来实现。</p>
-</div><div class="post-footer" id="post-footer">
+<h1 id="3存储过程与事务">3存储过程与事务</h1>
+<h2 id="31-使用流程控制语句的存储过程">3.1 使用流程控制语句的存储过程</h2>
+<h3 id="变量的定义与赋值">变量的定义与赋值</h3>
+<p>用<code>declare</code>语句定义变量，并赋予默认值或初始值，未赋默认值则初始值为null：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">DECLARE</span> <span class="n">var_name</span> <span class="p">[,</span> <span class="n">var_name</span><span class="p">]</span> <span class="p">...</span> <span class="n">type</span> <span class="p">[</span><span class="k">DEFAULT</span> <span class="n">value</span><span class="p">]</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>用<code>set</code>语句给变量赋值，set语句还可以设置许多MySQL的配置参数。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="kt">SET</span> <span class="n">variable</span> <span class="o">=</span> <span class="n">expr</span> <span class="p">[,</span> <span class="n">variable</span> <span class="o">=</span> <span class="n">expr</span><span class="p">]</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>通过<code>select</code>语句给变量赋值，select语句可以带复杂的where，group by，having等短语。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">select</span> <span class="n">col</span> <span class="k">into</span> <span class="n">var_name</span> <span class="k">from</span> <span class="k">table</span><span class="p">;</span> <span class="c1">#将table表中的col列值赋给变量
+</span></code></pre></td></tr></table>
+</div>
+</div><h3 id="复合语句与流程控制语句">复合语句与流程控制语句</h3>
+<p>复合语句BEGIN&hellip;END</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="n">BEGIN</span>
+<span class="p">[</span><span class="n">statement_list</span><span class="p">]</span>
+<span class="n">END</span><span class="p">;</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>if语句</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">IF</span> <span class="n">search_condition</span> <span class="k">THEN</span>  <span class="n">statement_list</span>
+<span class="p">[</span><span class="k">ELSEIF</span> <span class="n">search_condition</span> <span class="k">THEN</span> <span class="n">statement_list</span><span class="p">]</span> <span class="p">...</span>
+<span class="p">[</span><span class="k">ELSE</span> <span class="n">statement_list</span><span class="p">]</span>
+<span class="n">END</span> <span class="k">IF</span><span class="p">;</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>while语句</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">WHILE</span> <span class="n">search_condition</span> <span class="n">DO</span>
+   <span class="n">statement_list</span>
+<span class="n">END</span> <span class="k">WHILE</span><span class="p">;</span> 
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="存储过程的定义">存储过程的定义</h3>
+<p><strong>存储过程</strong>是一种在数据库中存储复杂程序，以便外部程序调用的一种数据库对象。</p>
+<p>存储过程是为了完成特定功能的 <code>SQL</code> 语句集，经编译创建并保存在数据库中，用户可通过指定存储过程的名字并给定参数（需要时）来调用执行。</p>
+<p>存储过程思想上很简单，就是数据库 <code>SQL</code> 语言层面的代码<strong>封装与重用</strong>，即具有名字的一段代码，用来完成一个特定的功能。</p>
+<h3 id="存储过程的创建和查询">存储过程的创建和查询</h3>
+<p>创建存储过程：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">create</span> <span class="k">procedure</span> <span class="err">存储过程名</span><span class="p">(</span><span class="err">参数</span><span class="p">)</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>每个存储的程序都包含一个由 <code>SQL</code> 语句组成的主体。此语句可能是由以分号（<code>;</code>）字符分隔的多个语句组成的复合语句。例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">CREATE</span> <span class="k">PROCEDURE</span> <span class="nf">proc1</span><span class="p">()</span>
+<span class="n">BEGIN</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="k">user</span><span class="p">;</span>
+<span class="n">END</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>MySQL</code> 本身将分号识别为语句分隔符，因此必须临时重新定义分隔符以使 MySQL 将整个存储的程序定义传递给服务器。</p>
+<p>要重新定义 <code>MySQL</code> 分隔符，请使用 <code>delimiter</code>命令。使用 <code>delimiter</code> 首先将结束符定义为<code>//</code>，完成创建存储过程后，使用<code>//</code>表示结束，然后将分隔符重新设置为分号（<code>;</code>）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="n">DELIMITER</span> <span class="o">//</span>
+<span class="k">CREATE</span> <span class="k">PROCEDURE</span> <span class="nf">proc1</span><span class="p">()</span>
+<span class="n">BEGIN</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="k">user</span><span class="p">;</span>
+<span class="n">END</span> <span class="o">//</span>
+<span class="n">DELIMITER</span> <span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>/</code>也可以换成其他符号，例如<code>$</code>;</p>
+<p>执行存储过程：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">call</span> <span class="err">存储过程名</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>存储过程的参数：</p>
+<ul>
+<li><code>IN</code>：输入参数，也是默认模式，表示该参数的值必须在调用存储过程时指定，在存储过程中修改该参数的值不能被返回；</li>
+<li><code>OUT</code>：输出参数，该值可在存储过程内部被改变，并可返回；</li>
+<li><code>INOUT</code>：输入输出参数，调用时指定，并且可被改变和返回。</li>
+</ul>
+<h3 id="存储过程的查询和删除">存储过程的查询和删除</h3>
+<p>查询存储过程：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">SHOW</span> <span class="k">PROCEDURE</span> <span class="n">STATUS</span> <span class="k">WHERE</span> <span class="n">db</span><span class="o">=</span><span class="s1">&#39;数据库名&#39;</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>查看存储过程的详细定义信息：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">SHOW</span> <span class="k">CREATE</span> <span class="k">PROCEDURE</span> <span class="err">数据库</span><span class="p">.</span><span class="err">存储过程名</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>删除存储过程：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">DROP</span> <span class="k">PROCEDURE</span> <span class="p">[</span><span class="k">IF</span> <span class="k">EXISTS</span><span class="p">]</span> <span class="err">数据库名</span><span class="p">.</span><span class="err">存储过程名</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
