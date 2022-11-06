@@ -118,6 +118,19 @@
         alt="/img/avatar.jpg"
         title="/img/avatar.jpg" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/%E8%A7%A3%E5%86%B3ping-github.com%E5%A4%B1%E8%B4%A5/">解决ping github.com失败</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-11-06">2022-11-06</time></span>&nbsp;<span class="post-category">included in <a href="/categories/git/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Git</a></span></div><div class="content">问题描述 在将本地的远程仓库push到github上时，出现报错：
+ ssh: Could not resolve hostname github.com: Temporary failure in name resolution fatal: Could not read from remote repository.
+Please make sure you have the correct access rights and the repository exists.
+ 排除ssh的问题后，在cmd中对目标地址进行ping操作：
+1  ping github.com   出现如下错误提示：
+ Ping request could not find host github.com. Please check the name and try again.
+ 解决方案 1 首先获取 github.com IP 地址
+IP 地址查询： Click
+通过上述网站查询得到 github.com IP 地址如下</div><div class="post-footer">
+        <a href="/%E8%A7%A3%E5%86%B3ping-github.com%E5%A4%B1%E8%B4%A5/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/ping/">Ping</a>,&nbsp;<a href="/tags/github/">Github</a>,&nbsp;<a href="/tags/git/">Git</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/%E4%BD%BF%E7%94%A8adb%E5%91%BD%E4%BB%A4%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/">使用adb命令安装软件</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-11-06">2022-11-06</time></span>&nbsp;<span class="post-category">included in <a href="/categories/android/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Android</a></span></div><div class="content">1 安装软件  打开命令行，进入apk文件所在目录 输入命令：adb install xxx.apk  2 踩雷记录 报错1  android adb devices offline
  解决办法：重启adb服务
