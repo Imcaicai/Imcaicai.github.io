@@ -3,29 +3,40 @@
         <title>Git - Category - 菜菜的秘密花园</title>
         <link>https://imcaicai.github.io/categories/git/</link>
         <description>Git - Category - 菜菜的秘密花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 06 Nov 2022 15:28:57 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/categories/git/" rel="self" type="application/rss+xml" /><item>
-    <title>解决ping github.com失败</title>
-    <link>https://imcaicai.github.io/%E8%A7%A3%E5%86%B3ping-github.com%E5%A4%B1%E8%B4%A5/</link>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 06 Nov 2022 16:04:14 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/categories/git/" rel="self" type="application/rss+xml" /><item>
+    <title>Git报错-GitHub文件夹出现箭头且无法打开</title>
+    <link>https://imcaicai.github.io/git%E6%8A%A5%E9%94%99-github%E6%96%87%E4%BB%B6%E5%A4%B9%E5%87%BA%E7%8E%B0%E7%AE%AD%E5%A4%B4%E4%B8%94%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80/</link>
+    <pubDate>Sun, 06 Nov 2022 16:04:14 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/git%E6%8A%A5%E9%94%99-github%E6%96%87%E4%BB%B6%E5%A4%B9%E5%87%BA%E7%8E%B0%E7%AE%AD%E5%A4%B4%E4%B8%94%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80/</guid>
+    <description><![CDATA[问题描述 将项目文件push到GitHub上时，发现GitHub上的文件夹图标上有箭头，且无法打开。
+出错原因 当在自己的项目里clone了别人的项目，github就将他视为一个子系统模块，导致在上传代码时该文件夹上传失败，并在github上显示向右的白色箭头。
+解决方案 删除子文件夹里面的.git文件，执行如下命令：
+1 2 3 4  git rm --cached [文件夹名] git add [文件夹名] git commit -m &#34;commit messge&#34; git push origin main   ]]></description>
+</item>
+<item>
+    <title>Git报错-ssh相关错误</title>
+    <link>https://imcaicai.github.io/git%E6%8A%A5%E9%94%99-ssh%E7%9B%B8%E5%85%B3%E9%94%99%E8%AF%AF/</link>
     <pubDate>Sun, 06 Nov 2022 15:28:57 &#43;0800</pubDate>
     <author>菜菜</author>
-    <guid>https://imcaicai.github.io/%E8%A7%A3%E5%86%B3ping-github.com%E5%A4%B1%E8%B4%A5/</guid>
+    <guid>https://imcaicai.github.io/git%E6%8A%A5%E9%94%99-ssh%E7%9B%B8%E5%85%B3%E9%94%99%E8%AF%AF/</guid>
     <description><![CDATA[问题描述 在将本地的远程仓库push到github上时，出现报错：
  ssh: Could not resolve hostname github.com: Temporary failure in name resolution fatal: Could not read from remote repository.
 Please make sure you have the correct access rights and the repository exists.
- 排除ssh的问题后，在cmd中对目标地址进行ping操作：
-1  ping github.com   出现如下错误提示：
- Ping request could not find host github.com. Please check the name and try again.
- 解决方案 1 首先获取 github.com IP 地址
-IP 地址查询： Click
-通过上述网站查询得到 github.com IP 地址如下]]></description>
+ 情况1 ssh错误 解决方案：重新设置ssh
+1 重新在git设置身份的名字和邮箱 进入到需要提交的文件夹底下，执行命令：
+1 2  git config --global user.name &#34;yourname&#34; git config --global user.email &#34;your@email.com&#34;   注：yourname是你要设置的名字，your@email是你要设置的邮箱。
+2 删除known_hosts文件 进入 .ssh 文件夹，手动删除 known_hosts 文件
+3 重新设置ssh git输入命令：
+1  ssh-keygen -t rsa -C &#34;your@email.]]></description>
 </item>
 <item>
-    <title>Git基本用法</title>
-    <link>https://imcaicai.github.io/git%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/</link>
+    <title>Git基本用法&amp;报错记录</title>
+    <link>https://imcaicai.github.io/git%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95%E6%8A%A5%E9%94%99%E8%AE%B0%E5%BD%95/</link>
     <pubDate>Fri, 21 Oct 2022 09:44:35 &#43;0800</pubDate>
     <author>菜菜</author>
-    <guid>https://imcaicai.github.io/git%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/</guid>
-    <description><![CDATA[基本流程 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20  # 初始化仓库 git init # 将本地库关联至远程仓库 git remote add origin git@github.com:....github.io.git # 查看当前修改状态  git status # 添加修改过得文件， . 表示所有，也可以指定文件  git add . # &#34;&#34;里面的内容就是提交内容的说明信息  git commit -m &#34;first commit&#34; # 第一次提交方法1 git push -u -f origin main #第一次提交方法2 git pull origin main --allow-unrelated-histories git push -u origin main # 以后提交 git push   其他用法 1.]]></description>
+    <guid>https://imcaicai.github.io/git%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95%E6%8A%A5%E9%94%99%E8%AE%B0%E5%BD%95/</guid>
+    <description><![CDATA[基本流程 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20  # 初始化仓库 git init # 将本地库关联至远程仓库 git remote add origin git@github.com:....github.io.git # 查看当前修改状态  git status # 添加修改过得文件， . 表示所有，也可以指定文件  git add . # &#34;&#34;里面的内容就是提交内容的说明信息  git commit -m &#34;first commit&#34; # 第一次提交方法1 git push -u -f origin main #第一次提交方法2 git pull origin main --allow-unrelated-histories git push -u origin main # 以后提交 git push   其他用法 1 修改分支名 1  git branch -m oldBranchName newBranchName   2 取消与远程仓库的关联 1  git remote remove origin   3 实现本地库同时关联GitHub和Gitee 1 2 3 4 5 6 7 8 9 10 11 12 13  # 初始化仓库 git init # 将本地库同时和GitHub、Gitee的远程仓库关联 git remote add github git@github.]]></description>
 </item>
 </channel>
 </rss>

@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>go - Category - 菜菜的秘密花园</title>
+        <title>Go - Category - 菜菜的秘密花园</title>
         <link>https://imcaicai.github.io/categories/go/</link>
-        <description>go - Category - 菜菜的秘密花园</description>
+        <description>Go - Category - 菜菜的秘密花园</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 20 Oct 2022 19:56:54 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/categories/go/" rel="self" type="application/rss+xml" /><item>
     <title>Echo框架入门</title>
     <link>https://imcaicai.github.io/echo%E6%A1%86%E6%9E%B6%E5%85%A5%E9%97%A8/</link>
