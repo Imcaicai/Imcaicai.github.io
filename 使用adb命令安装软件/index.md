@@ -1,0 +1,32 @@
+# 使用adb命令安装软件
+
+
+# 1 安装软件
+
+- 打开命令行，进入apk文件所在目录
+- 输入命令：`adb install xxx.apk`
+
+# 2 踩雷记录
+
+### 报错1
+
+> android [adb](https://so.csdn.net/so/search?q=adb&spm=1001.2101.3001.7020) devices offline
+
+解决办法：重启adb服务
+
+```shell
+adb kill-server
+adb start-server
+```
+
+### 报错2
+
+> Failed to install app-debug.apk: Failure [INSTALL_FAILED_TEST_ONLY: installPackageLI]
+
+解决办法：允许安装test用的apk
+
+```shell
+adb install -t app-debug.apk
+```
+
+

@@ -3,7 +3,19 @@
         <title>All Posts - 菜菜的秘密花园</title>
         <link>https://imcaicai.github.io/posts/</link>
         <description>All Posts | 菜菜的秘密花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 28 Oct 2022 10:15:12 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 06 Nov 2022 15:07:04 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>使用adb命令安装软件</title>
+    <link>https://imcaicai.github.io/%E4%BD%BF%E7%94%A8adb%E5%91%BD%E4%BB%A4%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/</link>
+    <pubDate>Sun, 06 Nov 2022 15:07:04 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/%E4%BD%BF%E7%94%A8adb%E5%91%BD%E4%BB%A4%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/</guid>
+    <description><![CDATA[1 安装软件  打开命令行，进入apk文件所在目录 输入命令：adb install xxx.apk  2 踩雷记录 报错1  android adb devices offline
+ 解决办法：重启adb服务
+1 2  adb kill-server adb start-server   报错2  Failed to install app-debug.apk: Failure [INSTALL_FAILED_TEST_ONLY: installPackageLI]
+ 解决办法：允许安装test用的apk
+1  adb install -t app-debug.apk   ]]></description>
+</item>
+<item>
     <title>Mysql数据库基本语法</title>
     <link>https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</link>
     <pubDate>Fri, 28 Oct 2022 10:15:12 &#43;0800</pubDate>
