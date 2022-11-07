@@ -70,13 +70,12 @@ git push -u gitee main
 > Please make sure you have the correct access rights
 > and the repository exists.
 
-[https://blog.csdn.net/jingtingfengguo/article/details/51892864](https://blog.csdn.net/jingtingfengguo/article/details/51892864)
-
-
+解决方案见：[Git报错-ssh相关错误](https://imcaicai.github.io/git%E6%8A%A5%E9%94%99-ssh%E7%9B%B8%E5%85%B3%E9%94%99%E8%AF%AF/)
 
 ### 报错2
 
 > push后GitHub文件夹出现箭头且无法打开
 >
 
+解决方案见：[Git报错-GitHub文件夹出现箭头且无法打开](https://imcaicai.github.io/git%E6%8A%A5%E9%94%99-github%E6%96%87%E4%BB%B6%E5%A4%B9%E5%87%BA%E7%8E%B0%E7%AE%AD%E5%A4%B4%E4%B8%94%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80/)
 
