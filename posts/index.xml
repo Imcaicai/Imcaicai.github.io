@@ -3,7 +3,24 @@
         <title>All Posts - 菜菜的秘密花园</title>
         <link>https://imcaicai.github.io/posts/</link>
         <description>All Posts | 菜菜的秘密花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 10 Nov 2022 20:07:38 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 18 Nov 2022 23:33:29 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Label Embedding Online Hashing for Cross-Modal Retrieval</title>
+    <link>https://imcaicai.github.io/lemon/</link>
+    <pubDate>Fri, 18 Nov 2022 23:33:29 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/lemon/</guid>
+    <description><![CDATA[Abstract 然而，大多数现有的方法都是以批处理的方式学习二进制代码或散列函数，这在在线情况下是低效的，即数据点以流的方式出现。在线散列是一个有希望的解决方案；然而，仍然存在一些挑战，例如，如何有效利用语义信息，如何离散地解决二进制优化问题，如何有效地更新哈希代码和哈希函数。为了解决这些问题，在本文中，我们提出了一种新型的有监督的在线跨模态散列方法，即Label EMbedding ONline hashing。它建立了一个标签嵌入框架，包括标签相似性保存和标签重构，它可以产生识别性的二进制代码，并降低了计算的复杂性。此外，它不仅保留了传入数据的成对相似性，还通过块相似性矩阵上的内积最小化来建立新数据和现有数据之间的联系。有鉴于此，它可以利用更多的相似性信息，并使优化对传入数据不那么敏感，从而产生有效的二进制代码。此外，我们设计了一个离散优化算法来解决无松弛的二进制优化问题。因此，量化的误差可以减少。此外，它的计算复杂度只与传入数据的大小有关，这使得它非常有效并可扩展到大规模数据集。在三个基准数据集上的广泛实验结果表明，LEMON在准确性和效率方面优于一些最先进的离线和在线跨模式散列方法。
+1 INTRODUCTION 学习散列，作为最著名的近似近邻搜索技术之一，近年来吸引了很多人的注意。它旨在将高维实值特征映射到紧凑的二进制编码，同时保留原始空间中的相似性。然后，可以用XOR操作在Hamming空间中进行搜索，效率高，存储成本低。
+许多跨模态散列方法已经被提出并取得了很好的性能。但大多数现有的方法通过批处理学习二进制代码或哈希函数。即在学习过程前，所有的训练数据都可用。这将产生以下问题：
+  实际数据通常以流方式收集，有新数据到来时，批处理方法需要对所有数据重新训练 → 效率低 训练集随训练时间变大 → 计算成本高   为了解决这些问题，在线散列被提出，但仍存在问题：
+  大多数在线散列方法是为单模态检索设计的，很难直接扩展到跨模态检索。少数在线跨模态散列模型被提出，但性能较差，因为异质模态之间的关联性难以捕捉。 只根据新到达的数据更新散列函数，忽略了新旧数据间的相关性 → 丢失现有数据的信息 → 现有在线散列。 新数据到来时，哈希函数可以有效地重新训练，但哈希码必须对所有累积数据重构 → 更新方案低效。 离散优化大多采用松弛策略 → 量化误差大。   为了解决上述问题，这篇文章提出了一种新的监督下的跨模式检索的在线散列方法，即Label EMbedding ONline hashing，简称LEMON。本文的主要贡献总结如下：
+2 RELATED WORK 现有工作存在的问题：
+ 单模态：不能直接用于跨模态检索任务；必须在每一轮更新所有的二进制代码，效率非常低 多模态：不能跨模态检索 跨模态：不能充分利用原始特征、语义标签；不能很好地以流的方式来捕捉数据的相似性信息  !插入单模态多模态跨模态的简介
+3 METHOD 3.1 Notations !插入范数、迹的简介
+假设每个样本由 $l$ 个模态组成。在第 $t$ 轮，一个新的数据块 $\vec{X}^{(t)}$ 被添加到数据库中。
+   符号 意义     $\vec{X}_m^{(t)}∈R^{d_m×n_t}$ 表示新数据块的第 $m$ 个模态，其中 $n_t$ 是新数据块的大小， $d_m$ 是特征维度。$m∈{1，2，&hellip;，l}$   $\vec{L}^{(t)}∈R^{c×n_t}$ 新数据块的标签矩阵，其中 $c$ 是语义类别的数量   $\tilde{X}^{(t)}$ 现有数据   $\tilde{X}^{(t)}m∈R^{d_m×N{t-1}}$ 现有数据的第 $m$ 个模态   $N_{t-1} = \sum_{k=1}^{t-1} n_k$ 现有数据的大小，$N_t=N_{t-1} +n_t$   $\tilde{L}^{(t)}∈R^{c×N_{t-1}}$ 现有数据的相应标签矩阵   $X^{(t)}_m=[\tilde{X}^{(t)}_m,\vec{X}_m^{(t)}]∈R^{d_m×N_t}$ 代表当前整个数据库   $L^{(t)}=[\tilde{L}^{(t)},\vec{L}^{(t)}]∈R^{c×N_t}$ 代表整个标签矩阵   $\tilde{B}^{(t)}$ 现有数据的哈希码   $\vec{B}^{(t)}$ 新数据的哈希码    我们的目标是学习所有模态的 $r$ 位统一哈希码$B^{(t)}=[\tilde{B}^{(t)},\vec{B}^{(t)}]∈R^{r×N_t}$，和第$m$ 个模态的哈希函数 $H_m^{(t)}(·)$。]]></description>
+</item>
+<item>
     <title>Mjrty</title>
     <link>https://imcaicai.github.io/mjrty/</link>
     <pubDate>Thu, 10 Nov 2022 20:07:38 &#43;0800</pubDate>
@@ -108,15 +125,6 @@ Please make sure you have the correct access rights and the repository exists.
 CNN 在图像上应用滑动窗口，并引入移位变异性和位置性；最近的 vision transformer 或 MLP 将图像视为 a sequence of patches（补丁序列）。
 由于物体形状通常不是规则的四边形，常用的 grid 或 sequence 结构处理起图像来不够灵活，所以在本文中采用 graph 结构。
 1.2 3种模型  CNN：曾经是计算机视觉中的主流网络结构，已经成功地应用于各种视觉任务，如图像分类、物体检测和语义分割。CNN模型在过去的十年里发展迅速，代表性的模型包括ResNet、MobileNet和NAS。 Vision transformer：从2020年开始，被引入到视觉任务中，ViT的一些变体开始被提出来以提高视觉任务的性能。主要的改进包括金字塔结，局部注意和位置编码。 MLP：通过专门设计的模块，MLP可以达到有竞争力的性能，并且在一般的视觉任务（如物体检测和分割）上工作。  1.]]></description>
-</item>
-<item>
-    <title>Go基本语法</title>
-    <link>https://imcaicai.github.io/go%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</link>
-    <pubDate>Sun, 16 Oct 2022 00:00:00 &#43;0000</pubDate>
-    <author>菜菜</author>
-    <guid>https://imcaicai.github.io/go%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</guid>
-    <description><![CDATA[1 结构  go run helloworld.go：执行Go代码 go build helloworld.go：编译生成二进制文件 ./helloworld：运行 import 声明必须跟在文件的 package 声明之后 Go 语言不需要在语句或者声明的末尾添加分号，除非一行上有多条语句  函数的左括号 { 必须和 func 函数声明在同一行上，且位于末尾，不能独占一行 在表达式 x+y 中，可在 + 后换行，不能在 + 前换行    2 基础语法 1 2 3 4 5 6  //格式化字符串 var stockcode = 123 var enddate = &#34;2020-12-31&#34; var url = &#34;Code=%d&amp;endDate=%s&#34; var target_url = fmt.Sprintf(url, stockcode, enddate) fmt.Println(target_url)   3 语言类型   布尔型
-  数字型]]></description>
 </item>
 </channel>
 </rss>
