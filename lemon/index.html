@@ -48,7 +48,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/imcaicai.github.io\/lemon\/"
-        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "深度学习","wordcount":  528 ,
+        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "深度学习","wordcount":  530 ,
         "url": "https:\/\/imcaicai.github.io\/lemon\/","datePublished": "2022-11-18T23:33:29+08:00","dateModified": "2022-11-18T23:33:29+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/imcaicai.github.io\/img\/avatar.jpg"},"author": {
@@ -142,7 +142,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Label Embedding Online Hashing for Cross-Modal Retrieval</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>深度学习</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-11-18">2022-11-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;528 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-11-18">2022-11-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;530 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;<span id="/lemon/" class="leancloud_visitors" data-flag-title="Label Embedding Online Hashing for Cross-Modal Retrieval">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
                     </span>&nbsp;</div>
@@ -170,9 +170,10 @@
     </li>
     <li><a href="#4-实验">4 实验</a>
       <ul>
-        <li><a href="#42-实施细节">4.2 实施细节</a></li>
-        <li><a href="#43-结果分析">4.3 结果分析</a>
+        <li><a href="#41-实施细节">4.1 实施细节</a></li>
+        <li><a href="#42-结果分析">4.2 结果分析</a>
           <ul>
+            <li><a href="#421-平均精度分析">4.2.1 平均精度分析</a></li>
             <li><a href="#422-时间成本分析">4.2.2 时间成本分析</a></li>
             <li><a href="#423-参数敏感度分析">4.2.3 参数敏感度分析</a></li>
           </ul>
@@ -416,10 +417,11 @@ $$
 训练过程的整体<strong>计算复杂度与新数据的大小 $n_t$ 呈线性关系</strong>，而与旧数据库的大小无关。因此，LEMON可以扩展到大规模的在线检索任务。</p>
 <h2 id="4-实验">4 实验</h2>
 <p>为了评估LEMON的性能，我们在三个基准数据集上进行了广泛实验。</p>
-<h3 id="42-实施细节">4.2 实施细节</h3>
+<h3 id="41-实施细节">4.1 实施细节</h3>
 <p>在实现LEMON的过程中，我们首先对MIRFlickr-25K数据集进行了参数敏感性分析，<strong>当α和β为 1e4 时，LEMON取得最佳效果</strong>。此外我们观察到，参数对性能的影响并不显著。因此，为了简单起见，所有的数据集上都设置了相同的参数，即<strong>α=β=1e4</strong>。根据经验，$γ$ 和 $ξ$ 分别被设定为0.1和1。每一轮的迭代次数为5。</p>
 <p>在实验中，我们进行了两种类型的跨模式检索任务。图像→文本和文本→图像。利用<strong>平均精度（MAP）和训练时间</strong>，来评估所有方法的性能。</p>
-<h3 id="43-结果分析">4.3 结果分析</h3>
+<h3 id="42-结果分析">4.2 结果分析</h3>
+<h4 id="421-平均精度分析">4.2.1 平均精度分析</h4>
 <p>MIRFlickr-25K数据集的结果如表1所示，展示了不同长度样例的MAP值。</p>
 <p><img
         class="lazyload"
