@@ -3,7 +3,15 @@
         <title>All Posts - 菜菜的秘密花园</title>
         <link>https://imcaicai.github.io/posts/</link>
         <description>All Posts | 菜菜的秘密花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 18 Nov 2022 23:33:29 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 03 Dec 2022 11:05:24 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>计算机网络知识总结</title>
+    <link>https://imcaicai.github.io/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/</link>
+    <pubDate>Sat, 03 Dec 2022 11:05:24 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/</guid>
+    <description><![CDATA[1 计算机网络和因特网 2 应用层 3 运输层 4 网络层 6 链路层和局域网 7 无线网络和局域网 ]]></description>
+</item>
+<item>
     <title>Label Embedding Online Hashing for Cross-Modal Retrieval</title>
     <link>https://imcaicai.github.io/lemon/</link>
     <pubDate>Fri, 18 Nov 2022 23:33:29 &#43;0800</pubDate>
@@ -115,15 +123,6 @@ Please make sure you have the correct access rights and the repository exists.
 CNN 在图像上应用滑动窗口，并引入移位变异性和位置性；最近的 vision transformer 或 MLP 将图像视为 a sequence of patches（补丁序列）。
 由于物体形状通常不是规则的四边形，常用的 grid 或 sequence 结构处理起图像来不够灵活，所以在本文中采用 graph 结构。
 1.2 3种模型  CNN：曾经是计算机视觉中的主流网络结构，已经成功地应用于各种视觉任务，如图像分类、物体检测和语义分割。CNN模型在过去的十年里发展迅速，代表性的模型包括ResNet、MobileNet和NAS。 Vision transformer：从2020年开始，被引入到视觉任务中，ViT的一些变体开始被提出来以提高视觉任务的性能。主要的改进包括金字塔结，局部注意和位置编码。 MLP：通过专门设计的模块，MLP可以达到有竞争力的性能，并且在一般的视觉任务（如物体检测和分割）上工作。  1.]]></description>
-</item>
-<item>
-    <title>Go基本语法</title>
-    <link>https://imcaicai.github.io/go%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</link>
-    <pubDate>Sun, 16 Oct 2022 00:00:00 &#43;0000</pubDate>
-    <author>菜菜</author>
-    <guid>https://imcaicai.github.io/go%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</guid>
-    <description><![CDATA[1 结构  go run helloworld.go：执行Go代码 go build helloworld.go：编译生成二进制文件 ./helloworld：运行 import 声明必须跟在文件的 package 声明之后 Go 语言不需要在语句或者声明的末尾添加分号，除非一行上有多条语句  函数的左括号 { 必须和 func 函数声明在同一行上，且位于末尾，不能独占一行 在表达式 x+y 中，可在 + 后换行，不能在 + 前换行    2 基础语法 1 2 3 4 5 6  //格式化字符串 var stockcode = 123 var enddate = &#34;2020-12-31&#34; var url = &#34;Code=%d&amp;endDate=%s&#34; var target_url = fmt.Sprintf(url, stockcode, enddate) fmt.Println(target_url)   3 语言类型   布尔型
-  数字型]]></description>
 </item>
 </channel>
 </rss>
