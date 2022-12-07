@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Mysql数据库基本语法(一) - 菜菜的秘密花园</title><meta name="Description" content="菜菜的秘密花园"><meta property="og:title" content="Mysql数据库基本语法(一)" />
+<meta property="og:description" content="1 数据库、表与完整性约束的定义 1.1 创建数据库 进入mysql：
+1  mysql -h127.0.0.1 -uroot -p   创建数据库：
+1  CREATE DATABASE dbname;   指明访问的数据库：
+1  use dbname;   1.2 创建表及表的主码约束 建表语法  CREATE TABLE为保留字，其语义为创建表对象； IF NOT EXISTS为可选短语，其语义为仅当该表不存在时才创建表；如果不带该短语，创建表时，如果同名表已存在，则输出报错信息； tbl_name为表的名字； (列定义|表约束,&hellip;)表示表的其它定义都写在一对括号里，括号里为一个或多个“列定义”或“表约束”，如果有多个列的定义或表约束，则它们之间用逗号隔开。  1 2  CREATE TABLE [IF NOT EXISTS] tbl_name (列定义|表约束,...)   列定义语法  [NOT NULL |NULL]表示空或非空约束，缺省为NULL，即该列的内容允许为空值，NOT NULL则约束该列的内容必须为非空； DEFAULT关键字为列指定缺省值，可以是常量，也可以是表达式； AUTO_INCREMENT指定该列为自增列(如1，2，3，&hellip;)，一般用于自动编号，显然只有数字类型的列才可以定义这一特性； [UNIQUE]指定该列值具有唯一性（但可以有空值-甚至多个空值的存在，如果该列没有定义NOT NULL约束）； PRIMARY KEY指定该列为主码，相当于定义表的实体完整性约束；只有当主码由单属性组成时，才可以这样定义主码（主码由多属性组成时，应当用表约束来定义）； COMMENT用来给列附加一条注释； “REFERENCES”短语为该列定义参照完整性约束，指出该列引用哪个表的哪一列的值，以及违背参照完整性后的具体处理规则（多个规则中选一），具体内容将在随后的练习里再讲解； CHECK(表达式)为列指定“自定义约束”，只有使（表达式）的值为true的数据才允许写入数据库；关键词CONSTRAINT用来为约束命名。  1 2 3 4 5 6 7 8 9  列定义 ::= 列名 数据类型 [NOT NULL | NULL] [DEFAULT {常量 | (表达式)} ] [AUTO_INCREMENT] [UNIQUE [KEY]] [PRIMARY KEY] [COMMENT &#39;列备注&#39;] [REFERENCES tbl_name (col_name) [ON DELETE RESTRICT|CASCADE|SET NULL|NO ACTION|SET DEFAULT] [ON UPDATE RESTRICT|CASCADE|SET NULL| NO ACTION|SET DEFAULT]] [[CONSTRAINT [约束名]] CHECK (表达式)]   表约束语法  主码约束以“PK_”打头，后跟表名，一个表只会有一个主码约束； 外码约束以“FK_”打头，后跟表名及列名； CHECK约束以“CK_”打头，后跟表名及列名。  1 2 3 4 5 6 7 8  表约束 ::= [CONSTRAINT [约束名]] | PRIMARY KEY (key_part,." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%80/" /><meta property="og:image" content="https://imcaicai.github.io/img/avatar.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-12-07T14:45:49&#43;08:00" />
+<meta property="article:modified_time" content="2022-12-07T14:45:49&#43;08:00" /><meta property="og:site_name" content="菜菜的秘密花园" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://imcaicai.github.io/img/avatar.jpg"/>
+
+<meta name="twitter:title" content="Mysql数据库基本语法(一)"/>
+<meta name="twitter:description" content="1 数据库、表与完整性约束的定义 1.1 创建数据库 进入mysql：
+1  mysql -h127.0.0.1 -uroot -p   创建数据库：
+1  CREATE DATABASE dbname;   指明访问的数据库：
+1  use dbname;   1.2 创建表及表的主码约束 建表语法  CREATE TABLE为保留字，其语义为创建表对象； IF NOT EXISTS为可选短语，其语义为仅当该表不存在时才创建表；如果不带该短语，创建表时，如果同名表已存在，则输出报错信息； tbl_name为表的名字； (列定义|表约束,&hellip;)表示表的其它定义都写在一对括号里，括号里为一个或多个“列定义”或“表约束”，如果有多个列的定义或表约束，则它们之间用逗号隔开。  1 2  CREATE TABLE [IF NOT EXISTS] tbl_name (列定义|表约束,...)   列定义语法  [NOT NULL |NULL]表示空或非空约束，缺省为NULL，即该列的内容允许为空值，NOT NULL则约束该列的内容必须为非空； DEFAULT关键字为列指定缺省值，可以是常量，也可以是表达式； AUTO_INCREMENT指定该列为自增列(如1，2，3，&hellip;)，一般用于自动编号，显然只有数字类型的列才可以定义这一特性； [UNIQUE]指定该列值具有唯一性（但可以有空值-甚至多个空值的存在，如果该列没有定义NOT NULL约束）； PRIMARY KEY指定该列为主码，相当于定义表的实体完整性约束；只有当主码由单属性组成时，才可以这样定义主码（主码由多属性组成时，应当用表约束来定义）； COMMENT用来给列附加一条注释； “REFERENCES”短语为该列定义参照完整性约束，指出该列引用哪个表的哪一列的值，以及违背参照完整性后的具体处理规则（多个规则中选一），具体内容将在随后的练习里再讲解； CHECK(表达式)为列指定“自定义约束”，只有使（表达式）的值为true的数据才允许写入数据库；关键词CONSTRAINT用来为约束命名。  1 2 3 4 5 6 7 8 9  列定义 ::= 列名 数据类型 [NOT NULL | NULL] [DEFAULT {常量 | (表达式)} ] [AUTO_INCREMENT] [UNIQUE [KEY]] [PRIMARY KEY] [COMMENT &#39;列备注&#39;] [REFERENCES tbl_name (col_name) [ON DELETE RESTRICT|CASCADE|SET NULL|NO ACTION|SET DEFAULT] [ON UPDATE RESTRICT|CASCADE|SET NULL| NO ACTION|SET DEFAULT]] [[CONSTRAINT [约束名]] CHECK (表达式)]   表约束语法  主码约束以“PK_”打头，后跟表名，一个表只会有一个主码约束； 外码约束以“FK_”打头，后跟表名及列名； CHECK约束以“CK_”打头，后跟表名及列名。  1 2 3 4 5 6 7 8  表约束 ::= [CONSTRAINT [约束名]] | PRIMARY KEY (key_part,."/>
+<meta name="application-name" content="菜菜的秘密花园">
+<meta name="apple-mobile-web-app-title" content="菜菜的秘密花园"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%80/" /><link rel="prev" href="https://imcaicai.github.io/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" /><link rel="next" href="https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%BA%8C/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Mysql数据库基本语法(一)",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/imcaicai.github.io\/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%80\/"
+        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "Mysql","wordcount":  934 ,
+        "url": "https:\/\/imcaicai.github.io\/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%80\/","datePublished": "2022-12-07T14:45:49+08:00","dateModified": "2022-12-07T14:45:49+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/imcaicai.github.io\/img\/avatar.jpg"},"author": {
+                "@type": "Person",
+                "name": "菜菜"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="菜菜的秘密花园"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/avatar.jpg"
+        data-srcset="/img/avatar.jpg, /img/avatar.jpg 1.5x, /img/avatar.jpg 2x"
+        data-sizes="auto"
+        alt="/img/avatar.jpg"
+        title="/img/avatar.jpg" />菜菜的秘密花园</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/categories/documentation/"> Docs </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/friends/"><i class='fas fa-fw fa-fan fa-spin'></i> Friends </a><a class="menu-item" href="https://github.com/Imcaicai" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="Select Language">
+                    <i class="fa fa-globe" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%80/" selected>English</option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="菜菜的秘密花园"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/avatar.jpg"
+        data-srcset="/img/avatar.jpg, /img/avatar.jpg 1.5x, /img/avatar.jpg 2x"
+        data-sizes="auto"
+        alt="/img/avatar.jpg"
+        title="/img/avatar.jpg" />菜菜的秘密花园</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/categories/documentation/" title="">Docs</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/friends/" title=""><i class='fas fa-fw fa-fan fa-spin'></i>Friends</a><a class="menu-item" href="https://github.com/Imcaicai" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="Select Language">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%80/" selected>English</option></select>
+                </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Mysql数据库基本语法(一)</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-category">included in <a href="/categories/mysql/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Mysql</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-12-07">2022-12-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;934 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;<span id="/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%80/" class="leancloud_visitors" data-flag-title="Mysql数据库基本语法(一)">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#11-创建数据库">1.1 创建数据库</a></li>
+    <li><a href="#12-创建表及表的主码约束">1.2 创建表及表的主码约束</a>
+      <ul>
+        <li><a href="#建表语法">建表语法</a></li>
+        <li><a href="#列定义语法">列定义语法</a></li>
+        <li><a href="#表约束语法">表约束语法</a></li>
+        <li><a href="#定义主码">定义主码</a></li>
+      </ul>
+    </li>
+    <li><a href="#13-创建外码约束">1.3 创建外码约束</a>
+      <ul>
+        <li><a href="#外码">外码</a></li>
+        <li><a href="#外码约束">外码约束</a></li>
+        <li><a href="#定义外码约束">定义外码约束</a></li>
+      </ul>
+    </li>
+    <li><a href="#14-check约束">1.4 check约束</a>
+      <ul>
+        <li><a href="#用户定义的完整性约束">用户定义的完整性约束</a></li>
+        <li><a href="#check约束的定义方法">CHECK约束的定义方法</a></li>
+      </ul>
+    </li>
+    <li><a href="#15-default约束">1.5 DEFAULT约束</a>
+      <ul>
+        <li><a href="#举例">举例</a></li>
+      </ul>
+    </li>
+    <li><a href="#16-unique约束">1.6 UNIQUE约束</a>
+      <ul>
+        <li><a href="#unique约束">UNIQUE约束</a></li>
+        <li><a href="#unique约束的语法">UNIQUE约束的语法</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#21-修改表名">2.1 修改表名</a>
+      <ul>
+        <li><a href="#alter-table语句">ALTER TABLE语句</a></li>
+        <li><a href="#更改表名">更改表名</a></li>
+      </ul>
+    </li>
+    <li><a href="#22-添加与删除字段">2.2 添加与删除字段</a>
+      <ul>
+        <li><a href="#给表添加字段">给表添加字段</a></li>
+        <li><a href="#删除表中的字段">删除表中的字段</a></li>
+      </ul>
+    </li>
+    <li><a href="#23-修改字段">2.3 修改字段</a>
+      <ul>
+        <li><a href="#修改字段名称">修改字段名称</a></li>
+        <li><a href="#修改字段的数据类型和约束">修改字段的数据类型和约束</a></li>
+        <li><a href="#修改字段在表中的位置">修改字段在表中的位置</a></li>
+      </ul>
+    </li>
+    <li><a href="#24-添加删除与修改约束">2.4 添加、删除与修改约束</a>
+      <ul>
+        <li><a href="#主码的添加与删除">主码的添加与删除</a></li>
+        <li><a href="#外码的删除与添加">外码的删除与添加</a></li>
+        <li><a href="#check约束的删除与添加">CHECK约束的删除与添加</a></li>
+        <li><a href="#unique约束的添加与删除">UNIQUE约束的添加与删除</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="1-数据库表与完整性约束的定义">1 数据库、表与完整性约束的定义</h1>
+<h2 id="11-创建数据库">1.1 创建数据库</h2>
+<p>进入mysql：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">mysql -h127.0.0.1 -uroot -p
+</code></pre></td></tr></table>
+</div>
+</div><p>创建数据库：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="n">dbname</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>指明访问的数据库：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">use</span> <span class="n">dbname</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="12-创建表及表的主码约束">1.2 创建表及表的主码约束</h2>
+<h3 id="建表语法">建表语法</h3>
+<ul>
+<li>CREATE TABLE为保留字，其语义为创建表对象；</li>
+<li>IF NOT EXISTS为可选短语，其语义为仅当该表不存在时才创建表；如果不带该短语，创建表时，如果同名表已存在，则输出报错信息；</li>
+<li>tbl_name为表的名字；</li>
+<li>(列定义|表约束,&hellip;)表示表的其它定义都写在一对括号里，括号里为一个或多个“列定义”或“表约束”，如果有多个列的定义或表约束，则它们之间用逗号隔开。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="p">[</span><span class="k">IF</span> <span class="k">NOT</span> <span class="k">EXISTS</span><span class="p">]</span> <span class="nf">tbl_name</span>
+<span class="p">(</span><span class="err">列定义</span><span class="o">|</span><span class="err">表约束</span><span class="p">,...)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="列定义语法">列定义语法</h3>
+<ul>
+<li>[NOT NULL |NULL]表示空或非空约束，缺省为NULL，即该列的内容允许为空值，NOT NULL则约束该列的内容必须为非空；</li>
+<li>DEFAULT关键字为列指定缺省值，可以是常量，也可以是表达式；</li>
+<li>AUTO_INCREMENT指定该列为自增列(如1，2，3，&hellip;)，一般用于自动编号，显然只有数字类型的列才可以定义这一特性；</li>
+<li>[UNIQUE]指定该列值具有唯一性（但可以有空值-甚至多个空值的存在，如果该列没有定义NOT NULL约束）；</li>
+<li>PRIMARY KEY指定该列为主码，相当于定义表的实体完整性约束；只有当主码由单属性组成时，才可以这样定义主码（主码由多属性组成时，应当用表约束来定义）；</li>
+<li>COMMENT用来给列附加一条注释；</li>
+<li>“REFERENCES”短语为该列定义参照完整性约束，指出该列引用哪个表的哪一列的值，以及违背参照完整性后的具体处理规则（多个规则中选一），具体内容将在随后的练习里再讲解；</li>
+<li>CHECK(表达式)为列指定“自定义约束”，只有使（表达式）的值为true的数据才允许写入数据库；关键词CONSTRAINT用来为约束命名。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="err">列定义</span> <span class="p">::</span><span class="o">=</span>  <span class="err">列名</span>  <span class="err">数据类型</span>
+      <span class="p">[</span><span class="k">NOT</span> <span class="no">NULL</span> <span class="o">|</span> <span class="no">NULL</span><span class="p">]</span> 
+      <span class="p">[</span><span class="k">DEFAULT</span> <span class="err">{常量</span> <span class="o">|</span> <span class="p">(</span><span class="err">表达式</span><span class="p">)</span><span class="err">}</span> <span class="p">]</span>
+      <span class="p">[</span><span class="kp">AUTO_INCREMENT</span><span class="p">]</span> <span class="p">[</span><span class="k">UNIQUE</span> <span class="p">[</span><span class="k">KEY</span><span class="p">]]</span> <span class="p">[</span><span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">]</span>
+      <span class="p">[</span><span class="n">COMMENT</span> <span class="s1">&#39;列备注&#39;</span><span class="p">]</span>
+      <span class="p">[</span><span class="k">REFERENCES</span> <span class="nf">tbl_name</span> <span class="p">(</span><span class="n">col_name</span><span class="p">)</span>
+           <span class="p">[</span><span class="k">ON</span> <span class="k">DELETE</span> <span class="k">RESTRICT</span><span class="o">|</span><span class="k">CASCADE</span><span class="o">|</span><span class="kt">SET</span> <span class="no">NULL</span><span class="o">|</span><span class="n">NO</span> <span class="n">ACTION</span><span class="o">|</span><span class="kt">SET</span> <span class="k">DEFAULT</span><span class="p">]</span>
+           <span class="p">[</span><span class="k">ON</span> <span class="k">UPDATE</span> <span class="k">RESTRICT</span><span class="o">|</span><span class="k">CASCADE</span><span class="o">|</span><span class="kt">SET</span> <span class="no">NULL</span><span class="o">|</span> <span class="n">NO</span> <span class="n">ACTION</span><span class="o">|</span><span class="kt">SET</span> <span class="k">DEFAULT</span><span class="p">]]</span>
+      <span class="p">[[</span><span class="k">CONSTRAINT</span> <span class="p">[</span><span class="err">约束名</span><span class="p">]]</span> <span class="k">CHECK</span> <span class="p">(</span><span class="err">表达式</span><span class="p">)]</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="表约束语法">表约束语法</h3>
+<ul>
+<li>主码约束以“PK_”打头，后跟表名，一个表只会有一个主码约束；</li>
+<li>外码约束以“FK_”打头，后跟表名及列名；</li>
+<li>CHECK约束以“CK_”打头，后跟表名及列名。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"> <span class="err">表约束</span> <span class="p">::</span><span class="o">=</span> <span class="p">[</span><span class="k">CONSTRAINT</span> <span class="p">[</span><span class="err">约束名</span><span class="p">]]</span>
+       <span class="o">|</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">key_part</span><span class="p">,...)</span>
+       <span class="o">|</span> <span class="k">UNIQUE</span> <span class="p">(</span><span class="n">key_part</span><span class="p">,...)</span>
+       <span class="o">|</span> <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">col_name</span><span class="p">,...)</span> 
+        <span class="k">REFERENCES</span> <span class="nf">tbl_name</span> <span class="p">(</span><span class="n">col_name</span><span class="p">,...)</span>
+           <span class="p">[</span><span class="k">ON</span> <span class="k">DELETE</span> <span class="k">RESTRICT</span><span class="o">|</span><span class="k">CASCADE</span><span class="o">|</span><span class="kt">SET</span> <span class="no">NULL</span><span class="o">|</span><span class="n">NO</span> <span class="n">ACTION</span><span class="o">|</span><span class="kt">SET</span> <span class="k">DEFAULT</span><span class="p">]</span>
+           <span class="p">[</span><span class="k">ON</span> <span class="k">UPDATE</span> <span class="k">RESTRICT</span><span class="o">|</span><span class="k">CASCADE</span><span class="o">|</span><span class="kt">SET</span> <span class="no">NULL</span><span class="o">|</span> <span class="n">NO</span> <span class="n">ACTION</span><span class="o">|</span><span class="kt">SET</span> <span class="k">DEFAULT</span><span class="p">]</span>
+       <span class="o">|</span> <span class="k">CHECK</span> <span class="p">(</span><span class="err">表达式</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>主码约束及唯一性约束中“key_part”的语法规则如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="n">key_part</span><span class="p">::</span><span class="o">=</span> <span class="err">{列名</span><span class="o">|</span> <span class="p">(</span><span class="err">表达式</span><span class="p">)</span><span class="err">}</span> <span class="p">[</span><span class="k">ASC</span> <span class="o">|</span> <span class="k">DESC</span><span class="p">]</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="定义主码">定义主码</h3>
+<ul>
+<li>单属性主码，既可在列定义里用PRIMARY KEY约束指定主码，也可以作为表约束单独定义；</li>
+<li>组合属性作主码时，该主码只能定义为表约束。</li>
+</ul>
+<p>表创建好之后可以使用如下语句<strong>列出所有的表</strong>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">show</span> <span class="kp">tables</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>还可以使用如下语句<strong>查看表的结构</strong>，用来检查所建的表是否正确体现了原意：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">DESC</span> <span class="err">表名</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="13-创建外码约束">1.3 创建外码约束</h2>
+<h3 id="外码">外码</h3>
+<p>外码是表中的一个或一组字段（属性），它可以不是本表的主码，但它与某个主码(同一表或其它表的主码)具有对应关系（语义完全相同）。外码可以是一列或多列，一个表可以有一个或多个外码。当我们谈论外码时，一定有个主码与它对应，外码不可能单独存在。主码所在的表为主表，又称父表，外码所在的表为从表，又称子表。</p>
+<h3 id="外码约束">外码约束</h3>
+<p>外码用来在数据之间（即外码与其对应的主码间）建立关联。参照完整性约束用于约束外码列的取值范围：外码列的取值要么为空，要么等于其对应的主码列的某个取值。在语义允许，又不违反其它约束规则的情形下，外码列的取值才可以为空。</p>
+<h3 id="定义外码约束">定义外码约束</h3>
+<p>可在定义表的同时定义各种完整性约束规则(当然包括外码约束，亦即参照完整性约束）。外码约束既可以定义为列约束，亦可定义为表约束。</p>
+<p>列级外码约束的语法格式如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="err">列级外码约束</span> <span class="p">::</span><span class="o">=</span>  <span class="err">列名</span>  <span class="err">数据类型</span>      
+	<span class="p">[</span><span class="k">REFERENCES</span> <span class="nf">tbl_name</span> <span class="p">(</span><span class="n">col_name</span><span class="p">)</span>      
+	<span class="p">[</span><span class="k">ON</span> <span class="k">DELETE</span> <span class="k">RESTRICT</span><span class="o">|</span><span class="k">CASCADE</span><span class="o">|</span><span class="kt">SET</span> <span class="no">NULL</span><span class="o">|</span><span class="n">NO</span> <span class="n">ACTION</span><span class="o">|</span><span class="kt">SET</span> <span class="k">DEFAULT</span><span class="p">]</span>     <span class="p">[</span><span class="k">ON</span> <span class="k">UPDATE</span> <span class="k">RESTRICT</span><span class="o">|</span><span class="k">CASCADE</span><span class="o">|</span><span class="kt">SET</span> <span class="no">NULL</span><span class="o">|</span><span class="n">NO</span> <span class="n">ACTION</span><span class="o">|</span><span class="kt">SET</span> <span class="k">DEFAULT</span><span class="p">]</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>表约外码约束的语法格式如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="err">表级外码约束</span> <span class="p">::</span><span class="o">=</span> <span class="p">[</span><span class="k">CONSTRAINT</span> <span class="p">[</span><span class="err">约束名</span><span class="p">]]</span>
+        <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">col_name</span><span class="p">,...)</span> 
+        <span class="k">REFERENCES</span> <span class="nf">tbl_name</span> <span class="p">(</span><span class="n">col_name</span><span class="p">,...)</span>
+           <span class="p">[</span><span class="k">ON</span> <span class="k">DELETE</span> <span class="k">RESTRICT</span><span class="o">|</span><span class="k">CASCADE</span><span class="o">|</span><span class="kt">SET</span> <span class="no">NULL</span><span class="o">|</span><span class="n">NO</span> <span class="n">ACTION</span><span class="o">|</span><span class="kt">SET</span> <span class="k">DEFAULT</span><span class="p">]</span>
+           <span class="p">[</span><span class="k">ON</span> <span class="k">UPDATE</span> <span class="k">RESTRICT</span><span class="o">|</span><span class="k">CASCADE</span><span class="o">|</span><span class="kt">SET</span> <span class="no">NULL</span><span class="o">|</span> <span class="n">NO</span> <span class="n">ACTION</span><span class="o">|</span><span class="kt">SET</span> <span class="k">DEFAULT</span><span class="p">]</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>MySQL表级外码约束的好处是可以给约束命名，且支持多属性组合外码（即外码由多个列组成）。**事实上，外码约束定义在表一级，是不二的选择，因为MySQL对列级外码约束的支持仅停留在语法检查阶段，实际并没有实现(至少8.0.22还没有实现）。**外码约束的名称一般以“FK_”为前缀，这是约定俗成的规则。</p>
+<h2 id="14-check约束">1.4 check约束</h2>
+<h3 id="用户定义的完整性约束">用户定义的完整性约束</h3>
+<p>关系数据库的完整性约束共有三类：实体完整性约束，参照完整性约束以及用户定义的完整性约束。实体完整性约束和参照完整性约束分别用PRIMARY KEY和FOREIGN KEY来实现；CHECK约束是最主要的一类用户定义的完整性约束，用于定义用户对表中的某列的数据约束，或表中一行中几列之间应该满足的完整性约束。</p>
+<h3 id="check约束的定义方法">CHECK约束的定义方法</h3>
+<ul>
+<li>如果约束仅涉及单个列，则该约束既可以定义为列约束，也可以定义为表约束，例如：“性别”列的取值仅限从（“男”,“女”)中取值；</li>
+<li>如果约束涉及表的多个列，则该约束只能定义为表约束，例如：如果职称为“教授”，则它的薪资应当不低于6000元。这个约束涉及到“职称”和“薪资”两个列的内容，故只能用表约束来实现。</li>
+</ul>
+<p>CHECK约束的语法:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="n">CHECK约束</span> <span class="p">::</span><span class="o">=</span> <span class="p">[</span><span class="k">CONSTRAINT</span> <span class="p">[</span><span class="err">约束名</span><span class="p">]]</span> <span class="k">CHECK</span> <span class="p">(</span><span class="err">条件表达式</span><span class="p">)]</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>只有当条件表达式的值为true时，数据（插入的新数据，或修改后的数据）才会被接受，否则将被拒绝。</p>
+<h2 id="15-default约束">1.5 DEFAULT约束</h2>
+<p>默认值约束(Default约束)用于给表中的字段指定默认值，即往表里插入一条新记录时，如果没有给这个字段赋值，那么DBMS就会自动赋于这个字段默认值。</p>
+<p>Default约束只能定义为列一级约束，即在需要指定默认值的列之后用关键字DEFAULT申明默认值，其语法为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="n">col_name</span> <span class="n">data_type</span> <span class="p">[</span><span class="k">DEFAULT</span> <span class="err">{</span><span class="n">literal</span> <span class="o">|</span> <span class="p">(</span><span class="n">expr</span><span class="p">)</span><span class="err">}</span> <span class="p">]</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>即在列名与列的数据类型之后申明Default约束。当然Default约束只是众多列约束中的一种，该列可能还有NOT NULL, UNIQUE, AUTO_INCREMENT, CHECK，FOREIGN KEY等其它约束。</p>
+<p>DEFAULT关键字引出的默认值可以是常量，也可以是一个表达式。</p>
+<h3 id="举例">举例</h3>
+<ul>
+<li>AUTO_INCREMENT约束仅用于整数列;</li>
+<li>DEFAULT约束指定默认值为表达式时，表达式要写在一对括弧里;</li>
+<li>这里，curdate()是MySQL的系统函数，其功能是取当前日期;</li>
+<li>语句中，表名称order前后的符号是必须的，因为order是MySQL的关键字，当表名或列名与关键字冲突时，名称前后必须加`号。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">create</span> <span class="k">table</span> <span class="o">`</span><span class="k">order</span><span class="o">`</span><span class="p">(</span>   
+	<span class="n">orderNo</span> <span class="kt">int</span> <span class="kp">auto_increment</span> <span class="k">primary</span> <span class="k">key</span><span class="p">,</span>    
+	<span class="n">orderDate</span> <span class="kt">date</span> <span class="k">default</span> <span class="p">(</span><span class="nf">curdate</span><span class="p">()),</span>    
+	<span class="n">customerNo</span> <span class="kt">char</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>    
+	<span class="n">employeeNo</span> <span class="kt">char</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="16-unique约束">1.6 UNIQUE约束</h2>
+<h3 id="unique约束">UNIQUE约束</h3>
+<p>跟主码(Primary Key)约束一样，Unique约束既可以是对单属性的约束，也可以是对属性组约束，具有Unique约束的属性或属性组的取值必须是唯一的，否则就违反了Unique约束。不过，跟主码不同的是，Unique约束并不要求字段必须非空(Not Null)，所以，实际上，它只能约束非空的属性(组）取值是唯一的。同时具有Not Null约束的Unique属性(组)相当于候选码。一个表只能定义一个主码约束，但可以定义多个Unique约束。</p>
+<h3 id="unique约束的语法">UNIQUE约束的语法</h3>
+<p>跟主码约束一样，单字段的Unique约束既可定义为列约束，亦可定义为表约束，组合字段的Unique约束只能定义为表约束。</p>
+<p>Unique列约束的语法为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="n">col_name</span> <span class="n">data_type</span> <span class="k">UNIQUE</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Unique表约束的语法为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="p">[</span><span class="k">CONSTRAINT</span> <span class="p">[</span><span class="err">约束名</span><span class="p">]]</span> <span class="k">UNIQUE</span><span class="p">(</span><span class="err">列</span><span class="mi">1</span><span class="p">,</span> <span class="err">列</span><span class="mi">2</span><span class="p">,</span> <span class="p">...)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Constraint短语可以省略。既使写上关键词constraint，也可以省略约束名。约束未命名时，MySQL将按一定规则自动予以命名。</p>
+<p>NOT NULL只能作列约束，且不用命名。UNIQUE约束作列约束时不能自主命名，作表约束时可以自主命名。</p>
+<h1 id="2-表结构与完整性约束的修改">2 表结构与完整性约束的修改</h1>
+<h2 id="21-修改表名">2.1 修改表名</h2>
+<h3 id="alter-table语句">ALTER TABLE语句</h3>
+<p>Alter Table语句用于修改由Create Table语句创建的表的结构。比如，添加或删除列，添加或删除约束，创建或销毁索引，更改列的数据类型，更改列名甚至表名等。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">表名</span>
+<span class="p">[</span><span class="err">修改事项</span> <span class="p">[,</span> <span class="err">修改事项</span><span class="p">]</span> <span class="p">...]</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>常用修改事项有：</p>
+<ul>
+<li>用ADD关键词添加列和约束(主码、外码、CHECK、UNIQUE等约束)；</li>
+<li>用DROP关键词删除列、约束和索引(含Unique)；</li>
+<li>用MODIFY关键词修改列的定义(数据类型和约束)；</li>
+<li>用RENAME关键词修改列、索引和表的名称；</li>
+<li>用CHANGE关键词修改列的名称，同时还可以修改其定义(类型和约束)。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="err">修改事项</span> <span class="p">::</span><span class="o">=</span>
+    <span class="k">ADD</span> <span class="p">[</span><span class="k">COLUMN</span><span class="p">]</span> <span class="err">列名</span> <span class="err">数据类型</span> <span class="p">[</span><span class="err">列约束</span><span class="p">]</span>
+       <span class="p">[</span><span class="n">FIRST</span> <span class="o">|</span> <span class="n">AFTER</span> <span class="n">col_name</span><span class="p">]</span>
+  <span class="o">|</span> <span class="k">ADD</span> <span class="err">{</span><span class="k">INDEX</span><span class="o">|</span><span class="k">KEY</span><span class="err">}</span> <span class="p">[</span><span class="err">索引名</span><span class="p">]</span> <span class="p">[</span><span class="err">类型</span><span class="p">]</span> <span class="p">(</span><span class="err">列</span><span class="mi">1</span><span class="p">,...)</span> 
+  <span class="o">|</span> <span class="k">ADD</span> <span class="p">[</span><span class="k">CONSTRAINT</span> <span class="p">[</span><span class="err">约束名</span><span class="p">]]</span> <span class="err">主码约束</span>
+  <span class="o">|</span> <span class="k">ADD</span> <span class="p">[</span><span class="k">CONSTRAINT</span> <span class="p">[</span><span class="err">约束名</span><span class="p">]]</span> <span class="n">UNIQUE约束</span>
+  <span class="o">|</span> <span class="k">ADD</span> <span class="p">[</span><span class="k">CONSTRAINT</span> <span class="p">[</span><span class="err">约束名</span><span class="p">]]</span> <span class="err">外码约束</span>
+  <span class="o">|</span> <span class="k">ADD</span> <span class="p">[</span><span class="k">CONSTRAINT</span> <span class="p">[</span><span class="err">约束名</span><span class="p">]]</span> <span class="n">CHECK约束</span>
+  <span class="o">|</span> <span class="k">DROP</span> <span class="err">{</span><span class="k">CHECK</span><span class="o">|</span><span class="k">CONSTRAINT</span><span class="err">}</span> <span class="err">约束名</span>
+  <span class="o">|</span> <span class="k">ALTER</span> <span class="p">[</span><span class="k">COLUMN</span><span class="p">]</span> <span class="err">列名</span> <span class="err">{</span><span class="kt">SET</span> <span class="k">DEFAULT</span> <span class="err">{常量</span> <span class="o">|</span> <span class="p">(</span><span class="err">表达式</span><span class="p">)</span><span class="err">}</span> <span class="o">|</span> <span class="k">DROP</span> <span class="k">DEFAULT</span><span class="err">}</span>
+  <span class="o">|</span> <span class="k">CHANGE</span> <span class="p">[</span><span class="k">COLUMN</span><span class="p">]</span> <span class="err">列名</span> <span class="err">新列名</span> <span class="err">数据类型</span> <span class="p">[</span><span class="err">列约束</span><span class="p">]</span>
+        <span class="p">[</span><span class="n">FIRST</span> <span class="o">|</span> <span class="n">AFTER</span> <span class="n">col_name</span><span class="p">]</span>
+  <span class="o">|</span> <span class="k">DROP</span> <span class="p">[</span><span class="k">COLUMN</span><span class="p">]</span> <span class="err">列名</span>
+  <span class="o">|</span> <span class="k">DROP</span> <span class="err">{</span><span class="k">INDEX</span><span class="o">|</span><span class="k">KEY</span><span class="err">}</span> <span class="err">索引名</span>
+  <span class="o">|</span> <span class="k">DROP</span> <span class="k">PRIMARY</span> <span class="k">KEY</span>
+  <span class="o">|</span> <span class="k">DROP</span> <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="n">fk_symbol</span>
+  <span class="o">|</span> <span class="n">MODIFY</span> <span class="p">[</span><span class="k">COLUMN</span><span class="p">]</span> <span class="err">列名</span> <span class="err">数据类型</span> <span class="p">[</span><span class="err">列约束</span><span class="p">]</span>
+        <span class="p">[</span><span class="n">FIRST</span> <span class="o">|</span> <span class="n">AFTER</span> <span class="n">col_name</span><span class="p">]</span>
+  <span class="o">|</span> <span class="k">RENAME</span> <span class="k">COLUMN</span> <span class="err">列名</span> <span class="k">TO</span> <span class="err">新列名</span>
+  <span class="o">|</span> <span class="k">RENAME</span> <span class="err">{</span><span class="k">INDEX</span><span class="o">|</span><span class="k">KEY</span><span class="err">}</span> <span class="err">索引名</span> <span class="k">TO</span> <span class="err">新索引名</span>
+  <span class="o">|</span> <span class="k">RENAME</span> <span class="p">[</span><span class="k">TO</span><span class="o">|</span><span class="k">AS</span><span class="p">]</span> <span class="err">新表名</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>说明：</p>
+<ol>
+<li>注意<code>RENAME</code>,<code>MODIFY</code>和<code>CHANGE</code>的区别：仅改列名，用<code>RENAME</code>; 只改数据类型不改名，用<code>MODIFY</code>; 既改名又改数据类型，用<code>CHANGE</code>。</li>
+<li>在用MODIFY,CHANGE更改列的数据类型和约束时，修改后的CHECK约束并不会生效(MySQL只作语法检查，并未实现代码&ndash;至少MySQL 8.0.22还未实现)。但用ADD新增列的CHECK约束，是有效的。</li>
+<li>删除主码约束只能用<code>Drop Primary Key</code>短语,不能使用<code>drop constraint</code>短语，即便在创建主码约束时显式命名了该主码约束。试图使用“drop constraint 主码约束名”短语删除主码，会给出错误提示，显示该约束并不存在。因为MySQL并没有完全实现“constraint 约束名 primary key(&hellip;)”短语的功能，仅作了语法检查，然后直接忽略了主码约束的命名。</li>
+<li>给已有列增加Default约束，可用 alter 列 <code>set default ...</code> 短语；删除列的default约束，可用 <code>alter 列 drop default</code> 短语。当然，也可以用 <code>Modify 列名 数据类型 ...</code> 短语。如果该短语没有default约束，就相当于删除了原来的default约束，如果该短语带有default约束，就相当于添加了default约束，如果之前已有default约束，则新的Default约束将代替原有的Default约束;</li>
+<li>删除unique约束，既可用 <code>drop constraint 约束名</code> 短语，也可以用 <code>drop key 索引名</code> 短语来实现,唯一性(unique)约束实际是用<code>Unique</code>索引来实现的，Unique索引的名字总是与Unique约束名完全一样，它们本就是同一套机制。如果没有显式命名的话，Unqiue索引名或者说Unique约束名一般与列同名(组合属性作索引，则与组合属性中的第1列同名)。但要注意是的，在更改列名后，Unique索引名并不会随之更改。在创建Unqiue约束时，用“constriant”短语给约束取一个有意义的名字，是一个值得推荐的习惯。</li>
+</ol>
+<h3 id="更改表名">更改表名</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">alter</span> <span class="k">table</span> <span class="err">表名</span> <span class="k">rename</span> <span class="p">[</span><span class="k">TO</span><span class="o">|</span><span class="k">AS</span><span class="p">]</span> <span class="err">新表名</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="22-添加与删除字段">2.2 添加与删除字段</h2>
+<h3 id="给表添加字段">给表添加字段</h3>
+<ul>
+<li>关键字FIRST指示新添加的列为第1列；</li>
+<li>AFTER指示新添加的列紧跟在指定列的后面。</li>
+<li>如果省略位置指示，则新添加的列将成为表的最后一列。</li>
+<li>关键字column可以省略。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">表名</span> <span class="k">ADD</span> <span class="p">[</span><span class="k">COLUMN</span><span class="p">]</span> <span class="err">列名</span> <span class="err">数据类型</span> <span class="p">[</span><span class="err">列约束</span><span class="p">]</span>  <span class="p">[</span><span class="n">FIRST</span> <span class="o">|</span> <span class="n">AFTER</span> <span class="err">列名</span><span class="p">]</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>举个例子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">alter</span> <span class="k">table</span> <span class="n">student</span> 
+<span class="k">add</span> <span class="n">mobile</span> <span class="kt">char</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="k">constraint</span> <span class="n">CK_student_mobile</span> <span class="k">check</span><span class="p">(</span><span class="n">mobile</span> <span class="k">rlike</span> <span class="s1">&#39;1[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]&#39;</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>check约束中的rlike还可以用regexp替代，它们是同义语。跟Oracle一样，MySQL用正则匹配表达式来测试字段值是否符合某个pattern，rlike比like关键词所支持的功能要强大得多。</p>
+<h3 id="删除表中的字段">删除表中的字段</h3>
+<p>关键字COLUMN可以省略，其语法格式为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"> <span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">表名</span> <span class="k">DROP</span> <span class="p">[</span><span class="k">COLUMN</span><span class="p">]</span> <span class="err">列名</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>举个例子：</p>
+<p>在学生档案里记录年龄的作法并不科学，因为年龄会随着时间的变化而变化，档案里记录17岁，还得根据当年记录的日期以及当下的日期推算实际年龄。替代方案是记录出生日期而不是年龄。解决方案：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="c1"># 第1步：添加列DOB
+</span><span class="c1"></span><span class="k">alter</span> <span class="k">table</span> <span class="n">student</span> <span class="k">add</span> <span class="n">DOB</span> <span class="kt">date</span> <span class="n">after</span> <span class="n">sex</span><span class="p">;</span>
+<span class="c1"># 第2步，根据age推算DOB
+</span><span class="c1"></span><span class="k">update</span> <span class="n">student</span> <span class="kt">set</span> <span class="n">DOB</span> <span class="o">=</span> <span class="nf">date_add</span><span class="p">(</span><span class="s1">&#39;2020-9-1&#39;</span><span class="p">,</span> <span class="k">interval</span> <span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">age</span> <span class="kt">year</span><span class="p">);</span>	<span class="c1"># date_add()是mysql的函数
+</span><span class="c1"></span><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">student</span><span class="p">;</span>	<span class="c1"># 查看表student的内容
+</span><span class="c1"># 第3步，删除列age
+</span><span class="c1"></span><span class="k">alter</span> <span class="k">table</span> <span class="n">student</span> <span class="k">drop</span> <span class="n">age</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="23-修改字段">2.3 修改字段</h2>
+<p>修改列名、列数据类型和列约束，以及列序的修改事项有：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="err">修改事项</span> <span class="p">::</span><span class="o">=</span>
+   <span class="k">ALTER</span> <span class="p">[</span><span class="k">COLUMN</span><span class="p">]</span> <span class="err">列名</span> <span class="err">{</span><span class="kt">SET</span> <span class="k">DEFAULT</span> <span class="err">{常量</span> <span class="o">|</span> <span class="p">(</span><span class="err">表达式</span><span class="p">)</span><span class="err">}</span> <span class="o">|</span> <span class="k">DROP</span> <span class="k">DEFAULT</span><span class="err">}</span>
+  <span class="o">|</span> <span class="k">CHANGE</span> <span class="p">[</span><span class="k">COLUMN</span><span class="p">]</span> <span class="err">列名</span> <span class="err">新列名</span> <span class="err">数据类型</span> <span class="p">[</span><span class="err">列约束</span><span class="p">]</span>
+        <span class="p">[</span><span class="n">FIRST</span> <span class="o">|</span> <span class="n">AFTER</span> <span class="n">col_name</span><span class="p">]</span>
+  <span class="o">|</span> <span class="n">MODIFY</span> <span class="p">[</span><span class="k">COLUMN</span><span class="p">]</span> <span class="err">列名</span> <span class="err">数据类型</span> <span class="p">[</span><span class="err">列约束</span><span class="p">]</span>
+        <span class="p">[</span><span class="n">FIRST</span> <span class="o">|</span> <span class="n">AFTER</span> <span class="n">col_name</span><span class="p">]</span>
+  <span class="o">|</span> <span class="k">RENAME</span> <span class="k">COLUMN</span> <span class="err">列名</span> <span class="k">TO</span> <span class="err">新列名</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>CHANGE短语可修改列名、数据类型和列约束；</li>
+<li>MODIFY短语可修改列的数据类型和约束；</li>
+<li>RENAME短语仅用于更改列名；</li>
+<li>ALTER短语仅用于修改列的DEFAULT约束或删除列的DEFAULT约束。</li>
+<li>CHANGE和MODIFY短语还可以修改列在表中的位置。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">create</span> <span class="k">database</span> <span class="n">MyDb</span><span class="p">;</span>
+<span class="k">use</span> <span class="n">MyDb</span><span class="p">;</span>
+<span class="k">create</span> <span class="k">table</span> <span class="nf">s</span><span class="p">(</span>
+    <span class="n">sno</span> <span class="kt">char</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">primary</span> <span class="k">key</span><span class="p">,</span>
+    <span class="n">name</span> <span class="kt">varchar</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span> <span class="k">not</span> <span class="no">null</span><span class="p">,</span>
+    <span class="n">ID</span> <span class="kt">char</span><span class="p">(</span><span class="mi">18</span><span class="p">)</span> <span class="k">unique</span>
+<span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="修改字段名称">修改字段名称</h3>
+<p>注意：关键字COLUMN不能省略</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">表名</span> <span class="k">RENAME</span> <span class="k">COLUMN</span> <span class="err">列名</span> <span class="k">TO</span> <span class="err">新列名</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>如果修改列名的同时，还要修改列的类型和约束，则用CHANGE短语：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">表名</span> <span class="k">CHANGE</span> <span class="p">[</span><span class="k">COLUMN</span><span class="p">]</span> <span class="err">列名</span> <span class="err">新列名</span> <span class="err">数据类型</span> <span class="p">[</span><span class="err">列约束</span><span class="p">]</span> <span class="p">[</span><span class="n">FIRST</span> <span class="o">|</span> <span class="n">AFTER</span> <span class="n">col_name</span><span class="p">]</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>如果新列带有CHECK约束的话，MySQL只会对这个约束作语法检查，并不会去实现这个约束，其它类型的约束没有问题。如果真有这样的需求，不如先DROP之前的列，再ADD新的列，新列附带的CHECK约束是会被实现的。</p>
+<h3 id="修改字段的数据类型和约束">修改字段的数据类型和约束</h3>
+<p>如果列名称不变，仅需要修改其数据类型和约束，则用MODIFY短语：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">表名</span> <span class="n">MODIFY</span> <span class="p">[</span><span class="k">COLUMN</span><span class="p">]</span> <span class="err">列名</span> <span class="err">数据类型</span> <span class="p">[</span><span class="err">列约束</span><span class="p">]</span>  <span class="p">[</span><span class="n">FIRST</span> <span class="o">|</span> <span class="n">AFTER</span> <span class="n">col_name</span><span class="p">]</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>注意，一旦使用MODIFY短语修改列，则该列之前的数据类型、约束将被新的数据类型和约束取而代之。如果之前定义了列约束，修改后不带列约束，相当于删除了之前的约束。</p>
+</blockquote>
+<p>如果需要修改(或添加)列的DEFAULT约束，则既可用上面的MODIFY短语，也可以使用ALTER短语：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">表名</span> <span class="k">ALTER</span> <span class="p">[</span><span class="k">COLUMN</span><span class="p">]</span> <span class="err">列名</span> <span class="kt">SET</span> <span class="k">DEFAULT</span> <span class="err">{常量</span> <span class="o">|</span> <span class="p">(</span><span class="err">表达式</span><span class="p">)</span><span class="err">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>删除列的DEFAULT约束，则可以使用ALTER短语(或MODIFY短语)：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">表名</span> <span class="k">ALTER</span> <span class="p">[</span><span class="k">COLUMN</span><span class="p">]</span> <span class="err">列名</span> <span class="k">DROP</span> <span class="k">DEFAULT</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="修改字段在表中的位置">修改字段在表中的位置</h3>
+<p>如果仅需修改列在表中的位置，仍用MODIFY短语：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">表名</span> <span class="n">MODIFY</span> <span class="p">[</span><span class="k">COLUMN</span><span class="p">]</span> <span class="err">列名</span> <span class="err">数据类型</span> <span class="p">[</span><span class="err">列约束</span><span class="p">]</span>  <span class="p">[</span><span class="n">FIRST</span> <span class="o">|</span> <span class="n">AFTER</span> <span class="n">col_name</span><span class="p">]</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>举个例子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">alter</span> <span class="k">table</span> <span class="n">resident</span> <span class="n">modify</span> <span class="n">idNo</span> <span class="kt">char</span><span class="p">(</span><span class="mi">18</span><span class="p">),</span>
+       <span class="n">modify</span> <span class="n">height</span> <span class="kt">int</span> <span class="k">unsigned</span><span class="p">,</span>
+       <span class="k">rename</span> <span class="k">column</span> <span class="n">educationalBackground</span> <span class="k">to</span> <span class="n">education</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="24-添加删除与修改约束">2.4 添加、删除与修改约束</h2>
+<h3 id="主码的添加与删除">主码的添加与删除</h3>
+<p>删除主码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">表名</span> <span class="k">DROP</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">;</span>
+<span class="k">drop</span> <span class="k">index</span> <span class="o">`</span><span class="k">PRIMARY</span><span class="o">`</span> <span class="k">on</span> <span class="err">表名</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>添加主码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">表名</span> <span class="k">ADD</span> <span class="p">[</span><span class="k">CONSTRAINT</span> <span class="p">[</span><span class="err">约束名</span><span class="p">]]</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">(</span><span class="err">列</span><span class="mi">1</span><span class="p">,</span><span class="err">列</span><span class="mi">2</span><span class="p">,...);</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>MySQL尽管在语法上支持主码约束的命名，但实际上并没有真正实现主码约束的命名功能。即，MySQL并不会创建用户语句中所指定的约束名。所以，试图通过约束名删除主码约束是行不通的。</p>
+<p>MySQL中，所有的主码约束(主码索引)名均为PRIMARY，无论怎么命名或更命，这个名字都不会改变。由于PRIMARY是MySQL的保留字，所以，在引用这个主码约束(索引)名时，必须用一对``符号将PRIMARY括起来。</p>
+</blockquote>
+<p>举个例子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="c1"># 第1步：删除错误的主码定义
+</span><span class="c1"></span><span class="k">alter</span> <span class="k">table</span> <span class="n">score</span> <span class="k">drop</span> <span class="k">primary</span> <span class="k">key</span><span class="p">;</span>
+<span class="c1"># 第2步：重新创建主码
+</span><span class="c1"></span><span class="k">alter</span> <span class="k">table</span> <span class="n">score</span> <span class="k">add</span> <span class="k">constraint</span> <span class="n">PK_score</span> <span class="k">primary</span> <span class="k">key</span><span class="p">(</span><span class="n">sno</span><span class="p">,</span><span class="n">cno</span><span class="p">);</span> 
+<span class="k">alter</span> <span class="k">table</span> <span class="n">score</span> <span class="k">add</span> <span class="k">primary</span> <span class="k">key</span><span class="p">(</span><span class="n">sno</span><span class="p">,</span><span class="n">cno</span><span class="p">);</span>
+
+<span class="c1"># 进阶版
+</span><span class="c1"></span><span class="k">alter</span> <span class="k">table</span> <span class="n">score</span> <span class="k">drop</span> <span class="k">primary</span> <span class="k">key</span><span class="p">,</span> <span class="k">add</span> <span class="k">primary</span> <span class="k">key</span><span class="p">(</span><span class="n">sno</span><span class="p">,</span><span class="n">cno</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="外码的删除与添加">外码的删除与添加</h3>
+<p>删除外码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">表名</span> <span class="k">DROP</span> <span class="k">CONSTRAINT</span> <span class="err">约束名</span>
+<span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">表名</span> <span class="k">DROP</span> <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="err">约束名</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>添加外码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">表名</span> <span class="k">ADD</span> <span class="p">[</span><span class="k">CONSTRAINT</span> <span class="p">[</span><span class="err">约束名</span><span class="p">]]</span> <span class="err">外码约束</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>约束名是可选的，如果省略命名短语，MySQL将按一定的规则自动命名。将来如果要删除该约束，必须先查询到该约束的名字（注：从MySQL的数据字典查询）。</p>
+</blockquote>
+<p>创建外码时，MySQL将同步创建外码索引，如果外码约束有显式命名，则外码索引与外码约束同名。如果外码约束未命名，则外码索引与外码列的列名同名。</p>
+<p>删除外码约束时，外码索引不会跟着删除。如果将来重新创建了外码，并显式命名，则外码索引会自动更名(与外码约束名保持相同)。</p>
+<h3 id="check约束的删除与添加">CHECK约束的删除与添加</h3>
+<p>删除check约束：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">表名</span> <span class="k">DROP</span> <span class="k">CONSTRAINT</span> <span class="err">约束名</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>添加check约束：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">表名</span> <span class="k">ADD</span> <span class="p">[</span><span class="k">CONSTRAINT</span> <span class="p">[</span><span class="err">约束名</span><span class="p">]]</span> <span class="k">check</span><span class="p">(</span><span class="err">条件表达式</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>添加约束时，如果现有数据与该约束规则相矛盾，则创建约束的请求会被拒绝。</p>
+</blockquote>
+<h3 id="unique约束的添加与删除">UNIQUE约束的添加与删除</h3>
+<p>删除Unique约束：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">alter</span> <span class="k">table</span> <span class="err">表名</span> <span class="k">drop</span> <span class="k">constraint</span> <span class="err">约束名</span><span class="p">;</span>
+<span class="k">drop</span> <span class="k">index</span> <span class="err">索引名</span> <span class="k">on</span> <span class="err">表名</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>添加Unique约束：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">alter</span> <span class="k">table</span> <span class="err">表名</span> <span class="k">ADD</span> <span class="p">[</span><span class="k">CONSTRAINT</span> <span class="p">[</span><span class="err">约束名</span><span class="p">]]</span> <span class="k">UNIQUE</span><span class="p">(</span><span class="err">列</span><span class="mi">1</span><span class="p">,...)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>创建unique约束时，将同步创建unique索引，索引名与约束同名。如果未显式命名unique约束或索引，MySQL将按一定规则自动命名（单列的unique索引或约束与列同名）。</p>
+<p>约束的修改一般通过先删除旧约束再重建新约束来实现。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-12-07</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%80/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%80/" data-title="Mysql数据库基本语法(一)" data-hashtags="Mysql"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%80/" data-hashtag="Mysql"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%80/" data-title="Mysql数据库基本语法(一)"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%80/" data-title="Mysql数据库基本语法(一)"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%80/" data-title="Mysql数据库基本语法(一)"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/mysql/">Mysql</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" class="prev" rel="prev" title="计算机网络知识总结"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>计算机网络知识总结</a>
+            <a href="/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%BA%8C/" class="next" rel="next" title="Mysql数据库基本语法(二)">Mysql数据库基本语法(二)<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">菜菜</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

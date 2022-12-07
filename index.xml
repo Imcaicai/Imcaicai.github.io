@@ -3,9 +3,67 @@
         <title>菜菜的秘密花园</title>
         <link>https://imcaicai.github.io/</link>
         <description>菜菜的秘密花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 04 Dec 2022 19:25:17 &#43;0800</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 07 Dec 2022 14:51:25 &#43;0800</lastBuildDate>
             <atom:link href="https://imcaicai.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Mysql数据库基本语法(四)</title>
+    <link>https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E5%9B%9B/</link>
+    <pubDate>Wed, 07 Dec 2022 14:51:25 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E5%9B%9B/</guid>
+    <description><![CDATA[7 并发控制与事务的隔离级别 7.1 并发控制与事务的隔离级别 并发操作可能产生的数据不一致性 数据库是共享资源，允许多个用户同时访问同一数据库，特别是在互联网应用成为主流的当下，高可用性、高并发是所有应用追求的目标。但并发操作不加控制，便会产生数据的不一致性。 并发操作可能带来的数据不一致性包括：
+ 丢失修改(lost update) 读脏数据(dirty read) 不可重复读(non-repeatable read) 幻读(phantom read)  为解决上述不一致性问题,DBMS设计了专门的并发控制子系统，采用封锁机制进行并发控制，以保证事务的隔离性和一致性(事务是并发控制的基本单位)。
+但事务的隔离程度越高，固然一致性&ndash;或者説数据的正确性越有保障，但并发度就会越低。很多时候，需要在一致性和并发度间进行取舍，从而就生产了事务的隔离级别的概念。 隔离级别越高，一致性程度越高，并发度越低。反之，隔离级别越低，并发度越高，但代价是会出现某些数据不一致现象。
+低隔离级别可以支持更高的并发处理，同时占用的系统资源更少,但可能产生数据不一致的情形也更多一些。
+查询事务的隔离级别 可用以下语句查询MySQL的事务隔离级别：
+1  select @@GLOBAL.transaction_isolation, @@transaction_isolation;   其中，@@GLOBAL.transaction_isolation全局变量，@@transaction_isolation为本会话期内的变量。通常通过重设该变量的值以改变隔离级别。 上述两个变量的缺省值均为：REPEATABLE-READ，即可重复读。
+设置事务的隔离级别 以下语句设置事务的隔离级别为可读未提交(read uncommitted):
+1  set session transaction isolation level read uncommitted;   如需设置为其它级别，只需替换最后的隔离级别即可。 不同的事务隔离级别意味着不同的封锁协议，程序员只需设置事务的隔离级别即可，其它的交给DBMS并发子系统处理。 不过，MySQL也有lock tables和unlock tables语句，可以直接锁表，另外，MySQL还支持在select语句中使用for share或for update短语主动申请S锁或X锁(只到事务结束才释放)。这样，即使在隔离级别为read uncommitted的情形下，仍有机会保证可重复读，相关内容请参阅MySQL官方文档。
+7.2 读脏 读脏 读脏(dirty read)，或者又叫脏读，是指一个事务(t1)读取到另一个事务(t2)修改后的数据，后来事务t2又撤销了本次修改(即事务t2以roll back结束)，数据恢复原值。这样，事务t1读到的数据就与数据库里的实际数据不一致，这样的数据被称为“脏”数据，意即不正确的数据。
+读脏产生的原因 显然，产生读脏的原因，是事务t1读取数据时，修改该数据的事务t2还没有结束(commit或roll back，统称uncommitted),且t1读取的时间点又恰在t2修改该数据之后。
+7.3 不可重复读 不可重复读 不可重复读(unrepeatable read)，是指一个事务(t1)读取到某数据后，另一个事务(t2)修改了该，事务t1并未修改该数据，但当t1再次读取该数据时，发现两次读取的结果不一样。
+产生不可重复读的原因 显然，不可重复读产生的原因，是事务t1的两次读取之间，有另一个事务修改了t1读取的数据。]]></description>
+</item>
+<item>
+    <title>Mysql数据库基本语法(三)</title>
+    <link>https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%89/</link>
+    <pubDate>Wed, 07 Dec 2022 14:46:05 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%89/</guid>
+    <description><![CDATA[5 用户自定义函数 函数其实有多种，比如标量函数(仅返回一个值)和表函数(返回结果是表),语法也各不相同。这里，我们仅给出一个简化的创建标量函数的语法:
+1 2 3 4 5 6  create function function_name([para data_type[,...]]) returns data_type begin function_body; return expression; end    function_name:函数名； para:参数名； data_type:参数的数据类型； 一个函数可以没有参数，也可以有多个。多参数间用逗号分隔。 function_body:函数体。即由合法的SQL语句组成的程序段。 expression:函数返回值，可以是常量、表达式，甚至是一条select语句查询的值（必须保证结果唯一);该值类型应与returns短语定义的类型相同。  函数一旦定义，就可以像内部函数一样使用，比如出现在select列表、表达式、以及where子句的条件中。
+ MySQL的函数定义与存储过程的定义一样，在定义函数之前要用“delimiter 界符”语句指定函数定义的结束界符，并在函数定义后，再次使用“delimiter 界符”语句恢复MySQL语句的界符(分号)。
+ 6 安全性控制 与大多数商用DBMS一样，MySQL采用自主存取控制(DAC)机制进行安全性管理。通过用户，数据对象，权限，授权，收回权限等要素进行存取控制。另外，为了方便批量授权给同一类用户，引入了角色。
+6.1 用户（User） MySQL创建用户的语句：
+1  create user 用户名 identified by 用户登录密码；   通常用户名可包含域名，限定用户在该域名内登录再有效。例：
+1  CREATE USER &#39;jeffrey&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;password&#39;;   该语句创建用户jeffrey,密码为&rsquo;password'，仅限在MySQL服务器本机上登录才有效。用户名与域合起来，被称为账户(account)。 注意不要写成：&lsquo;jeffrey@localhost&rsquo;，它代表账户： &lsquo;jeffrey@localhost&rsquo;@'%' 意即用户名为jefrrey@localhost，在任何机器上登录都有效。两者的含义完全不同。
+drop user语句可删除用户。用户被删除时，该用户拥有的权限自动被收回。]]></description>
+</item>
+<item>
+    <title>Mysql数据库基本语法(二)</title>
+    <link>https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%BA%8C/</link>
+    <pubDate>Wed, 07 Dec 2022 14:45:58 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%BA%8C/</guid>
+    <description><![CDATA[3存储过程与事务 3.1 使用流程控制语句的存储过程 变量的定义与赋值 用declare语句定义变量，并赋予默认值或初始值，未赋默认值则初始值为null：
+1  DECLARE var_name [, var_name] ... type [DEFAULT value]   用set语句给变量赋值，set语句还可以设置许多MySQL的配置参数。
+1  SET variable = expr [, variable = expr]   通过select语句给变量赋值，select语句可以带复杂的where，group by，having等短语。
+1  select col into var_name from table; #将table表中的col列值赋给变量   复合语句与流程控制语句 复合语句BEGIN&hellip;END
+1 2 3  BEGIN [statement_list] END;   if语句
+1 2 3 4  IF search_condition THEN statement_list [ELSEIF search_condition THEN statement_list] ... [ELSE statement_list] END IF;   while语句]]></description>
+</item>
+<item>
+    <title>Mysql数据库基本语法(一)</title>
+    <link>https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%80/</link>
+    <pubDate>Wed, 07 Dec 2022 14:45:49 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%80/</guid>
+    <description><![CDATA[1 数据库、表与完整性约束的定义 1.1 创建数据库 进入mysql：
+1  mysql -h127.0.0.1 -uroot -p   创建数据库：
+1  CREATE DATABASE dbname;   指明访问的数据库：
+1  use dbname;   1.2 创建表及表的主码约束 建表语法  CREATE TABLE为保留字，其语义为创建表对象； IF NOT EXISTS为可选短语，其语义为仅当该表不存在时才创建表；如果不带该短语，创建表时，如果同名表已存在，则输出报错信息； tbl_name为表的名字； (列定义|表约束,&hellip;)表示表的其它定义都写在一对括号里，括号里为一个或多个“列定义”或“表约束”，如果有多个列的定义或表约束，则它们之间用逗号隔开。  1 2  CREATE TABLE [IF NOT EXISTS] tbl_name (列定义|表约束,...)   列定义语法  [NOT NULL |NULL]表示空或非空约束，缺省为NULL，即该列的内容允许为空值，NOT NULL则约束该列的内容必须为非空； DEFAULT关键字为列指定缺省值，可以是常量，也可以是表达式； AUTO_INCREMENT指定该列为自增列(如1，2，3，&hellip;)，一般用于自动编号，显然只有数字类型的列才可以定义这一特性； [UNIQUE]指定该列值具有唯一性（但可以有空值-甚至多个空值的存在，如果该列没有定义NOT NULL约束）； PRIMARY KEY指定该列为主码，相当于定义表的实体完整性约束；只有当主码由单属性组成时，才可以这样定义主码（主码由多属性组成时，应当用表约束来定义）； COMMENT用来给列附加一条注释； “REFERENCES”短语为该列定义参照完整性约束，指出该列引用哪个表的哪一列的值，以及违背参照完整性后的具体处理规则（多个规则中选一），具体内容将在随后的练习里再讲解； CHECK(表达式)为列指定“自定义约束”，只有使（表达式）的值为true的数据才允许写入数据库；关键词CONSTRAINT用来为约束命名。  1 2 3 4 5 6 7 8 9  列定义 ::= 列名 数据类型 [NOT NULL | NULL] [DEFAULT {常量 | (表达式)} ] [AUTO_INCREMENT] [UNIQUE [KEY]] [PRIMARY KEY] [COMMENT &#39;列备注&#39;] [REFERENCES tbl_name (col_name) [ON DELETE RESTRICT|CASCADE|SET NULL|NO ACTION|SET DEFAULT] [ON UPDATE RESTRICT|CASCADE|SET NULL| NO ACTION|SET DEFAULT]] [[CONSTRAINT [约束名]] CHECK (表达式)]   表约束语法  主码约束以“PK_”打头，后跟表名，一个表只会有一个主码约束； 外码约束以“FK_”打头，后跟表名及列名； CHECK约束以“CK_”打头，后跟表名及列名。  1 2 3 4 5 6 7 8  表约束 ::= [CONSTRAINT [约束名]] | PRIMARY KEY (key_part,.]]></description>
+</item>
+<item>
     <title>计算机网络知识总结</title>
     <link>https://imcaicai.github.io/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/</link>
     <pubDate>Sat, 03 Dec 2022 11:05:24 &#43;0800</pubDate>
@@ -72,60 +130,17 @@ Please make sure you have the correct access rights and the repository exists.
 1  adb install -t app-debug.apk   ]]></description>
 </item>
 <item>
-    <title>Mysql数据库基本语法</title>
-    <link>https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</link>
+    <title>Mysql数据库基本语法(五)</title>
+    <link>https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%BA%94/</link>
     <pubDate>Fri, 28 Oct 2022 10:15:12 &#43;0800</pubDate>
     <author>菜菜</author>
-    <guid>https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</guid>
-    <description><![CDATA[1 数据库、表与完整性约束的定义 1.1 创建数据库 进入mysql：
-1  mysql -h127.0.0.1 -uroot -p   创建数据库：
-1  CREATE DATABASE dbname;   指明访问的数据库：
-1  use dbname;   1.2 创建表及表的主码约束 建表语法  CREATE TABLE为保留字，其语义为创建表对象； IF NOT EXISTS为可选短语，其语义为仅当该表不存在时才创建表；如果不带该短语，创建表时，如果同名表已存在，则输出报错信息； tbl_name为表的名字； (列定义|表约束,&hellip;)表示表的其它定义都写在一对括号里，括号里为一个或多个“列定义”或“表约束”，如果有多个列的定义或表约束，则它们之间用逗号隔开。  1 2  CREATE TABLE [IF NOT EXISTS] tbl_name (列定义|表约束,...)   列定义语法  [NOT NULL |NULL]表示空或非空约束，缺省为NULL，即该列的内容允许为空值，NOT NULL则约束该列的内容必须为非空； DEFAULT关键字为列指定缺省值，可以是常量，也可以是表达式； AUTO_INCREMENT指定该列为自增列(如1，2，3，&hellip;)，一般用于自动编号，显然只有数字类型的列才可以定义这一特性； [UNIQUE]指定该列值具有唯一性（但可以有空值-甚至多个空值的存在，如果该列没有定义NOT NULL约束）； PRIMARY KEY指定该列为主码，相当于定义表的实体完整性约束；只有当主码由单属性组成时，才可以这样定义主码（主码由多属性组成时，应当用表约束来定义）； COMMENT用来给列附加一条注释； “REFERENCES”短语为该列定义参照完整性约束，指出该列引用哪个表的哪一列的值，以及违背参照完整性后的具体处理规则（多个规则中选一），具体内容将在随后的练习里再讲解； CHECK(表达式)为列指定“自定义约束”，只有使（表达式）的值为true的数据才允许写入数据库；关键词CONSTRAINT用来为约束命名。  1 2 3 4 5 6 7 8 9  列定义 ::= 列名 数据类型 [NOT NULL | NULL] [DEFAULT {常量 | (表达式)} ] [AUTO_INCREMENT] [UNIQUE [KEY]] [PRIMARY KEY] [COMMENT &#39;列备注&#39;] [REFERENCES tbl_name (col_name) [ON DELETE RESTRICT|CASCADE|SET NULL|NO ACTION|SET DEFAULT] [ON UPDATE RESTRICT|CASCADE|SET NULL| NO ACTION|SET DEFAULT]] [[CONSTRAINT [约束名]] CHECK (表达式)]   表约束语法  主码约束以“PK_”打头，后跟表名，一个表只会有一个主码约束； 外码约束以“FK_”打头，后跟表名及列名； CHECK约束以“CK_”打头，后跟表名及列名。  1 2 3 4 5 6 7 8  表约束 ::= [CONSTRAINT [约束名]] | PRIMARY KEY (key_part,.]]></description>
-</item>
-<item>
-    <title>Git基本用法&amp;报错记录</title>
-    <link>https://imcaicai.github.io/git%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95%E6%8A%A5%E9%94%99%E8%AE%B0%E5%BD%95/</link>
-    <pubDate>Fri, 21 Oct 2022 09:44:35 &#43;0800</pubDate>
-    <author>菜菜</author>
-    <guid>https://imcaicai.github.io/git%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95%E6%8A%A5%E9%94%99%E8%AE%B0%E5%BD%95/</guid>
-    <description><![CDATA[基本流程 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20  # 初始化仓库 git init # 将本地库关联至远程仓库 git remote add origin git@github.com:....github.io.git # 查看当前修改状态  git status # 添加修改过得文件， . 表示所有，也可以指定文件  git add . # &#34;&#34;里面的内容就是提交内容的说明信息  git commit -m &#34;first commit&#34; # 第一次提交方法1 git push -u -f origin main #第一次提交方法2 git pull origin main --allow-unrelated-histories git push -u origin main # 以后提交 git push   其他用法 1 修改分支名 1  git branch -m oldBranchName newBranchName   2 取消与远程仓库的关联 1  git remote remove origin   3 实现本地库同时关联GitHub和Gitee 1 2 3 4 5 6 7 8 9 10 11 12 13  # 初始化仓库 git init # 将本地库同时和GitHub、Gitee的远程仓库关联 git remote add github git@github.]]></description>
-</item>
-<item>
-    <title>Echo框架入门</title>
-    <link>https://imcaicai.github.io/echo%E6%A1%86%E6%9E%B6%E5%85%A5%E9%97%A8/</link>
-    <pubDate>Thu, 20 Oct 2022 19:56:54 &#43;0800</pubDate>
-    <author>菜菜</author>
-    <guid>https://imcaicai.github.io/echo%E6%A1%86%E6%9E%B6%E5%85%A5%E9%97%A8/</guid>
-    <description><![CDATA[1 路由与控制器 1 路由规则  一条路由规则由：http请求方法 , url路径 , 控制器函数  组成  1.http请求方法
- GET POST PUT DELETE  2.url路径
- 静态url路径 带路径参数的url路径 带星号（*）模糊匹配参数的url路径  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23  // 例子1， 静态Url路径, 即不带任何参数的url路径 /users/center /user/101 /food/100 // 例子2，带路径参数的url路径，url路径上面带有参数,参数由冒号（:）跟着一个字符串定义。 // 路径参数值可以是数值，也可以是字符串  //定义参数:id， 可以匹配/user/1, /user/899 /user/xiaoli 这类Url路径 /user/:id //定义参数:id， 可以匹配/food/2, /food/100 /food/apple 这类Url路径 /food/:id //定义参数:type和:page， 可以匹配/foods/2/1, /food/100/25 /food/apple/30 这类Url路径 /foods/:type/:page // 例子3.]]></description>
-</item>
-<item>
-    <title>Go-net标准库应用</title>
-    <link>https://imcaicai.github.io/go-net%E6%A0%87%E5%87%86%E5%BA%93%E5%BA%94%E7%94%A8/</link>
-    <pubDate>Thu, 20 Oct 2022 00:00:00 &#43;0000</pubDate>
-    <author>菜菜</author>
-    <guid>https://imcaicai.github.io/go-net%E6%A0%87%E5%87%86%E5%BA%93%E5%BA%94%E7%94%A8/</guid>
-    <description><![CDATA[在go语言标准库中，net包提供了可移植的网络I/O接口，包括TCP/IP、UDP、域名解析和Unix域socket。
-1 服务端 1. 解析地址 在TCP服务端我们需要监听一个TCP地址，因此建立服务端前我们需要生成一个正确的TCP地址，这就需要用到 Resolve 函数。
-1 2 3 4 5 6 7 8  // ResolveTCPAddr函数会输出一个TCP连接地址和一个错误信息 func ResolveTCPAddr(network, address string) (*TCPAddr, error) // 解析IP地址 func ResolveIPAddr(net, addr string) (*IPAddr, error) // 解析UDP地址 func ResolveUDPAddr(net, addr string) (*UDPAddr, error) // 解析Unix地址 func ResolveUnixAddr(net, addr string) (*UnixAddr, error)   2. 监听请求 我们可以通过 Listen 方法监听我们解析后的网络地址。
-1 2 3 4 5 6 7 8 9 10 11 12  // 监听net类型，地址为laddr的地址 func Listen(net, laddr string) (Listener, error) // 监听TCP地址 func ListenTCP(network string, laddr *TCPAddr) (*TCPListener, error) // 监听IP地址 func ListenIP(netProto string, laddr *IPAddr) (*IPConn, error) // 监听UDP地址 func ListenMulticastUDP(net string, ifi *Interface, gaddr *UDPAddr) (*UDPConn, error) func ListenUDP(net string, laddr *UDPAddr) (*UDPConn, error) // 监听Unix地址 func ListenUnixgram(net string, laddr *UnixAddr) (*UnixConn, error) func ListenUnix(net string, laddr *UnixAddr) (*UnixListener, error)   3.]]></description>
-</item>
-<item>
-    <title>Vision GNN: An Image is Worth Graph of Nodes</title>
-    <link>https://imcaicai.github.io/an-image-is-worth-graph-of-nodes/</link>
-    <pubDate>Mon, 17 Oct 2022 00:00:00 &#43;0000</pubDate>
-    <author>菜菜</author>
-    <guid>https://imcaicai.github.io/an-image-is-worth-graph-of-nodes/</guid>
-    <description><![CDATA[本文为论文 Vision GNN: An Image is Worth Graph of Nodes 的阅读笔记。
-论文下载：https://arxiv.org/abs/2206.00272
-引言 网络架构在基于深度学习的计算机视觉中起着关键作用。广泛使用的CNN和 transformer（变换器）将图像视为 grid（网格）或 sequence（序列）结构，这对于捕捉不规则、复杂的物体来说是不灵活的。本文建议将图像表示为一个 graph 结构，并引入一个新的 Vision GNN（ViG）架构来提取视觉任务的图层特征。
-文章主要工作：
- 介绍了计算机视觉方面的现有模型方法和成果 介绍ViG模型的构建过程及工作原理，为未来的研究提供有用的灵感和经验 通过图像分类和物体检测实验证明了ViG模型在视觉任务中的有效性  1 相关研究 CNN 曾经是计算机视觉中标准的网络结构，但近来 transformer with attention mechanism 、MLP-based 等模型也在不断发展，这些正在将视觉模型推向一个前所未有的高度。
-1.1 3种图像结构 不同的网络结构以不同的方式处理输入的图像，通常有grid, sequence ,graph 3种，如下图所示。在 grid  和 sequence 结构中，节点只按空间位置排序；在 graph 结构中，节点是通过其内容连接的，不受局部位置的限制。
-CNN 在图像上应用滑动窗口，并引入移位变异性和位置性；最近的 vision transformer 或 MLP 将图像视为 a sequence of patches（补丁序列）。
-由于物体形状通常不是规则的四边形，常用的 grid 或 sequence 结构处理起图像来不够灵活，所以在本文中采用 graph 结构。
-1.2 3种模型  CNN：曾经是计算机视觉中的主流网络结构，已经成功地应用于各种视觉任务，如图像分类、物体检测和语义分割。CNN模型在过去的十年里发展迅速，代表性的模型包括ResNet、MobileNet和NAS。 Vision transformer：从2020年开始，被引入到视觉任务中，ViT的一些变体开始被提出来以提高视觉任务的性能。主要的改进包括金字塔结，局部注意和位置编码。 MLP：通过专门设计的模块，MLP可以达到有竞争力的性能，并且在一般的视觉任务（如物体检测和分割）上工作。  1.]]></description>
+    <guid>https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%BA%94/</guid>
+    <description><![CDATA[9 数据库应用开发（JAVA篇） 9.1 JDBC体系结构和简单的查询 JDBC的体系结构 JDBC（Java DataBase Connectivity,java数据库连接）是一种用于执行SQL语句的Java API，可以为多种关系数据库提供统一访问，它由一组用Java语言编写的类和接口组成。JDBC提供了一种基准，据此可以构建更高级的工具和接口，使数据库开发人员能够编写数据库应用程序。 Java 具有坚固、安全、易于使用、易于理解和可从网络上自动下载等特性，是编写数据库应用程序的杰出语言。所需要的只是 Java应用程序与各种不同数据库之间进行对话的方法。 JDBC可以在各种平台上使用Java，如Windows，Mac OS和各种版本的UNIX。 JDBC API支持用于数据库访问的两层和三层处理模型，但通常，JDBC体系结构由两层组成：
+ JDBC API：这提供了应用程序到JDBC管理器连接。 JDBC驱动程序API：这支持JDBC管理器到驱动程序连接。  JDBC的核心组件 JDBC的核心组件包括：
+ DriverManager： 此类管理数据库驱动程序列表。使用通信子协议将来自java应用程序的连接请求与适当的数据库驱动程序匹配。 Driver:此接口处理与数据库服务器的通信，我们很少会直接与Driver对象进行交互。而是使用DriverManager对象来管理这种类型的对象。 Connection：该界面具有用于联系数据库的所有方法。连接对象表示通信上下文，即，与数据库的所有通信仅通过连接对象。 Statement：使用从此接口创建的对象将SQL语句提交到数据库。除了执行存储过程之外，一些派生接口还接受参数。 ResultSet：在使用Statement对象执行SQL查询后，这些对象保存从数据库检索的数据。它作为一个迭代器，允许我们遍历其数据。 SQLException：此类处理数据库应用程序中发生的任何错误  使用步骤 构建JDBC应用程序涉及以下六个步骤：
+ 导入包：需要包含包含数据库编程所需的JDBC类的包。大多数情况下，使用import java.sql.*就足够了。 注册JDBC驱动程序：要求您初始化驱动程序，以便您可以打开与数据库的通信通道。 打开连接：需要使用DriverManager.getConnection（）方法创建一个Connection对象，该对象表示与数据库的物理连接。 执行查询：需要使用类型为Statement的对象来构建和提交SQL语句到数据库。 从结果集中提取数据：需要使用相应的ResultSet.getXXX（）方法从结果集中检索数据。 释放资源：需要明确地关闭所有数据库资源，而不依赖于JVM的垃圾收集。  建立JDBC连接所涉及的编程可简单概括为以下四个步骤
+ 导入JDBC包：将Java语言的import语句添加到Java代码中导入所需的类。 注册JDBC驱动程序：此步骤将使JVM将所需的驱动程序实现加载到内存中，以便它可以满足您的JDBC请求。 数据库URL配置：这是为了创建一个格式正确的地址，指向要连接到的数据库。 创建连接对象：最后，调用DriverManager对象的getConnection（）方法来建立实际的数据库连接。  Class.forName(); 注册驱动程序最常见的方法是使用Java的Class.forName()方法，将驱动程序的类文件动态加载到内存中，并将其自动注册。
+1 2 3 4 5 6  try { Class.forName(&#34;com.mysql.cj.jdbc.Driver&#34;); }catch(ClassNotFoundException ex) { System.out.println(&#34;Error: unable to load driver class!]]></description>
 </item>
 </channel>
 </rss>

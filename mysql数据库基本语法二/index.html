@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Mysql数据库基本语法(二) - 菜菜的秘密花园</title><meta name="Description" content="菜菜的秘密花园"><meta property="og:title" content="Mysql数据库基本语法(二)" />
+<meta property="og:description" content="3存储过程与事务 3.1 使用流程控制语句的存储过程 变量的定义与赋值 用declare语句定义变量，并赋予默认值或初始值，未赋默认值则初始值为null：
+1  DECLARE var_name [, var_name] ... type [DEFAULT value]   用set语句给变量赋值，set语句还可以设置许多MySQL的配置参数。
+1  SET variable = expr [, variable = expr]   通过select语句给变量赋值，select语句可以带复杂的where，group by，having等短语。
+1  select col into var_name from table; #将table表中的col列值赋给变量   复合语句与流程控制语句 复合语句BEGIN&hellip;END
+1 2 3  BEGIN [statement_list] END;   if语句
+1 2 3 4  IF search_condition THEN statement_list [ELSEIF search_condition THEN statement_list] ... [ELSE statement_list] END IF;   while语句" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%BA%8C/" /><meta property="og:image" content="https://imcaicai.github.io/img/avatar.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-12-07T14:45:58&#43;08:00" />
+<meta property="article:modified_time" content="2022-12-07T14:45:58&#43;08:00" /><meta property="og:site_name" content="菜菜的秘密花园" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://imcaicai.github.io/img/avatar.jpg"/>
+
+<meta name="twitter:title" content="Mysql数据库基本语法(二)"/>
+<meta name="twitter:description" content="3存储过程与事务 3.1 使用流程控制语句的存储过程 变量的定义与赋值 用declare语句定义变量，并赋予默认值或初始值，未赋默认值则初始值为null：
+1  DECLARE var_name [, var_name] ... type [DEFAULT value]   用set语句给变量赋值，set语句还可以设置许多MySQL的配置参数。
+1  SET variable = expr [, variable = expr]   通过select语句给变量赋值，select语句可以带复杂的where，group by，having等短语。
+1  select col into var_name from table; #将table表中的col列值赋给变量   复合语句与流程控制语句 复合语句BEGIN&hellip;END
+1 2 3  BEGIN [statement_list] END;   if语句
+1 2 3 4  IF search_condition THEN statement_list [ELSEIF search_condition THEN statement_list] ... [ELSE statement_list] END IF;   while语句"/>
+<meta name="application-name" content="菜菜的秘密花园">
+<meta name="apple-mobile-web-app-title" content="菜菜的秘密花园"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%BA%8C/" /><link rel="prev" href="https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%80/" /><link rel="next" href="https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%89/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Mysql数据库基本语法(二)",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/imcaicai.github.io\/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%BA%8C\/"
+        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "Mysql","wordcount":  493 ,
+        "url": "https:\/\/imcaicai.github.io\/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%BA%8C\/","datePublished": "2022-12-07T14:45:58+08:00","dateModified": "2022-12-07T14:45:58+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/imcaicai.github.io\/img\/avatar.jpg"},"author": {
+                "@type": "Person",
+                "name": "菜菜"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="菜菜的秘密花园"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/avatar.jpg"
+        data-srcset="/img/avatar.jpg, /img/avatar.jpg 1.5x, /img/avatar.jpg 2x"
+        data-sizes="auto"
+        alt="/img/avatar.jpg"
+        title="/img/avatar.jpg" />菜菜的秘密花园</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/categories/documentation/"> Docs </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/friends/"><i class='fas fa-fw fa-fan fa-spin'></i> Friends </a><a class="menu-item" href="https://github.com/Imcaicai" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="Select Language">
+                    <i class="fa fa-globe" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%BA%8C/" selected>English</option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="菜菜的秘密花园"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/avatar.jpg"
+        data-srcset="/img/avatar.jpg, /img/avatar.jpg 1.5x, /img/avatar.jpg 2x"
+        data-sizes="auto"
+        alt="/img/avatar.jpg"
+        title="/img/avatar.jpg" />菜菜的秘密花园</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/categories/documentation/" title="">Docs</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/friends/" title=""><i class='fas fa-fw fa-fan fa-spin'></i>Friends</a><a class="menu-item" href="https://github.com/Imcaicai" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="Select Language">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%BA%8C/" selected>English</option></select>
+                </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Mysql数据库基本语法(二)</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-category">included in <a href="/categories/mysql/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Mysql</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-12-07">2022-12-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;493 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;<span id="/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%BA%8C/" class="leancloud_visitors" data-flag-title="Mysql数据库基本语法(二)">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#31-使用流程控制语句的存储过程">3.1 使用流程控制语句的存储过程</a>
+      <ul>
+        <li><a href="#变量的定义与赋值">变量的定义与赋值</a></li>
+        <li><a href="#复合语句与流程控制语句">复合语句与流程控制语句</a></li>
+        <li><a href="#存储过程的定义">存储过程的定义</a></li>
+        <li><a href="#存储过程的创建和查询">存储过程的创建和查询</a></li>
+        <li><a href="#存储过程的查询和删除">存储过程的查询和删除</a></li>
+      </ul>
+    </li>
+    <li><a href="#32-使用游标的存储过程">3.2 使用游标的存储过程</a>
+      <ul>
+        <li><a href="#游标的定义与使用">游标的定义与使用</a>
+          <ul>
+            <li><a href="#1declare语句">1.DECLARE语句</a></li>
+            <li><a href="#2-open语句">2 OPEN语句</a></li>
+            <li><a href="#3-fetch语句">3 FETCH语句</a></li>
+            <li><a href="#4-close语句">4 CLOSE语句</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#33-使用事务的存储过程">3.3 使用事务的存储过程</a>
+      <ul>
+        <li><a href="#事务的定义和应用">事务的定义和应用</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#41-触发器">4.1 触发器</a></li>
+    <li><a href="#42-触发器的创建">4.2 触发器的创建</a></li>
+    <li><a href="#43-触发器内的特殊表">4.3 触发器内的特殊表</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="3存储过程与事务">3存储过程与事务</h1>
+<h2 id="31-使用流程控制语句的存储过程">3.1 使用流程控制语句的存储过程</h2>
+<h3 id="变量的定义与赋值">变量的定义与赋值</h3>
+<p>用<code>declare</code>语句定义变量，并赋予默认值或初始值，未赋默认值则初始值为null：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">DECLARE</span> <span class="n">var_name</span> <span class="p">[,</span> <span class="n">var_name</span><span class="p">]</span> <span class="p">...</span> <span class="n">type</span> <span class="p">[</span><span class="k">DEFAULT</span> <span class="n">value</span><span class="p">]</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>用<code>set</code>语句给变量赋值，set语句还可以设置许多MySQL的配置参数。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="kt">SET</span> <span class="n">variable</span> <span class="o">=</span> <span class="n">expr</span> <span class="p">[,</span> <span class="n">variable</span> <span class="o">=</span> <span class="n">expr</span><span class="p">]</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>通过<code>select</code>语句给变量赋值，select语句可以带复杂的where，group by，having等短语。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">select</span> <span class="n">col</span> <span class="k">into</span> <span class="n">var_name</span> <span class="k">from</span> <span class="k">table</span><span class="p">;</span> <span class="c1">#将table表中的col列值赋给变量
+</span></code></pre></td></tr></table>
+</div>
+</div><h3 id="复合语句与流程控制语句">复合语句与流程控制语句</h3>
+<p>复合语句BEGIN&hellip;END</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="n">BEGIN</span>
+<span class="p">[</span><span class="n">statement_list</span><span class="p">]</span>
+<span class="n">END</span><span class="p">;</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>if语句</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">IF</span> <span class="n">search_condition</span> <span class="k">THEN</span>  <span class="n">statement_list</span>
+<span class="p">[</span><span class="k">ELSEIF</span> <span class="n">search_condition</span> <span class="k">THEN</span> <span class="n">statement_list</span><span class="p">]</span> <span class="p">...</span>
+<span class="p">[</span><span class="k">ELSE</span> <span class="n">statement_list</span><span class="p">]</span>
+<span class="n">END</span> <span class="k">IF</span><span class="p">;</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>while语句</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">WHILE</span> <span class="n">search_condition</span> <span class="n">DO</span>
+   <span class="n">statement_list</span>
+<span class="n">END</span> <span class="k">WHILE</span><span class="p">;</span> 
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="存储过程的定义">存储过程的定义</h3>
+<p><strong>存储过程</strong>是一种在数据库中存储复杂程序，以便外部程序调用的一种数据库对象。</p>
+<p>存储过程是为了完成特定功能的 <code>SQL</code> 语句集，经编译创建并保存在数据库中，用户可通过指定存储过程的名字并给定参数（需要时）来调用执行。</p>
+<p>存储过程思想上很简单，就是数据库 <code>SQL</code> 语言层面的代码<strong>封装与重用</strong>，即具有名字的一段代码，用来完成一个特定的功能。</p>
+<h3 id="存储过程的创建和查询">存储过程的创建和查询</h3>
+<p>创建存储过程：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">create</span> <span class="k">procedure</span> <span class="err">存储过程名</span><span class="p">(</span><span class="err">参数</span><span class="p">)</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>每个存储的程序都包含一个由 <code>SQL</code> 语句组成的主体。此语句可能是由以分号（<code>;</code>）字符分隔的多个语句组成的复合语句。例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">CREATE</span> <span class="k">PROCEDURE</span> <span class="nf">proc1</span><span class="p">()</span>
+<span class="n">BEGIN</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="k">user</span><span class="p">;</span>
+<span class="n">END</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>MySQL</code> 本身将分号识别为语句分隔符，因此必须临时重新定义分隔符以使 MySQL 将整个存储的程序定义传递给服务器。</p>
+<p>要重新定义 <code>MySQL</code> 分隔符，请使用 <code>delimiter</code>命令。使用 <code>delimiter</code> 首先将结束符定义为<code>//</code>，完成创建存储过程后，使用<code>//</code>表示结束，然后将分隔符重新设置为分号（<code>;</code>）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="n">DELIMITER</span> <span class="o">//</span>
+<span class="k">CREATE</span> <span class="k">PROCEDURE</span> <span class="nf">proc1</span><span class="p">()</span>
+<span class="n">BEGIN</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="k">user</span><span class="p">;</span>
+<span class="n">END</span> <span class="o">//</span>
+<span class="n">DELIMITER</span> <span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>/</code>也可以换成其他符号，例如<code>$</code>;</p>
+<p>执行存储过程：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">call</span> <span class="err">存储过程名</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>存储过程的参数：</p>
+<ul>
+<li><code>IN</code>：输入参数，也是默认模式，表示该参数的值必须在调用存储过程时指定，在存储过程中修改该参数的值不能被返回；</li>
+<li><code>OUT</code>：输出参数，该值可在存储过程内部被改变，并可返回；</li>
+<li><code>INOUT</code>：输入输出参数，调用时指定，并且可被改变和返回。</li>
+</ul>
+<h3 id="存储过程的查询和删除">存储过程的查询和删除</h3>
+<p>查询存储过程：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">SHOW</span> <span class="k">PROCEDURE</span> <span class="n">STATUS</span> <span class="k">WHERE</span> <span class="n">db</span><span class="o">=</span><span class="s1">&#39;数据库名&#39;</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>查看存储过程的详细定义信息：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">SHOW</span> <span class="k">CREATE</span> <span class="k">PROCEDURE</span> <span class="err">数据库</span><span class="p">.</span><span class="err">存储过程名</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>删除存储过程：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">DROP</span> <span class="k">PROCEDURE</span> <span class="p">[</span><span class="k">IF</span> <span class="k">EXISTS</span><span class="p">]</span> <span class="err">数据库名</span><span class="p">.</span><span class="err">存储过程名</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="32-使用游标的存储过程">3.2 使用游标的存储过程</h2>
+<p>SQL操作都是面向集合的，即操作的对象以及运算的结果均为集合，但有时候，我们需要一行一行地处理数据，这就需要用到游标(CURSOR)，它相当于一个存储于内存的带有指针的表，每次可以存取指针指向的一行数据，并将指针向前推进一行。游标的数据通常是一条查询语句的结果。对游标的操作一般要用循环语句，遍历游标的每一行数据，并将该行数据读至变量，再根据变量的值进行所需要的其它操作。</p>
+<p>游标的特点：</p>
+<ul>
+<li>不可滚动。即只能从前往后遍历游标数据(即从第1行到最后一行)，不能反向遍历，不能跳跃遍历，不能直接访问中间的某一行。</li>
+<li>只读。游标里的数据只能读取，不能修改。</li>
+</ul>
+<h3 id="游标的定义与使用">游标的定义与使用</h3>
+<h4 id="1declare语句">1.DECLARE语句</h4>
+<p>DECLARE定义的顺序要求：变量→右边→特情处理</p>
+<p>变量用来存储从游标读取的数据，根据编程逻辑的需要，可能还要定义其它变量；游标用来存储SELECT语句读取的数据集；当某些特定情形出现时，会自动触发对应的特情处理程序。</p>
+<p>定义变量：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">DECLARE</span> <span class="n">var_name</span> <span class="p">[,</span> <span class="n">var_name</span><span class="p">]</span> <span class="p">...</span> <span class="n">type</span> <span class="p">[</span><span class="k">DEFAULT</span> <span class="n">value</span><span class="p">]</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>定义游标：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">DECLARE</span> <span class="n">cursor_name</span> <span class="k">CURSOR</span> <span class="k">FOR</span> <span class="n">select_statement</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>任何合法的select语句(不能带INTO短语)，都可以定义成游标。此后可用FETCH语句读取这个select语句查询到的数据集中的一行数据。</p>
+<blockquote>
+<p>注意游标必须定义在变量之后，特情处理程序之前。</p>
+<p>一个存储过程可义定义多个游标，但不能同名。</p>
+</blockquote>
+<p>定义特情处理的例子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">DECLARE</span> <span class="n">handler_action</span> <span class="n">HANDLER</span>
+<span class="k">FOR</span> <span class="n">condition_value</span> <span class="p">[,</span> <span class="n">condition_value</span><span class="p">]</span> <span class="p">...</span>
+<span class="n">statement</span>
+<span class="n">handler_action</span><span class="p">:</span> <span class="err">{</span>
+<span class="k">CONTINUE</span>
+<span class="o">|</span> <span class="k">EXIT</span>
+<span class="err">}</span>
+<span class="n">condition_value</span><span class="p">:</span> <span class="err">{</span>
+<span class="n">mysql_error_code</span>
+<span class="o">|</span> <span class="k">SQLSTATE</span> <span class="p">[</span><span class="n">VALUE</span><span class="p">]</span> <span class="n">sqlstate_value</span>
+<span class="o">|</span> <span class="n">condition_name</span>
+<span class="o">|</span> <span class="k">SQLWARNING</span>
+<span class="o">|</span> <span class="k">NOT</span> <span class="n">FOUND</span>
+<span class="o">|</span> <span class="k">SQLEXCEPTION</span>
+<span class="err">}</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>游标应用中至少需要定义一个NOT FOUND的HANDLER(处理例程)：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">DECLARE</span> <span class="k">CONTINUE</span> <span class="n">HANDLER</span> <span class="k">FOR</span> <span class="k">NOT</span> <span class="n">FOUND</span> <span class="kt">SET</span> <span class="n">finished</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>其含义是当抛出NOT FOUND异常时，置变量finished的值为1,程序继续运行。当然，在此之前，应当先定义变量finished，并初始化为0(也可在循环语句之前初始化为0），finished作为循环的控制变量，仅当finished变成1时，循环结束。</p>
+<p>如果特情处理例程由多条语句组成，可以用BEGIN&hellip;END组成复合语句。</p>
+<p>当一个存储过程中存在多个游标时，对任何一个游标的读取(FETCH)都可能会触发特情处理。比如一个游标的数据被遍历完毕，再试图FETCH下一行时，会触发NOT FOUND HANDLER, 并进而改变某个变量的值，但另一个游标中可能还有未处理完的数据。编程者应当自己想办法区分是哪个游标的数据处理完毕。</p>
+<h4 id="2-open语句">2 OPEN语句</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="n">OPEN</span> <span class="n">cursor_name</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>该语句打开之前定义的游标，并初始化指向数据行的指针(接下来的第一条FETCH语句将试图读取游标的第1行数据)。</p>
+<h4 id="3-fetch语句">3 FETCH语句</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">FETCH</span> <span class="p">[[</span><span class="n">NEXT</span><span class="p">]</span> <span class="k">FROM</span><span class="p">]</span> <span class="n">cursor_name</span> <span class="k">INTO</span> <span class="n">var_name</span> <span class="p">[,</span> <span class="n">var_name</span><span class="p">]</span> <span class="p">...</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>ETCH语句读取游标的一行数据到变量列表,并推进游标的指针.关键词NEXT, FROM都可省略(或仅省略NEXT)。注意INTO后的变量列表应当与游标定义中的SELECT列表一一对应(变量个数与SELECT列表个数完全相同，数据类型完全一致，每个变量的取值按SELECT列表顺序一一对应)。</p>
+<blockquote>
+<p>FETCH一个未打开的游标会出错。</p>
+</blockquote>
+<h4 id="4-close语句">4 CLOSE语句</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="n">CLOSE</span> <span class="n">cursor_name</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Close语句关闭先前打开的游标，试图关闭一个未曾打开(OPEN)的游标会出错。</p>
+<blockquote>
+<p>没有CLOSE的游标，在其定义的BEGIN&hellip;END语句块结束时，将自动CLOSE。</p>
+</blockquote>
+<p>使用游标编写存储过程sp_cursor_demo计算Liverpool足球队在主场获胜的比赛中，上半场的平均进球数，结果通过参数传递。示例程序如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="n">DELIMITER</span> <span class="err">$$</span> 
+<span class="k">CREATE</span> <span class="k">PROCEDURE</span> <span class="nf">sp_cursor_demo</span><span class="p">(</span><span class="k">INOUT</span> <span class="n">average_goals</span> <span class="kt">FLOAT</span><span class="p">)</span>
+<span class="n">BEGIN</span>
+    <span class="k">DECLARE</span> <span class="n">done</span> <span class="kt">INT</span> <span class="k">DEFAULT</span> <span class="no">FALSE</span><span class="p">;</span>
+    <span class="k">DECLARE</span> <span class="n">matches</span> <span class="kt">int</span> <span class="k">DEFAULT</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+    <span class="k">DECLARE</span> <span class="n">goals</span> <span class="kt">int</span> <span class="k">DEFAULT</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+    <span class="k">DECLARE</span> <span class="n">half_time_goals</span> <span class="kt">INT</span><span class="p">;</span>
+    <span class="k">DECLARE</span> <span class="n">team_cursor</span> <span class="k">CURSOR</span> <span class="k">FOR</span> <span class="k">SELECT</span> <span class="n">HTHG</span> <span class="k">FROM</span> <span class="n">epl</span> <span class="k">WHERE</span> <span class="p">(</span><span class="n">home_team</span> <span class="o">=</span> <span class="s1">&#39;Liverpool&#39;</span><span class="p">)</span> <span class="k">and</span> <span class="p">(</span><span class="n">ftr</span> <span class="o">=</span> <span class="s1">&#39;H&#39;</span><span class="p">);</span>
+    <span class="k">DECLARE</span> <span class="k">CONTINUE</span> <span class="n">HANDLER</span> <span class="k">FOR</span> <span class="k">NOT</span> <span class="n">FOUND</span> <span class="kt">SET</span> <span class="n">done</span> <span class="o">=</span> <span class="no">TRUE</span><span class="p">;</span>
+    <span class="n">OPEN</span> <span class="n">team_cursor</span><span class="p">;</span>
+    <span class="k">FETCH</span> <span class="n">team_cursor</span> <span class="k">INTO</span> <span class="n">half_time_goals</span><span class="p">;</span>
+    <span class="k">WHILE</span> <span class="k">NOT</span> <span class="n">DONE</span> <span class="n">DO</span>
+      <span class="kt">SET</span>  <span class="n">goals</span> <span class="o">=</span> <span class="n">goals</span> <span class="o">+</span> <span class="n">half_time_goals</span><span class="p">;</span>
+      <span class="kt">SET</span>  <span class="n">matches</span> <span class="o">=</span> <span class="n">matches</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+         <span class="k">FETCH</span> <span class="n">team_cursor</span> <span class="k">INTO</span> <span class="n">half_time_goals</span><span class="p">;</span>
+    <span class="n">END</span> <span class="k">while</span><span class="p">;</span> 
+    <span class="kt">SET</span>  <span class="n">average_goals</span> <span class="o">=</span> <span class="n">goals</span> <span class="o">/</span> <span class="n">matches</span><span class="p">;</span>
+    <span class="n">CLOSE</span> <span class="n">team_cursor</span><span class="p">;</span>
+<span class="n">END</span> <span class="err">$$</span> 
+<span class="n">DELIMITER</span><span class="p">;</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>存储过程定义后，可通过以下语句定义参数，调用过程，再从返回参数中获取结果:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="kt">SET</span> <span class="o">@</span><span class="n">average_goals</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">;</span>
+<span class="k">CALL</span> <span class="nf">sp_cursor_demo</span><span class="p">(</span><span class="o">@</span><span class="n">average_goals</span><span class="p">);</span>
+<span class="k">SELECT</span> <span class="o">@</span><span class="n">average_goals</span><span class="p">;</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>上述带前缀@的变量属于MySQL的用户自定义变量，只在该用户的会话期内有效，对别的用户(客户端)不可见。@前缀变量不用申明变量类型，初始化时，由其值决定其类型。</p>
+<p>一般来说，仅当你需要遍历一个数据集，且一次只能处理其中的一行数据时(比如对每一行，要作不同的业务处理)，你才需要使用游标。当游标的数据集较大时，会造成较大的网络时延。使用游标时，应尽可能缩小数据规模(去掉不必要的行和列)。</p>
+<h2 id="33-使用事务的存储过程">3.3 使用事务的存储过程</h2>
+<h3 id="事务的定义和应用">事务的定义和应用</h3>
+<p>开启事务：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="n">START</span> <span class="n">TRANSACTION</span> <span class="err">或</span> <span class="nf">BEGIN</span> <span class="p">(</span><span class="err">前者兼容性更好</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>事务提交：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="n">COMMIT</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>事务回滚：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="n">ROLLBACK</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>开启或关闭当前会话的自动事务模式：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="kt">SET</span> <span class="n">autocommit</span> <span class="o">=</span> <span class="k">ON</span><span class="o">|</span><span class="n">OFF</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>也可用1|0,true|false代替ON|OFF。 缺省情况下，autocommit模式被设置为ON，即你在命令行提交的每一条语句会自动封装成一个事务，即使下一条语句发生错误，前一条语句产生的结果也不可撤销。</p>
+<blockquote>
+<p>注意，事务内部不允许嵌套另一个事务，尽量不要在事务内部使用DDL语句，因为即使事务回滚,DDL语句对数据库的修改也不会撤销。</p>
+</blockquote>
+<h1 id="4-触发器">4 触发器</h1>
+<h2 id="41-触发器">4.1 触发器</h2>
+<p>触发器是与某个表绑定的命名存储对象，与存储过程一样，它由一组语句组成，当这个表上发生某个操作(insert,delete,update)时，触发器被触发执行。触发器一般用于实现业务完整性规则。当primary key,foreigh key, check等约束都无法实现某个复杂的业务规则时，可以考虑用触发器来实现。</p>
+<h2 id="42-触发器的创建">4.2 触发器的创建</h2>
+<p>创建触发器的语句：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">CREATE</span> <span class="k">TRIGGER</span> <span class="n">trigger_name</span> <span class="n">trigger_time</span> <span class="n">trigger_event</span> 
+<span class="k">ON</span> <span class="n">tbl_name</span> 
+<span class="k">FOR</span> <span class="k">EACH</span> <span class="n">ROW</span>
+<span class="n">trigger_body</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>trigger_nme: 每个触发器有一个唯一的命名</li>
+<li>trigger_time: 触发的时机，二选一： BEFORE | AFTER</li>
+<li>trigger_event: 触发事件，三选一： INSERT | UPDATE | DELETE</li>
+<li>tbl_name: 与触发器绑定的表</li>
+<li>trigger_body: 触发器程序体，可由变量定义、赋值，流程控制，SQL语句等组成。但触发器体内不能使用create,alter,drop等DDL语句,也不能使用start transaction, commit,rollback等事务相关语句。</li>
+</ul>
+<blockquote>
+<p>与创建存储过程、函数一样，创建触发器时也要用delimiter语句重新指定触发器定义语句的界符(触发器内语句的分隔符仍为分号)，在触发器定义之后，再把界符更改回去。</p>
+</blockquote>
+<p><strong>before与after触发器的区别:</strong></p>
+<ul>
+<li>before触发器在试图激活触发器的那条语句(insert|delete|update)之前执行。</li>
+<li>after触发器仅在before触发器(如果有的话)和试图激活触发器的那条语句都成功执行后才执行。</li>
+<li>before触发器或after触发器如果未能成功执行，则激活触发器的语句也不会执行。</li>
+</ul>
+<h2 id="43-触发器内的特殊表">4.3 触发器内的特殊表</h2>
+<p>在触发器内可以使用两类特殊表：</p>
+<ul>
+<li>old表和new表。它总是与触发器绑定的表有相同的结构，且只能在触发器内访问。</li>
+<li>delete触发器可以访问old表,其内容为被delete掉的数据。</li>
+<li>insert触发器可以访问new表,其内容为insert的新数据。</li>
+<li>update触发器可以访问old表和new表，old表保存着修改前的数据，new表保存着修改后的内容。</li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-12-07</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%BA%8C/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%BA%8C/" data-title="Mysql数据库基本语法(二)" data-hashtags="Mysql"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%BA%8C/" data-hashtag="Mysql"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%BA%8C/" data-title="Mysql数据库基本语法(二)"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%BA%8C/" data-title="Mysql数据库基本语法(二)"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%BA%8C/" data-title="Mysql数据库基本语法(二)"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/mysql/">Mysql</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%80/" class="prev" rel="prev" title="Mysql数据库基本语法(一)"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Mysql数据库基本语法(一)</a>
+            <a href="/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%89/" class="next" rel="next" title="Mysql数据库基本语法(三)">Mysql数据库基本语法(三)<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">菜菜</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

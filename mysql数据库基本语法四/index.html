@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Mysql数据库基本语法(四) - 菜菜的秘密花园</title><meta name="Description" content="菜菜的秘密花园"><meta property="og:title" content="Mysql数据库基本语法(四)" />
+<meta property="og:description" content="7 并发控制与事务的隔离级别 7.1 并发控制与事务的隔离级别 并发操作可能产生的数据不一致性 数据库是共享资源，允许多个用户同时访问同一数据库，特别是在互联网应用成为主流的当下，高可用性、高并发是所有应用追求的目标。但并发操作不加控制，便会产生数据的不一致性。 并发操作可能带来的数据不一致性包括：
+ 丢失修改(lost update) 读脏数据(dirty read) 不可重复读(non-repeatable read) 幻读(phantom read)  为解决上述不一致性问题,DBMS设计了专门的并发控制子系统，采用封锁机制进行并发控制，以保证事务的隔离性和一致性(事务是并发控制的基本单位)。
+但事务的隔离程度越高，固然一致性&ndash;或者説数据的正确性越有保障，但并发度就会越低。很多时候，需要在一致性和并发度间进行取舍，从而就生产了事务的隔离级别的概念。 隔离级别越高，一致性程度越高，并发度越低。反之，隔离级别越低，并发度越高，但代价是会出现某些数据不一致现象。
+低隔离级别可以支持更高的并发处理，同时占用的系统资源更少,但可能产生数据不一致的情形也更多一些。
+查询事务的隔离级别 可用以下语句查询MySQL的事务隔离级别：
+1  select @@GLOBAL.transaction_isolation, @@transaction_isolation;   其中，@@GLOBAL.transaction_isolation全局变量，@@transaction_isolation为本会话期内的变量。通常通过重设该变量的值以改变隔离级别。 上述两个变量的缺省值均为：REPEATABLE-READ，即可重复读。
+设置事务的隔离级别 以下语句设置事务的隔离级别为可读未提交(read uncommitted):
+1  set session transaction isolation level read uncommitted;   如需设置为其它级别，只需替换最后的隔离级别即可。 不同的事务隔离级别意味着不同的封锁协议，程序员只需设置事务的隔离级别即可，其它的交给DBMS并发子系统处理。 不过，MySQL也有lock tables和unlock tables语句，可以直接锁表，另外，MySQL还支持在select语句中使用for share或for update短语主动申请S锁或X锁(只到事务结束才释放)。这样，即使在隔离级别为read uncommitted的情形下，仍有机会保证可重复读，相关内容请参阅MySQL官方文档。
+7.2 读脏 读脏 读脏(dirty read)，或者又叫脏读，是指一个事务(t1)读取到另一个事务(t2)修改后的数据，后来事务t2又撤销了本次修改(即事务t2以roll back结束)，数据恢复原值。这样，事务t1读到的数据就与数据库里的实际数据不一致，这样的数据被称为“脏”数据，意即不正确的数据。
+读脏产生的原因 显然，产生读脏的原因，是事务t1读取数据时，修改该数据的事务t2还没有结束(commit或roll back，统称uncommitted),且t1读取的时间点又恰在t2修改该数据之后。
+7.3 不可重复读 不可重复读 不可重复读(unrepeatable read)，是指一个事务(t1)读取到某数据后，另一个事务(t2)修改了该，事务t1并未修改该数据，但当t1再次读取该数据时，发现两次读取的结果不一样。
+产生不可重复读的原因 显然，不可重复读产生的原因，是事务t1的两次读取之间，有另一个事务修改了t1读取的数据。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E5%9B%9B/" /><meta property="og:image" content="https://imcaicai.github.io/img/avatar.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-12-07T14:51:25&#43;08:00" />
+<meta property="article:modified_time" content="2022-12-07T14:51:25&#43;08:00" /><meta property="og:site_name" content="菜菜的秘密花园" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://imcaicai.github.io/img/avatar.jpg"/>
+
+<meta name="twitter:title" content="Mysql数据库基本语法(四)"/>
+<meta name="twitter:description" content="7 并发控制与事务的隔离级别 7.1 并发控制与事务的隔离级别 并发操作可能产生的数据不一致性 数据库是共享资源，允许多个用户同时访问同一数据库，特别是在互联网应用成为主流的当下，高可用性、高并发是所有应用追求的目标。但并发操作不加控制，便会产生数据的不一致性。 并发操作可能带来的数据不一致性包括：
+ 丢失修改(lost update) 读脏数据(dirty read) 不可重复读(non-repeatable read) 幻读(phantom read)  为解决上述不一致性问题,DBMS设计了专门的并发控制子系统，采用封锁机制进行并发控制，以保证事务的隔离性和一致性(事务是并发控制的基本单位)。
+但事务的隔离程度越高，固然一致性&ndash;或者説数据的正确性越有保障，但并发度就会越低。很多时候，需要在一致性和并发度间进行取舍，从而就生产了事务的隔离级别的概念。 隔离级别越高，一致性程度越高，并发度越低。反之，隔离级别越低，并发度越高，但代价是会出现某些数据不一致现象。
+低隔离级别可以支持更高的并发处理，同时占用的系统资源更少,但可能产生数据不一致的情形也更多一些。
+查询事务的隔离级别 可用以下语句查询MySQL的事务隔离级别：
+1  select @@GLOBAL.transaction_isolation, @@transaction_isolation;   其中，@@GLOBAL.transaction_isolation全局变量，@@transaction_isolation为本会话期内的变量。通常通过重设该变量的值以改变隔离级别。 上述两个变量的缺省值均为：REPEATABLE-READ，即可重复读。
+设置事务的隔离级别 以下语句设置事务的隔离级别为可读未提交(read uncommitted):
+1  set session transaction isolation level read uncommitted;   如需设置为其它级别，只需替换最后的隔离级别即可。 不同的事务隔离级别意味着不同的封锁协议，程序员只需设置事务的隔离级别即可，其它的交给DBMS并发子系统处理。 不过，MySQL也有lock tables和unlock tables语句，可以直接锁表，另外，MySQL还支持在select语句中使用for share或for update短语主动申请S锁或X锁(只到事务结束才释放)。这样，即使在隔离级别为read uncommitted的情形下，仍有机会保证可重复读，相关内容请参阅MySQL官方文档。
+7.2 读脏 读脏 读脏(dirty read)，或者又叫脏读，是指一个事务(t1)读取到另一个事务(t2)修改后的数据，后来事务t2又撤销了本次修改(即事务t2以roll back结束)，数据恢复原值。这样，事务t1读到的数据就与数据库里的实际数据不一致，这样的数据被称为“脏”数据，意即不正确的数据。
+读脏产生的原因 显然，产生读脏的原因，是事务t1读取数据时，修改该数据的事务t2还没有结束(commit或roll back，统称uncommitted),且t1读取的时间点又恰在t2修改该数据之后。
+7.3 不可重复读 不可重复读 不可重复读(unrepeatable read)，是指一个事务(t1)读取到某数据后，另一个事务(t2)修改了该，事务t1并未修改该数据，但当t1再次读取该数据时，发现两次读取的结果不一样。
+产生不可重复读的原因 显然，不可重复读产生的原因，是事务t1的两次读取之间，有另一个事务修改了t1读取的数据。"/>
+<meta name="application-name" content="菜菜的秘密花园">
+<meta name="apple-mobile-web-app-title" content="菜菜的秘密花园"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E5%9B%9B/" /><link rel="prev" href="https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%89/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Mysql数据库基本语法(四)",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/imcaicai.github.io\/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E5%9B%9B\/"
+        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "Mysql","wordcount":  208 ,
+        "url": "https:\/\/imcaicai.github.io\/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E5%9B%9B\/","datePublished": "2022-12-07T14:51:25+08:00","dateModified": "2022-12-07T14:51:25+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/imcaicai.github.io\/img\/avatar.jpg"},"author": {
+                "@type": "Person",
+                "name": "菜菜"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="菜菜的秘密花园"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/avatar.jpg"
+        data-srcset="/img/avatar.jpg, /img/avatar.jpg 1.5x, /img/avatar.jpg 2x"
+        data-sizes="auto"
+        alt="/img/avatar.jpg"
+        title="/img/avatar.jpg" />菜菜的秘密花园</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/categories/documentation/"> Docs </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/friends/"><i class='fas fa-fw fa-fan fa-spin'></i> Friends </a><a class="menu-item" href="https://github.com/Imcaicai" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="Select Language">
+                    <i class="fa fa-globe" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E5%9B%9B/" selected>English</option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="菜菜的秘密花园"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/avatar.jpg"
+        data-srcset="/img/avatar.jpg, /img/avatar.jpg 1.5x, /img/avatar.jpg 2x"
+        data-sizes="auto"
+        alt="/img/avatar.jpg"
+        title="/img/avatar.jpg" />菜菜的秘密花园</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/categories/documentation/" title="">Docs</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/friends/" title=""><i class='fas fa-fw fa-fan fa-spin'></i>Friends</a><a class="menu-item" href="https://github.com/Imcaicai" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="Select Language">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E5%9B%9B/" selected>English</option></select>
+                </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Mysql数据库基本语法(四)</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-category">included in <a href="/categories/mysql/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Mysql</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-12-07">2022-12-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;208 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;<span id="/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E5%9B%9B/" class="leancloud_visitors" data-flag-title="Mysql数据库基本语法(四)">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#71-并发控制与事务的隔离级别">7.1 并发控制与事务的隔离级别</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#并发操作可能产生的数据不一致性">并发操作可能产生的数据不一致性</a></li>
+            <li><a href="#查询事务的隔离级别"><strong>查询事务的隔离级别</strong></a></li>
+            <li><a href="#设置事务的隔离级别">设置事务的隔离级别</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#72-读脏">7.2 读脏</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#读脏">读脏</a></li>
+            <li><a href="#读脏产生的原因">读脏产生的原因</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#73-不可重复读">7.3 不可重复读</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#不可重复读">不可重复读</a></li>
+            <li><a href="#产生不可重复读的原因">产生不可重复读的原因</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#74-幻读">7.4 幻读</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#幻读phantom-read">幻读(phantom read)</a></li>
+            <li><a href="#产生幻读的原因">产生幻读的原因</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#75-mysql对共享锁与锁的支持">7.5 MySQL对共享锁与锁的支持</a></li>
+    <li><a href="#76-可串行化">7.6 可串行化</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#81-mysql的恢复机制">8.1 MySQL的恢复机制</a></li>
+    <li><a href="#82-mysql的备份与恢复工具">8.2 MySQL的备份与恢复工具</a>
+      <ul>
+        <li><a href="#mysqldump"><strong>mysqldump</strong></a>
+          <ul>
+            <li><a href="#mysqlbackup"><strong>mysqlbackup</strong></a></li>
+            <li><a href="#mysql"><strong>mysql</strong></a></li>
+            <li><a href="#mysqladmin"><strong>mysqladmin</strong></a></li>
+            <li><a href="#mysqlbinlog"><strong>mysqlbinlog</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="7-并发控制与事务的隔离级别">7 并发控制与事务的隔离级别</h1>
+<h2 id="71-并发控制与事务的隔离级别">7.1 并发控制与事务的隔离级别</h2>
+<h4 id="并发操作可能产生的数据不一致性">并发操作可能产生的数据不一致性</h4>
+<p>数据库是共享资源，允许多个用户同时访问同一数据库，特别是在互联网应用成为主流的当下，高可用性、高并发是所有应用追求的目标。但并发操作不加控制，便会产生数据的不一致性。 并发操作可能带来的数据不一致性包括：</p>
+<ul>
+<li>丢失修改(lost update)</li>
+<li>读脏数据(dirty read)</li>
+<li>不可重复读(non-repeatable read)</li>
+<li>幻读(phantom read)</li>
+</ul>
+<p>为解决上述不一致性问题,DBMS设计了专门的并发控制子系统，采用封锁机制进行并发控制，以保证事务的隔离性和一致性(事务是并发控制的基本单位)。</p>
+<p>但事务的隔离程度越高，固然一致性&ndash;或者説数据的正确性越有保障，但并发度就会越低。很多时候，需要在一致性和并发度间进行取舍，从而就生产了事务的隔离级别的概念。 隔离级别越高，一致性程度越高，并发度越低。反之，隔离级别越低，并发度越高，但代价是会出现某些数据不一致现象。</p>
+<p>低隔离级别可以支持更高的并发处理，同时占用的系统资源更少,但可能产生数据不一致的情形也更多一些。</p>
+<h4 id="查询事务的隔离级别"><strong>查询事务的隔离级别</strong></h4>
+<p>可用以下语句查询MySQL的事务隔离级别：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">select</span> <span class="o">@@</span><span class="n">GLOBAL</span><span class="p">.</span><span class="n">transaction_isolation</span><span class="p">,</span> <span class="o">@@</span><span class="n">transaction_isolation</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>其中，@@GLOBAL.transaction_isolation全局变量，@@transaction_isolation为本会话期内的变量。通常通过重设该变量的值以改变隔离级别。 上述两个变量的缺省值均为：REPEATABLE-READ，即可重复读。</p>
+<h4 id="设置事务的隔离级别">设置事务的隔离级别</h4>
+<p>以下语句设置事务的隔离级别为可读未提交(read uncommitted):</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="kt">set</span> <span class="n">session</span> <span class="n">transaction</span> <span class="n">isolation</span> <span class="n">level</span> <span class="k">read</span> <span class="n">uncommitted</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>如需设置为其它级别，只需替换最后的隔离级别即可。 不同的事务隔离级别意味着不同的封锁协议，程序员只需设置事务的隔离级别即可，其它的交给DBMS并发子系统处理。 不过，MySQL也有lock tables和unlock tables语句，可以直接锁表，另外，MySQL还支持在select语句中使用for share或for update短语主动申请S锁或X锁(只到事务结束才释放)。这样，即使在隔离级别为read uncommitted的情形下，仍有机会保证可重复读，相关内容请参阅MySQL官方文档。</p>
+<h2 id="72-读脏">7.2 读脏</h2>
+<h4 id="读脏">读脏</h4>
+<p>读脏(dirty read)，或者又叫脏读，是指一个事务(t1)读取到另一个事务(t2)修改后的数据，后来事务t2又撤销了本次修改(即事务t2以roll back结束)，数据恢复原值。这样，事务t1读到的数据就与数据库里的实际数据不一致，这样的数据被称为“脏”数据，意即不正确的数据。</p>
+<h4 id="读脏产生的原因">读脏产生的原因</h4>
+<p>显然，产生读脏的原因，是事务t1读取数据时，修改该数据的事务t2还没有结束(commit或roll back，统称uncommitted),且t1读取的时间点又恰在t2修改该数据之后。</p>
+<h2 id="73-不可重复读">7.3 不可重复读</h2>
+<h4 id="不可重复读">不可重复读</h4>
+<p>不可重复读(unrepeatable read)，是指一个事务(t1)读取到某数据后，另一个事务(t2)修改了该，事务t1并未修改该数据，但当t1再次读取该数据时，发现两次读取的结果不一样。</p>
+<h4 id="产生不可重复读的原因">产生不可重复读的原因</h4>
+<p>显然，不可重复读产生的原因，是事务t1的两次读取之间，有另一个事务修改了t1读取的数据。</p>
+<p>根据第一关介绍的基本知识，有两种隔离级别都有可能发生不可重复读。</p>
+<h2 id="74-幻读">7.4 幻读</h2>
+<h4 id="幻读phantom-read">幻读(phantom read)</h4>
+<p>幻读定义其实是有些争议的，在某些文献中，幻读被归为不可重复读(unrepeatable read)中的一类，而另一些则把它与不可重复读区分开来：幻读是指一个事务(t1)读取到某数据后，另一个事务(t2)作了insert或delete操作，事务t1再次读取该数据时，魔幻般地发现数据变多了或者变少了(记录数量不一致)；而不可重复读限指事务t2作了update操作，致使t1的两次读操作读到的结果(数据的值)不一致。</p>
+<h4 id="产生幻读的原因">产生幻读的原因</h4>
+<p>显然，幻读产生的原因，是事务t1的两次读取之间，有另一个事务insert或delete了t1读取的数据集。</p>
+<p>除了最高级别serializable(可串行化)以外的任何隔离级别，都有可能发生幻读。</p>
+<h2 id="75-mysql对共享锁与锁的支持">7.5 MySQL对共享锁与锁的支持</h2>
+<p>通过设置不同的隔离级别，以实现不同的一致性与并发度的需求是较通常的作法。但MySQL也提供了主动加锁的机制，使得在较低的隔离级别下，通过加锁，以实现更高级别的一致性。</p>
+<p>MySQL的select语句支持for share和for update短语，分别表示对表加共享(Share)锁和写(write)锁，共享锁也叫读锁，写锁又叫排它锁。 下面这条语句，会对表t1加共享锁:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">t1</span> <span class="k">for</span> <span class="n">share</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>如果select语句涉及多张表，还可分别对不同的表加不同的锁，比如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">t1</span><span class="p">,</span><span class="n">t2</span> <span class="k">for</span> <span class="n">share</span> <span class="n">of</span> <span class="n">t1</span> <span class="k">for</span> <span class="k">update</span> <span class="n">of</span> <span class="n">t2</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>加锁短语总是select语句的最后一个短语(复杂的select语句可能有where,group by, having, order by等短语)；不管share还是update锁，都是在事务结束时才释放。当然，锁行为会降低并发度。</p>
+<h2 id="76-可串行化">7.6 可串行化</h2>
+<p>多个事务并发执行是正确的，当且仅当其结果与按某一次序串行地执行这些事务时的结果相同。两个事务t1,t2并发执行，如果结果与t1→t2串行执行的结果相同，或者与t2→t1串行执行的结果相同，都是正确的(可串行化的)。</p>
+<p>如果将事务的隔离级别设置为serializable，则这些事务并发执行，无论怎么调度都会是可串行化的。但这种隔离级别会大大降低并发度，在实践中极小使用。MySQL默认的隔离级别为repeatable read，有的DBMS默认为read committed。</p>
+<h1 id="8-介质故障与数据库恢复">8 介质故障与数据库恢复</h1>
+<h2 id="81-mysql的恢复机制">8.1 MySQL的恢复机制</h2>
+<p>和大多数DBMS一样，MySQL利用备份、日志文件实现恢复。 具体理论知识在此不详细介绍。</p>
+<h2 id="82-mysql的备份与恢复工具">8.2 MySQL的备份与恢复工具</h2>
+<p>MySQL提供了以下工具：</p>
+<ul>
+<li>逻辑备份工具：mysqldump</li>
+<li>物理备份工具：mysqlbackup(仅限商用版)</li>
+<li>日志工具：mysqlbinlog</li>
+<li>还原工具：mysql</li>
+<li>管理工具：mysqladmin</li>
+</ul>
+<h3 id="mysqldump"><strong>mysqldump</strong></h3>
+<p>逻辑备份工具，它产生一系的SQL语句，执行这些语句可以重建原数据库的所有对象和数据。缺省输出是控制台，可以通过重定向符号，将其产生的SQL语句集合存入到某个文件。 mysqldump可以备份服务器上的全部数据库，也可以指定某些数据库，或者一个数据库中的某些表。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="n">mysqldump</span> <span class="o">-</span><span class="n">h127</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">1</span> <span class="o">-</span><span class="n">uroot</span> <span class="o">-</span><span class="n">p123123</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="o">--</span><span class="k">databases</span> <span class="n">db_name</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>&ndash;databases 参数用指定数据库名，后面可跟一个或多个数据库的名字，多个数据库名间用空格隔开。 mysqldump命令行工具还可以带若干参数，可选的参数多达几十个，详见官方参考手册。这里只介绍一个：</p>
+<p>&ndash;flush-logs 刷MySQL日志，即重新开始一个日志文件。 重新开始一个新的日志文件，对未来确定哪些日志更有用很有帮助。通常海量备份前的日志文件，其重要性会降低许多，因为有备份在手，除非备份文件出故障，你可能不再需要使用之前的日志文件。</p>
+<h4 id="mysqlbackup"><strong>mysqlbackup</strong></h4>
+<p>mysqlbackup是MySQL的物理备份工具，只有付费的商用企业版才有。</p>
+<h4 id="mysql"><strong>mysql</strong></h4>
+<p>mysql是MySQL最重要的客户端管理工具，通常用户都是通过mysql登录到MySQL服务器，进行各种操作。此外，还可以直接通过它执行SQL脚本，还原或创建新库。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="n">mysql</span> <span class="o">-</span><span class="n">h127</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">1</span> <span class="o">-</span><span class="n">uroot</span> <span class="o">-</span><span class="n">p12313</span> <span class="o">&lt;</span> <span class="n">mydb</span><span class="p">.</span><span class="k">sql</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这样会直接执行mydb.sql的脚本。通过mysqldump备份出来的脚本文件，可以用该方法直接用来恢复原数据库。</p>
+<h4 id="mysqladmin"><strong>mysqladmin</strong></h4>
+<p>mysqladmin是MySQL服务器的管理工具，一般用于配置服务器，也可以用来创建或删除数据库：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="n">mysqladmin</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">command</span> <span class="p">[</span><span class="n">command</span><span class="o">-</span><span class="n">arg</span><span class="p">]</span> <span class="p">[</span><span class="n">command</span> <span class="p">[</span><span class="n">command</span><span class="o">-</span><span class="n">arg</span><span class="p">]]</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>常用的command(执行命令)有：</p>
+<ul>
+<li>
+<p>create db_name 创建数据库</p>
+</li>
+<li>
+<p>drop db_name 删除数据库</p>
+</li>
+<li>
+<p>flush-logs 刷日志</p>
+</li>
+<li>
+<p>flush-tables 刷表，所有表数据写入磁盘盘</p>
+</li>
+<li>
+<p>kill id,id,&hellip;  杀死某些进程</p>
+</li>
+<li>
+<p>password new_password 修改(登录者的)登录密码</p>
+</li>
+<li>
+<p>ping 检查服务器是否可用</p>
+</li>
+<li>
+<p>status 显示服务器状态</p>
+</li>
+<li>
+<p>variables 显示各配置参数的值。</p>
+</li>
+</ul>
+<h4 id="mysqlbinlog"><strong>mysqlbinlog</strong></h4>
+<p>mysqlbinlog是MySQL的日志管理工具。在需要手工介入的故障恢复中，该工具必不可少。当然，平常也可以用它查看日志。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="n">mysqlbinlog</span>  <span class="n">mysql</span><span class="o">-</span><span class="n">bin</span><span class="p">.</span><span class="mi">000983</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>上面的例子，用来查看日志文件mysql-bin.000983。MySQL的日志文件具有相同的前缀，后面的数字是日志文件的顺序。这个前缀是可配置的。比如，也可能是binlog.*。</p>
+<p>执行日志文件会导致日志所记录的事件重新做一遍，这样可以恢复一个给定时间段的数据，恢复的方法如下:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="n">mysqlbinlog</span> <span class="p">[</span><span class="k">option</span><span class="p">]</span> <span class="n">binlog_files</span> <span class="o">|</span> <span class="n">mysql</span> <span class="o">-</span><span class="n">u</span> <span class="n">root</span> <span class="o">-</span><span class="n">p</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>介质故障的恢复通常需要把最近一次备份后所有的日志文件全部列上。</p>
+<p>mysqlbinlog也支持几十个可选的参数，比如：</p>
+<ul>
+<li>
+<p>disable-log-bin 在通过日志恢复数据库期间不再写日志</p>
+</li>
+<li>
+<p>no-defaults 不使用MySQL默认的设置。</p>
+</li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-12-07</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E5%9B%9B/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E5%9B%9B/" data-title="Mysql数据库基本语法(四)" data-hashtags="Mysql"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E5%9B%9B/" data-hashtag="Mysql"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E5%9B%9B/" data-title="Mysql数据库基本语法(四)"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E5%9B%9B/" data-title="Mysql数据库基本语法(四)"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E5%9B%9B/" data-title="Mysql数据库基本语法(四)"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/mysql/">Mysql</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%89/" class="prev" rel="prev" title="Mysql数据库基本语法(三)"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Mysql数据库基本语法(三)</a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">菜菜</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

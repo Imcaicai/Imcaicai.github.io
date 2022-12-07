@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Mysql数据库基本语法(五) - 菜菜的秘密花园</title><meta name="Description" content="菜菜的秘密花园"><meta property="og:title" content="Mysql数据库基本语法(五)" />
+<meta property="og:description" content="9 数据库应用开发（JAVA篇） 9.1 JDBC体系结构和简单的查询 JDBC的体系结构 JDBC（Java DataBase Connectivity,java数据库连接）是一种用于执行SQL语句的Java API，可以为多种关系数据库提供统一访问，它由一组用Java语言编写的类和接口组成。JDBC提供了一种基准，据此可以构建更高级的工具和接口，使数据库开发人员能够编写数据库应用程序。 Java 具有坚固、安全、易于使用、易于理解和可从网络上自动下载等特性，是编写数据库应用程序的杰出语言。所需要的只是 Java应用程序与各种不同数据库之间进行对话的方法。 JDBC可以在各种平台上使用Java，如Windows，Mac OS和各种版本的UNIX。 JDBC API支持用于数据库访问的两层和三层处理模型，但通常，JDBC体系结构由两层组成：
+ JDBC API：这提供了应用程序到JDBC管理器连接。 JDBC驱动程序API：这支持JDBC管理器到驱动程序连接。  JDBC的核心组件 JDBC的核心组件包括：
+ DriverManager： 此类管理数据库驱动程序列表。使用通信子协议将来自java应用程序的连接请求与适当的数据库驱动程序匹配。 Driver:此接口处理与数据库服务器的通信，我们很少会直接与Driver对象进行交互。而是使用DriverManager对象来管理这种类型的对象。 Connection：该界面具有用于联系数据库的所有方法。连接对象表示通信上下文，即，与数据库的所有通信仅通过连接对象。 Statement：使用从此接口创建的对象将SQL语句提交到数据库。除了执行存储过程之外，一些派生接口还接受参数。 ResultSet：在使用Statement对象执行SQL查询后，这些对象保存从数据库检索的数据。它作为一个迭代器，允许我们遍历其数据。 SQLException：此类处理数据库应用程序中发生的任何错误  使用步骤 构建JDBC应用程序涉及以下六个步骤：
+ 导入包：需要包含包含数据库编程所需的JDBC类的包。大多数情况下，使用import java.sql.*就足够了。 注册JDBC驱动程序：要求您初始化驱动程序，以便您可以打开与数据库的通信通道。 打开连接：需要使用DriverManager.getConnection（）方法创建一个Connection对象，该对象表示与数据库的物理连接。 执行查询：需要使用类型为Statement的对象来构建和提交SQL语句到数据库。 从结果集中提取数据：需要使用相应的ResultSet.getXXX（）方法从结果集中检索数据。 释放资源：需要明确地关闭所有数据库资源，而不依赖于JVM的垃圾收集。  建立JDBC连接所涉及的编程可简单概括为以下四个步骤
+ 导入JDBC包：将Java语言的import语句添加到Java代码中导入所需的类。 注册JDBC驱动程序：此步骤将使JVM将所需的驱动程序实现加载到内存中，以便它可以满足您的JDBC请求。 数据库URL配置：这是为了创建一个格式正确的地址，指向要连接到的数据库。 创建连接对象：最后，调用DriverManager对象的getConnection（）方法来建立实际的数据库连接。  Class.forName(); 注册驱动程序最常见的方法是使用Java的Class.forName()方法，将驱动程序的类文件动态加载到内存中，并将其自动注册。
+1 2 3 4 5 6  try { Class.forName(&#34;com.mysql.cj.jdbc.Driver&#34;); }catch(ClassNotFoundException ex) { System.out.println(&#34;Error: unable to load driver class!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%BA%94/" /><meta property="og:image" content="https://imcaicai.github.io/img/avatar.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-10-28T10:15:12&#43;08:00" />
+<meta property="article:modified_time" content="2022-10-28T10:15:12&#43;08:00" /><meta property="og:site_name" content="菜菜的秘密花园" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://imcaicai.github.io/img/avatar.jpg"/>
+
+<meta name="twitter:title" content="Mysql数据库基本语法(五)"/>
+<meta name="twitter:description" content="9 数据库应用开发（JAVA篇） 9.1 JDBC体系结构和简单的查询 JDBC的体系结构 JDBC（Java DataBase Connectivity,java数据库连接）是一种用于执行SQL语句的Java API，可以为多种关系数据库提供统一访问，它由一组用Java语言编写的类和接口组成。JDBC提供了一种基准，据此可以构建更高级的工具和接口，使数据库开发人员能够编写数据库应用程序。 Java 具有坚固、安全、易于使用、易于理解和可从网络上自动下载等特性，是编写数据库应用程序的杰出语言。所需要的只是 Java应用程序与各种不同数据库之间进行对话的方法。 JDBC可以在各种平台上使用Java，如Windows，Mac OS和各种版本的UNIX。 JDBC API支持用于数据库访问的两层和三层处理模型，但通常，JDBC体系结构由两层组成：
+ JDBC API：这提供了应用程序到JDBC管理器连接。 JDBC驱动程序API：这支持JDBC管理器到驱动程序连接。  JDBC的核心组件 JDBC的核心组件包括：
+ DriverManager： 此类管理数据库驱动程序列表。使用通信子协议将来自java应用程序的连接请求与适当的数据库驱动程序匹配。 Driver:此接口处理与数据库服务器的通信，我们很少会直接与Driver对象进行交互。而是使用DriverManager对象来管理这种类型的对象。 Connection：该界面具有用于联系数据库的所有方法。连接对象表示通信上下文，即，与数据库的所有通信仅通过连接对象。 Statement：使用从此接口创建的对象将SQL语句提交到数据库。除了执行存储过程之外，一些派生接口还接受参数。 ResultSet：在使用Statement对象执行SQL查询后，这些对象保存从数据库检索的数据。它作为一个迭代器，允许我们遍历其数据。 SQLException：此类处理数据库应用程序中发生的任何错误  使用步骤 构建JDBC应用程序涉及以下六个步骤：
+ 导入包：需要包含包含数据库编程所需的JDBC类的包。大多数情况下，使用import java.sql.*就足够了。 注册JDBC驱动程序：要求您初始化驱动程序，以便您可以打开与数据库的通信通道。 打开连接：需要使用DriverManager.getConnection（）方法创建一个Connection对象，该对象表示与数据库的物理连接。 执行查询：需要使用类型为Statement的对象来构建和提交SQL语句到数据库。 从结果集中提取数据：需要使用相应的ResultSet.getXXX（）方法从结果集中检索数据。 释放资源：需要明确地关闭所有数据库资源，而不依赖于JVM的垃圾收集。  建立JDBC连接所涉及的编程可简单概括为以下四个步骤
+ 导入JDBC包：将Java语言的import语句添加到Java代码中导入所需的类。 注册JDBC驱动程序：此步骤将使JVM将所需的驱动程序实现加载到内存中，以便它可以满足您的JDBC请求。 数据库URL配置：这是为了创建一个格式正确的地址，指向要连接到的数据库。 创建连接对象：最后，调用DriverManager对象的getConnection（）方法来建立实际的数据库连接。  Class.forName(); 注册驱动程序最常见的方法是使用Java的Class.forName()方法，将驱动程序的类文件动态加载到内存中，并将其自动注册。
+1 2 3 4 5 6  try { Class.forName(&#34;com.mysql.cj.jdbc.Driver&#34;); }catch(ClassNotFoundException ex) { System.out.println(&#34;Error: unable to load driver class!"/>
+<meta name="application-name" content="菜菜的秘密花园">
+<meta name="apple-mobile-web-app-title" content="菜菜的秘密花园"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%BA%94/" /><link rel="prev" href="https://imcaicai.github.io/git%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95%E6%8A%A5%E9%94%99%E8%AE%B0%E5%BD%95/" /><link rel="next" href="https://imcaicai.github.io/%E4%BD%BF%E7%94%A8adb%E5%91%BD%E4%BB%A4%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Mysql数据库基本语法(五)",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/imcaicai.github.io\/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%BA%94\/"
+        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "Mysql","wordcount":  483 ,
+        "url": "https:\/\/imcaicai.github.io\/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%BA%94\/","datePublished": "2022-10-28T10:15:12+08:00","dateModified": "2022-10-28T10:15:12+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/imcaicai.github.io\/img\/avatar.jpg"},"author": {
+                "@type": "Person",
+                "name": "菜菜"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="菜菜的秘密花园"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/avatar.jpg"
+        data-srcset="/img/avatar.jpg, /img/avatar.jpg 1.5x, /img/avatar.jpg 2x"
+        data-sizes="auto"
+        alt="/img/avatar.jpg"
+        title="/img/avatar.jpg" />菜菜的秘密花园</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/categories/documentation/"> Docs </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/friends/"><i class='fas fa-fw fa-fan fa-spin'></i> Friends </a><a class="menu-item" href="https://github.com/Imcaicai" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="Select Language">
+                    <i class="fa fa-globe" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%BA%94/" selected>English</option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="菜菜的秘密花园"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/avatar.jpg"
+        data-srcset="/img/avatar.jpg, /img/avatar.jpg 1.5x, /img/avatar.jpg 2x"
+        data-sizes="auto"
+        alt="/img/avatar.jpg"
+        title="/img/avatar.jpg" />菜菜的秘密花园</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/categories/documentation/" title="">Docs</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/friends/" title=""><i class='fas fa-fw fa-fan fa-spin'></i>Friends</a><a class="menu-item" href="https://github.com/Imcaicai" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="Select Language">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%BA%94/" selected>English</option></select>
+                </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Mysql数据库基本语法(五)</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-category">included in <a href="/categories/mysql/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Mysql</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-28">2022-10-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;483 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;<span id="/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%BA%94/" class="leancloud_visitors" data-flag-title="Mysql数据库基本语法(五)">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#91-jdbc体系结构和简单的查询">9.1 JDBC体系结构和简单的查询</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#jdbc的体系结构">JDBC的体系结构</a></li>
+            <li><a href="#jdbc的核心组件">JDBC的核心组件</a></li>
+            <li><a href="#使用步骤">使用步骤</a></li>
+            <li><a href="#classforname">Class.forName();</a></li>
+            <li><a href="#数据库url配置">数据库URL配置</a></li>
+            <li><a href="#创建数据库连接对象">创建数据库连接对象</a></li>
+            <li><a href="#关闭数据库连接">关闭数据库连接</a></li>
+            <li><a href="#jdbc执行sql语句">JDBC执行SQL语句</a></li>
+            <li><a href="#创建statement对象">创建Statement对象</a></li>
+            <li><a href="#执行statement对象">执行Statement对象</a></li>
+            <li><a href="#关闭statement对象">关闭Statement对象</a></li>
+            <li><a href="#preparedstatement">PreparedStatement</a></li>
+            <li><a href="#resultset">ResultSet</a></li>
+            <li><a href="#resultset的遍历">ResultSet的遍历</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#92-条件不确定的查询">9.2 条件不确定的查询</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#把变量直接拼接到sql语句中">把变量直接拼接到sql语句中</a></li>
+            <li><a href="#用preparedstatement">用PreparedStatement</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#93-jdbc的插入操作">9.3 JDBC的插入操作</a></li>
+    <li><a href="#94-事务处理">9.4 事务处理</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#jdbc的事务处理">JDBC的事务处理</a></li>
+            <li><a href="#jdbc的事务隔离级别">JDBC的事务隔离级别</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#101-从需求分析到逻辑模型">10.1 从需求分析到逻辑模型</a>
+      <ul>
+        <li><a href="#业务功能描述">业务功能描述</a></li>
+      </ul>
+    </li>
+    <li><a href="#102-建模工具简介">10.2 建模工具简介</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="9-数据库应用开发java篇">9 数据库应用开发（JAVA篇）</h1>
+<h2 id="91-jdbc体系结构和简单的查询">9.1 JDBC体系结构和简单的查询</h2>
+<h4 id="jdbc的体系结构">JDBC的体系结构</h4>
+<p>JDBC（Java DataBase Connectivity,java数据库连接）是一种用于执行SQL语句的Java API，可以为多种关系数据库提供统一访问，它由一组用Java语言编写的类和接口组成。JDBC提供了一种基准，据此可以构建更高级的工具和接口，使数据库开发人员能够编写数据库应用程序。 Java 具有坚固、安全、易于使用、易于理解和可从网络上自动下载等特性，是编写数据库应用程序的杰出语言。所需要的只是 Java应用程序与各种不同数据库之间进行对话的方法。 JDBC可以在各种平台上使用Java，如Windows，Mac OS和各种版本的UNIX。 JDBC API支持用于数据库访问的两层和三层处理模型，但通常，JDBC体系结构由两层组成：</p>
+<ul>
+<li>JDBC API：这提供了应用程序到JDBC管理器连接。</li>
+<li>JDBC驱动程序API：这支持JDBC管理器到驱动程序连接。</li>
+</ul>
+<h4 id="jdbc的核心组件">JDBC的核心组件</h4>
+<p>JDBC的核心组件包括：</p>
+<ul>
+<li>DriverManager： 此类管理数据库驱动程序列表。使用通信子协议将来自java应用程序的连接请求与适当的数据库驱动程序匹配。</li>
+<li>Driver:此接口处理与数据库服务器的通信，我们很少会直接与Driver对象进行交互。而是使用DriverManager对象来管理这种类型的对象。</li>
+<li>Connection：该界面具有用于联系数据库的所有方法。连接对象表示通信上下文，即，与数据库的所有通信仅通过连接对象。</li>
+<li>Statement：使用从此接口创建的对象将SQL语句提交到数据库。除了执行存储过程之外，一些派生接口还接受参数。</li>
+<li>ResultSet：在使用Statement对象执行SQL查询后，这些对象保存从数据库检索的数据。它作为一个迭代器，允许我们遍历其数据。</li>
+<li>SQLException：此类处理数据库应用程序中发生的任何错误</li>
+</ul>
+<h4 id="使用步骤">使用步骤</h4>
+<p>构建JDBC应用程序涉及以下六个步骤：</p>
+<ul>
+<li>导入包：需要包含包含数据库编程所需的JDBC类的包。大多数情况下，使用import java.sql.*就足够了。</li>
+<li>注册JDBC驱动程序：要求您初始化驱动程序，以便您可以打开与数据库的通信通道。</li>
+<li>打开连接：需要使用DriverManager.getConnection（）方法创建一个Connection对象，该对象表示与数据库的物理连接。</li>
+<li>执行查询：需要使用类型为Statement的对象来构建和提交SQL语句到数据库。</li>
+<li>从结果集中提取数据：需要使用相应的ResultSet.getXXX（）方法从结果集中检索数据。</li>
+<li>释放资源：需要明确地关闭所有数据库资源，而不依赖于JVM的垃圾收集。</li>
+</ul>
+<p>建立JDBC连接所涉及的编程可简单概括为以下四个步骤</p>
+<ul>
+<li>导入JDBC包：将Java语言的<em>import</em>语句添加到Java代码中导入所需的类。</li>
+<li>注册JDBC驱动程序：此步骤将使JVM将所需的驱动程序实现加载到内存中，以便它可以满足您的JDBC请求。</li>
+<li>数据库URL配置：这是为了创建一个格式正确的地址，指向要连接到的数据库。</li>
+<li>创建连接对象：最后，调用DriverManager对象的getConnection（）方法来建立实际的数据库连接。</li>
+</ul>
+<h4 id="classforname">Class.forName();</h4>
+<p>注册驱动程序最常见的方法是使用Java的Class.forName()方法，将驱动程序的类文件动态加载到内存中，并将其自动注册。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="k">try</span> <span class="o">{</span>
+  <span class="n">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="s">&#34;com.mysql.cj.jdbc.Driver&#34;</span><span class="o">);</span>
+<span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="n">ClassNotFoundException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Error: unable to load driver class!&#34;</span><span class="o">);</span>
+  <span class="n">System</span><span class="o">.</span><span class="na">exit</span><span class="o">(</span><span class="n">1</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="数据库url配置">数据库URL配置</h4>
+<p>加载驱动程序后，可以使用DriverManager.getConnection（）方法建立连接。为了方便参考，特列出三个重载的DriverManager.getConnection()方法：</p>
+<ul>
+<li>getConnection（String url）</li>
+<li>getConnection（String url，Properties prop）</li>
+<li>getConnection（String url，String user，String password）</li>
+</ul>
+<h4 id="创建数据库连接对象">创建数据库连接对象</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="n">String</span> <span class="n">URL</span> <span class="o">=</span> <span class="s2">&#34;jdbc:mysql://localhost:3306/dbname?serverTimezone=UTC&#34;</span><span class="p">;</span>
+<span class="n">String</span> <span class="k">USER</span> <span class="o">=</span> <span class="s2">&#34;username&#34;</span><span class="p">;</span>
+<span class="n">String</span> <span class="n">PASS</span> <span class="o">=</span> <span class="s2">&#34;password&#34;</span>
+<span class="n">Connection</span> <span class="n">conn</span> <span class="o">=</span> <span class="n">DriverManager</span><span class="p">.</span><span class="nf">getConnection</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="k">USER</span><span class="p">,</span> <span class="n">PASS</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>完整的连接地址: <code>jdbc:mysql://127.0.0.1:3306/dbname?useUnicode=true&amp;characterEncoding=UTF8&amp;useSSL=false&amp;serverTimezone=UTC&quot;</code></p>
+<h4 id="关闭数据库连接">关闭数据库连接</h4>
+<p>为确保连接关闭，您可以在代码中提供一个“finally”块。一个finally块总是执行，不管是否发生异常。 要关闭上面打开的连接，你应该调用close（）方法如下:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">conn</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="jdbc执行sql语句">JDBC执行SQL语句</h4>
+<p>一旦获得了连接，我们可以与数据库进行交互。JDBC Statement和PreparedStatement接口定义了能够发送SQL命令并从数据库接收数据的方法和属性。</p>
+<h4 id="创建statement对象">创建Statement对象</h4>
+<p>在使用Statement对象执行SQL语句之前，需要使用Connection对象的createStatement()方法创建Statement的一个实例，如下例所示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"> <span class="n">Statement</span> <span class="n">stmt</span> <span class="o">=</span> <span class="no">null</span><span class="p">;</span>
+<span class="n">try</span> <span class="err">{</span>
+   <span class="n">stmt</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="nf">createStatement</span><span class="p">(</span> <span class="p">);</span>
+   <span class="p">.</span> <span class="p">.</span> <span class="p">.</span>
+<span class="err">}</span>
+   <span class="nf">catch</span> <span class="p">(</span><span class="k">SQLException</span> <span class="n">e</span><span class="p">)</span> <span class="err">{</span>
+   <span class="p">.</span> <span class="p">.</span> <span class="p">.</span>
+<span class="err">}</span>
+<span class="n">finally</span> <span class="err">{</span>
+   <span class="p">.</span> <span class="p">.</span> <span class="p">.</span>
+<span class="err">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="执行statement对象">执行Statement对象</h4>
+<p>创建Statement对象后，您可以使用它来执行一个SQL语句，其中有三个执行方法之一。</p>
+<ul>
+<li>boolean execute(String SQL)：如果可以检索到ResultSet对象，则返回一个布尔值true; 否则返回false。使用此方法执行SQL DDL语句或需要使用真正的动态SQL时。</li>
+<li>int executeUpdate(String SQL)：返回受SQL语句执行影响的行数。使用此方法执行预期会影响多个行的SQL语句，例如INSERT，UPDATE或DELETE语句。</li>
+<li>ResultSet executeQuery(String SQL)：返回一个ResultSet对象。当您希望获得结果集时，请使用此方法，就像使用SELECT语句一样。</li>
+</ul>
+<h4 id="关闭statement对象">关闭Statement对象</h4>
+<p>就像关闭一个Connection对象以保存数据库资源一样，由于同样的原因，还应该关闭Statement对象。 调用close()方法即可关闭Statement对象。如果先关闭Connection对象，它也会关闭Statement对象。但是，应始终显式关闭Statement对象，以确保正确清理。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">Statement</span> <span class="n">stmt</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+<span class="k">try</span> <span class="o">{</span>
+   <span class="n">stmt</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="na">createStatement</span><span class="o">(</span> <span class="o">);</span>
+   <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
+<span class="o">}</span>
+<span class="k">catch</span> <span class="o">(</span><span class="n">SQLException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+   <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
+<span class="o">}</span>
+<span class="k">finally</span> <span class="o">{</span>
+   <span class="n">stmt</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="preparedstatement">PreparedStatement</h4>
+<p>PreparedStatement的接口扩展了Statement接口，其优点是可以动态地提供参数。如果语句被多次执行，其执行效率比Statement高。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="n">PreparedStatement</span> <span class="n">pstmt</span> <span class="o">=</span> <span class="no">null</span><span class="p">;</span>
+<span class="n">try</span> <span class="err">{</span>
+   <span class="n">String</span> <span class="k">SQL</span> <span class="o">=</span> <span class="s2">&#34;Update Employees SET age = ? WHERE id = ?&#34;</span><span class="p">;</span>
+   <span class="n">pstmt</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="nf">prepareStatement</span><span class="p">(</span><span class="k">SQL</span><span class="p">);</span>
+   <span class="p">.</span> <span class="p">.</span> <span class="p">.</span>
+<span class="err">}</span>
+<span class="nf">catch</span> <span class="p">(</span><span class="k">SQLException</span> <span class="n">e</span><span class="p">)</span> <span class="err">{</span>
+   <span class="p">.</span> <span class="p">.</span> <span class="p">.</span>
+<span class="err">}</span>
+<span class="n">finally</span> <span class="err">{</span>
+   <span class="n">pstmt</span><span class="p">.</span><span class="nf">close</span><span class="p">();</span>
+<span class="err">}</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>JDBC中的所有参数都用？符号代替，这被称为参数标记(又叫占位符)。在执行SQL语句之前，必须为每个参数提供值。 用setXXX(参数序号,参数值)方法将值绑定到对应参数，其中XXX代表要绑定到输入参数的值的Java数据类型。如果忘记提供值，将收到一个SQLException。参数的序号从1开始。 记得调用close()方法，显示关闭PreparedStatement对象。</p>
+<h4 id="resultset">ResultSet</h4>
+<p>ResultSet对象维护指向结果集中当前行的游标。有多种类型的“游标”，如果没有指定任何ResultSet类型，则取缺省值TYPE_FORWARD_ONLY。</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>类型描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ResultSet.TYPE_SCROLL_INSENSITIVE</td>
+<td>光标可以向前和向后滚动，结果集对创建结果集后发生的数据库的其他更改不敏感。</td>
+</tr>
+<tr>
+<td>ResultSet.TYPE_SCROLL_SENSITIVE</td>
+<td>光标可以向前和向后滚动，结果集对创建结果集之后发生的其他数据库所做的更改敏感。</td>
+</tr>
+<tr>
+<td>ResultSet.TYPE_FORWARD_ONLY</td>
+<td>光标只能在结果集中向前移动。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="resultset的遍历">ResultSet的遍历</h4>
+<p>用ResultSet的next()方法取得游标当前行的值，并用getXXX(列名)方法获列这一行某个列的值，XXX是与列匹配的数据类型，next()会推进游标到下一行，如果next()返回false表示数据集已取完(或者是空集)。 示例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">resultSet</span> <span class="o">=</span> <span class="n">statement</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">(</span><span class="s">&#34;select * from student;&#34;</span><span class="o">);</span><span class="k">while</span> <span class="o">(</span><span class="n">resultSet</span><span class="o">.</span><span class="na">next</span><span class="o">())</span> <span class="o">{</span>    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">resultSet</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">&#34;sno&#34;</span><span class="o">));</span>    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">resultSet</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">&#34;sname&#34;</span><span class="o">));</span>    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">resultSet</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">&#34;sage&#34;</span><span class="o">));}</span> 
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="92-条件不确定的查询">9.2 条件不确定的查询</h2>
+<p>JDBC的Statement类方法executeQuery(sql)可以执行一条确定的sql语句,如果要执行的sql语句带有变化的部分,比如每个客户的输入的用户名与密码都会不同. 这种情况,有两种解决方案:</p>
+<h4 id="把变量直接拼接到sql语句中">把变量直接拼接到sql语句中</h4>
+<p>下例中,假定变量userName(类型String)在此前已被赋值:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="n">statement</span> <span class="o">=</span> <span class="n">connection</span><span class="p">.</span><span class="nf">createStatement</span><span class="p">();</span>
+<span class="n">String</span> <span class="k">sql</span> <span class="o">=</span> <span class="s2">&#34;select * from user where username = &#39;&#34;</span> <span class="o">+</span> <span class="n">userName</span> <span class="o">+</span> <span class="s2">&#34;&#39;;&#34;</span><span class="p">;</span>
+<span class="n">resultSet</span> <span class="o">=</span> <span class="n">statement</span><span class="p">.</span><span class="nf">executeQuery</span><span class="p">(</span><span class="k">sql</span><span class="p">);</span> 
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="用preparedstatement">用PreparedStatement</h4>
+<p>用PreparedStatement类,把sql语句中变化的部分当成参数:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="n">String</span> <span class="k">sql</span> <span class="o">=</span> <span class="s2">&#34;select * from user where username = ? ;&#34;</span><span class="p">;</span>
+<span class="n">preparedStatement</span> <span class="o">=</span> <span class="n">connection</span><span class="p">.</span><span class="nf">prepareStatement</span><span class="p">(</span><span class="k">sql</span><span class="p">);</span>
+<span class="n">preparedStatement</span><span class="p">.</span><span class="nf">setString</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">userName</span><span class="p">);</span>
+<span class="n">resultSet</span> <span class="o">=</span> <span class="n">preparedStatement</span><span class="p">.</span><span class="nf">executeQuery</span><span class="p">();</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="93-jdbc的插入操作">9.3 JDBC的插入操作</h2>
+<p>在成功连接数据库后，实例化Statement或PreparedStatement类的一个对象。该对象关联一条sql insert语句，然后调用对象的executeUpdate()方法即可。以PreparedStatement为例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="n">String</span> <span class="k">sql</span> <span class="o">=</span> <span class="s2">&#34;insert into user values(?,?)&#34;</span><span class="p">;</span>
+<span class="n">pps</span> <span class="o">=</span> <span class="n">connection</span><span class="p">.</span><span class="nf">prepareStatement</span><span class="p">(</span><span class="k">sql</span><span class="p">);</span>
+<span class="n">pps</span><span class="p">.</span><span class="nf">setString</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">loginName</span><span class="p">);</span>
+<span class="n">pps</span><span class="p">.</span><span class="nf">setString</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">loginPass</span><span class="p">);</span>
+<span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">pps</span><span class="p">.</span><span class="nf">executeUpdate</span><span class="p">();</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>  <span class="err">{</span>
+    <span class="n">System</span><span class="p">.</span><span class="k">out</span><span class="p">.</span><span class="nf">println</span><span class="p">(</span><span class="s2">&#34;执行成功，影响行数：&#34;</span> <span class="o">+</span> <span class="n">n</span><span class="p">);</span>
+<span class="err">}</span> <span class="k">else</span> <span class="err">{</span>
+    <span class="n">System</span><span class="p">.</span><span class="k">out</span><span class="p">.</span><span class="nf">println</span><span class="p">(</span><span class="s2">&#34;执行失败.&#34;</span><span class="p">);</span>
+<span class="err">}</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>第2行出现的pps和connection分别为PreparedStatment和Connection类的一个对象(均在该代码段之前已实例化)。第3行和第4行出现的loginName和loginPass是两个String对象，假定此前已被赋值。</p>
+<h2 id="94-事务处理">9.4 事务处理</h2>
+<h4 id="jdbc的事务处理">JDBC的事务处理</h4>
+<p>JDBC缺省情形下，Statement和PreapredStatement均自动为一个事务。因此，当一个Statement调了executeUpdate()方法后，所执行的SQL语句自动提交，其对数据库的修改不可再撤销。</p>
+<p>但调用Connection.setAutoCommit(boolean autoCommit)方法可以改变缺省设置： connection.setAutoCommit(false); 将使本会话期内的语句不再自动提交，必须调用Connection的以下方法手动提交：</p>
+<ul>
+<li>commit()</li>
+<li>rollback()</li>
+</ul>
+<p>前者为正常提交，后者表示事务回滚，撤销所有修改。</p>
+<h4 id="jdbc的事务隔离级别">JDBC的事务隔离级别</h4>
+<p>JDBC通过调用Connetion的以下方法设置事务的隔离级别：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="n">void</span> <span class="nf">setTransactionIsolation</span><span class="p">(</span><span class="kt">int</span> <span class="n">level</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>如果没有调用该方法设置隔离级别，将采用DBMS缺省的隔离级别，对MySQL而言，即repeatable read。JDBC支持以下隔离级别：</p>
+<ul>
+<li>static int TRANSACTION_NONE</li>
+<li>static int TRANSACTION_READ_UNCOMMITTED</li>
+<li>static int TRANSACTION_READ_COMMITTED</li>
+<li>static int TRANSACTION_REPEATABLE_READ</li>
+<li>static int TRANSACTION_SERIALIZABLE</li>
+</ul>
+<p>它们对应的int值依次为0,1,2,4和8。 不是每个DBMS都支持以上所有的隔离级别。MySQL支持后面4个隔离级别，且缺省状态下为TRANSACTION_REPEATABLE_READ。Oracle支持其中的两个，缺省值为TRANSACTION_READ_COMMITTED。</p>
+<h1 id="10-数据库设计与实现">10 数据库设计与实现</h1>
+<h2 id="101-从需求分析到逻辑模型">10.1 从需求分析到逻辑模型</h2>
+<h3 id="业务功能描述">业务功能描述</h3>
+<p>设计一个影院管理系统。影院对当前的放映厅和电影进行排片，顾客到来后，可以购买任一排场的电影票，进入对应放映厅观看。系统中有以下实体集：</p>
+<ol>
+<li>电影(movie)：属性有标识号(movie_ID)、电影名(title)、类型(type)、时长(runtime)、首映日期(release_date)、导演姓名(director)、主演姓名(starring)。</li>
+<li>顾客(customer)：属性有标识号(c_ID)、姓名(name)、手机号(phone)。</li>
+<li>放映厅(hall)：属性有标识号(hall_ID)、放映模式(mode)、容纳人数(capacity)、位置(location)。</li>
+<li>排场(schedule)：属性有标识号(schedule_ID)、日期(date)、时间(time)、票价(price)、票数(number)。</li>
+<li>电影票(ticket)：属性有标识号(ticket_ID)、座位号(seat_num)。 实体间的关系描述如下： ①. 顾客和电影票有一对多的购买关系。每位顾客可以买多张电影票，每张电影票被一位顾客购买。 ②. 电影票和排场有多对一的属于关系。一张电影票只属于一个排场，一个排场有多张电影票。 ③. 排场和电影有一对多的放映关系。每个排场放一部电影，每部电影可以在多个排场放映。 ④. 排场和放映厅有一对多的位于关系。每个排场位于一个放映厅，每个放映厅可以安排多个排场。</li>
+</ol>
+<p>ER图：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/Mysql/1.png"
+        data-srcset="/img/Mysql/1.png, /img/Mysql/1.png 1.5x, /img/Mysql/1.png 2x"
+        data-sizes="auto"
+        alt="/img/Mysql/1.png"
+        title="image1" /></p>
+<p>关系模式：</p>
+<p>movie(movie_ID,title,type,runtime,release_date,director,starring),主码:(movie_ID)</p>
+<p>customer(c_ID,name,phone),主码:(c_ID)</p>
+<p>hall(hall_ID,mode,capacity,location),主码:(hall_ID)</p>
+<p>schedule(schedule_ID,date,time,price,number,hall_ID,movie_ID),主码:(schedule_ID);外码:(hall_ID,movie_ID)</p>
+<p>ticket(ticket_ID,seat_num,c_ID,schedule_ID),主码:(ticket_ID);外码:(c_ID,schedule_ID)</p>
+<h2 id="102-建模工具简介">10.2 建模工具简介</h2>
+<p><strong>1. ERWIN</strong> erwin Data Modeler行业领先的数据建模解决方案,具有直观的设计和存档功能,支持管理整个企业内任何存储位置的任何数据。但收费较贵，不过，大学学生可以申请erwin Data Modeler Academic Edition，有效期1年。可以去官网下载文档了解具体功能和使用方法： 中文官网：http://www.erwinchina.com/</p>
+<p><strong>2.Navicat</strong> Navicat支持几乎所有你常用的DBMS，支持概念模型，逻辑模型和物理模型，可根据模型文件生成任何DBMS的脚本。支持Forward Engineering和Reverse Engineering。 该软件也是收费。 Navicat同时也是用户较多的DBMS客户端管理工具。 中文官网： <a href="https://www.navicat.com.cn/">https://www.navicat.com.cn/</a></p>
+<p>**3.Microsoft Visio **</p>
+<p>现在，Visio已从Office分离出来，需要单独购买。支持陈氏E-R图和Crow&rsquo;s foot。可用来表达概念模型，逻辑模型等。</p>
+<p><strong>4.Draw.io</strong> 这是最容易获得的建模工具，只需要web browser的地址栏里输入URL即可调出： draw.io 或者： <a href="https://app.diagrams.net/">https://app.diagrams.net/</a> 输入前者会自动跳转到后者。 比较适合建立概念模型和逻辑模型。既支持陈氏ER图，也支持Crow&rsquo;s footsER图。但它不能跟具体的DBMS连接,不支持正向及逆向工程。</p>
+<p><strong>5. MySQL Workbench</strong> MySQL社区版自带的免费工具。也是比较好用的图形界面客户端管理工具。支持正向及逆向工具。 官网可下载使用手册。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-10-28</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%BA%94/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%BA%94/" data-title="Mysql数据库基本语法(五)" data-hashtags="Mysql"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%BA%94/" data-hashtag="Mysql"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%BA%94/" data-title="Mysql数据库基本语法(五)"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%BA%94/" data-title="Mysql数据库基本语法(五)"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%BA%94/" data-title="Mysql数据库基本语法(五)"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/mysql/">Mysql</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/git%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95%E6%8A%A5%E9%94%99%E8%AE%B0%E5%BD%95/" class="prev" rel="prev" title="Git基本用法&amp;报错记录"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Git基本用法&报错记录</a>
+            <a href="/%E4%BD%BF%E7%94%A8adb%E5%91%BD%E4%BB%A4%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/" class="next" rel="next" title="使用adb命令安装软件">使用adb命令安装软件<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">菜菜</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
