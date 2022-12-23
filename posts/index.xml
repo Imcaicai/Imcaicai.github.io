@@ -3,7 +3,24 @@
         <title>All Posts - 菜菜的秘密花园</title>
         <link>https://imcaicai.github.io/posts/</link>
         <description>All Posts | 菜菜的秘密花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 07 Dec 2022 14:51:25 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 23 Dec 2022 22:20:00 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>算法和刷题的框架思维</title>
+    <link>https://imcaicai.github.io/%E7%AE%97%E6%B3%95%E5%92%8C%E5%88%B7%E9%A2%98%E7%9A%84%E6%A1%86%E6%9E%B6%E6%80%9D%E7%BB%B4/</link>
+    <pubDate>Fri, 23 Dec 2022 22:20:00 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/%E7%AE%97%E6%B3%95%E5%92%8C%E5%88%B7%E9%A2%98%E7%9A%84%E6%A1%86%E6%9E%B6%E6%80%9D%E7%BB%B4/</guid>
+    <description><![CDATA[1 数据结构的存储方式 1.1 数据结构&amp;存储方式 数据的存储方式只有两种：数组（顺序存储）和链表（链式存储）。
+【队列】【栈】
+【图】：链表实现就是邻接表，二维数组实现就是邻接矩阵
+【散列表】
+【树】：数组实现就是堆（完全二叉树），链表实现就是普通二叉树
+1.2 数组&amp;链表优缺点 数组：
+ 紧凑连续存储,可以随机访问，通过索引快速找到对应元素，节约存储空间。 内存空间必须⼀次性分配够，扩容时需要重新分配空间，再把数据全部复制过去，时间复杂度 O(N) 插⼊和删除时间复杂度 O(N)  链表：
+ 元素不连续，不存在数组的扩容问题； 如果知道某⼀元素的前驱和后驱，插入删除时间复杂度 O(1) 存储空间不连续，不能随机访问 每个元素必须存储指向前后元素位置的指针，会消耗相对更多的储存空间。  2 数据结构的基本操作 数据结构的基本操作：遍历+访问（增删查改），分为线性/非线性。
+线性即for/while迭代，非线性即递归。
+ 【数组遍历框架】 迭代  1 2 3 4 5  void traverse(int[] arr) { for (int i = 0; i &lt; arr.length; i++) { // 迭代访问 arr[i] 	} }    【链表遍历框架】 迭代/递归  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16  /* 基本的单链表节点 */ class ListNode { int val; ListNode next; } void traverse(ListNode head) { for (ListNode p = head; p !]]></description>
+</item>
+<item>
     <title>Mysql数据库基本语法(四)</title>
     <link>https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E5%9B%9B/</link>
     <pubDate>Wed, 07 Dec 2022 14:51:25 &#43;0800</pubDate>
@@ -126,19 +143,6 @@ Please make sure you have the correct access rights and the repository exists.
 1 2  adb kill-server adb start-server   报错2  Failed to install app-debug.apk: Failure [INSTALL_FAILED_TEST_ONLY: installPackageLI]
  解决办法：允许安装test用的apk
 1  adb install -t app-debug.apk   ]]></description>
-</item>
-<item>
-    <title>Mysql数据库基本语法(五)</title>
-    <link>https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%BA%94/</link>
-    <pubDate>Fri, 28 Oct 2022 10:15:12 &#43;0800</pubDate>
-    <author>菜菜</author>
-    <guid>https://imcaicai.github.io/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%BA%94/</guid>
-    <description><![CDATA[9 数据库应用开发（JAVA篇） 9.1 JDBC体系结构和简单的查询 JDBC的体系结构 JDBC（Java DataBase Connectivity,java数据库连接）是一种用于执行SQL语句的Java API，可以为多种关系数据库提供统一访问，它由一组用Java语言编写的类和接口组成。JDBC提供了一种基准，据此可以构建更高级的工具和接口，使数据库开发人员能够编写数据库应用程序。 Java 具有坚固、安全、易于使用、易于理解和可从网络上自动下载等特性，是编写数据库应用程序的杰出语言。所需要的只是 Java应用程序与各种不同数据库之间进行对话的方法。 JDBC可以在各种平台上使用Java，如Windows，Mac OS和各种版本的UNIX。 JDBC API支持用于数据库访问的两层和三层处理模型，但通常，JDBC体系结构由两层组成：
- JDBC API：这提供了应用程序到JDBC管理器连接。 JDBC驱动程序API：这支持JDBC管理器到驱动程序连接。  JDBC的核心组件 JDBC的核心组件包括：
- DriverManager： 此类管理数据库驱动程序列表。使用通信子协议将来自java应用程序的连接请求与适当的数据库驱动程序匹配。 Driver:此接口处理与数据库服务器的通信，我们很少会直接与Driver对象进行交互。而是使用DriverManager对象来管理这种类型的对象。 Connection：该界面具有用于联系数据库的所有方法。连接对象表示通信上下文，即，与数据库的所有通信仅通过连接对象。 Statement：使用从此接口创建的对象将SQL语句提交到数据库。除了执行存储过程之外，一些派生接口还接受参数。 ResultSet：在使用Statement对象执行SQL查询后，这些对象保存从数据库检索的数据。它作为一个迭代器，允许我们遍历其数据。 SQLException：此类处理数据库应用程序中发生的任何错误  使用步骤 构建JDBC应用程序涉及以下六个步骤：
- 导入包：需要包含包含数据库编程所需的JDBC类的包。大多数情况下，使用import java.sql.*就足够了。 注册JDBC驱动程序：要求您初始化驱动程序，以便您可以打开与数据库的通信通道。 打开连接：需要使用DriverManager.getConnection（）方法创建一个Connection对象，该对象表示与数据库的物理连接。 执行查询：需要使用类型为Statement的对象来构建和提交SQL语句到数据库。 从结果集中提取数据：需要使用相应的ResultSet.getXXX（）方法从结果集中检索数据。 释放资源：需要明确地关闭所有数据库资源，而不依赖于JVM的垃圾收集。  建立JDBC连接所涉及的编程可简单概括为以下四个步骤
- 导入JDBC包：将Java语言的import语句添加到Java代码中导入所需的类。 注册JDBC驱动程序：此步骤将使JVM将所需的驱动程序实现加载到内存中，以便它可以满足您的JDBC请求。 数据库URL配置：这是为了创建一个格式正确的地址，指向要连接到的数据库。 创建连接对象：最后，调用DriverManager对象的getConnection（）方法来建立实际的数据库连接。  Class.forName(); 注册驱动程序最常见的方法是使用Java的Class.forName()方法，将驱动程序的类文件动态加载到内存中，并将其自动注册。
-1 2 3 4 5 6  try { Class.forName(&#34;com.mysql.cj.jdbc.Driver&#34;); }catch(ClassNotFoundException ex) { System.out.println(&#34;Error: unable to load driver class!]]></description>
 </item>
 </channel>
 </rss>
