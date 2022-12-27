@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>C&#43;&#43;基础语法(二) - 菜菜的秘密花园</title><meta name="Description" content="菜菜的秘密花园"><meta property="og:title" content="C&#43;&#43;基础语法(二)" />
+<meta property="og:description" content="6 运算符 sizeof运算符 sizeof 运算符可用于获取类、结构、共用体和其他用户自定义数据类型的大小。
+逗号运算符 整个逗号表达式的值为系列中最后一个表达式的值。从本质上讲，逗号的作用是将一系列运算按顺序执行。
+逗号之前的自增表达式也会在逗号结束后执行！
+1 2 3 4 5 6  // 运行完结果：count=19，incr=10，var=20 var = (count=19, incr=10, count&#43;1); // 结果：j=11，i=1010 j = 10; i = (j&#43;&#43;, j&#43;100, 999&#43;j);   成员运算符 .（点）运算符和 -&gt;（箭头）运算符用于引用类、结构和共用体的成员。访问结构的成员时使用点运算符，而通过指针访问结构的成员时，则使用箭头运算符。例如，假设有下面的结构：
+1 2 3 4  struct Employee { char first_name[16]; int age; } emp;   点运算符：
+1  strcpy(emp.first_name, &#34;zara&#34;);   箭头运算符：
+1 2  // p_emp 是一个指针，指向类型为 Employee 的对象 strcpy(p_emp-&gt;first_name, &#34;zara&#34;);   强制转换运算符 1 2  double a = 21." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://imcaicai.github.io/c-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%BA%8C/" /><meta property="og:image" content="https://imcaicai.github.io/img/avatar.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-12-27T20:23:48&#43;08:00" />
+<meta property="article:modified_time" content="2022-12-27T20:23:48&#43;08:00" /><meta property="og:site_name" content="菜菜的秘密花园" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://imcaicai.github.io/img/avatar.jpg"/>
+
+<meta name="twitter:title" content="C&#43;&#43;基础语法(二)"/>
+<meta name="twitter:description" content="6 运算符 sizeof运算符 sizeof 运算符可用于获取类、结构、共用体和其他用户自定义数据类型的大小。
+逗号运算符 整个逗号表达式的值为系列中最后一个表达式的值。从本质上讲，逗号的作用是将一系列运算按顺序执行。
+逗号之前的自增表达式也会在逗号结束后执行！
+1 2 3 4 5 6  // 运行完结果：count=19，incr=10，var=20 var = (count=19, incr=10, count&#43;1); // 结果：j=11，i=1010 j = 10; i = (j&#43;&#43;, j&#43;100, 999&#43;j);   成员运算符 .（点）运算符和 -&gt;（箭头）运算符用于引用类、结构和共用体的成员。访问结构的成员时使用点运算符，而通过指针访问结构的成员时，则使用箭头运算符。例如，假设有下面的结构：
+1 2 3 4  struct Employee { char first_name[16]; int age; } emp;   点运算符：
+1  strcpy(emp.first_name, &#34;zara&#34;);   箭头运算符：
+1 2  // p_emp 是一个指针，指向类型为 Employee 的对象 strcpy(p_emp-&gt;first_name, &#34;zara&#34;);   强制转换运算符 1 2  double a = 21."/>
+<meta name="application-name" content="菜菜的秘密花园">
+<meta name="apple-mobile-web-app-title" content="菜菜的秘密花园"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://imcaicai.github.io/c-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%BA%8C/" /><link rel="prev" href="https://imcaicai.github.io/c-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%80/" /><link rel="next" href="https://imcaicai.github.io/c-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%89/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "C++基础语法(二)",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/imcaicai.github.io\/c-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%BA%8C\/"
+        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "C\u002b\u002b","wordcount":  626 ,
+        "url": "https:\/\/imcaicai.github.io\/c-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%BA%8C\/","datePublished": "2022-12-27T20:23:48+08:00","dateModified": "2022-12-27T20:23:48+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/imcaicai.github.io\/img\/avatar.jpg"},"author": {
+                "@type": "Person",
+                "name": "菜菜"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="菜菜的秘密花园"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/avatar.jpg"
+        data-srcset="/img/avatar.jpg, /img/avatar.jpg 1.5x, /img/avatar.jpg 2x"
+        data-sizes="auto"
+        alt="/img/avatar.jpg"
+        title="/img/avatar.jpg" />菜菜的秘密花园</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/categories/documentation/"> Docs </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/Imcaicai" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="Select Language">
+                    <i class="fa fa-globe" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/c-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%BA%8C/" selected>English</option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="菜菜的秘密花园"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/avatar.jpg"
+        data-srcset="/img/avatar.jpg, /img/avatar.jpg 1.5x, /img/avatar.jpg 2x"
+        data-sizes="auto"
+        alt="/img/avatar.jpg"
+        title="/img/avatar.jpg" />菜菜的秘密花园</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/categories/documentation/" title="">Docs</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/Imcaicai" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="Select Language">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/c-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%BA%8C/" selected>English</option></select>
+                </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">C++基础语法(二)</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-category">included in <a href="/categories/c++/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>C++</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-12-27">2022-12-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;626 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;<span id="/c-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%BA%8C/" class="leancloud_visitors" data-flag-title="C&#43;&#43;基础语法(二)">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#6-运算符">6 运算符</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#sizeof运算符">sizeof运算符</a></li>
+            <li><a href="#逗号运算符">逗号运算符</a></li>
+            <li><a href="#成员运算符">成员运算符</a></li>
+            <li><a href="#强制转换运算符">强制转换运算符</a></li>
+            <li><a href="#指针运算符">指针运算符</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#7-循环">7 循环</a></li>
+    <li><a href="#8-switch语句">8 switch语句</a></li>
+    <li><a href="#9-函数">9 函数</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#函数声明">函数声明</a></li>
+            <li><a href="#函数参数">函数参数</a></li>
+            <li><a href="#参数的默认值">参数的默认值</a></li>
+            <li><a href="#lambda-函数与表达式">Lambda 函数与表达式</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#10-数字">10 数字</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#数学运算">数学运算</a></li>
+            <li><a href="#随机数">随机数</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#11-数组">11 数组</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#多维数组">多维数组</a></li>
+            <li><a href="#指向数组的指针">指向数组的指针</a></li>
+            <li><a href="#传递数组给函数">传递数组给函数</a></li>
+            <li><a href="#从函数返回数组">从函数返回数组</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="6-运算符">6 运算符</h2>
+<h4 id="sizeof运算符">sizeof运算符</h4>
+<p>sizeof 运算符可用于获取类、结构、共用体和其他用户自定义数据类型的大小。</p>
+<h4 id="逗号运算符">逗号运算符</h4>
+<p>整个逗号表达式的值为系列中最后一个表达式的值。从本质上讲，逗号的作用是将一系列运算按顺序执行。</p>
+<p>逗号之前的自增表达式也会在逗号结束后执行！</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="c1">// 运行完结果：count=19，incr=10，var=20
+</span><span class="c1"></span><span class="n">var</span> <span class="o">=</span> <span class="p">(</span><span class="n">count</span><span class="o">=</span><span class="mi">19</span><span class="p">,</span> <span class="n">incr</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">count</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="c1">// 结果：j=11，i=1010
+</span><span class="c1"></span><span class="n">j</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="n">i</span> <span class="o">=</span> <span class="p">(</span><span class="n">j</span><span class="o">++</span><span class="p">,</span> <span class="n">j</span><span class="o">+</span><span class="mi">100</span><span class="p">,</span> <span class="mi">999</span><span class="o">+</span><span class="n">j</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="成员运算符">成员运算符</h4>
+<p>.（点）运算符和 -&gt;（箭头）运算符用于引用类、结构和共用体的成员。访问结构的成员时使用点运算符，而通过指针访问结构的成员时，则使用箭头运算符。例如，假设有下面的结构：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="k">struct</span> <span class="nc">Employee</span> <span class="p">{</span>
+  <span class="kt">char</span> <span class="n">first_name</span><span class="p">[</span><span class="mi">16</span><span class="p">];</span>
+  <span class="kt">int</span>  <span class="n">age</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">emp</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>点运算符：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">strcpy(emp.first_name, &#34;zara&#34;);
+</code></pre></td></tr></table>
+</div>
+</div><p>箭头运算符：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="c1">// p_emp 是一个指针，指向类型为 Employee 的对象
+</span><span class="c1"></span><span class="n">strcpy</span><span class="p">(</span><span class="n">p_emp</span><span class="o">-&gt;</span><span class="n">first_name</span><span class="p">,</span> <span class="s">&#34;zara&#34;</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="强制转换运算符">强制转换运算符</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">double</span> <span class="n">a</span> <span class="o">=</span> <span class="mf">21.09399</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">a</span><span class="p">;</span>	<span class="c1">// 结果为21
+</span></code></pre></td></tr></table>
+</div>
+</div><h4 id="指针运算符">指针运算符</h4>
+<p>取地址运算符 &amp;：返回操作数的内存地址。</p>
+<p>间接寻址运算符 *：返回操作数所指定地址的变量的值。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">int</span>  <span class="n">var</span> <span class="o">=</span> <span class="mi">3000</span><span class="p">;</span>
+<span class="kt">int</span>  <span class="o">*</span><span class="n">ptr</span><span class="p">;</span>
+<span class="kt">int</span>  <span class="n">val</span><span class="p">;</span>
+<span class="n">ptr</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">var</span><span class="p">;</span>	<span class="c1">// 获取 var 的地址
+</span><span class="c1"></span><span class="n">val</span> <span class="o">=</span> <span class="o">*</span><span class="n">ptr</span><span class="p">;</span>	<span class="c1">// 获取 ptr 的值
+</span></code></pre></td></tr></table>
+</div>
+</div><h2 id="7-循环">7 循环</h2>
+<p>基于范围的for循环：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">int</span> <span class="n">my_array</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">};</span>
+<span class="c1">// 每个数组元素乘于 2
+</span><span class="c1"></span><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="o">&amp;</span><span class="nl">x</span> <span class="p">:</span> <span class="n">my_array</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">x</span> <span class="o">*=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>  
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="8-switch语句">8 switch语句</h2>
+<ul>
+<li><strong>switch</strong> 语句中的 <strong>expression</strong> 必须是一个整型或枚举类型，或者是一个 class 类型，其中 class 有一个单一的转换函数将其转换为整型或枚举类型。</li>
+<li>不是每一个 case 都需要包含 <strong>break</strong>。如果 case 语句不包含 <strong>break</strong>，控制流将会 <em>继续</em> 后续的 case，直到遇到 break 为止。</li>
+</ul>
+<h2 id="9-函数">9 函数</h2>
+<h4 id="函数声明">函数声明</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">int</span> <span class="nf">max</span><span class="p">(</span><span class="kt">int</span> <span class="n">num1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">num2</span><span class="p">);</span>
+
+<span class="c1">// 在函数声明中，参数的名称并不重要，只有参数的类型是必需的，因此下面也是有效的声明：
+</span><span class="c1"></span><span class="kt">int</span> <span class="nf">max</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>当您在一个源文件中定义函数且在另一个文件中调用函数时，函数声明是必需的。在这种情况下，您应该在调用函数的文件顶部声明函数。</p>
+<h4 id="函数参数">函数参数</h4>
+<p>形式参数就像函数内的其他局部变量，在进入函数时被创建，退出函数时被销毁。当调用函数时，有三种向函数传递参数的方式：</p>
+<p><strong>传值调用</strong></p>
+<p>该方法把参数的实际值赋值给函数的形式参数。在这种情况下，修改函数内的形式参数对实际参数没有影响。</p>
+<p><strong>指针调用</strong></p>
+<p>把参数的地址复制给形式参数。在函数内，该地址用于访问调用中要用到的实际参数。这意味着，修改形式参数会影响实际参数。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="c1">// 调用：swap(&amp;a,&amp;b)
+</span><span class="c1"></span><span class="kt">void</span> <span class="nf">swap</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">y</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="kt">int</span> <span class="n">temp</span><span class="p">;</span>
+   <span class="n">temp</span> <span class="o">=</span> <span class="o">*</span><span class="n">x</span><span class="p">;</span>    <span class="cm">/* 保存地址 x 的值 */</span>
+   <span class="o">*</span><span class="n">x</span> <span class="o">=</span> <span class="o">*</span><span class="n">y</span><span class="p">;</span>        <span class="cm">/* 把 y 赋值给 x */</span>
+   <span class="o">*</span><span class="n">y</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span>    <span class="cm">/* 把 x 赋值给 y */</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>引用调用</strong></p>
+<p>把引用的地址复制给形式参数。在函数内，该引用用于访问调用中要用到的实际参数。这意味着，修改形式参数会影响实际参数。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="c1">// 调用：swap(a,b)
+</span><span class="c1"></span><span class="kt">void</span> <span class="nf">swap</span><span class="p">(</span><span class="kt">int</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="n">y</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="kt">int</span> <span class="n">temp</span><span class="p">;</span>
+   <span class="n">temp</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span> <span class="cm">/* 保存地址 x 的值 */</span>
+   <span class="n">x</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>    <span class="cm">/* 把 y 赋值给 x */</span>
+   <span class="n">y</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span> <span class="cm">/* 把 x 赋值给 y  */</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="参数的默认值">参数的默认值</h4>
+<p>定义一个函数，可以为参数列表中后边的每一个参数指定默认值。当调用函数时，如果实际参数的值留空，则使用这个默认值。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">int</span> <span class="nf">sum</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kt">int</span> <span class="n">result</span><span class="p">;</span>
+  <span class="n">result</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span>
+  <span class="k">return</span> <span class="p">(</span><span class="n">result</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="lambda-函数与表达式">Lambda 函数与表达式</h4>
+<p>对匿名函数的支持,称为 Lambda 函数(也叫 Lambda 表达式)。</p>
+<p>Lambda 表达式把函数看作对象。Lambda 表达式可以像对象一样使用，比如可以将它们赋给变量和作为参数传递，还可以像函数一样对其求值。Lambda 表达式具体形式如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="c1">// 一般形式
+</span><span class="c1"></span><span class="p">[</span><span class="n">capture</span><span class="p">](</span><span class="n">parameters</span><span class="p">)</span><span class="o">-&gt;</span><span class="k">return</span><span class="o">-</span><span class="n">type</span><span class="p">{</span><span class="n">body</span><span class="p">}</span>
+<span class="c1">// 一般情况
+</span><span class="c1"></span><span class="p">[](</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">int</span> <span class="p">{</span> <span class="kt">int</span> <span class="n">z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">;</span> <span class="k">return</span> <span class="n">z</span> <span class="o">+</span> <span class="n">x</span><span class="p">;</span> <span class="p">}</span>
+<span class="c1">// 无返回类型
+</span><span class="c1"></span><span class="p">[](</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">){</span> <span class="k">return</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span> <span class="p">;</span> <span class="p">}</span>
+<span class="c1">// 无参数
+</span><span class="c1"></span><span class="p">[]{</span> <span class="o">++</span><span class="n">global_x</span><span class="p">;</span> <span class="p">}</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>在Lambda表达式内可以访问当前作用域的变量，这是Lambda表达式的闭包（Closure）行为。 与JavaScript闭包不同，C++变量传递有传值和传引用的区别。可以通过前面的[]来指定：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="p">[]</span>      <span class="c1">// 沒有定义任何变量。使用未定义变量会引发错误。
+</span><span class="c1"></span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">y</span><span class="p">]</span> <span class="c1">// x以传值方式传入（默认），y以引用方式传入。
+</span><span class="c1"></span><span class="p">[</span><span class="o">&amp;</span><span class="p">]</span>     <span class="c1">// 任何被使用到的外部变量都隐式地以引用方式加以引用。
+</span><span class="c1"></span><span class="p">[</span><span class="o">=</span><span class="p">]</span>     <span class="c1">// 任何被使用到的外部变量都隐式地以传值方式加以引用。
+</span><span class="c1"></span><span class="p">[</span><span class="o">&amp;</span><span class="p">,</span> <span class="n">x</span><span class="p">]</span>  <span class="c1">// x显式地以传值方式加以引用。其余变量以引用方式加以引用。
+</span><span class="c1"></span><span class="p">[</span><span class="o">=</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">z</span><span class="p">]</span> <span class="c1">// z显式地以引用方式加以引用。其余变量以传值方式加以引用。
+</span></code></pre></td></tr></table>
+</div>
+</div><p>另外有一点需要注意。对于[=]或[&amp;]的形式，lambda 表达式可以直接使用 this 指针。但是，对于[]的形式，如果要使用 this 指针，必须显式传入：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="p">[</span><span class="k">this</span><span class="p">]()</span> <span class="p">{</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">someFunc</span><span class="p">();</span> <span class="p">}();</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="10-数字">10 数字</h2>
+<h4 id="数学运算">数学运算</h4>
+<p>引用数学头文件 **<cmath>**可以使用C++内置的数学函数。</p>
+<ul>
+<li><strong>double log(double);</strong> 该函数返回参数的自然对数。</li>
+<li><strong>double pow(double, double);</strong> 假设第一个参数为 x，第二个参数为 y，则该函数返回 x 的 y 次方。</li>
+<li><strong>double sqrt(double);</strong> 该函数返回参数的平方根。</li>
+<li><strong>int abs(int);</strong> 该函数返回整数的绝对值。</li>
+<li><strong>double fabs(double);</strong> 该函数返回任意一个浮点数的绝对值。</li>
+<li><strong>double floor(double);</strong> 该函数返回一个小于或等于传入参数的最大整数。</li>
+</ul>
+<h4 id="随机数">随机数</h4>
+<p>关于随机数生成器，有两个相关的函数。一个是 <strong>rand()</strong>，该函数只返回一个伪随机数。生成随机数之前必须先调用 <strong>srand()</strong> 函数。</p>
+<p>下面是一个关于生成随机数的简单实例。实例中使用了 <strong>time()</strong> 函数来获取系统时间的秒数，通过调用 rand() 函数来生成随机数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">int</span> <span class="nf">main</span> <span class="p">()</span>
+<span class="p">{</span>
+   <span class="c1">// 设置种子
+</span><span class="c1"></span>   <span class="n">srand</span><span class="p">(</span> <span class="p">(</span><span class="kt">unsigned</span><span class="p">)</span><span class="n">time</span><span class="p">(</span> <span class="nb">NULL</span> <span class="p">)</span> <span class="p">);</span>
+   <span class="c1">// 生成实际的随机数
+</span><span class="c1"></span>   <span class="kt">int</span> <span class="n">j</span><span class="o">=</span> <span class="n">rand</span><span class="p">();</span>
+   <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="11-数组">11 数组</h2>
+<h4 id="多维数组">多维数组</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>  
+ <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span> <span class="p">,</span>   <span class="cm">/*  初始化索引号为 0 的行 */</span>
+ <span class="p">{</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">}</span> <span class="p">,</span>   <span class="cm">/*  初始化索引号为 1 的行 */</span>
+ <span class="p">{</span><span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">}</span>   <span class="cm">/*  初始化索引号为 2 的行 */</span>
+<span class="p">};</span>
+
+<span class="c1">// 内部嵌套的括号是可选的，下面的初始化与上面是等同的：
+</span><span class="c1"></span><span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="指向数组的指针">指向数组的指针</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">double</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
+<span class="kt">double</span> <span class="n">runoobAarray</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+<span class="c1">// 把 p 赋值为 runoobAarray 的第一个元素的地址
+</span><span class="c1"></span><span class="n">p</span> <span class="o">=</span> <span class="n">runoobAarray</span><span class="p">;</span>
+<span class="c1">// *(runoobAarray + 4) 是一种访问 runoobAarray[4] 数据的合法方式
+</span><span class="c1">// *(runoobAarray + 4) == *(p+4)
+</span></code></pre></td></tr></table>
+</div>
+</div><h4 id="传递数组给函数">传递数组给函数</h4>
+<p>C++ 传数组给一个函数，数组类型自动转换为指针类型，因而传的实际是地址。</p>
+<p>如果您想要在函数中传递一个一维数组作为参数，您必须以下面三种方式来声明函数形式参数，这三种声明方式的结果是一样的，因为每种方式都会告诉编译器将要接收一个整型指针。同样地，您也可以传递一个多维数组作为形式参数。</p>
+<ul>
+<li>形式参数是一个指针：</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">void</span> <span class="nf">myFunction</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">param</span><span class="p">){}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>形式参数是一个已定义大小的数组：</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">void</span> <span class="nf">myFunction</span><span class="p">(</span><span class="kt">int</span> <span class="n">param</span><span class="p">[</span><span class="mi">10</span><span class="p">]){}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>形式参数是一个未定义大小的数组：</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">void</span> <span class="nf">myFunction</span><span class="p">(</span><span class="kt">int</span> <span class="n">param</span><span class="p">[]){}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>就函数而言，数组的长度是无关紧要的，因为 C++ 不会对形式参数执行边界检查。</p>
+<h4 id="从函数返回数组">从函数返回数组</h4>
+<p>C++ 不允许返回一个完整的数组作为函数的参数。但是，您可以通过指定不带索引的数组名来返回一个指向数组的指针。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="c1">// 要生成和返回随机数的函数
+</span><span class="c1"></span><span class="kt">int</span> <span class="o">*</span> <span class="nf">getRandom</span><span class="p">(</span> <span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">static</span> <span class="kt">int</span>  <span class="n">r</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+  <span class="c1">// 设置种子
+</span><span class="c1"></span>  <span class="n">srand</span><span class="p">(</span> <span class="p">(</span><span class="kt">unsigned</span><span class="p">)</span><span class="n">time</span><span class="p">(</span> <span class="nb">NULL</span> <span class="p">)</span> <span class="p">);</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">r</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">rand</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="n">r</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-12-27</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/c-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%BA%8C/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://imcaicai.github.io/c-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%BA%8C/" data-title="C&#43;&#43;基础语法(二)" data-hashtags="C&#43;&#43;"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://imcaicai.github.io/c-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%BA%8C/" data-hashtag="C&#43;&#43;"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://imcaicai.github.io/c-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%BA%8C/" data-title="C&#43;&#43;基础语法(二)"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://imcaicai.github.io/c-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%BA%8C/" data-title="C&#43;&#43;基础语法(二)"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://imcaicai.github.io/c-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%BA%8C/" data-title="C&#43;&#43;基础语法(二)"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/c-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%80/" class="prev" rel="prev" title="C&#43;&#43;基础语法(一)"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>C++基础语法(一)</a>
+            <a href="/c-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%89/" class="next" rel="next" title="C&#43;&#43;基础语法(三)">C++基础语法(三)<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">菜菜</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

@@ -3,7 +3,47 @@
         <title>All Posts - 菜菜的秘密花园</title>
         <link>https://imcaicai.github.io/posts/</link>
         <description>All Posts | 菜菜的秘密花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 23 Dec 2022 22:20:00 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 27 Dec 2022 20:28:05 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>C&#43;&#43;基础语法(三)</title>
+    <link>https://imcaicai.github.io/c-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%89/</link>
+    <pubDate>Tue, 27 Dec 2022 20:28:05 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/c-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%89/</guid>
+    <description><![CDATA[11 字符串 C风格字符串 字符串实际上是使用 null 字符 \0 终止的一维字符数组。
+1 2  char site[7] = {&#39;R&#39;, &#39;U&#39;, &#39;N&#39;, &#39;O&#39;, &#39;O&#39;, &#39;B&#39;, &#39;\0&#39;}; char site[] = &#34;RUNOOB&#34;;   字符串相关函数：
+ strcpy(s1, s2); 复制字符串 s2 到字符串 s1。 strcat(s1, s2); 连接字符串 s2 到字符串 s1 的末尾。连接字符串也可以用 + 号。 strlen(s1); 返回字符串 s1 的长度。 strcmp(s1, s2); 如果 s1 和 s2 是相同的，则返回 0；如果 s1&lt;s2 则返回值小于 0；如果 s1&gt;s2 则返回值大于 0。 strchr(s1, ch); 返回一个指针，指向字符串 s1 中字符 ch 的第一次出现的位置。 strstr(s1, s2); 返回一个指针，指向字符串 s1 中字符串 s2 的第一次出现的位置。  String类 1 2 3 4 5 6 7 8 9  string str1 = &#34;runoob&#34;; string str2 = &#34;google&#34;; string str3; int len ; // 连接 str1 和 str2 str3 = str1 + str2; // 连接后，str3 的总长度为12！ len = str3.]]></description>
+</item>
+<item>
+    <title>C&#43;&#43;基础语法(二)</title>
+    <link>https://imcaicai.github.io/c-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%BA%8C/</link>
+    <pubDate>Tue, 27 Dec 2022 20:23:48 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/c-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%BA%8C/</guid>
+    <description><![CDATA[6 运算符 sizeof运算符 sizeof 运算符可用于获取类、结构、共用体和其他用户自定义数据类型的大小。
+逗号运算符 整个逗号表达式的值为系列中最后一个表达式的值。从本质上讲，逗号的作用是将一系列运算按顺序执行。
+逗号之前的自增表达式也会在逗号结束后执行！
+1 2 3 4 5 6  // 运行完结果：count=19，incr=10，var=20 var = (count=19, incr=10, count+1); // 结果：j=11，i=1010 j = 10; i = (j++, j+100, 999+j);   成员运算符 .（点）运算符和 -&gt;（箭头）运算符用于引用类、结构和共用体的成员。访问结构的成员时使用点运算符，而通过指针访问结构的成员时，则使用箭头运算符。例如，假设有下面的结构：
+1 2 3 4  struct Employee { char first_name[16]; int age; } emp;   点运算符：
+1  strcpy(emp.first_name, &#34;zara&#34;);   箭头运算符：
+1 2  // p_emp 是一个指针，指向类型为 Employee 的对象 strcpy(p_emp-&gt;first_name, &#34;zara&#34;);   强制转换运算符 1 2  double a = 21.]]></description>
+</item>
+<item>
+    <title>C&#43;&#43;基础语法(一)</title>
+    <link>https://imcaicai.github.io/c-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%80/</link>
+    <pubDate>Tue, 27 Dec 2022 14:48:21 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/c-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%80/</guid>
+    <description><![CDATA[1 C++简介 C++ 完全支持面向对象的程序设计，包括面向对象开发的四大特性：封装、抽象、继承、多态
+标准的 C++ 由三个重要部分组成：
+ 核心语言，提供了所有构件块，包括变量、数据类型和常量，等等。 C++ 标准库，提供了大量的函数，用于操作文件、字符串等。 标准模板库（STL），提供了大量的方法，用于操作数据结构等。  2 数据类型 基本内置类型 bool，char，int，float，double，void
+类型修饰符 signed，unsigned，short，long
+C++ 允许使用速记符号来声明无符号短整数或无符号长整数。您可以不写 int，只写单词 unsigned、short 或 long。
+typedef 声明 可以使用 typedef 为一个已有的类型取一个新的名字。
+1  typedef int feet;   枚举类型 如果一个变量只有几种可能的值，可以定义为枚举(enumeration)类型。所谓&quot;枚举&quot;是指将变量的值一一列举出来，变量的值只能在列举出来的值的范围内。
+1 2 3 4  enum 枚举名{ 标识符[=整型常数], ... } 枚举变量;   默认情况下，第一个名称的值为 0，第二个名称的值为 1，第三个名称的值为 2，以此类推。但是，您也可以给名称赋予一个特殊的值，只需要添加一个初始值即可。
+1 2 3 4 5  enum color { red, green, blue } c; c = blue; // red默认为0，blue默认为6 enum color { red, green=5, blue };   变量声明 当使用多个文件且只在其中一个文件中定义变量时，可以使用 extern 关键字在任何地方声明一个变量。虽然您可以在 C++ 程序中多次声明一个变量，但变量只能在某个文件、函数或代码块中被定义一次。]]></description>
+</item>
+<item>
     <title>算法和刷题的框架思维</title>
     <link>https://imcaicai.github.io/%E7%AE%97%E6%B3%95%E5%92%8C%E5%88%B7%E9%A2%98%E7%9A%84%E6%A1%86%E6%9E%B6%E6%80%9D%E7%BB%B4/</link>
     <pubDate>Fri, 23 Dec 2022 22:20:00 &#43;0800</pubDate>
@@ -18,7 +58,9 @@
  紧凑连续存储,可以随机访问，通过索引快速找到对应元素，节约存储空间。 内存空间必须⼀次性分配够，扩容时需要重新分配空间，再把数据全部复制过去，时间复杂度 O(N) 插⼊和删除时间复杂度 O(N)  链表：
  元素不连续，不存在数组的扩容问题； 如果知道某⼀元素的前驱和后驱，插入删除时间复杂度 O(1) 存储空间不连续，不能随机访问 每个元素必须存储指向前后元素位置的指针，会消耗相对更多的储存空间。  2 数据结构的基本操作 数据结构的基本操作：遍历+访问（增删查改），分为线性/非线性。
 线性即for/while迭代，非线性即递归。
- 【数组遍历框架】 迭代  1 2 3 4 5  void traverse(int[] arr) { for (int i = 0; i &lt; arr.length; i++) { // 迭代访问 arr[i] 	} }    【链表遍历框架】 迭代/递归  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16  /* 基本的单链表节点 */ class ListNode { int val; ListNode next; } void traverse(ListNode head) { for (ListNode p = head; p !]]></description>
+🟡 【数组遍历框架】 迭代
+1 2 3 4 5  void traverse(int[] arr) { for (int i = 0; i &lt; arr.length; i++) { // 迭代访问 arr[i] 	} }   🟢 【链表遍历框架】 迭代/递归
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16  /* 基本的单链表节点 */ class ListNode { int val; ListNode next; } void traverse(ListNode head) { for (ListNode p = head; p !]]></description>
 </item>
 <item>
     <title>Mysql数据库基本语法(四)</title>
@@ -104,45 +146,6 @@ drop user语句可删除用户。用户被删除时，该用户拥有的权限�
 多模态：查询和要检索的文档必须至少有一个模态相同（图像、文本→图像、文本）
 跨模态：查询和要检索的文档模态不同（图像→文本）
  3 方法 3.1 Notations 假设每个样本由 $l$ 个模态组成。在第 $t$ 轮，一个新的数据块 $\vec{X}^{(t)}$ 被添加到数据库中。常用变量的说明如下：]]></description>
-</item>
-<item>
-    <title>Git报错-GitHub文件夹出现箭头且无法打开</title>
-    <link>https://imcaicai.github.io/git%E6%8A%A5%E9%94%99-github%E6%96%87%E4%BB%B6%E5%A4%B9%E5%87%BA%E7%8E%B0%E7%AE%AD%E5%A4%B4%E4%B8%94%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80/</link>
-    <pubDate>Sun, 06 Nov 2022 16:04:14 &#43;0800</pubDate>
-    <author>菜菜</author>
-    <guid>https://imcaicai.github.io/git%E6%8A%A5%E9%94%99-github%E6%96%87%E4%BB%B6%E5%A4%B9%E5%87%BA%E7%8E%B0%E7%AE%AD%E5%A4%B4%E4%B8%94%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80/</guid>
-    <description><![CDATA[问题描述 将项目文件push到GitHub上时，发现GitHub上的文件夹图标上有箭头，且无法打开。
-出错原因 当在自己的项目里clone了别人的项目，github就将他视为一个子系统模块，导致在上传代码时该文件夹上传失败，并在github上显示向右的白色箭头。
-解决方案 删除子文件夹里面的.git文件，执行如下命令：
-1 2 3 4  git rm --cached [文件夹名] git add [文件夹名] git commit -m &#34;commit messge&#34; git push origin main   ]]></description>
-</item>
-<item>
-    <title>Git报错-ssh相关错误</title>
-    <link>https://imcaicai.github.io/git%E6%8A%A5%E9%94%99-ssh%E7%9B%B8%E5%85%B3%E9%94%99%E8%AF%AF/</link>
-    <pubDate>Sun, 06 Nov 2022 15:28:57 &#43;0800</pubDate>
-    <author>菜菜</author>
-    <guid>https://imcaicai.github.io/git%E6%8A%A5%E9%94%99-ssh%E7%9B%B8%E5%85%B3%E9%94%99%E8%AF%AF/</guid>
-    <description><![CDATA[问题描述 在将本地的远程仓库push到github上时，出现报错：
- ssh: Could not resolve hostname github.com: Temporary failure in name resolution fatal: Could not read from remote repository.
-Please make sure you have the correct access rights and the repository exists.
- 情况1 ssh错误 解决方案：重新设置ssh
-1 重新在git设置身份的名字和邮箱 进入到需要提交的文件夹底下，执行命令：
-1 2  git config --global user.name &#34;yourname&#34; git config --global user.email &#34;your@email.com&#34;   注：yourname是你要设置的名字，your@email是你要设置的邮箱。
-2 删除known_hosts文件 进入 .ssh 文件夹，手动删除 known_hosts 文件
-3 重新设置ssh git输入命令：
-1  ssh-keygen -t rsa -C &#34;your@email.]]></description>
-</item>
-<item>
-    <title>使用adb命令安装软件</title>
-    <link>https://imcaicai.github.io/%E4%BD%BF%E7%94%A8adb%E5%91%BD%E4%BB%A4%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/</link>
-    <pubDate>Sun, 06 Nov 2022 15:07:04 &#43;0800</pubDate>
-    <author>菜菜</author>
-    <guid>https://imcaicai.github.io/%E4%BD%BF%E7%94%A8adb%E5%91%BD%E4%BB%A4%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/</guid>
-    <description><![CDATA[1 安装软件  打开命令行，进入apk文件所在目录 输入命令：adb install xxx.apk  2 踩雷记录 报错1  android adb devices offline
- 解决办法：重启adb服务
-1 2  adb kill-server adb start-server   报错2  Failed to install app-debug.apk: Failure [INSTALL_FAILED_TEST_ONLY: installPackageLI]
- 解决办法：允许安装test用的apk
-1  adb install -t app-debug.apk   ]]></description>
 </item>
 </channel>
 </rss>

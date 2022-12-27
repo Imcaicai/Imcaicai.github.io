@@ -1,0 +1,47 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>C&#43;&#43; - Tag - 菜菜的秘密花园</title>
+        <link>https://imcaicai.github.io/tags/c&#43;&#43;/</link>
+        <description>C&#43;&#43; - Tag - 菜菜的秘密花园</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 27 Dec 2022 20:28:05 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/tags/c&#43;&#43;/" rel="self" type="application/rss+xml" /><item>
+    <title>C&#43;&#43;基础语法(三)</title>
+    <link>https://imcaicai.github.io/c-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%89/</link>
+    <pubDate>Tue, 27 Dec 2022 20:28:05 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/c-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%89/</guid>
+    <description><![CDATA[11 字符串 C风格字符串 字符串实际上是使用 null 字符 \0 终止的一维字符数组。
+1 2  char site[7] = {&#39;R&#39;, &#39;U&#39;, &#39;N&#39;, &#39;O&#39;, &#39;O&#39;, &#39;B&#39;, &#39;\0&#39;}; char site[] = &#34;RUNOOB&#34;;   字符串相关函数：
+ strcpy(s1, s2); 复制字符串 s2 到字符串 s1。 strcat(s1, s2); 连接字符串 s2 到字符串 s1 的末尾。连接字符串也可以用 + 号。 strlen(s1); 返回字符串 s1 的长度。 strcmp(s1, s2); 如果 s1 和 s2 是相同的，则返回 0；如果 s1&lt;s2 则返回值小于 0；如果 s1&gt;s2 则返回值大于 0。 strchr(s1, ch); 返回一个指针，指向字符串 s1 中字符 ch 的第一次出现的位置。 strstr(s1, s2); 返回一个指针，指向字符串 s1 中字符串 s2 的第一次出现的位置。  String类 1 2 3 4 5 6 7 8 9  string str1 = &#34;runoob&#34;; string str2 = &#34;google&#34;; string str3; int len ; // 连接 str1 和 str2 str3 = str1 + str2; // 连接后，str3 的总长度为12！ len = str3.]]></description>
+</item>
+<item>
+    <title>C&#43;&#43;基础语法(二)</title>
+    <link>https://imcaicai.github.io/c-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%BA%8C/</link>
+    <pubDate>Tue, 27 Dec 2022 20:23:48 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/c-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%BA%8C/</guid>
+    <description><![CDATA[6 运算符 sizeof运算符 sizeof 运算符可用于获取类、结构、共用体和其他用户自定义数据类型的大小。
+逗号运算符 整个逗号表达式的值为系列中最后一个表达式的值。从本质上讲，逗号的作用是将一系列运算按顺序执行。
+逗号之前的自增表达式也会在逗号结束后执行！
+1 2 3 4 5 6  // 运行完结果：count=19，incr=10，var=20 var = (count=19, incr=10, count+1); // 结果：j=11，i=1010 j = 10; i = (j++, j+100, 999+j);   成员运算符 .（点）运算符和 -&gt;（箭头）运算符用于引用类、结构和共用体的成员。访问结构的成员时使用点运算符，而通过指针访问结构的成员时，则使用箭头运算符。例如，假设有下面的结构：
+1 2 3 4  struct Employee { char first_name[16]; int age; } emp;   点运算符：
+1  strcpy(emp.first_name, &#34;zara&#34;);   箭头运算符：
+1 2  // p_emp 是一个指针，指向类型为 Employee 的对象 strcpy(p_emp-&gt;first_name, &#34;zara&#34;);   强制转换运算符 1 2  double a = 21.]]></description>
+</item>
+<item>
+    <title>C&#43;&#43;基础语法(一)</title>
+    <link>https://imcaicai.github.io/c-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%80/</link>
+    <pubDate>Tue, 27 Dec 2022 14:48:21 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/c-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%80/</guid>
+    <description><![CDATA[1 C++简介 C++ 完全支持面向对象的程序设计，包括面向对象开发的四大特性：封装、抽象、继承、多态
+标准的 C++ 由三个重要部分组成：
+ 核心语言，提供了所有构件块，包括变量、数据类型和常量，等等。 C++ 标准库，提供了大量的函数，用于操作文件、字符串等。 标准模板库（STL），提供了大量的方法，用于操作数据结构等。  2 数据类型 基本内置类型 bool，char，int，float，double，void
+类型修饰符 signed，unsigned，short，long
+C++ 允许使用速记符号来声明无符号短整数或无符号长整数。您可以不写 int，只写单词 unsigned、short 或 long。
+typedef 声明 可以使用 typedef 为一个已有的类型取一个新的名字。
+1  typedef int feet;   枚举类型 如果一个变量只有几种可能的值，可以定义为枚举(enumeration)类型。所谓&quot;枚举&quot;是指将变量的值一一列举出来，变量的值只能在列举出来的值的范围内。
+1 2 3 4  enum 枚举名{ 标识符[=整型常数], ... } 枚举变量;   默认情况下，第一个名称的值为 0，第二个名称的值为 1，第三个名称的值为 2，以此类推。但是，您也可以给名称赋予一个特殊的值，只需要添加一个初始值即可。
+1 2 3 4 5  enum color { red, green, blue } c; c = blue; // red默认为0，blue默认为6 enum color { red, green=5, blue };   变量声明 当使用多个文件且只在其中一个文件中定义变量时，可以使用 extern 关键字在任何地方声明一个变量。虽然您可以在 C++ 程序中多次声明一个变量，但变量只能在某个文件、函数或代码块中被定义一次。]]></description>
+</item>
+</channel>
+</rss>
