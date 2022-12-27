@@ -32,7 +32,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/imcaicai.github.io\/c-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%89\/"
-        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "C\u002b\u002b","wordcount":  113 ,
+        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "C\u002b\u002b","wordcount":  1076 ,
         "url": "https:\/\/imcaicai.github.io\/c-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%89\/","datePublished": "2022-12-27T20:28:05+08:00","dateModified": "2022-12-27T20:28:05+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/imcaicai.github.io\/img\/avatar.jpg"},"author": {
@@ -126,8 +126,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">C++基础语法(三)</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-category">included in <a href="/categories/c++/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>C++</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-12-27">2022-12-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;113 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;<span id="/c-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%89/" class="leancloud_visitors" data-flag-title="C&#43;&#43;基础语法(三)">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-12-27">2022-12-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1076 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;6 minutes&nbsp;<span id="/c-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%89/" class="leancloud_visitors" data-flag-title="C&#43;&#43;基础语法(三)">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
@@ -147,7 +147,69 @@
         </li>
       </ul>
     </li>
-    <li><a href="#12-指针">12 指针</a></li>
+    <li><a href="#12-指针">12 指针</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#指针声明">指针声明</a></li>
+            <li><a href="#null-指针">Null 指针</a></li>
+            <li><a href="#指针的算术运算">指针的算术运算</a></li>
+            <li><a href="#指向指针的指针">指向指针的指针</a></li>
+            <li><a href="#传递指针给函数">传递指针给函数</a></li>
+            <li><a href="#从函数返回指针">从函数返回指针</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#13-引用">13 引用</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#c-引用-vs-指针">C++ 引用 vs 指针</a></li>
+            <li><a href="#创建引用">创建引用</a></li>
+            <li><a href="#把引用作为参数">把引用作为参数</a></li>
+            <li><a href="#把引用作为返回值">把引用作为返回值</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#14-日期--时间">14 日期 &amp; 时间</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#相关数据类型">相关数据类型</a></li>
+            <li><a href="#关于日期和时间的重要函数">关于日期和时间的重要函数</a></li>
+            <li><a href="#当前日期和时间">当前日期和时间</a></li>
+            <li><a href="#使用结构-tm-格式化时间">使用结构 tm 格式化时间</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#15-基本的输入输出">15 基本的输入输出</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#标准输出流cout">标准输出流（cout）</a></li>
+            <li><a href="#标准输入流cin">标准输入流（cin）</a></li>
+            <li><a href="#标准错误流cerr">标准错误流（cerr）</a></li>
+            <li><a href="#标准日志流clog">标准日志流（clog）</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#16-数据结构">16 数据结构</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#定义结构">定义结构</a></li>
+            <li><a href="#访问结构成员">访问结构成员</a></li>
+            <li><a href="#结构作为函数参数">结构作为函数参数</a></li>
+            <li><a href="#指向结构的指针">指向结构的指针</a></li>
+            <li><a href="#typedef-关键字">typedef 关键字</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="11-字符串">11 字符串</h2>
@@ -198,7 +260,476 @@
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="12-指针">12 指针</h2>
-</div><div class="post-footer" id="post-footer">
+<h4 id="指针声明">指针声明</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">int</span>    <span class="o">*</span><span class="n">ip</span><span class="p">;</span>    <span class="cm">/* 一个整型的指针 */</span>
+<span class="kt">double</span> <span class="o">*</span><span class="n">dp</span><span class="p">;</span>    <span class="cm">/* 一个 double 型的指针 */</span>
+<span class="kt">float</span>  <span class="o">*</span><span class="n">fp</span><span class="p">;</span>    <span class="cm">/* 一个浮点型的指针 */</span>
+<span class="kt">char</span>   <span class="o">*</span><span class="n">ch</span><span class="p">;</span>    <span class="cm">/* 一个字符型的指针 */</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>所有指针的值的实际数据类型，不管是整型、浮点型、字符型，还是其他的数据类型，都是一样的，都是一个代表内存地址的长的十六进制数。不同数据类型的指针之间唯一的不同是，指针所指向的变量或常量的数据类型不同。</p>
+<h4 id="null-指针">Null 指针</h4>
+<p>在变量声明的时候，如果没有确切的地址可以赋值，为指针变量赋一个 NULL 值是一个良好的编程习惯。赋为 NULL 值的指针被称为<strong>空</strong>指针。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">int</span>  <span class="o">*</span><span class="n">ptr</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>	<span class="c1">// ptr的值是0
+</span></code></pre></td></tr></table>
+</div>
+</div><h4 id="指针的算术运算">指针的算术运算</h4>
+<p>假设 <strong>ptr</strong> 是一个指向地址 1000 的整型指针，是一个 32 位的整数。</p>
+<p>🟡 <strong>递增一个指针</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="n">ptr</span><span class="o">++</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>在执行完上述的运算之后，<strong>ptr</strong> 将指向位置 1004，因为 ptr 每增加一次，它都将指向下一个整数位置，即当前位置往后移 4 个字节。这个运算会在不影响内存位置中实际值的情况下，移动指针到下一个内存位置。如果 <strong>ptr</strong> 指向一个地址为 1000 的字符，上面的运算会导致指针指向位置 1001，因为下一个字符位置是在 1001。</p>
+<p>变量指针可以递增，而数组不能递增，因为数组是一个常量指针。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">int</span>  <span class="n">var</span><span class="p">[</span><span class="n">MAX</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">};</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">MAX</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="o">*</span><span class="n">var</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>    <span class="c1">// 这是正确的语法
+</span><span class="c1"></span>   <span class="n">var</span><span class="o">++</span><span class="p">;</span>       <span class="c1">// 这是不正确的，数组指针为常量
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>🔵 <strong>指针的比较</strong></p>
+<p>指针可以用关系运算符进行比较，如 ==、&lt; 和 &gt;。如果 p1 和 p2 指向两个相关的变量，比如同一个数组中的不同元素，则可对 p1 和 p2 进行大小比较。</p>
+<h4 id="指向指针的指针">指向指针的指针</h4>
+<p>当我们定义一个指向指针的指针时，第一个指针包含了第二个指针的地址，第二个指针指向包含实际值的位置。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">int</span>  <span class="n">var</span> <span class="o">=</span> <span class="mi">300</span><span class="p">;</span>
+<span class="kt">int</span>  <span class="o">*</span><span class="n">ptr</span><span class="p">;</span>
+<span class="kt">int</span>  <span class="o">**</span><span class="n">pptr</span><span class="p">;</span>
+
+<span class="n">ptr</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">var</span><span class="p">;</span>	<span class="c1">// 获取 var 的地址
+</span><span class="c1"></span><span class="n">pptr</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">ptr</span><span class="p">;</span>	<span class="c1">// 使用运算符 &amp; 获取 ptr 的地址
+</span><span class="c1"></span>
+<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;var 值为 :&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">var</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>	<span class="c1">// 3000
+</span><span class="c1"></span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;*ptr 值为:&#34;</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">ptr</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>	<span class="c1">// 3000
+</span><span class="c1"></span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;**pptr 值为:&#34;</span> <span class="o">&lt;&lt;</span> <span class="o">**</span><span class="n">pptr</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>	<span class="c1">// 3000
+</span></code></pre></td></tr></table>
+</div>
+</div><h4 id="传递指针给函数">传递指针给函数</h4>
+<h4 id="从函数返回指针">从函数返回指针</h4>
+<h2 id="13-引用">13 引用</h2>
+<p>引用变量是一个别名，也就是说，它是某个已存在变量的另一个名字。一旦把引用初始化为某个变量，就可以使用该引用名称或变量名称来指向变量。</p>
+<h4 id="c-引用-vs-指针">C++ 引用 vs 指针</h4>
+<ul>
+<li>不存在空引用。引用必须连接到一块合法的内存。</li>
+<li>一旦引用被初始化为一个对象，就不能被指向到另一个对象。指针可以在任何时候指向到另一个对象。</li>
+<li>引用必须在创建时被初始化。指针可以在任何时间被初始化。</li>
+</ul>
+<h4 id="创建引用">创建引用</h4>
+<p>&amp; 读作<strong>引用</strong>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++">
+<span class="kt">int</span>    <span class="n">i</span><span class="p">;</span>	<span class="c1">// 声明简单的变量
+</span><span class="c1">// r 是一个初始化为 i 的整型引用
+</span><span class="c1"></span><span class="kt">int</span><span class="o">&amp;</span>    <span class="n">r</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>	<span class="c1">// 声明引用变量
+</span><span class="c1"></span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Value of i : &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>	<span class="c1">// 5
+</span><span class="c1"></span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Value of i reference : &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">r</span>  <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>	<span class="c1">// 5
+</span></code></pre></td></tr></table>
+</div>
+</div><h4 id="把引用作为参数">把引用作为参数</h4>
+<h4 id="把引用作为返回值">把引用作为返回值</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">double</span> <span class="n">vals</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mf">10.1</span><span class="p">,</span> <span class="mf">12.6</span><span class="p">,</span> <span class="mf">33.1</span><span class="p">,</span> <span class="mf">24.1</span><span class="p">,</span> <span class="mf">50.0</span><span class="p">};</span>
+ 
+<span class="kt">double</span><span class="o">&amp;</span> <span class="n">setValues</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span>  
+   <span class="kt">double</span><span class="o">&amp;</span> <span class="n">ref</span> <span class="o">=</span> <span class="n">vals</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>    
+   <span class="k">return</span> <span class="n">ref</span><span class="p">;</span>   <span class="c1">// 返回第 i 个元素的引用，ref 是一个引用变量，ref 引用 vals[i]
+</span><span class="c1"></span> 
+ 
+<span class="p">}</span>
+ 
+<span class="kt">int</span> <span class="nf">main</span> <span class="p">()</span>
+<span class="p">{</span> 
+   <span class="n">setValues</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mf">20.23</span><span class="p">;</span> <span class="c1">// 改变第 2 个元素
+</span><span class="c1"></span>   <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">vals</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>	<span class="c1">// 由12.6变为20.23
+</span><span class="c1"></span>   <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>当返回一个引用时，要注意被引用的对象不能超出作用域。所以返回一个对局部变量的引用是不合法的，但是，可以返回一个对静态变量的引用。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">int</span><span class="o">&amp;</span> <span class="n">func</span><span class="p">()</span> <span class="p">{</span>   
+    <span class="kt">int</span> <span class="n">q</span><span class="p">;</span>   
+    <span class="c1">//! return q; // 在编译时发生错误   
+</span><span class="c1"></span>    <span class="k">static</span> <span class="kt">int</span> <span class="n">x</span><span class="p">;</span>   
+    <span class="k">return</span> <span class="n">x</span><span class="p">;</span>     <span class="c1">// 安全，x 在函数作用域外依然是有效的 
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="14-日期--时间">14 日期 &amp; 时间</h2>
+<p>C++ 标准库没有提供所谓的日期类型。C++ 继承了 C 语言用于日期和时间操作的结构和函数。为了使用日期和时间相关的函数和结构，需要在 C++ 程序中引用 &lt;ctime&gt; 头文件。</p>
+<h4 id="相关数据类型">相关数据类型</h4>
+<p>有四个与时间相关的类型：<strong>clock_t、time_t、size_t</strong> 和 <strong>tm</strong>。类型 clock_t、size_t 和 time_t 能够把系统时间和日期表示为某种整数。</p>
+<p>结构类型 <strong>tm</strong> 把日期和时间以 C 结构的形式保存，tm 结构的定义如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="k">struct</span> <span class="nc">tm</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">tm_sec</span><span class="p">;</span>   <span class="c1">// 秒，正常范围从 0 到 59，但允许至 61
+</span><span class="c1"></span>  <span class="kt">int</span> <span class="n">tm_min</span><span class="p">;</span>   <span class="c1">// 分，范围从 0 到 59
+</span><span class="c1"></span>  <span class="kt">int</span> <span class="n">tm_hour</span><span class="p">;</span>  <span class="c1">// 小时，范围从 0 到 23
+</span><span class="c1"></span>  <span class="kt">int</span> <span class="n">tm_mday</span><span class="p">;</span>  <span class="c1">// 一月中的第几天，范围从 1 到 31
+</span><span class="c1"></span>  <span class="kt">int</span> <span class="n">tm_mon</span><span class="p">;</span>   <span class="c1">// 月，范围从 0 到 11
+</span><span class="c1"></span>  <span class="kt">int</span> <span class="n">tm_year</span><span class="p">;</span>  <span class="c1">// 自 1900 年起的年数
+</span><span class="c1"></span>  <span class="kt">int</span> <span class="n">tm_wday</span><span class="p">;</span>  <span class="c1">// 一周中的第几天，范围从 0 到 6，从星期日算起
+</span><span class="c1"></span>  <span class="kt">int</span> <span class="n">tm_yday</span><span class="p">;</span>  <span class="c1">// 一年中的第几天，范围从 0 到 365，从 1 月 1 日算起
+</span><span class="c1"></span>  <span class="kt">int</span> <span class="n">tm_isdst</span><span class="p">;</span> <span class="c1">// 夏令时
+</span><span class="c1"></span><span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="关于日期和时间的重要函数">关于日期和时间的重要函数</h4>
+<ul>
+<li>
+<p><strong><a href="https://www.runoob.com/cplusplus/c-function-time.html" target="_blank" rel="noopener noreffer "> time_t time(time_t *time);</a></strong> 该函数返回系统的当前日历时间，自 1970 年 1 月 1 日以来经过的秒数。如果系统没有时间，则返回 -1。</p>
+</li>
+<li>
+<p><a href="https://www.runoob.com/cplusplus/c-function-ctime.html" target="_blank" rel="noopener noreffer "><strong>char *ctime(const time_t *time);</strong></a> 该返回一个表示当地时间的字符串指针，字符串形式 <em>day month year hours:minutes:seconds year\n\0</em>。</p>
+</li>
+<li>
+<p><a href="https://www.runoob.com/cplusplus/c-function-localtime.html" target="_blank" rel="noopener noreffer "><strong>struct tm *localtime(const time_t *time);</strong></a> 该函数返回一个指向表示本地时间的 <strong>tm</strong> 结构的指针。</p>
+</li>
+<li>
+<p><a href="https://www.runoob.com/cplusplus/c-function-clock.html" target="_blank" rel="noopener noreffer "><strong>clock_t clock(void);</strong></a> 该函数返回程序执行起（一般为程序的开头），处理器时钟所使用的时间。如果时间不可用，则返回 -1。</p>
+</li>
+<li>
+<p><a href="https://www.runoob.com/cplusplus/c-function-asctime.html" target="_blank" rel="noopener noreffer "><strong>char * asctime ( const struct tm * time );</strong></a> 该函数返回一个指向字符串的指针，字符串包含了 time 所指向结构中存储的信息，返回形式为：day month date hours:minutes:seconds year\n\0。</p>
+</li>
+<li>
+<p><a href="https://www.runoob.com/cplusplus/c-function-gmtime.html" target="_blank" rel="noopener noreffer "><strong>struct tm *gmtime(const time_t *time);</strong></a> 该函数返回一个指向 time 的指针，time 为 tm 结构，用协调世界时（UTC）也被称为格林尼治标准时间（GMT）表示。</p>
+</li>
+<li>
+<p><a href="https://www.runoob.com/cplusplus/c-function-mktime.html" target="_blank" rel="noopener noreffer "><strong>time_t mktime(struct tm *time);</strong></a> 该函数返回日历时间，相当于 time 所指向结构中存储的时间。</p>
+</li>
+<li>
+<p><a href="https://www.runoob.com/cplusplus/c-function-difftime.html" target="_blank" rel="noopener noreffer "><strong>double difftime ( time_t time2, time_t time1 );</strong></a> 该函数返回 time1 和 time2 之间相差的秒数。</p>
+</li>
+<li>
+<p><a href="https://www.runoob.com/cplusplus/c-function-strftime.html" target="_blank" rel="noopener noreffer "><strong>size_t strftime();</strong></a> 该函数可用于格式化日期和时间为指定的格式。</p>
+</li>
+</ul>
+<h4 id="当前日期和时间">当前日期和时间</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="n">time_t</span> <span class="n">now</span> <span class="o">=</span> <span class="n">time</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>	<span class="c1">// 基于当前系统的当前日期/时间
+</span><span class="c1"></span><span class="kt">char</span><span class="o">*</span> <span class="n">dt</span> <span class="o">=</span> <span class="n">ctime</span><span class="p">(</span><span class="o">&amp;</span><span class="n">now</span><span class="p">);</span>	<span class="c1">// 把 now 转换为字符串形式
+</span><span class="c1"></span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;本地日期和时间：&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">dt</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>	<span class="c1">// Sat Jan  8 20:07:41 2011
+</span><span class="c1"></span>
+<span class="c1">// 把 now 转换为 tm 结构
+</span><span class="c1"></span><span class="n">tm</span> <span class="o">*</span><span class="n">gmtm</span> <span class="o">=</span> <span class="n">gmtime</span><span class="p">(</span><span class="o">&amp;</span><span class="n">now</span><span class="p">);</span> 
+<span class="n">dt</span> <span class="o">=</span> <span class="n">asctime</span><span class="p">(</span><span class="n">gmtm</span><span class="p">);</span>   
+<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;UTC 日期和时间：&#34;</span><span class="o">&lt;&lt;</span> <span class="n">dt</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>	<span class="c1">// Sat Jan  9 20:07:41 2011    
+</span></code></pre></td></tr></table>
+</div>
+</div><h4 id="使用结构-tm-格式化时间">使用结构 tm 格式化时间</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="c1">// 基于当前系统的当前日期/时间
+</span><span class="c1"></span><span class="n">time_t</span> <span class="n">now</span> <span class="o">=</span> <span class="n">time</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="n">tm</span> <span class="o">*</span><span class="n">ltm</span> <span class="o">=</span> <span class="n">localtime</span><span class="p">(</span><span class="o">&amp;</span><span class="n">now</span><span class="p">);</span>
+
+<span class="c1">// 输出 tm 结构的各个组成部分
+</span><span class="c1"></span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;年: &#34;</span><span class="o">&lt;&lt;</span> <span class="mi">1900</span> <span class="o">+</span> <span class="n">ltm</span><span class="o">-&gt;</span><span class="n">tm_year</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;月: &#34;</span><span class="o">&lt;&lt;</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">ltm</span><span class="o">-&gt;</span><span class="n">tm_mon</span><span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;日: &#34;</span><span class="o">&lt;&lt;</span>  <span class="n">ltm</span><span class="o">-&gt;</span><span class="n">tm_mday</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="15-基本的输入输出">15 基本的输入输出</h2>
+<h4 id="标准输出流cout">标准输出流（cout）</h4>
+<p><strong>cout</strong> 是与流插入运算符 &laquo; 结合使用的，&laquo; 运算符被重载来输出内置类型（整型、浮点型、double 型、字符串和指针）的数据项。</p>
+<h4 id="标准输入流cin">标准输入流（cin）</h4>
+<p><strong>cin</strong> 是与流提取运算符 &raquo; 结合使用的。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">name</span>  <span class="o">&gt;&gt;</span> <span class="n">age</span><span class="p">;</span>
+<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;您的名称是： &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">name</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;您的年龄是： &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">age</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="标准错误流cerr">标准错误流（cerr）</h4>
+<p><strong>cerr</strong> 对象是非缓冲的，且每个流插入到 cerr 都会立即输出。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">char</span> <span class="n">str</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&#34;Unable to read....&#34;</span><span class="p">;</span>
+<span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Error message : &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">str</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="c1">// 输出结果为 Error message : Unable to read....
+</span></code></pre></td></tr></table>
+</div>
+</div><h4 id="标准日志流clog">标准日志流（clog）</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">char</span> <span class="n">str</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&#34;Unable to read....&#34;</span><span class="p">;</span>
+<span class="n">clog</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Error message : &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">str</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="c1">// 输出结果为 Error message : Unable to read....
+</span></code></pre></td></tr></table>
+</div>
+</div><h2 id="16-数据结构">16 数据结构</h2>
+<h4 id="定义结构">定义结构</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="k">struct</span> <span class="nc">Books</span>
+<span class="p">{</span>
+   <span class="kt">char</span>  <span class="n">title</span><span class="p">[</span><span class="mi">50</span><span class="p">];</span>
+   <span class="kt">char</span>  <span class="n">author</span><span class="p">[</span><span class="mi">50</span><span class="p">];</span>
+   <span class="kt">char</span>  <span class="n">subject</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
+   <span class="kt">int</span>   <span class="n">book_id</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">book</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="访问结构成员">访问结构成员</h4>
+<p>使用<strong>成员访问运算符（.）</strong>。成员访问运算符是结构变量名称和我们要访问的结构成员之间的一个句号。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="n">Books</span> <span class="n">Book1</span><span class="p">;</span>        <span class="c1">// 定义结构体类型 Books 的变量 Book1
+</span><span class="c1"></span>
+<span class="c1">// Book1 详述
+</span><span class="c1"></span><span class="n">strcpy</span><span class="p">(</span> <span class="n">Book1</span><span class="p">.</span><span class="n">title</span><span class="p">,</span> <span class="s">&#34;C++ 教程&#34;</span><span class="p">);</span>
+<span class="n">strcpy</span><span class="p">(</span> <span class="n">Book1</span><span class="p">.</span><span class="n">author</span><span class="p">,</span> <span class="s">&#34;Runoob&#34;</span><span class="p">);</span> 
+<span class="n">strcpy</span><span class="p">(</span> <span class="n">Book1</span><span class="p">.</span><span class="n">subject</span><span class="p">,</span> <span class="s">&#34;编程语言&#34;</span><span class="p">);</span>
+<span class="n">Book1</span><span class="p">.</span><span class="n">book_id</span> <span class="o">=</span> <span class="mi">12345</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="结构作为函数参数">结构作为函数参数</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">void</span> <span class="nf">printBook</span><span class="p">(</span> <span class="k">struct</span> <span class="nc">Books</span> <span class="n">book</span> <span class="p">)</span>
+<span class="p">{</span>
+   <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;书标题 : &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">book</span><span class="p">.</span><span class="n">title</span> <span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+   <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;书作者 : &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">book</span><span class="p">.</span><span class="n">author</span> <span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+   <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;书类目 : &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">book</span><span class="p">.</span><span class="n">subject</span> <span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+   <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;书 ID : &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">book</span><span class="p">.</span><span class="n">book_id</span> <span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="指向结构的指针">指向结构的指针</h4>
+<p>为了使用指向该结构的指针访问结构的成员，您必须使用 -&gt; 运算符.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span> <span class="p">)</span>
+<span class="p">{</span>
+   <span class="p">......</span>
+   <span class="n">printBook</span><span class="p">(</span> <span class="o">&amp;</span><span class="n">Book1</span> <span class="p">);</span>	<span class="c1">// 通过传 Book1 的地址来输出 Book1 信息
+</span><span class="c1"></span>   <span class="p">......</span>
+ <span class="p">}</span>
+
+<span class="c1">// 该函数以结构指针作为参数
+</span><span class="c1"></span><span class="kt">void</span> <span class="nf">printBook</span><span class="p">(</span> <span class="k">struct</span> <span class="nc">Books</span> <span class="o">*</span><span class="n">book</span> <span class="p">)</span>
+<span class="p">{</span>
+   <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;书标题  : &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">book</span><span class="o">-&gt;</span><span class="n">title</span> <span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+   <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;书作者 : &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">book</span><span class="o">-&gt;</span><span class="n">author</span> <span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+   <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;书类目 : &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">book</span><span class="o">-&gt;</span><span class="n">subject</span> <span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+   <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;书 ID : &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">book</span><span class="o">-&gt;</span><span class="n">book_id</span> <span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="typedef-关键字">typedef 关键字</h4>
+<p>下面是一种更简单的定义结构的方式，您可以为创建的类型取一个&quot;别名&quot;。例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">Books</span>
+<span class="p">{</span>
+   <span class="kt">char</span>  <span class="n">title</span><span class="p">[</span><span class="mi">50</span><span class="p">];</span>
+   <span class="kt">char</span>  <span class="n">author</span><span class="p">[</span><span class="mi">50</span><span class="p">];</span>
+   <span class="kt">char</span>  <span class="n">subject</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
+   <span class="kt">int</span>   <span class="n">book_id</span><span class="p">;</span>
+<span class="p">}</span><span class="n">BO</span><span class="p">;</span>
+<span class="n">BO</span> <span class="n">Book1</span><span class="p">,</span> <span class="n">Book2</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>您可以使用 <strong>typedef</strong> 关键字来定义非结构类型，如下所示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="k">typedef</span> <span class="kt">long</span> <span class="kt">int</span> <span class="o">*</span><span class="n">pint32</span><span class="p">;</span>
+<span class="n">pint32</span> <span class="n">x</span><span class="p">;</span>	<span class="c1">// x是指向长整型 long int 的指针。
+</span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
