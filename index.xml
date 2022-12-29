@@ -3,9 +3,20 @@
         <title>菜菜的秘密花园</title>
         <link>https://imcaicai.github.io/</link>
         <description>菜菜的秘密花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 29 Dec 2022 10:50:18 &#43;0800</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 29 Dec 2022 16:40:47 &#43;0800</lastBuildDate>
             <atom:link href="https://imcaicai.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>数组链表-前缀和</title>
+    <link>https://imcaicai.github.io/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8-%E5%89%8D%E7%BC%80%E5%92%8C/</link>
+    <pubDate>Thu, 29 Dec 2022 16:40:47 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8-%E5%89%8D%E7%BC%80%E5%92%8C/</guid>
+    <description><![CDATA[1 一维数组中的前缀和 题目 力扣 303. 区域和检索 - 数组不可变
+给定一个整数数组 nums，计算索引 left 和 right （包含 left 和 right）之间的 nums 元素的 和 ，其中 left &lt;= right，实现 NumArray 类：
+ NumArray(int[] nums) 使用数组 nums 初始化对象 int sumRange(int i, int j) 返回数组 nums 中索引 left 和 right 之间的元素的 总和 ，包含 left 和 right 两点（也就是 nums[left] + nums[left + 1] + ... + nums[right] )  示例：
+1 2 3 4 5 6 7 8 9 10 11  输入： [&#34;NumArray&#34;, &#34;sumRange&#34;, &#34;sumRange&#34;, &#34;sumRange&#34;] [[[-2, 0, 3, -5, 2, -1]], [0, 2], [2, 5], [0, 5]] 输出： [null, 1, -1, -3] 解释： NumArray numArray = new NumArray([-2, 0, 3, -5, 2, -1]); numArray.]]></description>
+</item>
+<item>
     <title>C&#43;&#43;面向对象(一)</title>
     <link>https://imcaicai.github.io/c-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%80/</link>
     <pubDate>Thu, 29 Dec 2022 10:50:18 &#43;0800</pubDate>
@@ -131,15 +142,6 @@ drop user语句可删除用户。用户被删除时，该用户拥有的权限�
 1  mysql -h127.0.0.1 -uroot -p   创建数据库：
 1  CREATE DATABASE dbname;   指明访问的数据库：
 1  use dbname;   1.2 创建表及表的主码约束 建表语法  CREATE TABLE为保留字，其语义为创建表对象； IF NOT EXISTS为可选短语，其语义为仅当该表不存在时才创建表；如果不带该短语，创建表时，如果同名表已存在，则输出报错信息； tbl_name为表的名字； (列定义|表约束,&hellip;)表示表的其它定义都写在一对括号里，括号里为一个或多个“列定义”或“表约束”，如果有多个列的定义或表约束，则它们之间用逗号隔开。  1 2  CREATE TABLE [IF NOT EXISTS] tbl_name (列定义|表约束,...)   列定义语法  [NOT NULL |NULL]表示空或非空约束，缺省为NULL，即该列的内容允许为空值，NOT NULL则约束该列的内容必须为非空； DEFAULT关键字为列指定缺省值，可以是常量，也可以是表达式； AUTO_INCREMENT指定该列为自增列(如1，2，3，&hellip;)，一般用于自动编号，显然只有数字类型的列才可以定义这一特性； [UNIQUE]指定该列值具有唯一性（但可以有空值-甚至多个空值的存在，如果该列没有定义NOT NULL约束）； PRIMARY KEY指定该列为主码，相当于定义表的实体完整性约束；只有当主码由单属性组成时，才可以这样定义主码（主码由多属性组成时，应当用表约束来定义）； COMMENT用来给列附加一条注释； “REFERENCES”短语为该列定义参照完整性约束，指出该列引用哪个表的哪一列的值，以及违背参照完整性后的具体处理规则（多个规则中选一），具体内容将在随后的练习里再讲解； CHECK(表达式)为列指定“自定义约束”，只有使（表达式）的值为true的数据才允许写入数据库；关键词CONSTRAINT用来为约束命名。  1 2 3 4 5 6 7 8 9  列定义 ::= 列名 数据类型 [NOT NULL | NULL] [DEFAULT {常量 | (表达式)} ] [AUTO_INCREMENT] [UNIQUE [KEY]] [PRIMARY KEY] [COMMENT &#39;列备注&#39;] [REFERENCES tbl_name (col_name) [ON DELETE RESTRICT|CASCADE|SET NULL|NO ACTION|SET DEFAULT] [ON UPDATE RESTRICT|CASCADE|SET NULL| NO ACTION|SET DEFAULT]] [[CONSTRAINT [约束名]] CHECK (表达式)]   表约束语法  主码约束以“PK_”打头，后跟表名，一个表只会有一个主码约束； 外码约束以“FK_”打头，后跟表名及列名； CHECK约束以“CK_”打头，后跟表名及列名。  1 2 3 4 5 6 7 8  表约束 ::= [CONSTRAINT [约束名]] | PRIMARY KEY (key_part,.]]></description>
-</item>
-<item>
-    <title>计算机网络知识总结</title>
-    <link>https://imcaicai.github.io/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/</link>
-    <pubDate>Sat, 03 Dec 2022 11:05:24 &#43;0800</pubDate>
-    <author>菜菜</author>
-    <guid>https://imcaicai.github.io/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/</guid>
-    <description><![CDATA[最近在复习计算机网络考试，于是按照《计算机网络自顶向下方法》（原书第7版）一书梳理了1-7章的知识，其中第五章的内容合并到第四章中了。
-1 计算机网络和因特网 2 应用层 3 运输层 4 网络层 6 链路层和局域网 7 无线网络和局域网 ]]></description>
 </item>
 </channel>
 </rss>
