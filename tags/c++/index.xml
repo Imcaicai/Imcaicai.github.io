@@ -3,7 +3,17 @@
         <title>C&#43;&#43; - Tag - 菜菜的秘密花园</title>
         <link>https://imcaicai.github.io/tags/c&#43;&#43;/</link>
         <description>C&#43;&#43; - Tag - 菜菜的秘密花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 27 Dec 2022 20:28:05 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/tags/c&#43;&#43;/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 29 Dec 2022 10:50:18 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/tags/c&#43;&#43;/" rel="self" type="application/rss+xml" /><item>
+    <title>C&#43;&#43;面向对象(一)</title>
+    <link>https://imcaicai.github.io/c-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%80/</link>
+    <pubDate>Thu, 29 Dec 2022 10:50:18 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/c-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%80/</guid>
+    <description><![CDATA[1 类&amp;对象 1.1 成员函数 成员函数可以定义在类定义内部：
+1 2 3 4 5 6 7 8 9 10 11 12  class Box { public: double length; // 长度  double breadth; // 宽度  double height; // 高度  double getVolume(void) { return length * breadth * height; } };   也可以在类的外部使用范围解析运算符 :: 定义该函数。
+1 2 3 4 5 6 7 8 9 10 11 12 13  class Box { public: double length; // 长度  double breadth; // 宽度  double height; // 高度  double getVolume(void);// 返回体积 }; double Box::getVolume(void) { return length * breadth * height; }   在 :: 运算符之前必须使用类名。]]></description>
+</item>
+<item>
     <title>C&#43;&#43;基础语法(三)</title>
     <link>https://imcaicai.github.io/c-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%89/</link>
     <pubDate>Tue, 27 Dec 2022 20:28:05 &#43;0800</pubDate>
