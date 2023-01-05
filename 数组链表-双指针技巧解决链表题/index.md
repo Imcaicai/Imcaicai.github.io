@@ -182,7 +182,7 @@ ListNode mergeKLists(ListNode[] lists) {
 
 ## 4 单链表的倒数第 k 个节点  
 
-### 题目1
+### 题目---查找链表倒数第N个节点
 
 寻找从后往前数的第 k 个节点。
 
@@ -219,7 +219,7 @@ ListNode findFromEnd(ListNode head, int k) {
 }
 ```
 
-### 题目2
+### 题目---删除链表的倒数第N个结点
 
 **力扣 [19. 删除链表的倒数第 N 个结点](https://leetcode.cn/problems/remove-nth-node-from-end-of-list/)**
 
@@ -234,7 +234,7 @@ ListNode findFromEnd(ListNode head, int k) {
 输出：[1,2,3,5]
 ```
 
-### 解析2
+### 解析
 
 和上面思路类似，获得倒数第 n + 1 个节点的引用并进行删除。注意使用虚节点技巧，防止出现空指针的情况。代码如下：
 
