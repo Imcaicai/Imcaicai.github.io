@@ -38,7 +38,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/imcaicai.github.io\/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8-%E5%8F%8C%E6%8C%87%E9%92%88%E6%8A%80%E5%B7%A7%E8%A7%A3%E5%86%B3%E9%93%BE%E8%A1%A8%E9%A2%98\/"
-        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "labuladong, 算法, 双指针, 链表","wordcount":  1048 ,
+        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "labuladong, 算法, 双指针, 链表","wordcount":  1182 ,
         "url": "https:\/\/imcaicai.github.io\/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8-%E5%8F%8C%E6%8C%87%E9%92%88%E6%8A%80%E5%B7%A7%E8%A7%A3%E5%86%B3%E9%93%BE%E8%A1%A8%E9%A2%98\/","datePublished": "2022-12-31T00:08:35+08:00","dateModified": "2022-12-31T00:08:35+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/imcaicai.github.io\/img\/avatar.jpg"},"author": {
@@ -132,8 +132,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">数组链表-双指针技巧解决链表题</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-category">included in <a href="/categories/labuladong%E7%9A%84%E7%AE%97%E6%B3%95%E7%A7%98%E7%B1%8D/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>labuladong的算法秘籍</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-12-31">2022-12-31</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1048 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;<span id="/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8-%E5%8F%8C%E6%8C%87%E9%92%88%E6%8A%80%E5%B7%A7%E8%A7%A3%E5%86%B3%E9%93%BE%E8%A1%A8%E9%A2%98/" class="leancloud_visitors" data-flag-title="数组链表-双指针技巧解决链表题">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-12-31">2022-12-31</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1182 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;6 minutes&nbsp;<span id="/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8-%E5%8F%8C%E6%8C%87%E9%92%88%E6%8A%80%E5%B7%A7%E8%A7%A3%E5%86%B3%E9%93%BE%E8%A1%A8%E9%A2%98/" class="leancloud_visitors" data-flag-title="数组链表-双指针技巧解决链表题">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
@@ -203,6 +203,24 @@
       <ul>
         <li><a href="#解析-4">解析</a></li>
         <li><a href="#进阶">进阶</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#题目-4">题目</a></li>
+        <li><a href="#解析-5">解析</a>
+          <ul>
+            <li>
+              <ul>
+                <li><a href="#一般做法">一般做法：</a></li>
+                <li><a href="#改进做法">改进做法：</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
@@ -789,7 +807,69 @@ ans.val = 3, ans.next.val = 4, ans.next.next.val = 5, 以及 ans.next.next.next 
 <span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
-</div></div><div class="post-footer" id="post-footer">
+</div><h1 id="7-两个链表是否相交">7 两个链表是否相交</h1>
+<h3 id="题目-4">题目</h3>
+<p><strong>力扣 <a href="https://leetcode.cn/problems/intersection-of-two-linked-lists/" target="_blank" rel="noopener noreffer ">160. 相交链表</a></strong></p>
+<p>给你两个单链表的头节点 <code>headA</code> 和 <code>headB</code> ，请你找出并返回两个单链表相交的起始节点。如果两个链表不存在相交节点，返回 <code>null</code> 。题目数据 <strong>保证</strong> 整个链式结构中不存在环。<strong>注意</strong>，函数返回结果后，链表必须 <strong>保持其原始结构</strong> 。图示两个链表在节点 <code>c1</code> 开始相交：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/labuladong/3-7.png"
+        data-srcset="/img/labuladong/3-7.png, /img/labuladong/3-7.png 1.5x, /img/labuladong/3-7.png 2x"
+        data-sizes="auto"
+        alt="/img/labuladong/3-7.png"
+        title="img1" /></p>
+<h3 id="解析-5">解析</h3>
+<h5 id="一般做法">一般做法：</h5>
+<p>用 HashSet 记录⼀个链表的所有节点，然后和另⼀条链表对比，但这就需要额外的空间。</p>
+<h5 id="改进做法">改进做法：</h5>
+<p>如果用两个指针 p1 和 p2 分别在两条链表上前进，并不能同时走到公共节点，也就无法得到相交节点 c1。
+解决这个问题的关键是，通过某些方式，让 p1 和 p2 能够同时到达相交节点 c1。</p>
+<p>所以，我们可以让 p1 遍历完链表 A 之后开始遍历链表 B，让 p2 遍历完链表 B 之后开始遍历链表 A，这样相当于【逻辑上】两条链表接在了⼀起。 p1 和 p2 就可以同时进入公共部分。图解如下：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/labuladong/3-8.png"
+        data-srcset="/img/labuladong/3-8.png, /img/labuladong/3-8.png 1.5x, /img/labuladong/3-8.png 2x"
+        data-sizes="auto"
+        alt="/img/labuladong/3-8.png"
+        title="img1" /></p>
+<p>代码实现如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">ListNode</span> <span class="nf">getIntersectionNode</span><span class="o">(</span><span class="n">ListNode</span> <span class="n">headA</span><span class="o">,</span> <span class="n">ListNode</span> <span class="n">headB</span><span class="o">)</span> <span class="o">{</span>
+	<span class="c1">// p1 指向 A 链表头结点，p2 指向 B 链表头结点
+</span><span class="c1"></span>	<span class="n">ListNode</span> <span class="n">p1</span> <span class="o">=</span> <span class="n">headA</span><span class="o">,</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">headB</span><span class="o">;</span>
+	<span class="k">while</span> <span class="o">(</span><span class="n">p1</span> <span class="o">!=</span> <span class="n">p2</span><span class="o">)</span> <span class="o">{</span>
+		<span class="c1">// p1 ⾛⼀步，如果⾛到 A 链表末尾，转到 B 链表
+</span><span class="c1"></span>		<span class="k">if</span> <span class="o">(</span><span class="n">p1</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="n">p1</span> <span class="o">=</span> <span class="n">headB</span><span class="o">;</span>
+		<span class="k">else</span> <span class="n">p1</span> <span class="o">=</span> <span class="n">p1</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+		<span class="c1">// p2 ⾛⼀步，如果⾛到 B 链表末尾，转到 A 链表
+</span><span class="c1"></span>		<span class="k">if</span> <span class="o">(</span><span class="n">p2</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">headA</span><span class="o">;</span>
+		<span class="k">else</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">p2</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="k">return</span> <span class="n">p1</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>参考资料：</p>
+<p><a href="https://labuladong.github.io/algo/">https://labuladong.github.io/algo/</a></p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">

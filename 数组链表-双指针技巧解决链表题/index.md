@@ -368,19 +368,52 @@ return slow;
 }
 ```
 
+# 7 两个链表是否相交  
 
+### 题目
 
+**力扣 [160. 相交链表](https://leetcode.cn/problems/intersection-of-two-linked-lists/)**
 
+给你两个单链表的头节点 `headA` 和 `headB` ，请你找出并返回两个单链表相交的起始节点。如果两个链表不存在相交节点，返回 `null` 。题目数据 **保证** 整个链式结构中不存在环。**注意**，函数返回结果后，链表必须 **保持其原始结构** 。图示两个链表在节点 `c1` 开始相交：
 
+![img1](/img/labuladong/3-7.png)
 
+### 解析
 
+##### 一般做法：
 
+用 HashSet 记录⼀个链表的所有节点，然后和另⼀条链表对比，但这就需要额外的空间。  
 
+##### 改进做法：
 
+如果用两个指针 p1 和 p2 分别在两条链表上前进，并不能同时走到公共节点，也就无法得到相交节点 c1。
+解决这个问题的关键是，通过某些方式，让 p1 和 p2 能够同时到达相交节点 c1。  
 
+所以，我们可以让 p1 遍历完链表 A 之后开始遍历链表 B，让 p2 遍历完链表 B 之后开始遍历链表 A，这样相当于【逻辑上】两条链表接在了⼀起。 p1 和 p2 就可以同时进入公共部分。图解如下：
 
+![img1](/img/labuladong/3-8.png)
 
+代码实现如下：
 
+```java
+ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+	// p1 指向 A 链表头结点，p2 指向 B 链表头结点
+	ListNode p1 = headA, p2 = headB;
+	while (p1 != p2) {
+		// p1 ⾛⼀步，如果⾛到 A 链表末尾，转到 B 链表
+		if (p1 == null) p1 = headB;
+		else p1 = p1.next;
+		// p2 ⾛⼀步，如果⾛到 B 链表末尾，转到 A 链表
+		if (p2 == null) p2 = headA;
+		else p2 = p2.next;
+	}
+	return p1;
+}
+```
+
+参考资料：
+
+https://labuladong.github.io/algo/
 
 
 
