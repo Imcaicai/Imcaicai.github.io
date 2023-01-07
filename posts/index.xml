@@ -3,7 +3,16 @@
         <title>All Posts - 菜菜的秘密花园</title>
         <link>https://imcaicai.github.io/posts/</link>
         <description>All Posts | 菜菜的秘密花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 06 Jan 2023 10:32:14 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 07 Jan 2023 11:59:28 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>数组链表-二分查找算法</title>
+    <link>https://imcaicai.github.io/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/</link>
+    <pubDate>Sat, 07 Jan 2023 11:59:28 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/</guid>
+    <description><![CDATA[二分思维的精髓就是：通过已知信息尽可能多地收缩搜索空间，从而增加穷举效率，快速找到目标。
+1 二分查找框架 1 2 3 4 5 6 7 8 9 10 11 12 13 14  int binarySearch(int[] nums, int target) { int left = 0, right = ...; while(...) { int mid = left + (right - left) / 2; if (nums[mid] == target) { ... } else if (nums[mid] &lt; target) { left = ... } else if (nums[mid] &gt; target) { right = ... } } return .]]></description>
+</item>
+<item>
     <title>数组链表-滑动窗口算法</title>
     <link>https://imcaicai.github.io/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E7%AE%97%E6%B3%95/</link>
     <pubDate>Fri, 06 Jan 2023 10:32:14 &#43;0800</pubDate>
@@ -118,25 +127,6 @@ typedef 声明 可以使用 typedef 为一个已有的类型取一个新的名�
 1  typedef int feet;   枚举类型 如果一个变量只有几种可能的值，可以定义为枚举(enumeration)类型。所谓&quot;枚举&quot;是指将变量的值一一列举出来，变量的值只能在列举出来的值的范围内。
 1 2 3 4  enum 枚举名{ 标识符[=整型常数], ... } 枚举变量;   默认情况下，第一个名称的值为 0，第二个名称的值为 1，第三个名称的值为 2，以此类推。但是，您也可以给名称赋予一个特殊的值，只需要添加一个初始值即可。
 1 2 3 4 5  enum color { red, green, blue } c; c = blue; // red默认为0，blue默认为6 enum color { red, green=5, blue };   变量声明 当使用多个文件且只在其中一个文件中定义变量时，可以使用 extern 关键字在任何地方声明一个变量。虽然您可以在 C++ 程序中多次声明一个变量，但变量只能在某个文件、函数或代码块中被定义一次。]]></description>
-</item>
-<item>
-    <title>算法和刷题的框架思维</title>
-    <link>https://imcaicai.github.io/%E7%AE%97%E6%B3%95%E5%92%8C%E5%88%B7%E9%A2%98%E7%9A%84%E6%A1%86%E6%9E%B6%E6%80%9D%E7%BB%B4/</link>
-    <pubDate>Fri, 23 Dec 2022 22:20:00 &#43;0800</pubDate>
-    <author>菜菜</author>
-    <guid>https://imcaicai.github.io/%E7%AE%97%E6%B3%95%E5%92%8C%E5%88%B7%E9%A2%98%E7%9A%84%E6%A1%86%E6%9E%B6%E6%80%9D%E7%BB%B4/</guid>
-    <description><![CDATA[1 数据结构的存储方式 1.1 数据结构&amp;存储方式 数据的存储方式只有两种：数组（顺序存储）和链表（链式存储）。
-【队列】【栈】
-【图】：链表实现就是邻接表，二维数组实现就是邻接矩阵
-【散列表】
-【树】：数组实现就是堆（完全二叉树），链表实现就是普通二叉树
-1.2 数组&amp;链表优缺点 数组：
- 紧凑连续存储,可以随机访问，通过索引快速找到对应元素，节约存储空间。 内存空间必须⼀次性分配够，扩容时需要重新分配空间，再把数据全部复制过去，时间复杂度 O(N) 插⼊和删除时间复杂度 O(N)  链表：
- 元素不连续，不存在数组的扩容问题； 如果知道某⼀元素的前驱和后驱，插入删除时间复杂度 O(1) 存储空间不连续，不能随机访问 每个元素必须存储指向前后元素位置的指针，会消耗相对更多的储存空间。  2 数据结构的基本操作 数据结构的基本操作：遍历+访问（增删查改），分为线性/非线性。
-线性即for/while迭代，非线性即递归。
-🟡 【数组遍历框架】 迭代
-1 2 3 4 5  void traverse(int[] arr) { for (int i = 0; i &lt; arr.length; i++) { // 迭代访问 arr[i] 	} }   🟢 【链表遍历框架】 迭代/递归
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16  /* 基本的单链表节点 */ class ListNode { int val; ListNode next; } void traverse(ListNode head) { for (ListNode p = head; p !]]></description>
 </item>
 </channel>
 </rss>
