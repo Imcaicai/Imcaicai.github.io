@@ -3,7 +3,26 @@
         <title>labuladong - Tag - 菜菜的秘密花园</title>
         <link>https://imcaicai.github.io/tags/labuladong/</link>
         <description>labuladong - Tag - 菜菜的秘密花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 07 Jan 2023 11:59:28 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/tags/labuladong/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 08 Jan 2023 15:48:52 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/tags/labuladong/" rel="self" type="application/rss+xml" /><item>
+    <title>数组链表-田忌赛马背后的算法决策</title>
+    <link>https://imcaicai.github.io/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8-%E7%94%B0%E5%BF%8C%E8%B5%9B%E9%A9%AC%E8%83%8C%E5%90%8E%E7%9A%84%E7%AE%97%E6%B3%95%E5%86%B3%E7%AD%96/</link>
+    <pubDate>Sun, 08 Jan 2023 15:48:52 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8-%E7%94%B0%E5%BF%8C%E8%B5%9B%E9%A9%AC%E8%83%8C%E5%90%8E%E7%9A%84%E7%AE%97%E6%B3%95%E5%86%B3%E7%AD%96/</guid>
+    <description><![CDATA[题目 力扣 870. 优势洗牌
+给定两个大小相等的数组 nums1 和 nums2，nums1 相对于 nums2 的优势可以用满足 nums1[i] &gt; nums2[i] 的索引 i 的数目来描述。
+返回 nums1 的任意排列，使其相对于 nums2 的优势最大化。
+解析 这道题类似于【田忌赛马】，只不过马的数量变多了，精髓在于【打得过就打，打不过就拿自己的垃圾和对方的精锐互换 】。我们先分析【田忌赛马】，考虑以下 3 点：
+🟡 如果田忌的 1 号选手 &lt; 齐王的 1 号选手，显然应该用田忌垫底的马送人头，降低对方的战斗力。
+🟢 如果田忌的 1 号选手 &lt; 齐王的 1 号选手，则应该直接让两者相比。
+🟠 当出现第二种情况时，即 T1 &gt; Q1 时，要不要节约战斗力，用 T2 对抗 Q1？
+答案是不需要。假设 T2 &gt; Q1，那么不论换不换 T1，T1 和 T2 都能对抗所有的 Q，这种节约毫无意义。
+根据以上思路，我们的策略是：
+将齐王和田忌的马按照战斗力排序，然后按照排名一一对比。如果田忌的马能赢，那就比赛，如果赢不了，那就换个垫底的来送人头，保存实力。
+结合已学过的双指针技巧，代码实现如下：
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34  class Solution { public int[] advantageCount(int[] nums1, int[] nums2) { int n=nums1.]]></description>
+</item>
+<item>
     <title>数组链表-二分查找算法</title>
     <link>https://imcaicai.github.io/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/</link>
     <pubDate>Sat, 07 Jan 2023 11:59:28 &#43;0800</pubDate>
