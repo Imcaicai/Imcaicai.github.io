@@ -42,7 +42,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/imcaicai.github.io\/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8-%E9%80%92%E5%BD%92%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8\/"
-        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "labuladong, 算法, 反转链表, 递归","wordcount":  289 ,
+        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "labuladong, 算法, 反转链表, 递归","wordcount":  300 ,
         "url": "https:\/\/imcaicai.github.io\/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8-%E9%80%92%E5%BD%92%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8\/","datePublished": "2023-01-12T17:08:24+08:00","dateModified": "2023-01-12T17:08:24+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/imcaicai.github.io\/img\/avatar.jpg"},"author": {
@@ -136,7 +136,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">数组链表-递归反转链表</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-category">included in <a href="/categories/labuladong%E7%9A%84%E7%AE%97%E6%B3%95%E7%A7%98%E7%B1%8D/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>labuladong的算法秘籍</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-01-12">2023-01-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;289 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-01-12">2023-01-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;300 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;<span id="/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8-%E9%80%92%E5%BD%92%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" class="leancloud_visitors" data-flag-title="数组链表-递归反转链表">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
                     </span>&nbsp;</div>
@@ -326,27 +326,33 @@
 <p>代码实现：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-java" data-lang="java"><span class="n">ListNode</span> <span class="n">successor</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
     <span class="kd">public</span> <span class="n">ListNode</span> <span class="nf">reverseBetween</span><span class="o">(</span><span class="n">ListNode</span> <span class="n">head</span><span class="o">,</span> <span class="kt">int</span> <span class="n">left</span><span class="o">,</span> <span class="kt">int</span> <span class="n">right</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">if</span><span class="o">(</span><span class="n">left</span><span class="o">==</span><span class="n">1</span><span class="o">)</span>
+        <span class="c1">// base case
+</span><span class="c1"></span>        <span class="k">if</span><span class="o">(</span><span class="n">left</span><span class="o">==</span><span class="n">1</span><span class="o">)</span>
             <span class="k">return</span> <span class="n">reverseN</span><span class="o">(</span><span class="n">head</span><span class="o">,</span><span class="n">right</span><span class="o">-</span><span class="n">left</span><span class="o">+</span><span class="n">1</span><span class="o">);</span>
-        <span class="n">head</span><span class="o">.</span><span class="na">next</span><span class="o">=</span><span class="n">reverseBetween</span><span class="o">(</span><span class="n">head</span><span class="o">.</span><span class="na">next</span><span class="o">,</span><span class="n">left</span><span class="o">-</span><span class="n">1</span><span class="o">,</span><span class="n">right</span><span class="o">-</span><span class="n">1</span><span class="o">);</span>
+        <span class="c1">// 前进到反转的起点触发 base case
+</span><span class="c1"></span>        <span class="n">head</span><span class="o">.</span><span class="na">next</span><span class="o">=</span><span class="n">reverseBetween</span><span class="o">(</span><span class="n">head</span><span class="o">.</span><span class="na">next</span><span class="o">,</span><span class="n">left</span><span class="o">-</span><span class="n">1</span><span class="o">,</span><span class="n">right</span><span class="o">-</span><span class="n">1</span><span class="o">);</span>
         <span class="k">return</span> <span class="n">head</span><span class="o">;</span>
         
     <span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>💥💥💥 递归操作链表并不高效。和迭代解法相比，虽然<strong>时间复杂度都是 O(N)</strong>，但是迭代解法的空间复杂度是 <strong>O(1)</strong>，而递归解法需要堆栈，空间复杂度是 <strong>O(N)</strong>。</p>
+<p>参考资料：</p>
+<p><a href="https://labuladong.github.io/algo/">https://labuladong.github.io/algo/</a></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">

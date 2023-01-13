@@ -121,8 +121,10 @@ ListNode reverseN(ListNode head, int n) {
 ```java
 ListNode successor = null;
     public ListNode reverseBetween(ListNode head, int left, int right) {
+        // base case
         if(left==1)
             return reverseN(head,right-left+1);
+        // 前进到反转的起点触发 base case
         head.next=reverseBetween(head.next,left-1,right-1);
         return head;
         
@@ -130,4 +132,8 @@ ListNode successor = null;
 ```
 
 💥💥💥 递归操作链表并不高效。和迭代解法相比，虽然**时间复杂度都是 O(N)**，但是迭代解法的空间复杂度是 **O(1)**，而递归解法需要堆栈，空间复杂度是 **O(N)**。  
+
+参考资料：
+
+https://labuladong.github.io/algo/
 
