@@ -8,7 +8,9 @@
 <meta property="og:description" content="1 递归反转整个链表 题目 力扣 206. 反转链表
 给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。
 示例：
-1 2  输入：head = [1,2,3,4,5] 输出：[5,4,3,2,1]   解析 1 2 3 4 5 6 7 8 9 10  public ListNode reverseList(ListNode head) { if(head==null || head.next==null){ return head; } ListNode last=reverseList(head.next); head.next.next=head; head.next=null; return last; }   2个注意点：
+1 2  输入：head = [1,2,3,4,5] 输出：[5,4,3,2,1]   解析 图解：
+代码实现：
+1 2 3 4 5 6 7 8 9 10  public ListNode reverseList(ListNode head) { if(head==null || head.next==null){ return head; } ListNode last=reverseList(head.next); head.next.next=head; head.next=null; return last; }   2个注意点：
 🟡 递归函数要有 base case，如果链表为空或者只有⼀个节点的时候，反转结果就是它自己。
 1 2 3  if (head == null || head.next == null) { return head; }   🟢 当链表递归反转之后，新的头结点是 last，而之前的 head 变成了最后⼀个节点，别忘了链表的末尾要指向 null。" />
 <meta property="og:type" content="article" />
@@ -23,11 +25,13 @@
 <meta name="twitter:description" content="1 递归反转整个链表 题目 力扣 206. 反转链表
 给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。
 示例：
-1 2  输入：head = [1,2,3,4,5] 输出：[5,4,3,2,1]   解析 1 2 3 4 5 6 7 8 9 10  public ListNode reverseList(ListNode head) { if(head==null || head.next==null){ return head; } ListNode last=reverseList(head.next); head.next.next=head; head.next=null; return last; }   2个注意点：
+1 2  输入：head = [1,2,3,4,5] 输出：[5,4,3,2,1]   解析 图解：
+代码实现：
+1 2 3 4 5 6 7 8 9 10  public ListNode reverseList(ListNode head) { if(head==null || head.next==null){ return head; } ListNode last=reverseList(head.next); head.next.next=head; head.next=null; return last; }   2个注意点：
 🟡 递归函数要有 base case，如果链表为空或者只有⼀个节点的时候，反转结果就是它自己。
 1 2 3  if (head == null || head.next == null) { return head; }   🟢 当链表递归反转之后，新的头结点是 last，而之前的 head 变成了最后⼀个节点，别忘了链表的末尾要指向 null。"/>
 <meta name="application-name" content="菜菜的秘密花园">
-<meta name="apple-mobile-web-app-title" content="菜菜的秘密花园"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://imcaicai.github.io/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8-%E9%80%92%E5%BD%92%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" /><link rel="prev" href="https://imcaicai.github.io/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8-%E7%94%B0%E5%BF%8C%E8%B5%9B%E9%A9%AC%E8%83%8C%E5%90%8E%E7%9A%84%E7%AE%97%E6%B3%95%E5%86%B3%E7%AD%96/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<meta name="apple-mobile-web-app-title" content="菜菜的秘密花园"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://imcaicai.github.io/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8-%E9%80%92%E5%BD%92%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" /><link rel="prev" href="https://imcaicai.github.io/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8-%E7%94%B0%E5%BF%8C%E8%B5%9B%E9%A9%AC%E8%83%8C%E5%90%8E%E7%9A%84%E7%AE%97%E6%B3%95%E5%86%B3%E7%AD%96/" /><link rel="next" href="https://imcaicai.github.io/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88-%E8%AF%A6%E8%A7%A33%E9%81%93%E6%8B%AC%E5%8F%B7%E9%A2%98/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -38,7 +42,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/imcaicai.github.io\/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8-%E9%80%92%E5%BD%92%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8\/"
-        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "labuladong, 算法, 反转链表, 递归","wordcount":  229 ,
+        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "labuladong, 算法, 反转链表, 递归","wordcount":  289 ,
         "url": "https:\/\/imcaicai.github.io\/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8-%E9%80%92%E5%BD%92%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8\/","datePublished": "2023-01-12T17:08:24+08:00","dateModified": "2023-01-12T17:08:24+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/imcaicai.github.io\/img\/avatar.jpg"},"author": {
@@ -132,7 +136,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">数组链表-递归反转链表</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-category">included in <a href="/categories/labuladong%E7%9A%84%E7%AE%97%E6%B3%95%E7%A7%98%E7%B1%8D/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>labuladong的算法秘籍</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-01-12">2023-01-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;229 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-01-12">2023-01-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;289 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;<span id="/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8-%E9%80%92%E5%BD%92%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" class="leancloud_visitors" data-flag-title="数组链表-递归反转链表">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
                     </span>&nbsp;</div>
@@ -174,6 +178,7 @@
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="解析">解析</h3>
+<p>图解：</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -182,6 +187,7 @@
         data-sizes="auto"
         alt="/img/labuladong/4-1.png"
         title="img1" /></p>
+<p>代码实现：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -209,7 +215,7 @@
 </code></pre></td></tr></table>
 </div>
 </div><p>2个注意点：</p>
-<p>🟡 递归函数要有 base case，如果链表为空或者只有⼀个节点的时候，反转结果就是它自己。</p>
+<p>🟡 <strong>递归函数要有 base case，如果链表为空或者只有⼀个节点的时候，反转结果就是它自己。</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -222,7 +228,7 @@
 <span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>🟢 当链表递归反转之后，新的头结点是 last，而之前的 head 变成了最后⼀个节点，别忘了链表的末尾要指向 null。</p>
+</div><p>🟢 <strong>当链表递归反转之后，新的头结点是 last，而之前的 head 变成了最后⼀个节点，别忘了链表的末尾要指向 null。</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -232,6 +238,16 @@
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="2-递归反转前-n-个节点">2 递归反转前 N 个节点</h2>
+<p>图解：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/labuladong/4-2.png"
+        data-srcset="/img/labuladong/4-2.png, /img/labuladong/4-2.png 1.5x, /img/labuladong/4-2.png 2x"
+        data-sizes="auto"
+        alt="/img/labuladong/4-2.png"
+        title="img1" /></p>
+<p>代码实现：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -268,7 +284,10 @@
 <span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="3-递归反转部分节点">3 递归反转部分节点</h2>
+</div><p>2 个区别：</p>
+<p>🟠 base case 变为 n == 1，反转⼀个元素，就是它本身，<strong>同时要记录后驱节点</strong>。</p>
+<p>🔵 刚才我们直接把 head.next 设置为 null，因为整个链表反转后原来的 head 变成了整个链表的最后⼀个节点。<strong>但现在 head 节点在递归反转之后不⼀定是最后⼀个节点了，所以要记录后驱 successor（第 n + 1 个节点），反转之后将 head 连接上。</strong></p>
+<h2 id="3-递归反转部分节点">3 递归反转部分节点</h2>
 <h3 id="题目-1">题目</h3>
 <p><strong>力扣 <a href="https://leetcode.cn/problems/reverse-linked-list-ii/" target="_blank" rel="noopener noreffer ">92. 反转链表 II</a></strong></p>
 <p>给你单链表的头指针 <code>head</code> 和两个整数 <code>left</code> 和 <code>right</code> ，其中 <code>left &lt;= right</code> 。</p>
@@ -277,10 +296,10 @@
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/img/labuladong/4-2.png"
-        data-srcset="/img/labuladong/4-2.png, /img/labuladong/4-2.png 1.5x, /img/labuladong/4-2.png 2x"
+        data-src="/img/labuladong/4-3.png"
+        data-srcset="/img/labuladong/4-3.png, /img/labuladong/4-3.png 1.5x, /img/labuladong/4-3.png 2x"
         data-sizes="auto"
-        alt="/img/labuladong/4-2.png"
+        alt="/img/labuladong/4-3.png"
         title="img1" /></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -293,6 +312,18 @@
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="解析-1">解析</h3>
+<p>图解：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/labuladong/4-4.png"
+        data-srcset="/img/labuladong/4-4.png, /img/labuladong/4-4.png 1.5x, /img/labuladong/4-4.png 2x"
+        data-sizes="auto"
+        alt="/img/labuladong/4-4.png"
+        title="img1" /></p>
+<p>🟣 如果 m == 1，就相当于反转链表开头的 n 个元素，也就是刚刚实现的 reverseN () 。</p>
+<p>🟤 如果 m != 1 ，我们把 head 的索引视为 1，即从第 m 个元素开始反转；如果把 head.next 的索引视为 1 ，那么反转的区间应该从第 m - 1 个元素开始；以此类推&hellip;&hellip;</p>
+<p>代码实现：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -315,7 +346,7 @@
     <span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>💥💥💥 递归操作链表并不高效。和迭代解法相比，虽然时间复杂度都是 O(N)，但是迭代解法的空间复杂度是 O(1)，而递归解法需要堆栈，空间复杂度是 O(N)。</p>
+</div><p>💥💥💥 递归操作链表并不高效。和迭代解法相比，虽然<strong>时间复杂度都是 O(N)</strong>，但是迭代解法的空间复杂度是 <strong>O(1)</strong>，而递归解法需要堆栈，空间复杂度是 <strong>O(N)</strong>。</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
@@ -339,7 +370,8 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8-%E7%94%B0%E5%BF%8C%E8%B5%9B%E9%A9%AC%E8%83%8C%E5%90%8E%E7%9A%84%E7%AE%97%E6%B3%95%E5%86%B3%E7%AD%96/" class="prev" rel="prev" title="数组链表-田忌赛马背后的算法决策"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>数组链表-田忌赛马背后的算法决策</a></div>
+    <div class="post-nav"><a href="/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8-%E7%94%B0%E5%BF%8C%E8%B5%9B%E9%A9%AC%E8%83%8C%E5%90%8E%E7%9A%84%E7%AE%97%E6%B3%95%E5%86%B3%E7%AD%96/" class="prev" rel="prev" title="数组链表-田忌赛马背后的算法决策"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>数组链表-田忌赛马背后的算法决策</a>
+            <a href="/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88-%E8%AF%A6%E8%A7%A33%E9%81%93%E6%8B%AC%E5%8F%B7%E9%A2%98/" class="next" rel="next" title="队列和栈-详解3道括号题">队列和栈-详解3道括号题<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 <div id="comments"><div id="valine" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.

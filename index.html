@@ -118,11 +118,18 @@
         alt="/img/avatar.jpg"
         title="/img/avatar.jpg" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88-%E8%AF%A6%E8%A7%A33%E9%81%93%E6%8B%AC%E5%8F%B7%E9%A2%98/">队列和栈-详解3道括号题</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-01-12">2023-01-12</time></span>&nbsp;<span class="post-category">included in <a href="/categories/labuladong%E7%9A%84%E7%AE%97%E6%B3%95%E7%A7%98%E7%B1%8D/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>labuladong的算法秘籍</a></span></div><div class="content"></div><div class="post-footer">
+        <a href="/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88-%E8%AF%A6%E8%A7%A33%E9%81%93%E6%8B%AC%E5%8F%B7%E9%A2%98/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/labuladong/">labuladong</a>,&nbsp;<a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>,&nbsp;<a href="/tags/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88/">队列和栈</a>,&nbsp;<a href="/tags/%E6%8B%AC%E5%8F%B7%E9%A2%98/">括号题</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8-%E9%80%92%E5%BD%92%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/">数组链表-递归反转链表</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-01-12">2023-01-12</time></span>&nbsp;<span class="post-category">included in <a href="/categories/labuladong%E7%9A%84%E7%AE%97%E6%B3%95%E7%A7%98%E7%B1%8D/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>labuladong的算法秘籍</a></span></div><div class="content">1 递归反转整个链表 题目 力扣 206. 反转链表
 给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。
 示例：
-1 2  输入：head = [1,2,3,4,5] 输出：[5,4,3,2,1]   解析 1 2 3 4 5 6 7 8 9 10  public ListNode reverseList(ListNode head) { if(head==null || head.next==null){ return head; } ListNode last=reverseList(head.next); head.next.next=head; head.next=null; return last; }   2个注意点：
+1 2  输入：head = [1,2,3,4,5] 输出：[5,4,3,2,1]   解析 图解：
+代码实现：
+1 2 3 4 5 6 7 8 9 10  public ListNode reverseList(ListNode head) { if(head==null || head.next==null){ return head; } ListNode last=reverseList(head.next); head.next.next=head; head.next=null; return last; }   2个注意点：
 🟡 递归函数要有 base case，如果链表为空或者只有⼀个节点的时候，反转结果就是它自己。
 1 2 3  if (head == null || head.next == null) { return head; }   🟢 当链表递归反转之后，新的头结点是 last，而之前的 head 变成了最后⼀个节点，别忘了链表的末尾要指向 null。</div><div class="post-footer">
         <a href="/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8-%E9%80%92%E5%BD%92%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/">Read More</a><div class="post-tags">
@@ -224,19 +231,6 @@
 1  strcpy(emp.first_name, &#34;zara&#34;);   箭头运算符：
 1 2  // p_emp 是一个指针，指向类型为 Employee 的对象 strcpy(p_emp-&gt;first_name, &#34;zara&#34;);   强制转换运算符 1 2  double a = 21.</div><div class="post-footer">
         <a href="/c-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%BA%8C/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/c-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%80/">C++基础语法(一)</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-12-27">2022-12-27</time></span>&nbsp;<span class="post-category">included in <a href="/categories/c++/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>C++</a></span></div><div class="content">1 C++简介 C++ 完全支持面向对象的程序设计，包括面向对象开发的四大特性：封装、抽象、继承、多态
-标准的 C++ 由三个重要部分组成：
- 核心语言，提供了所有构件块，包括变量、数据类型和常量，等等。 C++ 标准库，提供了大量的函数，用于操作文件、字符串等。 标准模板库（STL），提供了大量的方法，用于操作数据结构等。  2 数据类型 基本内置类型 bool，char，int，float，double，void
-类型修饰符 signed，unsigned，short，long
-C++ 允许使用速记符号来声明无符号短整数或无符号长整数。您可以不写 int，只写单词 unsigned、short 或 long。
-typedef 声明 可以使用 typedef 为一个已有的类型取一个新的名字。
-1  typedef int feet;   枚举类型 如果一个变量只有几种可能的值，可以定义为枚举(enumeration)类型。所谓&quot;枚举&quot;是指将变量的值一一列举出来，变量的值只能在列举出来的值的范围内。
-1 2 3 4  enum 枚举名{ 标识符[=整型常数], ... } 枚举变量;   默认情况下，第一个名称的值为 0，第二个名称的值为 1，第三个名称的值为 2，以此类推。但是，您也可以给名称赋予一个特殊的值，只需要添加一个初始值即可。
-1 2 3 4 5  enum color { red, green, blue } c; c = blue; // red默认为0，blue默认为6 enum color { red, green=5, blue };   变量声明 当使用多个文件且只在其中一个文件中定义变量时，可以使用 extern 关键字在任何地方声明一个变量。虽然您可以在 C++ 程序中多次声明一个变量，但变量只能在某个文件、函数或代码块中被定义一次。</div><div class="post-footer">
-        <a href="/c-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%80/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a></div></div>
 </article><ul class="pagination"><li class="page-item active">
                     <span class="page-link">

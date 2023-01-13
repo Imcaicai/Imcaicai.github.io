@@ -3,7 +3,15 @@
         <title>All Posts - 菜菜的秘密花园</title>
         <link>https://imcaicai.github.io/posts/</link>
         <description>All Posts | 菜菜的秘密花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 12 Jan 2023 17:08:24 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 12 Jan 2023 17:30:44 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>队列和栈-详解3道括号题</title>
+    <link>https://imcaicai.github.io/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88-%E8%AF%A6%E8%A7%A33%E9%81%93%E6%8B%AC%E5%8F%B7%E9%A2%98/</link>
+    <pubDate>Thu, 12 Jan 2023 17:30:44 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88-%E8%AF%A6%E8%A7%A33%E9%81%93%E6%8B%AC%E5%8F%B7%E9%A2%98/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
     <title>数组链表-递归反转链表</title>
     <link>https://imcaicai.github.io/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8-%E9%80%92%E5%BD%92%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/</link>
     <pubDate>Thu, 12 Jan 2023 17:08:24 &#43;0800</pubDate>
@@ -12,7 +20,9 @@
     <description><![CDATA[1 递归反转整个链表 题目 力扣 206. 反转链表
 给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。
 示例：
-1 2  输入：head = [1,2,3,4,5] 输出：[5,4,3,2,1]   解析 1 2 3 4 5 6 7 8 9 10  public ListNode reverseList(ListNode head) { if(head==null || head.next==null){ return head; } ListNode last=reverseList(head.next); head.next.next=head; head.next=null; return last; }   2个注意点：
+1 2  输入：head = [1,2,3,4,5] 输出：[5,4,3,2,1]   解析 图解：
+代码实现：
+1 2 3 4 5 6 7 8 9 10  public ListNode reverseList(ListNode head) { if(head==null || head.next==null){ return head; } ListNode last=reverseList(head.next); head.next.next=head; head.next=null; return last; }   2个注意点：
 🟡 递归函数要有 base case，如果链表为空或者只有⼀个节点的时候，反转结果就是它自己。
 1 2 3  if (head == null || head.next == null) { return head; }   🟢 当链表递归反转之后，新的头结点是 last，而之前的 head 变成了最后⼀个节点，别忘了链表的末尾要指向 null。]]></description>
 </item>
@@ -119,16 +129,6 @@
     <description><![CDATA[1 类&amp;对象 1.1 成员函数 成员函数可以定义在类定义内部：
 1 2 3 4 5 6 7 8 9 10 11 12  class Box { public: double length; // 长度  double breadth; // 宽度  double height; // 高度  double getVolume(void) { return length * breadth * height; } };   也可以在类的外部使用范围解析运算符 :: 定义该函数。
 1 2 3 4 5 6 7 8 9 10 11 12 13  class Box { public: double length; // 长度  double breadth; // 宽度  double height; // 高度  double getVolume(void);// 返回体积 }; double Box::getVolume(void) { return length * breadth * height; }   在 :: 运算符之前必须使用类名。]]></description>
-</item>
-<item>
-    <title>C&#43;&#43;基础语法(三)</title>
-    <link>https://imcaicai.github.io/c-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%89/</link>
-    <pubDate>Tue, 27 Dec 2022 20:28:05 &#43;0800</pubDate>
-    <author>菜菜</author>
-    <guid>https://imcaicai.github.io/c-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%89/</guid>
-    <description><![CDATA[11 字符串 C风格字符串 字符串实际上是使用 null 字符 \0 终止的一维字符数组。
-1 2  char site[7] = {&#39;R&#39;, &#39;U&#39;, &#39;N&#39;, &#39;O&#39;, &#39;O&#39;, &#39;B&#39;, &#39;\0&#39;}; char site[] = &#34;RUNOOB&#34;;   字符串相关函数：
- strcpy(s1, s2); 复制字符串 s2 到字符串 s1。 strcat(s1, s2); 连接字符串 s2 到字符串 s1 的末尾。连接字符串也可以用 + 号。 strlen(s1); 返回字符串 s1 的长度。 strcmp(s1, s2); 如果 s1 和 s2 是相同的，则返回 0；如果 s1&lt;s2 则返回值小于 0；如果 s1&gt;s2 则返回值大于 0。 strchr(s1, ch); 返回一个指针，指向字符串 s1 中字符 ch 的第一次出现的位置。 strstr(s1, s2); 返回一个指针，指向字符串 s1 中字符串 s2 的第一次出现的位置。  String类 1 2 3 4 5 6 7 8 9  string str1 = &#34;runoob&#34;; string str2 = &#34;google&#34;; string str3; int len ; // 连接 str1 和 str2 str3 = str1 + str2; // 连接后，str3 的总长度为12！ len = str3.]]></description>
 </item>
 </channel>
 </rss>
