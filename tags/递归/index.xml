@@ -4,11 +4,11 @@
         <link>https://imcaicai.github.io/tags/%E9%80%92%E5%BD%92/</link>
         <description>递归 - Tag - 菜菜的秘密花园</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 12 Jan 2023 17:08:24 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/tags/%E9%80%92%E5%BD%92/" rel="self" type="application/rss+xml" /><item>
-    <title>数组链表-递归反转链表</title>
-    <link>https://imcaicai.github.io/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8-%E9%80%92%E5%BD%92%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/</link>
+    <title>【数组链表】递归反转链表</title>
+    <link>https://imcaicai.github.io/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E9%80%92%E5%BD%92%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/</link>
     <pubDate>Thu, 12 Jan 2023 17:08:24 &#43;0800</pubDate>
     <author>菜菜</author>
-    <guid>https://imcaicai.github.io/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8-%E9%80%92%E5%BD%92%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/</guid>
+    <guid>https://imcaicai.github.io/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E9%80%92%E5%BD%92%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/</guid>
     <description><![CDATA[1 递归反转整个链表 题目 力扣 206. 反转链表
 给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。
 示例：

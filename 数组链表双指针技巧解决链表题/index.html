@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>【数组链表】双指针技巧解决链表题 - 菜菜的秘密花园</title><meta name="Description" content="菜菜的秘密花园"><meta property="og:title" content="【数组链表】双指针技巧解决链表题" />
+<meta property="og:description" content="1 合并两个有序链表 题目 力扣 21. 合并两个有序链表
+将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。
+示例：
+1 2  输入：l1 = [1,2,4], l2 = [1,3,4] 输出：[1,1,2,3,4,4]   解析 这题比较简单，直接用 while 循环每次比较 p1 和 p2 的大小，把较小的节点接到结果链表上，如图所示：
+ 虚拟头节点技巧  通过虚拟头节点这个占位符，可以避免处理空指针的情况，降低代码的复杂性。 当你需要创造⼀条新链表的时候，可以使⽤虚拟头结点简化边界情况的处理。   最后通过 p.next = n1; 将剩余的节点全都复制过去，不需要使用 while 循环一条一条复制。  代码实现：
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31  class Solution { public ListNode mergeTwoLists(ListNode list1, ListNode list2) { // 虚拟头结点  ListNode p = new ListNode(), res = p; ListNode n1 = list1, n2 = list2; while(n1!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://imcaicai.github.io/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E5%8F%8C%E6%8C%87%E9%92%88%E6%8A%80%E5%B7%A7%E8%A7%A3%E5%86%B3%E9%93%BE%E8%A1%A8%E9%A2%98/" /><meta property="og:image" content="https://imcaicai.github.io/img/avatar.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-12-31T00:08:35&#43;08:00" />
+<meta property="article:modified_time" content="2022-12-31T00:08:35&#43;08:00" /><meta property="og:site_name" content="菜菜的秘密花园" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://imcaicai.github.io/img/avatar.jpg"/>
+
+<meta name="twitter:title" content="【数组链表】双指针技巧解决链表题"/>
+<meta name="twitter:description" content="1 合并两个有序链表 题目 力扣 21. 合并两个有序链表
+将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。
+示例：
+1 2  输入：l1 = [1,2,4], l2 = [1,3,4] 输出：[1,1,2,3,4,4]   解析 这题比较简单，直接用 while 循环每次比较 p1 和 p2 的大小，把较小的节点接到结果链表上，如图所示：
+ 虚拟头节点技巧  通过虚拟头节点这个占位符，可以避免处理空指针的情况，降低代码的复杂性。 当你需要创造⼀条新链表的时候，可以使⽤虚拟头结点简化边界情况的处理。   最后通过 p.next = n1; 将剩余的节点全都复制过去，不需要使用 while 循环一条一条复制。  代码实现：
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31  class Solution { public ListNode mergeTwoLists(ListNode list1, ListNode list2) { // 虚拟头结点  ListNode p = new ListNode(), res = p; ListNode n1 = list1, n2 = list2; while(n1!"/>
+<meta name="application-name" content="菜菜的秘密花园">
+<meta name="apple-mobile-web-app-title" content="菜菜的秘密花园"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://imcaicai.github.io/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E5%8F%8C%E6%8C%87%E9%92%88%E6%8A%80%E5%B7%A7%E8%A7%A3%E5%86%B3%E9%93%BE%E8%A1%A8%E9%A2%98/" /><link rel="prev" href="https://imcaicai.github.io/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/" /><link rel="next" href="https://imcaicai.github.io/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E5%8F%8C%E6%8C%87%E9%92%88%E6%8A%80%E5%B7%A7%E8%A7%A3%E5%86%B3%E6%95%B0%E7%BB%84%E9%A2%98/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "【数组链表】双指针技巧解决链表题",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/imcaicai.github.io\/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E5%8F%8C%E6%8C%87%E9%92%88%E6%8A%80%E5%B7%A7%E8%A7%A3%E5%86%B3%E9%93%BE%E8%A1%A8%E9%A2%98\/"
+        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "labuladong, 算法, 双指针, 链表","wordcount":  1182 ,
+        "url": "https:\/\/imcaicai.github.io\/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E5%8F%8C%E6%8C%87%E9%92%88%E6%8A%80%E5%B7%A7%E8%A7%A3%E5%86%B3%E9%93%BE%E8%A1%A8%E9%A2%98\/","datePublished": "2022-12-31T00:08:35+08:00","dateModified": "2022-12-31T00:08:35+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/imcaicai.github.io\/img\/avatar.jpg"},"author": {
+                "@type": "Person",
+                "name": "菜菜"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="菜菜的秘密花园"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/avatar.jpg"
+        data-srcset="/img/avatar.jpg, /img/avatar.jpg 1.5x, /img/avatar.jpg 2x"
+        data-sizes="auto"
+        alt="/img/avatar.jpg"
+        title="/img/avatar.jpg" />菜菜的秘密花园</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/categories/documentation/"> Docs </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/Imcaicai" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="Select Language">
+                    <i class="fa fa-globe" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E5%8F%8C%E6%8C%87%E9%92%88%E6%8A%80%E5%B7%A7%E8%A7%A3%E5%86%B3%E9%93%BE%E8%A1%A8%E9%A2%98/" selected>English</option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="菜菜的秘密花园"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/avatar.jpg"
+        data-srcset="/img/avatar.jpg, /img/avatar.jpg 1.5x, /img/avatar.jpg 2x"
+        data-sizes="auto"
+        alt="/img/avatar.jpg"
+        title="/img/avatar.jpg" />菜菜的秘密花园</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/categories/documentation/" title="">Docs</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/Imcaicai" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="Select Language">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E5%8F%8C%E6%8C%87%E9%92%88%E6%8A%80%E5%B7%A7%E8%A7%A3%E5%86%B3%E9%93%BE%E8%A1%A8%E9%A2%98/" selected>English</option></select>
+                </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">【数组链表】双指针技巧解决链表题</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-category">included in <a href="/categories/labuladong%E7%9A%84%E7%AE%97%E6%B3%95%E7%A7%98%E7%B1%8D/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>labuladong的算法秘籍</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-12-31">2022-12-31</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1182 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;6 minutes&nbsp;<span id="/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E5%8F%8C%E6%8C%87%E9%92%88%E6%8A%80%E5%B7%A7%E8%A7%A3%E5%86%B3%E9%93%BE%E8%A1%A8%E9%A2%98/" class="leancloud_visitors" data-flag-title="【数组链表】双指针技巧解决链表题">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-合并两个有序链表">1 合并两个有序链表</a>
+      <ul>
+        <li><a href="#题目">题目</a></li>
+        <li><a href="#解析">解析</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-单链表的分解">2 单链表的分解</a>
+      <ul>
+        <li><a href="#题目-1">题目</a></li>
+        <li><a href="#解析-1">解析</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-合并-k-个有序链表">3 合并 k 个有序链表</a>
+      <ul>
+        <li><a href="#题目-2">题目</a></li>
+        <li><a href="#解析-2">解析</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-单链表的倒数第-k-个节点">4 单链表的倒数第 k 个节点</a>
+      <ul>
+        <li><a href="#题目---查找链表倒数第n个节点">题目&mdash;查找链表倒数第N个节点</a></li>
+        <li><a href="#解析1">解析1</a>
+          <ul>
+            <li>
+              <ul>
+                <li><a href="#一般做法遍历-2-次链表">一般做法：遍历 2 次链表</a></li>
+                <li><a href="#改进做法遍历-1-次链表">改进做法：遍历 1 次链表</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#题目---删除链表的倒数第n个结点">题目&mdash;删除链表的倒数第N个结点</a></li>
+        <li><a href="#解析-3">解析</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#题目-3">题目</a></li>
+        <li><a href="#解析-4">解析</a>
+          <ul>
+            <li>
+              <ul>
+                <li><a href="#一般做法遍历-2-次链表-1">一般做法：遍历 2 次链表</a></li>
+                <li><a href="#改进做法遍历-1-次链表-1">改进做法：遍历 1 次链表</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#解析-5">解析</a></li>
+        <li><a href="#进阶">进阶</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#题目-4">题目</a></li>
+        <li><a href="#解析-6">解析</a>
+          <ul>
+            <li>
+              <ul>
+                <li><a href="#一般做法">一般做法：</a></li>
+                <li><a href="#改进做法">改进做法：</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="1-合并两个有序链表">1 合并两个有序链表</h2>
+<h3 id="题目">题目</h3>
+<p><strong>力扣 <a href="https://leetcode.cn/problems/merge-two-sorted-lists/" target="_blank" rel="noopener noreffer ">21. 合并两个有序链表</a></strong></p>
+<p>将两个升序链表合并为一个新的 <strong>升序</strong> 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。</p>
+<p>示例：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/labuladong/3-1.png"
+        data-srcset="/img/labuladong/3-1.png, /img/labuladong/3-1.png 1.5x, /img/labuladong/3-1.png 2x"
+        data-sizes="auto"
+        alt="/img/labuladong/3-1.png"
+        title="img1" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">输入：l1 = [1,2,4], l2 = [1,3,4]
+输出：[1,1,2,3,4,4]
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="解析">解析</h3>
+<p>这题比较简单，直接用 <code>while</code> 循环每次比较 <code>p1</code> 和 <code>p2</code> 的大小，把较小的节点接到结果链表上，如图所示：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/labuladong/3-2.png"
+        data-srcset="/img/labuladong/3-2.png, /img/labuladong/3-2.png 1.5x, /img/labuladong/3-2.png 2x"
+        data-sizes="auto"
+        alt="/img/labuladong/3-2.png"
+        title="img1" /></p>
+<ul>
+<li>虚拟头节点技巧
+<ul>
+<li>通过虚拟头节点这个占位符，可以避免处理空指针的情况，降低代码的复杂性。</li>
+<li>当你需要创造⼀条新链表的时候，可以使⽤虚拟头结点简化边界情况的处理。</li>
+</ul>
+</li>
+<li>最后通过 <code>p.next = n1;</code> 将剩余的节点全都复制过去，不需要使用 <code>while</code> 循环一条一条复制。</li>
+</ul>
+<p>代码实现：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">ListNode</span> <span class="nf">mergeTwoLists</span><span class="o">(</span><span class="n">ListNode</span> <span class="n">list1</span><span class="o">,</span> <span class="n">ListNode</span> <span class="n">list2</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 虚拟头结点
+</span><span class="c1"></span>        <span class="n">ListNode</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ListNode</span><span class="o">(),</span> <span class="n">res</span> <span class="o">=</span> <span class="n">p</span><span class="o">;</span>
+        <span class="n">ListNode</span> <span class="n">n1</span> <span class="o">=</span> <span class="n">list1</span><span class="o">,</span> <span class="n">n2</span> <span class="o">=</span> <span class="n">list2</span><span class="o">;</span>
+        <span class="k">while</span><span class="o">(</span><span class="n">n1</span><span class="o">!=</span><span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">n2</span><span class="o">!=</span><span class="kc">null</span><span class="o">){</span>
+            <span class="c1">// ⽐较 n1 和 n2 两个指针
+</span><span class="c1"></span>			<span class="c1">// 将值较⼩的的节点接到 p 指针
+</span><span class="c1"></span>            <span class="k">if</span><span class="o">(</span><span class="n">n1</span><span class="o">.</span><span class="na">val</span> <span class="o">&lt;</span> <span class="n">n2</span><span class="o">.</span><span class="na">val</span><span class="o">){</span>
+                <span class="n">p</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">n1</span><span class="o">;</span>  
+                <span class="n">n1</span> <span class="o">=</span> <span class="n">n1</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="n">p</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">n2</span><span class="o">;</span>
+                <span class="n">n2</span> <span class="o">=</span> <span class="n">n2</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="c1">// p 指针不断前进
+</span><span class="c1"></span>            <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>     
+        <span class="o">}</span>
+		
+        <span class="c1">// 最后还剩的直接一次复制过去
+</span><span class="c1"></span>        <span class="k">if</span><span class="o">(</span><span class="n">n1</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span>
+            <span class="n">p</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">n1</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="k">if</span><span class="o">(</span><span class="n">n2</span><span class="o">!=</span><span class="kc">null</span><span class="o">){</span>
+            <span class="n">p</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">n2</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="k">return</span> <span class="n">res</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="2-单链表的分解">2 单链表的分解</h2>
+<h3 id="题目-1">题目</h3>
+<p><strong>力扣 <a href="https://leetcode.cn/problems/partition-list/" target="_blank" rel="noopener noreffer ">86. 分隔链表</a></strong></p>
+<p>给你一个链表的头节点 head 和一个特定值 x ，请你对链表进行分隔，使得所有 小于 x 的节点都出现在 大于或等于 x 的节点之前。</p>
+<p>你应当 保留 两个分区中每个节点的初始相对位置。</p>
+<p>示例：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/labuladong/3-3.png"
+        data-srcset="/img/labuladong/3-3.png, /img/labuladong/3-3.png 1.5x, /img/labuladong/3-3.png 2x"
+        data-sizes="auto"
+        alt="/img/labuladong/3-3.png"
+        title="img1" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">输入：head = [1,4,3,2,5,2], x = 3
+输出：[1,2,2,4,3,5]
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="解析-1">解析</h3>
+<p>把原链表分成两个小链表，⼀个链表中的元素大小都小于 x，另⼀个链表中的元素都大于等于 x，最后再把这两条链表接到⼀起，就得到了题目想要的结果。</p>
+<p>❗❗❗注意：最后合并时，要先断开 bp 的 next 指针。因为 bp 是直接由 hp 复制过来的，后面可能还接着小于 x 的节点，因此可能在答案链表中形成循环。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">ListNode</span> <span class="nf">partition</span><span class="o">(</span><span class="n">ListNode</span> <span class="n">head</span><span class="o">,</span> <span class="kt">int</span> <span class="n">x</span><span class="o">)</span> <span class="o">{</span>
+    	<span class="c1">// 存放大于 x 的链表的虚拟头节点
+</span><span class="c1"></span>        <span class="n">ListNode</span> <span class="n">big</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ListNode</span><span class="o">(),</span> <span class="n">bp</span> <span class="o">=</span> <span class="n">big</span><span class="o">;</span>   
+        <span class="c1">// 存放小于 x 的链表的虚拟头节点
+</span><span class="c1"></span>        <span class="n">ListNode</span> <span class="n">res</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ListNode</span><span class="o">(),</span> <span class="n">rp</span> <span class="o">=</span> <span class="n">res</span><span class="o">;</span>    
+        <span class="n">ListNode</span> <span class="n">hp</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span> <span class="c1">// 用于遍历head
+</span><span class="c1"></span>        <span class="c1">// 将一个链表分解成2个
+</span><span class="c1"></span>        <span class="k">while</span><span class="o">(</span><span class="n">hp</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">hp</span><span class="o">.</span><span class="na">val</span> <span class="o">&lt;</span> <span class="n">x</span><span class="o">){</span>
+                <span class="n">rp</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">hp</span><span class="o">;</span>   <span class="c1">// 利用虚拟节点
+</span><span class="c1"></span>                <span class="n">rp</span> <span class="o">=</span> <span class="n">rp</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+            <span class="o">}</span> <span class="k">else</span><span class="o">{</span>
+                <span class="n">bp</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">hp</span><span class="o">;</span>   <span class="c1">// 利用虚拟节点
+</span><span class="c1"></span>                <span class="n">bp</span> <span class="o">=</span> <span class="n">bp</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+            <span class="o">}</span>
+
+            <span class="n">hp</span> <span class="o">=</span> <span class="n">hp</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="n">bp</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>	<span class="c1">// 断开bp的next指针
+</span><span class="c1"></span>        <span class="n">rp</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">big</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>	<span class="c1">// 合并2个链表
+</span><span class="c1"></span>
+        <span class="k">return</span> <span class="n">res</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="3-合并-k-个有序链表">3 合并 k 个有序链表</h2>
+<h3 id="题目-2">题目</h3>
+<p><strong>力扣 <a href="https://leetcode.cn/problems/merge-k-sorted-lists/" target="_blank" rel="noopener noreffer ">23. 合并K个升序链表</a></strong></p>
+<p>给你一个链表数组，每个链表都已经按升序排列。</p>
+<p>请你将所有链表合并到一个升序链表中，返回合并后的链表。</p>
+<p>示例 ：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">输入：lists = [[1,4,5],[1,3,4],[2,6]]
+输出：[1,1,2,3,4,4,5,6]
+解释：链表数组如下：
+[
+  1-&gt;4-&gt;5,
+  1-&gt;3-&gt;4,
+  2-&gt;6
+]
+将它们合并到一个有序链表中得到。
+1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4-&gt;5-&gt;6
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="解析-2">解析</h3>
+<p>合并 k 个有序链表的逻辑类似合并两个有序链表，难点在于，如何快速得到 k 个节点中的最小节点，接到结果链表上？</p>
+<p>这里我们就要用到 优先级队列（二叉堆） 这种数据结构，把链表节点放入⼀个最小堆，就可以每次获得 k 个节点中的最小节点：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">ListNode</span> <span class="nf">mergeKLists</span><span class="o">(</span><span class="n">ListNode</span><span class="o">[]</span> <span class="n">lists</span><span class="o">)</span> <span class="o">{</span>
+	<span class="k">if</span> <span class="o">(</span><span class="n">lists</span><span class="o">.</span><span class="na">length</span> <span class="o">==</span> <span class="n">0</span><span class="o">)</span> <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+	<span class="c1">// 虚拟头结点
+</span><span class="c1"></span>	<span class="n">ListNode</span> <span class="n">dummy</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ListNode</span><span class="o">(-</span><span class="n">1</span><span class="o">);</span>
+	<span class="n">ListNode</span> <span class="n">p</span> <span class="o">=</span> <span class="n">dummy</span><span class="o">;</span>
+	<span class="c1">// 优先级队列，最⼩堆
+</span><span class="c1"></span>	<span class="n">PriorityQueue</span><span class="o">&lt;</span><span class="n">ListNode</span><span class="o">&gt;</span> <span class="n">pq</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PriorityQueue</span><span class="o">&lt;&gt;(</span>
+		<span class="n">lists</span><span class="o">.</span><span class="na">length</span><span class="o">,</span> <span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">)-&gt;(</span><span class="n">a</span><span class="o">.</span><span class="na">val</span> <span class="o">-</span> <span class="n">b</span><span class="o">.</span><span class="na">val</span><span class="o">));</span>
+	<span class="c1">// 将 k 个链表的头结点加⼊最⼩堆
+</span><span class="c1"></span>	<span class="k">for</span> <span class="o">(</span><span class="n">ListNode</span> <span class="n">head</span> <span class="o">:</span> <span class="n">lists</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">if</span> <span class="o">(</span><span class="n">head</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
+		<span class="n">pq</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">head</span><span class="o">);</span>
+	<span class="o">}</span>
+	<span class="k">while</span> <span class="o">(!</span><span class="n">pq</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+		<span class="c1">// 获取最⼩节点，接到结果链表中
+</span><span class="c1"></span>		<span class="n">ListNode</span> <span class="n">node</span> <span class="o">=</span> <span class="n">pq</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+		<span class="n">p</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">node</span><span class="o">;</span>
+		<span class="k">if</span> <span class="o">(</span><span class="n">node</span><span class="o">.</span><span class="na">next</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">pq</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">node</span><span class="o">.</span><span class="na">next</span><span class="o">);</span>
+		<span class="o">}</span>
+		<span class="c1">// p 指针不断前进
+</span><span class="c1"></span>		<span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="k">return</span> <span class="n">dummy</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>优先队列 pq 中的元素个数最多是 k，所以⼀次 poll 或者 add 方法的时间复杂度是 O(logk)；所有的链表节点都会被加入和弹出 pq，所以算法整体的时间复杂度是 O(Nlogk)，其中 k 是链表的条数，N 是这些链表的节点总数。</p>
+<h2 id="4-单链表的倒数第-k-个节点">4 单链表的倒数第 k 个节点</h2>
+<h3 id="题目---查找链表倒数第n个节点">题目&mdash;查找链表倒数第N个节点</h3>
+<p>寻找从后往前数的第 k 个节点。</p>
+<h3 id="解析1">解析1</h3>
+<h5 id="一般做法遍历-2-次链表">一般做法：遍历 2 次链表</h5>
+<p>假设链表有 n 个节点，倒数第 k 个节点就是正数第 n - k + 1 个节点。由于算法题⼀般只给⼀个 ListNode 头结点代表⼀条单链表，所以不能直接得出这条链表的长度 n，需要先遍历⼀遍链表算出 n 的值，然后再遍历链表计算第 n - k + 1 个节点。也就是说，这个解法需要<strong>遍历两次链表</strong>才能得到出倒数第 k 个节点。</p>
+<h5 id="改进做法遍历-1-次链表">改进做法：遍历 1 次链表</h5>
+<p>首先，我们先让⼀个指针 p1 指向链表的头节点 head，然后走 k 步；再用⼀个指针 p2 指向链表头节点 head  ，则 p1 和 p2 之间相差 k 步。当 p1 走到末尾空指针时，p2 刚好在倒数第 k 个的位置。如图所示：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/labuladong/3-4.png"
+        data-srcset="/img/labuladong/3-4.png, /img/labuladong/3-4.png 1.5x, /img/labuladong/3-4.png 2x"
+        data-sizes="auto"
+        alt="/img/labuladong/3-4.png"
+        title="img1" /></p>
+<p>代码实现如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="c1">// 返回链表的倒数第 k 个节点
+</span><span class="c1"></span><span class="n">ListNode</span> <span class="nf">findFromEnd</span><span class="o">(</span><span class="n">ListNode</span> <span class="n">head</span><span class="o">,</span> <span class="kt">int</span> <span class="n">k</span><span class="o">)</span> <span class="o">{</span>
+	<span class="n">ListNode</span> <span class="n">p1</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span>
+	<span class="c1">// p1 先⾛ k 步
+</span><span class="c1"></span>	<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">k</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+		<span class="n">p1</span> <span class="o">=</span> <span class="n">p1</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="n">ListNode</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span>
+	<span class="c1">// p1 和 p2 同时⾛ n - k 步
+</span><span class="c1"></span>	<span class="k">while</span> <span class="o">(</span><span class="n">p1</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+		<span class="n">p2</span> <span class="o">=</span> <span class="n">p2</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+		<span class="n">p1</span> <span class="o">=</span> <span class="n">p1</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="c1">// p2 现在指向第 n - k + 1 个节点，即倒数第 k 个节点
+</span><span class="c1"></span>	<span class="k">return</span> <span class="n">p2</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="题目---删除链表的倒数第n个结点">题目&mdash;删除链表的倒数第N个结点</h3>
+<p><strong>力扣 <a href="https://leetcode.cn/problems/remove-nth-node-from-end-of-list/" target="_blank" rel="noopener noreffer ">19. 删除链表的倒数第 N 个结点</a></strong></p>
+<p>给你一个链表，删除链表的倒数第 <code>n</code> 个结点，并且返回链表的头结点。</p>
+<p>示例：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/labuladong/3-5.png"
+        data-srcset="/img/labuladong/3-5.png, /img/labuladong/3-5.png 1.5x, /img/labuladong/3-5.png 2x"
+        data-sizes="auto"
+        alt="/img/labuladong/3-5.png"
+        title="img1" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">输入：head = [1,2,3,4,5], n = 2
+输出：[1,2,3,5]
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="解析-3">解析</h3>
+<p>和上面思路类似，获得倒数第 n + 1 个节点的引用并进行删除。注意使用虚节点技巧，防止出现空指针的情况。代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">ListNode</span> <span class="nf">removeNthFromEnd</span><span class="o">(</span><span class="n">ListNode</span> <span class="n">head</span><span class="o">,</span> <span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">ListNode</span> <span class="n">p1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ListNode</span><span class="o">();</span>	<span class="c1">// 虚拟头结点
+</span><span class="c1"></span>        <span class="n">p1</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span>
+        <span class="c1">// 删除倒数第 n 个，要先找到倒数第 n+1 个节点
+</span><span class="c1"></span>        <span class="n">ListNode</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">findFromEnd</span><span class="o">(</span><span class="n">p1</span><span class="o">,</span> <span class="n">n</span><span class="o">+</span><span class="n">1</span><span class="o">);</span>
+        <span class="n">p2</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">p2</span><span class="o">.</span><span class="na">next</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+        <span class="k">return</span> <span class="n">p1</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">ListNode</span> <span class="nf">findFromEnd</span><span class="o">(</span><span class="n">ListNode</span> <span class="n">head</span><span class="o">,</span> <span class="kt">int</span> <span class="n">n</span><span class="o">){</span>
+        <span class="n">ListNode</span> <span class="n">p1</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span>
+        <span class="n">ListNode</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+            <span class="n">p1</span> <span class="o">=</span> <span class="n">p1</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">while</span><span class="o">(</span><span class="n">p1</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span>
+            <span class="n">p1</span> <span class="o">=</span> <span class="n">p1</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+            <span class="n">p2</span> <span class="o">=</span> <span class="n">p2</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">p2</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="5-单链表的中点">5 单链表的中点</h1>
+<h3 id="题目-3">题目</h3>
+<p><strong>力扣 <a href="https://leetcode.cn/problems/middle-of-the-linked-list/" target="_blank" rel="noopener noreffer ">876. 链表的中间结点</a></strong></p>
+<p>给定一个头结点为 <code>head</code> 的非空单链表，返回链表的中间结点。如果有两个中间结点，则返回第二个中间结点。</p>
+<p>示例 1：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">输入：[1,2,3,4,5]
+输出：此列表中的结点 3 (序列化形式：[3,4,5])
+返回的结点值为 3 。 (测评系统对该结点序列化表述是 [3,4,5])。
+注意，我们返回了一个 ListNode 类型的对象 ans，这样：
+ans.val = 3, ans.next.val = 4, ans.next.next.val = 5, 以及 ans.next.next.next = NULL.
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="解析-4">解析</h3>
+<h5 id="一般做法遍历-2-次链表-1">一般做法：遍历 2 次链表</h5>
+<p>需要遍历一次链表计算长度 n ，再遍历⼀次得到第 n / 2 个节点，也就是中间节点。</p>
+<h5 id="改进做法遍历-1-次链表-1">改进做法：遍历 1 次链表</h5>
+<p>使用【快慢指针】的技巧。我们让两个指针 slow 和 fast 分别指向链表头结点 head。每当慢指针 slow 前进⼀步，快指针 fast 就前进两步，这样，当 fast ⾛到链表末尾时，slow 就指向了链表中点。 代码实现如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="n">ListNode</span> <span class="nf">middleNode</span><span class="o">(</span><span class="n">ListNode</span> <span class="n">head</span><span class="o">)</span> <span class="o">{</span>
+		<span class="c1">// 快慢指针初始化指向 head
+</span><span class="c1"></span>		<span class="n">ListNode</span> <span class="n">slow</span> <span class="o">=</span> <span class="n">head</span><span class="o">,</span> <span class="n">fast</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span>
+		<span class="c1">// 快指针⾛到末尾时停⽌
+</span><span class="c1"></span>		<span class="k">while</span> <span class="o">(</span><span class="n">fast</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">fast</span><span class="o">.</span><span class="na">next</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+			<span class="c1">// 慢指针⾛⼀步，快指针⾛两步
+</span><span class="c1"></span>			<span class="n">slow</span> <span class="o">=</span> <span class="n">slow</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+			<span class="n">fast</span> <span class="o">=</span> <span class="n">fast</span><span class="o">.</span><span class="na">next</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+		<span class="o">}</span>
+	<span class="c1">// 慢指针指向中点
+</span><span class="c1"></span>	<span class="k">return</span> <span class="n">slow</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="6-判断链表是否包含环">6 判断链表是否包含环</h1>
+<h3 id="解析-5">解析</h3>
+<p>使用【快慢指针】。如果 fast 最终遇到空指针，说明链表中没有环；如果 fast 最终和 slow 相遇，那肯定是 fast 超过了 slow ⼀圈，说明链表中含有环。原理如图所示：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/labuladong/3-6.png"
+        data-srcset="/img/labuladong/3-6.png, /img/labuladong/3-6.png 1.5x, /img/labuladong/3-6.png 2x"
+        data-sizes="auto"
+        alt="/img/labuladong/3-6.png"
+        title="img1" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kt">boolean</span> <span class="nf">hasCycle</span><span class="o">(</span><span class="n">ListNode</span> <span class="n">head</span><span class="o">)</span> <span class="o">{</span>
+	<span class="c1">// 快慢指针初始化指向 head
+</span><span class="c1"></span>	<span class="n">ListNode</span> <span class="n">slow</span> <span class="o">=</span> <span class="n">head</span><span class="o">,</span> <span class="n">fast</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span>
+	<span class="c1">// 快指针⾛到末尾时停⽌
+</span><span class="c1"></span>	<span class="k">while</span> <span class="o">(</span><span class="n">fast</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">fast</span><span class="o">.</span><span class="na">next</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+		<span class="c1">// 慢指针⾛⼀步，快指针⾛两步
+</span><span class="c1"></span>		<span class="n">slow</span> <span class="o">=</span> <span class="n">slow</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+		<span class="n">fast</span> <span class="o">=</span> <span class="n">fast</span><span class="o">.</span><span class="na">next</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+		<span class="c1">// 快慢指针相遇，说明含有环
+</span><span class="c1"></span>		<span class="k">if</span> <span class="o">(</span><span class="n">slow</span> <span class="o">==</span> <span class="n">fast</span><span class="o">)</span> <span class="o">{</span>
+			<span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+	<span class="c1">// 不包含环
+</span><span class="c1"></span>	<span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="进阶">进阶</h3>
+<p>如果链表中含有环，如何计算这个环的起点？</p>
+<p>当快慢指针相遇时，让其中任⼀个指针指向头节点，然后让它俩以相同速度前进，再次相遇时所
+在的节点位置就是环开始的位置。  代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">ListNode</span> <span class="nf">detectCycle</span><span class="o">(</span><span class="n">ListNode</span> <span class="n">head</span><span class="o">)</span> <span class="o">{</span>
+	<span class="n">ListNode</span> <span class="n">fast</span><span class="o">,</span> <span class="n">slow</span><span class="o">;</span>
+	<span class="n">fast</span> <span class="o">=</span> <span class="n">slow</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span>
+	<span class="k">while</span> <span class="o">(</span><span class="n">fast</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">fast</span><span class="o">.</span><span class="na">next</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+		<span class="n">fast</span> <span class="o">=</span> <span class="n">fast</span><span class="o">.</span><span class="na">next</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+		<span class="n">slow</span> <span class="o">=</span> <span class="n">slow</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+		<span class="k">if</span> <span class="o">(</span><span class="n">fast</span> <span class="o">==</span> <span class="n">slow</span><span class="o">)</span> <span class="k">break</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="c1">// 上⾯的代码类似 hasCycle 函数
+</span><span class="c1"></span>	<span class="k">if</span> <span class="o">(</span><span class="n">fast</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">fast</span><span class="o">.</span><span class="na">next</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+		<span class="c1">// fast 遇到空指针说明没有环
+</span><span class="c1"></span>		<span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="c1">// 重新指向头结点
+</span><span class="c1"></span>	<span class="n">slow</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span>
+	<span class="c1">// 快慢指针同步前进，相交点就是环起点
+</span><span class="c1"></span>	<span class="k">while</span> <span class="o">(</span><span class="n">slow</span> <span class="o">!=</span> <span class="n">fast</span><span class="o">)</span> <span class="o">{</span>
+		<span class="n">fast</span> <span class="o">=</span> <span class="n">fast</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+		<span class="n">slow</span> <span class="o">=</span> <span class="n">slow</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="k">return</span> <span class="n">slow</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="7-两个链表是否相交">7 两个链表是否相交</h1>
+<h3 id="题目-4">题目</h3>
+<p><strong>力扣 <a href="https://leetcode.cn/problems/intersection-of-two-linked-lists/" target="_blank" rel="noopener noreffer ">160. 相交链表</a></strong></p>
+<p>给你两个单链表的头节点 <code>headA</code> 和 <code>headB</code> ，请你找出并返回两个单链表相交的起始节点。如果两个链表不存在相交节点，返回 <code>null</code> 。题目数据 <strong>保证</strong> 整个链式结构中不存在环。<strong>注意</strong>，函数返回结果后，链表必须 <strong>保持其原始结构</strong> 。图示两个链表在节点 <code>c1</code> 开始相交：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/labuladong/3-7.png"
+        data-srcset="/img/labuladong/3-7.png, /img/labuladong/3-7.png 1.5x, /img/labuladong/3-7.png 2x"
+        data-sizes="auto"
+        alt="/img/labuladong/3-7.png"
+        title="img1" /></p>
+<h3 id="解析-6">解析</h3>
+<h5 id="一般做法">一般做法：</h5>
+<p>用 HashSet 记录⼀个链表的所有节点，然后和另⼀条链表对比，但这就需要额外的空间。</p>
+<h5 id="改进做法">改进做法：</h5>
+<p>如果用两个指针 p1 和 p2 分别在两条链表上前进，并不能同时走到公共节点，也就无法得到相交节点 c1。
+解决这个问题的关键是，通过某些方式，让 p1 和 p2 能够同时到达相交节点 c1。</p>
+<p>所以，我们可以让 p1 遍历完链表 A 之后开始遍历链表 B，让 p2 遍历完链表 B 之后开始遍历链表 A，这样相当于【逻辑上】两条链表接在了⼀起。 p1 和 p2 就可以同时进入公共部分。图解如下：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/labuladong/3-8.png"
+        data-srcset="/img/labuladong/3-8.png, /img/labuladong/3-8.png 1.5x, /img/labuladong/3-8.png 2x"
+        data-sizes="auto"
+        alt="/img/labuladong/3-8.png"
+        title="img1" /></p>
+<p>代码实现如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">ListNode</span> <span class="nf">getIntersectionNode</span><span class="o">(</span><span class="n">ListNode</span> <span class="n">headA</span><span class="o">,</span> <span class="n">ListNode</span> <span class="n">headB</span><span class="o">)</span> <span class="o">{</span>
+	<span class="c1">// p1 指向 A 链表头结点，p2 指向 B 链表头结点
+</span><span class="c1"></span>	<span class="n">ListNode</span> <span class="n">p1</span> <span class="o">=</span> <span class="n">headA</span><span class="o">,</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">headB</span><span class="o">;</span>
+	<span class="k">while</span> <span class="o">(</span><span class="n">p1</span> <span class="o">!=</span> <span class="n">p2</span><span class="o">)</span> <span class="o">{</span>
+		<span class="c1">// p1 ⾛⼀步，如果⾛到 A 链表末尾，转到 B 链表
+</span><span class="c1"></span>		<span class="k">if</span> <span class="o">(</span><span class="n">p1</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="n">p1</span> <span class="o">=</span> <span class="n">headB</span><span class="o">;</span>
+		<span class="k">else</span> <span class="n">p1</span> <span class="o">=</span> <span class="n">p1</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+		<span class="c1">// p2 ⾛⼀步，如果⾛到 B 链表末尾，转到 A 链表
+</span><span class="c1"></span>		<span class="k">if</span> <span class="o">(</span><span class="n">p2</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">headA</span><span class="o">;</span>
+		<span class="k">else</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">p2</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="k">return</span> <span class="n">p1</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>参考资料：</p>
+<p><a href="https://labuladong.github.io/algo/">https://labuladong.github.io/algo/</a></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-12-31</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E5%8F%8C%E6%8C%87%E9%92%88%E6%8A%80%E5%B7%A7%E8%A7%A3%E5%86%B3%E9%93%BE%E8%A1%A8%E9%A2%98/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://imcaicai.github.io/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E5%8F%8C%E6%8C%87%E9%92%88%E6%8A%80%E5%B7%A7%E8%A7%A3%E5%86%B3%E9%93%BE%E8%A1%A8%E9%A2%98/" data-title="【数组链表】双指针技巧解决链表题" data-hashtags="labuladong,算法,双指针,链表"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://imcaicai.github.io/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E5%8F%8C%E6%8C%87%E9%92%88%E6%8A%80%E5%B7%A7%E8%A7%A3%E5%86%B3%E9%93%BE%E8%A1%A8%E9%A2%98/" data-hashtag="labuladong"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://imcaicai.github.io/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E5%8F%8C%E6%8C%87%E9%92%88%E6%8A%80%E5%B7%A7%E8%A7%A3%E5%86%B3%E9%93%BE%E8%A1%A8%E9%A2%98/" data-title="【数组链表】双指针技巧解决链表题"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://imcaicai.github.io/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E5%8F%8C%E6%8C%87%E9%92%88%E6%8A%80%E5%B7%A7%E8%A7%A3%E5%86%B3%E9%93%BE%E8%A1%A8%E9%A2%98/" data-title="【数组链表】双指针技巧解决链表题"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://imcaicai.github.io/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E5%8F%8C%E6%8C%87%E9%92%88%E6%8A%80%E5%B7%A7%E8%A7%A3%E5%86%B3%E9%93%BE%E8%A1%A8%E9%A2%98/" data-title="【数组链表】双指针技巧解决链表题"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/labuladong/">labuladong</a>,&nbsp;<a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>,&nbsp;<a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">双指针</a>,&nbsp;<a href="/tags/%E9%93%BE%E8%A1%A8/">链表</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/" class="prev" rel="prev" title="【数组链表】差分数组"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>【数组链表】差分数组</a>
+            <a href="/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E5%8F%8C%E6%8C%87%E9%92%88%E6%8A%80%E5%B7%A7%E8%A7%A3%E5%86%B3%E6%95%B0%E7%BB%84%E9%A2%98/" class="next" rel="next" title="【数组链表】双指针技巧解决数组题">【数组链表】双指针技巧解决数组题<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">菜菜</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

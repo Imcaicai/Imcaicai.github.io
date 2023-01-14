@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>【队列和栈】单调栈解决下一个更大元素 - 菜菜的秘密花园</title><meta name="Description" content="菜菜的秘密花园"><meta property="og:title" content="【队列和栈】单调栈解决下一个更大元素" />
+<meta property="og:description" content="1 单调栈模板 题目 输入一个数组 nums，请你返回⼀个等长的结果数组，结果数组中对应索引存储着下一个更大元素，如果没有更大的元素，就存 -1。
+解析 🔴 把数组的元素想象成并列站立的人，元素大小想象成人的身高。这些人面对你站成一列。如果能够看到元素「2」，那么他后面可见的第一个人就是「2」的下⼀个更大元素，因为比「2」小的元素身高不够，都被「2」挡住了，第一个露出来的就是答案。
+🟡 for 循环要从后往前扫描元素，因为我们借助的是栈的结构，倒着入栈，其实是正着出栈。
+🟢 while 循环是把两个「高个子」元素之间的元素排除，因为他们的存在没有意义，前面挡着个「更高」的元素，所以他们不可能被作为后续进来的元素的下一个更大元素了。
+🔵 这个算法的复杂度只有 O(n)。 总共有 n 个元素，每个元素都被 push 入栈了一次，而最多会被 pop一次，没有任何冗余操作。
+图解：
+代码实现：
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18  int[] nextGreaterElement(int[] nums) { int n = nums.length; // 存放答案的数组 	int[] res = new int[n]; Stack&lt;Integer&gt; s = new Stack&lt;&gt;(); // 倒着往栈⾥放 	for (int i = n - 1; i &gt;= 0; i--) { // 判定个⼦⾼矮 	while (!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://imcaicai.github.io/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E5%8D%95%E8%B0%83%E6%A0%88%E8%A7%A3%E5%86%B3%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0/" /><meta property="og:image" content="https://imcaicai.github.io/img/avatar.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-01-14T12:02:02&#43;08:00" />
+<meta property="article:modified_time" content="2023-01-14T12:02:02&#43;08:00" /><meta property="og:site_name" content="菜菜的秘密花园" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://imcaicai.github.io/img/avatar.jpg"/>
+
+<meta name="twitter:title" content="【队列和栈】单调栈解决下一个更大元素"/>
+<meta name="twitter:description" content="1 单调栈模板 题目 输入一个数组 nums，请你返回⼀个等长的结果数组，结果数组中对应索引存储着下一个更大元素，如果没有更大的元素，就存 -1。
+解析 🔴 把数组的元素想象成并列站立的人，元素大小想象成人的身高。这些人面对你站成一列。如果能够看到元素「2」，那么他后面可见的第一个人就是「2」的下⼀个更大元素，因为比「2」小的元素身高不够，都被「2」挡住了，第一个露出来的就是答案。
+🟡 for 循环要从后往前扫描元素，因为我们借助的是栈的结构，倒着入栈，其实是正着出栈。
+🟢 while 循环是把两个「高个子」元素之间的元素排除，因为他们的存在没有意义，前面挡着个「更高」的元素，所以他们不可能被作为后续进来的元素的下一个更大元素了。
+🔵 这个算法的复杂度只有 O(n)。 总共有 n 个元素，每个元素都被 push 入栈了一次，而最多会被 pop一次，没有任何冗余操作。
+图解：
+代码实现：
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18  int[] nextGreaterElement(int[] nums) { int n = nums.length; // 存放答案的数组 	int[] res = new int[n]; Stack&lt;Integer&gt; s = new Stack&lt;&gt;(); // 倒着往栈⾥放 	for (int i = n - 1; i &gt;= 0; i--) { // 判定个⼦⾼矮 	while (!"/>
+<meta name="application-name" content="菜菜的秘密花园">
+<meta name="apple-mobile-web-app-title" content="菜菜的秘密花园"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://imcaicai.github.io/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E5%8D%95%E8%B0%83%E6%A0%88%E8%A7%A3%E5%86%B3%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0/" /><link rel="prev" href="https://imcaicai.github.io/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E8%AF%A6%E8%A7%A33%E9%81%93%E6%8B%AC%E5%8F%B7%E9%A2%98/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "【队列和栈】单调栈解决下一个更大元素",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/imcaicai.github.io\/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E5%8D%95%E8%B0%83%E6%A0%88%E8%A7%A3%E5%86%B3%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0\/"
+        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "labuladong, 算法, 队列和栈, 下一个更大元素","wordcount":  435 ,
+        "url": "https:\/\/imcaicai.github.io\/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E5%8D%95%E8%B0%83%E6%A0%88%E8%A7%A3%E5%86%B3%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0\/","datePublished": "2023-01-14T12:02:02+08:00","dateModified": "2023-01-14T12:02:02+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/imcaicai.github.io\/img\/avatar.jpg"},"author": {
+                "@type": "Person",
+                "name": "菜菜"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="菜菜的秘密花园"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/avatar.jpg"
+        data-srcset="/img/avatar.jpg, /img/avatar.jpg 1.5x, /img/avatar.jpg 2x"
+        data-sizes="auto"
+        alt="/img/avatar.jpg"
+        title="/img/avatar.jpg" />菜菜的秘密花园</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/categories/documentation/"> Docs </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/Imcaicai" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="Select Language">
+                    <i class="fa fa-globe" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E5%8D%95%E8%B0%83%E6%A0%88%E8%A7%A3%E5%86%B3%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0/" selected>English</option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="菜菜的秘密花园"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/avatar.jpg"
+        data-srcset="/img/avatar.jpg, /img/avatar.jpg 1.5x, /img/avatar.jpg 2x"
+        data-sizes="auto"
+        alt="/img/avatar.jpg"
+        title="/img/avatar.jpg" />菜菜的秘密花园</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/categories/documentation/" title="">Docs</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/Imcaicai" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="Select Language">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E5%8D%95%E8%B0%83%E6%A0%88%E8%A7%A3%E5%86%B3%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0/" selected>English</option></select>
+                </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">【队列和栈】单调栈解决下一个更大元素</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-category">included in <a href="/categories/labuladong%E7%9A%84%E7%AE%97%E6%B3%95%E7%A7%98%E7%B1%8D/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>labuladong的算法秘籍</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-01-14">2023-01-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;435 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;<span id="/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E5%8D%95%E8%B0%83%E6%A0%88%E8%A7%A3%E5%86%B3%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0/" class="leancloud_visitors" data-flag-title="【队列和栈】单调栈解决下一个更大元素">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-单调栈模板">1 单调栈模板</a>
+      <ul>
+        <li><a href="#题目">题目</a></li>
+        <li><a href="#解析">解析</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-进阶下一个更大元素">2 进阶——下一个更大元素</a>
+      <ul>
+        <li><a href="#题目-1">题目</a></li>
+        <li><a href="#解析-1">解析</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-进阶下一个更大元素索引">3 进阶——下一个更大元素索引</a>
+      <ul>
+        <li><a href="#题目-2">题目</a></li>
+        <li><a href="#解析-2">解析</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-进阶处理环形数组">4 进阶——处理环形数组</a>
+      <ul>
+        <li><a href="#题目-3">题目</a></li>
+        <li><a href="#解析-3">解析</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="1-单调栈模板">1 单调栈模板</h2>
+<h3 id="题目">题目</h3>
+<p>输入一个数组 <code>nums</code>，请你返回⼀个等长的结果数组，结果数组中对应索引存储着下一个更大元素，如果没有更大的元素，就存 <code>-1</code>。</p>
+<h3 id="解析">解析</h3>
+<p>🔴 把数组的元素想象成并列站立的人，元素大小想象成人的身高。这些人面对你站成一列。如果能够看到元素「2」，那么他后面可见的第一个人就是「2」的下⼀个更大元素，因为比「2」小的元素身高不够，都被「2」挡住了，第一个露出来的就是答案。</p>
+<p>🟡 for 循环要从后往前扫描元素，因为我们借助的是<strong>栈</strong>的结构，<strong>倒着入栈，其实是正着出栈</strong>。</p>
+<p>🟢 while 循环是<strong>把两个「高个子」元素之间的元素排除</strong>，因为他们的存在没有意义，前面挡着个「更高」的元素，所以他们不可能被作为后续进来的元素的下一个更大元素了。</p>
+<p>🔵  <strong>这个算法的复杂度只有 O(n)。</strong>  总共有 n 个元素，每个元素都被 push 入栈了一次，而最多会被 pop一次，没有任何冗余操作。</p>
+<p>图解：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/labuladong/5-1.png"
+        data-srcset="/img/labuladong/5-1.png, /img/labuladong/5-1.png 1.5x, /img/labuladong/5-1.png 2x"
+        data-sizes="auto"
+        alt="/img/labuladong/5-1.png"
+        title="img1" /></p>
+<p>代码实现：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kt">int</span><span class="o">[]</span> <span class="nf">nextGreaterElement</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">)</span> <span class="o">{</span>
+	<span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+	<span class="c1">// 存放答案的数组
+</span><span class="c1"></span>	<span class="kt">int</span><span class="o">[]</span> <span class="n">res</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+	<span class="n">Stack</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Stack</span><span class="o">&lt;&gt;();</span>
+	<span class="c1">// 倒着往栈⾥放
+</span><span class="c1"></span>	<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span><span class="o">--)</span> <span class="o">{</span>
+		<span class="c1">// 判定个⼦⾼矮
+</span><span class="c1"></span>		<span class="k">while</span> <span class="o">(!</span><span class="n">s</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="n">s</span><span class="o">.</span><span class="na">peek</span><span class="o">()</span> <span class="o">&lt;=</span> <span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">])</span> <span class="o">{</span>
+			<span class="c1">// 矮个起开，反正也被挡着了。。。
+</span><span class="c1"></span>			<span class="n">s</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+		<span class="o">}</span>
+		<span class="c1">// nums[i] 身后的更⼤元素
+</span><span class="c1"></span>		<span class="n">res</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()</span> <span class="o">?</span> <span class="o">-</span><span class="n">1</span> <span class="o">:</span> <span class="n">s</span><span class="o">.</span><span class="na">peek</span><span class="o">();</span>
+		<span class="n">s</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+	<span class="o">}</span>
+	<span class="k">return</span> <span class="n">res</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="2-进阶下一个更大元素">2 进阶——下一个更大元素</h2>
+<h3 id="题目-1">题目</h3>
+<p><strong>力扣 <a href="https://leetcode.cn/problems/next-greater-element-i/" target="_blank" rel="noopener noreffer ">496. 下一个更大元素 I</a></strong></p>
+<p><code>nums1</code> 中数字 <code>x</code> 的 <strong>下一个更大元素</strong> 是指 <code>x</code> 在 <code>nums2</code> 中对应位置 <strong>右侧</strong> 的 <strong>第一个</strong> 比 <code>x</code> 大的元素。</p>
+<p>给你两个 <strong>没有重复元素</strong> 的数组 <code>nums1</code> 和 <code>nums2</code> ，下标从 <strong>0</strong> 开始计数，其中<code>nums1</code> 是 <code>nums2</code> 的子集。</p>
+<p>对于每个 <code>0 &lt;= i &lt; nums1.length</code> ，找出满足 <code>nums1[i] == nums2[j]</code> 的下标 <code>j</code> ，并且在 <code>nums2</code> 确定 <code>nums2[j]</code> 的 <strong>下一个更大元素</strong> 。如果不存在下一个更大元素，那么本次查询的答案是 <code>-1</code> 。</p>
+<p>返回一个长度为 <code>nums1.length</code> 的数组 <code>ans</code> 作为答案，满足 <code>ans[i]</code> 是如上所述的 <strong>下一个更大元素</strong> 。</p>
+<h3 id="解析-1">解析</h3>
+<p>🟠 和上一题类似，只需要先把 nums2 中每个元素的下一个更大元素算出来存到一个映射里，然后再让 nums1 中的元素去查表即可。</p>
+<p>🟣 <strong>使用 HashMap 映射，可以提高代码效率。</strong></p>
+<p>代码实现：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">nextGreaterElement</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums1</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">nums2</span><span class="o">)</span> <span class="o">{</span>
+	<span class="c1">// 记录 nums2 中每个元素的下⼀个更⼤元素
+</span><span class="c1"></span>	<span class="kt">int</span><span class="o">[]</span> <span class="n">greater</span><span class="o">=</span><span class="n">nextGreaterElement</span><span class="o">(</span><span class="n">nums2</span><span class="o">);</span>
+    <span class="c1">// 转化成映射：元素 x -&gt; x 的下⼀个最⼤元素
+</span><span class="c1"></span>	<span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">greaterMap</span><span class="o">=</span><span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;();</span>
+	<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">nums2</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+		<span class="n">greaterMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">nums2</span><span class="o">[</span><span class="n">i</span><span class="o">],</span> <span class="n">greater</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+	<span class="o">}</span>
+	<span class="c1">// nums1 是 nums2 的⼦集，所以根据 greaterMap 可以得到结果
+</span><span class="c1"></span>	<span class="kt">int</span><span class="o">[]</span> <span class="n">res</span><span class="o">=</span><span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">nums1</span><span class="o">.</span><span class="na">length</span><span class="o">];</span>
+	<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">nums1</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+		<span class="n">res</span><span class="o">[</span><span class="n">i</span><span class="o">]=</span><span class="n">greaterMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">nums1</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+	<span class="o">}</span>
+
+    <span class="k">return</span> <span class="n">res</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="3-进阶下一个更大元素索引">3 进阶——下一个更大元素索引</h2>
+<h3 id="题目-2">题目</h3>
+<p><strong>力扣 <a href="https://leetcode.cn/problems/daily-temperatures/" target="_blank" rel="noopener noreffer ">739. 每日温度</a></strong></p>
+<p>给定一个整数数组 <code>temperatures</code> ，表示每天的温度，返回一个数组 <code>answer</code> ，其中 <code>answer[i]</code> 是指对于第 <code>i</code> 天，下一个更高温度出现在几天后。如果气温在这之后都不会升高，请在该位置用 <code>0</code> 来代替。</p>
+<h3 id="解析-2">解析</h3>
+<p>🟡 <strong>这个问题本质上也是找下一个更大元素</strong>，只不过现在不是问你下一个更大元素的值是多少，而是问你当前元素距离下一个更大元素的索引距离而已。</p>
+<p>🟤 <strong>把之前记录最大值的堆栈改为记录最大值索引的堆栈即可。</strong> 或是使用两个堆栈，一个记录索引，一个记录最大值，不过此时代码效率会降低。</p>
+<p>代码实现：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">dailyTemperatures</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">temperatures</span><span class="o">)</span> <span class="o">{</span>
+	<span class="kt">int</span> <span class="n">n</span><span class="o">=</span><span class="n">temperatures</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+	<span class="kt">int</span><span class="o">[]</span> <span class="n">res</span><span class="o">=</span><span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+	<span class="c1">// 这⾥放元素索引，⽽不是元素
+</span><span class="c1"></span>    <span class="n">Stack</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">index</span><span class="o">=</span><span class="k">new</span> <span class="n">Stack</span><span class="o">&lt;&gt;();</span>
+    <span class="cm">/* 单调栈模板 */</span>
+	<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">n</span><span class="o">-</span><span class="n">1</span><span class="o">;</span> <span class="n">i</span><span class="o">&gt;=</span><span class="n">0</span><span class="o">;</span> <span class="n">i</span><span class="o">--){</span>
+		<span class="k">while</span><span class="o">(!</span><span class="n">index</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="n">temperatures</span><span class="o">[</span><span class="n">index</span><span class="o">.</span><span class="na">peek</span><span class="o">()]&lt;=</span><span class="n">temperatures</span><span class="o">[</span><span class="n">i</span><span class="o">]){</span>
+			<span class="n">index</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+        <span class="o">}</span>
+		<span class="c1">// 得到索引间距
+</span><span class="c1"></span>        <span class="n">res</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()</span> <span class="o">?</span> <span class="n">0</span> <span class="o">:</span> <span class="n">index</span><span class="o">.</span><span class="na">peek</span><span class="o">()-</span><span class="n">i</span><span class="o">;</span> 
+        <span class="c1">// 将索引⼊栈，⽽不是元素
+</span><span class="c1"></span>        <span class="n">index</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">res</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="4-进阶处理环形数组">4 进阶——处理环形数组</h2>
+<h3 id="题目-3">题目</h3>
+<p><strong>力扣 <a href="https://leetcode.cn/problems/next-greater-element-ii/" target="_blank" rel="noopener noreffer ">503. 下一个更大元素 II</a></strong></p>
+<p>给定一个循环数组 <code>nums</code> （ <code>nums[nums.length - 1]</code> 的下一个元素是 <code>nums[0]</code> ），返回 <em><code>nums</code> 中每个元素的 <strong>下一个更大元素</strong></em> 。</p>
+<p>数字 <code>x</code> 的 <strong>下一个更大的元素</strong> 是按数组遍历顺序，这个数字之后的第一个比它更大的数，这意味着你应该循环地搜索它的下一个更大的数。如果不存在，则输出 <code>-1</code> 。</p>
+<h3 id="解析-3">解析</h3>
+<p>🟠 <strong>我们一般通过 <code>%</code> 运算符求模（余数），来模拟环形特效。</strong></p>
+<p>🟢 这道题的难点在于，比如输入是 [2,1,2,4,3]，对于最后一个元素 3，如何找到元素 4 作为下一个更大元素。</p>
+<p>🔵 对于这种需求，<strong>常用套路就是将数组长度翻倍</strong>。</p>
+<p>🟣 我们可以不用构造翻倍的新数组，而是<strong>利用循环数组的技巧来模拟数组长度翻倍的效果</strong>。</p>
+<p>图解：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/labuladong/5-2.png"
+        data-srcset="/img/labuladong/5-2.png, /img/labuladong/5-2.png 1.5x, /img/labuladong/5-2.png 2x"
+        data-sizes="auto"
+        alt="/img/labuladong/5-2.png"
+        title="img1" /></p>
+<p>代码实现：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">nextGreaterElements</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">)</span> <span class="o">{</span>
+	<span class="kt">int</span> <span class="n">n</span><span class="o">=</span><span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+	<span class="kt">int</span><span class="o">[]</span> <span class="n">res</span><span class="o">=</span><span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+	<span class="n">Stack</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">s</span><span class="o">=</span><span class="k">new</span> <span class="n">Stack</span><span class="o">&lt;&gt;();</span>
+	<span class="c1">// 数组⻓度加倍模拟环形数组
+</span><span class="c1"></span>	<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">2</span><span class="o">*</span><span class="n">n</span><span class="o">-</span><span class="n">1</span><span class="o">;</span> <span class="n">i</span><span class="o">&gt;=</span><span class="n">0</span><span class="o">;</span> <span class="n">i</span><span class="o">--){</span>
+        <span class="c1">// 索引 i 要求模，其他的和模板⼀样
+</span><span class="c1"></span>		<span class="k">while</span><span class="o">(!</span><span class="n">s</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="n">s</span><span class="o">.</span><span class="na">peek</span><span class="o">()&lt;=</span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">%</span><span class="n">n</span><span class="o">]){</span>
+			<span class="n">s</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+		<span class="o">}</span>
+
+		<span class="n">res</span><span class="o">[</span><span class="n">i</span><span class="o">%</span><span class="n">n</span><span class="o">]</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()</span> <span class="o">?</span> <span class="o">-</span><span class="n">1</span> <span class="o">:</span> <span class="n">s</span><span class="o">.</span><span class="na">peek</span><span class="o">();</span>
+		<span class="n">s</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">%</span><span class="n">n</span><span class="o">]);</span>
+	<span class="o">}</span>
+
+	<span class="k">return</span> <span class="n">res</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>参考资料：</p>
+<p><a href="https://labuladong.github.io/algo/">https://labuladong.github.io/algo/</a></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-01-14</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E5%8D%95%E8%B0%83%E6%A0%88%E8%A7%A3%E5%86%B3%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://imcaicai.github.io/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E5%8D%95%E8%B0%83%E6%A0%88%E8%A7%A3%E5%86%B3%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0/" data-title="【队列和栈】单调栈解决下一个更大元素" data-hashtags="labuladong,算法,队列和栈,下一个更大元素"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://imcaicai.github.io/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E5%8D%95%E8%B0%83%E6%A0%88%E8%A7%A3%E5%86%B3%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0/" data-hashtag="labuladong"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://imcaicai.github.io/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E5%8D%95%E8%B0%83%E6%A0%88%E8%A7%A3%E5%86%B3%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0/" data-title="【队列和栈】单调栈解决下一个更大元素"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://imcaicai.github.io/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E5%8D%95%E8%B0%83%E6%A0%88%E8%A7%A3%E5%86%B3%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0/" data-title="【队列和栈】单调栈解决下一个更大元素"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://imcaicai.github.io/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E5%8D%95%E8%B0%83%E6%A0%88%E8%A7%A3%E5%86%B3%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0/" data-title="【队列和栈】单调栈解决下一个更大元素"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/labuladong/">labuladong</a>,&nbsp;<a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>,&nbsp;<a href="/tags/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88/">队列和栈</a>,&nbsp;<a href="/tags/%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0/">下一个更大元素</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E8%AF%A6%E8%A7%A33%E9%81%93%E6%8B%AC%E5%8F%B7%E9%A2%98/" class="prev" rel="prev" title="【队列和栈】详解3道括号题"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>【队列和栈】详解3道括号题</a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">菜菜</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

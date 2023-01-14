@@ -4,11 +4,11 @@
         <link>https://imcaicai.github.io/tags/%E5%89%8D%E7%BC%80%E5%92%8C/</link>
         <description>前缀和 - Tag - 菜菜的秘密花园</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 29 Dec 2022 16:40:47 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" rel="self" type="application/rss+xml" /><item>
-    <title>数组链表-前缀和</title>
-    <link>https://imcaicai.github.io/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8-%E5%89%8D%E7%BC%80%E5%92%8C/</link>
+    <title>【数组链表】前缀和</title>
+    <link>https://imcaicai.github.io/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E5%89%8D%E7%BC%80%E5%92%8C/</link>
     <pubDate>Thu, 29 Dec 2022 16:40:47 &#43;0800</pubDate>
     <author>菜菜</author>
-    <guid>https://imcaicai.github.io/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8-%E5%89%8D%E7%BC%80%E5%92%8C/</guid>
+    <guid>https://imcaicai.github.io/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E5%89%8D%E7%BC%80%E5%92%8C/</guid>
     <description><![CDATA[前缀和主要适⽤的场景是原始数组不会被修改的情况下，频繁查询某个区间的累加和。
 1 一维数组中的前缀和 题目 力扣 303. 区域和检索 - 数组不可变
 给定一个整数数组 nums，计算索引 left 和 right （包含 left 和 right）之间的 nums 元素的 和 ，其中 left &lt;= right，实现 NumArray 类：

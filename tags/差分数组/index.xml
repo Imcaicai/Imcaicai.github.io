@@ -4,11 +4,11 @@
         <link>https://imcaicai.github.io/tags/%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/</link>
         <description>差分数组 - Tag - 菜菜的秘密花园</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 30 Dec 2022 16:40:47 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/tags/%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/" rel="self" type="application/rss+xml" /><item>
-    <title>数组链表-差分数组</title>
-    <link>https://imcaicai.github.io/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8-%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/</link>
+    <title>【数组链表】差分数组</title>
+    <link>https://imcaicai.github.io/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/</link>
     <pubDate>Fri, 30 Dec 2022 16:40:47 &#43;0800</pubDate>
     <author>菜菜</author>
-    <guid>https://imcaicai.github.io/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8-%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/</guid>
+    <guid>https://imcaicai.github.io/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/</guid>
     <description><![CDATA[差分数组的主要适用场景是频繁对原始数组的某个区间的元素进行增减。
 1 原理 题目 给出⼀个数组 nums，要求给区间 nums[2..6] 全部加 1，再给 nums[3..9] 全部减3，再给 nums[0..4] 全部加 2&hellip;&hellip;N步操作后问，最后 nums 数组的值是什么？
 解析 常规思路：

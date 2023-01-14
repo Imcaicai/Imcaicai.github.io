@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>【队列和栈】详解3道括号题 - 菜菜的秘密花园</title><meta name="Description" content="菜菜的秘密花园"><meta property="og:title" content="【队列和栈】详解3道括号题" />
+<meta property="og:description" content="1.1 判断有效括号串 题目 给定一个只包括 &#39;(&#39;，&#39;)&#39; 的字符串 s ，判断字符串是否有效。即每个右括号 &#39;)&#39; 的左边必须有⼀个左括号 &#39;(&#39; 和它匹配。
+解析 用一个变量 left 记录 &#39;(&#39; 相对于 &#39;)&#39; 的数量，遇到 &#39;(&#39; 就 &#43;1，遇到 &#39;)&#39; 就 -1。如果最后 left==0，则括号串有效，否则无效。并且，如果中间出现 left 数量为负，则说明有 &#39;)&#39; 出现在 &#39;(&#39; 之前，也为无效。
+代码实现：
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17  bool isValid(string str) { // 待匹配的左括号数量 	int left = 0; for (int i = 0; i &lt; str." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://imcaicai.github.io/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E8%AF%A6%E8%A7%A33%E9%81%93%E6%8B%AC%E5%8F%B7%E9%A2%98/" /><meta property="og:image" content="https://imcaicai.github.io/img/avatar.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-01-12T17:30:44&#43;08:00" />
+<meta property="article:modified_time" content="2023-01-12T17:30:44&#43;08:00" /><meta property="og:site_name" content="菜菜的秘密花园" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://imcaicai.github.io/img/avatar.jpg"/>
+
+<meta name="twitter:title" content="【队列和栈】详解3道括号题"/>
+<meta name="twitter:description" content="1.1 判断有效括号串 题目 给定一个只包括 &#39;(&#39;，&#39;)&#39; 的字符串 s ，判断字符串是否有效。即每个右括号 &#39;)&#39; 的左边必须有⼀个左括号 &#39;(&#39; 和它匹配。
+解析 用一个变量 left 记录 &#39;(&#39; 相对于 &#39;)&#39; 的数量，遇到 &#39;(&#39; 就 &#43;1，遇到 &#39;)&#39; 就 -1。如果最后 left==0，则括号串有效，否则无效。并且，如果中间出现 left 数量为负，则说明有 &#39;)&#39; 出现在 &#39;(&#39; 之前，也为无效。
+代码实现：
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17  bool isValid(string str) { // 待匹配的左括号数量 	int left = 0; for (int i = 0; i &lt; str."/>
+<meta name="application-name" content="菜菜的秘密花园">
+<meta name="apple-mobile-web-app-title" content="菜菜的秘密花园"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://imcaicai.github.io/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E8%AF%A6%E8%A7%A33%E9%81%93%E6%8B%AC%E5%8F%B7%E9%A2%98/" /><link rel="prev" href="https://imcaicai.github.io/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E9%80%92%E5%BD%92%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" /><link rel="next" href="https://imcaicai.github.io/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E5%8D%95%E8%B0%83%E6%A0%88%E8%A7%A3%E5%86%B3%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "【队列和栈】详解3道括号题",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/imcaicai.github.io\/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E8%AF%A6%E8%A7%A33%E9%81%93%E6%8B%AC%E5%8F%B7%E9%A2%98\/"
+        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "labuladong, 算法, 队列和栈, 括号题","wordcount":  471 ,
+        "url": "https:\/\/imcaicai.github.io\/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E8%AF%A6%E8%A7%A33%E9%81%93%E6%8B%AC%E5%8F%B7%E9%A2%98\/","datePublished": "2023-01-12T17:30:44+08:00","dateModified": "2023-01-12T17:30:44+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/imcaicai.github.io\/img\/avatar.jpg"},"author": {
+                "@type": "Person",
+                "name": "菜菜"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="菜菜的秘密花园"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/avatar.jpg"
+        data-srcset="/img/avatar.jpg, /img/avatar.jpg 1.5x, /img/avatar.jpg 2x"
+        data-sizes="auto"
+        alt="/img/avatar.jpg"
+        title="/img/avatar.jpg" />菜菜的秘密花园</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/categories/documentation/"> Docs </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/Imcaicai" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="Select Language">
+                    <i class="fa fa-globe" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E8%AF%A6%E8%A7%A33%E9%81%93%E6%8B%AC%E5%8F%B7%E9%A2%98/" selected>English</option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="菜菜的秘密花园"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/avatar.jpg"
+        data-srcset="/img/avatar.jpg, /img/avatar.jpg 1.5x, /img/avatar.jpg 2x"
+        data-sizes="auto"
+        alt="/img/avatar.jpg"
+        title="/img/avatar.jpg" />菜菜的秘密花园</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/categories/documentation/" title="">Docs</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/Imcaicai" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="Select Language">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E8%AF%A6%E8%A7%A33%E9%81%93%E6%8B%AC%E5%8F%B7%E9%A2%98/" selected>English</option></select>
+                </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">【队列和栈】详解3道括号题</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-category">included in <a href="/categories/labuladong%E7%9A%84%E7%AE%97%E6%B3%95%E7%A7%98%E7%B1%8D/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>labuladong的算法秘籍</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-01-12">2023-01-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;471 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;<span id="/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E8%AF%A6%E8%A7%A33%E9%81%93%E6%8B%AC%E5%8F%B7%E9%A2%98/" class="leancloud_visitors" data-flag-title="【队列和栈】详解3道括号题">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#11-判断有效括号串">1.1 判断有效括号串</a>
+      <ul>
+        <li><a href="#题目">题目</a></li>
+        <li><a href="#解析">解析</a></li>
+      </ul>
+    </li>
+    <li><a href="#12-判断有效括号串进阶">1.2 判断有效括号串进阶</a>
+      <ul>
+        <li><a href="#题目-1">题目</a></li>
+        <li><a href="#解析-1">解析</a></li>
+      </ul>
+    </li>
+    <li><a href="#21-平衡括号串">2.1 平衡括号串</a>
+      <ul>
+        <li><a href="#题目-2">题目</a></li>
+        <li><a href="#解析-2">解析</a></li>
+      </ul>
+    </li>
+    <li><a href="#22-平衡括号串进阶">2.2 平衡括号串进阶</a>
+      <ul>
+        <li><a href="#题目-3">题目</a></li>
+        <li><a href="#解析-3">解析</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="11-判断有效括号串">1.1 判断有效括号串</h2>
+<h3 id="题目">题目</h3>
+<p>给定一个只包括 <code>'('</code>，<code>')'</code> 的字符串 <code>s</code> ，判断字符串是否有效。即每个右括号 <code>')'</code> 的左边必须有⼀个左括号 <code>'('</code> 和它匹配。</p>
+<h3 id="解析">解析</h3>
+<p>用一个变量 left 记录 <code>'('</code> 相对于 <code>')'</code> 的数量，遇到 <code>'('</code> 就 +1，遇到 <code>')'</code>  就 -1。如果最后 left==0，则括号串有效，否则无效。并且，如果中间出现 left 数量为负，则说明有 <code>')'</code>  出现在 <code>'('</code>  之前，也为无效。</p>
+<p>代码实现：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">bool</span> <span class="nf">isValid</span><span class="o">(</span><span class="n">string</span> <span class="n">str</span><span class="o">)</span> <span class="o">{</span>
+	<span class="c1">// 待匹配的左括号数量
+</span><span class="c1"></span>	<span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+	<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">str</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+		<span class="k">if</span> <span class="o">(</span><span class="n">s</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">==</span> <span class="sc">&#39;(&#39;</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">left</span><span class="o">++;</span>
+		<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+			<span class="c1">// 遇到右括号
+</span><span class="c1"></span>			<span class="n">left</span><span class="o">--;</span>
+		<span class="o">}</span>
+		<span class="c1">// 右括号太多
+</span><span class="c1"></span>		<span class="k">if</span> <span class="o">(</span><span class="n">left</span> <span class="o">==</span> <span class="o">-</span><span class="n">1</span><span class="o">)</span>
+			<span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="c1">// 是否所有的左括号都被匹配了
+</span><span class="c1"></span>	<span class="k">return</span> <span class="n">left</span> <span class="o">==</span> <span class="n">0</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="12-判断有效括号串进阶">1.2 判断有效括号串进阶</h2>
+<h3 id="题目-1">题目</h3>
+<p><strong>力扣 <a href="https://leetcode.cn/problems/valid-parentheses/" target="_blank" rel="noopener noreffer ">20. 有效的括号</a></strong></p>
+<p>给定一个只包括 <code>'('</code>，<code>')'</code>，<code>'{'</code>，<code>'}'</code>，<code>'['</code>，<code>']'</code> 的字符串 <code>s</code> ，判断字符串是否有效。</p>
+<p>有效字符串需满足：</p>
+<ol>
+<li>左括号必须用相同类型的右括号闭合。</li>
+<li>左括号必须以正确的顺序闭合。</li>
+<li>每个右括号都有一个对应的相同类型的左括号。</li>
+</ol>
+<p>示例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">输入：s = &#34;()[]{}&#34;
+输出：true
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="解析-1">解析</h3>
+<p>使用⼀个名为 left 的栈代替之前思路中的 left 变量，遇到左括号就入栈，遇到右括号就去栈
+中寻找最近的左括号，看是否匹配。</p>
+<p>代码实现：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="kt">bool</span> <span class="n">isValid</span><span class="p">(</span><span class="n">string</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">stack</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span> <span class="n">left</span><span class="p">;</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">char</span> <span class="nl">c</span><span class="p">:</span><span class="n">s</span><span class="p">){</span>
+            <span class="c1">// c是左括号
+</span><span class="c1"></span>            <span class="k">if</span><span class="p">(</span><span class="n">c</span><span class="o">==</span><span class="sc">&#39;(&#39;</span> <span class="o">||</span> <span class="n">c</span><span class="o">==</span><span class="sc">&#39;{&#39;</span> <span class="o">||</span> <span class="n">c</span><span class="o">==</span><span class="sc">&#39;[&#39;</span><span class="p">)</span>
+                <span class="n">left</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
+            <span class="k">else</span><span class="p">{</span>	
+                <span class="c1">// c是右括号且栈中最近的左括号匹配
+</span><span class="c1"></span>                <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">left</span><span class="p">.</span><span class="n">empty</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">leftOf</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="o">==</span><span class="n">left</span><span class="p">.</span><span class="n">top</span><span class="p">())</span>
+                    <span class="n">left</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+                <span class="c1">// 栈中最近的左括号不匹配
+</span><span class="c1"></span>                <span class="k">else</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+		<span class="c1">// 是否所有的左括号都被匹配了
+</span><span class="c1"></span>        <span class="k">return</span> <span class="n">left</span><span class="p">.</span><span class="n">empty</span><span class="p">();</span>
+    <span class="p">}</span>
+    
+    <span class="kt">char</span> <span class="nf">leftOf</span><span class="p">(</span><span class="kt">char</span> <span class="n">c</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">c</span><span class="o">==</span><span class="sc">&#39;)&#39;</span><span class="p">)</span>  <span class="k">return</span> <span class="sc">&#39;(&#39;</span><span class="p">;</span>
+        <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">c</span><span class="o">==</span><span class="sc">&#39;}&#39;</span><span class="p">)</span> <span class="k">return</span> <span class="sc">&#39;{&#39;</span><span class="p">;</span>
+        <span class="k">else</span> <span class="k">return</span> <span class="sc">&#39;[&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="21-平衡括号串">2.1 平衡括号串</h2>
+<h3 id="题目-2">题目</h3>
+<p><strong>力扣 <a href="https://leetcode.cn/problems/minimum-add-to-make-parentheses-valid/" target="_blank" rel="noopener noreffer ">921. 使括号有效的最少添加</a></strong></p>
+<p>只有满足下面几点之一，括号字符串才是有效的：</p>
+<ul>
+<li>它是一个空字符串，或者</li>
+<li>它可以被写成 <code>AB</code> （<code>A</code> 与 <code>B</code> 连接）, 其中 <code>A</code> 和 <code>B</code> 都是有效字符串，或者</li>
+<li>它可以被写作 <code>(A)</code>，其中 <code>A</code> 是有效字符串。</li>
+</ul>
+<p>给定一个括号字符串 <code>s</code> ，在每一次操作中，你都可以在字符串的任何位置插入一个括号</p>
+<ul>
+<li>例如，如果 <code>s = &quot;()))&quot;</code> ，你可以插入一个开始括号为 <code>&quot;(()))&quot;</code> 或结束括号为 <code>&quot;())))&quot;</code> 。</li>
+</ul>
+<p>返回 <em>为使结果字符串 <code>s</code> 有效而必须添加的最少括号数</em>。</p>
+<h3 id="解析-2">解析</h3>
+<p><strong>核心思路是以左括号为基准，通过维护对右括号的需求数 need，来计算最小的插入次数。</strong> 需要注意两个地方：</p>
+<p>🟠 <strong>need == -1</strong></p>
+<p>need == -1 意味着右括号太多，需要及时判断插入左括号。<strong>注意后面多出的左括号不能抵消前面多出的右括号。</strong></p>
+<p>🟡 <strong>返回 res+need</strong></p>
+<p>res 记录左括号的插入次数，need 记录右括号的需求。</p>
+<p>代码实现：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="n">minAddToMakeValid</span><span class="p">(</span><span class="n">string</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">res</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>	<span class="c1">// res记录插入次数
+</span><span class="c1"></span>        <span class="kt">int</span> <span class="n">need</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>	<span class="c1">// need记录右括号的需求量
+</span><span class="c1"></span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">char</span> <span class="nl">c</span><span class="p">:</span><span class="n">s</span><span class="p">){</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">c</span><span class="o">==</span><span class="sc">&#39;(&#39;</span><span class="p">){</span>
+                <span class="n">need</span><span class="o">++</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="p">(</span><span class="n">c</span><span class="o">==</span><span class="err">&#39;</span><span class="p">)</span><span class="err">&#39;</span><span class="p">){</span>
+                <span class="n">need</span><span class="o">--</span><span class="p">;</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">need</span><span class="o">==-</span><span class="mi">1</span><span class="p">){</span>	<span class="c1">// 需要插入一个左括号
+</span><span class="c1"></span>                    <span class="n">need</span><span class="o">++</span><span class="p">;</span>
+                    <span class="n">res</span><span class="o">++</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">res</span><span class="o">+</span><span class="n">need</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="22-平衡括号串进阶">2.2 平衡括号串进阶</h2>
+<h3 id="题目-3">题目</h3>
+<p><strong>力扣 <a href="https://leetcode.cn/problems/minimum-insertions-to-balance-a-parentheses-string/" target="_blank" rel="noopener noreffer ">1541. 平衡括号字符串的最少插入次数</a></strong></p>
+<p>给你一个括号字符串 <code>s</code> ，它只包含字符 <code>'('</code> 和 <code>')'</code> 。一个括号字符串被称为平衡的当它满足：</p>
+<ul>
+<li>任何左括号 <code>'('</code> 必须对应两个连续的右括号 <code>'))'</code> 。</li>
+<li>左括号 <code>'('</code> 必须在对应的连续两个右括号 <code>'))'</code> 之前。</li>
+</ul>
+<p>比方说 <code>&quot;())&quot;</code>， <code>&quot;())(())))&quot;</code> 和 <code>&quot;(())())))&quot;</code> 都是平衡的， <code>&quot;)()&quot;</code>， <code>&quot;()))&quot;</code> 和 <code>&quot;(()))&quot;</code> 都是不平衡的。</p>
+<p>你可以在任意位置插入字符 &lsquo;(&rsquo; 和 &lsquo;)&rsquo; 使字符串平衡。</p>
+<p>请你返回让 <code>s</code> 平衡的最少插入次数。</p>
+<h3 id="解析-3">解析</h3>
+<p>🟧 <strong>首先，按照上面的思路维护 res 和 need 变量</strong></p>
+<p>🟨 <strong>need == -1</strong></p>
+<p>当 need == -1 时，说明遇到一个多余的右括号，则需要插入一个左括号，对右括号的需求变为 1。即 <code>res++;	need = 1;</code></p>
+<p>🟩 <strong>遇到左括号</strong></p>
+<p>对右括号的需求量 +2。若此时 need 为奇数，则需要插入一个右括号，使 need 变为偶数。即 <code>res++;	need--;</code></p>
+<p>代码实现：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="k">public</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="n">minInsertions</span><span class="p">(</span><span class="n">string</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">res</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>	<span class="c1">// 记录插入的括号数量
+</span><span class="c1"></span>        <span class="kt">int</span> <span class="n">need</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>	<span class="c1">// 记录右括号的需求量
+</span><span class="c1"></span>        <span class="k">for</span><span class="p">(</span><span class="kt">char</span> <span class="nl">c</span><span class="p">:</span><span class="n">s</span><span class="p">){</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">c</span><span class="o">==</span><span class="sc">&#39;(&#39;</span><span class="p">){</span>
+                <span class="n">need</span><span class="o">+=</span><span class="mi">2</span><span class="p">;</span>	<span class="c1">// 一个左括号对应两个右括号
+</span><span class="c1"></span>                <span class="k">if</span><span class="p">(</span><span class="n">need</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">){</span>
+                    <span class="n">res</span><span class="o">++</span><span class="p">;</span>	<span class="c1">// 插入一个右括号
+</span><span class="c1"></span>                    <span class="n">need</span><span class="o">--</span><span class="p">;</span>	<span class="c1">// 对右括号的需求减一
+</span><span class="c1"></span>                <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="k">else</span><span class="p">{</span>	
+                <span class="n">need</span><span class="o">--</span><span class="p">;</span>	
+                <span class="k">if</span><span class="p">(</span><span class="n">need</span><span class="o">==-</span><span class="mi">1</span><span class="p">){</span>	<span class="c1">// 右括号多了
+</span><span class="c1"></span>                    <span class="n">need</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>	<span class="c1">// 还需要再来一个右括号
+</span><span class="c1"></span>                    <span class="n">res</span><span class="o">++</span><span class="p">;</span>	<span class="c1">// 插入一个左括号
+</span><span class="c1"></span>                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">res</span><span class="o">+</span><span class="n">need</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>参考资料：</p>
+<p><a href="https://labuladong.github.io/algo/">https://labuladong.github.io/algo/</a></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-01-12</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E8%AF%A6%E8%A7%A33%E9%81%93%E6%8B%AC%E5%8F%B7%E9%A2%98/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://imcaicai.github.io/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E8%AF%A6%E8%A7%A33%E9%81%93%E6%8B%AC%E5%8F%B7%E9%A2%98/" data-title="【队列和栈】详解3道括号题" data-hashtags="labuladong,算法,队列和栈,括号题"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://imcaicai.github.io/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E8%AF%A6%E8%A7%A33%E9%81%93%E6%8B%AC%E5%8F%B7%E9%A2%98/" data-hashtag="labuladong"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://imcaicai.github.io/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E8%AF%A6%E8%A7%A33%E9%81%93%E6%8B%AC%E5%8F%B7%E9%A2%98/" data-title="【队列和栈】详解3道括号题"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://imcaicai.github.io/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E8%AF%A6%E8%A7%A33%E9%81%93%E6%8B%AC%E5%8F%B7%E9%A2%98/" data-title="【队列和栈】详解3道括号题"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://imcaicai.github.io/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E8%AF%A6%E8%A7%A33%E9%81%93%E6%8B%AC%E5%8F%B7%E9%A2%98/" data-title="【队列和栈】详解3道括号题"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/labuladong/">labuladong</a>,&nbsp;<a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>,&nbsp;<a href="/tags/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88/">队列和栈</a>,&nbsp;<a href="/tags/%E6%8B%AC%E5%8F%B7%E9%A2%98/">括号题</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E9%80%92%E5%BD%92%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" class="prev" rel="prev" title="【数组链表】递归反转链表"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>【数组链表】递归反转链表</a>
+            <a href="/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E5%8D%95%E8%B0%83%E6%A0%88%E8%A7%A3%E5%86%B3%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0/" class="next" rel="next" title="【队列和栈】单调栈解决下一个更大元素">【队列和栈】单调栈解决下一个更大元素<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">菜菜</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

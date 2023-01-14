@@ -3,12 +3,27 @@
         <title>队列和栈 - Tag - 菜菜的秘密花园</title>
         <link>https://imcaicai.github.io/tags/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88/</link>
         <description>队列和栈 - Tag - 菜菜的秘密花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 12 Jan 2023 17:30:44 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/tags/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88/" rel="self" type="application/rss+xml" /><item>
-    <title>队列和栈-详解3道括号题</title>
-    <link>https://imcaicai.github.io/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88-%E8%AF%A6%E8%A7%A33%E9%81%93%E6%8B%AC%E5%8F%B7%E9%A2%98/</link>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 14 Jan 2023 12:02:02 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/tags/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88/" rel="self" type="application/rss+xml" /><item>
+    <title>【队列和栈】单调栈解决下一个更大元素</title>
+    <link>https://imcaicai.github.io/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E5%8D%95%E8%B0%83%E6%A0%88%E8%A7%A3%E5%86%B3%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0/</link>
+    <pubDate>Sat, 14 Jan 2023 12:02:02 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E5%8D%95%E8%B0%83%E6%A0%88%E8%A7%A3%E5%86%B3%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0/</guid>
+    <description><![CDATA[1 单调栈模板 题目 输入一个数组 nums，请你返回⼀个等长的结果数组，结果数组中对应索引存储着下一个更大元素，如果没有更大的元素，就存 -1。
+解析 🔴 把数组的元素想象成并列站立的人，元素大小想象成人的身高。这些人面对你站成一列。如果能够看到元素「2」，那么他后面可见的第一个人就是「2」的下⼀个更大元素，因为比「2」小的元素身高不够，都被「2」挡住了，第一个露出来的就是答案。
+🟡 for 循环要从后往前扫描元素，因为我们借助的是栈的结构，倒着入栈，其实是正着出栈。
+🟢 while 循环是把两个「高个子」元素之间的元素排除，因为他们的存在没有意义，前面挡着个「更高」的元素，所以他们不可能被作为后续进来的元素的下一个更大元素了。
+🔵 这个算法的复杂度只有 O(n)。 总共有 n 个元素，每个元素都被 push 入栈了一次，而最多会被 pop一次，没有任何冗余操作。
+图解：
+代码实现：
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18  int[] nextGreaterElement(int[] nums) { int n = nums.length; // 存放答案的数组 	int[] res = new int[n]; Stack&lt;Integer&gt; s = new Stack&lt;&gt;(); // 倒着往栈⾥放 	for (int i = n - 1; i &gt;= 0; i--) { // 判定个⼦⾼矮 	while (!]]></description>
+</item>
+<item>
+    <title>【队列和栈】详解3道括号题</title>
+    <link>https://imcaicai.github.io/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E8%AF%A6%E8%A7%A33%E9%81%93%E6%8B%AC%E5%8F%B7%E9%A2%98/</link>
     <pubDate>Thu, 12 Jan 2023 17:30:44 &#43;0800</pubDate>
     <author>菜菜</author>
-    <guid>https://imcaicai.github.io/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88-%E8%AF%A6%E8%A7%A33%E9%81%93%E6%8B%AC%E5%8F%B7%E9%A2%98/</guid>
+    <guid>https://imcaicai.github.io/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E8%AF%A6%E8%A7%A33%E9%81%93%E6%8B%AC%E5%8F%B7%E9%A2%98/</guid>
     <description><![CDATA[1.1 判断有效括号串 题目 给定一个只包括 '('，')' 的字符串 s ，判断字符串是否有效。即每个右括号 ')' 的左边必须有⼀个左括号 '(' 和它匹配。
 解析 用一个变量 left 记录 '(' 相对于 ')' 的数量，遇到 '(' 就 +1，遇到 ')' 就 -1。如果最后 left==0，则括号串有效，否则无效。并且，如果中间出现 left 数量为负，则说明有 ')' 出现在 '(' 之前，也为无效。
 代码实现：
