@@ -3,7 +3,24 @@
         <title>队列和栈 - Tag - 菜菜的秘密花园</title>
         <link>https://imcaicai.github.io/tags/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88/</link>
         <description>队列和栈 - Tag - 菜菜的秘密花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 14 Jan 2023 12:02:02 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/tags/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 15 Jan 2023 10:56:33 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/tags/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88/" rel="self" type="application/rss+xml" /><item>
+    <title>【队列和栈】单调队列解决滑动窗口问题</title>
+    <link>https://imcaicai.github.io/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97%E8%A7%A3%E5%86%B3%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E9%97%AE%E9%A2%98/</link>
+    <pubDate>Sun, 15 Jan 2023 10:56:33 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97%E8%A7%A3%E5%86%B3%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E9%97%AE%E9%A2%98/</guid>
+    <description><![CDATA[【单调队列】主要是为了解决以下场景：
+ 给你一个数组 window，已知其最值为 A，如果给 window 中添加⼀个数 B，那么比较一下 A 和 B 就可以立即算出新的最值；但如果要从 window 数组中减少一个数，就不能直接得到最值了，因为如果减少的这个数恰好是 A，就需要遍历 window 中的所有元素重新寻找新的最值。
+ 可以使用 优先级队列 来动态寻找最值，通过创建一个大（小）顶堆，可以很快拿到最大（小）值。
+但优先级队列无法满足标准队列结构【先进先出】的时间顺序，因为优先级队列底层利用二叉堆对元素进行动态排序，元素的出队顺序是元素的大小顺序，和入队的先后顺序完全没有关系。
+而【单调队列】结构，既能够维护队列元素【先进先出】的时间顺序，又能够正确维护队列中所有元素的最值。
+1 题目 力扣 239. 滑动窗口最大值
+给你一个整数数组 nums，有一个大小为 k 的滑动窗口从数组的最左侧移动到数组的最右侧。你只可以看到在滑动窗口内的 k 个数字。滑动窗口每次只向右移动一位。
+返回 滑动窗口中的最大值 。
+2 解析 2.1 搭建解题框架 🟧 普通队列的标准 API：
+1 2 3 4 5 6  class Queue{ // enqueue 操作，在队尾加⼊元素 n 	void push(int n); // dequeue 操作，删除队头元素 	void pop(); }   🟨 【单调队列】的 API：]]></description>
+</item>
+<item>
     <title>【队列和栈】单调栈解决下一个更大元素</title>
     <link>https://imcaicai.github.io/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E5%8D%95%E8%B0%83%E6%A0%88%E8%A7%A3%E5%86%B3%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0/</link>
     <pubDate>Sat, 14 Jan 2023 12:02:02 &#43;0800</pubDate>
