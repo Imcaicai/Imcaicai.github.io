@@ -1,0 +1,20 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>LRU - Tag - 菜菜的秘密花园</title>
+        <link>https://imcaicai.github.io/tags/lru/</link>
+        <description>LRU - Tag - 菜菜的秘密花园</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 17 Jan 2023 13:37:09 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/tags/lru/" rel="self" type="application/rss+xml" /><item>
+    <title>【数据结构设计】LRU算法</title>
+    <link>https://imcaicai.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1lru%E7%AE%97%E6%B3%95/</link>
+    <pubDate>Tue, 17 Jan 2023 13:37:09 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1lru%E7%AE%97%E6%B3%95/</guid>
+    <description><![CDATA[1 题目 力扣 146. LRU 缓存
+请你设计并实现一个满足 LRU (最近最少使用) 缓存 约束的数据结构。
+实现 LRUCache 类：
+ LRUCache(int capacity) 以 正整数 作为容量 capacity 初始化 LRU 缓存 int get(int key) 如果关键字 key 存在于缓存中，则返回关键字的值，否则返回 -1 。 void put(int key, int value) 如果关键字 key 已经存在，则变更其数据值 value ；如果不存在，则向缓存中插入该组 key-value 。如果插入操作导致关键字数量超过 capacity ，则应该 逐出 最久未使用的关键字。  函数 get 和 put 必须以 O(1) 的平均时间复杂度运行。
+2 解析 2.1 LRU算法设计 由于 put 和 get 方法的时间复杂度为 O(1)，我们可以总结出 cache 这个数据结构必要的条件：
+ 🔴 cache 中的元素必须有时序，以区分最近使用的和久未使用的数据]]></description>
+</item>
+</channel>
+</rss>
