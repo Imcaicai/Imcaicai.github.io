@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>数据库 - Tag - 菜菜的秘密花园</title>
+        <link>https://imcaicai.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
+        <description>数据库 - Tag - 菜菜的秘密花园</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 06 Feb 2023 15:40:28 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="self" type="application/rss+xml" /><item>
+    <title>数据库原理知识总结</title>
+    <link>https://imcaicai.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/</link>
+    <pubDate>Mon, 06 Feb 2023 15:40:28 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/</guid>
+    <description><![CDATA[1 绪论 2 关系数据库 3 SQL语言 ]]></description>
+</item>
+</channel>
+</rss>
