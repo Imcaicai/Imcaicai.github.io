@@ -3,7 +3,15 @@
         <title>All Posts - 菜菜的秘密花园</title>
         <link>https://imcaicai.github.io/posts/</link>
         <description>All Posts | 菜菜的秘密花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 06 Feb 2023 15:40:28 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 10 Feb 2023 20:13:49 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>操作系统知识总结</title>
+    <link>https://imcaicai.github.io/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/</link>
+    <pubDate>Fri, 10 Feb 2023 20:13:49 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/</guid>
+    <description><![CDATA[1 绪论 ]]></description>
+</item>
+<item>
     <title>数据库原理知识总结</title>
     <link>https://imcaicai.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/</link>
     <pubDate>Mon, 06 Feb 2023 15:40:28 &#43;0800</pubDate>
@@ -119,20 +127,6 @@
     <description><![CDATA[本文主要记录最难掌握的一类双指针技巧——滑动窗口算法。算法思路很简单，就是维护一个窗口，不断滑动，时间复杂度为 O(N)。大致逻辑如下：
 1 2 3 4 5 6 7 8 9 10 11  int left = 0, right = 0; while (right &lt; s.size()) { // 增⼤窗⼝ 	window.add(s[right]); right++; while (window needs shrink) { // 缩⼩窗⼝ 	window.remove(s[left]); left++; } }   滑动窗口算法的代码框架如下：
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26  /* 滑动窗⼝算法框架 */ void slidingWindow(string s) { unordered_map&lt;char, int&gt; window; int left = 0, right = 0; while (right &lt; s.]]></description>
-</item>
-<item>
-    <title>【数组链表】双指针技巧解决数组题</title>
-    <link>https://imcaicai.github.io/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E5%8F%8C%E6%8C%87%E9%92%88%E6%8A%80%E5%B7%A7%E8%A7%A3%E5%86%B3%E6%95%B0%E7%BB%84%E9%A2%98/</link>
-    <pubDate>Thu, 05 Jan 2023 17:58:47 &#43;0800</pubDate>
-    <author>菜菜</author>
-    <guid>https://imcaicai.github.io/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E5%8F%8C%E6%8C%87%E9%92%88%E6%8A%80%E5%B7%A7%E8%A7%A3%E5%86%B3%E6%95%B0%E7%BB%84%E9%A2%98/</guid>
-    <description><![CDATA[在处理数组和链表相关问题时，双指针技巧是经常用到的，双指针技巧主要分为两类：左右指针和快慢指针。所谓左右指针，就是两个指针相向而行或者相背而行；而所谓快慢指针，就是两个指针同向而行。
-1 快慢指针技巧 题目 力扣 26. 删除有序数组中的重复项
-给你一个 升序排列 的数组 nums ，请你 原地 删除重复出现的元素，使每个元素 只出现一次 ，返回删除后数组的新长度。元素的 相对顺序 应该保持 一致 。
-将最终结果插入 nums 的前 k 个位置后返回 k 。
-不要使用额外的空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。
-解析 我们让慢指针 slow 走在后面，快指针 fast 走在前面探路，找到⼀个不重复的元素就赋值给 slow 并让 slow 前进⼀步。 这样，就保证了 nums[0..slow] 都是无重复的元素，当 fast 指针遍历完整个数组 nums 后，nums[0..slow] 就是整个数组去重之后的结果。 代码实现：
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15  class Solution { public int removeDuplicates(int[] nums) { if(nums.]]></description>
 </item>
 </channel>
 </rss>

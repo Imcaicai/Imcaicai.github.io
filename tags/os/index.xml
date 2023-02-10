@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>OS - Tag - 菜菜的秘密花园</title>
+        <link>https://imcaicai.github.io/tags/os/</link>
+        <description>OS - Tag - 菜菜的秘密花园</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 10 Feb 2023 20:13:49 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/tags/os/" rel="self" type="application/rss+xml" /><item>
+    <title>操作系统知识总结</title>
+    <link>https://imcaicai.github.io/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/</link>
+    <pubDate>Fri, 10 Feb 2023 20:13:49 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/</guid>
+    <description><![CDATA[1 绪论 ]]></description>
+</item>
+</channel>
+</rss>
