@@ -1,0 +1,34 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>STL - Tag - 菜菜的秘密花园</title>
+        <link>https://imcaicai.github.io/tags/stl/</link>
+        <description>STL - Tag - 菜菜的秘密花园</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 14 Mar 2023 15:56:24 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/tags/stl/" rel="self" type="application/rss+xml" /><item>
+    <title>【STL】map容器用法</title>
+    <link>https://imcaicai.github.io/stlmap%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/</link>
+    <pubDate>Tue, 14 Mar 2023 15:56:24 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/stlmap%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/</guid>
+    <description><![CDATA[1 简介 🟠 map 容器中键值对的键和值可以是任意数据类型，包括 C++ 基本数据类型（int、double 等）、使用结构体或类自定义的类型。
+🟡 容器会自动根据各键值对的键的大小，按照既定的规则进行排序。比如 std::less&lt;T&gt;、std::greater&lt;T&gt; 规则。
+🟢 键的值既不能重复也不能被修改。
+🔵 使用需加上头文件：#include &lt;map&gt;
+2 创建map容器 1️⃣ 调用 map 容器类的默认构造函数。（若默认指定了 std 命令空间，则 std:: 可省略）
+1  std::map&lt;std::string, int&gt; map1;   2️⃣ 在创建 map 容器的同时，进行初始化。
+1  std::map&lt;std::string, int&gt; map1 {{&#34;语文&#34;,90},{&#34;数学&#34;,100}};   3️⃣ 利用先前已创建好的 map 容器和拷贝构造函数，再创建一个新的 map 容器。
+1  std::map&lt;std::string, int&gt; newMap(map1);   4️⃣ 通过迭代器，取已建 map 容器中指定区域内的键值对，创建并初始化新的 map 容器。
+1 2  std::map&lt;std::string, int&gt; map1 {{&#34;语文&#34;,90},{&#34;数学&#34;,100}}; std::map&lt;std::string, int&gt; newMap(++map1.]]></description>
+</item>
+<item>
+    <title>【STL】set容器用法</title>
+    <link>https://imcaicai.github.io/stlset%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/</link>
+    <pubDate>Mon, 13 Mar 2023 20:17:37 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/stlset%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/</guid>
+    <description><![CDATA[1 简介 C++ 标准函数库中的 set 可以用来存储集合，set 里面的元素都是唯一的，不可以重复，可以新增或删除元素，但不可以修改元素的值。
+🔴 头文件：#include &lt;set&gt;
+2 初始化 std::set 的初始化有三种方式：1️⃣ 以 insert() 函數新增元素 2️⃣ 直接在创建时以大括号初始化 set 内部的元素 3️⃣ 通过数组初始化。
+1 2 3 4 5 6 7 8 9 10 11 12 13  // 第 1 种初始化方式 set&lt;int&gt; set1; set1.insert(1); set1.insert(2); set1.insert(3); // 第 2 种初始化方式 // 注意这里没有 &#39;=&#39; set&lt;int&gt; set2 {1,2,3}; // 第 3 种初始化方式 int num[] = {1,2,3}; set&lt;int&gt; set3(num, num+3);   3 增/删元素 std::set 若要新增、刪除元素，可以使用 insert() 和 erase() 函数。]]></description>
+</item>
+</channel>
+</rss>

@@ -4,32 +4,48 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>操作系统知识总结 - 菜菜的秘密花园</title><meta name="Description" content="菜菜的秘密花园"><meta property="og:title" content="操作系统知识总结" />
-<meta property="og:description" content="1 绪论 2 OS的结构和硬件支持 3 操作系统的用户接口 4 进程及进程管理 5 资源分配与调度 6 处理机调度 7 主存管理 8 设备管理 9 文件系统 " />
+        <title>【STL】map容器用法 - 菜菜的秘密花园</title><meta name="Description" content="菜菜的秘密花园"><meta property="og:title" content="【STL】map容器用法" />
+<meta property="og:description" content="1 简介 🟠 map 容器中键值对的键和值可以是任意数据类型，包括 C&#43;&#43; 基本数据类型（int、double 等）、使用结构体或类自定义的类型。
+🟡 容器会自动根据各键值对的键的大小，按照既定的规则进行排序。比如 std::less&lt;T&gt;、std::greater&lt;T&gt; 规则。
+🟢 键的值既不能重复也不能被修改。
+🔵 使用需加上头文件：#include &lt;map&gt;
+2 创建map容器 1️⃣ 调用 map 容器类的默认构造函数。（若默认指定了 std 命令空间，则 std:: 可省略）
+1  std::map&lt;std::string, int&gt; map1;   2️⃣ 在创建 map 容器的同时，进行初始化。
+1  std::map&lt;std::string, int&gt; map1 {{&#34;语文&#34;,90},{&#34;数学&#34;,100}};   3️⃣ 利用先前已创建好的 map 容器和拷贝构造函数，再创建一个新的 map 容器。
+1  std::map&lt;std::string, int&gt; newMap(map1);   4️⃣ 通过迭代器，取已建 map 容器中指定区域内的键值对，创建并初始化新的 map 容器。
+1 2  std::map&lt;std::string, int&gt; map1 {{&#34;语文&#34;,90},{&#34;数学&#34;,100}}; std::map&lt;std::string, int&gt; newMap(&#43;&#43;map1." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://imcaicai.github.io/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" /><meta property="og:image" content="https://imcaicai.github.io/img/avatar.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-02-10T20:13:49&#43;08:00" />
-<meta property="article:modified_time" content="2023-02-10T20:13:49&#43;08:00" /><meta property="og:site_name" content="菜菜的秘密花园" />
+<meta property="og:url" content="https://imcaicai.github.io/stlmap%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" /><meta property="og:image" content="https://imcaicai.github.io/img/avatar.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-03-14T15:56:24&#43;08:00" />
+<meta property="article:modified_time" content="2023-03-14T15:56:24&#43;08:00" /><meta property="og:site_name" content="菜菜的秘密花园" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://imcaicai.github.io/img/avatar.jpg"/>
 
-<meta name="twitter:title" content="操作系统知识总结"/>
-<meta name="twitter:description" content="1 绪论 2 OS的结构和硬件支持 3 操作系统的用户接口 4 进程及进程管理 5 资源分配与调度 6 处理机调度 7 主存管理 8 设备管理 9 文件系统 "/>
+<meta name="twitter:title" content="【STL】map容器用法"/>
+<meta name="twitter:description" content="1 简介 🟠 map 容器中键值对的键和值可以是任意数据类型，包括 C&#43;&#43; 基本数据类型（int、double 等）、使用结构体或类自定义的类型。
+🟡 容器会自动根据各键值对的键的大小，按照既定的规则进行排序。比如 std::less&lt;T&gt;、std::greater&lt;T&gt; 规则。
+🟢 键的值既不能重复也不能被修改。
+🔵 使用需加上头文件：#include &lt;map&gt;
+2 创建map容器 1️⃣ 调用 map 容器类的默认构造函数。（若默认指定了 std 命令空间，则 std:: 可省略）
+1  std::map&lt;std::string, int&gt; map1;   2️⃣ 在创建 map 容器的同时，进行初始化。
+1  std::map&lt;std::string, int&gt; map1 {{&#34;语文&#34;,90},{&#34;数学&#34;,100}};   3️⃣ 利用先前已创建好的 map 容器和拷贝构造函数，再创建一个新的 map 容器。
+1  std::map&lt;std::string, int&gt; newMap(map1);   4️⃣ 通过迭代器，取已建 map 容器中指定区域内的键值对，创建并初始化新的 map 容器。
+1 2  std::map&lt;std::string, int&gt; map1 {{&#34;语文&#34;,90},{&#34;数学&#34;,100}}; std::map&lt;std::string, int&gt; newMap(&#43;&#43;map1."/>
 <meta name="application-name" content="菜菜的秘密花园">
-<meta name="apple-mobile-web-app-title" content="菜菜的秘密花园"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://imcaicai.github.io/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" /><link rel="prev" href="https://imcaicai.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" /><link rel="next" href="https://imcaicai.github.io/stlset%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<meta name="apple-mobile-web-app-title" content="菜菜的秘密花园"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://imcaicai.github.io/stlmap%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" /><link rel="prev" href="https://imcaicai.github.io/stlset%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "操作系统知识总结",
+        "headline": "【STL】map容器用法",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/imcaicai.github.io\/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93\/"
-        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "OS","wordcount":  18 ,
-        "url": "https:\/\/imcaicai.github.io\/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93\/","datePublished": "2023-02-10T20:13:49+08:00","dateModified": "2023-02-10T20:13:49+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@id": "https:\/\/imcaicai.github.io\/stlmap%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95\/"
+        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "C\u002b\u002b, STL, map","wordcount":  111 ,
+        "url": "https:\/\/imcaicai.github.io\/stlmap%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95\/","datePublished": "2023-03-14T15:56:24+08:00","dateModified": "2023-03-14T15:56:24+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/imcaicai.github.io\/img\/avatar.jpg"},"author": {
                 "@type": "Person",
@@ -67,7 +83,7 @@
                     <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
                 </a><a href="javascript:void(0);" class="menu-item language" title="Select Language">
                     <i class="fa fa-globe" aria-hidden="true"></i>                      
-                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" selected>English</option></select>
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/stlmap%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" selected>English</option></select>
                 </a></div>
         </div>
     </div>
@@ -108,7 +124,7 @@
                 <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a><a href="javascript:void(0);" class="menu-item" title="Select Language">
                     <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
-                    <select class="language-select" onchange="location = this.value;"><option value="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" selected>English</option></select>
+                    <select class="language-select" onchange="location = this.value;"><option value="/stlmap%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" selected>English</option></select>
                 </a></div>
     </div>
 </header><div class="search-dropdown desktop">
@@ -120,10 +136,10 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">操作系统知识总结</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-category">included in <a href="/categories/os/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>OS</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-02-10">2023-02-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;18 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;<span id="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" class="leancloud_visitors" data-flag-title="操作系统知识总结">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">【STL】map容器用法</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-category">included in <a href="/categories/c++/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>C++</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-14">2023-03-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;111 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;<span id="/stlmap%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" class="leancloud_visitors" data-flag-title="【STL】map容器用法">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
@@ -133,123 +149,126 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#1-绪论">1 绪论</a></li>
-    <li><a href="#2-os的结构和硬件支持">2 OS的结构和硬件支持</a></li>
-    <li><a href="#3-操作系统的用户接口">3 操作系统的用户接口</a></li>
-    <li><a href="#4-进程及进程管理">4 进程及进程管理</a></li>
-    <li><a href="#5-资源分配与调度">5 资源分配与调度</a></li>
-    <li><a href="#6-处理机调度">6 处理机调度</a></li>
-    <li><a href="#7-主存管理">7 主存管理</a></li>
-    <li><a href="#8-设备管理">8 设备管理</a></li>
-    <li><a href="#9-文件系统">9 文件系统</a></li>
+    <li><a href="#1-简介">1 简介</a></li>
+    <li><a href="#2-创建map容器">2 创建map容器</a></li>
+    <li><a href="#3-常用的成员方法">3 常用的成员方法</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h2 id="1-绪论">1 绪论</h2>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/1.png"
-        data-srcset="/img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/1.png, /img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/1.png 1.5x, /img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/1.png 2x"
-        data-sizes="auto"
-        alt="/img/操作系统复习/1.png"
-        title="image1" /></p>
-<h2 id="2-os的结构和硬件支持">2 OS的结构和硬件支持</h2>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/2.png"
-        data-srcset="/img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/2.png, /img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/2.png 1.5x, /img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/2.png 2x"
-        data-sizes="auto"
-        alt="/img/操作系统复习/2.png"
-        title="image2" /></p>
-<h2 id="3-操作系统的用户接口">3 操作系统的用户接口</h2>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/3.png"
-        data-srcset="/img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/3.png, /img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/3.png 1.5x, /img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/3.png 2x"
-        data-sizes="auto"
-        alt="/img/操作系统复习/3.png"
-        title="image3" /></p>
-<h2 id="4-进程及进程管理">4 进程及进程管理</h2>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/4.png"
-        data-srcset="/img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/4.png, /img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/4.png 1.5x, /img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/4.png 2x"
-        data-sizes="auto"
-        alt="/img/操作系统复习/4.png"
-        title="image4" /></p>
-<h2 id="5-资源分配与调度">5 资源分配与调度</h2>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/5.png"
-        data-srcset="/img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/5.png, /img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/5.png 1.5x, /img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/5.png 2x"
-        data-sizes="auto"
-        alt="/img/操作系统复习/5.png"
-        title="image5" /></p>
-<h2 id="6-处理机调度">6 处理机调度</h2>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/6.png"
-        data-srcset="/img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/6.png, /img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/6.png 1.5x, /img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/6.png 2x"
-        data-sizes="auto"
-        alt="/img/操作系统复习/6.png"
-        title="image6" /></p>
-<h2 id="7-主存管理">7 主存管理</h2>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/7.png"
-        data-srcset="/img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/7.png, /img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/7.png 1.5x, /img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/7.png 2x"
-        data-sizes="auto"
-        alt="/img/操作系统复习/7.png"
-        title="image7" /></p>
-<h2 id="8-设备管理">8 设备管理</h2>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/8.png"
-        data-srcset="/img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/8.png, /img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/8.png 1.5x, /img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/8.png 2x"
-        data-sizes="auto"
-        alt="/img/操作系统复习/8.png"
-        title="image8" /></p>
-<h2 id="9-文件系统">9 文件系统</h2>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/9.png"
-        data-srcset="/img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/9.png, /img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/9.png 1.5x, /img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/9.png 2x"
-        data-sizes="auto"
-        alt="/img/操作系统复习/9.png"
-        title="image9" /></p>
+            </div><div class="content" id="content"><h2 id="1-简介">1 简介</h2>
+<p>🟠 map 容器中键值对的键和值可以是任意数据类型，包括 <a href="http://c.biancheng.net/cplus/" target="_blank" rel="noopener noreffer ">C++</a> 基本数据类型（int、double 等）、使用结构体或类自定义的类型。</p>
+<p>🟡 容器会自动根据各键值对的键的大小，按照既定的规则进行排序。比如 <code>std::less&lt;T&gt;</code>、<code>std::greater&lt;T&gt;</code> 规则。</p>
+<p>🟢 键的值既不能重复也不能被修改。</p>
+<p>🔵 使用需加上头文件：<code>#include &lt;map&gt;</code></p>
+<h2 id="2-创建map容器">2 创建map容器</h2>
+<p>1️⃣ 调用 map 容器类的默认构造函数。（若默认指定了 std 命令空间，则 std:: 可省略）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">map1</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>2️⃣ 在创建 map 容器的同时，进行初始化。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">map1</span> <span class="p">{{</span><span class="s">&#34;语文&#34;</span><span class="p">,</span><span class="mi">90</span><span class="p">},{</span><span class="s">&#34;数学&#34;</span><span class="p">,</span><span class="mi">100</span><span class="p">}};</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>3️⃣ 利用先前已创建好的 map 容器和拷贝构造函数，再创建一个新的 map 容器。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">newMap</span><span class="p">(</span><span class="n">map1</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>4️⃣ 通过迭代器，取已建 map 容器中指定区域内的键值对，创建并初始化新的 map 容器。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">map1</span> <span class="p">{{</span><span class="s">&#34;语文&#34;</span><span class="p">,</span><span class="mi">90</span><span class="p">},{</span><span class="s">&#34;数学&#34;</span><span class="p">,</span><span class="mi">100</span><span class="p">}};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">newMap</span><span class="p">(</span><span class="o">++</span><span class="n">map1</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">map1</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="3-常用的成员方法">3 常用的成员方法</h2>
+<table>
+<thead>
+<tr>
+<th>成员方法</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>begin()</td>
+<td>返回指向容器中第一个键值对的双向迭代器。（是已排好序的第一个）</td>
+</tr>
+<tr>
+<td>end()</td>
+<td>返回指向容器最后一个元素所在位置后一个位置的双向迭代器。（是已排好序的最后一个）</td>
+</tr>
+<tr>
+<td>find(key)</td>
+<td>在 map 容器中查找键为 key 的键值对，如果成功找到，则返回指向该键值对的双向迭代器；否则返回和 end() 方法一样的迭代器。</td>
+</tr>
+<tr>
+<td>empty()</td>
+<td>若容器为空，则返回 true；否则 false。</td>
+</tr>
+<tr>
+<td>size()</td>
+<td>返回当前 map 容器中存有键值对的个数。</td>
+</tr>
+<tr>
+<td>insert()</td>
+<td>向 map 容器中插入键值对。</td>
+</tr>
+<tr>
+<td>erase()</td>
+<td>删除 map 容器指定位置、指定键（key）值或者指定区域内的键值对。</td>
+</tr>
+<tr>
+<td>clear()</td>
+<td>清空 map 容器中所有的键值对，即使 map 容器的 size() 为 0。</td>
+</tr>
+<tr>
+<td>emplace()</td>
+<td>在当前 map 容器中的指定位置处构造新键值对。其效果和插入键值对一样，但效率更高。</td>
+</tr>
+</tbody>
+</table>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2023-02-10</span>
+                <span>Updated on 2023-03-14</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
-                            <a class="link-to-markdown" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/index.md" target="_blank">Read Markdown</a>
+                            <a class="link-to-markdown" href="/stlmap%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://imcaicai.github.io/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" data-title="操作系统知识总结" data-hashtags="OS"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://imcaicai.github.io/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" data-hashtag="OS"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://imcaicai.github.io/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" data-title="操作系统知识总结"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://imcaicai.github.io/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" data-title="操作系统知识总结"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://imcaicai.github.io/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" data-title="操作系统知识总结"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://imcaicai.github.io/stlmap%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" data-title="【STL】map容器用法" data-hashtags="C&#43;&#43;,STL,map"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://imcaicai.github.io/stlmap%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" data-hashtag="C&#43;&#43;"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://imcaicai.github.io/stlmap%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" data-title="【STL】map容器用法"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://imcaicai.github.io/stlmap%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" data-title="【STL】map容器用法"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://imcaicai.github.io/stlmap%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" data-title="【STL】map容器用法"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/os/">OS</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>,&nbsp;<a href="/tags/stl/">STL</a>,&nbsp;<a href="/tags/map/">map</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" class="prev" rel="prev" title="数据库原理知识总结"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>数据库原理知识总结</a>
-            <a href="/stlset%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" class="next" rel="next" title="【STL】set容器用法">【STL】set容器用法<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/stlset%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" class="prev" rel="prev" title="【STL】set容器用法"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>【STL】set容器用法</a></div>
 </div>
 <div id="comments"><div id="valine" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
