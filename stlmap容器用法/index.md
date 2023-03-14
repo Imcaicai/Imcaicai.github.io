@@ -22,7 +22,7 @@ std::map<std::string, int> map1;
 2️⃣ 在创建 map 容器的同时，进行初始化。
 
 ```c++
-std::map<std::string, int> map1 {{"语文",90} , {"数学",100}};
+std::map<std::string, int> map1 { {"语文",90} , {"数学",100} };
 ```
 
 3️⃣ 利用先前已创建好的 map 容器和拷贝构造函数，再创建一个新的 map 容器。
@@ -34,7 +34,7 @@ std::map<std::string, int> newMap(map1);
 4️⃣ 通过迭代器，取已建 map 容器中指定区域内的键值对，创建并初始化新的 map 容器。
 
 ```c++
-std::map<std::string, int> map1 {{"语文",90} , {"数学",100}};
+std::map<std::string, int> map1 { {"语文",90} , {"数学",100} };
 std::map<std::string, int> newMap(++map1.begin(), map1.end());
 ```
 
