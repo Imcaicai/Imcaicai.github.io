@@ -15,9 +15,9 @@
 🔵 使用需加上头文件：#include &lt;map&gt;
 2 创建map容器 1️⃣ 调用 map 容器类的默认构造函数。（若默认指定了 std 命令空间，则 std:: 可省略）
 1  std::map&lt;std::string, int&gt; map1;   2️⃣ 在创建 map 容器的同时，进行初始化。
-1  std::map&lt;std::string, int&gt; map1 {{&#34;语文&#34;,90},{&#34;数学&#34;,100}};   3️⃣ 利用先前已创建好的 map 容器和拷贝构造函数，再创建一个新的 map 容器。
+1  std::map&lt;std::string, int&gt; map1 {{&#34;语文&#34;,90} , {&#34;数学&#34;,100}};   3️⃣ 利用先前已创建好的 map 容器和拷贝构造函数，再创建一个新的 map 容器。
 1  std::map&lt;std::string, int&gt; newMap(map1);   4️⃣ 通过迭代器，取已建 map 容器中指定区域内的键值对，创建并初始化新的 map 容器。
-1 2  std::map&lt;std::string, int&gt; map1 {{&#34;语文&#34;,90},{&#34;数学&#34;,100}}; std::map&lt;std::string, int&gt; newMap(++map1.]]></description>
+1 2  std::map&lt;std::string, int&gt; map1 {{&#34;语文&#34;,90} , {&#34;数学&#34;,100}}; std::map&lt;std::string, int&gt; newMap(++map1.]]></description>
 </item>
 <item>
     <title>【STL】set容器用法</title>
