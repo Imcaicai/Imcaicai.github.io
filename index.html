@@ -118,6 +118,30 @@
         alt="/img/avatar.jpg"
         title="/img/avatar.jpg" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/csp202203/">【CSP】202203题解</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-03-14">2023-03-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/csp%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CSP刷题记录</a></span></div><div class="content">1 错误的：
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38  #include &lt;iostream&gt;#include &lt;cmath&gt;// #define _USE_MATH_DEFINES  using namespace std; int main() { // 输入变量个数 n，语句个数 k 	int n,k; scanf(&#34;%d&#34;,&amp;n); scanf(&#34;%d&#34;,&amp;k); // 输入语句 	int x[n+1]={0},y[n+1]={0},a[n+1]={0}; for(int i=1;i&lt;=k;i++){ scanf(&#34;%d&#34;,&amp;x[i]); scanf(&#34;%d&#34;,&amp;y[i]); } for(int i=1;i&lt;=k;i++){ if(a[x[i]]==0){ a[x[i]]=i; } } // 记录不符合的语句个数 	int cnt=0; for(int i=1;i&lt;=k;i++){ if(y[i]!</div><div class="post-footer">
+        <a href="/csp202203/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/csp/">CSP</a>,&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/csp202206/">【CSP】202206题解</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-03-14">2023-03-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/csp%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CSP刷题记录</a></span></div><div class="content">1 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35  #include &lt;iostream&gt;#include &lt;cmath&gt;// #define _USE_MATH_DEFINES  using namespace std; int main() { // 输入 n，a，计算总和 sum 	int n,sum=0; scanf(&#34;%d&#34;,&amp;n); int a[n]; for(int i=0;i&lt;n;i++){ scanf(&#34;%d&#34;,&amp;a[i]); sum+=a[i]; } // 计算平均数 x 	double x=(double)sum/n; // 计算方差 d 	double d=0; for(int i=0;i&lt;n;i++){ d=d+(a[i]-x)*(a[i]-x); } d=d/n; // 计算 f 	double f[n]; for(int i=0;i&lt;n;i++){ f[i]=(a[i]-x)/pow(d,0.</div><div class="post-footer">
+        <a href="/csp202206/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/csp/">CSP</a>,&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/csp202209/">【CSP】202209题解</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-03-14">2023-03-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/csp%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CSP刷题记录</a></span></div><div class="content">2 错误的：
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41  #include &lt;iostream&gt;#include &lt;cmath&gt;// #define _USE_MATH_DEFINES  using namespace std; int main() { // 输入书本数量 n，包邮条件 x 	int n,x; scanf(&#34;%d&#34;,&amp;n); scanf(&#34;%d&#34;,&amp;x); // 输入书本价格，计算总和 sum 	int a[n]; int sum=0; for(int i=0;i&lt;n;i++){ scanf(&#34;%d&#34;,&amp;a[i]); sum+=a[i]; } // 动态规划，找前 i 本书的价格和最大，不超过 sum-x 	int d[n][sum-x+1]={0}; for(int j=0;j&lt;sum-x+1;j++){ d[0][j]=a[0]&gt;j ?</div><div class="post-footer">
+        <a href="/csp202209/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/csp/">CSP</a>,&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/csp202212/">【CSP】202212题解</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-03-14">2023-03-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/csp%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CSP刷题记录</a></span></div><div class="content">1 错误的
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20  #include &lt;iostream&gt;using namespace std; int main() { // 输入年数n，年利率i 	int n; double i; scanf(&#34;%d %lf&#34;, &amp;n,&amp;i); double s=0;	// 保存最后结果 	int a;	// 每年收益 	for(int j=0;j&lt;n+1;j++){ scanf(&#34;%d&#34;, &amp;a); s=s/(1+i) + a; } printf(&#34;%f&#34;, s); }   正确的
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24  #include &lt;iostream&gt;using namespace std; int main() { // 输入年数n，年利率i 	int n; double i; scanf(&#34;%d&#34;, &amp;n); scanf(&#34;%lf&#34;,&amp;i); double s=0;	// 保存最后结果 	int a[n+1];	// 每年收益 	for(int j=0;j&lt;n+1;j++){ scanf(&#34;%d&#34;, &amp;a[j]); } for(int j=n;j&gt;=0;j--){ s=s/(1+i) + a[j]; } printf(&#34;%f&#34;, s); }   2 正确代码</div><div class="post-footer">
+        <a href="/csp202212/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/csp/">CSP</a>,&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/stlmap%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/">【STL】map容器用法</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-03-14">2023-03-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/c++/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>C++</a></span></div><div class="content">1 简介 🟠 map 容器中键值对的键和值可以是任意数据类型，包括 C++ 基本数据类型（int、double 等）、使用结构体或类自定义的类型。
 🟡 容器会自动根据各键值对的键的大小，按照既定的规则进行排序。比如 std::less&lt;T&gt;、std::greater&lt;T&gt; 规则。
@@ -192,47 +216,6 @@
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17  bool isValid(string str) { // 待匹配的左括号数量 	int left = 0; for (int i = 0; i &lt; str.</div><div class="post-footer">
         <a href="/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E8%AF%A6%E8%A7%A33%E9%81%93%E6%8B%AC%E5%8F%B7%E9%A2%98/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/labuladong/">labuladong</a>,&nbsp;<a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>,&nbsp;<a href="/tags/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88/">队列和栈</a>,&nbsp;<a href="/tags/%E6%8B%AC%E5%8F%B7%E9%A2%98/">括号题</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E9%80%92%E5%BD%92%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/">【数组链表】递归反转链表</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-01-12">2023-01-12</time></span>&nbsp;<span class="post-category">included in <a href="/categories/labuladong%E7%9A%84%E7%AE%97%E6%B3%95%E7%A7%98%E7%B1%8D/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>labuladong的算法秘籍</a></span></div><div class="content">1 递归反转整个链表 题目 力扣 206. 反转链表
-给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。
-示例：
-1 2  输入：head = [1,2,3,4,5] 输出：[5,4,3,2,1]   解析 图解：
-代码实现：
-1 2 3 4 5 6 7 8 9 10  public ListNode reverseList(ListNode head) { if(head==null || head.next==null){ return head; } ListNode last=reverseList(head.next); head.next.next=head; head.next=null; return last; }   2个注意点：
-🟡 递归函数要有 base case，如果链表为空或者只有⼀个节点的时候，反转结果就是它自己。
-1 2 3  if (head == null || head.next == null) { return head; }   🟢 当链表递归反转之后，新的头结点是 last，而之前的 head 变成了最后⼀个节点，别忘了链表的末尾要指向 null。</div><div class="post-footer">
-        <a href="/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E9%80%92%E5%BD%92%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/labuladong/">labuladong</a>,&nbsp;<a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>,&nbsp;<a href="/tags/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/">反转链表</a>,&nbsp;<a href="/tags/%E9%80%92%E5%BD%92/">递归</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E7%94%B0%E5%BF%8C%E8%B5%9B%E9%A9%AC%E8%83%8C%E5%90%8E%E7%9A%84%E7%AE%97%E6%B3%95%E5%86%B3%E7%AD%96/">【数组链表】田忌赛马背后的算法决策</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-01-08">2023-01-08</time></span>&nbsp;<span class="post-category">included in <a href="/categories/labuladong%E7%9A%84%E7%AE%97%E6%B3%95%E7%A7%98%E7%B1%8D/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>labuladong的算法秘籍</a></span></div><div class="content">题目 力扣 870. 优势洗牌
-给定两个大小相等的数组 nums1 和 nums2，nums1 相对于 nums2 的优势可以用满足 nums1[i] &gt; nums2[i] 的索引 i 的数目来描述。
-返回 nums1 的任意排列，使其相对于 nums2 的优势最大化。
-解析 这道题类似于【田忌赛马】，只不过马的数量变多了，精髓在于【打得过就打，打不过就拿自己的垃圾和对方的精锐互换 】。我们先分析【田忌赛马】，考虑以下 3 点：
-🟡 如果田忌的 1 号选手 &lt; 齐王的 1 号选手，显然应该用田忌垫底的马送人头，降低对方的战斗力。
-🟢 如果田忌的 1 号选手 &lt; 齐王的 1 号选手，则应该直接让两者相比。
-🟠 当出现第二种情况时，即 T1 &gt; Q1 时，要不要节约战斗力，用 T2 对抗 Q1？
-答案是不需要。假设 T2 &gt; Q1，那么不论换不换 T1，T1 和 T2 都能对抗所有的 Q，这种节约毫无意义。
-根据以上思路，我们的策略是：
-将齐王和田忌的马按照战斗力排序，然后按照排名一一对比。如果田忌的马能赢，那就比赛，如果赢不了，那就换个垫底的来送人头，保存实力。
-结合已学过的双指针技巧，代码实现如下：
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34  class Solution { public int[] advantageCount(int[] nums1, int[] nums2) { int n=nums1.</div><div class="post-footer">
-        <a href="/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E7%94%B0%E5%BF%8C%E8%B5%9B%E9%A9%AC%E8%83%8C%E5%90%8E%E7%9A%84%E7%AE%97%E6%B3%95%E5%86%B3%E7%AD%96/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/labuladong/">labuladong</a>,&nbsp;<a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>,&nbsp;<a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">双指针</a>,&nbsp;<a href="/tags/%E6%95%B0%E7%BB%84/">数组</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/">【数组链表】二分查找算法</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-01-07">2023-01-07</time></span>&nbsp;<span class="post-category">included in <a href="/categories/labuladong%E7%9A%84%E7%AE%97%E6%B3%95%E7%A7%98%E7%B1%8D/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>labuladong的算法秘籍</a></span></div><div class="content">二分思维的精髓就是：通过已知信息尽可能多地收缩搜索空间，从而增加穷举效率，快速找到目标。
-1 二分查找框架 1 2 3 4 5 6 7 8 9 10 11 12 13 14  int binarySearch(int[] nums, int target) { int left = 0, right = ...; while(...) { int mid = left + (right - left) / 2; if (nums[mid] == target) { ... } else if (nums[mid] &lt; target) { left = ... } else if (nums[mid] &gt; target) { right = ... } } return .</div><div class="post-footer">
-        <a href="/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/labuladong/">labuladong</a>,&nbsp;<a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>,&nbsp;<a href="/tags/%E4%BA%8C%E5%88%86/">二分</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E7%AE%97%E6%B3%95/">【数组链表】滑动窗口算法</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-01-06">2023-01-06</time></span>&nbsp;<span class="post-category">included in <a href="/categories/labuladong%E7%9A%84%E7%AE%97%E6%B3%95%E7%A7%98%E7%B1%8D/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>labuladong的算法秘籍</a></span></div><div class="content">本文主要记录最难掌握的一类双指针技巧——滑动窗口算法。算法思路很简单，就是维护一个窗口，不断滑动，时间复杂度为 O(N)。大致逻辑如下：
-1 2 3 4 5 6 7 8 9 10 11  int left = 0, right = 0; while (right &lt; s.size()) { // 增⼤窗⼝ 	window.add(s[right]); right++; while (window needs shrink) { // 缩⼩窗⼝ 	window.remove(s[left]); left++; } }   滑动窗口算法的代码框架如下：
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26  /* 滑动窗⼝算法框架 */ void slidingWindow(string s) { unordered_map&lt;char, int&gt; window; int left = 0, right = 0; while (right &lt; s.</div><div class="post-footer">
-        <a href="/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E7%AE%97%E6%B3%95/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/labuladong/">labuladong</a>,&nbsp;<a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>,&nbsp;<a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">双指针</a>,&nbsp;<a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">滑动窗口</a></div></div>
 </article><ul class="pagination"><li class="page-item active">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -244,6 +227,10 @@
                 </li><li class="page-item ">
                     <span class="page-link">
                         <a href="/page/3/">3</a>
+                    </span>
+                </li><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/page/4/">4</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">
