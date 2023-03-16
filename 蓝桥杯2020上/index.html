@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>【蓝桥杯】2020题解(上) - 菜菜的秘密花园</title><meta name="Description" content="菜菜的秘密花园"><meta property="og:title" content="【蓝桥杯】2020题解(上)" />
+<meta property="og:description" content="1 单词分析 题目 请你帮助小蓝，给了一个单词后，帮助他找到出现最多的字母和这 个字母出现的次数。
+输入描述
+输入一行包含一个单词，单词只由小写英文字母组成。
+对于所有的评测用例，输入的单词长度不超过 1000。
+输出描述
+输出两行，第一行包含一个英文字母，表示单词中出现得最多的字母是哪个。如果有多个字母出现的次数相等，输出字典序最小的那个。
+第二行包含一个整数，表示出现得最多的那个字母在单词中出现的次数。
+答题总结 ⏰解题耗时：20min	🎯难度：💡
+ 读取输入的单个字符：while((c=getchar())!=&#39;\n&#39;) 两字符串相减就是整数，不用 (int) 强制类型转换 在 while() 的条件里用 &#43;&#43;，要检查是否会出错  解析 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20  #include &lt;iostream&gt;using namespace std; int main(){ char c;	// 每次读取进来的字符 	int idx=0;	// 记录个数最大的下标 	int a[26]={0};	// 记录每个字符的个数 	while((c=getchar())!=&#39;\n&#39;){ a[c-&#39;a&#39;]&#43;&#43;; } for(int i=1;i&lt;26;i&#43;&#43;){ if(a[i]&gt;a[idx]) idx=i; } printf(&#34;%c\n%d&#34;, &#39;a&#39;&#43;idx, a[idx]); return 0;	// 最好每次加上 }   2 成绩统计 题目 小蓝给学生们组织了一场考试，卷面总分为 100 分，每个学生的得分都是一个 0 到 100 的整数。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2020%E4%B8%8A/" /><meta property="og:image" content="https://imcaicai.github.io/img/avatar.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-03-16T14:30:51&#43;08:00" />
+<meta property="article:modified_time" content="2023-03-16T14:30:51&#43;08:00" /><meta property="og:site_name" content="菜菜的秘密花园" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://imcaicai.github.io/img/avatar.jpg"/>
+
+<meta name="twitter:title" content="【蓝桥杯】2020题解(上)"/>
+<meta name="twitter:description" content="1 单词分析 题目 请你帮助小蓝，给了一个单词后，帮助他找到出现最多的字母和这 个字母出现的次数。
+输入描述
+输入一行包含一个单词，单词只由小写英文字母组成。
+对于所有的评测用例，输入的单词长度不超过 1000。
+输出描述
+输出两行，第一行包含一个英文字母，表示单词中出现得最多的字母是哪个。如果有多个字母出现的次数相等，输出字典序最小的那个。
+第二行包含一个整数，表示出现得最多的那个字母在单词中出现的次数。
+答题总结 ⏰解题耗时：20min	🎯难度：💡
+ 读取输入的单个字符：while((c=getchar())!=&#39;\n&#39;) 两字符串相减就是整数，不用 (int) 强制类型转换 在 while() 的条件里用 &#43;&#43;，要检查是否会出错  解析 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20  #include &lt;iostream&gt;using namespace std; int main(){ char c;	// 每次读取进来的字符 	int idx=0;	// 记录个数最大的下标 	int a[26]={0};	// 记录每个字符的个数 	while((c=getchar())!=&#39;\n&#39;){ a[c-&#39;a&#39;]&#43;&#43;; } for(int i=1;i&lt;26;i&#43;&#43;){ if(a[i]&gt;a[idx]) idx=i; } printf(&#34;%c\n%d&#34;, &#39;a&#39;&#43;idx, a[idx]); return 0;	// 最好每次加上 }   2 成绩统计 题目 小蓝给学生们组织了一场考试，卷面总分为 100 分，每个学生的得分都是一个 0 到 100 的整数。"/>
+<meta name="application-name" content="菜菜的秘密花园">
+<meta name="apple-mobile-web-app-title" content="菜菜的秘密花园"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2020%E4%B8%8A/" /><link rel="prev" href="https://imcaicai.github.io/csp202112/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "【蓝桥杯】2020题解(上)",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/imcaicai.github.io\/%E8%93%9D%E6%A1%A5%E6%9D%AF2020%E4%B8%8A\/"
+        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "蓝桥杯, C\u002b\u002b","wordcount":  453 ,
+        "url": "https:\/\/imcaicai.github.io\/%E8%93%9D%E6%A1%A5%E6%9D%AF2020%E4%B8%8A\/","datePublished": "2023-03-16T14:30:51+08:00","dateModified": "2023-03-16T14:30:51+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/imcaicai.github.io\/img\/avatar.jpg"},"author": {
+                "@type": "Person",
+                "name": "菜菜"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="菜菜的秘密花园"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/avatar.jpg"
+        data-srcset="/img/avatar.jpg, /img/avatar.jpg 1.5x, /img/avatar.jpg 2x"
+        data-sizes="auto"
+        alt="/img/avatar.jpg"
+        title="/img/avatar.jpg" />菜菜的秘密花园</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/categories/documentation/"> Docs </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/Imcaicai" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="Select Language">
+                    <i class="fa fa-globe" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/%E8%93%9D%E6%A1%A5%E6%9D%AF2020%E4%B8%8A/" selected>English</option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="菜菜的秘密花园"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/avatar.jpg"
+        data-srcset="/img/avatar.jpg, /img/avatar.jpg 1.5x, /img/avatar.jpg 2x"
+        data-sizes="auto"
+        alt="/img/avatar.jpg"
+        title="/img/avatar.jpg" />菜菜的秘密花园</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/categories/documentation/" title="">Docs</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/Imcaicai" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="Select Language">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/%E8%93%9D%E6%A1%A5%E6%9D%AF2020%E4%B8%8A/" selected>English</option></select>
+                </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">【蓝桥杯】2020题解(上)</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>蓝桥杯刷题记录</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-16">2023-03-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;453 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;<span id="/%E8%93%9D%E6%A1%A5%E6%9D%AF2020%E4%B8%8A/" class="leancloud_visitors" data-flag-title="【蓝桥杯】2020题解(上)">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-单词分析">1 单词分析</a>
+      <ul>
+        <li><a href="#题目">题目</a></li>
+        <li><a href="#答题总结">答题总结</a></li>
+        <li><a href="#解析">解析</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-成绩统计">2 成绩统计</a>
+      <ul>
+        <li><a href="#题目-1">题目</a></li>
+        <li><a href="#答题总结-1">答题总结</a></li>
+        <li><a href="#解析-1">解析</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-门牌制作">3 门牌制作</a>
+      <ul>
+        <li><a href="#题目-2">题目</a></li>
+        <li><a href="#答题总结-2">答题总结</a></li>
+        <li><a href="#解析-2">解析</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-成绩分析">4 成绩分析</a>
+      <ul>
+        <li><a href="#题目-3">题目</a></li>
+        <li><a href="#答题总结-3">答题总结</a></li>
+        <li><a href="#解析-3">解析</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-排序">5 排序</a>
+      <ul>
+        <li><a href="#题目-4">题目</a></li>
+        <li><a href="#答题情况">答题情况</a></li>
+        <li><a href="#解析-4">解析</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="1-单词分析">1 单词分析</h2>
+<h3 id="题目">题目</h3>
+<p>请你帮助小蓝，给了一个单词后，帮助他找到出现最多的字母和这 个字母出现的次数。</p>
+<p><strong>输入描述</strong></p>
+<p>输入一行包含一个单词，单词只由小写英文字母组成。</p>
+<p>对于所有的评测用例，输入的单词长度不超过 1000。</p>
+<p><strong>输出描述</strong></p>
+<p>输出两行，第一行包含一个英文字母，表示单词中出现得最多的字母是哪个。如果有多个字母出现的次数相等，输出字典序最小的那个。</p>
+<p>第二行包含一个整数，表示出现得最多的那个字母在单词中出现的次数。</p>
+<h3 id="答题总结">答题总结</h3>
+<p>⏰解题耗时：20min	🎯难度：💡</p>
+<ul>
+<li>读取输入的单个字符：while((c=getchar())!='\n')</li>
+<li>两字符串相减就是整数，不用 (int) 强制类型转换</li>
+<li>在 while() 的条件里用 <code>++</code>，要检查是否会出错</li>
+</ul>
+<h3 id="解析">解析</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+ 
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+	
+	<span class="kt">char</span> <span class="n">c</span><span class="p">;</span>	<span class="c1">// 每次读取进来的字符 
+</span><span class="c1"></span>	<span class="kt">int</span> <span class="n">idx</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>	<span class="c1">// 记录个数最大的下标 
+</span><span class="c1"></span>	<span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="mi">26</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>	<span class="c1">// 记录每个字符的个数 
+</span><span class="c1"></span>	<span class="k">while</span><span class="p">((</span><span class="n">c</span><span class="o">=</span><span class="n">getchar</span><span class="p">())</span><span class="o">!=</span><span class="sc">&#39;\n&#39;</span><span class="p">){</span>
+		<span class="n">a</span><span class="p">[</span><span class="n">c</span><span class="o">-</span><span class="sc">&#39;a&#39;</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+	<span class="p">}</span>
+	
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">26</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">&gt;</span><span class="n">a</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+			<span class="n">idx</span><span class="o">=</span><span class="n">i</span><span class="p">;</span>
+	<span class="p">}</span>
+	
+	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;%c</span><span class="se">\n</span><span class="s">%d&#34;</span><span class="p">,</span> <span class="sc">&#39;a&#39;</span><span class="o">+</span><span class="n">idx</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="n">idx</span><span class="p">]);</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>	<span class="c1">// 最好每次加上 
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="2-成绩统计">2 成绩统计</h2>
+<h3 id="题目-1">题目</h3>
+<p>小蓝给学生们组织了一场考试，卷面总分为 100 分，每个学生的得分都是一个 0 到 100 的整数。</p>
+<p>如果得分至少是 60 分，则称为及格。如果得分至少为 85 分，则称为优秀。</p>
+<p>请计算及格率和优秀率，用百分数表示，百分号前的部分四舍五入保留整 数。</p>
+<p><strong>输入描述</strong></p>
+<p>输入的第一行包含一个整数 n (1≤n≤$10^4$) ，表示考试人数。</p>
+<p>接下来 n 行，每行包含一个 0 至 100 的整数，表示一个学生的得分。</p>
+<p><strong>输出描述</strong></p>
+<p>输出两行，每行一个百分数，分别表示及格率和优秀率。百分号前的部分 四舍五入保留整数。</p>
+<h3 id="答题总结-1">答题总结</h3>
+<p>⏰解题耗时：20min	🎯难度：💡</p>
+<ul>
+<li>注意 double d 四舍五入的写法：<code>int i = d + 0.5</code></li>
+</ul>
+<h3 id="解析-1">解析</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+ 
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+	
+	<span class="kt">int</span> <span class="n">n</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+	<span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">n</span><span class="p">);</span> 
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+		<span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">s</span><span class="p">);</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">s</span><span class="o">&gt;=</span><span class="mi">85</span><span class="p">)</span>
+			<span class="n">y</span><span class="o">++</span><span class="p">,</span><span class="n">j</span><span class="o">++</span><span class="p">;</span>
+		<span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">s</span><span class="o">&gt;=</span><span class="mi">60</span><span class="p">)</span>
+			<span class="n">j</span><span class="o">++</span><span class="p">;</span>
+	<span class="p">}</span>
+	
+	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d%</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,(</span><span class="kt">int</span><span class="p">)((</span><span class="kt">double</span><span class="p">)</span><span class="n">j</span><span class="o">/</span><span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="n">n</span><span class="o">*</span><span class="mi">100</span><span class="o">+</span><span class="mf">0.5</span><span class="p">));</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d%</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,(</span><span class="kt">int</span><span class="p">)((</span><span class="kt">double</span><span class="p">)</span><span class="n">y</span><span class="o">/</span><span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="n">n</span><span class="o">*</span><span class="mi">100</span><span class="o">+</span><span class="mf">0.5</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="3-门牌制作">3 门牌制作</h2>
+<h3 id="题目-2">题目</h3>
+<p>小蓝要为一条街的住户制作门牌号。</p>
+<p>这条街一共有 20202020 位住户，门牌号从 11 到 20202020 编号。</p>
+<p>小蓝制作门牌的方法是先制作 00 到 99 这几个数字字符，最后根据需要将字符粘贴到门牌上，例如门牌 1017 需要依次粘贴字符 1、0、1、71、0、1、7，即需要 11 个字符 00，22 个字符 11，11 个字符 77。</p>
+<p>请问要制作所有的 11 到 20202020 号门牌，总共需要多少个字符 22？</p>
+<h3 id="答题总结-2">答题总结</h3>
+<p>⏰解题耗时：20min	🎯难度：💡</p>
+<ul>
+<li>注意从获得一个数各个位上的数字的做法：先 &lsquo;/&rsquo; 再 &lsquo;%&rsquo;</li>
+</ul>
+<h3 id="解析-2">解析</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+ 
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+
+	<span class="kt">int</span> <span class="n">s</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="mi">2020</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">%</span><span class="mi">10</span><span class="o">==</span><span class="mi">2</span><span class="p">)</span> <span class="n">s</span><span class="o">++</span><span class="p">;</span>  <span class="c1">// 个位为2
+</span><span class="c1"></span>    <span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">/</span><span class="mi">10</span><span class="o">%</span><span class="mi">10</span><span class="o">==</span><span class="mi">2</span><span class="p">)</span>  <span class="n">s</span><span class="o">++</span><span class="p">;</span>  <span class="c1">// 十位为2
+</span><span class="c1"></span>    <span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">/</span><span class="mi">100</span><span class="o">%</span><span class="mi">10</span><span class="o">==</span><span class="mi">2</span><span class="p">)</span> <span class="n">s</span><span class="o">++</span><span class="p">;</span>  <span class="c1">// 百位为2
+</span><span class="c1"></span>    <span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">/</span><span class="mi">1000</span><span class="o">==</span><span class="mi">2</span><span class="p">)</span> <span class="n">s</span><span class="o">++</span><span class="p">;</span>  <span class="c1">// 千位为2
+</span><span class="c1"></span>	<span class="p">}</span>
+	
+	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span><span class="n">s</span><span class="p">);</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="4-成绩分析">4 成绩分析</h2>
+<h3 id="题目-3">题目</h3>
+<p>小蓝给学生们组织了一场考试，卷面总分为 100 分，每个学生的得分都是一个 0 到 100 的整数。</p>
+<p>请计算这次考试的最高分、最低分和平均分。</p>
+<p><strong>输入描述</strong></p>
+<p>输入的第一行包含一个整数 n (1≤n≤$10^4$) ，表示考试人数。</p>
+<p>接下来 n 行，每行包含一个 0 至 100 的整数，表示一个学生的得分。</p>
+<p><strong>输出描述</strong></p>
+<p>输出三行。</p>
+<p>第一行包含一个整数，表示最高分。</p>
+<p>第二行包含一个整数，表示最低分。</p>
+<p>第三行包含一个实数，四舍五入保留正好两位小数，表示平均分。</p>
+<h3 id="答题总结-3">答题总结</h3>
+<p>⏰解题耗时：6min	🎯难度：💡</p>
+<h3 id="解析-3">解析</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+ 
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+
+	<span class="kt">int</span> <span class="n">max</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">min</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">sum</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">s</span><span class="p">;</span>
+	<span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+		<span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">s</span><span class="p">);</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">s</span><span class="o">&gt;</span><span class="n">max</span><span class="p">)</span>	<span class="n">max</span><span class="o">=</span><span class="n">s</span><span class="p">;</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">s</span><span class="o">&lt;</span><span class="n">min</span><span class="p">)</span>	<span class="n">min</span><span class="o">=</span><span class="n">s</span><span class="p">;</span>
+		<span class="n">sum</span><span class="o">+=</span><span class="n">s</span><span class="p">;</span>
+	<span class="p">}</span>
+	
+	<span class="kt">double</span> <span class="n">avg</span><span class="o">=</span><span class="p">(</span><span class="kt">int</span><span class="p">)(</span><span class="n">sum</span><span class="o">*</span><span class="mf">100.0</span><span class="o">/</span><span class="n">n</span><span class="o">+</span><span class="mf">0.5</span><span class="p">);</span>
+	<span class="n">avg</span><span class="o">/=</span><span class="mi">100</span><span class="p">;</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d</span><span class="se">\n</span><span class="s">%d</span><span class="se">\n</span><span class="s">%.2f&#34;</span><span class="p">,</span><span class="n">max</span><span class="p">,</span><span class="n">min</span><span class="p">,</span><span class="n">avg</span><span class="p">);</span>
+	
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="5-排序">5 排序</h2>
+<h3 id="题目-4">题目</h3>
+<p>小蓝发现，如果对一个字符串中的字符排序，只允许交换相邻的两个字符， 则在所有可能的排序方案中，冒泡排序的总交换次数是最少的。</p>
+<p>例如，对于字符串 lan 排序，只需要 11 次交换。对于字符串 qiao 排序，总共需要 44 次交换。</p>
+<p>小蓝找到了很多字符串试图排序，他恰巧碰到一个字符串，需要 100 次交 换，可是他忘了把这个字符串记下来，现在找不到了。</p>
+<p>请帮助小蓝找一个只包含小写英文字母且没有字母重复出现的字符串，对 该串的字符排序，正好需要 100 次交换。如果可能找到多个，请告诉小蓝最短的那个。如果最短的仍然有多个，请告诉小蓝字典序最小的那个。</p>
+<h3 id="答题情况">答题情况</h3>
+<p>⏰解题耗时：30min	🎯难度：💡💡</p>
+<ul>
+<li>需要熟练掌握【冒泡排序】</li>
+</ul>
+<h3 id="解析-4">解析</h3>
+<p>首先需要回顾一下冒泡排序的基本内容。</p>
+<p>🎨 <strong>冒泡排序流程</strong></p>
+<p>① 比较相邻的元素。如果第一个比第二个大，就交换他们两个。</p>
+<p>② 对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。这步做完后，最后的元素会是最大的数。</p>
+<p>③ 针对所有的元素重复以上的步骤，除了最后已经选出的元素（有序）。</p>
+<p>💦 <strong>冒泡排序代码</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">void</span> <span class="nf">bubble_sort</span><span class="p">(</span><span class="kt">int</span> <span class="n">arr</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">len</span><span class="p">)</span> <span class="p">{</span>
+	<span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">;</span>
+	<span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+		<span class="k">for</span> <span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">len</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">i</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+			<span class="k">if</span> <span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>
+				<span class="n">swap</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]);</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>当拥有 n 个字符的字符串完全倒序时，交换次数最多，需要交换 n(n-1)/2 次。</p>
+<p>而题目中需要交换 100 次，因此字符串长度至少为15。此时 15*14/2 = 105，最多交换 105 次，字符串为 &ldquo;onmlkjihgfedcba&rdquo; 。而结果字符串的字典顺序要小，因此把 j 提到最前面，交换次数减为 100，且此时字典顺序最小。</p>
+<p>最终答案代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="c1">// 请在此输入您的代码
+</span><span class="c1"></span>  <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&#34;jonmlkihgfedcba&#34;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-03-16</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/%E8%93%9D%E6%A1%A5%E6%9D%AF2020%E4%B8%8A/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2020%E4%B8%8A/" data-title="【蓝桥杯】2020题解(上)" data-hashtags="蓝桥杯,C&#43;&#43;"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2020%E4%B8%8A/" data-hashtag="蓝桥杯"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2020%E4%B8%8A/" data-title="【蓝桥杯】2020题解(上)"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2020%E4%B8%8A/" data-title="【蓝桥杯】2020题解(上)"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2020%E4%B8%8A/" data-title="【蓝桥杯】2020题解(上)"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/">蓝桥杯</a>,&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/csp202112/" class="prev" rel="prev" title="【CSP】202112题解"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>【CSP】202112题解</a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">菜菜</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

@@ -3,7 +3,15 @@
         <title>CSP刷题记录 - Category - 菜菜的秘密花园</title>
         <link>https://imcaicai.github.io/categories/csp%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</link>
         <description>CSP刷题记录 - Category - 菜菜的秘密花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 14 Mar 2023 17:15:20 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/categories/csp%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 15 Mar 2023 14:45:33 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/categories/csp%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/" rel="self" type="application/rss+xml" /><item>
+    <title>【CSP】202112题解</title>
+    <link>https://imcaicai.github.io/csp202112/</link>
+    <pubDate>Wed, 15 Mar 2023 14:45:33 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/csp202112/</guid>
+    <description><![CDATA[1 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39  // 需要用 CPP11 或 CPP14 // #include&lt;bits/stdc++.h&gt; #include &lt;iostream&gt;using namespace std; int main(){ // 输入 n，m 	int n,m; scanf(&#34;%d %d&#34;,&amp;n,&amp;m); // 输入数列 	int a[n+1]={0}; for(int i=1;i&lt;=n;i++){ scanf(&#34;%d&#34;,&amp;a[i]); } // 计算 	int sum=0; int t=0; for(int i=1;i&lt;m;i++){ if(i&gt;=a[n]){ sum=sum+(m-i)*n; break; } for(int j=t+1;j&lt;=n;j++){ if(a[j]&gt;i){ t=j-1; sum=sum+t; break; } } } printf(&#34;%d&#34;, sum); }   2 错误的：]]></description>
+</item>
+<item>
     <title>【CSP】202203题解</title>
     <link>https://imcaicai.github.io/csp202203/</link>
     <pubDate>Tue, 14 Mar 2023 17:15:20 &#43;0800</pubDate>

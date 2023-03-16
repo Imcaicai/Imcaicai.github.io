@@ -118,6 +118,24 @@
         alt="/img/avatar.jpg"
         title="/img/avatar.jpg" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/%E8%93%9D%E6%A1%A5%E6%9D%AF2020%E4%B8%8A/">【蓝桥杯】2020题解(上)</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-03-16">2023-03-16</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>蓝桥杯刷题记录</a></span></div><div class="content">1 单词分析 题目 请你帮助小蓝，给了一个单词后，帮助他找到出现最多的字母和这 个字母出现的次数。
+输入描述
+输入一行包含一个单词，单词只由小写英文字母组成。
+对于所有的评测用例，输入的单词长度不超过 1000。
+输出描述
+输出两行，第一行包含一个英文字母，表示单词中出现得最多的字母是哪个。如果有多个字母出现的次数相等，输出字典序最小的那个。
+第二行包含一个整数，表示出现得最多的那个字母在单词中出现的次数。
+答题总结 ⏰解题耗时：20min	🎯难度：💡
+ 读取输入的单个字符：while((c=getchar())!='\n') 两字符串相减就是整数，不用 (int) 强制类型转换 在 while() 的条件里用 ++，要检查是否会出错  解析 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20  #include &lt;iostream&gt;using namespace std; int main(){ char c;	// 每次读取进来的字符 	int idx=0;	// 记录个数最大的下标 	int a[26]={0};	// 记录每个字符的个数 	while((c=getchar())!=&#39;\n&#39;){ a[c-&#39;a&#39;]++; } for(int i=1;i&lt;26;i++){ if(a[i]&gt;a[idx]) idx=i; } printf(&#34;%c\n%d&#34;, &#39;a&#39;+idx, a[idx]); return 0;	// 最好每次加上 }   2 成绩统计 题目 小蓝给学生们组织了一场考试，卷面总分为 100 分，每个学生的得分都是一个 0 到 100 的整数。</div><div class="post-footer">
+        <a href="/%E8%93%9D%E6%A1%A5%E6%9D%AF2020%E4%B8%8A/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/">蓝桥杯</a>,&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/csp202112/">【CSP】202112题解</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-03-15">2023-03-15</time></span>&nbsp;<span class="post-category">included in <a href="/categories/csp%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CSP刷题记录</a></span></div><div class="content">1 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39  // 需要用 CPP11 或 CPP14 // #include&lt;bits/stdc++.h&gt; #include &lt;iostream&gt;using namespace std; int main(){ // 输入 n，m 	int n,m; scanf(&#34;%d %d&#34;,&amp;n,&amp;m); // 输入数列 	int a[n+1]={0}; for(int i=1;i&lt;=n;i++){ scanf(&#34;%d&#34;,&amp;a[i]); } // 计算 	int sum=0; int t=0; for(int i=1;i&lt;m;i++){ if(i&gt;=a[n]){ sum=sum+(m-i)*n; break; } for(int j=t+1;j&lt;=n;j++){ if(a[j]&gt;i){ t=j-1; sum=sum+t; break; } } } printf(&#34;%d&#34;, sum); }   2 错误的：</div><div class="post-footer">
+        <a href="/csp202112/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/csp/">CSP</a>,&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/csp202203/">【CSP】202203题解</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-03-14">2023-03-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/csp%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CSP刷题记录</a></span></div><div class="content">1 错误的：
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38  #include &lt;iostream&gt;#include &lt;cmath&gt;// #define _USE_MATH_DEFINES  using namespace std; int main() { // 输入变量个数 n，语句个数 k 	int n,k; scanf(&#34;%d&#34;,&amp;n); scanf(&#34;%d&#34;,&amp;k); // 输入语句 	int x[n+1]={0},y[n+1]={0},a[n+1]={0}; for(int i=1;i&lt;=k;i++){ scanf(&#34;%d&#34;,&amp;x[i]); scanf(&#34;%d&#34;,&amp;y[i]); } for(int i=1;i&lt;=k;i++){ if(a[x[i]]==0){ a[x[i]]=i; } } // 记录不符合的语句个数 	int cnt=0; for(int i=1;i&lt;=k;i++){ if(y[i]!</div><div class="post-footer">
@@ -196,26 +214,6 @@
 1 2 3 4 5 6  class Queue{ // enqueue 操作，在队尾加⼊元素 n 	void push(int n); // dequeue 操作，删除队头元素 	void pop(); }   🟨 【单调队列】的 API：</div><div class="post-footer">
         <a href="/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97%E8%A7%A3%E5%86%B3%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E9%97%AE%E9%A2%98/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/labuladong/">labuladong</a>,&nbsp;<a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>,&nbsp;<a href="/tags/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88/">队列和栈</a>,&nbsp;<a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">滑动窗口</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E5%8D%95%E8%B0%83%E6%A0%88%E8%A7%A3%E5%86%B3%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0/">【队列和栈】单调栈解决下一个更大元素</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-01-14">2023-01-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/labuladong%E7%9A%84%E7%AE%97%E6%B3%95%E7%A7%98%E7%B1%8D/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>labuladong的算法秘籍</a></span></div><div class="content">1 单调栈模板 题目 输入一个数组 nums，请你返回⼀个等长的结果数组，结果数组中对应索引存储着下一个更大元素，如果没有更大的元素，就存 -1。
-解析 🔴 把数组的元素想象成并列站立的人，元素大小想象成人的身高。这些人面对你站成一列。如果能够看到元素「2」，那么他后面可见的第一个人就是「2」的下⼀个更大元素，因为比「2」小的元素身高不够，都被「2」挡住了，第一个露出来的就是答案。
-🟡 for 循环要从后往前扫描元素，因为我们借助的是栈的结构，倒着入栈，其实是正着出栈。
-🟢 while 循环是把两个「高个子」元素之间的元素排除，因为他们的存在没有意义，前面挡着个「更高」的元素，所以他们不可能被作为后续进来的元素的下一个更大元素了。
-🔵 这个算法的复杂度只有 O(n)。 总共有 n 个元素，每个元素都被 push 入栈了一次，而最多会被 pop一次，没有任何冗余操作。
-图解：
-代码实现：
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18  int[] nextGreaterElement(int[] nums) { int n = nums.length; // 存放答案的数组 	int[] res = new int[n]; Stack&lt;Integer&gt; s = new Stack&lt;&gt;(); // 倒着往栈⾥放 	for (int i = n - 1; i &gt;= 0; i--) { // 判定个⼦⾼矮 	while (!</div><div class="post-footer">
-        <a href="/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E5%8D%95%E8%B0%83%E6%A0%88%E8%A7%A3%E5%86%B3%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/labuladong/">labuladong</a>,&nbsp;<a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>,&nbsp;<a href="/tags/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88/">队列和栈</a>,&nbsp;<a href="/tags/%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0/">下一个更大元素</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E8%AF%A6%E8%A7%A33%E9%81%93%E6%8B%AC%E5%8F%B7%E9%A2%98/">【队列和栈】详解3道括号题</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-01-12">2023-01-12</time></span>&nbsp;<span class="post-category">included in <a href="/categories/labuladong%E7%9A%84%E7%AE%97%E6%B3%95%E7%A7%98%E7%B1%8D/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>labuladong的算法秘籍</a></span></div><div class="content">1.1 判断有效括号串 题目 给定一个只包括 '('，')' 的字符串 s ，判断字符串是否有效。即每个右括号 ')' 的左边必须有⼀个左括号 '(' 和它匹配。
-解析 用一个变量 left 记录 '(' 相对于 ')' 的数量，遇到 '(' 就 +1，遇到 ')' 就 -1。如果最后 left==0，则括号串有效，否则无效。并且，如果中间出现 left 数量为负，则说明有 ')' 出现在 '(' 之前，也为无效。
-代码实现：
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17  bool isValid(string str) { // 待匹配的左括号数量 	int left = 0; for (int i = 0; i &lt; str.</div><div class="post-footer">
-        <a href="/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E8%AF%A6%E8%A7%A33%E9%81%93%E6%8B%AC%E5%8F%B7%E9%A2%98/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/labuladong/">labuladong</a>,&nbsp;<a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>,&nbsp;<a href="/tags/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88/">队列和栈</a>,&nbsp;<a href="/tags/%E6%8B%AC%E5%8F%B7%E9%A2%98/">括号题</a></div></div>
 </article><ul class="pagination"><li class="page-item active">
                     <span class="page-link">
                         <a href="/">1</a>
