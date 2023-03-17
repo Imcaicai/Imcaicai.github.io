@@ -118,6 +118,43 @@
         alt="/img/avatar.jpg"
         title="/img/avatar.jpg" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/%E8%93%9D%E6%A1%A5%E6%9D%AF2020%E4%B8%8B/">【蓝桥杯】2020题解(下)</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-03-17">2023-03-17</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>蓝桥杯刷题记录</a></span></div><div class="content">6 跑步锻炼 题目 小蓝每天都锻炼身体。
+正常情况下，小蓝每天跑 1 千米。如果某天是周一或者月初（1 日），为了激励自己，小蓝要跑 2 千米。如果同时是周一或月初，小蓝也是跑 2 千米。
+小蓝跑步已经坚持了很长时间，从 2000 年 1 月 1 日周六（含）到 2020 年 10 月 1 日周四（含）。请问这段时间小蓝总共跑步多少千米？
+答题总结 ⏰解题耗时：30min	🎯难度：💡
+ 大小月记不清。大月：1、3、5、7、8、10、12 闰年的判断方法：year%4==0 &amp;&amp; year%100!=0) || year%400==0 注意闰年的2月是29天，不是28天！（因为这个调了好久 bug 💥💢）  解析 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49  #include &lt;iostream&gt;using namespace std; // 判断是否是闰年，是则返回 true，否则返回 false bool isRun(int year){ if((year%4==0 &amp;&amp; year%100!</div><div class="post-footer">
+        <a href="/%E8%93%9D%E6%A1%A5%E6%9D%AF2020%E4%B8%8B/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/">蓝桥杯</a>,&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%AE%A1%E7%AE%97%E5%99%A8/">【数据结构设计】实现一个计算器</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-03-16">2023-03-16</time></span>&nbsp;<span class="post-category">included in <a href="/categories/labuladong%E7%9A%84%E7%AE%97%E6%B3%95%E7%A7%98%E7%B1%8D/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>labuladong的算法秘籍</a></span></div><div class="content"></div><div class="post-footer">
+        <a href="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%AE%A1%E7%AE%97%E5%99%A8/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/labuladong/">labuladong</a>,&nbsp;<a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/stlvector%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/">【STL】vector容器用法</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-03-16">2023-03-16</time></span>&nbsp;<span class="post-category">included in <a href="/categories/c++/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>C++</a></span></div><div class="content">1 简介 🟠 vector 容器实现的是一个动态数组，即可以进行元素的插入和删除，并动态调整所占用的内存空间，整个过程无需人工干预。
+🟡 在尾部插入/删除元素时，时间复杂度为O(1)；在头部或者中部插入/删除元素时，时间复杂度为O(n)。
+🔵 使用需加上头文件：#include &lt;vector&gt;
+2 创建vector容器 1️⃣ 调用 vector 容器类的默认构造函数。（若默认指定了 std 命令空间，则 std:: 可省略）
+1  std::vector&lt;int&gt; v1;   2️⃣ 在创建 vector 容器的同时，进行初始化。
+1  std::vector&lt;int&gt; v1 {2, 3, 5, 7, 11, 13, 17, 19};   3️⃣ 在创建 vector 容器时，指定元素个数。
+v1 容器开始时就有 20 个元素，它们的默认初始值都为 0。圆括号中的2个参数既可以是常量，也可以是变量。
+1  std::vector&lt;int&gt; v1(20, 0);   4️⃣ 通过迭代器，取已建 vector 容器中指定区域内的键值对，创建并初始化新的 vector 容器。
+1 2 3 4  int array[]={1,2,3}; std::vector&lt;int&gt;v1 (array, array+2);	//v1 将保存{1,2} std::vector&lt;int&gt;v1 {1,2,3,4,5}; std::vector&lt;int&gt;v2 (std::begin(v1),std::begin(v1)+3);	//v2保存{1,2,3}   3 常用的成员方法    成员方法 功能     begin() 返回指向容器中第一个元素的迭代器。   end() 返回指向容器最后一个元素所在位置后一个位置的迭代器，通常和 begin() 结合使用。   size() 返回实际元素个数。   capacity() 返回当前容量。   empty() 判断容器中是否有元素，若无元素，则返回 true；反之，返回 false。   reserve() 增加容器的容量。   front() 返回第一个元素的引用。   back() 返回最后一个元素的引用。   push_back() 在序列的尾部添加一个元素。   pop_back() 移出序列尾部的元素。   insert() 在指定的位置插入一个或多个元素。   erase() 移出一个元素或一段元素。   clear() 移出所有的元素，容器大小变为 0。   swap() 交换两个容器的所有元素。   emplace() 在指定的位置直接生成一个元素。    </div><div class="post-footer">
+        <a href="/stlvector%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>,&nbsp;<a href="/tags/stl/">STL</a>,&nbsp;<a href="/tags/vector/">vector</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%B8%B8%E6%95%B0%E6%97%B6%E9%97%B4%E6%9F%A5%E6%89%BE%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0/">【数据结构设计】常数时间查找数组元素</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-03-16">2023-03-16</time></span>&nbsp;<span class="post-category">included in <a href="/categories/labuladong%E7%9A%84%E7%AE%97%E6%B3%95%E7%A7%98%E7%B1%8D/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>labuladong的算法秘籍</a></span></div><div class="content">1 题目 力扣 146. LRU 缓存
+请你设计并实现一个满足 LRU (最近最少使用) 缓存 约束的数据结构。
+实现 LRUCache 类：
+ LRUCache(int capacity) 以 正整数 作为容量 capacity 初始化 LRU 缓存 int get(int key) 如果关键字 key 存在于缓存中，则返回关键字的值，否则返回 -1 。 void put(int key, int value) 如果关键字 key 已经存在，则变更其数据值 value ；如果不存在，则向缓存中插入该组 key-value 。如果插入操作导致关键字数量超过 capacity ，则应该 逐出 最久未使用的关键字。  函数 get 和 put 必须以 O(1) 的平均时间复杂度运行。
+2 解析 2.1 LRU算法设计 由于 put 和 get 方法的时间复杂度为 O(1)，我们可以总结出 cache 这个数据结构必要的条件：
+ 🔴 cache 中的元素必须有时序，以区分最近使用的和久未使用的数据</div><div class="post-footer">
+        <a href="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%B8%B8%E6%95%B0%E6%97%B6%E9%97%B4%E6%9F%A5%E6%89%BE%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/labuladong/">labuladong</a>,&nbsp;<a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/%E8%93%9D%E6%A1%A5%E6%9D%AF2020%E4%B8%8A/">【蓝桥杯】2020题解(上)</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-03-16">2023-03-16</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>蓝桥杯刷题记录</a></span></div><div class="content">1 单词分析 题目 请你帮助小蓝，给了一个单词后，帮助他找到出现最多的字母和这 个字母出现的次数。
 输入描述
@@ -180,40 +217,6 @@
 1 2 3 4 5 6 7 8 9 10 11 12 13  // 第 1 种初始化方式 set&lt;int&gt; set1; set1.insert(1); set1.insert(2); set1.insert(3); // 第 2 种初始化方式 // 注意这里没有 &#39;=&#39; set&lt;int&gt; set2 {1,2,3}; // 第 3 种初始化方式 int num[] = {1,2,3}; set&lt;int&gt; set3(num, num+3);   3 增/删元素 std::set 若要新增、刪除元素，可以使用 insert() 和 erase() 函数。</div><div class="post-footer">
         <a href="/stlset%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>,&nbsp;<a href="/tags/stl/">STL</a>,&nbsp;<a href="/tags/set/">set</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/">操作系统知识总结</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-02-10">2023-02-10</time></span>&nbsp;<span class="post-category">included in <a href="/categories/os/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>OS</a></span></div><div class="content">1 绪论 2 OS的结构和硬件支持 3 操作系统的用户接口 4 进程及进程管理 5 资源分配与调度 6 处理机调度 7 主存管理 8 设备管理 9 文件系统 </div><div class="post-footer">
-        <a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/os/">OS</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/">数据库原理知识总结</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-02-06">2023-02-06</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>数据库</a></span></div><div class="content">1 绪论 2 关系数据库 3 SQL语言 4 数据库安全性 5 数据库完整性 6 关系数据理论 7 数据库设计 8 关系数据库引擎基础 9 关系数据库查询优化 10 数据库恢复技术 11 并发控制 </div><div class="post-footer">
-        <a href="/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1lru%E7%AE%97%E6%B3%95/">【数据结构设计】LRU算法</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-01-17">2023-01-17</time></span>&nbsp;<span class="post-category">included in <a href="/categories/labuladong%E7%9A%84%E7%AE%97%E6%B3%95%E7%A7%98%E7%B1%8D/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>labuladong的算法秘籍</a></span></div><div class="content">1 题目 力扣 146. LRU 缓存
-请你设计并实现一个满足 LRU (最近最少使用) 缓存 约束的数据结构。
-实现 LRUCache 类：
- LRUCache(int capacity) 以 正整数 作为容量 capacity 初始化 LRU 缓存 int get(int key) 如果关键字 key 存在于缓存中，则返回关键字的值，否则返回 -1 。 void put(int key, int value) 如果关键字 key 已经存在，则变更其数据值 value ；如果不存在，则向缓存中插入该组 key-value 。如果插入操作导致关键字数量超过 capacity ，则应该 逐出 最久未使用的关键字。  函数 get 和 put 必须以 O(1) 的平均时间复杂度运行。
-2 解析 2.1 LRU算法设计 由于 put 和 get 方法的时间复杂度为 O(1)，我们可以总结出 cache 这个数据结构必要的条件：
- 🔴 cache 中的元素必须有时序，以区分最近使用的和久未使用的数据</div><div class="post-footer">
-        <a href="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1lru%E7%AE%97%E6%B3%95/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/labuladong/">labuladong</a>,&nbsp;<a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>,&nbsp;<a href="/tags/lru/">LRU</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97%E8%A7%A3%E5%86%B3%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E9%97%AE%E9%A2%98/">【队列和栈】单调队列解决滑动窗口问题</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-01-15">2023-01-15</time></span>&nbsp;<span class="post-category">included in <a href="/categories/labuladong%E7%9A%84%E7%AE%97%E6%B3%95%E7%A7%98%E7%B1%8D/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>labuladong的算法秘籍</a></span></div><div class="content">【单调队列】主要是为了解决以下场景：
- 给你一个数组 window，已知其最值为 A，如果给 window 中添加⼀个数 B，那么比较一下 A 和 B 就可以立即算出新的最值；但如果要从 window 数组中减少一个数，就不能直接得到最值了，因为如果减少的这个数恰好是 A，就需要遍历 window 中的所有元素重新寻找新的最值。
- 可以使用 优先级队列 来动态寻找最值，通过创建一个大（小）顶堆，可以很快拿到最大（小）值。
-但优先级队列无法满足标准队列结构【先进先出】的时间顺序，因为优先级队列底层利用二叉堆对元素进行动态排序，元素的出队顺序是元素的大小顺序，和入队的先后顺序完全没有关系。
-而【单调队列】结构，既能够维护队列元素【先进先出】的时间顺序，又能够正确维护队列中所有元素的最值。
-1 题目 力扣 239. 滑动窗口最大值
-给你一个整数数组 nums，有一个大小为 k 的滑动窗口从数组的最左侧移动到数组的最右侧。你只可以看到在滑动窗口内的 k 个数字。滑动窗口每次只向右移动一位。
-返回 滑动窗口中的最大值 。
-2 解析 2.1 搭建解题框架 🟧 普通队列的标准 API：
-1 2 3 4 5 6  class Queue{ // enqueue 操作，在队尾加⼊元素 n 	void push(int n); // dequeue 操作，删除队头元素 	void pop(); }   🟨 【单调队列】的 API：</div><div class="post-footer">
-        <a href="/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97%E8%A7%A3%E5%86%B3%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E9%97%AE%E9%A2%98/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/labuladong/">labuladong</a>,&nbsp;<a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>,&nbsp;<a href="/tags/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88/">队列和栈</a>,&nbsp;<a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">滑动窗口</a></div></div>
 </article><ul class="pagination"><li class="page-item active">
                     <span class="page-link">
                         <a href="/">1</a>

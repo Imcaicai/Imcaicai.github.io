@@ -52,8 +52,15 @@ std::map<std::string, int> newMap(++map1.begin(), map1.end());
 | clear()    | 清空 map 容器中所有的键值对，即使 map 容器的 size() 为 0。   |
 | emplace()  | 在当前 map 容器中的指定位置处构造新键值对。其效果和插入键值对一样，但效率更高。 |
 | count(key) | 在当前 map 容器中，查找键为 key 的键值对的个数并返回。注意，由于 map 容器中各键值对的键的值是唯一的，因此该函数的返回值最大为 1。 |
+| count(key) | 在容器中查找以 key 键的键值对的个数。                        |
 
+## 4 其他容器
 
+### unordered_map 容器
+
+🟠 该容器内部不会自行对存储的键值对进行排序，其余用法和 map 类似。
+
+🟡 使用需加上头文件： `#include <unordered_map>`
 
 
 

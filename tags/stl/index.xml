@@ -3,7 +3,23 @@
         <title>STL - Tag - 菜菜的秘密花园</title>
         <link>https://imcaicai.github.io/tags/stl/</link>
         <description>STL - Tag - 菜菜的秘密花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 14 Mar 2023 15:56:24 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/tags/stl/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 16 Mar 2023 20:09:14 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/tags/stl/" rel="self" type="application/rss+xml" /><item>
+    <title>【STL】vector容器用法</title>
+    <link>https://imcaicai.github.io/stlvector%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/</link>
+    <pubDate>Thu, 16 Mar 2023 20:09:14 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/stlvector%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/</guid>
+    <description><![CDATA[1 简介 🟠 vector 容器实现的是一个动态数组，即可以进行元素的插入和删除，并动态调整所占用的内存空间，整个过程无需人工干预。
+🟡 在尾部插入/删除元素时，时间复杂度为O(1)；在头部或者中部插入/删除元素时，时间复杂度为O(n)。
+🔵 使用需加上头文件：#include &lt;vector&gt;
+2 创建vector容器 1️⃣ 调用 vector 容器类的默认构造函数。（若默认指定了 std 命令空间，则 std:: 可省略）
+1  std::vector&lt;int&gt; v1;   2️⃣ 在创建 vector 容器的同时，进行初始化。
+1  std::vector&lt;int&gt; v1 {2, 3, 5, 7, 11, 13, 17, 19};   3️⃣ 在创建 vector 容器时，指定元素个数。
+v1 容器开始时就有 20 个元素，它们的默认初始值都为 0。圆括号中的2个参数既可以是常量，也可以是变量。
+1  std::vector&lt;int&gt; v1(20, 0);   4️⃣ 通过迭代器，取已建 vector 容器中指定区域内的键值对，创建并初始化新的 vector 容器。
+1 2 3 4  int array[]={1,2,3}; std::vector&lt;int&gt;v1 (array, array+2);	//v1 将保存{1,2} std::vector&lt;int&gt;v1 {1,2,3,4,5}; std::vector&lt;int&gt;v2 (std::begin(v1),std::begin(v1)+3);	//v2保存{1,2,3}   3 常用的成员方法    成员方法 功能     begin() 返回指向容器中第一个元素的迭代器。   end() 返回指向容器最后一个元素所在位置后一个位置的迭代器，通常和 begin() 结合使用。   size() 返回实际元素个数。   capacity() 返回当前容量。   empty() 判断容器中是否有元素，若无元素，则返回 true；反之，返回 false。   reserve() 增加容器的容量。   front() 返回第一个元素的引用。   back() 返回最后一个元素的引用。   push_back() 在序列的尾部添加一个元素。   pop_back() 移出序列尾部的元素。   insert() 在指定的位置插入一个或多个元素。   erase() 移出一个元素或一段元素。   clear() 移出所有的元素，容器大小变为 0。   swap() 交换两个容器的所有元素。   emplace() 在指定的位置直接生成一个元素。    ]]></description>
+</item>
+<item>
     <title>【STL】map容器用法</title>
     <link>https://imcaicai.github.io/stlmap%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/</link>
     <pubDate>Tue, 14 Mar 2023 15:56:24 &#43;0800</pubDate>

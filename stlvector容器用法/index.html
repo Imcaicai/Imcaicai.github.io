@@ -4,48 +4,48 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>【STL】map容器用法 - 菜菜的秘密花园</title><meta name="Description" content="菜菜的秘密花园"><meta property="og:title" content="【STL】map容器用法" />
-<meta property="og:description" content="1 简介 🟠 map 容器中键值对的键和值可以是任意数据类型，包括 C&#43;&#43; 基本数据类型（int、double 等）、使用结构体或类自定义的类型。
-🟡 容器会自动根据各键值对的键的大小，按照既定的规则进行排序。比如 std::less&lt;T&gt;、std::greater&lt;T&gt; 规则。
-🟢 键的值既不能重复也不能被修改。
-🔵 使用需加上头文件：#include &lt;map&gt;
-2 创建map容器 1️⃣ 调用 map 容器类的默认构造函数。（若默认指定了 std 命令空间，则 std:: 可省略）
-1  std::map&lt;std::string, int&gt; map1;   2️⃣ 在创建 map 容器的同时，进行初始化。
-1  std::map&lt;std::string, int&gt; map1 { {&#34;语文&#34;,90} , {&#34;数学&#34;,100} };   3️⃣ 利用先前已创建好的 map 容器和拷贝构造函数，再创建一个新的 map 容器。
-1  std::map&lt;std::string, int&gt; newMap(map1);   4️⃣ 通过迭代器，取已建 map 容器中指定区域内的键值对，创建并初始化新的 map 容器。
-1 2  std::map&lt;std::string, int&gt; map1 { {&#34;语文&#34;,90} , {&#34;数学&#34;,100} }; std::map&lt;std::string, int&gt; newMap(&#43;&#43;map1." />
+        <title>【STL】vector容器用法 - 菜菜的秘密花园</title><meta name="Description" content="菜菜的秘密花园"><meta property="og:title" content="【STL】vector容器用法" />
+<meta property="og:description" content="1 简介 🟠 vector 容器实现的是一个动态数组，即可以进行元素的插入和删除，并动态调整所占用的内存空间，整个过程无需人工干预。
+🟡 在尾部插入/删除元素时，时间复杂度为O(1)；在头部或者中部插入/删除元素时，时间复杂度为O(n)。
+🔵 使用需加上头文件：#include &lt;vector&gt;
+2 创建vector容器 1️⃣ 调用 vector 容器类的默认构造函数。（若默认指定了 std 命令空间，则 std:: 可省略）
+1  std::vector&lt;int&gt; v1;   2️⃣ 在创建 vector 容器的同时，进行初始化。
+1  std::vector&lt;int&gt; v1 {2, 3, 5, 7, 11, 13, 17, 19};   3️⃣ 在创建 vector 容器时，指定元素个数。
+v1 容器开始时就有 20 个元素，它们的默认初始值都为 0。圆括号中的2个参数既可以是常量，也可以是变量。
+1  std::vector&lt;int&gt; v1(20, 0);   4️⃣ 通过迭代器，取已建 vector 容器中指定区域内的键值对，创建并初始化新的 vector 容器。
+1 2 3 4  int array[]={1,2,3}; std::vector&lt;int&gt;v1 (array, array&#43;2);	//v1 将保存{1,2} std::vector&lt;int&gt;v1 {1,2,3,4,5}; std::vector&lt;int&gt;v2 (std::begin(v1),std::begin(v1)&#43;3);	//v2保存{1,2,3}   3 常用的成员方法    成员方法 功能     begin() 返回指向容器中第一个元素的迭代器。   end() 返回指向容器最后一个元素所在位置后一个位置的迭代器，通常和 begin() 结合使用。   size() 返回实际元素个数。   capacity() 返回当前容量。   empty() 判断容器中是否有元素，若无元素，则返回 true；反之，返回 false。   reserve() 增加容器的容量。   front() 返回第一个元素的引用。   back() 返回最后一个元素的引用。   push_back() 在序列的尾部添加一个元素。   pop_back() 移出序列尾部的元素。   insert() 在指定的位置插入一个或多个元素。   erase() 移出一个元素或一段元素。   clear() 移出所有的元素，容器大小变为 0。   swap() 交换两个容器的所有元素。   emplace() 在指定的位置直接生成一个元素。    " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://imcaicai.github.io/stlmap%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" /><meta property="og:image" content="https://imcaicai.github.io/img/avatar.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-03-14T15:56:24&#43;08:00" />
-<meta property="article:modified_time" content="2023-03-14T15:56:24&#43;08:00" /><meta property="og:site_name" content="菜菜的秘密花园" />
+<meta property="og:url" content="https://imcaicai.github.io/stlvector%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" /><meta property="og:image" content="https://imcaicai.github.io/img/avatar.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-03-16T20:09:14&#43;08:00" />
+<meta property="article:modified_time" content="2023-03-16T20:09:14&#43;08:00" /><meta property="og:site_name" content="菜菜的秘密花园" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://imcaicai.github.io/img/avatar.jpg"/>
 
-<meta name="twitter:title" content="【STL】map容器用法"/>
-<meta name="twitter:description" content="1 简介 🟠 map 容器中键值对的键和值可以是任意数据类型，包括 C&#43;&#43; 基本数据类型（int、double 等）、使用结构体或类自定义的类型。
-🟡 容器会自动根据各键值对的键的大小，按照既定的规则进行排序。比如 std::less&lt;T&gt;、std::greater&lt;T&gt; 规则。
-🟢 键的值既不能重复也不能被修改。
-🔵 使用需加上头文件：#include &lt;map&gt;
-2 创建map容器 1️⃣ 调用 map 容器类的默认构造函数。（若默认指定了 std 命令空间，则 std:: 可省略）
-1  std::map&lt;std::string, int&gt; map1;   2️⃣ 在创建 map 容器的同时，进行初始化。
-1  std::map&lt;std::string, int&gt; map1 { {&#34;语文&#34;,90} , {&#34;数学&#34;,100} };   3️⃣ 利用先前已创建好的 map 容器和拷贝构造函数，再创建一个新的 map 容器。
-1  std::map&lt;std::string, int&gt; newMap(map1);   4️⃣ 通过迭代器，取已建 map 容器中指定区域内的键值对，创建并初始化新的 map 容器。
-1 2  std::map&lt;std::string, int&gt; map1 { {&#34;语文&#34;,90} , {&#34;数学&#34;,100} }; std::map&lt;std::string, int&gt; newMap(&#43;&#43;map1."/>
+<meta name="twitter:title" content="【STL】vector容器用法"/>
+<meta name="twitter:description" content="1 简介 🟠 vector 容器实现的是一个动态数组，即可以进行元素的插入和删除，并动态调整所占用的内存空间，整个过程无需人工干预。
+🟡 在尾部插入/删除元素时，时间复杂度为O(1)；在头部或者中部插入/删除元素时，时间复杂度为O(n)。
+🔵 使用需加上头文件：#include &lt;vector&gt;
+2 创建vector容器 1️⃣ 调用 vector 容器类的默认构造函数。（若默认指定了 std 命令空间，则 std:: 可省略）
+1  std::vector&lt;int&gt; v1;   2️⃣ 在创建 vector 容器的同时，进行初始化。
+1  std::vector&lt;int&gt; v1 {2, 3, 5, 7, 11, 13, 17, 19};   3️⃣ 在创建 vector 容器时，指定元素个数。
+v1 容器开始时就有 20 个元素，它们的默认初始值都为 0。圆括号中的2个参数既可以是常量，也可以是变量。
+1  std::vector&lt;int&gt; v1(20, 0);   4️⃣ 通过迭代器，取已建 vector 容器中指定区域内的键值对，创建并初始化新的 vector 容器。
+1 2 3 4  int array[]={1,2,3}; std::vector&lt;int&gt;v1 (array, array&#43;2);	//v1 将保存{1,2} std::vector&lt;int&gt;v1 {1,2,3,4,5}; std::vector&lt;int&gt;v2 (std::begin(v1),std::begin(v1)&#43;3);	//v2保存{1,2,3}   3 常用的成员方法    成员方法 功能     begin() 返回指向容器中第一个元素的迭代器。   end() 返回指向容器最后一个元素所在位置后一个位置的迭代器，通常和 begin() 结合使用。   size() 返回实际元素个数。   capacity() 返回当前容量。   empty() 判断容器中是否有元素，若无元素，则返回 true；反之，返回 false。   reserve() 增加容器的容量。   front() 返回第一个元素的引用。   back() 返回最后一个元素的引用。   push_back() 在序列的尾部添加一个元素。   pop_back() 移出序列尾部的元素。   insert() 在指定的位置插入一个或多个元素。   erase() 移出一个元素或一段元素。   clear() 移出所有的元素，容器大小变为 0。   swap() 交换两个容器的所有元素。   emplace() 在指定的位置直接生成一个元素。    "/>
 <meta name="application-name" content="菜菜的秘密花园">
-<meta name="apple-mobile-web-app-title" content="菜菜的秘密花园"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://imcaicai.github.io/stlmap%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" /><link rel="prev" href="https://imcaicai.github.io/stlset%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" /><link rel="next" href="https://imcaicai.github.io/csp202212/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<meta name="apple-mobile-web-app-title" content="菜菜的秘密花园"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://imcaicai.github.io/stlvector%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" /><link rel="prev" href="https://imcaicai.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%B8%B8%E6%95%B0%E6%97%B6%E9%97%B4%E6%9F%A5%E6%89%BE%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0/" /><link rel="next" href="https://imcaicai.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%AE%A1%E7%AE%97%E5%99%A8/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "【STL】map容器用法",
+        "headline": "【STL】vector容器用法",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/imcaicai.github.io\/stlmap%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95\/"
-        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "C\u002b\u002b, STL, map","wordcount":  144 ,
-        "url": "https:\/\/imcaicai.github.io\/stlmap%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95\/","datePublished": "2023-03-14T15:56:24+08:00","dateModified": "2023-03-14T15:56:24+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@id": "https:\/\/imcaicai.github.io\/stlvector%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95\/"
+        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "C\u002b\u002b, STL, vector","wordcount":  112 ,
+        "url": "https:\/\/imcaicai.github.io\/stlvector%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95\/","datePublished": "2023-03-16T20:09:14+08:00","dateModified": "2023-03-16T20:09:14+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/imcaicai.github.io\/img\/avatar.jpg"},"author": {
                 "@type": "Person",
@@ -83,7 +83,7 @@
                     <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
                 </a><a href="javascript:void(0);" class="menu-item language" title="Select Language">
                     <i class="fa fa-globe" aria-hidden="true"></i>                      
-                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/stlmap%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" selected>English</option></select>
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/stlvector%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" selected>English</option></select>
                 </a></div>
         </div>
     </div>
@@ -124,7 +124,7 @@
                 <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a><a href="javascript:void(0);" class="menu-item" title="Select Language">
                     <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
-                    <select class="language-select" onchange="location = this.value;"><option value="/stlmap%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" selected>English</option></select>
+                    <select class="language-select" onchange="location = this.value;"><option value="/stlvector%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" selected>English</option></select>
                 </a></div>
     </div>
 </header><div class="search-dropdown desktop">
@@ -136,10 +136,10 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">【STL】map容器用法</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">【STL】vector容器用法</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-category">included in <a href="/categories/c++/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>C++</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-14">2023-03-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;144 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;<span id="/stlmap%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" class="leancloud_visitors" data-flag-title="【STL】map容器用法">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-16">2023-03-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;112 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;<span id="/stlvector%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" class="leancloud_visitors" data-flag-title="【STL】vector容器用法">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
@@ -150,58 +150,57 @@
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
     <li><a href="#1-简介">1 简介</a></li>
-    <li><a href="#2-创建map容器">2 创建map容器</a></li>
+    <li><a href="#2-创建vector容器">2 创建vector容器</a></li>
     <li><a href="#3-常用的成员方法">3 常用的成员方法</a></li>
-    <li><a href="#4-其他容器">4 其他容器</a>
-      <ul>
-        <li><a href="#unordered_map-容器">unordered_map 容器</a></li>
-      </ul>
-    </li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="1-简介">1 简介</h2>
-<p>🟠 map 容器中键值对的键和值可以是任意数据类型，包括 <a href="http://c.biancheng.net/cplus/" target="_blank" rel="noopener noreffer ">C++</a> 基本数据类型（int、double 等）、使用结构体或类自定义的类型。</p>
-<p>🟡 容器会自动根据各键值对的键的大小，按照既定的规则进行排序。比如 <code>std::less&lt;T&gt;</code>、<code>std::greater&lt;T&gt;</code> 规则。</p>
-<p>🟢 键的值既不能重复也不能被修改。</p>
-<p>🔵 使用需加上头文件：<code>#include &lt;map&gt;</code></p>
-<h2 id="2-创建map容器">2 创建map容器</h2>
-<p>1️⃣ 调用 map 容器类的默认构造函数。（若默认指定了 std 命令空间，则 std:: 可省略）</p>
+<p>🟠 vector 容器实现的是一个动态数组，即可以进行元素的插入和删除，并动态调整所占用的内存空间，整个过程无需人工干预。</p>
+<p>🟡 在尾部插入/删除元素时，时间复杂度为<code>O(1)</code>；在头部或者中部插入/删除元素时，时间复杂度为<code>O(n)</code>。</p>
+<p>🔵 使用需加上头文件：<code>#include &lt;vector&gt;</code></p>
+<h2 id="2-创建vector容器">2 创建vector容器</h2>
+<p>1️⃣ 调用 vector 容器类的默认构造函数。（若默认指定了 std 命令空间，则 std:: 可省略）</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">map1</span><span class="p">;</span>
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v1</span><span class="p">;</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>2️⃣ 在创建 map 容器的同时，进行初始化。</p>
+</div><p>2️⃣ 在创建 vector 容器的同时，进行初始化。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">map1</span> <span class="p">{</span> <span class="p">{</span><span class="s">&#34;语文&#34;</span><span class="p">,</span><span class="mi">90</span><span class="p">}</span> <span class="p">,</span> <span class="p">{</span><span class="s">&#34;数学&#34;</span><span class="p">,</span><span class="mi">100</span><span class="p">}</span> <span class="p">};</span>
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v1</span> <span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">19</span><span class="p">};</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>3️⃣ 利用先前已创建好的 map 容器和拷贝构造函数，再创建一个新的 map 容器。</p>
+</div><p>3️⃣ 在创建 vector 容器时，指定元素个数。</p>
+<p>v1 容器开始时就有 20 个元素，它们的默认初始值都为 0。圆括号中的2个参数既可以是常量，也可以是变量。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">newMap</span><span class="p">(</span><span class="n">map1</span><span class="p">);</span>
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v1</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>4️⃣ 通过迭代器，取已建 map 容器中指定区域内的键值对，创建并初始化新的 map 容器。</p>
+</div><p>4️⃣ 通过迭代器，取已建 vector 容器中指定区域内的键值对，创建并初始化新的 vector 容器。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">map1</span> <span class="p">{</span> <span class="p">{</span><span class="s">&#34;语文&#34;</span><span class="p">,</span><span class="mi">90</span><span class="p">}</span> <span class="p">,</span> <span class="p">{</span><span class="s">&#34;数学&#34;</span><span class="p">,</span><span class="mi">100</span><span class="p">}</span> <span class="p">};</span>
-<span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">newMap</span><span class="p">(</span><span class="o">++</span><span class="n">map1</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">map1</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
-</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">int</span> <span class="n">array</span><span class="p">[]</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="n">v1</span> <span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">array</span><span class="o">+</span><span class="mi">2</span><span class="p">);</span>	<span class="c1">//v1 将保存{1,2}
+</span><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="n">v1</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="n">v2</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">begin</span><span class="p">(</span><span class="n">v1</span><span class="p">),</span><span class="n">std</span><span class="o">::</span><span class="n">begin</span><span class="p">(</span><span class="n">v1</span><span class="p">)</span><span class="o">+</span><span class="mi">3</span><span class="p">);</span>	<span class="c1">//v2保存{1,2,3}
+</span></code></pre></td></tr></table>
 </div>
 </div><h2 id="3-常用的成员方法">3 常用的成员方法</h2>
 <table>
@@ -214,79 +213,91 @@
 <tbody>
 <tr>
 <td>begin()</td>
-<td>返回指向容器中第一个键值对的双向迭代器。（是已排好序的第一个）</td>
+<td>返回指向容器中第一个元素的迭代器。</td>
 </tr>
 <tr>
 <td>end()</td>
-<td>返回指向容器最后一个元素所在位置后一个位置的双向迭代器。（是已排好序的最后一个）</td>
-</tr>
-<tr>
-<td>find(key)</td>
-<td>在 map 容器中查找键为 key 的键值对，如果成功找到，则返回指向该键值对的双向迭代器；否则返回和 end() 方法一样的迭代器。</td>
-</tr>
-<tr>
-<td>empty()</td>
-<td>若容器为空，则返回 true；否则 false。</td>
+<td>返回指向容器最后一个元素所在位置后一个位置的迭代器，通常和 begin() 结合使用。</td>
 </tr>
 <tr>
 <td>size()</td>
-<td>返回当前 map 容器中存有键值对的个数。</td>
+<td>返回实际元素个数。</td>
+</tr>
+<tr>
+<td>capacity()</td>
+<td>返回当前容量。</td>
+</tr>
+<tr>
+<td>empty()</td>
+<td>判断容器中是否有元素，若无元素，则返回 true；反之，返回 false。</td>
+</tr>
+<tr>
+<td>reserve()</td>
+<td>增加容器的容量。</td>
+</tr>
+<tr>
+<td>front()</td>
+<td>返回第一个元素的引用。</td>
+</tr>
+<tr>
+<td>back()</td>
+<td>返回最后一个元素的引用。</td>
+</tr>
+<tr>
+<td>push_back()</td>
+<td>在序列的尾部添加一个元素。</td>
+</tr>
+<tr>
+<td>pop_back()</td>
+<td>移出序列尾部的元素。</td>
 </tr>
 <tr>
 <td>insert()</td>
-<td>向 map 容器中插入键值对。</td>
+<td>在指定的位置插入一个或多个元素。</td>
 </tr>
 <tr>
 <td>erase()</td>
-<td>删除 map 容器指定位置、指定键（key）值或者指定区域内的键值对。</td>
+<td>移出一个元素或一段元素。</td>
 </tr>
 <tr>
 <td>clear()</td>
-<td>清空 map 容器中所有的键值对，即使 map 容器的 size() 为 0。</td>
+<td>移出所有的元素，容器大小变为 0。</td>
+</tr>
+<tr>
+<td>swap()</td>
+<td>交换两个容器的所有元素。</td>
 </tr>
 <tr>
 <td>emplace()</td>
-<td>在当前 map 容器中的指定位置处构造新键值对。其效果和插入键值对一样，但效率更高。</td>
-</tr>
-<tr>
-<td>count(key)</td>
-<td>在当前 map 容器中，查找键为 key 的键值对的个数并返回。注意，由于 map 容器中各键值对的键的值是唯一的，因此该函数的返回值最大为 1。</td>
-</tr>
-<tr>
-<td>count(key)</td>
-<td>在容器中查找以 key 键的键值对的个数。</td>
+<td>在指定的位置直接生成一个元素。</td>
 </tr>
 </tbody>
 </table>
-<h2 id="4-其他容器">4 其他容器</h2>
-<h3 id="unordered_map-容器">unordered_map 容器</h3>
-<p>🟠 该容器内部不会自行对存储的键值对进行排序，其余用法和 map 类似。</p>
-<p>🟡 使用需加上头文件： <code>#include &lt;unordered_map&gt;</code></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2023-03-14</span>
+                <span>Updated on 2023-03-16</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
-                            <a class="link-to-markdown" href="/stlmap%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/index.md" target="_blank">Read Markdown</a>
+                            <a class="link-to-markdown" href="/stlvector%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://imcaicai.github.io/stlmap%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" data-title="【STL】map容器用法" data-hashtags="C&#43;&#43;,STL,map"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://imcaicai.github.io/stlmap%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" data-hashtag="C&#43;&#43;"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://imcaicai.github.io/stlmap%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" data-title="【STL】map容器用法"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://imcaicai.github.io/stlmap%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" data-title="【STL】map容器用法"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://imcaicai.github.io/stlmap%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" data-title="【STL】map容器用法"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://imcaicai.github.io/stlvector%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" data-title="【STL】vector容器用法" data-hashtags="C&#43;&#43;,STL,vector"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://imcaicai.github.io/stlvector%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" data-hashtag="C&#43;&#43;"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://imcaicai.github.io/stlvector%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" data-title="【STL】vector容器用法"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://imcaicai.github.io/stlvector%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" data-title="【STL】vector容器用法"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://imcaicai.github.io/stlvector%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" data-title="【STL】vector容器用法"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>,&nbsp;<a href="/tags/stl/">STL</a>,&nbsp;<a href="/tags/map/">map</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>,&nbsp;<a href="/tags/stl/">STL</a>,&nbsp;<a href="/tags/vector/">vector</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/stlset%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" class="prev" rel="prev" title="【STL】set容器用法"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>【STL】set容器用法</a>
-            <a href="/csp202212/" class="next" rel="next" title="【CSP】202212题解">【CSP】202212题解<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%B8%B8%E6%95%B0%E6%97%B6%E9%97%B4%E6%9F%A5%E6%89%BE%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0/" class="prev" rel="prev" title="【数据结构设计】常数时间查找数组元素"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>【数据结构设计】常数时间查找数组元素</a>
+            <a href="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%AE%A1%E7%AE%97%E5%99%A8/" class="next" rel="next" title="【数据结构设计】实现一个计算器">【数据结构设计】实现一个计算器<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 <div id="comments"><div id="valine" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
