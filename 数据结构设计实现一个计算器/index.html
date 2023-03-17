@@ -5,7 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <title>【数据结构设计】实现一个计算器 - 菜菜的秘密花园</title><meta name="Description" content="菜菜的秘密花园"><meta property="og:title" content="【数据结构设计】实现一个计算器" />
-<meta property="og:description" content="" />
+<meta property="og:description" content="1 题目 实现一个计算器，功能如下：
+1、输入一个字符串，可以包含 &#43; - * /、数字、括号以及空格，你的算法返回运算结果。
+2、要符合运算法则，括号的优先级最高，先乘除后加减。
+3、除号是整数除法，无论正负都向 0 取整（5/2=2，-5/2=-2）。
+4、可以假定输入的算式⼀定合法，且计算过程不会出现整型溢出，不会出现除数为 0 的意外情况。
+2 解析 2.1 字符串转整数 1 2 3 4 5 6  // 把字符串s转为整数n int n = 0; for (int i = 0; i &lt; s.size(); i&#43;&#43;) { char c = s[i]; n = 10 * n &#43; (c - &#39;0&#39;); }   ❗❗❗ 注意 (c - &lsquo;0&rsquo;) 的括号不能省略，否则可能造成整型溢出。
+2.2 处理加减法 2.3 处理乘除法 2.4 处理括号 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://imcaicai.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%AE%A1%E7%AE%97%E5%99%A8/" /><meta property="og:image" content="https://imcaicai.github.io/img/avatar.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-03-16T21:12:41&#43;08:00" />
@@ -15,7 +21,13 @@
 <meta name="twitter:image" content="https://imcaicai.github.io/img/avatar.jpg"/>
 
 <meta name="twitter:title" content="【数据结构设计】实现一个计算器"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:description" content="1 题目 实现一个计算器，功能如下：
+1、输入一个字符串，可以包含 &#43; - * /、数字、括号以及空格，你的算法返回运算结果。
+2、要符合运算法则，括号的优先级最高，先乘除后加减。
+3、除号是整数除法，无论正负都向 0 取整（5/2=2，-5/2=-2）。
+4、可以假定输入的算式⼀定合法，且计算过程不会出现整型溢出，不会出现除数为 0 的意外情况。
+2 解析 2.1 字符串转整数 1 2 3 4 5 6  // 把字符串s转为整数n int n = 0; for (int i = 0; i &lt; s.size(); i&#43;&#43;) { char c = s[i]; n = 10 * n &#43; (c - &#39;0&#39;); }   ❗❗❗ 注意 (c - &lsquo;0&rsquo;) 的括号不能省略，否则可能造成整型溢出。
+2.2 处理加减法 2.3 处理乘除法 2.4 处理括号 "/>
 <meta name="application-name" content="菜菜的秘密花园">
 <meta name="apple-mobile-web-app-title" content="菜菜的秘密花园"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://imcaicai.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%AE%A1%E7%AE%97%E5%99%A8/" /><link rel="prev" href="https://imcaicai.github.io/stlvector%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" /><link rel="next" href="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2020%E4%B8%8B/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -28,7 +40,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/imcaicai.github.io\/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%AE%A1%E7%AE%97%E5%99%A8\/"
-        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "labuladong, 数据结构","wordcount":  0 ,
+        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "labuladong, 数据结构","wordcount":  67 ,
         "url": "https:\/\/imcaicai.github.io\/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%AE%A1%E7%AE%97%E5%99%A8\/","datePublished": "2023-03-16T21:12:41+08:00","dateModified": "2023-03-16T21:12:41+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/imcaicai.github.io\/img\/avatar.jpg"},"author": {
@@ -122,8 +134,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">【数据结构设计】实现一个计算器</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-category">included in <a href="/categories/labuladong%E7%9A%84%E7%AE%97%E6%B3%95%E7%A7%98%E7%B1%8D/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>labuladong的算法秘籍</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-16">2023-03-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;0 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;0 minutes&nbsp;<span id="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%AE%A1%E7%AE%97%E5%99%A8/" class="leancloud_visitors" data-flag-title="【数据结构设计】实现一个计算器">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-16">2023-03-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;67 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;<span id="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%AE%A1%E7%AE%97%E5%99%A8/" class="leancloud_visitors" data-flag-title="【数据结构设计】实现一个计算器">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
@@ -131,8 +143,50 @@
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"></div><div class="post-footer" id="post-footer">
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-题目">1 题目</a></li>
+    <li><a href="#2-解析">2 解析</a>
+      <ul>
+        <li><a href="#21-字符串转整数">2.1 字符串转整数</a></li>
+        <li><a href="#22-处理加减法">2.2 处理加减法</a></li>
+        <li><a href="#23-处理乘除法">2.3 处理乘除法</a></li>
+        <li><a href="#24-处理括号">2.4 处理括号</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="1-题目">1 题目</h2>
+<p>实现一个计算器，功能如下：</p>
+<p>1、输入一个字符串，可以包含 + - * /、数字、括号以及空格，你的算法返回运算结果。</p>
+<p>2、要符合运算法则，括号的优先级最高，先乘除后加减。</p>
+<p>3、除号是整数除法，无论正负都向 0 取整（5/2=2，-5/2=-2）。</p>
+<p>4、可以假定输入的算式⼀定合法，且计算过程不会出现整型溢出，不会出现除数为 0 的意外情况。</p>
+<h2 id="2-解析">2 解析</h2>
+<h3 id="21-字符串转整数">2.1 字符串转整数</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="c1">// 把字符串s转为整数n
+</span><span class="c1"></span><span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">s</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+	<span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+	<span class="n">n</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">n</span> <span class="o">+</span> <span class="p">(</span><span class="n">c</span> <span class="o">-</span> <span class="sc">&#39;0&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>❗❗❗ 注意 (c - &lsquo;0&rsquo;)  的括号不能省略，否则可能造成整型溢出。</p>
+<h3 id="22-处理加减法">2.2 处理加减法</h3>
+<h3 id="23-处理乘除法">2.3 处理乘除法</h3>
+<h3 id="24-处理括号">2.4 处理括号</h3>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">

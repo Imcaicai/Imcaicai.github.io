@@ -5,12 +5,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <title>【数据结构设计】常数时间查找数组元素 - 菜菜的秘密花园</title><meta name="Description" content="菜菜的秘密花园"><meta property="og:title" content="【数据结构设计】常数时间查找数组元素" />
-<meta property="og:description" content="1 题目 力扣 146. LRU 缓存
-请你设计并实现一个满足 LRU (最近最少使用) 缓存 约束的数据结构。
-实现 LRUCache 类：
- LRUCache(int capacity) 以 正整数 作为容量 capacity 初始化 LRU 缓存 int get(int key) 如果关键字 key 存在于缓存中，则返回关键字的值，否则返回 -1 。 void put(int key, int value) 如果关键字 key 已经存在，则变更其数据值 value ；如果不存在，则向缓存中插入该组 key-value 。如果插入操作导致关键字数量超过 capacity ，则应该 逐出 最久未使用的关键字。  函数 get 和 put 必须以 O(1) 的平均时间复杂度运行。
-2 解析 2.1 LRU算法设计 由于 put 和 get 方法的时间复杂度为 O(1)，我们可以总结出 cache 这个数据结构必要的条件：
- 🔴 cache 中的元素必须有时序，以区分最近使用的和久未使用的数据" />
+<meta property="og:description" content="1 题目 力扣 380. O(1) 时间插入、删除和获取随机元素
+实现RandomizedSet 类：
+ RandomizedSet() 初始化 RandomizedSet 对象 bool insert(int val) 当元素 val 不存在时，向集合中插入该项，并返回 true ；否则，返回 false 。 bool remove(int val) 当元素 val 存在时，从集合中移除该项，并返回 true ；否则，返回 false 。 int getRandom() 随机返回现有集合中的一项（测试用例保证调用此方法时集合中至少存在一个元素）。每个元素应该有 相同的概率 被返回。  你必须实现类的所有函数，并满足每个函数的 平均 时间复杂度为 O(1) 。
+2 解析 考虑题目的两个要求：
+🔴 插入、删除、查询随机元素的时间复杂度必须都是 O(1)。 想到使用 STL 中的 map 结构。
+🟡 getRandom() 必须等概率的返回随机元素。 那么底层必须用数组实现，且数组是紧凑的，这样就可以直接生成随机数作为数组索引。
+🟢 综合考虑以上2个条件：在 O(1) 的时间删除数组中的某⼀个元素 val，可以先把这个元素交换到数组的尾部，然后再 pop 掉。而交换两个元素需要知道索引，故用哈希表存储每个元素及其索引。
+代码实现：
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41  class RandomizedSet { public: // 存储元素的值  vector&lt;int&gt; ve; // 键是元素值，值是元素在ve中的索引  unordered_map&lt;int, int&gt; ma; RandomizedSet() { } bool insert(int val) { // 若 val 不存在，则插入并返回true  if(ma." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://imcaicai.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%B8%B8%E6%95%B0%E6%97%B6%E9%97%B4%E6%9F%A5%E6%89%BE%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0/" /><meta property="og:image" content="https://imcaicai.github.io/img/avatar.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-03-16T19:13:59&#43;08:00" />
@@ -20,12 +23,15 @@
 <meta name="twitter:image" content="https://imcaicai.github.io/img/avatar.jpg"/>
 
 <meta name="twitter:title" content="【数据结构设计】常数时间查找数组元素"/>
-<meta name="twitter:description" content="1 题目 力扣 146. LRU 缓存
-请你设计并实现一个满足 LRU (最近最少使用) 缓存 约束的数据结构。
-实现 LRUCache 类：
- LRUCache(int capacity) 以 正整数 作为容量 capacity 初始化 LRU 缓存 int get(int key) 如果关键字 key 存在于缓存中，则返回关键字的值，否则返回 -1 。 void put(int key, int value) 如果关键字 key 已经存在，则变更其数据值 value ；如果不存在，则向缓存中插入该组 key-value 。如果插入操作导致关键字数量超过 capacity ，则应该 逐出 最久未使用的关键字。  函数 get 和 put 必须以 O(1) 的平均时间复杂度运行。
-2 解析 2.1 LRU算法设计 由于 put 和 get 方法的时间复杂度为 O(1)，我们可以总结出 cache 这个数据结构必要的条件：
- 🔴 cache 中的元素必须有时序，以区分最近使用的和久未使用的数据"/>
+<meta name="twitter:description" content="1 题目 力扣 380. O(1) 时间插入、删除和获取随机元素
+实现RandomizedSet 类：
+ RandomizedSet() 初始化 RandomizedSet 对象 bool insert(int val) 当元素 val 不存在时，向集合中插入该项，并返回 true ；否则，返回 false 。 bool remove(int val) 当元素 val 存在时，从集合中移除该项，并返回 true ；否则，返回 false 。 int getRandom() 随机返回现有集合中的一项（测试用例保证调用此方法时集合中至少存在一个元素）。每个元素应该有 相同的概率 被返回。  你必须实现类的所有函数，并满足每个函数的 平均 时间复杂度为 O(1) 。
+2 解析 考虑题目的两个要求：
+🔴 插入、删除、查询随机元素的时间复杂度必须都是 O(1)。 想到使用 STL 中的 map 结构。
+🟡 getRandom() 必须等概率的返回随机元素。 那么底层必须用数组实现，且数组是紧凑的，这样就可以直接生成随机数作为数组索引。
+🟢 综合考虑以上2个条件：在 O(1) 的时间删除数组中的某⼀个元素 val，可以先把这个元素交换到数组的尾部，然后再 pop 掉。而交换两个元素需要知道索引，故用哈希表存储每个元素及其索引。
+代码实现：
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41  class RandomizedSet { public: // 存储元素的值  vector&lt;int&gt; ve; // 键是元素值，值是元素在ve中的索引  unordered_map&lt;int, int&gt; ma; RandomizedSet() { } bool insert(int val) { // 若 val 不存在，则插入并返回true  if(ma."/>
 <meta name="application-name" content="菜菜的秘密花园">
 <meta name="apple-mobile-web-app-title" content="菜菜的秘密花园"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://imcaicai.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%B8%B8%E6%95%B0%E6%97%B6%E9%97%B4%E6%9F%A5%E6%89%BE%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0/" /><link rel="prev" href="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2020%E4%B8%8A/" /><link rel="next" href="https://imcaicai.github.io/stlvector%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -38,7 +44,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/imcaicai.github.io\/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%B8%B8%E6%95%B0%E6%97%B6%E9%97%B4%E6%9F%A5%E6%89%BE%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0\/"
-        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "labuladong, 数据结构","wordcount":  216 ,
+        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "labuladong, 数据结构","wordcount":  191 ,
         "url": "https:\/\/imcaicai.github.io\/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%B8%B8%E6%95%B0%E6%97%B6%E9%97%B4%E6%9F%A5%E6%89%BE%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0\/","datePublished": "2023-03-16T19:13:59+08:00","dateModified": "2023-03-16T19:13:59+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/imcaicai.github.io\/img\/avatar.jpg"},"author": {
@@ -132,8 +138,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">【数据结构设计】常数时间查找数组元素</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-category">included in <a href="/categories/labuladong%E7%9A%84%E7%AE%97%E6%B3%95%E7%A7%98%E7%B1%8D/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>labuladong的算法秘籍</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-16">2023-03-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;216 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;<span id="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%B8%B8%E6%95%B0%E6%97%B6%E9%97%B4%E6%9F%A5%E6%89%BE%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0/" class="leancloud_visitors" data-flag-title="【数据结构设计】常数时间查找数组元素">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-16">2023-03-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;191 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;<span id="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%B8%B8%E6%95%B0%E6%97%B6%E9%97%B4%E6%9F%A5%E6%89%BE%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0/" class="leancloud_visitors" data-flag-title="【数据结构设计】常数时间查找数组元素">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
@@ -144,55 +150,25 @@
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
     <li><a href="#1-题目">1 题目</a></li>
-    <li><a href="#2-解析">2 解析</a>
-      <ul>
-        <li><a href="#21-lru算法设计">2.1 LRU算法设计</a></li>
-        <li><a href="#22-代码实现">2.2 代码实现</a></li>
-      </ul>
-    </li>
+    <li><a href="#2-解析">2 解析</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="1-题目">1 题目</h2>
-<p><strong>力扣 <a href="https://leetcode.cn/problems/lru-cache/" target="_blank" rel="noopener noreffer ">146. LRU 缓存</a></strong></p>
-<p>请你设计并实现一个满足 <a href="https://baike.baidu.com/item/LRU" target="_blank" rel="noopener noreffer ">LRU (最近最少使用) 缓存</a> 约束的数据结构。</p>
-<p>实现 <code>LRUCache</code> 类：</p>
+<p><strong>力扣 <a href="https://leetcode.cn/problems/insert-delete-getrandom-o1/" target="_blank" rel="noopener noreffer ">380. O(1) 时间插入、删除和获取随机元素</a></strong></p>
+<p>实现<code>RandomizedSet</code> 类：</p>
 <ul>
-<li><code>LRUCache(int capacity)</code> 以 <strong>正整数</strong> 作为容量 <code>capacity</code> 初始化 LRU 缓存</li>
-<li><code>int get(int key)</code> 如果关键字 <code>key</code> 存在于缓存中，则返回关键字的值，否则返回 <code>-1</code> 。</li>
-<li><code>void put(int key, int value)</code> 如果关键字 <code>key</code> 已经存在，则变更其数据值 <code>value</code> ；如果不存在，则向缓存中插入该组 <code>key-value</code> 。如果插入操作导致关键字数量超过 <code>capacity</code> ，则应该 <strong>逐出</strong> 最久未使用的关键字。</li>
+<li><code>RandomizedSet()</code> 初始化 <code>RandomizedSet</code> 对象</li>
+<li><code>bool insert(int val)</code> 当元素 <code>val</code> 不存在时，向集合中插入该项，并返回 <code>true</code> ；否则，返回 <code>false</code> 。</li>
+<li><code>bool remove(int val)</code> 当元素 <code>val</code> 存在时，从集合中移除该项，并返回 <code>true</code> ；否则，返回 <code>false</code> 。</li>
+<li><code>int getRandom()</code> 随机返回现有集合中的一项（测试用例保证调用此方法时集合中至少存在一个元素）。每个元素应该有 <strong>相同的概率</strong> 被返回。</li>
 </ul>
-<p>函数 <code>get</code> 和 <code>put</code> 必须以 <code>O(1)</code> 的平均时间复杂度运行。</p>
+<p>你必须实现类的所有函数，并满足每个函数的 <strong>平均</strong> 时间复杂度为 <code>O(1)</code> 。</p>
 <h2 id="2-解析">2 解析</h2>
-<h3 id="21-lru算法设计">2.1 LRU算法设计</h3>
-<p>由于 put 和 get 方法的时间复杂度为 O(1)，我们可以总结出 cache 这个数据结构必要的条件：</p>
-<blockquote>
-<p>🔴 cache 中的元素必须有时序，以区分最近使用的和久未使用的数据</p>
-<p>🟡 能在 cache 中快速找某个 key 是否已存在并得到对应的 val</p>
-<p>🟢 cache 要支持在任意位置快速插入和删除元素，便于访问某个 key 并将这个元素变为最近使用的</p>
-</blockquote>
-<p>哈希表查找快，但是数据无固定顺序；链表有顺序之分，插入删除快，但是查找慢。所以结合一下，形成一种新的数据结构：<strong>哈希链表 LinkedHashMap</strong>。</p>
-<p>LRU 缓存算法的核心数据结构就是<strong>哈希链表</strong>，<strong>双向链表和哈希表的结合体</strong>。 如图所示：</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/img/labuladong/6-1.png"
-        data-srcset="/img/labuladong/6-1.png, /img/labuladong/6-1.png 1.5x, /img/labuladong/6-1.png 2x"
-        data-sizes="auto"
-        alt="/img/labuladong/6-1.png"
-        title="img1" /></p>
-<p>根据这个结构分析以上 3 个条件：</p>
-<blockquote>
-<p>🟥 每次从链表尾部添加元素，则尾部就是最近使用的，头部就是最久未使用的</p>
-<p>🟨 通过哈希表可以根据 key 快速获得 val</p>
-<p>🟩 用哈希表将 key 快速映射到链表节点后，可以很方便的进行插入、删除操作</p>
-</blockquote>
-<p>两个问题：</p>
-<blockquote>
-<p>❓ 用单链表取代双链表行不行？</p>
-<p>❓ 哈希表中存了 key，链表中为什么还要存 key 和 val？可以只存 val 吗？</p>
-</blockquote>
-<h3 id="22-代码实现">2.2 代码实现</h3>
-<p>首先写出双链表节点类型 Node：</p>
+<p>考虑题目的两个要求：</p>
+<p>🔴 插入、删除、查询随机元素的时间复杂度必须都是 O(1)。  想到使用 STL 中的 map 结构。</p>
+<p>🟡 getRandom() 必须等概率的返回随机元素。 那么底层必须用数组实现，且数组是紧凑的，这样就可以直接生成随机数作为数组索引。</p>
+<p>🟢  综合考虑以上2个条件：在 O(1) 的时间删除数组中的某⼀个元素 val，可以先把这个元素交换到数组的尾部，然后再 pop 掉。而交换两个元素需要知道索引，故用哈希表存储每个元素及其索引。</p>
+<p>代码实现：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -227,40 +203,58 @@
 </span><span class="lnt">30
 </span><span class="lnt">31
 </span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">RandomizedSet</span> <span class="o">{</span>
-<span class="kd">public</span><span class="o">:</span>
-    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">ve</span><span class="o">;</span>
-    <span class="n">unordered_map</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">ma</span><span class="o">;</span> <span class="c1">// 键是元素值，值是元素在ve中的索引
-</span><span class="c1"></span>    <span class="n">RandomizedSet</span><span class="o">()</span> <span class="o">{</span>
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="k">class</span> <span class="nc">RandomizedSet</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="c1">// 存储元素的值
+</span><span class="c1"></span>    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">ve</span><span class="p">;</span>
+    <span class="c1">// 键是元素值，值是元素在ve中的索引
+</span><span class="c1"></span>    <span class="n">unordered_map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">ma</span><span class="p">;</span> 
+    <span class="n">RandomizedSet</span><span class="p">()</span> <span class="p">{</span>
 
-    <span class="o">}</span>
+    <span class="p">}</span>
     
-    <span class="n">bool</span> <span class="nf">insert</span><span class="o">(</span><span class="kt">int</span> <span class="n">val</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">if</span><span class="o">(</span><span class="n">ma</span><span class="o">.</span><span class="na">find</span><span class="o">(</span><span class="n">val</span><span class="o">)</span> <span class="o">==</span> <span class="n">ma</span><span class="o">.</span><span class="na">end</span><span class="o">()){</span>   <span class="c1">// 注意条件！别写反了
-</span><span class="c1"></span>            <span class="n">ma</span><span class="o">[</span><span class="n">val</span><span class="o">]=</span><span class="n">ve</span><span class="o">.</span><span class="na">size</span><span class="o">();</span>  <span class="c1">// 注意添加键值对的写法
-</span><span class="c1"></span>            <span class="n">ve</span><span class="o">.</span><span class="na">push_back</span><span class="o">(</span><span class="n">val</span><span class="o">);</span>
-            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
-        <span class="o">}</span>
-        <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
-    <span class="o">}</span>
+    <span class="kt">bool</span> <span class="nf">insert</span><span class="p">(</span><span class="kt">int</span> <span class="n">val</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 若 val 不存在，则插入并返回true
+</span><span class="c1"></span>        <span class="k">if</span><span class="p">(</span><span class="n">ma</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">val</span><span class="p">)</span> <span class="o">==</span> <span class="n">ma</span><span class="p">.</span><span class="n">end</span><span class="p">()){</span>   <span class="c1">// 注意条件！别写反了
+</span><span class="c1"></span>            <span class="c1">// 并记录 val 对应的索引值，注意添加键值对的写法
+</span><span class="c1"></span>            <span class="n">ma</span><span class="p">[</span><span class="n">val</span><span class="p">]</span><span class="o">=</span><span class="n">ve</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>  
+            <span class="n">ve</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">val</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">}</span>
     
-    <span class="n">bool</span> <span class="nf">remove</span><span class="o">(</span><span class="kt">int</span> <span class="n">val</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">if</span><span class="o">(</span><span class="n">ma</span><span class="o">.</span><span class="na">find</span><span class="o">(</span><span class="n">val</span><span class="o">)</span> <span class="o">!=</span> <span class="n">ma</span><span class="o">.</span><span class="na">end</span><span class="o">()){</span>
-            <span class="n">ma</span><span class="o">[</span><span class="n">ve</span><span class="o">.</span><span class="na">back</span><span class="o">()]=</span><span class="n">ma</span><span class="o">[</span><span class="n">val</span><span class="o">];</span>  <span class="c1">// 更新 ma 中的索引
-</span><span class="c1"></span>            <span class="n">swap</span><span class="o">(</span><span class="n">ve</span><span class="o">[</span><span class="n">ma</span><span class="o">[</span><span class="n">val</span><span class="o">]],</span><span class="n">ve</span><span class="o">.</span><span class="na">back</span><span class="o">());</span>    <span class="c1">// 更新ve中的两个元素
-</span><span class="c1"></span>            <span class="n">ve</span><span class="o">.</span><span class="na">pop_back</span><span class="o">();</span>  <span class="c1">// 删除ve中的元素
-</span><span class="c1"></span>            <span class="n">ma</span><span class="o">.</span><span class="na">erase</span><span class="o">(</span><span class="n">val</span><span class="o">);</span>  <span class="c1">// 删除ma中的元素
-</span><span class="c1"></span>            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
-        <span class="o">}</span>
-        <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
-    <span class="o">}</span>
+    <span class="kt">bool</span> <span class="nf">remove</span><span class="p">(</span><span class="kt">int</span> <span class="n">val</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">ma</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">val</span><span class="p">)</span> <span class="o">!=</span> <span class="n">ma</span><span class="p">.</span><span class="n">end</span><span class="p">()){</span>
+            <span class="c1">// 将最后⼀个元素对应的索引修改为 ma[val]
+</span><span class="c1"></span>            <span class="n">ma</span><span class="p">[</span><span class="n">ve</span><span class="p">.</span><span class="n">back</span><span class="p">()]</span><span class="o">=</span><span class="n">ma</span><span class="p">[</span><span class="n">val</span><span class="p">];</span>  
+            <span class="c1">// 交换 val 和最后⼀个元素
+</span><span class="c1"></span>            <span class="n">swap</span><span class="p">(</span><span class="n">ve</span><span class="p">[</span><span class="n">ma</span><span class="p">[</span><span class="n">val</span><span class="p">]],</span><span class="n">ve</span><span class="p">.</span><span class="n">back</span><span class="p">());</span>    
+            <span class="c1">// 在数组中删除元素 val
+</span><span class="c1"></span>            <span class="n">ve</span><span class="p">.</span><span class="n">pop_back</span><span class="p">();</span>  
+            <span class="c1">// 删除元素 val 对应的索引
+</span><span class="c1"></span>            <span class="n">ma</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">val</span><span class="p">);</span>  
+            <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">}</span>
     
-    <span class="kt">int</span> <span class="nf">getRandom</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">ve</span><span class="o">[</span><span class="n">rand</span><span class="o">()</span> <span class="o">%</span> <span class="n">ve</span><span class="o">.</span><span class="na">size</span><span class="o">()];</span>
-    <span class="o">}</span>
-<span class="o">};</span>
+    <span class="kt">int</span> <span class="nf">getRandom</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// 随机获取 nums 中的⼀个元素
+</span><span class="c1"></span>        <span class="k">return</span> <span class="n">ve</span><span class="p">[</span><span class="n">rand</span><span class="p">()</span> <span class="o">%</span> <span class="n">ve</span><span class="p">.</span><span class="n">size</span><span class="p">()];</span>
+    <span class="p">}</span>
+<span class="p">};</span>
 </code></pre></td></tr></table>
 </div>
 </div></div><div class="post-footer" id="post-footer">
