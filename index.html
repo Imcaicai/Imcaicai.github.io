@@ -130,13 +130,10 @@
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>,&nbsp;<a href="/tags/stl/">STL</a>,&nbsp;<a href="/tags/pair/">pair</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%A0%B8%E5%BF%83%E6%A1%86%E6%9E%B6/">【动态规划】动态规划核心框架</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-03-18">2023-03-18</time></span>&nbsp;<span class="post-category">included in <a href="/categories/labuladong%E7%9A%84%E7%AE%97%E6%B3%95%E7%A7%98%E7%B1%8D/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>labuladong的算法秘籍</a></span></div><div class="content">斐波那契数列 力扣 509. 斐波那契数
-斐波那契数 （通常用 F(n) 表示）形成的序列称为 斐波那契数列 。该数列由 0 和 1 开始，后面的每一项数字都是前面两项数字的和。
-给定 n ，请计算 F(n) 。
-力扣 322. 零钱兑换
-给你一个整数数组 coins ，表示不同面额的硬币；以及一个整数 amount ，表示总金额。
-计算并返回可以凑成总金额所需的 最少的硬币个数 。如果没有任何一种硬币组合能组成总金额，返回 -1 。
-你可以认为每种硬币的数量是无限的。</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-03-18">2023-03-18</time></span>&nbsp;<span class="post-category">included in <a href="/categories/labuladong%E7%9A%84%E7%AE%97%E6%B3%95%E7%A7%98%E7%B1%8D/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>labuladong的算法秘籍</a></span></div><div class="content">🔴 【动态规划三要素】重叠子问题、最优子结构、状态转移方程
+🟢 【思维框架】明确 base case → 明确「状态」→ 明确「选择」 → 定义 dp 数组/函数的含义。
+🔵
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15  # ⾃顶向下递归的动态规划 def dp(状态1, 状态2, ...): for 选择 in 所有可能的选择: # 此时的状态已经因为做了选择⽽改变 result = 求最值(result, dp(状态1, 状态2, ...)) return result # ⾃底向上迭代的动态规划 # 初始化 base case dp[0][0][...] = base case # 进⾏状态转移 for 状态1 in 状态1的所有取值： for 状态2 in 状态2的所有取值： for .</div><div class="post-footer">
         <a href="/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%A0%B8%E5%BF%83%E6%A1%86%E6%9E%B6/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/labuladong/">labuladong</a>,&nbsp;<a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>,&nbsp;<a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
@@ -156,7 +153,7 @@
 3、除号是整数除法，无论正负都向 0 取整（5/2=2，-5/2=-2）。
 4、可以假定输入的算式⼀定合法，且计算过程不会出现整型溢出，不会出现除数为 0 的意外情况。
 2 解析 2.1 字符串转整数 1 2 3 4 5 6  // 把字符串s转为整数n int n = 0; for (int i = 0; i &lt; s.size(); i++) { char c = s[i]; n = 10 * n + (c - &#39;0&#39;); }   ❗❗❗ 注意 (c - &lsquo;0&rsquo;) 的括号不能省略，否则可能造成整型溢出。
-2.2 处理加减法 2.3 处理乘除法 2.4 处理括号 </div><div class="post-footer">
+2.2 处理加减法 🟠 先给第⼀个数字加⼀个默认符号 +，变成 +1-12+3。</div><div class="post-footer">
         <a href="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%AE%A1%E7%AE%97%E5%99%A8/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/labuladong/">labuladong</a>,&nbsp;<a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">

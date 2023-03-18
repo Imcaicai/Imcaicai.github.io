@@ -11,7 +11,7 @@
 3、除号是整数除法，无论正负都向 0 取整（5/2=2，-5/2=-2）。
 4、可以假定输入的算式⼀定合法，且计算过程不会出现整型溢出，不会出现除数为 0 的意外情况。
 2 解析 2.1 字符串转整数 1 2 3 4 5 6  // 把字符串s转为整数n int n = 0; for (int i = 0; i &lt; s.size(); i&#43;&#43;) { char c = s[i]; n = 10 * n &#43; (c - &#39;0&#39;); }   ❗❗❗ 注意 (c - &lsquo;0&rsquo;) 的括号不能省略，否则可能造成整型溢出。
-2.2 处理加减法 2.3 处理乘除法 2.4 处理括号 " />
+2.2 处理加减法 🟠 先给第⼀个数字加⼀个默认符号 &#43;，变成 &#43;1-12&#43;3。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://imcaicai.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%AE%A1%E7%AE%97%E5%99%A8/" /><meta property="og:image" content="https://imcaicai.github.io/img/avatar.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-03-16T21:12:41&#43;08:00" />
@@ -27,7 +27,7 @@
 3、除号是整数除法，无论正负都向 0 取整（5/2=2，-5/2=-2）。
 4、可以假定输入的算式⼀定合法，且计算过程不会出现整型溢出，不会出现除数为 0 的意外情况。
 2 解析 2.1 字符串转整数 1 2 3 4 5 6  // 把字符串s转为整数n int n = 0; for (int i = 0; i &lt; s.size(); i&#43;&#43;) { char c = s[i]; n = 10 * n &#43; (c - &#39;0&#39;); }   ❗❗❗ 注意 (c - &lsquo;0&rsquo;) 的括号不能省略，否则可能造成整型溢出。
-2.2 处理加减法 2.3 处理乘除法 2.4 处理括号 "/>
+2.2 处理加减法 🟠 先给第⼀个数字加⼀个默认符号 &#43;，变成 &#43;1-12&#43;3。"/>
 <meta name="application-name" content="菜菜的秘密花园">
 <meta name="apple-mobile-web-app-title" content="菜菜的秘密花园"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://imcaicai.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%AE%A1%E7%AE%97%E5%99%A8/" /><link rel="prev" href="https://imcaicai.github.io/stlvector%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" /><link rel="next" href="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2020%E4%B8%8B/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -40,7 +40,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/imcaicai.github.io\/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%AE%A1%E7%AE%97%E5%99%A8\/"
-        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "labuladong, 数据结构","wordcount":  67 ,
+        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "labuladong, 数据结构","wordcount":  490 ,
         "url": "https:\/\/imcaicai.github.io\/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%AE%A1%E7%AE%97%E5%99%A8\/","datePublished": "2023-03-16T21:12:41+08:00","dateModified": "2023-03-16T21:12:41+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/imcaicai.github.io\/img\/avatar.jpg"},"author": {
@@ -134,8 +134,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">【数据结构设计】实现一个计算器</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-category">included in <a href="/categories/labuladong%E7%9A%84%E7%AE%97%E6%B3%95%E7%A7%98%E7%B1%8D/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>labuladong的算法秘籍</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-16">2023-03-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;67 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;<span id="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%AE%A1%E7%AE%97%E5%99%A8/" class="leancloud_visitors" data-flag-title="【数据结构设计】实现一个计算器">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-16">2023-03-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;490 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;<span id="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%AE%A1%E7%AE%97%E5%99%A8/" class="leancloud_visitors" data-flag-title="【数据结构设计】实现一个计算器">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
@@ -184,9 +184,227 @@
 </div>
 </div><p>❗❗❗ 注意 (c - &lsquo;0&rsquo;)  的括号不能省略，否则可能造成整型溢出。</p>
 <h3 id="22-处理加减法">2.2 处理加减法</h3>
-<h3 id="23-处理乘除法">2.3 处理乘除法</h3>
-<h3 id="24-处理括号">2.4 处理括号</h3>
-</div><div class="post-footer" id="post-footer">
+<p>🟠 先给第⼀个数字加⼀个默认符号 +，变成 +1-12+3。</p>
+<p>🟡 把⼀个运算符和数字组合成⼀对，也就是三对 +1，-12，+3，把它们转化成数字，然后放到⼀个栈 中。</p>
+<p>🟢 将栈中所有的数字求和，就是原算式的结果。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">int</span> <span class="nf">calculate</span><span class="p">(</span><span class="n">string</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+	<span class="n">stack</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">stk</span><span class="p">;</span>
+	<span class="c1">// 记录算式中的数字
+</span><span class="c1"></span>	<span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="c1">// 记录 num 前的符号，初始化为 +
+</span><span class="c1"></span>	<span class="kt">char</span> <span class="n">sign</span> <span class="o">=</span> <span class="sc">&#39;+&#39;</span><span class="p">;</span>
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">s</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+		<span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+		<span class="c1">// 如果是数字，连续读取到 num
+</span><span class="c1"></span>		<span class="k">if</span> <span class="p">(</span><span class="n">isdigit</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+		<span class="n">num</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">num</span> <span class="o">+</span> <span class="p">(</span><span class="n">c</span> <span class="o">-</span> <span class="sc">&#39;0&#39;</span><span class="p">);</span>
+		<span class="c1">// 如果不是数字，就是遇到了下⼀个符号，
+</span><span class="c1"></span>		<span class="c1">// 之前的数字和符号就要存进栈中
+</span><span class="c1"></span>		<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">isdigit</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">||</span> <span class="n">i</span> <span class="o">==</span> <span class="n">s</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+			<span class="k">switch</span> <span class="p">(</span><span class="n">sign</span><span class="p">)</span> <span class="p">{</span>
+				<span class="k">case</span> <span class="sc">&#39;+&#39;</span><span class="o">:</span>
+					<span class="n">stk</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">num</span><span class="p">);</span> <span class="k">break</span><span class="p">;</span>
+				<span class="k">case</span> <span class="sc">&#39;-&#39;</span><span class="o">:</span>
+					<span class="n">stk</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="o">-</span><span class="n">num</span><span class="p">);</span> <span class="k">break</span><span class="p">;</span>
+			<span class="p">}</span>
+			<span class="c1">// 更新符号为当前符号，数字清零
+</span><span class="c1"></span>			<span class="n">sign</span> <span class="o">=</span> <span class="n">c</span><span class="p">;</span>
+			<span class="n">num</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+		<span class="p">}</span>
+ 	<span class="p">}</span>
+ 	<span class="c1">// 将栈中所有结果求和就是答案
+</span><span class="c1"></span> 	<span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+ 	<span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">stk</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+ 		<span class="n">res</span> <span class="o">+=</span> <span class="n">stk</span><span class="p">.</span><span class="n">top</span><span class="p">();</span>
+ 		<span class="n">stk</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+ 	<span class="p">}</span>
+ 	<span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="23-处理乘除法">2.3 处理乘除法</h3>
+<p>思路跟仅处理加减法类似，其他部分都不变，只需要在 switch 部分加上对应的 case 。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">s</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+ 	<span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+ 	<span class="k">if</span> <span class="p">(</span><span class="n">isdigit</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+	<span class="n">num</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">num</span> <span class="o">+</span> <span class="p">(</span><span class="n">c</span> <span class="o">-</span> <span class="sc">&#39;0&#39;</span><span class="p">);</span>
+ 	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">isdigit</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">||</span> <span class="n">i</span> <span class="o">==</span> <span class="n">s</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+ 		<span class="k">switch</span> <span class="p">(</span><span class="n">sign</span><span class="p">)</span> <span class="p">{</span>
+ 			<span class="kt">int</span> <span class="n">pre</span><span class="p">;</span>
+ 			<span class="k">case</span> <span class="sc">&#39;+&#39;</span><span class="o">:</span>
+ 				<span class="n">stk</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">num</span><span class="p">);</span> <span class="k">break</span><span class="p">;</span>
+ 			<span class="k">case</span> <span class="sc">&#39;-&#39;</span><span class="o">:</span>
+ 				<span class="n">stk</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="o">-</span><span class="n">num</span><span class="p">);</span> <span class="k">break</span><span class="p">;</span>
+ 				<span class="c1">// 只要拿出前⼀个数字做对应运算即可
+</span><span class="c1"></span> 			<span class="k">case</span> <span class="sc">&#39;*&#39;</span><span class="o">:</span>
+ 				<span class="n">pre</span> <span class="o">=</span> <span class="n">stk</span><span class="p">.</span><span class="n">top</span><span class="p">();</span>
+ 				<span class="n">stk</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+ 				<span class="n">stk</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">pre</span> <span class="o">*</span> <span class="n">num</span><span class="p">);</span>
+ 				<span class="k">break</span><span class="p">;</span>
+ 			<span class="k">case</span> <span class="sc">&#39;/&#39;</span><span class="o">:</span>
+ 				<span class="n">pre</span> <span class="o">=</span> <span class="n">stk</span><span class="p">.</span><span class="n">top</span><span class="p">();</span>
+ 				<span class="n">stk</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+ 				<span class="n">stk</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">pre</span> <span class="o">/</span> <span class="n">num</span><span class="p">);</span>
+ 				<span class="k">break</span><span class="p">;</span>
+ 		<span class="p">}</span>
+ 		<span class="c1">// 更新符号为当前符号，数字清零
+</span><span class="c1"></span> 		<span class="n">sign</span> <span class="o">=</span> <span class="n">c</span><span class="p">;</span>
+ 		<span class="n">num</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+ 	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>当遇到空格时，只需要控制空格不进入 if 条件：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="k">if</span> <span class="p">((</span><span class="o">!</span><span class="n">isdigit</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">c</span> <span class="o">!=</span> <span class="sc">&#39; &#39;</span><span class="p">)</span> <span class="o">||</span> <span class="n">i</span> <span class="o">==</span> <span class="n">s</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+ 	<span class="p">...</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="24-处理括号">2.4 处理括号</h3>
+<p>💥 <strong>括号具有递归性质。</strong> 我们只需在遍历时，遇到  <code>(</code>  开始递归，遇到  <code>)</code>  结束递归。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-Python" data-lang="Python"><span class="k">def</span> <span class="nf">calculate</span><span class="p">(</span><span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+
+ 	<span class="k">def</span> <span class="nf">helper</span><span class="p">(</span><span class="n">s</span><span class="p">:</span> <span class="n">List</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+ 		<span class="n">stack</span> <span class="o">=</span> <span class="p">[]</span>
+ 		<span class="n">sign</span> <span class="o">=</span> <span class="s1">&#39;+&#39;</span>
+ 		<span class="n">num</span> <span class="o">=</span> <span class="mi">0</span>
+ 		<span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+ 			<span class="n">c</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
+ 			<span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
+ 				<span class="n">num</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">num</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+ 			<span class="c1"># 遇到左括号开始递归计算 num</span>
+ 			<span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="s1">&#39;(&#39;</span><span class="p">:</span>
+				<span class="n">num</span> <span class="o">=</span> <span class="n">helper</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+ 			<span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">c</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()</span> <span class="ow">and</span> <span class="n">c</span> <span class="o">!=</span> <span class="s1">&#39; &#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+ 				<span class="k">if</span> <span class="n">sign</span> <span class="o">==</span> <span class="s1">&#39;+&#39;</span><span class="p">:</span>
+ 					<span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+	 			<span class="k">elif</span> <span class="n">sign</span> <span class="o">==</span> <span class="s1">&#39;-&#39;</span><span class="p">:</span>
+ 					<span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="n">num</span><span class="p">)</span>
+ 				<span class="k">elif</span> <span class="n">sign</span> <span class="o">==</span> <span class="s1">&#39;*&#39;</span><span class="p">:</span>
+ 					<span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">num</span>
+ 				<span class="k">elif</span> <span class="n">sign</span> <span class="o">==</span> <span class="s1">&#39;/&#39;</span><span class="p">:</span>
+ 					<span class="c1"># python 除法向 0 取整的写法</span>
+ 					<span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">num</span><span class="p">))</span>
+ 				<span class="n">num</span> <span class="o">=</span> <span class="mi">0</span>
+ 				<span class="n">sign</span> <span class="o">=</span> <span class="n">c</span>
+ 			<span class="c1"># 遇到右括号返回递归结果</span>
+ 			<span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="s1">&#39;)&#39;</span><span class="p">:</span> <span class="k">break</span>
+ 		<span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">stack</span><span class="p">)</span>
+    
+ <span class="k">return</span> <span class="n">helper</span><span class="p">(</span><span class="n">collections</span><span class="o">.</span><span class="n">deque</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+</code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">

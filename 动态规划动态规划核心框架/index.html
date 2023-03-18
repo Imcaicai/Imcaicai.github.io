@@ -5,13 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <title>【动态规划】动态规划核心框架 - 菜菜的秘密花园</title><meta name="Description" content="菜菜的秘密花园"><meta property="og:title" content="【动态规划】动态规划核心框架" />
-<meta property="og:description" content="斐波那契数列 力扣 509. 斐波那契数
-斐波那契数 （通常用 F(n) 表示）形成的序列称为 斐波那契数列 。该数列由 0 和 1 开始，后面的每一项数字都是前面两项数字的和。
-给定 n ，请计算 F(n) 。
-力扣 322. 零钱兑换
-给你一个整数数组 coins ，表示不同面额的硬币；以及一个整数 amount ，表示总金额。
-计算并返回可以凑成总金额所需的 最少的硬币个数 。如果没有任何一种硬币组合能组成总金额，返回 -1 。
-你可以认为每种硬币的数量是无限的。" />
+<meta property="og:description" content="🔴 【动态规划三要素】重叠子问题、最优子结构、状态转移方程
+🟢 【思维框架】明确 base case → 明确「状态」→ 明确「选择」 → 定义 dp 数组/函数的含义。
+🔵
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15  # ⾃顶向下递归的动态规划 def dp(状态1, 状态2, ...): for 选择 in 所有可能的选择: # 此时的状态已经因为做了选择⽽改变 result = 求最值(result, dp(状态1, 状态2, ...)) return result # ⾃底向上迭代的动态规划 # 初始化 base case dp[0][0][...] = base case # 进⾏状态转移 for 状态1 in 状态1的所有取值： for 状态2 in 状态2的所有取值： for ." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://imcaicai.github.io/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%A0%B8%E5%BF%83%E6%A1%86%E6%9E%B6/" /><meta property="og:image" content="https://imcaicai.github.io/img/avatar.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-03-18T00:04:04&#43;08:00" />
@@ -21,13 +18,10 @@
 <meta name="twitter:image" content="https://imcaicai.github.io/img/avatar.jpg"/>
 
 <meta name="twitter:title" content="【动态规划】动态规划核心框架"/>
-<meta name="twitter:description" content="斐波那契数列 力扣 509. 斐波那契数
-斐波那契数 （通常用 F(n) 表示）形成的序列称为 斐波那契数列 。该数列由 0 和 1 开始，后面的每一项数字都是前面两项数字的和。
-给定 n ，请计算 F(n) 。
-力扣 322. 零钱兑换
-给你一个整数数组 coins ，表示不同面额的硬币；以及一个整数 amount ，表示总金额。
-计算并返回可以凑成总金额所需的 最少的硬币个数 。如果没有任何一种硬币组合能组成总金额，返回 -1 。
-你可以认为每种硬币的数量是无限的。"/>
+<meta name="twitter:description" content="🔴 【动态规划三要素】重叠子问题、最优子结构、状态转移方程
+🟢 【思维框架】明确 base case → 明确「状态」→ 明确「选择」 → 定义 dp 数组/函数的含义。
+🔵
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15  # ⾃顶向下递归的动态规划 def dp(状态1, 状态2, ...): for 选择 in 所有可能的选择: # 此时的状态已经因为做了选择⽽改变 result = 求最值(result, dp(状态1, 状态2, ...)) return result # ⾃底向上迭代的动态规划 # 初始化 base case dp[0][0][...] = base case # 进⾏状态转移 for 状态1 in 状态1的所有取值： for 状态2 in 状态2的所有取值： for ."/>
 <meta name="application-name" content="菜菜的秘密花园">
 <meta name="apple-mobile-web-app-title" content="菜菜的秘密花园"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://imcaicai.github.io/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%A0%B8%E5%BF%83%E6%A1%86%E6%9E%B6/" /><link rel="prev" href="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2020%E4%B8%8B/" /><link rel="next" href="https://imcaicai.github.io/stlpair%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -40,7 +34,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/imcaicai.github.io\/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%A0%B8%E5%BF%83%E6%A1%86%E6%9E%B6\/"
-        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "labuladong, 算法, 动态规划","wordcount":  33 ,
+        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "labuladong, 算法, 动态规划","wordcount":  784 ,
         "url": "https:\/\/imcaicai.github.io\/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%A0%B8%E5%BF%83%E6%A1%86%E6%9E%B6\/","datePublished": "2023-03-18T00:04:04+08:00","dateModified": "2023-03-18T00:04:04+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/imcaicai.github.io\/img\/avatar.jpg"},"author": {
@@ -134,8 +128,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">【动态规划】动态规划核心框架</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-category">included in <a href="/categories/labuladong%E7%9A%84%E7%AE%97%E6%B3%95%E7%A7%98%E7%B1%8D/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>labuladong的算法秘籍</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-18">2023-03-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;33 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;<span id="/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%A0%B8%E5%BF%83%E6%A1%86%E6%9E%B6/" class="leancloud_visitors" data-flag-title="【动态规划】动态规划核心框架">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-18">2023-03-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;784 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;<span id="/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%A0%B8%E5%BF%83%E6%A1%86%E6%9E%B6/" class="leancloud_visitors" data-flag-title="【动态规划】动态规划核心框架">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
@@ -145,22 +139,359 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#1-重叠子问题">1 【重叠子问题】</a>
       <ul>
-        <li><a href="#斐波那契数列">斐波那契数列</a></li>
+        <li><a href="#题目斐波那契数">题目——斐波那契数</a></li>
+        <li><a href="#11-暴力递归">1.1 暴力递归</a></li>
+        <li><a href="#12-带备忘录的递归解法自顶向下">1.2 带备忘录的递归解法(自顶向下)</a></li>
+        <li><a href="#13-dp-数组的迭代递推解法自低向上">1.3 dp 数组的迭代/递推解法(自低向上)</a></li>
+        <li><a href="#2-转移方程">2 【转移方程】</a></li>
+        <li><a href="#题目零钱兑换">题目——零钱兑换</a></li>
+        <li><a href="#21-暴力递归">2.1 暴力递归</a></li>
+        <li><a href="#22-带备忘录的递归">2.2 带备忘录的递归</a></li>
+        <li><a href="#23-dp-数组的迭代解法">2.3 dp 数组的迭代解法</a></li>
       </ul>
     </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h3 id="斐波那契数列">斐波那契数列</h3>
+            </div><div class="content" id="content"><p>🔴 <strong>【动态规划三要素】重叠子问题、最优子结构、状态转移方程</strong></p>
+<p>🟢 <strong>【思维框架】明确 base case → 明确「状态」→ 明确「选择」 → 定义 dp 数组/函数的含义。</strong></p>
+<p>🔵</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-Python" data-lang="Python"><span class="c1"># ⾃顶向下递归的动态规划</span>
+<span class="k">def</span> <span class="nf">dp</span><span class="p">(</span><span class="err">状态</span><span class="mi">1</span><span class="p">,</span> <span class="err">状态</span><span class="mi">2</span><span class="p">,</span> <span class="o">...</span><span class="p">):</span>
+     <span class="k">for</span> <span class="err">选择</span> <span class="ow">in</span> <span class="err">所有可能的选择</span><span class="p">:</span>
+     <span class="c1"># 此时的状态已经因为做了选择⽽改变</span>
+     <span class="n">result</span> <span class="o">=</span> <span class="err">求最值</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">dp</span><span class="p">(</span><span class="err">状态</span><span class="mi">1</span><span class="p">,</span> <span class="err">状态</span><span class="mi">2</span><span class="p">,</span> <span class="o">...</span><span class="p">))</span>
+     <span class="k">return</span> <span class="n">result</span>
+
+<span class="c1"># ⾃底向上迭代的动态规划</span>
+<span class="c1"># 初始化 base case</span>
+<span class="n">dp</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="n">base</span> <span class="n">case</span>
+<span class="c1"># 进⾏状态转移</span>
+<span class="k">for</span> <span class="err">状态</span><span class="mi">1</span> <span class="ow">in</span> <span class="err">状态</span><span class="mi">1</span><span class="err">的所有取值：</span>
+     <span class="k">for</span> <span class="err">状态</span><span class="mi">2</span> <span class="ow">in</span> <span class="err">状态</span><span class="mi">2</span><span class="err">的所有取值：</span>
+         <span class="k">for</span> <span class="o">...</span>
+             <span class="n">dp</span><span class="p">[</span><span class="err">状态</span><span class="mi">1</span><span class="p">][</span><span class="err">状态</span><span class="mi">2</span><span class="p">][</span><span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="err">求最值</span><span class="p">(</span><span class="err">选择</span><span class="mi">1</span><span class="err">，选择</span><span class="mf">2.</span><span class="o">..</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="1-重叠子问题">1 【重叠子问题】</h2>
+<h3 id="题目斐波那契数">题目——斐波那契数</h3>
 <p><strong>力扣 <a href="https://leetcode.cn/problems/fibonacci-number/" target="_blank" rel="noopener noreffer ">509. 斐波那契数</a></strong></p>
 <p><strong>斐波那契数</strong> （通常用 <code>F(n)</code> 表示）形成的序列称为 <strong>斐波那契数列</strong> 。该数列由 <code>0</code> 和 <code>1</code> 开始，后面的每一项数字都是前面两项数字的和。</p>
 <p>给定 <code>n</code> ，请计算 <code>F(n)</code> 。</p>
+<h3 id="11-暴力递归">1.1 暴力递归</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">int</span> <span class="nf">fib</span><span class="p">(</span><span class="kt">int</span> <span class="n">N</span><span class="p">)</span> <span class="p">{</span>
+     <span class="k">if</span> <span class="p">(</span><span class="n">N</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">||</span> <span class="n">N</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+     <span class="k">return</span> <span class="n">fib</span><span class="p">(</span><span class="n">N</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fib</span><span class="p">(</span><span class="n">N</span> <span class="o">-</span> <span class="mi">2</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>子问题个数： O(2^n)。解决⼀个子问题的时间：只有 f(n - 1) + f(n - 2) ⼀个加法操作， 时间为 O(1)。因此这个算法的时间复杂度为二者相乘，即 O(2^n)。</p>
+<p>这种方法存在大量重复计算，即重叠子问题，我们需要想办法解决这个问题。</p>
+<h3 id="12-带备忘录的递归解法自顶向下">1.2 带备忘录的递归解法(自顶向下)</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">int</span> <span class="nf">fib</span><span class="p">(</span><span class="kt">int</span> <span class="n">N</span><span class="p">)</span> <span class="p">{</span>
+     <span class="c1">// 备忘录全初始化为 0
+</span><span class="c1"></span>     <span class="kt">int</span><span class="p">[]</span> <span class="n">memo</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">[</span><span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span>
+     <span class="c1">// 进⾏带备忘录的递归
+</span><span class="c1"></span>     <span class="k">return</span> <span class="n">helper</span><span class="p">(</span><span class="n">memo</span><span class="p">,</span> <span class="n">N</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">helper</span><span class="p">(</span><span class="kt">int</span><span class="p">[]</span> <span class="n">memo</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+     <span class="c1">// base case
+</span><span class="c1"></span>     <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>	<span class="k">return</span> <span class="n">n</span><span class="p">;</span>
+         <span class="c1">// 已经计算过，不⽤再计算了
+</span><span class="c1"></span>     <span class="k">if</span> <span class="p">(</span><span class="n">memo</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>	<span class="k">return</span> <span class="n">memo</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
+     <span class="n">memo</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">helper</span><span class="p">(</span><span class="n">memo</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">helper</span><span class="p">(</span><span class="n">memo</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">);</span>
+     <span class="k">return</span> <span class="n">memo</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>在这种算法中，由于不存在冗余计算，子问题个数为 O(n)，解决一个子问题的时间仍为 O(1)。 所以算法的时间复杂度是 O(n)，和暴力算法相比提升很多。</p>
+<h3 id="13-dp-数组的迭代递推解法自低向上">1.3 dp 数组的迭代/递推解法(自低向上)</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">int</span> <span class="nf">fib</span><span class="p">(</span><span class="kt">int</span> <span class="n">N</span><span class="p">)</span> <span class="p">{</span>
+     <span class="k">if</span> <span class="p">(</span><span class="n">N</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+     <span class="kt">int</span><span class="p">[]</span> <span class="n">dp</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">[</span><span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span>
+     <span class="c1">// base case
+</span><span class="c1"></span>     <span class="n">dp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">dp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+     <span class="c1">// 状态转移
+</span><span class="c1"></span>     <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+         <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">2</span><span class="p">];</span>
+     <span class="p">}</span>
+     <span class="k">return</span> <span class="n">dp</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>根据斐波那契数列的状态转移方程（ f(n) = f(n-1) + f(n-2) ），当前状态只和之前的两个状态有关，其实并不需要 用数组来存储所有状态，只要存储当前状态的前两个就行。 所以，可以进一步优化，把空间复杂度降为 O(1)：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">int</span> <span class="nf">fib</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+     <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+     <span class="c1">// base case
+</span><span class="c1"></span>     <span class="k">return</span> <span class="n">n</span><span class="p">;</span>
+	<span class="p">}</span>
+    
+	<span class="c1">// 分别代表 dp[i - 1] 和 dp[i - 2]
+</span><span class="c1"></span>	<span class="kt">int</span> <span class="n">dp_i_1</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dp_i_2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+		<span class="c1">// dp[i] = dp[i - 1] + dp[i - 2];
+</span><span class="c1"></span>     	<span class="kt">int</span> <span class="n">dp_i</span> <span class="o">=</span> <span class="n">dp_i_1</span> <span class="o">+</span> <span class="n">dp_i_2</span><span class="p">;</span>
+     	<span class="c1">// 滚动更新
+</span><span class="c1"></span>     	<span class="n">dp_i_2</span> <span class="o">=</span> <span class="n">dp_i_1</span><span class="p">;</span>
+     	<span class="n">dp_i_1</span> <span class="o">=</span> <span class="n">dp_i</span><span class="p">;</span>
+ 	<span class="p">}</span>
+ 	<span class="k">return</span> <span class="n">dp_i_1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="2-转移方程">2 【转移方程】</h3>
+<h3 id="题目零钱兑换">题目——零钱兑换</h3>
 <p><strong>力扣 <a href="https://leetcode.cn/problems/coin-change/" target="_blank" rel="noopener noreffer ">322. 零钱兑换</a></strong></p>
 <p>给你一个整数数组 <code>coins</code> ，表示不同面额的硬币；以及一个整数 <code>amount</code> ，表示总金额。</p>
 <p>计算并返回可以凑成总金额所需的 <strong>最少的硬币个数</strong> 。如果没有任何一种硬币组合能组成总金额，返回 <code>-1</code> 。</p>
 <p>你可以认为每种硬币的数量是无限的。</p>
-</div><div class="post-footer" id="post-footer">
+<h3 id="21-暴力递归">2.1 暴力递归</h3>
+<p>🔴 <strong>确定 base case</strong> ：目标金额 amount 为 0 时算法返回 0，因为不需要任何硬币就已经凑出目标金额了。</p>
+<p>🟡 <strong>确定「状态」</strong> ，也就是子问题中会变化的变量。在本题中是目标金额 amount。</p>
+<p>🟢 <strong>确定「选择」</strong> ，也就是导致「状态」产生变化的行为。在本题中为所有硬币的面值。</p>
+<p>🔵 <strong>明确 dp 函数/数组的定义</strong> 。即凑出目标金额所需的最少硬币数量。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">int</span> <span class="nf">coinChange</span><span class="p">(</span><span class="kt">int</span><span class="p">[]</span> <span class="n">coins</span><span class="p">,</span> <span class="kt">int</span> <span class="n">amount</span><span class="p">)</span> <span class="p">{</span>
+     <span class="c1">// 题⽬要求的最终结果是 dp(amount)
+</span><span class="c1"></span>     <span class="k">return</span> <span class="n">dp</span><span class="p">(</span><span class="n">coins</span><span class="p">,</span> <span class="n">amount</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// 定义：要凑出⾦额 n，⾄少要 dp(coins, n) 个硬币
+</span><span class="c1"></span><span class="kt">int</span> <span class="nf">dp</span><span class="p">(</span><span class="kt">int</span><span class="p">[]</span> <span class="n">coins</span><span class="p">,</span> <span class="kt">int</span> <span class="n">amount</span><span class="p">)</span> <span class="p">{</span>
+     <span class="c1">// base case
+</span><span class="c1"></span>     <span class="k">if</span> <span class="p">(</span><span class="n">amount</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+     <span class="k">if</span> <span class="p">(</span><span class="n">amount</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+     <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="n">Integer</span><span class="p">.</span><span class="n">MAX_VALUE</span><span class="p">;</span>
+     <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="nl">coin</span> <span class="p">:</span> <span class="n">coins</span><span class="p">)</span> <span class="p">{</span>
+    	<span class="c1">// 计算⼦问题的结果
+</span><span class="c1"></span>     	<span class="kt">int</span> <span class="n">subProblem</span> <span class="o">=</span> <span class="n">dp</span><span class="p">(</span><span class="n">coins</span><span class="p">,</span> <span class="n">amount</span> <span class="o">-</span> <span class="n">coin</span><span class="p">);</span>
+     	<span class="c1">// ⼦问题⽆解则跳过
+</span><span class="c1"></span>     	<span class="k">if</span> <span class="p">(</span><span class="n">subProblem</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="k">continue</span><span class="p">;</span>
+     	<span class="c1">// 在⼦问题中选择最优解，然后加⼀
+</span><span class="c1"></span>     	<span class="n">res</span> <span class="o">=</span> <span class="n">Math</span><span class="p">.</span><span class="n">min</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">subProblem</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+     <span class="p">}</span>
+     <span class="k">return</span> <span class="n">res</span> <span class="o">==</span> <span class="n">Integer</span><span class="p">.</span><span class="n">MAX_VALUE</span> <span class="o">?</span> <span class="o">-</span><span class="mi">1</span> <span class="o">:</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>假设目标金额为 n，给定的硬币个数为 k，那么子问题个数在 k^n 这个数量级。而解决每个子问题的复杂度为 O(k)，相乘得到总时间复杂度为 O(k^n)。</p>
+<h3 id="22-带备忘录的递归">2.2 带备忘录的递归</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">int</span><span class="p">[]</span> <span class="n">memo</span><span class="p">;</span>
+<span class="kt">int</span> <span class="nf">coinChange</span><span class="p">(</span><span class="kt">int</span><span class="p">[]</span> <span class="n">coins</span><span class="p">,</span> <span class="kt">int</span> <span class="n">amount</span><span class="p">)</span> <span class="p">{</span>
+     <span class="n">memo</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">[</span><span class="n">amount</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span>
+     <span class="c1">// 备忘录初始化为⼀个不会被取到的特殊值，代表还未被计算
+</span><span class="c1"></span>     <span class="n">Arrays</span><span class="p">.</span><span class="n">fill</span><span class="p">(</span><span class="n">memo</span><span class="p">,</span> <span class="o">-</span><span class="mi">666</span><span class="p">);</span>
+     <span class="k">return</span> <span class="n">dp</span><span class="p">(</span><span class="n">coins</span><span class="p">,</span> <span class="n">amount</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">dp</span><span class="p">(</span><span class="kt">int</span><span class="p">[]</span> <span class="n">coins</span><span class="p">,</span> <span class="kt">int</span> <span class="n">amount</span><span class="p">)</span> <span class="p">{</span>
+     <span class="k">if</span> <span class="p">(</span><span class="n">amount</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+     <span class="k">if</span> <span class="p">(</span><span class="n">amount</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+     <span class="c1">// 查备忘录，防⽌重复计算
+</span><span class="c1"></span>     <span class="k">if</span> <span class="p">(</span><span class="n">memo</span><span class="p">[</span><span class="n">amount</span><span class="p">]</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">666</span><span class="p">)</span>
+     <span class="k">return</span> <span class="n">memo</span><span class="p">[</span><span class="n">amount</span><span class="p">];</span>
+     <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="n">Integer</span><span class="p">.</span><span class="n">MAX_VALUE</span><span class="p">;</span>
+     <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="nl">coin</span> <span class="p">:</span> <span class="n">coins</span><span class="p">)</span> <span class="p">{</span>
+         <span class="c1">// 计算⼦问题的结果
+</span><span class="c1"></span>         <span class="kt">int</span> <span class="n">subProblem</span> <span class="o">=</span> <span class="n">dp</span><span class="p">(</span><span class="n">coins</span><span class="p">,</span> <span class="n">amount</span> <span class="o">-</span> <span class="n">coin</span><span class="p">);</span>
+         <span class="c1">// ⼦问题⽆解则跳过
+</span><span class="c1"></span>         <span class="k">if</span> <span class="p">(</span><span class="n">subProblem</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="k">continue</span><span class="p">;</span>
+         <span class="c1">// 在⼦问题中选择最优解，然后加⼀
+</span><span class="c1"></span>         <span class="n">res</span> <span class="o">=</span> <span class="n">Math</span><span class="p">.</span><span class="n">min</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">subProblem</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+     <span class="p">}</span>
+     <span class="c1">// 把计算结果存⼊备忘录
+</span><span class="c1"></span>     <span class="n">memo</span><span class="p">[</span><span class="n">amount</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">res</span> <span class="o">==</span> <span class="n">Integer</span><span class="p">.</span><span class="n">MAX_VALUE</span><span class="p">)</span> <span class="o">?</span> <span class="o">-</span><span class="mi">1</span> <span class="o">:</span> <span class="n">res</span><span class="p">;</span>
+     <span class="k">return</span> <span class="n">memo</span><span class="p">[</span><span class="n">amount</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>子问题数目为 O(n)。处理⼀个子问题的时间不变，仍是 O(k)，总的时间复杂度是 O(kn)。</p>
+<h3 id="23-dp-数组的迭代解法">2.3 dp 数组的迭代解法</h3>
+<p><strong>dp 数组的定义：当目标金额为 i 时，至少需要 dp[i] 枚硬币凑出。</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">int</span> <span class="nf">coinChange</span><span class="p">(</span><span class="kt">int</span><span class="p">[]</span> <span class="n">coins</span><span class="p">,</span> <span class="kt">int</span> <span class="n">amount</span><span class="p">)</span> <span class="p">{</span>
+     <span class="kt">int</span><span class="p">[]</span> <span class="n">dp</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">[</span><span class="n">amount</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span>
+     <span class="c1">// 数组⼤⼩为 amount + 1，初始值也为 amount + 1
+</span><span class="c1"></span>     <span class="n">Arrays</span><span class="p">.</span><span class="n">fill</span><span class="p">(</span><span class="n">dp</span><span class="p">,</span> <span class="n">amount</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+     <span class="c1">// base case
+</span><span class="c1"></span>     <span class="n">dp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+     <span class="c1">// 外层 for 循环在遍历所有状态的所有取值
+</span><span class="c1"></span>     <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">dp</span><span class="p">.</span><span class="n">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+     	<span class="c1">// 内层 for 循环在求所有选择的最⼩值
+</span><span class="c1"></span>     	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="nl">coin</span> <span class="p">:</span> <span class="n">coins</span><span class="p">)</span> <span class="p">{</span>
+     		<span class="c1">// ⼦问题⽆解，跳过
+</span><span class="c1"></span>     		<span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="n">coin</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+         		<span class="k">continue</span><span class="p">;</span>
+     		<span class="p">}</span>
+     		<span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">Math</span><span class="p">.</span><span class="n">min</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="n">coin</span><span class="p">]);</span>
+ 		<span class="p">}</span>
+ 	<span class="p">}</span>
+ 	<span class="k">return</span> <span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">amount</span><span class="p">]</span> <span class="o">==</span> <span class="n">amount</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">?</span> <span class="o">-</span><span class="mi">1</span> <span class="o">:</span> <span class="n">dp</span><span class="p">[</span><span class="n">amount</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
