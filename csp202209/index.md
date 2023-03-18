@@ -97,68 +97,97 @@ int main()
 
 ## 3
 
-错误的：
-
 ```c++
-#include <iostream>
-#include <cmath>
+#include <bits/stdc++.h>
 
 using namespace std;
 
-struct mdata{
+struct Node{			// 一条漫游数据 
 	int d;
 	int u;
 	int r;
-}; 
-
-struct ddata{
-	int r;
-	int m;
-	int p[405];
-	mdata my[305];
 };
+
+int n;
+map<pair<int,int>,bool> mp;		// 键：地点+日期，值：是否是风险地区 
+vector<Node> user;				// 存放有风险的用户漫游数据 
 
 int main()
 {
-
-	// 输入变量
-	int n;
-	scanf("%d",&n);
-	ddata day[n];
+	ios::sync_with_stdio(false);cin.tie(0);cout.tie(0);
+	cin >> n;					// 输入天数 n 
 	for(int i=0;i<n;i++){
-		scanf("%d",&day[i].r);	// 风险地区个数 
-		scanf("%d",&day[i].m);	// 漫游数据个数 
-		for(int j=1;j<=day[i].r;j++){
-			scanf("%d",&day[i].p[j]);	// 当天的风险地区 
+		int ri,mi;
+		cin >> ri >> mi;		// 输入每天的风险地数量、漫游数据量 
+
+		// 先clear
+		// map<pair<int,int>,bool> tmp;
+		for(map<pair<int,int>,bool>::iterator iter = mp.begin();iter!=mp.end();){
+			map<pair<int,int>,bool>::iterator it1 = iter;
+			iter++;
+			if(i - ((it1->first).second) >= 7)	mp.erase(it1);	// 每次新的一天，检查是否有 7 天外的风险地区数据，有就删掉						
 		}
-		
-		for(int j=0;j<day[i].m;j++){	// 漫游数据 
-			scanf("%d",&day[i].my[j].d);
-			scanf("%d",&day[i].my[j].u);
-			scanf("%d",&day[i].my[j].r);
-		}
-	}
-	
-	int user[1000]={0};
-	int cnt=0;
-	for(int i=0;i<day[0].m;i++){
-		
-		for(int j=1;j<=day[0].r;j++){
-			if(day[0].p[j]==day[0].my[i].r){
-				user[day[0].my[i].u]=1;
-				break;
+
+
+		// 插入合法的
+		for(int j=1;j<=ri;j++){						// 插入风险地区 
+			int pij;
+			cin >> pij;
+			for(int date=i;date<i+7;date++){	
+				mp[{pij,date}] = 1;					// 根据地区、时间标记风险地区 
 			}
 		}
-	}
-	
-	for(int i=0;i<1000;i++){
-		if(user[i]==1){
-			printf("%d", user[i]);
+
+		// 筛选不合法的								// 以前的风险用户 
+		vector<Node> vc;
+		for(auto t:user){							// 遍历漫游数据 
+			bool f = 1;
+			int r = t.r;
+			if(i - t.d >= 7)	continue;			// 只看近 7 天的数据 
+
+			for(int date = t.d;date<=i;date++){
+				if(!mp.count({r,date})){			// 该地区和日期在风险范围内 
+					f = 0;
+					break;
+				}
+			}
+			if(f)		vc.push_back(t);
 		}
+		user.clear();
+		user = vc;									// 每一天都要更新风险用户列表 
+
+		// 必须是七天以内收到的漫游数据				// 今天的风险用户 
+		for(int j=1;j<=mi;j++){
+			int d,u,r;
+			cin >> d >> u >> r;
+
+			if(i - d >= 7)	continue;				// 7 天外的数据就丢掉 
+			// check 合法性
+			// 从 d 到 i 天地区r均为风险地区即可
+			bool f = 1;
+			for(int k=d;k<=i;k++){
+				if(!mp.count({r,k})){				// 在风险记录内，就加进来 
+					f = 0;
+					break;
+				}
+			}
+
+			if(f)	user.push_back({d,u,r});
+		}
+
+		set<int> ans;
+		for(auto x:user)	ans.insert(x.u);		// 只取用户 
+
+		cout << i << ' ';
+		for(auto x:ans){
+			cout << x << ' ';
+		}
+		cout << '\n';
 	}
-	
-	
-} 
+
+
+	return 0;
+}
 ```
 
 

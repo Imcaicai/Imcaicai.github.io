@@ -1,0 +1,21 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>pair - Tag - 菜菜的秘密花园</title>
+        <link>https://imcaicai.github.io/tags/pair/</link>
+        <description>pair - Tag - 菜菜的秘密花园</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 18 Mar 2023 19:24:15 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/tags/pair/" rel="self" type="application/rss+xml" /><item>
+    <title>【STL】pair容器用法</title>
+    <link>https://imcaicai.github.io/stlpair%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/</link>
+    <pubDate>Sat, 18 Mar 2023 19:24:15 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/stlpair%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/</guid>
+    <description><![CDATA[1 简介 🟠 pair 容器将 2 个普通元素 first 和 second（C++ 基本数据类型、结构体、类自定的类型等）创建成一个新元素&lt;first, second&gt;。
+🔵 使用需加上头文件：#include &lt;utility&gt;
+2 创建map容器 1️⃣ 调用 pair 容器类的默认构造函数。
+1  pair &lt;string, int&gt; pair1;   2️⃣ 在创建 pair 容器的同时，进行初始化。
+1  pair &lt;string, int&gt; pair2(&#34;语文&#34;,90);   3️⃣ 利用先前已创建好的 pair 容器和拷贝构造函数，再创建一个新的 pair 容器。
+1  pair &lt;string, int&gt; pair3(pair2);   3 常见用法 3.1 手动为 pair 对象赋值
+1 2  pair1.first = &#34;数学&#34;; pair1.second = &#34;100&#34;;   3.]]></description>
+</item>
+</channel>
+</rss>

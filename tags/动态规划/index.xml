@@ -1,0 +1,21 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>动态规划 - Tag - 菜菜的秘密花园</title>
+        <link>https://imcaicai.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</link>
+        <description>动态规划 - Tag - 菜菜的秘密花园</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 18 Mar 2023 00:04:04 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="self" type="application/rss+xml" /><item>
+    <title>【动态规划】动态规划核心框架</title>
+    <link>https://imcaicai.github.io/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%A0%B8%E5%BF%83%E6%A1%86%E6%9E%B6/</link>
+    <pubDate>Sat, 18 Mar 2023 00:04:04 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%A0%B8%E5%BF%83%E6%A1%86%E6%9E%B6/</guid>
+    <description><![CDATA[斐波那契数列 力扣 509. 斐波那契数
+斐波那契数 （通常用 F(n) 表示）形成的序列称为 斐波那契数列 。该数列由 0 和 1 开始，后面的每一项数字都是前面两项数字的和。
+给定 n ，请计算 F(n) 。
+力扣 322. 零钱兑换
+给你一个整数数组 coins ，表示不同面额的硬币；以及一个整数 amount ，表示总金额。
+计算并返回可以凑成总金额所需的 最少的硬币个数 。如果没有任何一种硬币组合能组成总金额，返回 -1 。
+你可以认为每种硬币的数量是无限的。]]></description>
+</item>
+</channel>
+</rss>
