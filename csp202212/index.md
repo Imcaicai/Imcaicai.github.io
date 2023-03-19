@@ -1,34 +1,11 @@
 # 【CSP】202212题解
 
 
-## 1
+## 1 现值计算
 
-错误的
+🔗 **题目：[现值计算](http://118.190.20.162/view.page?gpid=T160)**
 
-```c++
-#include <iostream>
-using namespace std;
-int main()
-{
-	// 输入年数n，年利率i 
-	int n;
-	double i;
-	scanf("%d %lf", &n,&i);
-	
-	double s=0;	// 保存最后结果 
-	int a;	// 每年收益 
-	for(int j=0;j<n+1;j++){
-		scanf("%d", &a);
-		s=s/(1+i) + a;
-	}
-	
-	printf("%f", s);
-	
-	
-} 
-```
-
-正确的
+🔴 注意 `s=s/(1+i) + a[j]` 是从后往前更新的，一开始写成从 a[0] 到 a[n] 出了 bug。
 
 ```c++
 #include <iostream>
@@ -52,14 +29,12 @@ int main()
 	}
 	
 	printf("%f", s);
-	
-	
 } 
 ```
 
-## 2
+## 2 训练计划
 
-正确代码
+🔗 **题目：[训练计划](http://118.190.20.162/view.page?gpid=T159)**
 
 ```c++
 #include <iostream>
@@ -125,133 +100,16 @@ int main()
 		for(int i=1;i<=m;i++)
 			printf("%d ",last[i]);
 	}
-	
-	
 } 
 ```
 
-## 3
+## 3 JPEG解码
 
-错误代码（仍然不知道哪里错了
+🔗 **题目：[JPEG解码](http://118.190.20.162/view.page?gpid=T158)**
 
-```c++
-#include <iostream>
-#include <cmath>
-// #define _USE_MATH_DEFINES 
+🟠 这种题目难度不是很大，但题目很长，需要把要求一步步分解，耐心计算即可。
 
-using namespace std;
-int main()
-{
-
-	// 输入量化矩阵 Q
-	int Q[8][8];
-	for(int i=0;i<8;i++){
-		for(int j=0;j<8;j++){
-			scanf("%d",&Q[i][j]);
-		}
-	} 
-	
-	// 输入扫描个数 n，任务 T
-	int n,T;
-	scanf("%d",&n);
-	scanf("%d",&T);
-	
-	// 输入一组扫描数据
-	int d[n];
-	for(int i=0;i<n;i++){
-		scanf("%d",&d[i]);
-	} 
-	
-	// 将扫描数据放入填充矩阵 M 中 
-	int M[8][8]={0};
-	for(int i=1,con=0;con<n;i++){
-		if(i%2==1){
-			for(int j=i-1;j>=0 && con<n;j--){
-				M[j][i-1-j]=d[con];
-				con++;
-			}
-		}
-		else{
-			for(int j=0;j<=i-1 && con<n;j++){
-				M[j][i-1-j]=d[con];
-				con++;
-			}
-			
-		}
-	}
-	
-	// 输出 M 矩阵
-	if(T==0){
-		for(int i=0;i<8;i++){
-			for(int j=0;j<8;j++){
-				printf("%d ", M[i][j]);
-			}
-		
-			printf("\n");
-		} 
-		
-		return 0;
-	}
-	
-	// 计算与量化矩阵 Q 相乘后的矩阵 M
-	for(int i=0;i<8;i++){
-		for(int j=0;j<8;j++){
-			M[i][j]=M[i][j]*Q[i][j];
-		}
-	} 
-	
-	// 输出与量化矩阵 Q 相乘后的矩阵 M
-	if(T==1){
-		for(int i=0;i<8;i++){
-			for(int j=0;j<8;j++){
-				printf("%d ", M[i][j]);
-			}
-		
-			printf("\n");
-		} 
-		
-		return 0;
-	}
-	
-	// 对 M 进行离散余弦逆变换 
-	int MM[8][8];
-	for(int i=0;i<8;i++){
-		for(int j=0;j<8;j++){
-			double s=0;
-			for(int u=0;u<8;u++){
-				for(int v=0;v<8;v++){
-					double temp=cos(acos(-1)*u*(i+0.5)/8)*cos(acos(-1)*v*(j+0.5)/8)*M[u][v];
-					if(u==0)
-						temp *= pow(0.5,0.5);
-					if(v==0)
-						temp *= pow(0.5,0.5);
-					s+=temp;
-				}
-			} 
-			s=s/4;
-			MM[i][j]=(int)(s+128.5);
-			MM[i][j] = MM[i][j]>255 ? 255 : MM[i][j];
-			MM[i][j] = MM[i][j]<0 ? 0 : MM[i][j];
-		}
-	} 
-	
-	// 输出与量化矩阵 Q 相乘后的矩阵 M
-	if(T==2){
-		for(int i=0;i<8;i++){
-			for(int j=0;j<8;j++){
-				printf("%d ", MM[i][j]);
-			}
-		
-			printf("\n");
-		} 
-		
-		return 0;
-	}
-	
-} 
-```
-
-正确代码：
+🟡 蛇形矩阵填充，由于本题矩阵大小固定，可以 **用矩阵 idx\[8][8] 来存储对应位置填充的元素下标** ，就可以很方便的完成存储。
 
 ```c++
 #include <iostream>
@@ -304,7 +162,6 @@ int main()
 			for(int j=0;j<8;j++){
 				printf("%d ", M[i][j]);
 			}
-		
 			printf("\n");
 		} 
 		
@@ -359,7 +216,6 @@ int main()
 			for(int j=0;j<8;j++){
 				printf("%d ", MM[i][j]);
 			}
-		
 			printf("\n");
 		} 
 		

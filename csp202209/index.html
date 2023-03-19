@@ -5,8 +5,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <title>【CSP】202209题解 - 菜菜的秘密花园</title><meta name="Description" content="菜菜的秘密花园"><meta property="og:title" content="【CSP】202209题解" />
-<meta property="og:description" content="2 错误的：
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41  #include &lt;iostream&gt;#include &lt;cmath&gt;// #define _USE_MATH_DEFINES  using namespace std; int main() { // 输入书本数量 n，包邮条件 x 	int n,x; scanf(&#34;%d&#34;,&amp;n); scanf(&#34;%d&#34;,&amp;x); // 输入书本价格，计算总和 sum 	int a[n]; int sum=0; for(int i=0;i&lt;n;i&#43;&#43;){ scanf(&#34;%d&#34;,&amp;a[i]); sum&#43;=a[i]; } // 动态规划，找前 i 本书的价格和最大，不超过 sum-x 	int d[n][sum-x&#43;1]={0}; for(int j=0;j&lt;sum-x&#43;1;j&#43;&#43;){ d[0][j]=a[0]&gt;j ?" />
+<meta property="og:description" content="1 如此编码 🔗 题目：如此编码
+本来看到题目很迷茫来着，想着第一题怎么就那么难，后来发现题目最后有提示，看完之后醍醐灌顶， 【取模】 确实是很妙的思路，可以积累下来。
+代码忘存了QAQ。
+2 何以包邮 🔗 题目：何以包邮
+🔴 【动态规划】 设 sum 为所有参考书价格总和，题目可以理解为在 sum-x 价格内，最大化被删除的书价格总和，这样就可以把这个问题看作经典的 01背包问题 。（要学会转化💥💥💥）
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37  #include &lt;iostream&gt;#include &lt;cmath&gt; using namespace std; int main() { // 输入书本数量 n，包邮条件 x 	int n,x; scanf(&#34;%d&#34;,&amp;n); scanf(&#34;%d&#34;,&amp;x); // 输入书本价格，计算总和 sum 	int a[n]; int sum=0; for(int i=0;i&lt;n;i&#43;&#43;){ scanf(&#34;%d&#34;,&amp;a[i]); sum&#43;=a[i]; } // 动态规划，找前 i 本书的价格和最大，不超过 sum-x 	int d[n][sum-x&#43;1]={0}; for(int j=0;j&lt;sum-x&#43;1;j&#43;&#43;){ d[0][j]=a[0]&gt;j ?" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://imcaicai.github.io/csp202209/" /><meta property="og:image" content="https://imcaicai.github.io/img/avatar.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-03-14T17:15:09&#43;08:00" />
@@ -16,8 +20,12 @@
 <meta name="twitter:image" content="https://imcaicai.github.io/img/avatar.jpg"/>
 
 <meta name="twitter:title" content="【CSP】202209题解"/>
-<meta name="twitter:description" content="2 错误的：
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41  #include &lt;iostream&gt;#include &lt;cmath&gt;// #define _USE_MATH_DEFINES  using namespace std; int main() { // 输入书本数量 n，包邮条件 x 	int n,x; scanf(&#34;%d&#34;,&amp;n); scanf(&#34;%d&#34;,&amp;x); // 输入书本价格，计算总和 sum 	int a[n]; int sum=0; for(int i=0;i&lt;n;i&#43;&#43;){ scanf(&#34;%d&#34;,&amp;a[i]); sum&#43;=a[i]; } // 动态规划，找前 i 本书的价格和最大，不超过 sum-x 	int d[n][sum-x&#43;1]={0}; for(int j=0;j&lt;sum-x&#43;1;j&#43;&#43;){ d[0][j]=a[0]&gt;j ?"/>
+<meta name="twitter:description" content="1 如此编码 🔗 题目：如此编码
+本来看到题目很迷茫来着，想着第一题怎么就那么难，后来发现题目最后有提示，看完之后醍醐灌顶， 【取模】 确实是很妙的思路，可以积累下来。
+代码忘存了QAQ。
+2 何以包邮 🔗 题目：何以包邮
+🔴 【动态规划】 设 sum 为所有参考书价格总和，题目可以理解为在 sum-x 价格内，最大化被删除的书价格总和，这样就可以把这个问题看作经典的 01背包问题 。（要学会转化💥💥💥）
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37  #include &lt;iostream&gt;#include &lt;cmath&gt; using namespace std; int main() { // 输入书本数量 n，包邮条件 x 	int n,x; scanf(&#34;%d&#34;,&amp;n); scanf(&#34;%d&#34;,&amp;x); // 输入书本价格，计算总和 sum 	int a[n]; int sum=0; for(int i=0;i&lt;n;i&#43;&#43;){ scanf(&#34;%d&#34;,&amp;a[i]); sum&#43;=a[i]; } // 动态规划，找前 i 本书的价格和最大，不超过 sum-x 	int d[n][sum-x&#43;1]={0}; for(int j=0;j&lt;sum-x&#43;1;j&#43;&#43;){ d[0][j]=a[0]&gt;j ?"/>
 <meta name="application-name" content="菜菜的秘密花园">
 <meta name="apple-mobile-web-app-title" content="菜菜的秘密花园"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://imcaicai.github.io/csp202209/" /><link rel="prev" href="https://imcaicai.github.io/csp202212/" /><link rel="next" href="https://imcaicai.github.io/csp202206/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -30,7 +38,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/imcaicai.github.io\/csp202209\/"
-        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "CSP, C\u002b\u002b","wordcount":  518 ,
+        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "CSP, C\u002b\u002b","wordcount":  473 ,
         "url": "https:\/\/imcaicai.github.io\/csp202209\/","datePublished": "2023-03-14T17:15:09+08:00","dateModified": "2023-03-14T17:15:09+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/imcaicai.github.io\/img\/avatar.jpg"},"author": {
@@ -124,7 +132,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">【CSP】202209题解</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-category">included in <a href="/categories/csp%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CSP刷题记录</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-14">2023-03-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;518 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-14">2023-03-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;473 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;<span id="/csp202209/" class="leancloud_visitors" data-flag-title="【CSP】202209题解">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
                     </span>&nbsp;</div>
@@ -135,12 +143,26 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#2">2</a></li>
-    <li><a href="#3">3</a></li>
+    <li><a href="#1-如此编码">1 如此编码</a></li>
+    <li><a href="#2-何以包邮">2 何以包邮</a></li>
+    <li><a href="#3-防疫大数据">3 防疫大数据</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h2 id="2">2</h2>
-<p>错误的：</p>
+            </div><div class="content" id="content"><h2 id="1-如此编码">1 如此编码</h2>
+<p>🔗 <strong>题目：<a href="http://118.190.20.162/view.page?gpid=T153" target="_blank" rel="noopener noreffer ">如此编码</a></strong></p>
+<p>本来看到题目很迷茫来着，想着第一题怎么就那么难，后来发现题目最后有提示，看完之后醍醐灌顶， <strong>【取模】</strong> 确实是很妙的思路，可以积累下来。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/CSP/1.png"
+        data-srcset="/img/CSP/1.png, /img/CSP/1.png 1.5x, /img/CSP/1.png 2x"
+        data-sizes="auto"
+        alt="/img/CSP/1.png"
+        title="img1" /></p>
+<p>代码忘存了QAQ。</p>
+<h2 id="2-何以包邮">2 何以包邮</h2>
+<p>🔗 <strong>题目：<a href="http://118.190.20.162/view.page?gpid=T152" target="_blank" rel="noopener noreffer ">何以包邮</a></strong></p>
+<p>🔴 <strong>【动态规划】</strong> 设 <strong>sum</strong> 为所有参考书价格总和，题目可以理解为在 <strong>sum-x</strong> 价格内，最大化被删除的书价格总和，这样就可以把这个问题看作经典的 <strong>01背包问题</strong> 。（要学会转化💥💥💥）</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -180,16 +202,11 @@
 </span><span class="lnt">35
 </span><span class="lnt">36
 </span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
 </span><span class="cp">#include</span> <span class="cpf">&lt;cmath&gt;</span><span class="cp">
-</span><span class="cp"></span><span class="c1">// #define _USE_MATH_DEFINES 
-</span><span class="c1"></span>
+</span><span class="cp"></span>
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
 <span class="p">{</span>
@@ -215,110 +232,31 @@
 	
 	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
 		<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;</span><span class="n">sum</span><span class="o">-</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">){</span>
-			<span class="k">if</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">+</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span><span class="n">j</span><span class="p">){</span>
-				<span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">max</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">+</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">]);</span>
+			<span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span><span class="n">j</span><span class="p">){</span>	<span class="c1">// 注意这个条件
+</span><span class="c1"></span>				<span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">max</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">+</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">]);</span>
 			<span class="p">}</span>
 			<span class="k">else</span> <span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
 			
 		<span class="p">}</span>
 	<span class="p">}</span>
-	
-
-	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;</span><span class="se">\n</span><span class="s">%d&#34;</span><span class="p">,</span><span class="n">sum</span><span class="o">-</span><span class="n">d</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">sum</span><span class="o">-</span><span class="n">x</span><span class="p">]);</span>
-	
-<span class="p">}</span> 
-</code></pre></td></tr></table>
-</div>
-</div><p>正确的：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
-</span><span class="cp">#include</span> <span class="cpf">&lt;cmath&gt;</span><span class="cp">
-</span><span class="cp"></span><span class="c1">// #define _USE_MATH_DEFINES 
-</span><span class="c1"></span>
-<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
-<span class="p">{</span>
-
-	<span class="c1">// 输入书本数量 n，包邮条件 x 
-</span><span class="c1"></span>	<span class="kt">int</span> <span class="n">n</span><span class="p">,</span><span class="n">x</span><span class="p">;</span>
-	<span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
-	<span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">x</span><span class="p">);</span>
-	
-	<span class="c1">// 输入书本价格，计算总和 sum 
-</span><span class="c1"></span>	<span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
-	<span class="kt">int</span> <span class="n">sum</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
-	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
-		<span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
-		<span class="n">sum</span><span class="o">+=</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
-	<span class="p">}</span> 
-	
-	<span class="c1">// 动态规划，找前 i 本书的价格和最大，不超过 sum-x 
-</span><span class="c1"></span>	<span class="kt">int</span> <span class="n">d</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="n">sum</span><span class="o">-</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
-	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;</span><span class="n">sum</span><span class="o">-</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">){</span>
-		<span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">&gt;</span><span class="n">j</span> <span class="o">?</span> <span class="mi">0</span> <span class="o">:</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
-	<span class="p">}</span>
-	
-	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
-		<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;</span><span class="n">sum</span><span class="o">-</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">){</span>
-			<span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span><span class="n">j</span><span class="p">){</span>
-				<span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">max</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">+</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">]);</span>
-			<span class="p">}</span>
-			<span class="k">else</span> <span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
-			
-		<span class="p">}</span>
-	<span class="p">}</span>
-	
-
 	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span><span class="n">sum</span><span class="o">-</span><span class="n">d</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">sum</span><span class="o">-</span><span class="n">x</span><span class="p">]);</span>
-	
 <span class="p">}</span> 
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="3">3</h2>
+</div><h2 id="3-防疫大数据">3 防疫大数据</h2>
+<p>🔗 <strong>题目：<a href="http://118.190.20.162/view.page?gpid=T151" target="_blank" rel="noopener noreffer ">防疫大数据</a></strong></p>
+<p>🟠🟠🟠 这道题读题有点绕，最重要的是选择合适的数据结构，然后一步一步分析。重要结构如下：</p>
+<p>✅ 首先考虑漫游数据 &lt;d,u,r&gt;，我们用结构 my 来存储，并构造一个 my 类型的容器存储风险用户： <code>vector&lt;my&gt; u1</code> 。这里之所以把 &lt;d,u,r&gt; 都存下来而不是只存 u，是为了方便后续判断用户某时某地的访问数据是否还有风险。</p>
+<p>✅ 考虑风险地区。由于是否有风险是由日期、地区共同决定的， <strong>我们使用 <code>map&lt;pair&lt;int,int&gt;,bool&gt; mp</code> 来表示某时某地是否有风险。</strong>  <code>pair&lt;int,int&gt;</code> 类型变量为键，存储地区、日期； <code>bool</code> 型变量为值，存储是否有风险。</p>
+<p>✅ 由于最终结果要按用户编号从小到大输出，且同一用户只能输出一次，所以我们 <strong>选用有自动排序、自动去重功能的 set 容器</strong> 。</p>
+<p>🟡🟡🟡 解题步骤：</p>
+<p>✅ 清除 mp 中日期超过 7 天的记录，提高效率。（ <strong>注意删除时要用 it1，直接 erase(iter) 会报错</strong> ，虽然我还不知道为什么QAQ）</p>
+<p>✅ 添加风险地区： <code>mp[{p,j}]=1</code></p>
+<p>✅ 更新以前日期的漫游数据中的风险用户。因为日期更新了一天，所以先前存的风险用户可能已经不再有风险了，需要更新。注意题目要求是 <strong>【对所有的 D∈[j.d, i]，地区 j.r 都在风险范围内】</strong> ，中间有任意一天不属于风险用户也要丢掉， <strong>所以不能只看 j.d 或 i 那天是否为风险用户</strong> 。（如果中间某天非风险，则说明原来那条漫游数据无风险，只是后面某天用户又去了同一个地点，那个地点刚好仍有风险。这里有点绕，很容易出错QAQ）</p>
+<p>✅ 更新今天漫游数据中的风险用户。和上一步的方法类似。</p>
+<p>✅ 输出答案。取 u1 中的 u 加入答案 ans 中输出。之所以不直接输出 u1 中的 u ，是因为题目要求最终结果由小到大排列且无重复用户。</p>
+<p>🔵🔵🔵 在步骤 3 中，我们新开了一个 <code>vector&lt;my&gt; u2</code> 来存放符合要求的数据，并让 u1=u2，而不是在 u1 中直接删改，是因为可以避免频繁修改数组，提高效率</p>
+<p>🟣🟣🟣 这种要求复杂、代码变量较多的题目，一定要自习检查变量是否用错，好几个 bug 都是因为容器索引的参数写错。 💢💢💢</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -402,105 +340,87 @@
 </span><span class="lnt">79
 </span><span class="lnt">80
 </span><span class="lnt">81
-</span><span class="lnt">82
-</span><span class="lnt">83
-</span><span class="lnt">84
-</span><span class="lnt">85
-</span><span class="lnt">86
-</span><span class="lnt">87
-</span><span class="lnt">88
-</span><span class="lnt">89
-</span><span class="lnt">90
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
-</span><span class="cp"></span>
-<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 
-<span class="k">struct</span> <span class="nc">Node</span><span class="p">{</span>			<span class="c1">// 一条漫游数据 
-</span><span class="c1"></span>	<span class="kt">int</span> <span class="n">d</span><span class="p">;</span>
-	<span class="kt">int</span> <span class="n">u</span><span class="p">;</span>
-	<span class="kt">int</span> <span class="n">r</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
-<span class="n">map</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">,</span><span class="kt">bool</span><span class="o">&gt;</span> <span class="n">mp</span><span class="p">;</span>		<span class="c1">// 键：地点+日期，值：是否是风险地区 
-</span><span class="c1"></span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span> <span class="n">user</span><span class="p">;</span>				<span class="c1">// 存放有风险的用户漫游数据 
+<span class="k">struct</span> <span class="nc">my</span><span class="p">{</span>
+	<span class="kt">int</span> <span class="n">d</span><span class="p">;</span><span class="kt">int</span> <span class="n">u</span><span class="p">;</span><span class="kt">int</span> <span class="n">r</span><span class="p">;</span>		<span class="c1">// 一条漫游数据 
+</span><span class="c1"></span><span class="p">};</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="n">my</span><span class="o">&gt;</span> <span class="n">u1</span><span class="p">;</span>				<span class="c1">// 记录当天有风险的用户的漫游数据，因为不能重复存储，所以用vector 
+</span><span class="c1"></span><span class="n">map</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">,</span><span class="kt">bool</span><span class="o">&gt;</span> <span class="n">mp</span><span class="p">;</span>	<span class="c1">// 记录有风险的地区。键：地区、日期，值：是否是风险地 
 </span><span class="c1"></span>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
 <span class="p">{</span>
-	<span class="n">ios</span><span class="o">::</span><span class="n">sync_with_stdio</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span><span class="n">cin</span><span class="p">.</span><span class="n">tie</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="n">cout</span><span class="p">.</span><span class="n">tie</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-	<span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span><span class="p">;</span>					<span class="c1">// 输入天数 n 
+	<span class="kt">int</span> <span class="n">n</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">di</span><span class="p">,</span><span class="n">ui</span><span class="p">,</span><span class="n">ri</span><span class="p">;</span>
+	<span class="n">cin</span><span class="o">&gt;&gt;</span><span class="n">n</span><span class="p">;</span>					<span class="c1">// 输入天数 n
 </span><span class="c1"></span>	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
-		<span class="kt">int</span> <span class="n">ri</span><span class="p">,</span><span class="n">mi</span><span class="p">;</span>
-		<span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">ri</span> <span class="o">&gt;&gt;</span> <span class="n">mi</span><span class="p">;</span>		<span class="c1">// 输入每天的风险地数量、漫游数据量 
-</span><span class="c1"></span>
-		<span class="c1">// 先clear
-</span><span class="c1"></span>		<span class="c1">// map&lt;pair&lt;int,int&gt;,bool&gt; tmp;
+		<span class="n">cin</span><span class="o">&gt;&gt;</span><span class="n">r</span><span class="o">&gt;&gt;</span><span class="n">m</span><span class="p">;</span>			<span class="c1">// 输入风险地数量、漫游数据数量
+</span><span class="c1"></span>		
+		
+		<span class="c1">// 1. 清除 mp 中日期超过 7 天的记录
 </span><span class="c1"></span>		<span class="k">for</span><span class="p">(</span><span class="n">map</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">,</span><span class="kt">bool</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">iter</span> <span class="o">=</span> <span class="n">mp</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span><span class="n">iter</span><span class="o">!=</span><span class="n">mp</span><span class="p">.</span><span class="n">end</span><span class="p">();){</span>
-			<span class="n">map</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">,</span><span class="kt">bool</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it1</span> <span class="o">=</span> <span class="n">iter</span><span class="p">;</span>
-			<span class="n">iter</span><span class="o">++</span><span class="p">;</span>
-			<span class="k">if</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="p">((</span><span class="n">it1</span><span class="o">-&gt;</span><span class="n">first</span><span class="p">).</span><span class="n">second</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">7</span><span class="p">)</span>	<span class="n">mp</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">it1</span><span class="p">);</span>	<span class="c1">// 每次新的一天，检查是否有 7 天外的风险地区数据，有就删掉						
+			<span class="c1">// 注意这里要用 it1，直接 erase(iter) 会报错 
+</span><span class="c1"></span>			<span class="n">map</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">,</span><span class="kt">bool</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it1</span> <span class="o">=</span> <span class="n">iter</span><span class="p">;</span>		
+			<span class="n">iter</span><span class="o">++</span><span class="p">;</span>												
+			<span class="c1">// 每次新的一天，检查是否有 7 天外的风险地区数据，有就删掉
+</span><span class="c1"></span>			<span class="k">if</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="p">((</span><span class="n">it1</span><span class="o">-&gt;</span><span class="n">first</span><span class="p">).</span><span class="n">second</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">7</span><span class="p">)</span>	<span class="n">mp</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">it1</span><span class="p">);</span>							
+		<span class="p">}</span>
+		
+		
+		<span class="c1">// 2. 添加风险地区 
+</span><span class="c1"></span>		<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;</span><span class="n">r</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">){</span>
+			<span class="n">cin</span><span class="o">&gt;&gt;</span><span class="n">p</span><span class="p">;</span>
+			<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="n">i</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;</span><span class="n">i</span><span class="o">+</span><span class="mi">7</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+				<span class="n">mp</span><span class="p">[{</span><span class="n">p</span><span class="p">,</span><span class="n">j</span><span class="p">}]</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>			<span class="c1">// 这里的参数原来写错了 
 </span><span class="c1"></span>		<span class="p">}</span>
-
-
-		<span class="c1">// 插入合法的
-</span><span class="c1"></span>		<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;=</span><span class="n">ri</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">){</span>						<span class="c1">// 插入风险地区 
-</span><span class="c1"></span>			<span class="kt">int</span> <span class="n">pij</span><span class="p">;</span>
-			<span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">pij</span><span class="p">;</span>
-			<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">date</span><span class="o">=</span><span class="n">i</span><span class="p">;</span><span class="n">date</span><span class="o">&lt;</span><span class="n">i</span><span class="o">+</span><span class="mi">7</span><span class="p">;</span><span class="n">date</span><span class="o">++</span><span class="p">){</span>	
-				<span class="n">mp</span><span class="p">[{</span><span class="n">pij</span><span class="p">,</span><span class="n">date</span><span class="p">}]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>					<span class="c1">// 根据地区、时间标记风险地区 
-</span><span class="c1"></span>			<span class="p">}</span>
-		<span class="p">}</span>
-
-		<span class="c1">// 筛选不合法的								// 以前的风险用户 
-</span><span class="c1"></span>		<span class="n">vector</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span> <span class="n">vc</span><span class="p">;</span>
-		<span class="k">for</span><span class="p">(</span><span class="k">auto</span> <span class="nl">t</span><span class="p">:</span><span class="n">user</span><span class="p">){</span>							<span class="c1">// 遍历漫游数据 
-</span><span class="c1"></span>			<span class="kt">bool</span> <span class="n">f</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-			<span class="kt">int</span> <span class="n">r</span> <span class="o">=</span> <span class="n">t</span><span class="p">.</span><span class="n">r</span><span class="p">;</span>
-			<span class="k">if</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="n">t</span><span class="p">.</span><span class="n">d</span> <span class="o">&gt;=</span> <span class="mi">7</span><span class="p">)</span>	<span class="k">continue</span><span class="p">;</span>			<span class="c1">// 只看近 7 天的数据 
-</span><span class="c1"></span>
-			<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">date</span> <span class="o">=</span> <span class="n">t</span><span class="p">.</span><span class="n">d</span><span class="p">;</span><span class="n">date</span><span class="o">&lt;=</span><span class="n">i</span><span class="p">;</span><span class="n">date</span><span class="o">++</span><span class="p">){</span>
-				<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">mp</span><span class="p">.</span><span class="n">count</span><span class="p">({</span><span class="n">r</span><span class="p">,</span><span class="n">date</span><span class="p">})){</span>			<span class="c1">// 该地区和日期在风险范围内 
-</span><span class="c1"></span>					<span class="n">f</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-					<span class="k">break</span><span class="p">;</span>
+		
+		
+		<span class="c1">// 3. 更新以前日期的漫游数据中的风险用户
+</span><span class="c1"></span>		<span class="n">vector</span><span class="o">&lt;</span><span class="n">my</span><span class="o">&gt;</span> <span class="n">u2</span><span class="p">;</span>
+		<span class="k">for</span><span class="p">(</span><span class="k">auto</span> <span class="nl">j</span><span class="p">:</span><span class="n">u1</span><span class="p">){</span>					<span class="c1">// 这里原来写错了，是 u1 而不是 u2 
+</span><span class="c1"></span>			<span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="n">j</span><span class="p">.</span><span class="n">d</span> <span class="o">&gt;=</span> <span class="mi">7</span><span class="p">)</span>				<span class="c1">// 已经是 7 天前的数据了 
+</span><span class="c1"></span>				<span class="k">continue</span><span class="p">;</span>
+			
+			<span class="kt">int</span> <span class="n">flag</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+			<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="o">=</span><span class="n">j</span><span class="p">.</span><span class="n">d</span><span class="p">;</span><span class="n">k</span><span class="o">&lt;=</span><span class="n">i</span><span class="p">;</span><span class="n">k</span><span class="o">++</span><span class="p">){</span>
+				<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">mp</span><span class="p">[{</span><span class="n">j</span><span class="p">.</span><span class="n">r</span><span class="p">,</span> <span class="n">k</span><span class="p">}]){</span>		<span class="c1">// 不满足：对所有的 D∈[j.d, i]，地区 j.r 都在风险范围内 
+</span><span class="c1"></span>					<span class="n">flag</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="k">break</span><span class="p">;</span>
 				<span class="p">}</span>
 			<span class="p">}</span>
-			<span class="k">if</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>		<span class="n">vc</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
+			
+			<span class="k">if</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span>					<span class="c1">// 只插入从漫游时间到现在，都满足风险的数据 
+</span><span class="c1"></span>				<span class="n">u2</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">j</span><span class="p">);</span> 
 		<span class="p">}</span>
-		<span class="n">user</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
-		<span class="n">user</span> <span class="o">=</span> <span class="n">vc</span><span class="p">;</span>									<span class="c1">// 每一天都要更新风险用户列表 
-</span><span class="c1"></span>
-		<span class="c1">// 必须是七天以内收到的漫游数据				// 今天的风险用户 
-</span><span class="c1"></span>		<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;=</span><span class="n">mi</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">){</span>
-			<span class="kt">int</span> <span class="n">d</span><span class="p">,</span><span class="n">u</span><span class="p">,</span><span class="n">r</span><span class="p">;</span>
-			<span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">d</span> <span class="o">&gt;&gt;</span> <span class="n">u</span> <span class="o">&gt;&gt;</span> <span class="n">r</span><span class="p">;</span>
-
-			<span class="k">if</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="n">d</span> <span class="o">&gt;=</span> <span class="mi">7</span><span class="p">)</span>	<span class="k">continue</span><span class="p">;</span>				<span class="c1">// 7 天外的数据就丢掉 
-</span><span class="c1"></span>			<span class="c1">// check 合法性
-</span><span class="c1"></span>			<span class="c1">// 从 d 到 i 天地区r均为风险地区即可
-</span><span class="c1"></span>			<span class="kt">bool</span> <span class="n">f</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-			<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="o">=</span><span class="n">d</span><span class="p">;</span><span class="n">k</span><span class="o">&lt;=</span><span class="n">i</span><span class="p">;</span><span class="n">k</span><span class="o">++</span><span class="p">){</span>
-				<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">mp</span><span class="p">.</span><span class="n">count</span><span class="p">({</span><span class="n">r</span><span class="p">,</span><span class="n">k</span><span class="p">})){</span>				<span class="c1">// 在风险记录内，就加进来 
-</span><span class="c1"></span>					<span class="n">f</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-					<span class="k">break</span><span class="p">;</span>
+		<span class="n">u1</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>						<span class="c1">// 更新 u1
+</span><span class="c1"></span>		<span class="n">u1</span><span class="o">=</span><span class="n">u2</span><span class="p">;</span>
+		
+		
+		<span class="c1">// 4. 更新今天漫游数据中的风险用户 
+</span><span class="c1"></span>		<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;</span><span class="n">m</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">){</span>
+			<span class="n">cin</span><span class="o">&gt;&gt;</span><span class="n">di</span><span class="o">&gt;&gt;</span><span class="n">ui</span><span class="o">&gt;&gt;</span><span class="n">ri</span><span class="p">;</span>
+			<span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="n">di</span><span class="o">&gt;=</span><span class="mi">7</span><span class="p">)</span>	<span class="k">continue</span><span class="p">;</span>		<span class="c1">// 7 天外的数据不用考虑
+</span><span class="c1"></span>			<span class="kt">int</span> <span class="n">flag</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+			<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="o">=</span><span class="n">di</span><span class="p">;</span><span class="n">k</span><span class="o">&lt;=</span><span class="n">i</span><span class="p">;</span><span class="n">k</span><span class="o">++</span><span class="p">){</span>
+				<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">mp</span><span class="p">[{</span><span class="n">ri</span><span class="p">,</span> <span class="n">k</span><span class="p">}]){</span>		<span class="c1">// 不满足：对所有的 D∈[j.d, i]，地区 j.r 都在风险范围内 
+</span><span class="c1"></span>					<span class="n">flag</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="k">break</span><span class="p">;</span>
 				<span class="p">}</span>
 			<span class="p">}</span>
-
-			<span class="k">if</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>	<span class="n">user</span><span class="p">.</span><span class="n">push_back</span><span class="p">({</span><span class="n">d</span><span class="p">,</span><span class="n">u</span><span class="p">,</span><span class="n">r</span><span class="p">});</span>
+			
+			<span class="k">if</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span>
+				<span class="n">u1</span><span class="p">.</span><span class="n">push_back</span><span class="p">({</span><span class="n">di</span><span class="p">,</span><span class="n">ui</span><span class="p">,</span><span class="n">ri</span><span class="p">});</span>
 		<span class="p">}</span>
-
-		<span class="n">set</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">ans</span><span class="p">;</span>
-		<span class="k">for</span><span class="p">(</span><span class="k">auto</span> <span class="nl">x</span><span class="p">:</span><span class="n">user</span><span class="p">)</span>	<span class="n">ans</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="n">u</span><span class="p">);</span>		<span class="c1">// 只取用户 
-</span><span class="c1"></span>
-		<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39; &#39;</span><span class="p">;</span>
-		<span class="k">for</span><span class="p">(</span><span class="k">auto</span> <span class="nl">x</span><span class="p">:</span><span class="n">ans</span><span class="p">){</span>
-			<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39; &#39;</span><span class="p">;</span>
-		<span class="p">}</span>
-		<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
-	<span class="p">}</span>
-
-
+		 
+		
+		<span class="c1">// 5. 输出答案
+</span><span class="c1"></span>		<span class="n">set</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">ans</span><span class="p">;</span>
+		<span class="k">for</span><span class="p">(</span><span class="k">auto</span> <span class="nl">j</span><span class="p">:</span><span class="n">u1</span><span class="p">)</span>	<span class="n">ans</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">j</span><span class="p">.</span><span class="n">u</span><span class="p">);</span>	<span class="c1">// 只取用户，同时满足用户按顺序输出 
+</span><span class="c1"></span>		<span class="n">cout</span><span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39; &#39;</span><span class="p">;</span>
+		<span class="k">for</span><span class="p">(</span><span class="k">auto</span> <span class="nl">j</span><span class="p">:</span><span class="n">ans</span><span class="p">)</span>	<span class="n">cout</span><span class="o">&lt;&lt;</span> <span class="n">j</span> <span class="o">&lt;&lt;</span><span class="sc">&#39; &#39;</span><span class="p">;</span>
+		<span class="n">cout</span><span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span> 
+		 
+	<span class="p">}</span> 
 	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></td></tr></table>
