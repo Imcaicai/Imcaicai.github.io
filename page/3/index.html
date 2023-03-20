@@ -118,6 +118,13 @@
         alt="/img/avatar.jpg"
         title="/img/avatar.jpg" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E7%AE%97%E6%B3%95/">【数组链表】滑动窗口算法</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-01-06">2023-01-06</time></span>&nbsp;<span class="post-category">included in <a href="/categories/labuladong%E7%9A%84%E7%AE%97%E6%B3%95%E7%A7%98%E7%B1%8D/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>labuladong的算法秘籍</a></span></div><div class="content">本文主要记录最难掌握的一类双指针技巧——滑动窗口算法。算法思路很简单，就是维护一个窗口，不断滑动，时间复杂度为 O(N)。大致逻辑如下：
+1 2 3 4 5 6 7 8 9 10 11  int left = 0, right = 0; while (right &lt; s.size()) { // 增⼤窗⼝ 	window.add(s[right]); right++; while (window needs shrink) { // 缩⼩窗⼝ 	window.remove(s[left]); left++; } }   滑动窗口算法的代码框架如下：
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26  /* 滑动窗⼝算法框架 */ void slidingWindow(string s) { unordered_map&lt;char, int&gt; window; int left = 0, right = 0; while (right &lt; s.</div><div class="post-footer">
+        <a href="/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E7%AE%97%E6%B3%95/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/labuladong/">labuladong</a>,&nbsp;<a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>,&nbsp;<a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">双指针</a>,&nbsp;<a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">滑动窗口</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E5%8F%8C%E6%8C%87%E9%92%88%E6%8A%80%E5%B7%A7%E8%A7%A3%E5%86%B3%E6%95%B0%E7%BB%84%E9%A2%98/">【数组链表】双指针技巧解决数组题</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-01-05">2023-01-05</time></span>&nbsp;<span class="post-category">included in <a href="/categories/labuladong%E7%9A%84%E7%AE%97%E6%B3%95%E7%A7%98%E7%B1%8D/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>labuladong的算法秘籍</a></span></div><div class="content">在处理数组和链表相关问题时，双指针技巧是经常用到的，双指针技巧主要分为两类：左右指针和快慢指针。所谓左右指针，就是两个指针相向而行或者相背而行；而所谓快慢指针，就是两个指针同向而行。
 1 快慢指针技巧 题目 力扣 26. 删除有序数组中的重复项
@@ -243,16 +250,6 @@ typedef 声明 可以使用 typedef 为一个已有的类型取一个新的名�
 drop user语句可删除用户。用户被删除时，该用户拥有的权限自动被收回。</div><div class="post-footer">
         <a href="/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%89/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/mysql/">Mysql</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%BA%8C/">Mysql数据库基本语法(二)</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-12-07">2022-12-07</time></span>&nbsp;<span class="post-category">included in <a href="/categories/mysql/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Mysql</a></span></div><div class="content">3存储过程与事务 3.1 使用流程控制语句的存储过程 变量的定义与赋值 用declare语句定义变量，并赋予默认值或初始值，未赋默认值则初始值为null：
-1  DECLARE var_name [, var_name] ... type [DEFAULT value]   用set语句给变量赋值，set语句还可以设置许多MySQL的配置参数。
-1  SET variable = expr [, variable = expr]   通过select语句给变量赋值，select语句可以带复杂的where，group by，having等短语。
-1  select col into var_name from table; #将table表中的col列值赋给变量   复合语句与流程控制语句 复合语句BEGIN&hellip;END
-1 2 3  BEGIN [statement_list] END;   if语句
-1 2 3 4  IF search_condition THEN statement_list [ELSEIF search_condition THEN statement_list] ... [ELSE statement_list] END IF;   while语句</div><div class="post-footer">
-        <a href="/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%BA%8C/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/mysql/">Mysql</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -268,6 +265,10 @@ drop user语句可删除用户。用户被删除时，该用户拥有的权限�
                 </li><li class="page-item ">
                     <span class="page-link">
                         <a href="/page/4/">4</a>
+                    </span>
+                </li><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/page/5/">5</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">
