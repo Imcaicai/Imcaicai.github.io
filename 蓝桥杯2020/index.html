@@ -6,7 +6,7 @@
         <meta name="robots" content="noodp" />
         <title>【蓝桥杯】2020题解 - 菜菜的秘密花园</title><meta name="Description" content="菜菜的秘密花园"><meta property="og:title" content="【蓝桥杯】2020题解" />
 <meta property="og:description" content="⏰总用时：	🎯总分：
-   题号 时间 结果 满分 难度 备注     1 20 ✅ 5 🌕 🔸 注意从获得一个数各个位上的数字的做法：先 &lsquo;/&rsquo; 再 &lsquo;%&rsquo;   2 10 ✅ 5 🌕    3 15 ❌ 10 🌕 🔹 要看清题目所给的下标是从0开始还是从1开始！🔹 注意题目要求。比如这道题只求(20, 20)的数，就只用找坐标为(a, a)的元素的规律，而不用把所有的都找出🔹 找规律要容易出错，要多算几个验证   4   10     5   10     6 5 ✅ 15 🌕    7 60 ❌ 20 🌕    8   20     9   25     10   25      1 门牌制作 题目 小蓝要为一条街的住户制作门牌号。" />
+   题号 时间 结果 满分 难度 备注     1 20 ✅ 5 🌕 🔸 注意从获得一个数各个位上的数字的做法：先 &lsquo;/&rsquo; 再 &lsquo;%&rsquo;   2 10 ✅ 5 🌕    3 15 ❌ 10 🌕 🔹 要看清题目所给的下标是从0开始还是从1开始！🔹 注意题目要求。比如这道题只求(20, 20)的数，就只用找坐标为(a, a)的元素的规律，而不用把所有的都找出🔹 找规律要容易出错，要多算几个验证   4 10 ❌ 10 🌓    5 10 ❌ 10 🌓 🔹 用递推解决，观察递推关系式🔹 注意初始状态的确定   6 5 ✅ 15 🌕    7 60 ❌ 20 🌕    8   20     9   25     10   25      1 门牌制作 题目 小蓝要为一条街的住户制作门牌号。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2020/" /><meta property="og:image" content="https://imcaicai.github.io/img/avatar.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-03-16T14:30:51&#43;08:00" />
@@ -17,7 +17,7 @@
 
 <meta name="twitter:title" content="【蓝桥杯】2020题解"/>
 <meta name="twitter:description" content="⏰总用时：	🎯总分：
-   题号 时间 结果 满分 难度 备注     1 20 ✅ 5 🌕 🔸 注意从获得一个数各个位上的数字的做法：先 &lsquo;/&rsquo; 再 &lsquo;%&rsquo;   2 10 ✅ 5 🌕    3 15 ❌ 10 🌕 🔹 要看清题目所给的下标是从0开始还是从1开始！🔹 注意题目要求。比如这道题只求(20, 20)的数，就只用找坐标为(a, a)的元素的规律，而不用把所有的都找出🔹 找规律要容易出错，要多算几个验证   4   10     5   10     6 5 ✅ 15 🌕    7 60 ❌ 20 🌕    8   20     9   25     10   25      1 门牌制作 题目 小蓝要为一条街的住户制作门牌号。"/>
+   题号 时间 结果 满分 难度 备注     1 20 ✅ 5 🌕 🔸 注意从获得一个数各个位上的数字的做法：先 &lsquo;/&rsquo; 再 &lsquo;%&rsquo;   2 10 ✅ 5 🌕    3 15 ❌ 10 🌕 🔹 要看清题目所给的下标是从0开始还是从1开始！🔹 注意题目要求。比如这道题只求(20, 20)的数，就只用找坐标为(a, a)的元素的规律，而不用把所有的都找出🔹 找规律要容易出错，要多算几个验证   4 10 ❌ 10 🌓    5 10 ❌ 10 🌓 🔹 用递推解决，观察递推关系式🔹 注意初始状态的确定   6 5 ✅ 15 🌕    7 60 ❌ 20 🌕    8   20     9   25     10   25      1 门牌制作 题目 小蓝要为一条街的住户制作门牌号。"/>
 <meta name="application-name" content="菜菜的秘密花园">
 <meta name="apple-mobile-web-app-title" content="菜菜的秘密花园"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2020/" /><link rel="prev" href="https://imcaicai.github.io/csp202112/" /><link rel="next" href="https://imcaicai.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%B8%B8%E6%95%B0%E6%97%B6%E9%97%B4%E6%9F%A5%E6%89%BE%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -30,7 +30,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/imcaicai.github.io\/%E8%93%9D%E6%A1%A5%E6%9D%AF2020\/"
-        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "蓝桥杯, C\u002b\u002b","wordcount":  682 ,
+        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "蓝桥杯, C\u002b\u002b","wordcount":  775 ,
         "url": "https:\/\/imcaicai.github.io\/%E8%93%9D%E6%A1%A5%E6%9D%AF2020\/","datePublished": "2023-03-16T14:30:51+08:00","dateModified": "2023-03-16T14:30:51+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/imcaicai.github.io\/img\/avatar.jpg"},"author": {
@@ -124,7 +124,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">【蓝桥杯】2020题解</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>蓝桥杯刷题记录</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-16">2023-03-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;682 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-16">2023-03-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;775 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;<span id="/%E8%93%9D%E6%A1%A5%E6%9D%AF2020/" class="leancloud_visitors" data-flag-title="【蓝桥杯】2020题解">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
                     </span>&nbsp;</div>
@@ -154,17 +154,22 @@
       </ul>
     </li>
     <li><a href="#4-七段码">4 七段码</a></li>
-    <li><a href="#5-平面分割">5 平面分割</a></li>
-    <li><a href="#6-成绩分析">6 成绩分析</a>
+    <li><a href="#5-平面分割">5 平面分割</a>
       <ul>
         <li><a href="#题目-3">题目</a></li>
         <li><a href="#解析-3">解析</a></li>
       </ul>
     </li>
-    <li><a href="#7-回文日期">7 回文日期</a>
+    <li><a href="#6-成绩分析">6 成绩分析</a>
       <ul>
         <li><a href="#题目-4">题目</a></li>
         <li><a href="#解析-4">解析</a></li>
+      </ul>
+    </li>
+    <li><a href="#7-回文日期">7 回文日期</a>
+      <ul>
+        <li><a href="#题目-5">题目</a></li>
+        <li><a href="#解析-5">解析</a></li>
       </ul>
     </li>
     <li><a href="#8-子串分值">8 子串分值</a></li>
@@ -211,19 +216,19 @@
 </tr>
 <tr>
 <td><strong>4</strong></td>
-<td></td>
-<td></td>
 <td>10</td>
-<td></td>
+<td>❌</td>
+<td>10</td>
+<td>🌓</td>
 <td></td>
 </tr>
 <tr>
 <td><strong>5</strong></td>
-<td></td>
-<td></td>
 <td>10</td>
-<td></td>
-<td></td>
+<td>❌</td>
+<td>10</td>
+<td>🌓</td>
+<td>🔹 用递推解决，观察递推关系式<br/>🔹 注意初始状态的确定</td>
 </tr>
 <tr>
 <td><strong>6</strong></td>
@@ -410,8 +415,52 @@
 <p>⚠ 此处要注意的是，一定要多写几个检验❗❗❗只看 1, 5, 13, 25 找规律就很容易出错❗❗❗</p>
 <h2 id="4-七段码">4 七段码</h2>
 <h2 id="5-平面分割">5 平面分割</h2>
-<h2 id="6-成绩分析">6 成绩分析</h2>
 <h3 id="题目-3">题目</h3>
+<p>20 个圆和 20 条直线最多能把平面分成多少个部分？</p>
+<h3 id="解析-3">解析</h3>
+<p>🟠 用 <strong>【递推】</strong> 解决，设 <code>a[i][j]</code> 为 i 条直线、j个圆能分割平面的数量。注意 <code>a[0][0]=1</code> ❗❗❗</p>
+<p>🟡 考虑增加直线。给 <code>a[i-1][0]</code>  增加一条直线，会多出 i-1 个交点，也就会多出 i 个平面。因此有： <code>a[i][0]=a[i-1][0]+i</code> 。</p>
+<p>🟢 考虑增加圆。给 <code>a[i][j-1]</code> 增加一个圆，这个新增圆和一个直线最多有 2 个交点，和一个圆最多有2个交点，而圆与直线、圆与圆每多 1 个交点，就多 1 个平面。因此有： <code>a[i][j]=a[i-1][j-1]+2*i+2*(j-1)</code> 。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+	<span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="mi">21</span><span class="p">][</span><span class="mi">21</span><span class="p">];</span>			<span class="c1">// 表示直线数、圆数给定时的可能数 
+</span><span class="c1"></span>  <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>          <span class="c1">// 注意本身就有一个平面！！！
+</span><span class="c1"></span>	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="mi">20</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>		<span class="c1">// 更新所有加直线的情况 
+</span><span class="c1"></span>		<span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">i</span><span class="p">;</span>
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="mi">20</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>		<span class="c1">// 更新所有加圆的情况 
+</span><span class="c1"></span>		<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;=</span><span class="mi">20</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+			<span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+	<span class="p">}</span>
+	
+	<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">a</span><span class="p">[</span><span class="mi">20</span><span class="p">][</span><span class="mi">20</span><span class="p">];</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="6-成绩分析">6 成绩分析</h2>
+<h3 id="题目-4">题目</h3>
 <p>小蓝给学生们组织了一场考试，卷面总分为 100 分，每个学生的得分都是一个 0 到 100 的整数。</p>
 <p>请计算这次考试的最高分、最低分和平均分。</p>
 <p><strong>输入描述</strong></p>
@@ -422,7 +471,7 @@
 <p>第一行包含一个整数，表示最高分。</p>
 <p>第二行包含一个整数，表示最低分。</p>
 <p>第三行包含一个实数，四舍五入保留正好两位小数，表示平均分。</p>
-<h3 id="解析-3">解析</h3>
+<h3 id="解析-4">解析</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -470,7 +519,7 @@
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="7-回文日期">7 回文日期</h2>
-<h3 id="题目-4">题目</h3>
+<h3 id="题目-5">题目</h3>
 <p>2020 年春节期间，有一个特殊的日期引起了大家的注意：2020 年 2 月 2 日。因为如果将这个日期按 “yyyymmdd” 的格式写成一个 8 位数是 20200202，恰好是一个回文数。我们称这样的日期是回文日期。</p>
 <p>给定一个 8 位数的日期，请你计算该日期之后下一个回文日期和下一个 ABABBABA 型的回文日期各是哪一天。</p>
 <p><strong>输入描述</strong></p>
@@ -478,7 +527,7 @@
 <p>对于所有评测用例，10000101≤ N ≤89991231，保证 N 是一个合法日期的 8 位数表示。</p>
 <p><strong>输出描述</strong></p>
 <p>输出两行，每行 1 个八位数。第一行表示下一个回文日期，第二行表示下一个 ABABBABA 型的回文日期。</p>
-<h3 id="解析-4">解析</h3>
+<h3 id="解析-5">解析</h3>
 <p>虽然官方给这道题贴的标签是 <code>中等</code> ，但感觉难度一般，暴力穷举就好。不过确实很容易出错QAQ。</p>
 <p>🔴 计算第1个回文日期时，即 ABCDDCBA 型，只用根据 ABCD 来枚举，需要确保两点：1️⃣ ABCDDCBA 的值需大于输入的 起始日期date 2️⃣ ABCDDCBA 需要是一个合法日期。注意 D 的值只能是0或1，可以减少枚举量。</p>
 <p>🔵 计算第2个回文日期时，即 ABABBABA 型，只用根据 AB 来枚举，条件和上面类似。不过由于B只能取0或1，又只有输出第一个符合的回文日期，A的值要么是a，要么是a+1。（a是输入日期 date 的最高位）</p>

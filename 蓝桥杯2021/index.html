@@ -6,7 +6,7 @@
         <meta name="robots" content="noodp" />
         <title>【蓝桥杯】2021题解 - 菜菜的秘密花园</title><meta name="Description" content="菜菜的秘密花园"><meta property="og:title" content="【蓝桥杯】2021题解" />
 <meta property="og:description" content="⏰总用时：	🎯总分：
-   题号 时间 结果 满分 难度 备注     1 20 ❌ 5 🌕 🔸【计算一个整数各位上的数字】：当 i/10!=0 时，不断取出 i%10 。   2   5     3 40 ❌ 10 🌓 🔸 整数问题常用【取模】   4 35 ❌ 10 🌕 🔸 二维数组太大容易引起报错：program received signal sigsegv, segmentation fault. （本题中用 int g[2022][2022]; 就报错了QAQ）   5   10     6 25 ❌ 15 🌓    7   20     8   20     9   25     10   25      1 【填空】卡片 题目 小蓝有很多数字卡片，每张卡片上都是数字 0 到 9。小蓝准备用这些卡片来拼一些数，他想从 1 开始拼出正整数，每拼一个，就保存起来，卡片就不能用来拼其它数了。小蓝想知道自己能从 1 拼到多少。" />
+   题号 时间 结果 满分 难度 备注     1 20 ❌ 5 🌕 🔸【计算一个整数各位上的数字】：当 i/10!=0 时，不断取出 i%10 。   2 7 ❌ 5 🌕 🔹 确定一条直线要考虑斜率和截距   3 40 ❌ 10 🌓 🔸 整数问题常用【取模】   4 35 ❌ 10 🌕 🔹 二维数组太大容易引起报错：program received signal sigsegv, segmentation fault. （本题中用 int g[2022][2022]; 就报错了QAQ）   5 45 ❌ 10 🌑    6 25 ❌ 15 🌓 🔹 用迭代器循环时不能修改 set 内元素   7 5 ❌ 20 🌓    8   20     9   25     10   25      1 【填空】卡片 题目 小蓝有很多数字卡片，每张卡片上都是数字 0 到 9。小蓝准备用这些卡片来拼一些数，他想从 1 开始拼出正整数，每拼一个，就保存起来，卡片就不能用来拼其它数了。小蓝想知道自己能从 1 拼到多少。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2021/" /><meta property="og:image" content="https://imcaicai.github.io/img/avatar.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-03-20T17:00:10&#43;08:00" />
@@ -17,7 +17,7 @@
 
 <meta name="twitter:title" content="【蓝桥杯】2021题解"/>
 <meta name="twitter:description" content="⏰总用时：	🎯总分：
-   题号 时间 结果 满分 难度 备注     1 20 ❌ 5 🌕 🔸【计算一个整数各位上的数字】：当 i/10!=0 时，不断取出 i%10 。   2   5     3 40 ❌ 10 🌓 🔸 整数问题常用【取模】   4 35 ❌ 10 🌕 🔸 二维数组太大容易引起报错：program received signal sigsegv, segmentation fault. （本题中用 int g[2022][2022]; 就报错了QAQ）   5   10     6 25 ❌ 15 🌓    7   20     8   20     9   25     10   25      1 【填空】卡片 题目 小蓝有很多数字卡片，每张卡片上都是数字 0 到 9。小蓝准备用这些卡片来拼一些数，他想从 1 开始拼出正整数，每拼一个，就保存起来，卡片就不能用来拼其它数了。小蓝想知道自己能从 1 拼到多少。"/>
+   题号 时间 结果 满分 难度 备注     1 20 ❌ 5 🌕 🔸【计算一个整数各位上的数字】：当 i/10!=0 时，不断取出 i%10 。   2 7 ❌ 5 🌕 🔹 确定一条直线要考虑斜率和截距   3 40 ❌ 10 🌓 🔸 整数问题常用【取模】   4 35 ❌ 10 🌕 🔹 二维数组太大容易引起报错：program received signal sigsegv, segmentation fault. （本题中用 int g[2022][2022]; 就报错了QAQ）   5 45 ❌ 10 🌑    6 25 ❌ 15 🌓 🔹 用迭代器循环时不能修改 set 内元素   7 5 ❌ 20 🌓    8   20     9   25     10   25      1 【填空】卡片 题目 小蓝有很多数字卡片，每张卡片上都是数字 0 到 9。小蓝准备用这些卡片来拼一些数，他想从 1 开始拼出正整数，每拼一个，就保存起来，卡片就不能用来拼其它数了。小蓝想知道自己能从 1 拼到多少。"/>
 <meta name="application-name" content="菜菜的秘密花园">
 <meta name="apple-mobile-web-app-title" content="菜菜的秘密花园"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2021/" /><link rel="prev" href="https://imcaicai.github.io/stlpair%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" /><link rel="next" href="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2022/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -30,7 +30,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/imcaicai.github.io\/%E8%93%9D%E6%A1%A5%E6%9D%AF2021\/"
-        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "蓝桥杯, C\u002b\u002b","wordcount":  606 ,
+        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "蓝桥杯, C\u002b\u002b","wordcount":  753 ,
         "url": "https:\/\/imcaicai.github.io\/%E8%93%9D%E6%A1%A5%E6%9D%AF2021\/","datePublished": "2023-03-20T17:00:10+08:00","dateModified": "2023-03-20T17:00:10+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/imcaicai.github.io\/img\/avatar.jpg"},"author": {
@@ -124,8 +124,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">【蓝桥杯】2021题解</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>蓝桥杯刷题记录</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-20">2023-03-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;606 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;<span id="/%E8%93%9D%E6%A1%A5%E6%9D%AF2021/" class="leancloud_visitors" data-flag-title="【蓝桥杯】2021题解">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-20">2023-03-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;753 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;<span id="/%E8%93%9D%E6%A1%A5%E6%9D%AF2021/" class="leancloud_visitors" data-flag-title="【蓝桥杯】2021题解">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
@@ -220,11 +220,11 @@
 </tr>
 <tr>
 <td><strong>2</strong></td>
-<td></td>
-<td></td>
+<td>7</td>
+<td>❌</td>
 <td>5</td>
-<td></td>
-<td></td>
+<td>🌕</td>
+<td>🔹 确定一条直线要考虑斜率和截距</td>
 </tr>
 <tr>
 <td><strong>3</strong></td>
@@ -240,14 +240,14 @@
 <td>❌</td>
 <td>10</td>
 <td>🌕</td>
-<td>🔸 二维数组太大容易引起报错：<code>program received signal sigsegv, segmentation fault.</code> （本题中用 <code>int g[2022][2022];</code> 就报错了QAQ）</td>
+<td>🔹 二维数组太大容易引起报错：<code>program received signal sigsegv, segmentation fault.</code> （本题中用 <code>int g[2022][2022];</code> 就报错了QAQ）</td>
 </tr>
 <tr>
 <td><strong>5</strong></td>
-<td></td>
-<td></td>
+<td>45</td>
+<td>❌</td>
 <td>10</td>
-<td></td>
+<td>🌑</td>
 <td></td>
 </tr>
 <tr>
@@ -256,14 +256,14 @@
 <td>❌</td>
 <td>15</td>
 <td>🌓</td>
-<td></td>
+<td>🔹 用迭代器循环时不能修改 set 内元素</td>
 </tr>
 <tr>
 <td><strong>7</strong></td>
-<td></td>
-<td></td>
+<td>5</td>
+<td>❌</td>
 <td>20</td>
-<td></td>
+<td>🌓</td>
 <td></td>
 </tr>
 <tr>
@@ -360,8 +360,62 @@
 </div>
 </div><h2 id="2-填空直线">2 【填空】直线</h2>
 <h3 id="题目-1">题目</h3>
+<p>在平面直角坐标系中，两点可以确定一条直线。如果有多点在一条直线上， 那么这些点中任意两点确定的直线是同一条。</p>
+<p>给定平面上 2 × 3 个整点 (x,y)∣0≤x&lt;2,0≤y&lt;3,x∈Z,y∈Z，即横坐标 是 0 到 1 (包含 0 和 1) 之间的整数、纵坐标是 0 到 2 (包含 0 和 2) 之间的整数 的点。这些点一共确定了 11 条不同的直线。</p>
+<p>给定平面上 20×21 个整点 (x,y)∣0≤x&lt;20,0≤y&lt;21,x∈Z,y∈Z，即横 坐标是 00 到 19 (包含 0 和 19) 之间的整数、纵坐标是 0 到 20 (包含 0 和 20) 之 间的整数的点。</p>
+<p>请问这些点一共确定了多少条不同的直线。</p>
 <h3 id="解析-1">解析</h3>
-<h2 id="3-填空货物摆放">3 【填空】货物摆放</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+	<span class="n">map</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">,</span><span class="kt">bool</span><span class="o">&gt;</span> <span class="n">s</span><span class="p">;</span> 
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">x1</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">x1</span><span class="o">&lt;</span><span class="mi">20</span><span class="p">;</span><span class="n">x1</span><span class="o">++</span><span class="p">){</span>
+		<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">y1</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">y1</span><span class="o">&lt;</span><span class="mi">21</span><span class="p">;</span><span class="n">y1</span><span class="o">++</span><span class="p">){</span>
+			<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">x2</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">x2</span><span class="o">&lt;</span><span class="mi">20</span><span class="p">;</span><span class="n">x2</span><span class="o">++</span><span class="p">){</span>
+				<span class="k">if</span><span class="p">(</span><span class="n">x1</span><span class="o">==</span><span class="n">x2</span><span class="p">)</span>	<span class="k">continue</span><span class="p">;</span>
+				<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">y2</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">y2</span><span class="o">&lt;</span><span class="mi">21</span><span class="p">;</span><span class="n">y2</span><span class="o">++</span><span class="p">){</span>
+					<span class="kt">double</span> <span class="n">k</span><span class="o">=</span><span class="mf">1.0</span><span class="o">*</span><span class="p">(</span><span class="n">y2</span><span class="o">-</span><span class="n">y1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">x2</span><span class="o">-</span><span class="n">x1</span><span class="p">);</span>
+					<span class="kt">double</span> <span class="n">b</span><span class="o">=</span><span class="mf">1.0</span><span class="o">*</span><span class="p">(</span><span class="n">x2</span><span class="o">*</span><span class="n">y1</span><span class="o">-</span><span class="n">x1</span><span class="o">*</span><span class="n">y2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">x2</span><span class="o">-</span><span class="n">x1</span><span class="p">);</span>
+					<span class="n">s</span><span class="p">[{</span><span class="n">k</span><span class="p">,</span> <span class="n">b</span><span class="p">}]</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>	<span class="c1">// 确定一条直线要考虑斜率和截距！！！ 
+</span><span class="c1"></span>				<span class="p">}</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	
+	<span class="n">cout</span><span class="o">&lt;&lt;</span> <span class="n">s</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="o">+</span><span class="mi">20</span><span class="p">;</span>				<span class="c1">// 最后加上斜率不存在的情况 
+</span><span class="c1"></span>	
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span> 
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="3-填空货物摆放">3 【填空】货物摆放</h2>
 <h3 id="题目-2">题目</h3>
 <p>小蓝有一个超大的仓库，可以摆放很多货物。</p>
 <p>现在，小蓝有 n 箱货物要摆放在仓库，每箱货物都是规则的正方体。小蓝规定了长、宽、高三个互相垂直的方向，每箱货物的边都必须严格平行于长、宽、高。小蓝希望所有的货物最终摆成一个大的长方体。即在长、宽、高的方向上分别堆 L、W、H 的货物,满足 n=L×W×H。</p>
@@ -521,8 +575,19 @@
 </div>
 </div><h2 id="5-回路计数">5 回路计数</h2>
 <h3 id="题目-4">题目</h3>
+<p>蓝桥学院由 21 栋教学楼组成，教学楼编号 1 到 21。对于两栋教学楼 a 和 b，当 a 和 b 互质时，a 和 b 之间有一条走廊直接相连，两个方向皆可通行，否则没有直接连接的走廊。</p>
+<p>小蓝现在在第一栋教学楼，他想要访问每栋教学楼正好一次，最终回到第一栋教学楼（即走一条哈密尔顿回路），请问他有多少种不同的访问方案？</p>
+<p>两个访问方案不同是指存在某个 i，小蓝在两个访问方法中访问完教学楼 i 后访问了不同的教学楼。</p>
 <h3 id="解析-4">解析</h3>
-<h2 id="6-砝码称重">6 砝码称重</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++">
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="6-砝码称重">6 砝码称重</h2>
 <h3 id="题目-5">题目</h3>
 <p>你有一架天平和 N 个砝码，这 N 个砝码重量依次是 $W_1, W_2,&hellip;W_N$ 。</p>
 <p>请你计算一共可以称出多少种不同的重量？ 注意砝码可以放在天平两边。</p>
