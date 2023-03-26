@@ -5,8 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <title>【蓝桥杯】2022题解 - 菜菜的秘密花园</title><meta name="Description" content="菜菜的秘密花园"><meta property="og:title" content="【蓝桥杯】2022题解" />
-<meta property="og:description" content="⏰总用时：	🎯总分：
-   题号 时间 结果 满分 难度 备注     1 5 ✅ 5 🌕    2 5 ❌ 5 🌓    3 5 30% 10 🌕 🔸 先观察所求式子能否化简，注意超时问题🔸 注意题目所给数据范围，答案应该用 long long型   4 30 40% 10 🌓    5 5 ❌ 10 🌑    6   15     7   20     8   20     9   25     10   25      1 【填空】裁纸刀 题目 小蓝有一个裁纸刀，每次可以将一张纸沿一条直线裁成两半。小蓝用一张纸打印出两行三列共 6 个二维码，至少使用九次裁出来，下图给出了一种裁法。" />
+<meta property="og:description" content="⏰总用时：125/240	🎯总分：14.5
+   题号 时间 结果 满分 难度 备注     1 5 ✅ 5 🌕    2 5 ❌ 5 🌓 🔹 博弈论：只能转移到必胜态的，均为必败态。可以转移到必败态的，均为必胜态🔹 c&#43;&#43;中计算字符串中某字符个数：count(s.begin(),s.end(),&lsquo;o&rsquo;)🔹 DFS：深搜的时候保存已有结果🔹 二维数组可直接压缩为一维数组🔹 遍历不连续数组，可把要遍历的索引存储在一个数组中   3 5 30% 10 🌕 🔸 先观察所求式子能否化简，注意超时问题🔸 注意题目所给数据范围，答案应该用 long long型   4 30 40% 10 🌓 🔹 巧妙构造数组可以简化题目🔹 若 a ^ b=x，则 a ^ x=b， b ^ x=a。🔹 可以用 map 来映射一组数和他们的索引🔹 直接把异或表达式放 if 语句或输出语句中会出错   5 5 ❌ 10 🌑 🔸 【分数取模】、【快速幂】🔸 注意找递推关系🔸 加快输入速度：ios::sync_with_stdio(false); cin." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2022/" /><meta property="og:image" content="https://imcaicai.github.io/img/avatar.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-03-22T10:39:32&#43;08:00" />
@@ -16,8 +16,8 @@
 <meta name="twitter:image" content="https://imcaicai.github.io/img/avatar.jpg"/>
 
 <meta name="twitter:title" content="【蓝桥杯】2022题解"/>
-<meta name="twitter:description" content="⏰总用时：	🎯总分：
-   题号 时间 结果 满分 难度 备注     1 5 ✅ 5 🌕    2 5 ❌ 5 🌓    3 5 30% 10 🌕 🔸 先观察所求式子能否化简，注意超时问题🔸 注意题目所给数据范围，答案应该用 long long型   4 30 40% 10 🌓    5 5 ❌ 10 🌑    6   15     7   20     8   20     9   25     10   25      1 【填空】裁纸刀 题目 小蓝有一个裁纸刀，每次可以将一张纸沿一条直线裁成两半。小蓝用一张纸打印出两行三列共 6 个二维码，至少使用九次裁出来，下图给出了一种裁法。"/>
+<meta name="twitter:description" content="⏰总用时：125/240	🎯总分：14.5
+   题号 时间 结果 满分 难度 备注     1 5 ✅ 5 🌕    2 5 ❌ 5 🌓 🔹 博弈论：只能转移到必胜态的，均为必败态。可以转移到必败态的，均为必胜态🔹 c&#43;&#43;中计算字符串中某字符个数：count(s.begin(),s.end(),&lsquo;o&rsquo;)🔹 DFS：深搜的时候保存已有结果🔹 二维数组可直接压缩为一维数组🔹 遍历不连续数组，可把要遍历的索引存储在一个数组中   3 5 30% 10 🌕 🔸 先观察所求式子能否化简，注意超时问题🔸 注意题目所给数据范围，答案应该用 long long型   4 30 40% 10 🌓 🔹 巧妙构造数组可以简化题目🔹 若 a ^ b=x，则 a ^ x=b， b ^ x=a。🔹 可以用 map 来映射一组数和他们的索引🔹 直接把异或表达式放 if 语句或输出语句中会出错   5 5 ❌ 10 🌑 🔸 【分数取模】、【快速幂】🔸 注意找递推关系🔸 加快输入速度：ios::sync_with_stdio(false); cin."/>
 <meta name="application-name" content="菜菜的秘密花园">
 <meta name="apple-mobile-web-app-title" content="菜菜的秘密花园"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2022/" /><link rel="prev" href="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2021/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -30,7 +30,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/imcaicai.github.io\/%E8%93%9D%E6%A1%A5%E6%9D%AF2022\/"
-        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "蓝桥杯, C\u002b\u002b","wordcount":  308 ,
+        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "蓝桥杯, C\u002b\u002b","wordcount":  1073 ,
         "url": "https:\/\/imcaicai.github.io\/%E8%93%9D%E6%A1%A5%E6%9D%AF2022\/","datePublished": "2023-03-22T10:39:32+08:00","dateModified": "2023-03-22T10:39:32+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/imcaicai.github.io\/img\/avatar.jpg"},"author": {
@@ -124,8 +124,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">【蓝桥杯】2022题解</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>蓝桥杯刷题记录</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-22">2023-03-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;308 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;<span id="/%E8%93%9D%E6%A1%A5%E6%9D%AF2022/" class="leancloud_visitors" data-flag-title="【蓝桥杯】2022题解">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-22">2023-03-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1073 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;6 minutes&nbsp;<span id="/%E8%93%9D%E6%A1%A5%E6%9D%AF2022/" class="leancloud_visitors" data-flag-title="【蓝桥杯】2022题解">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
@@ -156,8 +156,6 @@
     <li><a href="#4-选数异或">4 选数异或</a>
       <ul>
         <li><a href="#题目-3">题目</a></li>
-        <li><a href="#输入格式">输入格式</a></li>
-        <li><a href="#输出格式">输出格式</a></li>
         <li><a href="#解析-3">解析</a></li>
       </ul>
     </li>
@@ -167,9 +165,26 @@
         <li><a href="#解析-4">解析</a></li>
       </ul>
     </li>
+    <li><a href="#6-青蛙过河">6 青蛙过河</a>
+      <ul>
+        <li><a href="#题目-5">题目</a></li>
+        <li><a href="#解析-5">解析</a></li>
+      </ul>
+    </li>
+    <li><a href="#7-最长不下降子序列">7 最长不下降子序列</a>
+      <ul>
+        <li><a href="#题目-6">题目</a></li>
+        <li><a href="#输入格式">输入格式</a></li>
+        <li><a href="#输出格式">输出格式</a></li>
+        <li><a href="#解析-6">解析</a></li>
+      </ul>
+    </li>
+    <li><a href="#8-扫描游戏">8 扫描游戏</a></li>
+    <li><a href="#9-数的拆分">9 数的拆分</a></li>
+    <li><a href="#10-推导部分和">10 推导部分和</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p>⏰总用时：			🎯总分：</p>
+            </div><div class="content" id="content"><p>⏰总用时：125/240			🎯总分：14.5</p>
 <table>
 <thead>
 <tr>
@@ -196,7 +211,7 @@
 <td>❌</td>
 <td>5</td>
 <td>🌓</td>
-<td></td>
+<td>🔹 博弈论：只能转移到必胜态的，均为必败态。可以转移到必败态的，均为必胜态<br/>🔹 c++中计算字符串中某字符个数：count(s.begin(),s.end(),&lsquo;o&rsquo;)<br/>🔹 DFS：深搜的时候保存已有结果<br/>🔹 二维数组可直接压缩为一维数组<br/>🔹 遍历不连续数组，可把要遍历的索引存储在一个数组中</td>
 </tr>
 <tr>
 <td><strong>3</strong></td>
@@ -212,7 +227,7 @@
 <td>40%</td>
 <td>10</td>
 <td>🌓</td>
-<td></td>
+<td>🔹 巧妙构造数组可以简化题目<br/>🔹 若 a ^ b=x，则 a ^ x=b， b ^ x=a。<br/>🔹 可以用 map 来映射一组数和他们的索引<br/>🔹 直接把异或表达式放 if 语句或输出语句中会出错</td>
 </tr>
 <tr>
 <td><strong>5</strong></td>
@@ -220,50 +235,51 @@
 <td>❌</td>
 <td>10</td>
 <td>🌑</td>
-<td></td>
+<td>🔸 【分数取模】、【快速幂】<br/>🔸 注意找递推关系<br/>🔸 加快输入速度：ios::sync_with_stdio(false); cin.tie(0);<br/>🔸 c++自带求最大公约数的函数：__gcd(x,y)<br/>🔸 注意宏定义不能和下面的变量重名</td>
 </tr>
 <tr>
 <td><strong>6</strong></td>
-<td></td>
-<td></td>
 <td>15</td>
-<td></td>
-<td></td>
+<td>❌</td>
+<td>15</td>
+<td>🌓</td>
+<td>🔹 观察题目的判断结论<br/>🔹 二分查找</td>
 </tr>
 <tr>
 <td><strong>7</strong></td>
-<td></td>
-<td></td>
+<td>30</td>
+<td>❌</td>
 <td>20</td>
-<td></td>
+<td>🌓</td>
 <td></td>
 </tr>
 <tr>
 <td><strong>8</strong></td>
-<td></td>
-<td></td>
+<td>5</td>
+<td>❌</td>
 <td>20</td>
-<td></td>
+<td>🌓</td>
 <td></td>
 </tr>
 <tr>
 <td><strong>9</strong></td>
-<td></td>
-<td></td>
+<td>20</td>
+<td>10%</td>
 <td>25</td>
-<td></td>
+<td>🌓</td>
 <td></td>
 </tr>
 <tr>
 <td><strong>10</strong></td>
-<td></td>
-<td></td>
+<td>5</td>
+<td>❌</td>
 <td>25</td>
-<td></td>
+<td>🌑</td>
 <td></td>
 </tr>
 </tbody>
 </table>
+<p>😭😭😭😭好难啊，太多不会的，所以好几题直接放弃了。。。</p>
 <h2 id="1-填空裁纸刀">1 【填空】裁纸刀</h2>
 <h3 id="题目">题目</h3>
 <p>小蓝有一个裁纸刀，每次可以将一张纸沿一条直线裁成两半。小蓝用一张纸打印出两行三列共 6 个二维码，至少使用九次裁出来，下图给出了一种裁法。</p>
@@ -301,7 +317,118 @@
 <p>其中 O 表示棋盘上的一个方格为空，X 表示该方格已经放置了棋子。</p>
 <p>请问，对于以上四种情况，如果小蓝和小乔都是按照对自己最优的策略来玩游戏，小蓝是否能获胜。如果获胜，请用 V 表示，否则用 L 表示。请将四种情况的胜负结果按顺序连接在一起提交。</p>
 <h3 id="解析-1">解析</h3>
-<h2 id="3-求和">3 求和</h2>
+<p>🟠 <strong>【博弈论】当前只能转移到必胜态的，均为必败态。当前可以转移到必败态的，均为必胜态。</strong> 仔细观察，本题中的必败态为只剩一个 &ldquo;o&rdquo; 的情况。因此要赢，只需要确保 <strong>自己放完棋子后一定为【必败态】</strong> 。</p>
+<p>🟡 <strong>c++ 中计算字符串中某个字符个数的函数： <code>count(s.begin(),s.end(),'o')</code> ，需要加头文件 <code>#include &lt;algorithm&gt;</code></strong></p>
+<p>🟢 利用 <strong>【DFS】</strong> 解决问题，统一考虑问题的视角：<strong>自己放完棋子为状态 s 能否赢</strong> ，否则很容易绕晕，到底是返回 true 还是返回 false。 <strong>深搜的时候保存结果，遇到已经判断过的状态就直接返回。</strong></p>
+<p>🔵 <strong>二维数组可以直接压缩成一维数组。</strong></p>
+<p>🟣 遍历不连续数组时，可以 <strong>把要遍历的索引存储在一个数组中</strong> ，这样遍历时可以连续用下标，简单省事。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;algorithm&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="c1">// 无序映射，键为棋盘状态，值为下完后是这个状态能否赢 
+</span><span class="c1"></span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span> <span class="kt">bool</span><span class="o">&gt;</span> <span class="n">mp</span><span class="p">;</span>
+
+<span class="c1">// 用于判断 s 中含有的 &#39;o&#39; 的个数是否为1 
+</span><span class="c1">// 个数为 1 则为必败态 
+</span><span class="c1"></span><span class="kt">bool</span> <span class="nf">check</span><span class="p">(</span><span class="n">string</span> <span class="n">s</span><span class="p">){</span>
+	<span class="k">return</span> <span class="n">count</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="n">s</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="sc">&#39;o&#39;</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span><span class="p">;</span> 
+<span class="p">}</span>
+
+<span class="c1">// 利用 dfs 判断自己下完棋后状态为 s 能否赢（是否是必败态） 
+</span><span class="c1"></span><span class="kt">bool</span> <span class="nf">dfs</span><span class="p">(</span><span class="n">string</span> <span class="n">s</span><span class="p">){</span>			
+	<span class="k">if</span><span class="p">(</span><span class="n">mp</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>				<span class="c1">// 若当前状态判断过了，则返回当前状态 
+</span><span class="c1"></span>		<span class="k">return</span> <span class="n">mp</span><span class="p">[</span><span class="n">s</span><span class="p">];</span>			<span class="c1">// 注意判断 mp 中是否有某个元素的方法！ 
+</span><span class="c1"></span>	
+	<span class="k">if</span><span class="p">(</span><span class="n">check</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>				<span class="c1">// 下完棋是必败态，返回 true 
+</span><span class="c1"></span>		<span class="k">return</span> <span class="n">mp</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="o">=</span><span class="nb">true</span><span class="p">;</span>		<span class="c1">// 一定要记得保存 mp[s] 的状态！！！ 
+</span><span class="c1"></span>		
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">8</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>		<span class="c1">// 放 1 个棋子的所有可能 
+</span><span class="c1"></span>		<span class="k">if</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="sc">&#39;x&#39;</span><span class="p">)</span>			<span class="c1">// 当前位置已经被放置了 
+</span><span class="c1"></span>			<span class="k">continue</span><span class="p">;</span>
+		<span class="n">string</span> <span class="n">t</span><span class="o">=</span><span class="n">s</span><span class="p">;</span>
+		<span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="sc">&#39;x&#39;</span><span class="p">;</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">dfs</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>				<span class="c1">// 又走过一步后是必败态 
+</span><span class="c1"></span>			<span class="k">return</span> <span class="n">mp</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="o">=</span><span class="nb">false</span><span class="p">;</span> <span class="c1">// 说明当前这步下完后不能赢。这里一定要返回！！！ 
+</span><span class="c1"></span>	<span class="p">}</span>
+	
+	<span class="c1">// 存储放 2 个棋子中的第 1 个的所有可能索引
+</span><span class="c1"></span>	<span class="kt">int</span> <span class="n">idx</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">};</span>	 
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">6</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>		<span class="c1">// 放 2 个棋子的所有可能 
+</span><span class="c1"></span>		<span class="k">if</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">idx</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">==</span><span class="sc">&#39;x&#39;</span> <span class="o">||</span> <span class="n">s</span><span class="p">[</span><span class="n">idx</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="sc">&#39;x&#39;</span><span class="p">)</span>	<span class="c1">// 注意索引 idx[i] 在 s 中的下一个元素是 idx[i]+1，不是 idx[i+1]！！！ 
+</span><span class="c1"></span>			<span class="k">continue</span><span class="p">;</span>
+		<span class="n">string</span> <span class="n">t</span><span class="o">=</span><span class="n">s</span><span class="p">;</span>
+		<span class="n">t</span><span class="p">[</span><span class="n">idx</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">=</span><span class="n">t</span><span class="p">[</span><span class="n">idx</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="sc">&#39;x&#39;</span><span class="p">;</span>				<span class="c1">// 注意 i 表示索引的索引，不能直接用 i ！！！ 
+</span><span class="c1"></span>		<span class="k">if</span><span class="p">(</span><span class="n">dfs</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+			<span class="k">return</span> <span class="n">mp</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="o">=</span><span class="nb">false</span><span class="p">;</span> 
+	<span class="p">}</span> 
+	
+	<span class="k">return</span> <span class="n">mp</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="o">=</span><span class="nb">true</span><span class="p">;</span> 			<span class="c1">// 对方下一步下完后没出现必败态，说明这步下完能赢 
+</span><span class="c1"></span><span class="p">}</span> 
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+	<span class="n">string</span> <span class="n">s</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="s">&#34;xooooooo&#34;</span><span class="p">,</span><span class="s">&#34;xxoooooo&#34;</span><span class="p">,</span><span class="s">&#34;oxoooooo&#34;</span><span class="p">,</span><span class="s">&#34;oxxooooo&#34;</span><span class="p">};</span>
+	<span class="k">for</span><span class="p">(</span><span class="k">auto</span> <span class="nl">i</span><span class="p">:</span><span class="n">s</span><span class="p">)</span>
+		<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">dfs</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">?</span> <span class="sc">&#39;V&#39;</span> <span class="o">:</span> <span class="sc">&#39;L&#39;</span><span class="p">);</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span> 
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="3-求和">3 求和</h2>
 <h3 id="题目-2">题目</h3>
 <p>给定 n 个整数 $a_1,a_2,&hellip;,a_n$ ，求它们两两相乘再相加的和，即：</p>
 <p>$S=a_1<em>a_2+a_1</em>a_3+&hellip;+a_{n-2}*a_{n-1}+a_{n-2}*a_{n}+a_{n-1}*a_n$</p>
@@ -363,13 +490,18 @@
 </div><h2 id="4-选数异或">4 选数异或</h2>
 <h3 id="题目-3">题目</h3>
 <p>给定一个长度为 n 的数列 $A_1,A_2,&hellip;A_n$ 和一个非负整数 x , 给定 m 次查 询, 每次询问能否从某个区间 [l, r] 中选择两个数使得他们的异或等于 x 。</p>
-<h3 id="输入格式">输入格式</h3>
+<p><strong>输入格式</strong></p>
 <p>输入的第一行包含三个整数 n, m, x 。</p>
 <p>第二行包含 n 个整数 $A_1,A_2,&hellip;A_n$ 。</p>
 <p>接下来 m 行，每行包含两个整数 $l_i, r_i$ 表示询问区间 [$l_i, r_i$] 。</p>
-<h3 id="输出格式">输出格式</h3>
+<p><strong>输出格式</strong></p>
 <p>对于每个询问, 如果该区间内存在两个数的异或为 x 则输出 yes, 否则输出 no。</p>
 <h3 id="解析-3">解析</h3>
+<p>🟠 <strong>构造数组 dp[i] = j</strong> ：满足 a[k]^a[j]=x，且 1≤ k ≤ i 的 j 的最大值。由于我们是按索引由小到大遍历的，因此必有 <strong>dp[i] ≤ i</strong> 。</p>
+<p>🟡 构造数组的值和它的索引的映射： <strong>map&lt;long long,int&gt; mp</strong></p>
+<p>🟢 注意事实：<strong>若 a ^ b=x，则 a ^ x=b，且 b ^ x=a。</strong> 因此和 t 异或的值为 x 的数是 t^x，它的索引是 mp[t^x]。</p>
+<p>🔵 根据以上两点，我们可以这样更新 dp[i]： <strong>dp[i]=max(dp[i-1], mp[t^x]);</strong></p>
+<p>🟣 要使索引 [l, r] 上的值能两两异或得到 x ，只要保证在 r 之前有一个数，和它异或为 x 的数的索引大于 l，即 <strong>dp[r]&gt;=l</strong> 。 <strong>注意由 dp[i] ≤ i 可知，这个数范围一定在 [l, r] 内。</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -392,6 +524,13 @@
 </span><span class="lnt">18
 </span><span class="lnt">19
 </span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
@@ -399,20 +538,27 @@
 </span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
-    <span class="kt">int</span> <span class="n">s</span><span class="p">[</span><span class="mi">26</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span> 
-    <span class="kt">char</span> <span class="n">c</span><span class="p">;</span>
-    <span class="k">while</span><span class="p">((</span><span class="n">c</span><span class="o">=</span><span class="n">getchar</span><span class="p">())</span><span class="o">!=</span><span class="sc">&#39;\n&#39;</span><span class="p">){</span>
-    	<span class="n">s</span><span class="p">[</span><span class="n">c</span><span class="o">-</span><span class="sc">&#39;A&#39;</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">n</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">l</span><span class="p">,</span><span class="n">r</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">dp</span><span class="p">[</span><span class="mi">100005</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>		<span class="c1">// dp[i]=j：a[i]^a[j]=x，且 j&lt;=i 
+</span><span class="c1"></span>	<span class="kt">long</span> <span class="kt">long</span> <span class="n">x</span><span class="p">,</span><span class="n">t</span><span class="p">;</span>
+	<span class="n">map</span><span class="o">&lt;</span><span class="kt">long</span> <span class="kt">long</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">mp</span><span class="p">;</span>	<span class="c1">// 数列的数和对应的索引 
+</span><span class="c1"></span>	<span class="n">cin</span><span class="o">&gt;&gt;</span><span class="n">n</span><span class="o">&gt;&gt;</span><span class="n">m</span><span class="o">&gt;&gt;</span><span class="n">x</span><span class="p">;</span>
+	
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+		<span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%lld&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">t</span><span class="p">);</span>
+		
+		<span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">max</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">mp</span><span class="p">[</span><span class="n">t</span><span class="o">^</span><span class="n">x</span><span class="p">]);</span>
+		<span class="n">mp</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">=</span><span class="n">i</span><span class="p">;</span> 
 	<span class="p">}</span>
 	
-	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">26</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
-		<span class="k">while</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]){</span>
-			<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="kt">char</span><span class="p">(</span><span class="sc">&#39;A&#39;</span><span class="o">+</span><span class="n">i</span><span class="p">);</span>
-			<span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">--</span><span class="p">;</span>
-		<span class="p">}</span>
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">m</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+		<span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d %d&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">l</span><span class="p">,</span><span class="o">&amp;</span><span class="n">r</span><span class="p">);</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">r</span><span class="p">]</span><span class="o">&gt;=</span><span class="n">l</span><span class="p">)</span>	<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&#34;yes&#34;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+		<span class="k">else</span> <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&#34;no&#34;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
 	<span class="p">}</span>
-    
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+	
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+	
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
@@ -425,8 +571,203 @@
 <p>接下来 n 行每行包含两个整数 $x_i, y_i$ ，用一个空格分隔，表示 $P_i=x_i/y_i$ 。</p>
 <p><strong>输出格式</strong></p>
 <p>输出一行包含一个整数表示答案, 答案是一个有理数, 请输出答案对质 数 998244353 取模的结果。</p>
-<p>其中有理数 b/a 对质数 P 取模的结果是整数 c 满足 0≤c&lt;P 且 c<em>⋅</em>b ≡ a(modP) 。</p>
+<p>其中有理数 a/b 对质数 P 取模的结果是整数 c 满足 0≤c&lt;P 且 c ⋅ b ≡ a(modP) 。</p>
 <h3 id="解析-4">解析</h3>
+<p>🟠 <strong>【分数取模问题】</strong></p>
+<p>由费马小定理得：$a^{p-1}=1(mod p)$，其中 p 为质数， a 不为 p 的倍数。</p>
+<p>可以推出：$a^{p-2}(mod p)=(a^{p-1}(mod p)*a^{-1}(mod p))(mod p)=a^{-1}(mod p)$。</p>
+<p>因此 $a/b(mod p)=(ab^{-1})(mod p)=(a(mod p)*b^{p-2}(mod p))(mod p)$。</p>
+<p>🟡 <strong>利用快速幂计算 $b^{p-2}(mod p)$。</strong></p>
+<p>🟢 <strong>【找递推关系】</strong></p>
+<p>设 E[i] 为从点 i 到达点 n 的期望时间，则 <strong>所求答案为 <code>E[0]</code>，且 E[n]=0。</strong></p>
+<p>有递推关系： <code>E[i] = p[i]×(E[0]+1) + (1−p[i])×(E[i+1]+1)</code> 。<strong>注意，从 i 无论走到 0 还是走到 i+1，所花费的时间都是1。</strong> 很容易可以看出， <strong>E[i] 是一个和 E[0] 有关的一次式</strong> ，设 <code>E[i] = a[i]E[0] + b[i]</code> 。</p>
+<p>由递推关系得： <code>a[i-1]=p[i-1]+(1-p[i-1])×a[i]</code> ， <code>b[i-1]=(1-p[i-1])×b[i]+1</code> 。</p>
+<p>🔵 注意要把 x 和 y 化成最简分数，可用 c++ 自带函数 <code>__gcd(x, y)</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="cp">#define P 998244353				</span><span class="c1">// 注意宏定义不能和下面的变量重名！！！ 
+</span><span class="c1"></span>
+<span class="c1">// 求 a^b(mod p) 
+</span><span class="c1"></span><span class="kt">int</span> <span class="nf">qm</span><span class="p">(</span><span class="kt">long</span> <span class="kt">long</span> <span class="n">a</span><span class="p">,</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">b</span><span class="p">,</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">p</span><span class="p">){</span>
+	<span class="kt">long</span> <span class="kt">long</span> <span class="n">c</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+	<span class="k">while</span><span class="p">(</span><span class="n">b</span><span class="p">){</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">b</span><span class="o">&amp;</span><span class="mi">1</span><span class="p">)</span>
+			<span class="n">c</span><span class="o">=</span><span class="n">c</span><span class="o">*</span><span class="n">a</span><span class="o">%</span><span class="n">p</span><span class="p">;</span>
+		<span class="n">a</span><span class="o">=</span><span class="n">a</span><span class="o">*</span><span class="n">a</span><span class="o">%</span><span class="n">p</span><span class="p">;</span>
+		<span class="n">b</span><span class="o">&gt;&gt;=</span><span class="mi">1</span><span class="p">;</span>		<span class="c1">// 这里忘记加 &#34;=&#34;，陷入死循环了！！！ 
+</span><span class="c1"></span>	<span class="p">}</span>
+	<span class="k">return</span> <span class="n">c</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+    <span class="kt">long</span> <span class="kt">long</span> <span class="n">x</span><span class="p">[</span><span class="mi">100005</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="mi">100005</span><span class="p">];</span>
+    <span class="n">cin</span><span class="o">&gt;&gt;</span><span class="n">n</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+    	<span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d %d&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="o">&amp;</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+    	<span class="kt">int</span> <span class="n">d</span><span class="o">=</span><span class="n">__gcd</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>		<span class="c1">// 求最大公约数
+</span><span class="c1"></span>		<span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">/=</span><span class="n">d</span><span class="p">,</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">/=</span><span class="n">d</span><span class="p">;</span>				<span class="c1">// 化简成最简分数 
+</span><span class="c1"></span>	<span class="p">}</span>
+    
+    <span class="kt">long</span> <span class="kt">long</span> <span class="n">p0</span><span class="p">,</span><span class="n">p1</span><span class="p">,</span><span class="n">a</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">--</span><span class="p">){</span>
+    	<span class="n">p0</span><span class="o">=</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">qm</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">P</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="n">P</span><span class="p">)</span><span class="o">%</span><span class="n">P</span><span class="p">;</span>
+    	<span class="n">p1</span><span class="o">=</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">*</span><span class="n">qm</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">P</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="n">P</span><span class="p">)</span><span class="o">%</span><span class="n">P</span><span class="p">;</span>
+    	<span class="n">a</span><span class="o">=</span><span class="p">(</span><span class="n">p0</span><span class="o">+</span><span class="n">p1</span><span class="o">*</span><span class="n">a</span><span class="o">%</span><span class="n">P</span><span class="p">)</span><span class="o">%</span><span class="n">P</span><span class="p">;</span>
+    	<span class="n">b</span><span class="o">=</span><span class="p">(</span><span class="n">p1</span><span class="o">*</span><span class="n">b</span><span class="o">%</span><span class="n">P</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">%</span><span class="n">P</span><span class="p">;</span>
+	<span class="p">}</span>
+	
+	<span class="kt">long</span> <span class="kt">long</span> <span class="n">ans</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="n">b</span><span class="o">*</span><span class="n">qm</span><span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">P</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="n">P</span><span class="p">)</span><span class="o">%</span><span class="n">P</span><span class="o">+</span><span class="n">P</span><span class="p">)</span><span class="o">%</span><span class="n">P</span><span class="p">;</span>
+	<span class="n">cout</span><span class="o">&lt;&lt;</span> <span class="n">ans</span><span class="p">;</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="6-青蛙过河">6 青蛙过河</h2>
+<h3 id="题目-5">题目</h3>
+<p>小青蛙住在一条河边, 它想到河对岸的学校去学习。小青蛙打算经过河里 的石头跳到对岸。</p>
+<p>河里的石头排成了一条直线, 小青蛙每次跳跃必须落在一块石头或者岸上。 不过, 每块石头有一个高度, 每次小青蛙从一块石头起跳, 这块石头的高度就 会下降 1 , 当石头的高度下降到 0 时小青蛙不能再跳到这块石头上（某次跳跃 后使石头高度下降到 0 是允许的)。</p>
+<p>小青蛙一共需要去学校上 x 天课, 所以它需要往返 2x 次。当小青蛙具有 一个跳跃能力 y 时, 它能跳不超过 y 的距离。</p>
+<p>请问小青蛙的跳跃能力至少是多少才能用这些石头上完 x 次课。</p>
+<p><strong>输入格式</strong></p>
+<p>输入的第一行包含两个整数 n,x, 分别表示河的宽度和小青蛙需要去学校 的天数。请注意 2x 才是实际过河的次数。</p>
+<p>第二行包含 n-1 个非负整数 $H_1, H_2,&hellip;,H_{n-1}$ , 其中 $H_i&gt;0$ 表示在河中与 小青蛙的家相距 i 的地方有一块高度为 $H_i$ 的石头, $H_i=0$ 表示这个位置没有石头。</p>
+<p><strong>输出格式</strong></p>
+<p>输出一行, 包含一个整数, 表示小青蛙需要的最低跳跃能力。</p>
+<h3 id="解析-5">解析</h3>
+<p>🟠 <strong>当跳跃能力为 y 时，对每个长度为 y-1 的区间 [l, r]，2x 次全程都会经过这个区间 2x 次，因此这个区间的总高度至少为 2x 。</strong> 据此我们写出判断函数 check()。</p>
+<p>🟡 用**【二分查找】** ，找出最小的 y。注意判断后的转移式 ❗❗❗</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="n">n</span><span class="p">,</span><span class="n">x</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">h</span><span class="p">[</span><span class="mi">100005</span><span class="p">],</span><span class="n">s</span><span class="p">[</span><span class="mi">100005</span><span class="p">];</span>
+
+<span class="c1">// 检查长度为 y-1的闭区间内，总高度是不是都超过 2x
+</span><span class="c1">// 若超过则说明跳跃能力可以为 y 
+</span><span class="c1"></span><span class="kt">bool</span> <span class="nf">check</span><span class="p">(</span><span class="kt">int</span> <span class="n">y</span><span class="p">){</span>
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="o">-</span><span class="n">y</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="n">y</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>	<span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+ <span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+ 	<span class="n">cin</span><span class="o">&gt;&gt;</span><span class="n">n</span><span class="o">&gt;&gt;</span><span class="n">x</span><span class="p">;</span>
+ 	<span class="n">h</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+ 	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+ 		<span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">h</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+ 		<span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">h</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+	<span class="p">}</span>
+	
+	<span class="kt">int</span> <span class="n">l</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">r</span><span class="o">=</span><span class="n">n</span><span class="p">;</span>
+	<span class="k">while</span><span class="p">(</span><span class="n">l</span><span class="o">!=</span><span class="n">r</span><span class="p">){</span>			<span class="c1">// 二分法找到最小能符合要求的值 
+</span><span class="c1"></span>        <span class="c1">// 注意如果符合条件，应该继续找小的！！！
+</span><span class="c1"></span>		<span class="k">if</span><span class="p">(</span><span class="n">check</span><span class="p">((</span><span class="n">l</span><span class="o">+</span><span class="n">r</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span>	<span class="n">r</span><span class="o">=</span><span class="p">(</span><span class="n">l</span><span class="o">+</span><span class="n">r</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
+		<span class="k">else</span>	<span class="n">l</span><span class="o">=</span><span class="p">(</span><span class="n">l</span><span class="o">+</span><span class="n">r</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+	<span class="p">}</span>
+	
+	<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">r</span><span class="p">;</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+ <span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="7-最长不下降子序列">7 最长不下降子序列</h2>
+<h3 id="题目-6">题目</h3>
+<p>给定一个长度为 N 的整数序列: $A_1, A_2,&hellip;,A_N$ 。现在你有一次机会, 将其 中连续的 K 个数修改成任意一个相同值。请你计算如何修改可以使修改后的数 列的最长不下降子序列最长, 请输出这个最长的长度。</p>
+<p>最长不下降子序列是指序列中的一个子序列, 子序列中的每个数不小于在 它之前的数。</p>
+<h3 id="输入格式">输入格式</h3>
+<p>输入第一行包含两个整数 N 和 K 。</p>
+<p>第二行包含 N 个整数 $A_1, A_2,&hellip;,A_N$ 。</p>
+<h3 id="输出格式">输出格式</h3>
+<p>输出一行包含一个整数表示答案。</p>
+<h3 id="解析-6">解析</h3>
+<h2 id="8-扫描游戏">8 扫描游戏</h2>
+<h2 id="9-数的拆分">9 数的拆分</h2>
+<h2 id="10-推导部分和">10 推导部分和</h2>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
