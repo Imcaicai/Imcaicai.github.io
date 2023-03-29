@@ -118,6 +118,18 @@
         alt="/img/avatar.jpg"
         title="/img/avatar.jpg" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%89/">Mysql数据库基本语法(三)</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-12-07">2022-12-07</time></span>&nbsp;<span class="post-category">included in <a href="/categories/mysql/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Mysql</a></span></div><div class="content">5 用户自定义函数 函数其实有多种，比如标量函数(仅返回一个值)和表函数(返回结果是表),语法也各不相同。这里，我们仅给出一个简化的创建标量函数的语法:
+1 2 3 4 5 6  create function function_name([para data_type[,...]]) returns data_type begin function_body; return expression; end    function_name:函数名； para:参数名； data_type:参数的数据类型； 一个函数可以没有参数，也可以有多个。多参数间用逗号分隔。 function_body:函数体。即由合法的SQL语句组成的程序段。 expression:函数返回值，可以是常量、表达式，甚至是一条select语句查询的值（必须保证结果唯一);该值类型应与returns短语定义的类型相同。  函数一旦定义，就可以像内部函数一样使用，比如出现在select列表、表达式、以及where子句的条件中。
+ MySQL的函数定义与存储过程的定义一样，在定义函数之前要用“delimiter 界符”语句指定函数定义的结束界符，并在函数定义后，再次使用“delimiter 界符”语句恢复MySQL语句的界符(分号)。
+ 6 安全性控制 与大多数商用DBMS一样，MySQL采用自主存取控制(DAC)机制进行安全性管理。通过用户，数据对象，权限，授权，收回权限等要素进行存取控制。另外，为了方便批量授权给同一类用户，引入了角色。
+6.1 用户（User） MySQL创建用户的语句：
+1  create user 用户名 identified by 用户登录密码；   通常用户名可包含域名，限定用户在该域名内登录再有效。例：
+1  CREATE USER &#39;jeffrey&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;password&#39;;   该语句创建用户jeffrey,密码为&rsquo;password'，仅限在MySQL服务器本机上登录才有效。用户名与域合起来，被称为账户(account)。 注意不要写成：&lsquo;jeffrey@localhost&rsquo;，它代表账户： &lsquo;jeffrey@localhost&rsquo;@'%' 意即用户名为jefrrey@localhost，在任何机器上登录都有效。两者的含义完全不同。
+drop user语句可删除用户。用户被删除时，该用户拥有的权限自动被收回。</div><div class="post-footer">
+        <a href="/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%89/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/mysql/">Mysql</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%BA%8C/">Mysql数据库基本语法(二)</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-12-07">2022-12-07</time></span>&nbsp;<span class="post-category">included in <a href="/categories/mysql/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Mysql</a></span></div><div class="content">3存储过程与事务 3.1 使用流程控制语句的存储过程 变量的定义与赋值 用declare语句定义变量，并赋予默认值或初始值，未赋默认值则初始值为null：
 1  DECLARE var_name [, var_name] ... type [DEFAULT value]   用set语句给变量赋值，set语句还可以设置许多MySQL的配置参数。
@@ -216,19 +228,6 @@ Please make sure you have the correct access rights and the repository exists.
 1 2 3 4 5 6 7 8 9 10 11 12  // 监听net类型，地址为laddr的地址 func Listen(net, laddr string) (Listener, error) // 监听TCP地址 func ListenTCP(network string, laddr *TCPAddr) (*TCPListener, error) // 监听IP地址 func ListenIP(netProto string, laddr *IPAddr) (*IPConn, error) // 监听UDP地址 func ListenMulticastUDP(net string, ifi *Interface, gaddr *UDPAddr) (*UDPConn, error) func ListenUDP(net string, laddr *UDPAddr) (*UDPConn, error) // 监听Unix地址 func ListenUnixgram(net string, laddr *UnixAddr) (*UnixConn, error) func ListenUnix(net string, laddr *UnixAddr) (*UnixListener, error)   3.</div><div class="post-footer">
         <a href="/go-net%E6%A0%87%E5%87%86%E5%BA%93%E5%BA%94%E7%94%A8/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/go/">Go</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/an-image-is-worth-graph-of-nodes/">Vision GNN: An Image is Worth Graph of Nodes</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-10-17">2022-10-17</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>深度学习</a></span></div><div class="content">本文为论文 Vision GNN: An Image is Worth Graph of Nodes 的阅读笔记。
-论文下载：https://arxiv.org/abs/2206.00272
-引言 网络架构在基于深度学习的计算机视觉中起着关键作用。广泛使用的CNN和 transformer（变换器）将图像视为 grid（网格）或 sequence（序列）结构，这对于捕捉不规则、复杂的物体来说是不灵活的。本文建议将图像表示为一个 graph 结构，并引入一个新的 Vision GNN（ViG）架构来提取视觉任务的图层特征。
-文章主要工作：
- 介绍了计算机视觉方面的现有模型方法和成果 介绍ViG模型的构建过程及工作原理，为未来的研究提供有用的灵感和经验 通过图像分类和物体检测实验证明了ViG模型在视觉任务中的有效性  1 相关研究 CNN 曾经是计算机视觉中标准的网络结构，但近来 transformer with attention mechanism 、MLP-based 等模型也在不断发展，这些正在将视觉模型推向一个前所未有的高度。
-1.1 3种图像结构 不同的网络结构以不同的方式处理输入的图像，通常有grid, sequence ,graph 3种，如下图所示。在 grid  和 sequence 结构中，节点只按空间位置排序；在 graph 结构中，节点是通过其内容连接的，不受局部位置的限制。
-CNN 在图像上应用滑动窗口，并引入移位变异性和位置性；最近的 vision transformer 或 MLP 将图像视为 a sequence of patches（补丁序列）。
-由于物体形状通常不是规则的四边形，常用的 grid 或 sequence 结构处理起图像来不够灵活，所以在本文中采用 graph 结构。
-1.2 3种模型  CNN：曾经是计算机视觉中的主流网络结构，已经成功地应用于各种视觉任务，如图像分类、物体检测和语义分割。CNN模型在过去的十年里发展迅速，代表性的模型包括ResNet、MobileNet和NAS。 Vision transformer：从2020年开始，被引入到视觉任务中，ViT的一些变体开始被提出来以提高视觉任务的性能。主要的改进包括金字塔结，局部注意和位置编码。 MLP：通过专门设计的模块，MLP可以达到有竞争力的性能，并且在一般的视觉任务（如物体检测和分割）上工作。  1.</div><div class="post-footer">
-        <a href="/an-image-is-worth-graph-of-nodes/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习</a>,&nbsp;<a href="/tags/gnn/">GNN</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>

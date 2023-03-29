@@ -4,34 +4,34 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>【蓝桥杯】2022题解 - 菜菜的秘密花园</title><meta name="Description" content="菜菜的秘密花园"><meta property="og:title" content="【蓝桥杯】2022题解" />
-<meta property="og:description" content="⏰总用时：125	🎯总分：14.5
-   题号 时间 结果 满分 难度 备注     1 5 ✅ 5 🌕    2 5 ❌ 5 🌓 🔹 博弈论：只能转移到必胜态的，均为必败态。可以转移到必败态的，均为必胜态🔹 c&#43;&#43;中计算字符串中某字符个数：count(s.begin(),s.end(),&lsquo;o&rsquo;)🔹 DFS：深搜的时候保存已有结果🔹 二维数组可直接压缩为一维数组🔹 遍历不连续数组，可把要遍历的索引存储在一个数组中   3 5 30% 10 🌕 🔸 先观察所求式子能否化简，注意超时问题🔸 注意题目所给数据范围，答案应该用 long long型   4 30 40% 10 🌓 🔹 巧妙构造数组可以简化题目🔹 若 a ^ b=x，则 a ^ x=b， b ^ x=a。🔹 可以用 map 来映射一组数和他们的索引🔹 直接把异或表达式放 if 语句或输出语句中会出错   5 5 ❌ 10 🌑 🔸 【分数取模】、【快速幂】🔸 注意找递推关系🔸 加快输入速度：ios::sync_with_stdio(false); cin." />
+        <title>【蓝桥杯】2019题解 - 菜菜的秘密花园</title><meta name="Description" content="菜菜的秘密花园"><meta property="og:title" content="【蓝桥杯】2019题解" />
+<meta property="og:description" content="⏰总用时：170	🎯总分：39
+   题号 时间 结果 满分 难度 备注     1 5 ✅ 5 🌕    2 5 ✅ 5 🌕    3 5 ✅ 10 🌕    4 20 ❌ 10 🌓 🔹 巧妙构造数组可以简化题目   5 35 ❌ 10 🌓 🔸 【分数取模】、【快速幂】   6 20 20% 15 🌓 🔹 观察题目的判断结论🔹 二分查找   7 40 40% 20 🌓    8 30 40% 20 🌓    9 10 ❌ 25 🌑    10   25      1 【填空】求和 题目 小明对数位中含有 2、0、1、9 的数字很感兴趣，在 11 到 4040 中这样的数包括 1、2、9、10 至 32、39 和 40，共 28 个，他们的和是 574。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2022/" /><meta property="og:image" content="https://imcaicai.github.io/img/avatar.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-03-22T10:39:32&#43;08:00" />
-<meta property="article:modified_time" content="2023-03-22T10:39:32&#43;08:00" /><meta property="og:site_name" content="菜菜的秘密花园" />
+<meta property="og:url" content="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2019/" /><meta property="og:image" content="https://imcaicai.github.io/img/avatar.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-03-28T08:43:22&#43;08:00" />
+<meta property="article:modified_time" content="2023-03-28T08:43:22&#43;08:00" /><meta property="og:site_name" content="菜菜的秘密花园" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://imcaicai.github.io/img/avatar.jpg"/>
 
-<meta name="twitter:title" content="【蓝桥杯】2022题解"/>
-<meta name="twitter:description" content="⏰总用时：125	🎯总分：14.5
-   题号 时间 结果 满分 难度 备注     1 5 ✅ 5 🌕    2 5 ❌ 5 🌓 🔹 博弈论：只能转移到必胜态的，均为必败态。可以转移到必败态的，均为必胜态🔹 c&#43;&#43;中计算字符串中某字符个数：count(s.begin(),s.end(),&lsquo;o&rsquo;)🔹 DFS：深搜的时候保存已有结果🔹 二维数组可直接压缩为一维数组🔹 遍历不连续数组，可把要遍历的索引存储在一个数组中   3 5 30% 10 🌕 🔸 先观察所求式子能否化简，注意超时问题🔸 注意题目所给数据范围，答案应该用 long long型   4 30 40% 10 🌓 🔹 巧妙构造数组可以简化题目🔹 若 a ^ b=x，则 a ^ x=b， b ^ x=a。🔹 可以用 map 来映射一组数和他们的索引🔹 直接把异或表达式放 if 语句或输出语句中会出错   5 5 ❌ 10 🌑 🔸 【分数取模】、【快速幂】🔸 注意找递推关系🔸 加快输入速度：ios::sync_with_stdio(false); cin."/>
+<meta name="twitter:title" content="【蓝桥杯】2019题解"/>
+<meta name="twitter:description" content="⏰总用时：170	🎯总分：39
+   题号 时间 结果 满分 难度 备注     1 5 ✅ 5 🌕    2 5 ✅ 5 🌕    3 5 ✅ 10 🌕    4 20 ❌ 10 🌓 🔹 巧妙构造数组可以简化题目   5 35 ❌ 10 🌓 🔸 【分数取模】、【快速幂】   6 20 20% 15 🌓 🔹 观察题目的判断结论🔹 二分查找   7 40 40% 20 🌓    8 30 40% 20 🌓    9 10 ❌ 25 🌑    10   25      1 【填空】求和 题目 小明对数位中含有 2、0、1、9 的数字很感兴趣，在 11 到 4040 中这样的数包括 1、2、9、10 至 32、39 和 40，共 28 个，他们的和是 574。"/>
 <meta name="application-name" content="菜菜的秘密花园">
-<meta name="apple-mobile-web-app-title" content="菜菜的秘密花园"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2022/" /><link rel="prev" href="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2021/" /><link rel="next" href="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2019/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<meta name="apple-mobile-web-app-title" content="菜菜的秘密花园"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2019/" /><link rel="prev" href="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2022/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "【蓝桥杯】2022题解",
+        "headline": "【蓝桥杯】2019题解",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/imcaicai.github.io\/%E8%93%9D%E6%A1%A5%E6%9D%AF2022\/"
-        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "蓝桥杯, C\u002b\u002b","wordcount":  1073 ,
-        "url": "https:\/\/imcaicai.github.io\/%E8%93%9D%E6%A1%A5%E6%9D%AF2022\/","datePublished": "2023-03-22T10:39:32+08:00","dateModified": "2023-03-22T10:39:32+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@id": "https:\/\/imcaicai.github.io\/%E8%93%9D%E6%A1%A5%E6%9D%AF2019\/"
+        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "蓝桥杯, C\u002b\u002b","wordcount":  919 ,
+        "url": "https:\/\/imcaicai.github.io\/%E8%93%9D%E6%A1%A5%E6%9D%AF2019\/","datePublished": "2023-03-28T08:43:22+08:00","dateModified": "2023-03-28T08:43:22+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/imcaicai.github.io\/img\/avatar.jpg"},"author": {
                 "@type": "Person",
@@ -69,7 +69,7 @@
                     <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
                 </a><a href="javascript:void(0);" class="menu-item language" title="Select Language">
                     <i class="fa fa-globe" aria-hidden="true"></i>                      
-                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/%E8%93%9D%E6%A1%A5%E6%9D%AF2022/" selected>English</option></select>
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/%E8%93%9D%E6%A1%A5%E6%9D%AF2019/" selected>English</option></select>
                 </a></div>
         </div>
     </div>
@@ -110,7 +110,7 @@
                 <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a><a href="javascript:void(0);" class="menu-item" title="Select Language">
                     <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
-                    <select class="language-select" onchange="location = this.value;"><option value="/%E8%93%9D%E6%A1%A5%E6%9D%AF2022/" selected>English</option></select>
+                    <select class="language-select" onchange="location = this.value;"><option value="/%E8%93%9D%E6%A1%A5%E6%9D%AF2019/" selected>English</option></select>
                 </a></div>
     </div>
 </header><div class="search-dropdown desktop">
@@ -122,10 +122,10 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">【蓝桥杯】2022题解</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">【蓝桥杯】2019题解</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>蓝桥杯刷题记录</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-22">2023-03-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1073 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;6 minutes&nbsp;<span id="/%E8%93%9D%E6%A1%A5%E6%9D%AF2022/" class="leancloud_visitors" data-flag-title="【蓝桥杯】2022题解">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-28">2023-03-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;919 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;<span id="/%E8%93%9D%E6%A1%A5%E6%9D%AF2019/" class="leancloud_visitors" data-flag-title="【蓝桥杯】2019题解">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
@@ -135,25 +135,25 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#1-填空裁纸刀">1 【填空】裁纸刀</a>
+    <li><a href="#1-填空求和">1 【填空】求和</a>
       <ul>
         <li><a href="#题目">题目</a></li>
         <li><a href="#解析">解析</a></li>
       </ul>
     </li>
-    <li><a href="#2-填空灭鼠先锋">2 【填空】灭鼠先锋</a>
+    <li><a href="#2-填空数列求值">2 【填空】数列求值</a>
       <ul>
         <li><a href="#题目-1">题目</a></li>
         <li><a href="#解析-1">解析</a></li>
       </ul>
     </li>
-    <li><a href="#3-求和">3 求和</a>
+    <li><a href="#3-最大降雨量">3 最大降雨量</a>
       <ul>
         <li><a href="#题目-2">题目</a></li>
         <li><a href="#解析-2">解析</a></li>
       </ul>
     </li>
-    <li><a href="#4-选数异或">4 选数异或</a>
+    <li><a href="#4-迷宫">4 迷宫</a>
       <ul>
         <li><a href="#题目-3">题目</a></li>
         <li><a href="#解析-3">解析</a></li>
@@ -184,7 +184,7 @@
     <li><a href="#10-推导部分和">10 推导部分和</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p>⏰总用时：125			🎯总分：14.5</p>
+            </div><div class="content" id="content"><p>⏰总用时：170			🎯总分：39</p>
 <table>
 <thead>
 <tr>
@@ -208,120 +208,211 @@
 <tr>
 <td><strong>2</strong></td>
 <td>5</td>
-<td>❌</td>
+<td>✅</td>
 <td>5</td>
-<td>🌓</td>
-<td>🔹 博弈论：只能转移到必胜态的，均为必败态。可以转移到必败态的，均为必胜态<br/>🔹 c++中计算字符串中某字符个数：count(s.begin(),s.end(),&lsquo;o&rsquo;)<br/>🔹 DFS：深搜的时候保存已有结果<br/>🔹 二维数组可直接压缩为一维数组<br/>🔹 遍历不连续数组，可把要遍历的索引存储在一个数组中</td>
+<td>🌕</td>
+<td></td>
 </tr>
 <tr>
 <td><strong>3</strong></td>
 <td>5</td>
-<td>30%</td>
+<td>✅</td>
 <td>10</td>
 <td>🌕</td>
-<td>🔸 先观察所求式子能否化简，注意超时问题<br/>🔸 注意题目所给数据范围，答案应该用 long long型</td>
+<td></td>
 </tr>
 <tr>
 <td><strong>4</strong></td>
-<td>30</td>
-<td>40%</td>
+<td>20</td>
+<td>❌</td>
 <td>10</td>
 <td>🌓</td>
-<td>🔹 巧妙构造数组可以简化题目<br/>🔹 若 a ^ b=x，则 a ^ x=b， b ^ x=a。<br/>🔹 可以用 map 来映射一组数和他们的索引<br/>🔹 直接把异或表达式放 if 语句或输出语句中会出错</td>
+<td>🔹 巧妙构造数组可以简化题目<br/></td>
 </tr>
 <tr>
 <td><strong>5</strong></td>
-<td>5</td>
+<td>35</td>
 <td>❌</td>
 <td>10</td>
-<td>🌑</td>
-<td>🔸 【分数取模】、【快速幂】<br/>🔸 注意找递推关系<br/>🔸 加快输入速度：ios::sync_with_stdio(false); cin.tie(0);<br/>🔸 c++自带求最大公约数的函数：__gcd(x,y)<br/>🔸 注意宏定义不能和下面的变量重名</td>
+<td>🌓</td>
+<td>🔸 【分数取模】、【快速幂】<br/></td>
 </tr>
 <tr>
 <td><strong>6</strong></td>
-<td>15</td>
-<td>❌</td>
+<td>20</td>
+<td>20%</td>
 <td>15</td>
 <td>🌓</td>
 <td>🔹 观察题目的判断结论<br/>🔹 二分查找</td>
 </tr>
 <tr>
 <td><strong>7</strong></td>
-<td>30</td>
-<td>❌</td>
+<td>40</td>
+<td>40%</td>
 <td>20</td>
 <td>🌓</td>
 <td></td>
 </tr>
 <tr>
 <td><strong>8</strong></td>
-<td>5</td>
-<td>❌</td>
+<td>30</td>
+<td>40%</td>
 <td>20</td>
 <td>🌓</td>
 <td></td>
 </tr>
 <tr>
 <td><strong>9</strong></td>
-<td>20</td>
-<td>10%</td>
-<td>25</td>
-<td>🌓</td>
-<td></td>
-</tr>
-<tr>
-<td><strong>10</strong></td>
-<td>5</td>
+<td>10</td>
 <td>❌</td>
 <td>25</td>
 <td>🌑</td>
 <td></td>
 </tr>
+<tr>
+<td><strong>10</strong></td>
+<td></td>
+<td></td>
+<td>25</td>
+<td></td>
+<td></td>
+</tr>
 </tbody>
 </table>
-<p>😭😭😭😭好难啊，太多不会的，所以好几题直接放弃了。。。</p>
-<h2 id="1-填空裁纸刀">1 【填空】裁纸刀</h2>
+<h2 id="1-填空求和">1 【填空】求和</h2>
 <h3 id="题目">题目</h3>
-<p>小蓝有一个裁纸刀，每次可以将一张纸沿一条直线裁成两半。小蓝用一张纸打印出两行三列共 6 个二维码，至少使用九次裁出来，下图给出了一种裁法。</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/img/%e8%93%9d%e6%a1%a5%e6%9d%af/2.png"
-        data-srcset="/img/%e8%93%9d%e6%a1%a5%e6%9d%af/2.png, /img/%e8%93%9d%e6%a1%a5%e6%9d%af/2.png 1.5x, /img/%e8%93%9d%e6%a1%a5%e6%9d%af/2.png 2x"
-        data-sizes="auto"
-        alt="/img/蓝桥杯/2.png"
-        title="img1" /></p>
-<p>在上面的例子中，小蓝的打印机没办法打印到边缘，所以边缘至少要裁 4 次。另外，小蓝每次只能裁一张纸，不能重叠或者拼起来裁。如果小蓝要用一张纸打印出 20 行 22 列共 440 个二维码，他至少需要裁多少次？</p>
+<p>小明对数位中含有 2、0、1、9 的数字很感兴趣，在 11 到 4040 中这样的数包括 1、2、9、10 至 32、39 和 40，共 28 个，他们的和是 574。</p>
+<p>请问，在 1 到 2019 中，所有这样的数的和是多少？</p>
 <h3 id="解析">解析</h3>
+<p>注意审题，求的是满足条件的数字平方之和，不是个数❗❗❗</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span> 
+
+<span class="kt">bool</span> <span class="nf">check</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">){</span>
+	<span class="kt">int</span> <span class="n">t</span><span class="p">;</span>
+	<span class="k">while</span><span class="p">(</span><span class="n">x</span><span class="p">){</span>
+		<span class="n">t</span><span class="o">=</span><span class="n">x</span><span class="o">%</span><span class="mi">10</span><span class="p">;</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">t</span><span class="o">==</span><span class="mi">2</span> <span class="o">||</span> <span class="n">t</span><span class="o">==</span><span class="mi">0</span> <span class="o">||</span> <span class="n">t</span><span class="o">==</span><span class="mi">1</span> <span class="o">||</span> <span class="n">t</span><span class="o">==</span><span class="mi">9</span><span class="p">)</span>
+			<span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+		<span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="o">/</span><span class="mi">10</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+	<span class="kt">long</span> <span class="kt">long</span> <span class="n">sum</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="mi">2019</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">check</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>	<span class="n">sum</span><span class="o">+=</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="n">i</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">sum</span><span class="p">;</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span> 
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="2-填空数列求值">2 【填空】数列求值</h2>
+<h3 id="题目-1">题目</h3>
+<p>给定数列 1,1,1,3,5,9,17,⋯，从第 4 项开始，每项都是前 3 项的和。</p>
+<p>求第 20190324 项的最后 4 位数字。</p>
+<h3 id="解析-1">解析</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span> 
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+	<span class="kt">int</span> <span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">t</span><span class="p">;</span>
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="mi">20190324</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">&lt;=</span><span class="mi">3</span><span class="p">)</span>	<span class="k">continue</span><span class="p">;</span>
+		<span class="n">t</span><span class="o">=</span><span class="n">c</span><span class="p">;</span>
+		<span class="n">c</span><span class="o">=</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">+</span><span class="n">c</span><span class="p">)</span><span class="o">%</span><span class="mi">10000</span><span class="p">;</span>	<span class="c1">// 第 i 项 
+</span><span class="c1"></span>		<span class="n">a</span><span class="o">=</span><span class="n">b</span><span class="p">;</span><span class="n">b</span><span class="o">=</span><span class="n">t</span><span class="p">;</span>
+<span class="c1">//		cout&lt;&lt;i&lt;&lt;&#34;: &#34;&lt;&lt;a&lt;&lt;&#34; &#34;&lt;&lt;b&lt;&lt;&#34; &#34;&lt;&lt;c&lt;&lt;endl;
+</span><span class="c1"></span>	<span class="p">}</span>
+	
+	<span class="n">cout</span><span class="o">&lt;&lt;</span> <span class="n">c</span><span class="p">;</span> 
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span> 
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="3-最大降雨量">3 最大降雨量</h2>
+<h3 id="题目-2">题目</h3>
+<p>由于沙之国长年干旱，法师小明准备施展自己的一个神秘法术来求雨。</p>
+<p>这个法术需要用到他手中的 49 张法术符，上面分别写着 1 至 49 这 49 个数字。法术一共持续 7 周，每天小明都要使用一张法术符，法术符不能重复使用。</p>
+<p>每周，小明施展法术产生的能量为这周 7 张法术符上数字的中位数。法术 施展完 7 周后，求雨将获得成功，降雨量为 7 周能量的中位数。</p>
+<p>由于干旱太久，小明希望这次求雨的降雨量尽可能大，请大最大值是多少？</p>
+<h3 id="解析-2">解析</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="mi">4</span><span class="o">+</span><span class="mi">21</span><span class="o">+</span><span class="mi">22</span><span class="o">*</span><span class="mi">19</span><span class="p">;</span>
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="mi">34</span><span class="p">;</span>
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="2-填空灭鼠先锋">2 【填空】灭鼠先锋</h2>
-<h3 id="题目-1">题目</h3>
-<p>灭鼠先锋是一个老少咸宜的棋盘小游戏，由两人参与，轮流操作。</p>
-<p>灭鼠先锋的棋盘有各种规格，本题中游戏在两行四列的棋盘上进行。游戏的规则为：两人轮流操作，每次可选择在棋盘的一个空位上放置一个棋子，或在同一行的连续两个空位上各放置一个棋子，放下棋子后使棋盘放满的一方输掉游戏。</p>
-<p>小蓝和小乔一起玩游戏，小蓝先手，小乔后手。小蓝可以放置棋子的方法很多，通过旋转和翻转可以对应如下四种情况：</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/img/%e8%93%9d%e6%a1%a5%e6%9d%af/3.png"
-        data-srcset="/img/%e8%93%9d%e6%a1%a5%e6%9d%af/3.png, /img/%e8%93%9d%e6%a1%a5%e6%9d%af/3.png 1.5x, /img/%e8%93%9d%e6%a1%a5%e6%9d%af/3.png 2x"
-        data-sizes="auto"
-        alt="/img/蓝桥杯/3.png"
-        title="img1" /></p>
-<p>其中 O 表示棋盘上的一个方格为空，X 表示该方格已经放置了棋子。</p>
-<p>请问，对于以上四种情况，如果小蓝和小乔都是按照对自己最优的策略来玩游戏，小蓝是否能获胜。如果获胜，请用 V 表示，否则用 L 表示。请将四种情况的胜负结果按顺序连接在一起提交。</p>
-<h3 id="解析-1">解析</h3>
-<p>🟠 <strong>【博弈论】当前只能转移到必胜态的，均为必败态。当前可以转移到必败态的，均为必胜态。</strong> 仔细观察，本题中的必败态为只剩一个 &ldquo;o&rdquo; 的情况。因此要赢，只需要确保 <strong>自己放完棋子后一定为【必败态】</strong> 。</p>
-<p>🟡 <strong>c++ 中计算字符串中某个字符个数的函数： <code>count(s.begin(),s.end(),'o')</code> ，需要加头文件 <code>#include &lt;algorithm&gt;</code></strong></p>
-<p>🟢 利用 <strong>【DFS】</strong> 解决问题，统一考虑问题的视角：<strong>自己放完棋子为状态 s 能否赢</strong> ，否则很容易绕晕，到底是返回 true 还是返回 false。 <strong>深搜的时候保存结果，遇到已经判断过的状态就直接返回。</strong></p>
-<p>🔵 <strong>二维数组可以直接压缩成一维数组。</strong></p>
-<p>🟣 遍历不连续数组时，可以 <strong>把要遍历的索引存储在一个数组中</strong> ，这样遍历时可以连续用下标，简单省事。</p>
+</div><h2 id="4-迷宫">4 迷宫</h2>
+<h3 id="题目-3">题目</h3>
+<p>下图给出了一个迷宫的平面图，其中标记为 1 的为障碍，标记为 0 的为可以通行的地方。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">010000
+000100
+001001
+110000
+</code></pre></td></tr></table>
+</div>
+</div><p>迷宫的入口为左上角，出口为右下角，在迷宫中，只能从一个位置走到这 个它的上、下、左、右四个方向之一。</p>
+<p>对于上面的迷宫，从入口开始，可以按 <code>DRRURRDDDR</code> 的顺序通过迷宫， 一共 10 步。其中 D*、*U*、*L*、*R 分别表示向下、向上、向左、向右走。 对于下面这个更复杂的迷宫（30 行 50 列），请找出一种通过迷宫的方式，其使用的步数最少，在步数最少的前提下，请找出字典序最小的一个作为答案。</p>
+<p>请注意在字典序中 D*&lt;*L*&lt;*R*&lt;*U。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -354,149 +445,41 @@
 </span><span class="lnt">28
 </span><span class="lnt">29
 </span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span><span class="lnt">47
-</span><span class="lnt">48
-</span><span class="lnt">49
-</span><span class="lnt">50
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
-</span><span class="cp">#include</span> <span class="cpf">&lt;algorithm&gt;</span><span class="cp">
-</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
-
-<span class="c1">// 无序映射，键为棋盘状态，值为下完后是这个状态能否赢 
-</span><span class="c1"></span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span> <span class="kt">bool</span><span class="o">&gt;</span> <span class="n">mp</span><span class="p">;</span>
-
-<span class="c1">// 用于判断 s 中含有的 &#39;o&#39; 的个数是否为1 
-</span><span class="c1">// 个数为 1 则为必败态 
-</span><span class="c1"></span><span class="kt">bool</span> <span class="nf">check</span><span class="p">(</span><span class="n">string</span> <span class="n">s</span><span class="p">){</span>
-	<span class="k">return</span> <span class="n">count</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="n">s</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="sc">&#39;o&#39;</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span><span class="p">;</span> 
-<span class="p">}</span>
-
-<span class="c1">// 利用 dfs 判断自己下完棋后状态为 s 能否赢（是否是必败态） 
-</span><span class="c1"></span><span class="kt">bool</span> <span class="nf">dfs</span><span class="p">(</span><span class="n">string</span> <span class="n">s</span><span class="p">){</span>			
-	<span class="k">if</span><span class="p">(</span><span class="n">mp</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>				<span class="c1">// 若当前状态判断过了，则返回当前状态 
-</span><span class="c1"></span>		<span class="k">return</span> <span class="n">mp</span><span class="p">[</span><span class="n">s</span><span class="p">];</span>			<span class="c1">// 注意判断 mp 中是否有某个元素的方法！ 
-</span><span class="c1"></span>	
-	<span class="k">if</span><span class="p">(</span><span class="n">check</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>				<span class="c1">// 下完棋是必败态，返回 true 
-</span><span class="c1"></span>		<span class="k">return</span> <span class="n">mp</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="o">=</span><span class="nb">true</span><span class="p">;</span>		<span class="c1">// 一定要记得保存 mp[s] 的状态！！！ 
-</span><span class="c1"></span>		
-	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">8</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>		<span class="c1">// 放 1 个棋子的所有可能 
-</span><span class="c1"></span>		<span class="k">if</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="sc">&#39;x&#39;</span><span class="p">)</span>			<span class="c1">// 当前位置已经被放置了 
-</span><span class="c1"></span>			<span class="k">continue</span><span class="p">;</span>
-		<span class="n">string</span> <span class="n">t</span><span class="o">=</span><span class="n">s</span><span class="p">;</span>
-		<span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="sc">&#39;x&#39;</span><span class="p">;</span>
-		<span class="k">if</span><span class="p">(</span><span class="n">dfs</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>				<span class="c1">// 又走过一步后是必败态 
-</span><span class="c1"></span>			<span class="k">return</span> <span class="n">mp</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="o">=</span><span class="nb">false</span><span class="p">;</span> <span class="c1">// 说明当前这步下完后不能赢。这里一定要返回！！！ 
-</span><span class="c1"></span>	<span class="p">}</span>
-	
-	<span class="c1">// 存储放 2 个棋子中的第 1 个的所有可能索引
-</span><span class="c1"></span>	<span class="kt">int</span> <span class="n">idx</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">};</span>	 
-	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">6</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>		<span class="c1">// 放 2 个棋子的所有可能 
-</span><span class="c1"></span>		<span class="k">if</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">idx</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">==</span><span class="sc">&#39;x&#39;</span> <span class="o">||</span> <span class="n">s</span><span class="p">[</span><span class="n">idx</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="sc">&#39;x&#39;</span><span class="p">)</span>	<span class="c1">// 注意索引 idx[i] 在 s 中的下一个元素是 idx[i]+1，不是 idx[i+1]！！！ 
-</span><span class="c1"></span>			<span class="k">continue</span><span class="p">;</span>
-		<span class="n">string</span> <span class="n">t</span><span class="o">=</span><span class="n">s</span><span class="p">;</span>
-		<span class="n">t</span><span class="p">[</span><span class="n">idx</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">=</span><span class="n">t</span><span class="p">[</span><span class="n">idx</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="sc">&#39;x&#39;</span><span class="p">;</span>				<span class="c1">// 注意 i 表示索引的索引，不能直接用 i ！！！ 
-</span><span class="c1"></span>		<span class="k">if</span><span class="p">(</span><span class="n">dfs</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
-			<span class="k">return</span> <span class="n">mp</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="o">=</span><span class="nb">false</span><span class="p">;</span> 
-	<span class="p">}</span> 
-	
-	<span class="k">return</span> <span class="n">mp</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="o">=</span><span class="nb">true</span><span class="p">;</span> 			<span class="c1">// 对方下一步下完后没出现必败态，说明这步下完能赢 
-</span><span class="c1"></span><span class="p">}</span> 
-
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
-	<span class="n">string</span> <span class="n">s</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="s">&#34;xooooooo&#34;</span><span class="p">,</span><span class="s">&#34;xxoooooo&#34;</span><span class="p">,</span><span class="s">&#34;oxoooooo&#34;</span><span class="p">,</span><span class="s">&#34;oxxooooo&#34;</span><span class="p">};</span>
-	<span class="k">for</span><span class="p">(</span><span class="k">auto</span> <span class="nl">i</span><span class="p">:</span><span class="n">s</span><span class="p">)</span>
-		<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">dfs</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">?</span> <span class="sc">&#39;V&#39;</span> <span class="o">:</span> <span class="sc">&#39;L&#39;</span><span class="p">);</span>
-	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span> 
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">01010101001011001001010110010110100100001000101010
+00001000100000101010010000100000001001100110100101
+01111011010010001000001101001011100011000000010000
+01000000001010100011010000101000001010101011001011
+00011111000000101000010010100010100000101100000000
+11001000110101000010101100011010011010101011110111
+00011011010101001001001010000001000101001110000000
+10100000101000100110101010111110011000010000111010
+00111000001010100001100010000001000101001100001001
+11000110100001110010001001010101010101010001101000
+00010000100100000101001010101110100010101010000101
+11100100101001001000010000010101010100100100010100
+00000010000000101011001111010001100000101010100011
+10101010011100001000011000010110011110110100001000
+10101010100001101010100101000010100000111011101001
+10000000101100010000101100101101001011100000000100
+10101001000000010100100001000100000100011110101001
+00101001010101101001010100011010101101110000110101
+11001010000100001100000010100101000001000111000010
+00001000110000110101101000000100101001001000011101
+10100101000101000000001110110010110101101010100001
+00101000010000110101010000100010001001000100010101
+10100001000110010001000010101001010101011111010010
+00000100101000000110010100101001000001000000000010
+11010000001001110111001001000011101001011011101000
+00000110100010001000100000001000011101000000110011
+10101000101000100010001111100010101001010000001000
+10000010100101001010110000000100101010001011101000
+00111100001000010000000110111000000001000000001011
+10000001100111010111010001000110111010101101111000
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="3-求和">3 求和</h2>
-<h3 id="题目-2">题目</h3>
-<p>给定 n 个整数 $a_1,a_2,&hellip;,a_n$ ，求它们两两相乘再相加的和，即：</p>
-<p>$S=a_1<em>a_2+a_1</em>a_3+&hellip;+a_{n-2}*a_{n-1}+a_{n-2}*a_{n}+a_{n-1}*a_n$</p>
-<p><strong>输入格式</strong></p>
-<p>输入的第一行包含一个整数 n。</p>
-<p>第二行包含 n 个整数 $a_1,a_2,&hellip;,a_n$ 。</p>
-<p><strong>输出格式</strong></p>
-<p>输出一个整数 S，表示所求的和。请使用合适的数据类型进行运算。</p>
-<h3 id="解析-2">解析</h3>
-<p>🟠 一开始直接暴力使用 2 个 for 循环，发现超时了，于是开始分析这个式子，发现其实可以化简：</p>
-<p>$S=[a_1*(a_2+a_3+&hellip;a_n)+a_2*(a_1+a_3+&hellip;a_n)&hellip;+a_n*(a_1+a_2+&hellip;a_{n-1})]/2$</p>
-<p>$S=[a_1*(sum-a_1)+a_2*(sum-a_2)&hellip;+a_n*(sum-a_n)]/2$</p>
-<p>$S=[sum*sum-(a_1^2+a_2^2&hellip;+a_n^2)]/2$</p>
-<p>🔵 其中 $sum = (a_1+a_2+&hellip;a_n)$ 。 <strong>要注意题目所给数据范围，应该用 long long，否则无法通过样例。</strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
-</span><span class="cp">#include</span> <span class="cpf">&lt;cmath&gt;</span><span class="cp">
-</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
-
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
-    
-    <span class="kt">int</span> <span class="n">n</span><span class="p">,</span><span class="n">t</span><span class="p">;</span>
-    <span class="kt">long</span> <span class="kt">long</span> <span class="n">s1</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">s2</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">ans</span><span class="p">;</span>
-    <span class="n">cin</span><span class="o">&gt;&gt;</span><span class="n">n</span><span class="p">;</span>
-    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
-    	<span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">t</span><span class="p">);</span>
-    	<span class="n">s1</span><span class="o">=</span><span class="n">s1</span><span class="o">+</span><span class="n">t</span><span class="p">;</span>		<span class="c1">// 数字之和
-</span><span class="c1"></span>    	<span class="n">s2</span><span class="o">=</span><span class="n">s2</span><span class="o">+</span><span class="n">t</span><span class="o">*</span><span class="n">t</span><span class="p">;</span> 		<span class="c1">// 平方和
-</span><span class="c1"></span>	<span class="p">}</span>
-	
-	<span class="n">ans</span><span class="o">=</span><span class="p">(</span><span class="n">s1</span><span class="o">*</span><span class="n">s1</span><span class="o">-</span><span class="n">s2</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
-	<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">ans</span><span class="p">;</span>
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="4-选数异或">4 选数异或</h2>
-<h3 id="题目-3">题目</h3>
-<p>给定一个长度为 n 的数列 $A_1,A_2,&hellip;A_n$ 和一个非负整数 x , 给定 m 次查 询, 每次询问能否从某个区间 [l, r] 中选择两个数使得他们的异或等于 x 。</p>
-<p><strong>输入格式</strong></p>
-<p>输入的第一行包含三个整数 n, m, x 。</p>
-<p>第二行包含 n 个整数 $A_1,A_2,&hellip;A_n$ 。</p>
-<p>接下来 m 行，每行包含两个整数 $l_i, r_i$ 表示询问区间 [$l_i, r_i$] 。</p>
-<p><strong>输出格式</strong></p>
-<p>对于每个询问, 如果该区间内存在两个数的异或为 x 则输出 yes, 否则输出 no。</p>
-<h3 id="解析-3">解析</h3>
+</div><h3 id="解析-3">解析</h3>
 <p>🟠 <strong>构造数组 dp[i] = j</strong> ：满足 a[k]^a[j]=x，且 1≤ k ≤ i 的 j 的最大值。由于我们是按索引由小到大遍历的，因此必有 <strong>dp[i] ≤ i</strong> 。</p>
 <p>🟡 构造数组的值和它的索引的映射： <strong>map&lt;long long,int&gt; mp</strong></p>
 <p>🟢 注意事实：<strong>若 a ^ b=x，则 a ^ x=b，且 b ^ x=a。</strong> 因此和 t 异或的值为 x 的数是 t^x，它的索引是 mp[t^x]。</p>
@@ -772,14 +755,14 @@
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2023-03-22</span>
+                <span>Updated on 2023-03-28</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
-                            <a class="link-to-markdown" href="/%E8%93%9D%E6%A1%A5%E6%9D%AF2022/index.md" target="_blank">Read Markdown</a>
+                            <a class="link-to-markdown" href="/%E8%93%9D%E6%A1%A5%E6%9D%AF2019/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2022/" data-title="【蓝桥杯】2022题解" data-hashtags="蓝桥杯,C&#43;&#43;"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2022/" data-hashtag="蓝桥杯"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2022/" data-title="【蓝桥杯】2022题解"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2022/" data-title="【蓝桥杯】2022题解"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2022/" data-title="【蓝桥杯】2022题解"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2019/" data-title="【蓝桥杯】2019题解" data-hashtags="蓝桥杯,C&#43;&#43;"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2019/" data-hashtag="蓝桥杯"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2019/" data-title="【蓝桥杯】2019题解"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2019/" data-title="【蓝桥杯】2019题解"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2019/" data-title="【蓝桥杯】2019题解"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -791,8 +774,7 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/%E8%93%9D%E6%A1%A5%E6%9D%AF2021/" class="prev" rel="prev" title="【蓝桥杯】2021题解"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>【蓝桥杯】2021题解</a>
-            <a href="/%E8%93%9D%E6%A1%A5%E6%9D%AF2019/" class="next" rel="next" title="【蓝桥杯】2019题解">【蓝桥杯】2019题解<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/%E8%93%9D%E6%A1%A5%E6%9D%AF2022/" class="prev" rel="prev" title="【蓝桥杯】2022题解"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>【蓝桥杯】2022题解</a></div>
 </div>
 <div id="comments"><div id="valine" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
