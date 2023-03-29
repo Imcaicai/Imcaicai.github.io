@@ -3,7 +3,15 @@
         <title>C&#43;&#43; - Category - 菜菜的秘密花园</title>
         <link>https://imcaicai.github.io/categories/c&#43;&#43;/</link>
         <description>C&#43;&#43; - Category - 菜菜的秘密花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 18 Mar 2023 19:24:15 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/categories/c&#43;&#43;/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 29 Mar 2023 16:38:44 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/categories/c&#43;&#43;/" rel="self" type="application/rss+xml" /><item>
+    <title>【STL】queue容器用法</title>
+    <link>https://imcaicai.github.io/stlqueue%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/</link>
+    <pubDate>Wed, 29 Mar 2023 16:38:44 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/stlqueue%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/</guid>
+    <description><![CDATA[1 创建queue 1  queue&lt;int&gt; q;   2 常用操作    front() 返回 queue 中第一个元素的引用。     back() 返回 queue 中最后一个元素的引用   push(T&amp;&amp; obj) 以移动的方式在 queue 的尾部添加元素。   pop() 删除 queue 中的第一个元素。   empty() 如果 queue 中没有元素的话，返回 true。   size() 返回 queue 中元素的个数。    ]]></description>
+</item>
+<item>
     <title>【STL】pair容器用法</title>
     <link>https://imcaicai.github.io/stlpair%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/</link>
     <pubDate>Sat, 18 Mar 2023 19:24:15 &#43;0800</pubDate>
