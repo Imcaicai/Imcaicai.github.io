@@ -3,14 +3,23 @@
         <title>蓝桥杯 - Tag - 菜菜的秘密花园</title>
         <link>https://imcaicai.github.io/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/</link>
         <description>蓝桥杯 - Tag - 菜菜的秘密花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 30 Mar 2023 15:48:27 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 02 Apr 2023 11:53:31 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/" rel="self" type="application/rss+xml" /><item>
+    <title>【蓝桥杯】2017题解</title>
+    <link>https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2017/</link>
+    <pubDate>Sun, 02 Apr 2023 11:53:31 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2017/</guid>
+    <description><![CDATA[⏰总用时：170/240	🎯总分：32.5/100
+   题号 时间 结果 满分 难度 备注     1 45 ✅ 5 🌕 🔸 计算完一定要带入样例检验，漏加了 1 ❗❗❗   2 15 ❌ 11 🌓    3 5 ❌ 13 🌓    4 5 ❌ 17 🌓    5 5 ✅ 7 🌕    6 10 ✅ 9 🌕 🔹 注意 scanf，printf 格式化输入输出的使用   7 25 ❌ 19 🌓 🔸 模拟🔸   8 5 ❌ 21 🌓 🔹 并查集（不过没用）   9 30 50% 23 🌓    10 25 ❌ 25 🌓     1 【填空】迷宫 题目 1/1+1/2+1/4+1/8+&hellip;&hellip;]]></description>
+</item>
+<item>
     <title>【蓝桥杯】2018题解</title>
     <link>https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2018/</link>
     <pubDate>Thu, 30 Mar 2023 15:48:27 &#43;0800</pubDate>
     <author>菜菜</author>
     <guid>https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2018/</guid>
-    <description><![CDATA[⏰总用时：170	🎯总分：39
-   题号 时间 结果 满分 难度 备注     1 5 ❌ 5 🌕 🔸 计算完一定要带入样例检验，漏加了 1 ❗❗❗   2 15 ✅ 5 🌕    3 40 ✅ 10 🌕    4 10 ✅ 10 🌕    5 5 ✅ 10 🌕    6 60 ✅ 15 🌕 🔹 注意 scanf，printf 格式化输入输出的使用   7 25 ❌ 20 🌓 🔸 模拟🔸 用 map 容器，以外卖店的视角存储订单信息🔸 可以通过的，要注意易错的细节❗❗❗   8 30 40% 20 🌓 🔹 并查集（不过没用）   9 10 ❌ 25 🌑    10   25      1 【填空】分数 题目 1/1+1/2+1/4+1/8+&hellip;&hellip;]]></description>
+    <description><![CDATA[⏰总用时：245/240	🎯总分：59.1/100
+   题号 时间 结果 满分 难度 备注     1 5 ❌ 5 🌕 🔸 计算完一定要带入样例检验，漏加了 1 ❗❗❗   2 15 ✅ 7 🌕    3 40 ✅ 9 🌕    4 10 ✅ 13 🌕    5 5 ✅ 11 🌕    6 60 ✅ 17 🌕 🔹 注意 scanf，printf 格式化输入输出的使用   7 25 ❌ 19 🌓 🔸 模拟🔸   8 25 10% 21 🌓 🔹 并查集（不过没用）   9 10 ❌ 23 🌑    10 50 ❌ 25 🌓     1 【填空】分数 题目 1/1+1/2+1/4+1/8+&hellip;&hellip;]]></description>
 </item>
 <item>
     <title>【蓝桥杯】2019题解</title>

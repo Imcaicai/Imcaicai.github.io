@@ -4,34 +4,34 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>【蓝桥杯】2018题解 - 菜菜的秘密花园</title><meta name="Description" content="菜菜的秘密花园"><meta property="og:title" content="【蓝桥杯】2018题解" />
-<meta property="og:description" content="⏰总用时：245/240	🎯总分：59.1/100
-   题号 时间 结果 满分 难度 备注     1 5 ❌ 5 🌕 🔸 计算完一定要带入样例检验，漏加了 1 ❗❗❗   2 15 ✅ 7 🌕    3 40 ✅ 9 🌕    4 10 ✅ 13 🌕    5 5 ✅ 11 🌕    6 60 ✅ 17 🌕 🔹 注意 scanf，printf 格式化输入输出的使用   7 25 ❌ 19 🌓 🔸 模拟🔸   8 25 10% 21 🌓 🔹 并查集（不过没用）   9 10 ❌ 23 🌑    10 50 ❌ 25 🌓     1 【填空】分数 题目 1/1&#43;1/2&#43;1/4&#43;1/8&#43;&hellip;&hellip;" />
+        <title>【蓝桥杯】2017题解 - 菜菜的秘密花园</title><meta name="Description" content="菜菜的秘密花园"><meta property="og:title" content="【蓝桥杯】2017题解" />
+<meta property="og:description" content="⏰总用时：170/240	🎯总分：32.5/100
+   题号 时间 结果 满分 难度 备注     1 45 ✅ 5 🌕 🔸 计算完一定要带入样例检验，漏加了 1 ❗❗❗   2 15 ❌ 11 🌓    3 5 ❌ 13 🌓    4 5 ❌ 17 🌓    5 5 ✅ 7 🌕    6 10 ✅ 9 🌕 🔹 注意 scanf，printf 格式化输入输出的使用   7 25 ❌ 19 🌓 🔸 模拟🔸   8 5 ❌ 21 🌓 🔹 并查集（不过没用）   9 30 50% 23 🌓    10 25 ❌ 25 🌓     1 【填空】迷宫 题目 1/1&#43;1/2&#43;1/4&#43;1/8&#43;&hellip;&hellip;" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2018/" /><meta property="og:image" content="https://imcaicai.github.io/img/avatar.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-03-30T15:48:27&#43;08:00" />
-<meta property="article:modified_time" content="2023-03-30T15:48:27&#43;08:00" /><meta property="og:site_name" content="菜菜的秘密花园" />
+<meta property="og:url" content="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2017/" /><meta property="og:image" content="https://imcaicai.github.io/img/avatar.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-04-02T11:53:31&#43;08:00" />
+<meta property="article:modified_time" content="2023-04-02T11:53:31&#43;08:00" /><meta property="og:site_name" content="菜菜的秘密花园" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://imcaicai.github.io/img/avatar.jpg"/>
 
-<meta name="twitter:title" content="【蓝桥杯】2018题解"/>
-<meta name="twitter:description" content="⏰总用时：245/240	🎯总分：59.1/100
-   题号 时间 结果 满分 难度 备注     1 5 ❌ 5 🌕 🔸 计算完一定要带入样例检验，漏加了 1 ❗❗❗   2 15 ✅ 7 🌕    3 40 ✅ 9 🌕    4 10 ✅ 13 🌕    5 5 ✅ 11 🌕    6 60 ✅ 17 🌕 🔹 注意 scanf，printf 格式化输入输出的使用   7 25 ❌ 19 🌓 🔸 模拟🔸   8 25 10% 21 🌓 🔹 并查集（不过没用）   9 10 ❌ 23 🌑    10 50 ❌ 25 🌓     1 【填空】分数 题目 1/1&#43;1/2&#43;1/4&#43;1/8&#43;&hellip;&hellip;"/>
+<meta name="twitter:title" content="【蓝桥杯】2017题解"/>
+<meta name="twitter:description" content="⏰总用时：170/240	🎯总分：32.5/100
+   题号 时间 结果 满分 难度 备注     1 45 ✅ 5 🌕 🔸 计算完一定要带入样例检验，漏加了 1 ❗❗❗   2 15 ❌ 11 🌓    3 5 ❌ 13 🌓    4 5 ❌ 17 🌓    5 5 ✅ 7 🌕    6 10 ✅ 9 🌕 🔹 注意 scanf，printf 格式化输入输出的使用   7 25 ❌ 19 🌓 🔸 模拟🔸   8 5 ❌ 21 🌓 🔹 并查集（不过没用）   9 30 50% 23 🌓    10 25 ❌ 25 🌓     1 【填空】迷宫 题目 1/1&#43;1/2&#43;1/4&#43;1/8&#43;&hellip;&hellip;"/>
 <meta name="application-name" content="菜菜的秘密花园">
-<meta name="apple-mobile-web-app-title" content="菜菜的秘密花园"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2018/" /><link rel="prev" href="https://imcaicai.github.io/stlqueue%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" /><link rel="next" href="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2017/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<meta name="apple-mobile-web-app-title" content="菜菜的秘密花园"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2017/" /><link rel="prev" href="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2018/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "【蓝桥杯】2018题解",
+        "headline": "【蓝桥杯】2017题解",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/imcaicai.github.io\/%E8%93%9D%E6%A1%A5%E6%9D%AF2018\/"
-        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "蓝桥杯, C\u002b\u002b","wordcount":  1241 ,
-        "url": "https:\/\/imcaicai.github.io\/%E8%93%9D%E6%A1%A5%E6%9D%AF2018\/","datePublished": "2023-03-30T15:48:27+08:00","dateModified": "2023-03-30T15:48:27+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@id": "https:\/\/imcaicai.github.io\/%E8%93%9D%E6%A1%A5%E6%9D%AF2017\/"
+        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "蓝桥杯, C\u002b\u002b","wordcount":  1388 ,
+        "url": "https:\/\/imcaicai.github.io\/%E8%93%9D%E6%A1%A5%E6%9D%AF2017\/","datePublished": "2023-04-02T11:53:31+08:00","dateModified": "2023-04-02T11:53:31+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/imcaicai.github.io\/img\/avatar.jpg"},"author": {
                 "@type": "Person",
@@ -69,7 +69,7 @@
                     <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
                 </a><a href="javascript:void(0);" class="menu-item language" title="Select Language">
                     <i class="fa fa-globe" aria-hidden="true"></i>                      
-                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/%E8%93%9D%E6%A1%A5%E6%9D%AF2018/" selected>English</option></select>
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/%E8%93%9D%E6%A1%A5%E6%9D%AF2017/" selected>English</option></select>
                 </a></div>
         </div>
     </div>
@@ -110,7 +110,7 @@
                 <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a><a href="javascript:void(0);" class="menu-item" title="Select Language">
                     <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
-                    <select class="language-select" onchange="location = this.value;"><option value="/%E8%93%9D%E6%A1%A5%E6%9D%AF2018/" selected>English</option></select>
+                    <select class="language-select" onchange="location = this.value;"><option value="/%E8%93%9D%E6%A1%A5%E6%9D%AF2017/" selected>English</option></select>
                 </a></div>
     </div>
 </header><div class="search-dropdown desktop">
@@ -122,10 +122,10 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">【蓝桥杯】2018题解</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">【蓝桥杯】2017题解</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>蓝桥杯刷题记录</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-30">2023-03-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1241 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;6 minutes&nbsp;<span id="/%E8%93%9D%E6%A1%A5%E6%9D%AF2018/" class="leancloud_visitors" data-flag-title="【蓝桥杯】2018题解">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-04-02">2023-04-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1388 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;7 minutes&nbsp;<span id="/%E8%93%9D%E6%A1%A5%E6%9D%AF2017/" class="leancloud_visitors" data-flag-title="【蓝桥杯】2017题解">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
@@ -135,64 +135,64 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#1-填空分数">1 【填空】分数</a>
+    <li><a href="#1-填空迷宫">1 【填空】迷宫</a>
       <ul>
         <li><a href="#题目">题目</a></li>
         <li><a href="#解析">解析</a></li>
       </ul>
     </li>
-    <li><a href="#2-填空星期一">2 【填空】星期一</a>
+    <li><a href="#2-填空跳蚱蜢">2 【填空】跳蚱蜢</a>
       <ul>
         <li><a href="#题目-1">题目</a></li>
         <li><a href="#解析-1">解析</a></li>
       </ul>
     </li>
-    <li><a href="#3-填空乘积尾0">3 【填空】乘积尾0</a>
+    <li><a href="#3-填空魔方状态">3 【填空】魔方状态</a>
       <ul>
         <li><a href="#题目-2">题目</a></li>
         <li><a href="#解析-2">解析</a></li>
       </ul>
     </li>
-    <li><a href="#4-填空第几个幸运数字">4 【填空】第几个幸运数字</a>
+    <li><a href="#4-填空方格分割">4 【填空】方格分割</a>
       <ul>
         <li><a href="#题目-3">题目</a></li>
         <li><a href="#解析-3">解析</a></li>
       </ul>
     </li>
-    <li><a href="#5-填空打印图形">5 【填空】打印图形</a>
+    <li><a href="#5-填空字母组串">5 【填空】字母组串</a>
       <ul>
         <li><a href="#题目-4">题目</a></li>
         <li><a href="#解析-4">解析</a></li>
       </ul>
     </li>
-    <li><a href="#6-航班时间">6 航班时间</a>
+    <li><a href="#6-最大公共子串">6 最大公共子串</a>
       <ul>
         <li><a href="#题目-5">题目</a></li>
         <li><a href="#解析-5">解析</a></li>
       </ul>
     </li>
-    <li><a href="#7-三体攻击">7 三体攻击</a>
+    <li><a href="#7-正则问题">7 正则问题</a>
       <ul>
         <li><a href="#题目-6">题目</a></li>
         <li><a href="#解析-6">解析</a></li>
       </ul>
     </li>
-    <li><a href="#8-全球变暖">8 全球变暖</a>
+    <li><a href="#8-包子凑数">8 包子凑数</a>
       <ul>
         <li><a href="#题目-7">题目</a></li>
         <li><a href="#解析-7">解析</a></li>
       </ul>
     </li>
-    <li><a href="#9-倍数问题">9 倍数问题</a>
+    <li><a href="#9-分巧克力">9 分巧克力</a>
       <ul>
         <li><a href="#题目-8">题目</a></li>
         <li><a href="#解析-8">解析</a></li>
       </ul>
     </li>
-    <li><a href="#10-付账问题">10 付账问题</a></li>
+    <li><a href="#10-油漆面积">10 油漆面积</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p>⏰总用时：245/240			🎯总分：59.1/100</p>
+            </div><div class="content" id="content"><p>⏰总用时：170/240			🎯总分：32.5/100</p>
 <table>
 <thead>
 <tr>
@@ -207,8 +207,8 @@
 <tbody>
 <tr>
 <td><strong>1</strong></td>
-<td>5</td>
-<td>❌</td>
+<td>45</td>
+<td>✅</td>
 <td>5</td>
 <td>🌕</td>
 <td>🔸 计算完一定要带入样例检验，漏加了 1 ❗❗❗</td>
@@ -216,40 +216,40 @@
 <tr>
 <td><strong>2</strong></td>
 <td>15</td>
-<td>✅</td>
-<td>7</td>
-<td>🌕</td>
+<td>❌</td>
+<td>11</td>
+<td>🌓</td>
 <td></td>
 </tr>
 <tr>
 <td><strong>3</strong></td>
-<td>40</td>
-<td>✅</td>
-<td>9</td>
-<td>🌕</td>
+<td>5</td>
+<td>❌</td>
+<td>13</td>
+<td>🌓</td>
 <td></td>
 </tr>
 <tr>
 <td><strong>4</strong></td>
-<td>10</td>
-<td>✅</td>
-<td>13</td>
-<td>🌕</td>
+<td>5</td>
+<td>❌</td>
+<td>17</td>
+<td>🌓</td>
 <td></td>
 </tr>
 <tr>
 <td><strong>5</strong></td>
 <td>5</td>
 <td>✅</td>
-<td>11</td>
+<td>7</td>
 <td>🌕</td>
 <td></td>
 </tr>
 <tr>
 <td><strong>6</strong></td>
-<td>60</td>
+<td>10</td>
 <td>✅</td>
-<td>17</td>
+<td>9</td>
 <td>🌕</td>
 <td>🔹 注意 scanf，printf 格式化输入输出的使用</td>
 </tr>
@@ -263,23 +263,23 @@
 </tr>
 <tr>
 <td><strong>8</strong></td>
-<td>25</td>
-<td>10%</td>
+<td>5</td>
+<td>❌</td>
 <td>21</td>
 <td>🌓</td>
 <td>🔹 并查集（不过没用）</td>
 </tr>
 <tr>
 <td><strong>9</strong></td>
-<td>10</td>
-<td>❌</td>
+<td>30</td>
+<td>50%</td>
 <td>23</td>
-<td>🌑</td>
+<td>🌓</td>
 <td></td>
 </tr>
 <tr>
 <td><strong>10</strong></td>
-<td>50</td>
+<td>25</td>
 <td>❌</td>
 <td>25</td>
 <td>🌓</td>
@@ -287,7 +287,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="1-填空分数">1 【填空】分数</h2>
+<h2 id="1-填空迷宫">1 【填空】迷宫</h2>
 <h3 id="题目">题目</h3>
 <p>1/1+1/2+1/4+1/8+&hellip;&hellip;</p>
 <p>每项是前一项的一半，如果一共有 20 项,求这个和是多少，结果用分数表示出来。</p>
@@ -296,29 +296,139 @@
 <p>注意检验，前面还加了一个 1 ❗❗❗</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
 </span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
-<span class="p">{</span>
-  <span class="c1">// 请在此输入您的代码
-</span><span class="c1"></span>  <span class="c1">// 1+(1-1/2^19)
-</span><span class="c1"></span>  <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&#34;1048575/524288&#34;</span><span class="p">;</span>
-  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="kt">char</span> <span class="n">c</span><span class="p">[</span><span class="mi">10</span><span class="p">][</span><span class="mi">10</span><span class="p">];</span>
+<span class="kt">bool</span> <span class="n">d</span><span class="p">[</span><span class="mi">10</span><span class="p">][</span><span class="mi">10</span><span class="p">];</span>							<span class="c1">// 存储该坐标是否能出去
+</span><span class="c1"></span><span class="kt">bool</span> <span class="n">v</span><span class="p">[</span><span class="mi">10</span><span class="p">][</span><span class="mi">10</span><span class="p">];</span>							<span class="c1">// 存储该坐标是否已访问过		
+</span><span class="c1"></span>
+<span class="kt">bool</span> <span class="nf">dfs</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span><span class="kt">int</span> <span class="n">y</span><span class="p">){</span>
+	<span class="k">if</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]){</span>						
+		<span class="k">if</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">])</span>	<span class="k">return</span> <span class="nb">true</span><span class="p">;</span>		<span class="c1">// 已知当前坐标是否可以走出迷宫，直接返回 
+</span><span class="c1"></span>		<span class="k">else</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>				<span class="c1">// 如果有回路绕回来，也是直接返回 false 
+</span><span class="c1"></span>	<span class="p">}</span>						
+	
+	
+	<span class="n">v</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span><span class="o">=</span><span class="nb">true</span><span class="p">;</span>						<span class="c1">// 先标记该点已访问过 
+</span><span class="c1"></span>	<span class="k">switch</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]){</span>					<span class="c1">// 未知，则继续朝着坐标的方向走 
+</span><span class="c1"></span>		<span class="k">case</span> <span class="sc">&#39;U&#39;</span><span class="o">:</span>			
+			<span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">&lt;=</span><span class="mi">0</span><span class="p">)</span>					<span class="c1">// 可以出去，则返回并记录 
+</span><span class="c1"></span>				<span class="k">return</span> <span class="n">d</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span><span class="o">=</span><span class="nb">true</span><span class="p">;</span>					
+			<span class="k">else</span>						<span class="c1">// 否则继续递归 
+</span><span class="c1"></span>				<span class="k">return</span> <span class="n">d</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span><span class="o">=</span><span class="n">dfs</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">y</span><span class="p">);</span>		
+
+		<span class="k">case</span> <span class="sc">&#39;D&#39;</span><span class="o">:</span>
+			<span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">&gt;=</span><span class="mi">9</span><span class="p">)</span>					 
+				<span class="k">return</span> <span class="n">d</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span><span class="o">=</span><span class="nb">true</span><span class="p">;</span>	
+			<span class="k">else</span>					
+				<span class="k">return</span> <span class="n">d</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span><span class="o">=</span><span class="n">dfs</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">y</span><span class="p">);</span>
+
+		<span class="k">case</span> <span class="sc">&#39;L&#39;</span><span class="o">:</span>
+			<span class="k">if</span><span class="p">(</span><span class="n">y</span><span class="o">&lt;=</span><span class="mi">0</span><span class="p">)</span>					 
+				<span class="k">return</span> <span class="n">d</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span><span class="o">=</span><span class="nb">true</span><span class="p">;</span>	
+			<span class="k">else</span>			
+				<span class="k">return</span> <span class="n">d</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span><span class="o">=</span><span class="n">dfs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+				
+		<span class="k">case</span> <span class="sc">&#39;R&#39;</span><span class="o">:</span>
+			<span class="k">if</span><span class="p">(</span><span class="n">y</span><span class="o">&gt;=</span><span class="mi">9</span><span class="p">)</span>					 
+				<span class="k">return</span> <span class="n">d</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span><span class="o">=</span><span class="nb">true</span><span class="p">;</span>	
+			<span class="k">else</span>					
+				<span class="k">return</span> <span class="n">d</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span><span class="o">=</span><span class="n">dfs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+
+	<span class="p">}</span>
 <span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>			<span class="c1">// 输入 
+</span><span class="c1"></span>		<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+			<span class="n">cin</span><span class="o">&gt;&gt;</span><span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+	<span class="p">}</span>
+	
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>			<span class="c1">// 深搜，确定每个坐标是否能走出迷宫 
+</span><span class="c1"></span>		<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+			<span class="n">dfs</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">);</span>
+	<span class="p">}</span>
+	
+	<span class="kt">int</span> <span class="n">cnt</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>			<span class="c1">// 统计能走出迷宫的个数 
+</span><span class="c1"></span>		<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+			<span class="n">cnt</span><span class="o">+=</span><span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+	<span class="p">}</span>
+	<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">cnt</span><span class="p">;</span>
+	
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span> 
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="2-填空星期一">2 【填空】星期一</h2>
+</div><h2 id="2-填空跳蚱蜢">2 【填空】跳蚱蜢</h2>
 <h3 id="题目-1">题目</h3>
 <p>整个 20 世纪（1901 年 1 月 1 日至 2000 年 12 月 31 日之间），一共有多少个星期一？(不要告诉我你不知道今天是星期几)</p>
 <h3 id="解析-1">解析</h3>
@@ -362,7 +472,7 @@
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="3-填空乘积尾0">3 【填空】乘积尾0</h2>
+</div><h2 id="3-填空魔方状态">3 【填空】魔方状态</h2>
 <h3 id="题目-2">题目</h3>
 <p>如下的 10 行数据，每行有 10 个整数，请你求出它们的乘积的末尾有多少个零？</p>
 <div class="highlight"><div class="chroma">
@@ -439,7 +549,7 @@
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="4-填空第几个幸运数字">4 【填空】第几个幸运数字</h2>
+</div><h2 id="4-填空方格分割">4 【填空】方格分割</h2>
 <h3 id="题目-3">题目</h3>
 <p>到 X 星球旅行的游客都被发给一个整数，作为游客编号。</p>
 <p>X 星的国王有个怪癖，他只喜欢数字 3,5 和 7。国王规定，游客的编号如果只含有因子：3,5,7 就可以获得一份奖品。</p>
@@ -486,7 +596,7 @@
 <span class="p">}</span> 
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="5-填空打印图形">5 【填空】打印图形</h2>
+</div><h2 id="5-填空字母组串">5 【填空】字母组串</h2>
 <h3 id="题目-4">题目</h3>
 <p>如下的程序会在控制台绘制分形图。</p>
 <p>当 n=1,2,3 的时候，输出如下： 请仔细分析程序，并填写划线部分缺少的代码。</p>
@@ -593,7 +703,7 @@
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="6-航班时间">6 航班时间</h2>
+</div><h2 id="6-最大公共子串">6 最大公共子串</h2>
 <h3 id="题目-5">题目</h3>
 <p>不久后小 h 的女朋友去中东交换。小 h 并不知道中东与北京的时差。但是小 h 得到了女朋友来回航班的起降时间。小 h 想知道女朋友的航班飞行时间是多少。</p>
 <p>对于一个可能跨时区的航班，给定来回程的起降时间。假设飞机来回飞行时间相同，求飞机的飞行时间。</p>
@@ -660,7 +770,7 @@
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="7-三体攻击">7 三体攻击</h2>
+</div><h2 id="7-正则问题">7 正则问题</h2>
 <h3 id="题目-6">题目</h3>
 <p>&ldquo;饱了么&quot;外卖系统中维护着 N 家外卖店，编号 1 ∼ N。每家外卖店都有 一个优先级，初始时 (0 时刻) 优先级都为 0。</p>
 <p>每经过 1 个时间单位，如果外卖店没有订单，则优先级会减少 1，最低减 到 0；而如果外卖店有订单，则优先级不减反加，每有一单优先级加 2。</p>
@@ -758,7 +868,7 @@
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="8-全球变暖">8 全球变暖</h2>
+</div><h2 id="8-包子凑数">8 包子凑数</h2>
 <h3 id="题目-7">题目</h3>
 <p>给定一个长度为 n 的数组 $A=[A_1,A_2,&hellip;A_n]$ ，数组中有可能有重复出现的整数。</p>
 <p>现在小明要按以下方法将其修改为没有重复整数的数组。小明会依次修改 $A_2,A_3&hellip;A_n$ 。</p>
@@ -864,7 +974,7 @@
 <span class="p">}</span> 
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="9-倍数问题">9 倍数问题</h2>
+</div><h2 id="9-分巧克力">9 分巧克力</h2>
 <h3 id="题目-8">题目</h3>
 <p>糖果店的老板一共有 m 种口味的糖果出售。为了方便描述，我们将 m 种口味编号 1∼ m。</p>
 <p>小明希望能品尝到所有口味的糖果。遗憾的是老板并不单独出售糖果，而是 k 颗一包整包出售。</p>
@@ -959,19 +1069,19 @@
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="10-付账问题">10 付账问题</h2>
+</div><h2 id="10-油漆面积">10 油漆面积</h2>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2023-03-30</span>
+                <span>Updated on 2023-04-02</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
-                            <a class="link-to-markdown" href="/%E8%93%9D%E6%A1%A5%E6%9D%AF2018/index.md" target="_blank">Read Markdown</a>
+                            <a class="link-to-markdown" href="/%E8%93%9D%E6%A1%A5%E6%9D%AF2017/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2018/" data-title="【蓝桥杯】2018题解" data-hashtags="蓝桥杯,C&#43;&#43;"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2018/" data-hashtag="蓝桥杯"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2018/" data-title="【蓝桥杯】2018题解"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2018/" data-title="【蓝桥杯】2018题解"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2018/" data-title="【蓝桥杯】2018题解"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2017/" data-title="【蓝桥杯】2017题解" data-hashtags="蓝桥杯,C&#43;&#43;"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2017/" data-hashtag="蓝桥杯"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2017/" data-title="【蓝桥杯】2017题解"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2017/" data-title="【蓝桥杯】2017题解"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2017/" data-title="【蓝桥杯】2017题解"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -983,8 +1093,7 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/stlqueue%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" class="prev" rel="prev" title="【STL】queue容器用法"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>【STL】queue容器用法</a>
-            <a href="/%E8%93%9D%E6%A1%A5%E6%9D%AF2017/" class="next" rel="next" title="【蓝桥杯】2017题解">【蓝桥杯】2017题解<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/%E8%93%9D%E6%A1%A5%E6%9D%AF2018/" class="prev" rel="prev" title="【蓝桥杯】2018题解"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>【蓝桥杯】2018题解</a></div>
 </div>
 <div id="comments"><div id="valine" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
