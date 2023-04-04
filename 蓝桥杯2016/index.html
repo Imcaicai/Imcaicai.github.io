@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>【蓝桥杯】2016题解 - 菜菜的秘密花园</title><meta name="Description" content="菜菜的秘密花园"><meta property="og:title" content="【蓝桥杯】2016题解" />
+<meta property="og:description" content="⏰总用时：146/240	🎯总分：66/100
+   题号 时间 结果 满分 难度 备注     1 3 ✅ 3 🌕 🔸 计算完一定要带入样例检验，漏加了 1 ❗❗❗   2 3 ✅ 5 🌕    3 40 ❌ 11 🌓 🔸 直接用 next_permutation(a,a&#43;10) 来枚举所有可能   4 5 ✅ 9 🌕    5 10 ✅ 13 🌓 🔸 消除末尾连续的 1 ： x&amp;(x&#43;1)   6 35 ✅ 15 🌕 🔹 dfs   7 30 ❌ 19 🌓 🔸 模拟🔸   8 10 ✅ 21 🌕 🔹 并查集（不过没用）   9 5 ❌ 25 🌓    10 5 ❌ 29 🌓     1 【填空】网友年龄 题目 某君新认识一网友。 当问及年龄时，他的网友说： “我的年龄是个 2 位数，我比儿子大 27 岁, 如果把我的年龄的两位数字交换位置，刚好就是我儿子的年龄”" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2016/" /><meta property="og:image" content="https://imcaicai.github.io/img/avatar.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-04-03T14:11:18&#43;08:00" />
+<meta property="article:modified_time" content="2023-04-03T14:11:18&#43;08:00" /><meta property="og:site_name" content="菜菜的秘密花园" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://imcaicai.github.io/img/avatar.jpg"/>
+
+<meta name="twitter:title" content="【蓝桥杯】2016题解"/>
+<meta name="twitter:description" content="⏰总用时：146/240	🎯总分：66/100
+   题号 时间 结果 满分 难度 备注     1 3 ✅ 3 🌕 🔸 计算完一定要带入样例检验，漏加了 1 ❗❗❗   2 3 ✅ 5 🌕    3 40 ❌ 11 🌓 🔸 直接用 next_permutation(a,a&#43;10) 来枚举所有可能   4 5 ✅ 9 🌕    5 10 ✅ 13 🌓 🔸 消除末尾连续的 1 ： x&amp;(x&#43;1)   6 35 ✅ 15 🌕 🔹 dfs   7 30 ❌ 19 🌓 🔸 模拟🔸   8 10 ✅ 21 🌕 🔹 并查集（不过没用）   9 5 ❌ 25 🌓    10 5 ❌ 29 🌓     1 【填空】网友年龄 题目 某君新认识一网友。 当问及年龄时，他的网友说： “我的年龄是个 2 位数，我比儿子大 27 岁, 如果把我的年龄的两位数字交换位置，刚好就是我儿子的年龄”"/>
+<meta name="application-name" content="菜菜的秘密花园">
+<meta name="apple-mobile-web-app-title" content="菜菜的秘密花园"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2016/" /><link rel="prev" href="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2017/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "【蓝桥杯】2016题解",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/imcaicai.github.io\/%E8%93%9D%E6%A1%A5%E6%9D%AF2016\/"
+        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "蓝桥杯, C\u002b\u002b","wordcount":  1133 ,
+        "url": "https:\/\/imcaicai.github.io\/%E8%93%9D%E6%A1%A5%E6%9D%AF2016\/","datePublished": "2023-04-03T14:11:18+08:00","dateModified": "2023-04-03T14:11:18+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/imcaicai.github.io\/img\/avatar.jpg"},"author": {
+                "@type": "Person",
+                "name": "菜菜"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="菜菜的秘密花园"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/avatar.jpg"
+        data-srcset="/img/avatar.jpg, /img/avatar.jpg 1.5x, /img/avatar.jpg 2x"
+        data-sizes="auto"
+        alt="/img/avatar.jpg"
+        title="/img/avatar.jpg" />菜菜的秘密花园</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/categories/documentation/"> Docs </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/Imcaicai" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="Select Language">
+                    <i class="fa fa-globe" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/%E8%93%9D%E6%A1%A5%E6%9D%AF2016/" selected>English</option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="菜菜的秘密花园"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/avatar.jpg"
+        data-srcset="/img/avatar.jpg, /img/avatar.jpg 1.5x, /img/avatar.jpg 2x"
+        data-sizes="auto"
+        alt="/img/avatar.jpg"
+        title="/img/avatar.jpg" />菜菜的秘密花园</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/categories/documentation/" title="">Docs</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/Imcaicai" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="Select Language">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/%E8%93%9D%E6%A1%A5%E6%9D%AF2016/" selected>English</option></select>
+                </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">【蓝桥杯】2016题解</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>蓝桥杯刷题记录</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-04-03">2023-04-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1133 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;6 minutes&nbsp;<span id="/%E8%93%9D%E6%A1%A5%E6%9D%AF2016/" class="leancloud_visitors" data-flag-title="【蓝桥杯】2016题解">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-填空网友年龄">1 【填空】网友年龄</a>
+      <ul>
+        <li><a href="#题目">题目</a></li>
+        <li><a href="#解析">解析</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-填空生日蜡烛">2 【填空】生日蜡烛</a>
+      <ul>
+        <li><a href="#题目-1">题目</a></li>
+        <li><a href="#解析-1">解析</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-填空方格填数">3 【填空】方格填数</a>
+      <ul>
+        <li><a href="#题目-2">题目</a></li>
+        <li><a href="#解析-2">解析</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-填空快速排序">4 【填空】快速排序</a>
+      <ul>
+        <li><a href="#题目-3">题目</a></li>
+        <li><a href="#解析-3">解析</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-填空消除尾一">5 【填空】消除尾一</a>
+      <ul>
+        <li><a href="#题目-4">题目</a></li>
+        <li><a href="#解析-4">解析</a></li>
+      </ul>
+    </li>
+    <li><a href="#6-填空寒假作业">6 【填空】寒假作业</a>
+      <ul>
+        <li><a href="#题目-5">题目</a></li>
+        <li><a href="#解析-5">解析</a></li>
+      </ul>
+    </li>
+    <li><a href="#7-填空剪邮票">7 【填空】剪邮票</a>
+      <ul>
+        <li><a href="#题目-6">题目</a></li>
+        <li><a href="#解析-6">解析</a></li>
+      </ul>
+    </li>
+    <li><a href="#8-四平方和">8 四平方和</a>
+      <ul>
+        <li><a href="#题目-7">题目</a></li>
+        <li><a href="#解析-7">解析</a></li>
+      </ul>
+    </li>
+    <li><a href="#9-密码脱落">9 密码脱落</a>
+      <ul>
+        <li><a href="#题目-8">题目</a></li>
+        <li><a href="#解析-8">解析</a></li>
+      </ul>
+    </li>
+    <li><a href="#10-最大比例">10 最大比例</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>⏰总用时：146/240			🎯总分：66/100</p>
+<table>
+<thead>
+<tr>
+<th>题号</th>
+<th>时间</th>
+<th>结果</th>
+<th>满分</th>
+<th>难度</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1</strong></td>
+<td>3</td>
+<td>✅</td>
+<td>3</td>
+<td>🌕</td>
+<td>🔸 计算完一定要带入样例检验，漏加了 1 ❗❗❗</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>3</td>
+<td>✅</td>
+<td>5</td>
+<td>🌕</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td>40</td>
+<td>❌</td>
+<td>11</td>
+<td>🌓</td>
+<td>🔸 直接用 next_permutation(a,a+10) 来枚举所有可能</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td>5</td>
+<td>✅</td>
+<td>9</td>
+<td>🌕</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>5</strong></td>
+<td>10</td>
+<td>✅</td>
+<td>13</td>
+<td>🌓</td>
+<td>🔸 消除末尾连续的 1 ： <code>x&amp;(x+1)</code></td>
+</tr>
+<tr>
+<td><strong>6</strong></td>
+<td>35</td>
+<td>✅</td>
+<td>15</td>
+<td>🌕</td>
+<td>🔹 dfs</td>
+</tr>
+<tr>
+<td><strong>7</strong></td>
+<td>30</td>
+<td>❌</td>
+<td>19</td>
+<td>🌓</td>
+<td>🔸 模拟<br/>🔸</td>
+</tr>
+<tr>
+<td><strong>8</strong></td>
+<td>10</td>
+<td>✅</td>
+<td>21</td>
+<td>🌕</td>
+<td>🔹 并查集（不过没用）</td>
+</tr>
+<tr>
+<td><strong>9</strong></td>
+<td>5</td>
+<td>❌</td>
+<td>25</td>
+<td>🌓</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>10</strong></td>
+<td>5</td>
+<td>❌</td>
+<td>29</td>
+<td>🌓</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="1-填空网友年龄">1 【填空】网友年龄</h2>
+<h3 id="题目">题目</h3>
+<p>某君新认识一网友。 当问及年龄时，他的网友说： “我的年龄是个 2 位数，我比儿子大 27 岁, 如果把我的年龄的两位数字交换位置，刚好就是我儿子的年龄”</p>
+<p>请你计算：网友的年龄一共有多少种可能情况？</p>
+<p>提示：30 岁就是其中一种可能哦。</p>
+<h3 id="解析">解析</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+	<span class="kt">int</span> <span class="n">cnt</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="mi">9</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+		<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;=</span><span class="mi">9</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">){</span>
+			<span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="mi">10</span><span class="o">+</span><span class="n">j</span><span class="o">-</span><span class="n">j</span><span class="o">*</span><span class="mi">10</span><span class="o">-</span><span class="n">i</span><span class="o">==</span><span class="mi">27</span><span class="p">){</span>
+				<span class="n">cout</span><span class="o">&lt;&lt;</span> <span class="n">i</span><span class="o">*</span><span class="mi">10</span><span class="o">+</span><span class="n">j</span> <span class="o">&lt;&lt;</span><span class="s">&#34; &#34;</span><span class="p">;</span>
+				<span class="n">cnt</span><span class="o">++</span><span class="p">;</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	
+	<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="o">&lt;&lt;</span><span class="n">cnt</span><span class="p">;</span>
+<span class="p">}</span> 
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="2-填空生日蜡烛">2 【填空】生日蜡烛</h2>
+<h3 id="题目-1">题目</h3>
+<p>某君从某年开始每年都举办一次生日 party，并且每次都要吹熄与年龄相同根数的蜡烛。现在算起来，他一共吹熄了 236 根蜡烛。</p>
+<p>请问，他从多少岁开始过生日 party 的？请输出他开始过生日 party 的年龄数。</p>
+<p>请输出他开始过生日 �����<em>p<strong>a</strong>r<strong>t</strong>y</em> 的年龄数。</p>
+<h3 id="解析-1">解析</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="mi">200</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+		<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="n">i</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;=</span><span class="mi">200</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">){</span>
+			<span class="k">if</span><span class="p">((</span><span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">j</span><span class="o">-</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="o">==</span><span class="mi">236</span><span class="p">){</span>
+				<span class="n">cout</span><span class="o">&lt;&lt;</span> <span class="n">i</span><span class="o">&lt;&lt;</span><span class="s">&#34; &#34;</span><span class="o">&lt;&lt;</span><span class="n">j</span><span class="p">;</span>
+				<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span> 
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="3-填空方格填数">3 【填空】方格填数</h2>
+<h3 id="题目-2">题目</h3>
+<p>如下的 10 个格子，填入 0 ~ 9 的数字。要求：连续的两个数字不能相邻。 （左右、上下、对角都算相邻）</p>
+<p>一共有多少种可能的填数方案？</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">   +--+--+--+
+   |  |  |  |
++--+--+--+--+
+|  |  |  |  |
++--+--+--+--+
+|  |  |  |
++--+--+--+
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="解析-2">解析</h3>
+<p>🟠 直接用 next_permutation(a,a+10) 来枚举所有可能</p>
+<p>🟡 check 的条件比较多，小心下标标错❗❗❗</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+	<span class="kt">int</span> <span class="n">cnt</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">};</span>
+	<span class="k">do</span><span class="p">{</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">abs</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">!=</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">abs</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span><span class="o">!=</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">abs</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span><span class="o">!=</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">abs</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span><span class="o">!=</span><span class="mi">1</span> <span class="o">&amp;&amp;</span>
+		<span class="n">abs</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="o">!=</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">abs</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span><span class="o">!=</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">abs</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span><span class="o">!=</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">abs</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span><span class="o">!=</span><span class="mi">1</span> <span class="o">&amp;&amp;</span>
+		<span class="n">abs</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span><span class="o">!=</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">abs</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span><span class="o">!=</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">abs</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span><span class="o">!=</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">abs</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="mi">7</span><span class="p">])</span><span class="o">!=</span><span class="mi">1</span> <span class="o">&amp;&amp;</span>
+		<span class="n">abs</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="mi">8</span><span class="p">])</span><span class="o">!=</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">abs</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span><span class="o">!=</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">abs</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="mi">7</span><span class="p">])</span><span class="o">!=</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">abs</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="mi">8</span><span class="p">])</span><span class="o">!=</span><span class="mi">1</span> <span class="o">&amp;&amp;</span>
+		<span class="n">abs</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="mi">9</span><span class="p">])</span><span class="o">!=</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">abs</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span><span class="o">!=</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">abs</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="mi">8</span><span class="p">])</span><span class="o">!=</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">abs</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="mi">9</span><span class="p">])</span><span class="o">!=</span><span class="mi">1</span> <span class="o">&amp;&amp;</span>
+		<span class="n">abs</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="mi">9</span><span class="p">])</span><span class="o">!=</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">abs</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="mi">8</span><span class="p">])</span><span class="o">!=</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">abs</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span><span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="mi">9</span><span class="p">])</span><span class="o">!=</span><span class="mi">1</span><span class="p">)</span>	<span class="n">cnt</span><span class="o">++</span><span class="p">;</span>
+	<span class="p">}</span><span class="k">while</span><span class="p">(</span><span class="n">next_permutation</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">a</span><span class="o">+</span><span class="mi">10</span><span class="p">));</span>
+	<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">cnt</span><span class="p">;</span>
+	
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="4-填空快速排序">4 【填空】快速排序</h2>
+<h3 id="题目-3">题目</h3>
+<p>以下代码可以从数组 a[ ] 中找出第 k 小的元素。</p>
+<p>它使用了类似快速排序中的分治算法，期望时间复杂度是 O(N) 的。</p>
+<p>请仔细阅读分析源码，填写划线部分缺失的内容。</p>
+<h3 id="解析-3">解析</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="kt">int</span> <span class="nf">quick_select</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span><span class="p">,</span> <span class="kt">int</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">p</span> <span class="o">=</span> <span class="n">rand</span><span class="p">()</span> <span class="o">%</span> <span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="n">l</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">l</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">p</span><span class="p">];</span>
+    <span class="p">{</span><span class="kt">int</span> <span class="n">t</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">p</span><span class="p">];</span> <span class="n">a</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">r</span><span class="p">];</span> <span class="n">a</span><span class="p">[</span><span class="n">r</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">;}</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">l</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">r</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">j</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">while</span><span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">j</span> <span class="o">&amp;&amp;</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">x</span><span class="p">)</span> <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">j</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+            <span class="n">j</span><span class="o">--</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">while</span><span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">j</span> <span class="o">&amp;&amp;</span> <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">x</span><span class="p">)</span> <span class="n">j</span><span class="o">--</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">j</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+            <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="n">l</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">==</span> <span class="n">k</span><span class="p">)</span> <span class="k">return</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="n">l</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">k</span><span class="p">)</span> <span class="k">return</span> <span class="n">quick_select</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">l</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">k</span><span class="p">);</span> <span class="c1">//填空
+</span><span class="c1"></span>    <span class="k">else</span> <span class="k">return</span> <span class="n">quick_select</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">k</span><span class="p">);</span>
+<span class="p">}</span>
+    
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d %d&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">quick_select</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">));</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="5-填空消除尾一">5 【填空】消除尾一</h2>
+<h3 id="题目-4">题目</h3>
+<p>下面的代码把一个整数的二进制表示的最右边的连续的1全部变成0 如果最后一位是0，则原数字保持不变。</p>
+<p>请仔细阅读程序，填写划线部分缺少的代码。</p>
+<h3 id="解析-4">解析</h3>
+<p>🟠 消除末尾连续的 1 ： <code>x&amp;(x+1)</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="kt">void</span> <span class="nf">f</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">32</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="mi">31</span><span class="o">-</span><span class="n">i</span><span class="p">))</span><span class="o">&amp;</span><span class="mi">1</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;....&#34;</span><span class="p">);</span>
+    
+    <span class="n">x</span> <span class="o">=</span>  <span class="n">x</span><span class="o">&amp;</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+    
+    <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">32</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="mi">31</span><span class="o">-</span><span class="n">i</span><span class="p">))</span><span class="o">&amp;</span><span class="mi">1</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>    
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">f</span><span class="p">(</span><span class="mi">128</span><span class="o">+</span><span class="mi">64</span><span class="o">+</span><span class="mi">2</span><span class="p">);</span>
+    <span class="n">f</span><span class="p">(</span><span class="mi">128</span><span class="o">+</span><span class="mi">64</span><span class="o">+</span><span class="mi">15</span><span class="p">);</span>
+    <span class="n">f</span><span class="p">(</span><span class="mi">128</span><span class="o">+</span><span class="mi">64</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="6-填空寒假作业">6 【填空】寒假作业</h2>
+<h3 id="题目-5">题目</h3>
+<p>现在小学的数学题目也不是那么好玩的。 看看这个寒假作业：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">   □ + □ = □
+   □ - □ = □
+   □ × □ = □
+   □ ÷ □ = □
+</code></pre></td></tr></table>
+</div>
+</div><p>每个方块代表 1~13 中的某一个数字，但不能重复。（加法，乘法交换律后算不同的方案）</p>
+<p>你一共找到了多少种方案？</p>
+<h3 id="解析-5">解析</h3>
+<p>🟠 【dfs】挨个遍历每个位置，看填什么数字</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="n">cnt</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="kt">bool</span> <span class="n">v</span><span class="p">[</span><span class="mi">14</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="nb">false</span><span class="p">};</span>		<span class="c1">// 表示这个位置有没有遍历过 
+</span><span class="c1"></span><span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="mi">15</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="kt">void</span> <span class="nf">dfs</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">){</span>		<span class="c1">// 当前正决定位置 x 放哪个数 
+</span><span class="c1"></span>	<span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">==</span><span class="mi">14</span><span class="p">){</span>			<span class="c1">// 遍历到底，此情况成立 
+</span><span class="c1"></span>		<span class="n">cnt</span><span class="o">++</span><span class="p">;</span><span class="k">return</span><span class="p">;</span>
+	<span class="p">}</span>
+	
+	<span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">==</span><span class="mi">4</span> <span class="o">&amp;&amp;</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">!=</span><span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>	<span class="k">return</span><span class="p">;</span>
+	<span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">==</span><span class="mi">7</span> <span class="o">&amp;&amp;</span> <span class="n">a</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">!=</span><span class="n">a</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span>	<span class="k">return</span><span class="p">;</span>
+	<span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">==</span><span class="mi">10</span> <span class="o">&amp;&amp;</span> <span class="n">a</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="o">*</span><span class="n">a</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span><span class="o">!=</span><span class="n">a</span><span class="p">[</span><span class="mi">9</span><span class="p">])</span>	<span class="k">return</span><span class="p">;</span>
+	<span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">==</span><span class="mi">13</span> <span class="o">&amp;&amp;</span> <span class="n">a</span><span class="p">[</span><span class="mi">11</span><span class="p">]</span><span class="o">*</span><span class="n">a</span><span class="p">[</span><span class="mi">12</span><span class="p">]</span><span class="o">!=</span><span class="n">a</span><span class="p">[</span><span class="mi">10</span><span class="p">])</span>	<span class="k">return</span><span class="p">;</span>
+	
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="mi">13</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>		<span class="c1">// 遍历所有的位置 
+</span><span class="c1"></span>		<span class="k">if</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="nb">false</span><span class="p">){</span>		<span class="c1">// 这个位置没有放数字，可以放 x 
+</span><span class="c1"></span>			<span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="nb">true</span><span class="p">;</span>
+			<span class="n">a</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">=</span><span class="n">i</span><span class="p">;</span>				<span class="c1">// x 这个位置放了 i
+</span><span class="c1"></span>			<span class="n">dfs</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>			<span class="c1">// 继续看下一个位置放什么数字 
+</span><span class="c1"></span>			<span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="nb">false</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+	<span class="n">dfs</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+	<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">cnt</span><span class="p">;</span> 
+	
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="7-填空剪邮票">7 【填空】剪邮票</h2>
+<h3 id="题目-6">题目</h3>
+<p>如图, 有12张连在一起的12生肖的邮票。</p>
+<p>现在你要从中剪下 5 张来，要求必须是连着的。（仅仅连接一个角不算相连）</p>
+<p>请你计算，一共有多少种不同的剪取方法。</p>
+<h3 id="解析-6">解析</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="k">struct</span> <span class="nc">u</span><span class="p">{</span>
+    <span class="n">map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">t</span><span class="p">;</span>        					<span class="c1">// 表示用户有订单的时刻和订单数量 
+</span><span class="c1"></span><span class="p">};</span>
+<span class="n">u</span> <span class="n">user</span><span class="p">[</span><span class="mi">100005</span><span class="p">];</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+    <span class="kt">int</span> <span class="n">n</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">ts</span><span class="p">,</span><span class="n">id</span><span class="p">,</span><span class="n">cnt</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="n">map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it</span><span class="p">;</span>
+    <span class="n">cin</span><span class="o">&gt;&gt;</span><span class="n">n</span><span class="o">&gt;&gt;</span><span class="n">m</span><span class="o">&gt;&gt;</span><span class="n">t</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">m</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>        			<span class="c1">// 输入订单信息 
+</span><span class="c1"></span>        <span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d %d&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">ts</span><span class="p">,</span><span class="o">&amp;</span><span class="n">id</span><span class="p">);</span>
+        <span class="p">(</span><span class="n">user</span><span class="p">[</span><span class="n">id</span><span class="p">].</span><span class="n">t</span><span class="p">[</span><span class="n">ts</span><span class="p">])</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="kt">int</span> <span class="n">s</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">t1</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">t2</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">flag</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+        <span class="k">for</span><span class="p">(</span><span class="n">it</span><span class="o">=</span><span class="n">user</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">t</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span><span class="n">it</span><span class="o">!=</span><span class="n">user</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">t</span><span class="p">.</span><span class="n">end</span><span class="p">();</span><span class="n">it</span><span class="o">++</span><span class="p">){</span>
+            <span class="n">t1</span><span class="o">=</span><span class="n">t2</span><span class="p">;</span><span class="n">t2</span><span class="o">=</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">first</span><span class="p">;</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">s</span><span class="o">-</span><span class="p">(</span><span class="n">t2</span><span class="o">-</span><span class="n">t1</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span>    <span class="n">s</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>		<span class="c1">// 注意这里的 s 应该减去多少！！！ 
+</span><span class="c1"></span>            <span class="k">else</span> <span class="n">s</span><span class="o">-=</span><span class="p">(</span><span class="n">t2</span><span class="o">-</span><span class="n">t1</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">s</span><span class="o">&gt;</span><span class="mi">5</span><span class="p">)</span>    <span class="n">flag</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>				<span class="c1">// 注意这里也要判断一下！！！ 
+</span><span class="c1"></span>            <span class="k">if</span><span class="p">(</span><span class="n">s</span><span class="o">&lt;=</span><span class="mi">3</span> <span class="o">&amp;&amp;</span> <span class="n">flag</span><span class="p">)</span>    <span class="n">flag</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+            
+            <span class="n">s</span><span class="o">+=</span><span class="p">(</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">second</span><span class="o">*</span><span class="mi">2</span><span class="p">);</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">s</span><span class="o">&gt;</span><span class="mi">5</span><span class="p">)</span>    <span class="n">flag</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">s</span><span class="o">&lt;=</span><span class="mi">3</span> <span class="o">&amp;&amp;</span> <span class="n">flag</span><span class="p">)</span>    <span class="n">flag</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">user</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">t</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">!=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">s</span><span class="o">-=</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">t2</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">s</span><span class="o">&gt;</span><span class="mi">5</span><span class="p">)</span>    <span class="n">flag</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">s</span><span class="o">&lt;=</span><span class="mi">3</span> <span class="o">&amp;&amp;</span> <span class="n">flag</span><span class="p">)</span>    <span class="n">flag</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span>    <span class="n">cnt</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span> 
+    
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">cnt</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="8-四平方和">8 四平方和</h2>
+<h3 id="题目-7">题目</h3>
+<p>给定一个长度为 n 的数组 $A=[A_1,A_2,&hellip;A_n]$ ，数组中有可能有重复出现的整数。</p>
+<p>现在小明要按以下方法将其修改为没有重复整数的数组。小明会依次修改 $A_2,A_3&hellip;A_n$ 。</p>
+<p>当修改 $A_i$ 时，小明会检查 $A_i$ 是否在 $A_1&hellip;A_{i-1}$ 中出现过。如果出现过，则小明会给 $A_i$ 加上 1 ；如果新的 $A_i$ 仍在之前出现过，小明会持续给 $A_i$ 加 1 ，直 到 $A_i$ 没有在 $A_1&hellip;A_{i-1}$ 中出现过。</p>
+<p>当 $A_n$ 也经过上述修改之后，显然 A 数组中就没有重复的整数了。</p>
+<p>现在给定初始的 A 数组，请你计算出最终的 A 数组。</p>
+<p><strong>输入描述</strong></p>
+<p>第一行包含一个整数 n 。</p>
+<p>第二行包含 n 个整数 $A_1,A_2,&hellip;A_n$ 。</p>
+<p>其中，$1≤ n ≤ 10^5, 1≤ A_i ≤ 10^6$ 。</p>
+<p><strong>输出描述</strong></p>
+<p>输出 n 个整数，依次是最终的 $A_1,A_2,&hellip;A_n$ 。</p>
+<h3 id="解析-7">解析</h3>
+<p>🟠 用 map 等 STL 容器容易超时，这道题不用可以过 80% 的样例，用了只能过 40% 。非必要不使用❗❗❗</p>
+<p>🟡 <strong>dev 数组开大会爆栈 ❗❗❗ 可以用 static 或者修改分配的栈大小 ❗❗❗</strong></p>
+<p>🟢 过80%的简单代码（会超时）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+	<span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+	<span class="n">cin</span><span class="o">&gt;&gt;</span><span class="n">n</span><span class="p">;</span>
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">*</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+		<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="n">i</span><span class="p">;</span><span class="n">i</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="o">*</span><span class="n">j</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">){</span>
+			<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="o">=</span><span class="n">j</span><span class="p">;</span><span class="n">i</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="o">*</span><span class="n">j</span><span class="o">+</span><span class="n">k</span><span class="o">*</span><span class="n">k</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span><span class="n">k</span><span class="o">++</span><span class="p">){</span>
+				<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">r</span><span class="o">=</span><span class="n">k</span><span class="p">;</span><span class="n">i</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="o">*</span><span class="n">j</span><span class="o">+</span><span class="n">k</span><span class="o">*</span><span class="n">k</span><span class="o">+</span><span class="n">r</span><span class="o">*</span><span class="n">r</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span><span class="n">r</span><span class="o">++</span><span class="p">){</span>
+					<span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="o">*</span><span class="n">j</span><span class="o">+</span><span class="n">k</span><span class="o">*</span><span class="n">k</span><span class="o">+</span><span class="n">r</span><span class="o">*</span><span class="n">r</span><span class="o">==</span><span class="n">n</span><span class="p">){</span>
+						<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">i</span><span class="o">&lt;&lt;</span><span class="s">&#34; &#34;</span><span class="o">&lt;&lt;</span><span class="n">j</span><span class="o">&lt;&lt;</span><span class="s">&#34; &#34;</span><span class="o">&lt;&lt;</span><span class="n">k</span><span class="o">&lt;&lt;</span><span class="s">&#34; &#34;</span><span class="o">&lt;&lt;</span><span class="n">r</span><span class="p">;</span>
+						<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+					<span class="p">}</span>
+				<span class="p">}</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="9-密码脱落">9 密码脱落</h2>
+<h3 id="题目-8">题目</h3>
+<p>糖果店的老板一共有 m 种口味的糖果出售。为了方便描述，我们将 m 种口味编号 1∼ m。</p>
+<p>小明希望能品尝到所有口味的糖果。遗憾的是老板并不单独出售糖果，而是 k 颗一包整包出售。</p>
+<p>幸好糖果包装上注明了其中 k 颗糖果的口味，所以小明可以在买之前就知道每包内的糖果口味。</p>
+<p>给定 n 包糖果，请你计算小明最少买几包，就可以品尝到所有口味的糖果。</p>
+<p><strong>输入描述</strong></p>
+<p>第一行包含三个整数 n,m,k。</p>
+<p>接下来 n 行每行 k 个整数 $t_1,t_2,&hellip;t_k$ ，代表一包糖果的口味。</p>
+<p>其中，1≤n≤100, 1≤m≤20, 1≤k≤20, $1≤t_i≤m$ 。</p>
+<p><strong>输出描述</strong></p>
+<p>输出一个整数表示答案。如果小明无法品尝所有口味，输出 −1。</p>
+<h3 id="解析-8">解析</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+	<span class="kt">int</span> <span class="n">n</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">t</span><span class="p">;</span>
+	<span class="n">set</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">s</span><span class="p">;</span>						<span class="c1">// 用于判断 n 包糖的总种类数 
+</span><span class="c1"></span>	<span class="n">cin</span><span class="o">&gt;&gt;</span><span class="n">n</span><span class="o">&gt;&gt;</span><span class="n">m</span><span class="o">&gt;&gt;</span><span class="n">k</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="mi">105</span><span class="p">];</span>						<span class="c1">// 每包糖的状态
+</span><span class="c1"></span>	<span class="k">static</span> <span class="kt">int</span> <span class="n">dp</span><span class="p">[</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">20</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>			<span class="c1">// 每个状态所需的最小包数 
+</span><span class="c1"></span>	
+	<span class="c1">// 1. 输入并存储每包糖的状态 
+</span><span class="c1"></span>	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>			<span class="c1">// 遍历每包糖
+</span><span class="c1"></span>		<span class="kt">int</span> <span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">y</span><span class="p">;</span>
+		<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;=</span><span class="n">k</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">){</span>		<span class="c1">// 遍历一包糖的每颗糖 
+</span><span class="c1"></span>			<span class="n">cin</span><span class="o">&gt;&gt;</span><span class="n">y</span><span class="p">;</span>
+			<span class="n">x</span> <span class="o">|=</span> <span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="mi">1</span><span class="p">));</span>		<span class="c1">// 加上这颗糖的状态 
+</span><span class="c1"></span>			<span class="n">s</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>			<span class="c1">// 更新总种类 
+</span><span class="c1"></span>		<span class="p">}</span>
+		<span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">x</span><span class="p">;</span> 
+	<span class="p">}</span>
+	
+	<span class="c1">// 2. 判断总共是否有 m 种糖，如果没有则输出 -1 并退出
+</span><span class="c1"></span>	<span class="k">if</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="o">&lt;</span><span class="n">m</span><span class="p">){</span>
+		<span class="n">cout</span><span class="o">&lt;&lt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="p">}</span> 
+	
+	<span class="c1">// 3. 动态规划找出每个状态所需的最小包数
+</span><span class="c1"></span>	<span class="n">fill</span><span class="p">(</span><span class="n">dp</span><span class="p">,</span><span class="n">dp</span><span class="o">+</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">20</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mh">0xffff</span><span class="p">);</span>	<span class="c1">// 初始化 
+</span><span class="c1"></span>	<span class="n">dp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>						<span class="c1">// 设置 base case 
+</span><span class="c1"></span>	<span class="n">t</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">m</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>						<span class="c1">// m 个 1 
+</span><span class="c1"></span>	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+		<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="n">t</span><span class="p">;</span><span class="n">j</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">;</span><span class="n">j</span><span class="o">--</span><span class="p">)</span>		<span class="c1">// 遍历每个状态，决定要不要加这包糖 
+</span><span class="c1"></span>			<span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="o">|</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">=</span><span class="n">min</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="o">|</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span><span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+	<span class="p">}</span>
+	
+	<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">dp</span><span class="p">[</span><span class="n">t</span><span class="p">];</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="10-最大比例">10 最大比例</h2>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-04-03</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/%E8%93%9D%E6%A1%A5%E6%9D%AF2016/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2016/" data-title="【蓝桥杯】2016题解" data-hashtags="蓝桥杯,C&#43;&#43;"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2016/" data-hashtag="蓝桥杯"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2016/" data-title="【蓝桥杯】2016题解"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2016/" data-title="【蓝桥杯】2016题解"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2016/" data-title="【蓝桥杯】2016题解"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/">蓝桥杯</a>,&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/%E8%93%9D%E6%A1%A5%E6%9D%AF2017/" class="prev" rel="prev" title="【蓝桥杯】2017题解"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>【蓝桥杯】2017题解</a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">菜菜</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

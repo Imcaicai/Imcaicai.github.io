@@ -118,6 +118,18 @@
         alt="/img/avatar.jpg"
         title="/img/avatar.jpg" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E5%8D%95%E8%B0%83%E6%A0%88%E8%A7%A3%E5%86%B3%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0/">【队列和栈】单调栈解决下一个更大元素</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-01-14">2023-01-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/labuladong%E7%9A%84%E7%AE%97%E6%B3%95%E7%A7%98%E7%B1%8D/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>labuladong的算法秘籍</a></span></div><div class="content">1 单调栈模板 题目 输入一个数组 nums，请你返回⼀个等长的结果数组，结果数组中对应索引存储着下一个更大元素，如果没有更大的元素，就存 -1。
+解析 🔴 把数组的元素想象成并列站立的人，元素大小想象成人的身高。这些人面对你站成一列。如果能够看到元素「2」，那么他后面可见的第一个人就是「2」的下⼀个更大元素，因为比「2」小的元素身高不够，都被「2」挡住了，第一个露出来的就是答案。
+🟡 for 循环要从后往前扫描元素，因为我们借助的是栈的结构，倒着入栈，其实是正着出栈。
+🟢 while 循环是把两个「高个子」元素之间的元素排除，因为他们的存在没有意义，前面挡着个「更高」的元素，所以他们不可能被作为后续进来的元素的下一个更大元素了。
+🔵 这个算法的复杂度只有 O(n)。 总共有 n 个元素，每个元素都被 push 入栈了一次，而最多会被 pop一次，没有任何冗余操作。
+图解：
+代码实现：
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18  int[] nextGreaterElement(int[] nums) { int n = nums.length; // 存放答案的数组 	int[] res = new int[n]; Stack&lt;Integer&gt; s = new Stack&lt;&gt;(); // 倒着往栈⾥放 	for (int i = n - 1; i &gt;= 0; i--) { // 判定个⼦⾼矮 	while (!</div><div class="post-footer">
+        <a href="/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E5%8D%95%E8%B0%83%E6%A0%88%E8%A7%A3%E5%86%B3%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/labuladong/">labuladong</a>,&nbsp;<a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>,&nbsp;<a href="/tags/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88/">队列和栈</a>,&nbsp;<a href="/tags/%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0/">下一个更大元素</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E8%AF%A6%E8%A7%A33%E9%81%93%E6%8B%AC%E5%8F%B7%E9%A2%98/">【队列和栈】详解3道括号题</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-01-12">2023-01-12</time></span>&nbsp;<span class="post-category">included in <a href="/categories/labuladong%E7%9A%84%E7%AE%97%E6%B3%95%E7%A7%98%E7%B1%8D/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>labuladong的算法秘籍</a></span></div><div class="content">1.1 判断有效括号串 题目 给定一个只包括 '('，')' 的字符串 s ，判断字符串是否有效。即每个右括号 ')' 的左边必须有⼀个左括号 '(' 和它匹配。
 解析 用一个变量 left 记录 '(' 相对于 ')' 的数量，遇到 '(' 就 +1，遇到 ')' 就 -1。如果最后 left==0，则括号串有效，否则无效。并且，如果中间出现 left 数量为负，则说明有 ')' 出现在 '(' 之前，也为无效。
@@ -223,17 +235,6 @@
 1 2  char site[7] = {&#39;R&#39;, &#39;U&#39;, &#39;N&#39;, &#39;O&#39;, &#39;O&#39;, &#39;B&#39;, &#39;\0&#39;}; char site[] = &#34;RUNOOB&#34;;   字符串相关函数：
  strcpy(s1, s2); 复制字符串 s2 到字符串 s1。 strcat(s1, s2); 连接字符串 s2 到字符串 s1 的末尾。连接字符串也可以用 + 号。 strlen(s1); 返回字符串 s1 的长度。 strcmp(s1, s2); 如果 s1 和 s2 是相同的，则返回 0；如果 s1&lt;s2 则返回值小于 0；如果 s1&gt;s2 则返回值大于 0。 strchr(s1, ch); 返回一个指针，指向字符串 s1 中字符 ch 的第一次出现的位置。 strstr(s1, s2); 返回一个指针，指向字符串 s1 中字符串 s2 的第一次出现的位置。  String类 1 2 3 4 5 6 7 8 9  string str1 = &#34;runoob&#34;; string str2 = &#34;google&#34;; string str3; int len ; // 连接 str1 和 str2 str3 = str1 + str2; // 连接后，str3 的总长度为12！ len = str3.</div><div class="post-footer">
         <a href="/c-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%89/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/c-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%BA%8C/">C++基础语法(二)</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-12-27">2022-12-27</time></span>&nbsp;<span class="post-category">included in <a href="/categories/c++/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>C++</a></span></div><div class="content">6 运算符 sizeof运算符 sizeof 运算符可用于获取类、结构、共用体和其他用户自定义数据类型的大小。
-逗号运算符 整个逗号表达式的值为系列中最后一个表达式的值。从本质上讲，逗号的作用是将一系列运算按顺序执行。
-逗号之前的自增表达式也会在逗号结束后执行！
-1 2 3 4 5 6  // 运行完结果：count=19，incr=10，var=20 var = (count=19, incr=10, count+1); // 结果：j=11，i=1010 j = 10; i = (j++, j+100, 999+j);   成员运算符 .（点）运算符和 -&gt;（箭头）运算符用于引用类、结构和共用体的成员。访问结构的成员时使用点运算符，而通过指针访问结构的成员时，则使用箭头运算符。例如，假设有下面的结构：
-1 2 3 4  struct Employee { char first_name[16]; int age; } emp;   点运算符：
-1  strcpy(emp.first_name, &#34;zara&#34;);   箭头运算符：
-1 2  // p_emp 是一个指针，指向类型为 Employee 的对象 strcpy(p_emp-&gt;first_name, &#34;zara&#34;);   强制转换运算符 1 2  double a = 21.</div><div class="post-footer">
-        <a href="/c-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%BA%8C/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
