@@ -30,7 +30,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/imcaicai.github.io\/%E8%93%9D%E6%A1%A5%E6%9D%AF2021\/"
-        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "蓝桥杯, C\u002b\u002b","wordcount":  753 ,
+        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "蓝桥杯, C\u002b\u002b","wordcount":  830 ,
         "url": "https:\/\/imcaicai.github.io\/%E8%93%9D%E6%A1%A5%E6%9D%AF2021\/","datePublished": "2023-03-20T17:00:10+08:00","dateModified": "2023-03-20T17:00:10+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/imcaicai.github.io\/img\/avatar.jpg"},"author": {
@@ -124,7 +124,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">【蓝桥杯】2021题解</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>蓝桥杯刷题记录</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-20">2023-03-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;753 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-20">2023-03-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;830 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;<span id="/%E8%93%9D%E6%A1%A5%E6%9D%AF2021/" class="leancloud_visitors" data-flag-title="【蓝桥杯】2021题解">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
                     </span>&nbsp;</div>
@@ -657,8 +657,17 @@
 </div>
 </div><h2 id="7-异或数列">7 异或数列</h2>
 <h3 id="题目-6">题目</h3>
+<p>Alice 和 Bob 正在玩一个异或数列的游戏。初始时，Alice 和 Bob 分别有一个整数 a 和 b，初始值均为 0。</p>
+<p>有一个给定的长度为 n 的公共数列 $X_1,X_2,&hellip;,X_n$ 。Alice 和 Bob 轮流操作，Alice 先手，每步可以在以下两种选项中选一种：</p>
+<p>选项 1：从数列中选一个 $X_i$ 给 Alice 的数异或上，或者说令 a 变为 a ⊕  $X_i$  。（其中 ⊕ 表示按位异或）</p>
+<p>选项 2：从数列中选一个 $X_i$ 给 Bob 的数异或上，或者说令 b 变为 b ⊕  $X_i$  。</p>
+<p>每个数  $X_i$  都只能用一次，当所有  $X_i$  均被使用后（n 轮后）游戏结束。游戏结束时，拥有的数比较大的一方获胜，如果双方数值相同，即为平手。 现在双方都足够聪明，都采用最优策略，请问谁能获胜？</p>
 <p><strong>输入格式</strong></p>
+<p>每个评测用例包含多组询问。询问之间彼此独立。</p>
+<p>输入的第一行包含一个整数 T，表示询问数。</p>
+<p>接下来 T 行每行包含一组询问。其中第 i 行的第一个整数 $n_i$ 表示数列长度，随后 $n_i$ 个整数  $X_1,X_2,&hellip;,X_{ni}$ 表示数列中的每个数。</p>
 <p><strong>输出格式</strong></p>
+<p>输出 T 行，依次对应每组询问的答案。 每行包含一个整数 1、0 或 −1 分别表示 Alice 胜、平局或败。</p>
 <h3 id="解析-6">解析</h3>
 <h2 id="8-左孩子右兄弟">8 左孩子右兄弟</h2>
 <h3 id="题目-7">题目</h3>

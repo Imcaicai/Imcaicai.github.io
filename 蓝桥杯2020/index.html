@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <title>【蓝桥杯】2020题解 - 菜菜的秘密花园</title><meta name="Description" content="菜菜的秘密花园"><meta property="og:title" content="【蓝桥杯】2020题解" />
-<meta property="og:description" content="⏰总用时：130min	🎯总分：25
+<meta property="og:description" content="⏰总用时：130/240	🎯总分：25/100
    题号 时间 结果 满分 难度 备注     1 20 ✅ 5 🌕 🔸 注意从获得一个数各个位上的数字的做法：先 &lsquo;/&rsquo; 再 &lsquo;%&rsquo;   2 10 ✅ 5 🌕    3 15 ❌ 10 🌕 🔹 要看清题目所给的下标是从0开始还是从1开始！🔹 注意题目要求。比如这道题只求(20, 20)的数，就只用找坐标为(a, a)的元素的规律，而不用把所有的都找出🔹 找规律要容易出错，要多算几个验证   4 10 ❌ 10 🌓 🔸 回溯   5 10 ❌ 10 🌓 🔹 用递推解决，观察递推关系式🔹 注意初始状态的确定   6 5 ✅ 15 🌕    7 60 ❌ 20 🌕    8   20     9   25     10   25      1 门牌制作 题目 小蓝要为一条街的住户制作门牌号。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2020/" /><meta property="og:image" content="https://imcaicai.github.io/img/avatar.jpg"/><meta property="article:section" content="posts" />
@@ -16,7 +16,7 @@
 <meta name="twitter:image" content="https://imcaicai.github.io/img/avatar.jpg"/>
 
 <meta name="twitter:title" content="【蓝桥杯】2020题解"/>
-<meta name="twitter:description" content="⏰总用时：130min	🎯总分：25
+<meta name="twitter:description" content="⏰总用时：130/240	🎯总分：25/100
    题号 时间 结果 满分 难度 备注     1 20 ✅ 5 🌕 🔸 注意从获得一个数各个位上的数字的做法：先 &lsquo;/&rsquo; 再 &lsquo;%&rsquo;   2 10 ✅ 5 🌕    3 15 ❌ 10 🌕 🔹 要看清题目所给的下标是从0开始还是从1开始！🔹 注意题目要求。比如这道题只求(20, 20)的数，就只用找坐标为(a, a)的元素的规律，而不用把所有的都找出🔹 找规律要容易出错，要多算几个验证   4 10 ❌ 10 🌓 🔸 回溯   5 10 ❌ 10 🌓 🔹 用递推解决，观察递推关系式🔹 注意初始状态的确定   6 5 ✅ 15 🌕    7 60 ❌ 20 🌕    8   20     9   25     10   25      1 门牌制作 题目 小蓝要为一条街的住户制作门牌号。"/>
 <meta name="application-name" content="菜菜的秘密花园">
 <meta name="apple-mobile-web-app-title" content="菜菜的秘密花园"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2020/" /><link rel="prev" href="https://imcaicai.github.io/csp202112/" /><link rel="next" href="https://imcaicai.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%B8%B8%E6%95%B0%E6%97%B6%E9%97%B4%E6%9F%A5%E6%89%BE%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -182,7 +182,7 @@
     <li><a href="#10-字串排序">10 字串排序</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p>⏰总用时：130min			🎯总分：25</p>
+            </div><div class="content" id="content"><p>⏰总用时：130/240			🎯总分：25/100</p>
 <table>
 <thead>
 <tr>
@@ -280,9 +280,9 @@
 <h2 id="1-门牌制作">1 门牌制作</h2>
 <h3 id="题目">题目</h3>
 <p>小蓝要为一条街的住户制作门牌号。</p>
-<p>这条街一共有 20202020 位住户，门牌号从 11 到 20202020 编号。</p>
-<p>小蓝制作门牌的方法是先制作 00 到 99 这几个数字字符，最后根据需要将字符粘贴到门牌上，例如门牌 1017 需要依次粘贴字符 1、0、1、71、0、1、7，即需要 11 个字符 00，22 个字符 11，11 个字符 77。</p>
-<p>请问要制作所有的 11 到 20202020 号门牌，总共需要多少个字符 22？</p>
+<p>这条街一共有 2020 位住户，门牌号从 1 到 2020 编号。</p>
+<p>小蓝制作门牌的方法是先制作 0 到 9 这几个数字字符，最后根据需要将字符粘贴到门牌上，例如门牌 1017 需要依次粘贴字符 1、0、1、7，即需要 1 个字符 0，2 个字符 1，1 个字符 7。</p>
+<p>请问要制作所有的 1 到 2020 号门牌，总共需要多少个字符 2？</p>
 <h3 id="解析">解析</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -324,9 +324,9 @@
 </div>
 </div><h2 id="2-既约分数">2 既约分数</h2>
 <h3 id="题目-1">题目</h3>
-<p>如果一个分数的分子和分母的最大公约数是 11，这个分数称为既约分数。</p>
+<p>如果一个分数的分子和分母的最大公约数是 1，这个分数称为既约分数。</p>
 <p>例如 3/4, 1/8, 7/1，都是既约分数。</p>
-<p>请问，有多少个既约分数，分子和分母都是 11 到 2020 之间的整数（包括 11 和 2020）？</p>
+<p>请问，有多少个既约分数，分子和分母都是 1 到 2020 之间的整数（包括 1 和 2020）？</p>
 <h3 id="解析-1">解析</h3>
 <p>填空题，没什么好说的，直接暴力解决啦~</p>
 <div class="highlight"><div class="chroma">

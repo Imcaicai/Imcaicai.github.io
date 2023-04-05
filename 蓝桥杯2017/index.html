@@ -6,7 +6,7 @@
         <meta name="robots" content="noodp" />
         <title>【蓝桥杯】2017题解 - 菜菜的秘密花园</title><meta name="Description" content="菜菜的秘密花园"><meta property="og:title" content="【蓝桥杯】2017题解" />
 <meta property="og:description" content="⏰总用时：170/240	🎯总分：32.5/100
-   题号 时间 结果 满分 难度 备注     1 45 ✅ 5 🌕 🔸 计算完一定要带入样例检验，漏加了 1 ❗❗❗   2 15 ❌ 11 🌓    3 5 ❌ 13 🌓    4 5 ❌ 17 🌓    5 5 ✅ 7 🌕    6 10 ✅ 9 🌕 🔹 注意 scanf，printf 格式化输入输出的使用   7 25 ❌ 19 🌓 🔸 模拟🔸   8 5 ❌ 21 🌓 🔹 并查集（不过没用）   9 30 50% 23 🌓    10 25 ❌ 25 🌓     1 【填空】迷宫 题目 1/1&#43;1/2&#43;1/4&#43;1/8&#43;&hellip;&hellip;" />
+   题号 时间 结果 满分 难度 备注     1 45 ✅ 5 🌕 🔸 计算完一定要带入样例检验，漏加了 1 ❗❗❗   2 15 ❌ 11 🌓    3 5 ❌ 13 🌓    4 5 ❌ 17 🌓    5 5 ✅ 7 🌕    6 10 ✅ 9 🌕 🔹 注意 scanf，printf 格式化输入输出的使用   7 25 ❌ 19 🌓 🔸 模拟🔸   8 5 ❌ 21 🌓 🔹 并查集（不过没用）   9 30 50% 23 🌓    10 25 ❌ 25 🌓     1 【填空】迷宫 题目 X 星球的一处迷宫游乐场建在某个小山坡上。它是由 10×10 相互连通的小房间组成的。房间的地板上写着一个很大的字母。我们假设玩家是面朝上坡的方向站立，则：" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2017/" /><meta property="og:image" content="https://imcaicai.github.io/img/avatar.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-04-02T11:53:31&#43;08:00" />
@@ -17,7 +17,7 @@
 
 <meta name="twitter:title" content="【蓝桥杯】2017题解"/>
 <meta name="twitter:description" content="⏰总用时：170/240	🎯总分：32.5/100
-   题号 时间 结果 满分 难度 备注     1 45 ✅ 5 🌕 🔸 计算完一定要带入样例检验，漏加了 1 ❗❗❗   2 15 ❌ 11 🌓    3 5 ❌ 13 🌓    4 5 ❌ 17 🌓    5 5 ✅ 7 🌕    6 10 ✅ 9 🌕 🔹 注意 scanf，printf 格式化输入输出的使用   7 25 ❌ 19 🌓 🔸 模拟🔸   8 5 ❌ 21 🌓 🔹 并查集（不过没用）   9 30 50% 23 🌓    10 25 ❌ 25 🌓     1 【填空】迷宫 题目 1/1&#43;1/2&#43;1/4&#43;1/8&#43;&hellip;&hellip;"/>
+   题号 时间 结果 满分 难度 备注     1 45 ✅ 5 🌕 🔸 计算完一定要带入样例检验，漏加了 1 ❗❗❗   2 15 ❌ 11 🌓    3 5 ❌ 13 🌓    4 5 ❌ 17 🌓    5 5 ✅ 7 🌕    6 10 ✅ 9 🌕 🔹 注意 scanf，printf 格式化输入输出的使用   7 25 ❌ 19 🌓 🔸 模拟🔸   8 5 ❌ 21 🌓 🔹 并查集（不过没用）   9 30 50% 23 🌓    10 25 ❌ 25 🌓     1 【填空】迷宫 题目 X 星球的一处迷宫游乐场建在某个小山坡上。它是由 10×10 相互连通的小房间组成的。房间的地板上写着一个很大的字母。我们假设玩家是面朝上坡的方向站立，则："/>
 <meta name="application-name" content="菜菜的秘密花园">
 <meta name="apple-mobile-web-app-title" content="菜菜的秘密花园"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2017/" /><link rel="prev" href="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2018/" /><link rel="next" href="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2016/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -30,7 +30,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/imcaicai.github.io\/%E8%93%9D%E6%A1%A5%E6%9D%AF2017\/"
-        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "蓝桥杯, C\u002b\u002b","wordcount":  1388 ,
+        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "蓝桥杯, C\u002b\u002b","wordcount":  815 ,
         "url": "https:\/\/imcaicai.github.io\/%E8%93%9D%E6%A1%A5%E6%9D%AF2017\/","datePublished": "2023-04-02T11:53:31+08:00","dateModified": "2023-04-02T11:53:31+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/imcaicai.github.io\/img\/avatar.jpg"},"author": {
@@ -124,8 +124,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">【蓝桥杯】2017题解</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>蓝桥杯刷题记录</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-04-02">2023-04-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1388 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;7 minutes&nbsp;<span id="/%E8%93%9D%E6%A1%A5%E6%9D%AF2017/" class="leancloud_visitors" data-flag-title="【蓝桥杯】2017题解">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-04-02">2023-04-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;815 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;<span id="/%E8%93%9D%E6%A1%A5%E6%9D%AF2017/" class="leancloud_visitors" data-flag-title="【蓝桥杯】2017题解">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
@@ -165,7 +165,7 @@
         <li><a href="#解析-4">解析</a></li>
       </ul>
     </li>
-    <li><a href="#6-最大公共子串">6 最大公共子串</a>
+    <li><a href="#6-填空最大公共子串">6 【填空】最大公共子串</a>
       <ul>
         <li><a href="#题目-5">题目</a></li>
         <li><a href="#解析-5">解析</a></li>
@@ -289,11 +289,42 @@
 </table>
 <h2 id="1-填空迷宫">1 【填空】迷宫</h2>
 <h3 id="题目">题目</h3>
-<p>1/1+1/2+1/4+1/8+&hellip;&hellip;</p>
-<p>每项是前一项的一半，如果一共有 20 项,求这个和是多少，结果用分数表示出来。</p>
-<p>类似：3/2，当然，这只是加了前 2 项而已。分子分母要求互质。</p>
+<p>X 星球的一处迷宫游乐场建在某个小山坡上。它是由 10×10 相互连通的小房间组成的。房间的地板上写着一个很大的字母。我们假设玩家是面朝上坡的方向站立，则：</p>
+<ul>
+<li>L 表示走到左边的房间，</li>
+<li>R 表示走到右边的房间，</li>
+<li>U 表示走到上坡方向的房间，</li>
+<li>D 表示走到下坡方向的房间。</li>
+</ul>
+<p>X 星球的居民有点懒，不愿意费力思考。他们更喜欢玩运气类的游戏。这个游戏也是如此！开始的时候，直升机把 100 名玩家放入一个个小房间内。玩家一定要按照地上的字母移动。迷宫地图如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">UDDLUULRUL
+UURLLLRRRU
+RRUURLDLRD
+RUDDDDUUUU
+URUDLLRRUU
+DURLRLDLRL
+ULLURLLRDU
+RDLULLRDDD
+UUDDUDUDLL
+ULRDLUURRR
+</code></pre></td></tr></table>
+</div>
+</div><p>请你计算一下，最后，有多少玩家会走出迷宫，而不是在里边兜圈子？</p>
 <h3 id="解析">解析</h3>
-<p>注意检验，前面还加了一个 1 ❗❗❗</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -430,184 +461,78 @@
 </div>
 </div><h2 id="2-填空跳蚱蜢">2 【填空】跳蚱蜢</h2>
 <h3 id="题目-1">题目</h3>
-<p>整个 20 世纪（1901 年 1 月 1 日至 2000 年 12 月 31 日之间），一共有多少个星期一？(不要告诉我你不知道今天是星期几)</p>
+<p>如下图所示： 有 9 只盘子，排成 1 个圆圈。 其中 8 只盘子内装着 8 只蚱蜢，有一个是空盘。 我们把这些蚱蜢顺时针编号为 1 ~ 8。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/%e8%93%9d%e6%a1%a5%e6%9d%af/8.png"
+        data-srcset="/img/%e8%93%9d%e6%a1%a5%e6%9d%af/8.png, /img/%e8%93%9d%e6%a1%a5%e6%9d%af/8.png 1.5x, /img/%e8%93%9d%e6%a1%a5%e6%9d%af/8.png 2x"
+        data-sizes="auto"
+        alt="/img/蓝桥杯/8.png"
+        title="img1" /></p>
+<p>每只蚱蜢都可以跳到相邻的空盘中， 也可以再用点力，越过一个相邻的蚱蜢跳到空盘中。</p>
+<p>请你计算一下，如果要使得蚱蜢们的队形改为按照逆时针排列， 并且保持空盘的位置不变（也就是 1−8 换位，2−7换位,&hellip;），至少要经过多少次跳跃？</p>
 <h3 id="解析-1">解析</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
-</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
-
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
-    <span class="kt">int</span> <span class="n">ans</span><span class="p">,</span><span class="n">sum</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
-    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1901</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="mi">2000</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>                <span class="c1">// 计算总天数，最后一天是星期六 
-</span><span class="c1"></span>        <span class="k">if</span><span class="p">((</span><span class="n">i</span><span class="o">%</span><span class="mi">4</span><span class="o">==</span><span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">i</span><span class="o">%</span><span class="mi">100</span><span class="o">!=</span><span class="mi">0</span><span class="p">)</span> <span class="o">||</span> <span class="n">i</span><span class="o">%</span><span class="mi">400</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span>    <span class="c1">// 这是闰年 
-</span><span class="c1"></span>            <span class="n">sum</span><span class="o">+=</span><span class="mi">366</span><span class="p">;</span>
-        <span class="k">else</span>    <span class="n">sum</span><span class="o">+=</span><span class="mi">365</span><span class="p">;</span>                        <span class="c1">// 这不是闰年 
-</span><span class="c1"></span>    <span class="p">}</span>
-    
-    <span class="n">ans</span><span class="o">=</span><span class="n">sum</span><span class="o">/</span><span class="mi">7</span><span class="p">;</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">sum</span><span class="o">%</span><span class="mi">7</span><span class="o">==</span><span class="mi">5</span><span class="p">)</span>    <span class="n">ans</span><span class="o">++</span><span class="p">;</span>
-    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">ans</span><span class="p">;</span>
-    
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
+<pre class="chroma"><code class="language-c++" data-lang="c++">
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="3-填空魔方状态">3 【填空】魔方状态</h2>
 <h3 id="题目-2">题目</h3>
-<p>如下的 10 行数据，每行有 10 个整数，请你求出它们的乘积的末尾有多少个零？</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">5650 4542 3554 473 946 4114 3871 9073 90 4329 
-2758 7949 6113 5659 5245 7432 3051 4434 6704 3594 
-9937 1173 6866 3397 4759 7557 3070 2287 1453 9899 
-1486 5722 3135 1170 4014 5510 5120 729 2880 9019 
-2049 698 4582 4346 4427 646 9742 7340 1230 7683 
-5693 7015 6887 7381 4172 4341 2909 2027 7355 5649 
-6701 6645 1671 5978 2704 9926 295 3125 3878 6785 
-2066 4247 4800 1578 6652 4616 1113 6205 3264 2915 
-3966 5291 2904 1285 2193 1428 2265 8730 9436 7074 
-689 5510 8243 6114 337 4096 8199 7313 3685 211 
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="解析-2">解析</h3>
+<p>二阶魔方就是只有 2 层的魔方，只由 8 个小块组成。 如图所示。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/%e8%93%9d%e6%a1%a5%e6%9d%af/9.png"
+        data-srcset="/img/%e8%93%9d%e6%a1%a5%e6%9d%af/9.png, /img/%e8%93%9d%e6%a1%a5%e6%9d%af/9.png 1.5x, /img/%e8%93%9d%e6%a1%a5%e6%9d%af/9.png 2x"
+        data-sizes="auto"
+        alt="/img/蓝桥杯/9.png"
+        title="img1" /></p>
+<p>小明很淘气，他只喜欢 3 种颜色，所有把家里的二阶魔方重新涂了颜色，如下。前面：橙色，右面：绿色，上面：黄色，左面：绿色，下面：橙色，后面：黄色。</p>
+<p>请你计算一下，这样的魔方被打乱后，一共有多少种不同的状态。</p>
+<p>如果两个状态经过魔方的整体旋转后，各个面的颜色都一致，则认为是同一状态。</p>
+<h3 id="解析-2">解析</h3>
 <p>🟠 注意 <code>10=2*5</code> ，只用看这100个数中因数 2 和 5 的个数分别为多少，不用乘出来。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
-</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
-
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
-    <span class="kt">int</span> <span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">ans</span><span class="p">;</span>
-    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">100</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
-        <span class="n">cin</span><span class="o">&gt;&gt;</span><span class="n">t</span><span class="p">;</span>
-        <span class="k">while</span><span class="p">(</span><span class="n">t</span><span class="o">%</span><span class="mi">2</span><span class="o">==</span><span class="mi">0</span><span class="p">){</span>        <span class="c1">// 计算 2 的个数 
-</span><span class="c1"></span>            <span class="n">x</span><span class="o">++</span><span class="p">;</span><span class="n">t</span><span class="o">/=</span><span class="mi">2</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="k">while</span><span class="p">(</span><span class="n">t</span><span class="o">%</span><span class="mi">5</span><span class="o">==</span><span class="mi">0</span><span class="p">){</span>        <span class="c1">// 计算 5 的个数 
-</span><span class="c1"></span>            <span class="n">y</span><span class="o">++</span><span class="p">;</span><span class="n">t</span><span class="o">/=</span><span class="mi">5</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    
-    <span class="n">ans</span><span class="o">=</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">);</span>
-    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">ans</span><span class="p">;</span>
-    
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
+<pre class="chroma"><code class="language-c++" data-lang="c++">
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="4-填空方格分割">4 【填空】方格分割</h2>
 <h3 id="题目-3">题目</h3>
-<p>到 X 星球旅行的游客都被发给一个整数，作为游客编号。</p>
-<p>X 星的国王有个怪癖，他只喜欢数字 3,5 和 7。国王规定，游客的编号如果只含有因子：3,5,7 就可以获得一份奖品。</p>
-<p>我们来看前 10 个幸运数字是： 3, 5, 7, 9, 15, 21, 25, 27, 35, 45 。因而第 11 个幸运数字是： 49 。</p>
-<p>小明领到了一个幸运数字 59084709587505，他去领奖的时候，人家要求他准确地说出这是第几个幸运数字，否则领不到奖品。</p>
-<p>请你帮小明计算一下，59084709587505 是第几个幸运数字。</p>
+<p>6x6的方格，沿着格子的边线剪开成两部分。 要求这两部分的形状完全相同。如下就是三种可行的分割法。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/%e8%93%9d%e6%a1%a5%e6%9d%af/10.png"
+        data-srcset="/img/%e8%93%9d%e6%a1%a5%e6%9d%af/10.png, /img/%e8%93%9d%e6%a1%a5%e6%9d%af/10.png 1.5x, /img/%e8%93%9d%e6%a1%a5%e6%9d%af/10.png 2x"
+        data-sizes="auto"
+        alt="/img/蓝桥杯/10.png"
+        title="img1" /></p>
+<p>试计算： 包括这 3 种分法在内，一共有多少种不同的分割方法。 注意：旋转对称的属于同一种分割法。</p>
 <h3 id="解析-3">解析</h3>
 <p>🟠 直接遍历，注意每次遍历后 i, j, k 分别乘 3, 5, 7 。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
-</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
-<span class="k">typedef</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">ll</span><span class="p">;</span>
-
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
-	<span class="n">ll</span> <span class="n">n</span><span class="o">=</span><span class="mi">59084709587505</span><span class="p">;</span>
-	<span class="kt">int</span> <span class="n">cnt</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
-	<span class="k">for</span><span class="p">(</span><span class="n">ll</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">*=</span><span class="mi">3</span><span class="p">){</span>
-		<span class="k">for</span><span class="p">(</span><span class="n">ll</span> <span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">*</span><span class="n">j</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span><span class="n">j</span><span class="o">*=</span><span class="mi">5</span><span class="p">){</span>
-			<span class="k">for</span><span class="p">(</span><span class="n">ll</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">*</span><span class="n">j</span><span class="o">*</span><span class="n">k</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span><span class="n">k</span><span class="o">*=</span><span class="mi">7</span><span class="p">)</span>
-				<span class="n">cnt</span><span class="o">++</span><span class="p">;</span>
-		<span class="p">}</span>
-	<span class="p">}</span>
-	<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">cnt</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>		<span class="c1">// 要减去 1 
-</span><span class="c1"></span>	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span> 
+<pre class="chroma"><code class="language-c++" data-lang="c++">
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="5-填空字母组串">5 【填空】字母组串</h2>
 <h3 id="题目-4">题目</h3>
-<p>如下的程序会在控制台绘制分形图。</p>
-<p>当 n=1,2,3 的时候，输出如下： 请仔细分析程序，并填写划线部分缺少的代码。</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/img/%e8%93%9d%e6%a1%a5%e6%9d%af/6.png"
-        data-srcset="/img/%e8%93%9d%e6%a1%a5%e6%9d%af/6.png, /img/%e8%93%9d%e6%a1%a5%e6%9d%af/6.png 1.5x, /img/%e8%93%9d%e6%a1%a5%e6%9d%af/6.png 2x"
-        data-sizes="auto"
-        alt="/img/蓝桥杯/6.png"
-        title="img1" /></p>
+<p>由 A,B,C 这3个字母就可以组成许多串。 比如：&ldquo;A&rdquo;,&ldquo;AB&rdquo;,&ldquo;ABC&rdquo;,&ldquo;ABA&rdquo;,&ldquo;AACBB&rdquo; &hellip;.</p>
+<p>现在，小明正在思考一个问题： 如果每个字母的个数有限定，能组成多少个已知长度的串呢？</p>
+<p>他请好朋友来帮忙，很快得到了代码， 解决方案超级简单，然而最重要的部分却语焉不详。</p>
+<p>请仔细分析源码，填写划线部分缺少的内容。</p>
 <h3 id="解析-4">解析</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -628,92 +553,33 @@
 </span><span class="lnt">15
 </span><span class="lnt">16
 </span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
-</span><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
 </span><span class="cp"></span>
-<span class="kt">void</span> <span class="nf">show</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">buf</span><span class="p">,</span> <span class="kt">int</span> <span class="n">w</span><span class="p">){</span>
-    <span class="kt">int</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">;</span>
-    <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">w</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
-        <span class="k">for</span><span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">w</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">){</span>
-            <span class="n">printf</span><span class="p">(</span><span class="s">&#34;%c&#34;</span><span class="p">,</span> <span class="n">buf</span><span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">w</span><span class="o">+</span><span class="n">j</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="o">?</span> <span class="sc">&#39; &#39;</span> <span class="o">:</span> <span class="sc">&#39;o&#39;</span><span class="p">);</span>
-        <span class="p">}</span>
-        <span class="n">printf</span><span class="p">(</span><span class="s">&#34;</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="kt">void</span> <span class="nf">draw</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">buf</span><span class="p">,</span> <span class="kt">int</span> <span class="n">w</span><span class="p">,</span> <span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">size</span><span class="p">){</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">size</span><span class="o">==</span><span class="mi">1</span><span class="p">){</span>
-        <span class="n">buf</span><span class="p">[</span><span class="n">y</span><span class="o">*</span><span class="n">w</span><span class="o">+</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-        <span class="k">return</span><span class="p">;</span>
-    <span class="p">}</span>
+<span class="c1">// a个A，b个B，c个C 字母，能组成多少个不同的长度为n的串。
+</span><span class="c1"></span><span class="kt">int</span> <span class="nf">f</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">,</span> <span class="kt">int</span> <span class="n">c</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="o">&lt;</span><span class="mi">0</span> <span class="o">||</span> <span class="n">b</span><span class="o">&lt;</span><span class="mi">0</span> <span class="o">||</span> <span class="n">c</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">n</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span> 
     
-    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">size</span><span class="o">/</span><span class="mi">3</span> <span class="p">;</span> <span class="c1">//填空
-</span><span class="c1"></span>    <span class="n">draw</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span>
-    <span class="n">draw</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">x</span><span class="o">-</span><span class="n">n</span><span class="p">,</span> <span class="n">y</span> <span class="p">,</span><span class="n">n</span><span class="p">);</span>
-    <span class="n">draw</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="n">n</span><span class="p">,</span> <span class="n">y</span> <span class="p">,</span><span class="n">n</span><span class="p">);</span>
-    <span class="n">draw</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">-</span><span class="n">n</span> <span class="p">,</span><span class="n">n</span><span class="p">);</span>
-    <span class="n">draw</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="n">n</span> <span class="p">,</span><span class="n">n</span><span class="p">);</span>
-<span class="p">}</span>
+    <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">;</span>  <span class="c1">// 填空
+</span><span class="c1"></span><span class="p">}</span>
 
 <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
 <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">N</span> <span class="p">;</span>
-        <span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">N</span><span class="p">);</span>
-    <span class="kt">int</span> <span class="n">t</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
-    <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">t</span> <span class="o">*=</span> <span class="mi">3</span><span class="p">;</span>            <span class="c1">// 最长的一行圆的个数 
-</span><span class="c1"></span>    
-    <span class="kt">char</span><span class="o">*</span> <span class="n">buf</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="n">t</span><span class="o">*</span><span class="n">t</span><span class="p">);</span>
-    <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">t</span><span class="o">*</span><span class="n">t</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">buf</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>    <span class="c1">// 初始化 
-</span><span class="c1"></span>    
-    <span class="n">draw</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">t</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">t</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">t</span><span class="p">);</span>
-    <span class="n">show</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">t</span><span class="p">);</span>
-    <span class="n">free</span><span class="p">(</span><span class="n">buf</span><span class="p">);</span>
-    
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">));</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">));</span>
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="6-最大公共子串">6 最大公共子串</h2>
+</div><h2 id="6-填空最大公共子串">6 【填空】最大公共子串</h2>
 <h3 id="题目-5">题目</h3>
-<p>不久后小 h 的女朋友去中东交换。小 h 并不知道中东与北京的时差。但是小 h 得到了女朋友来回航班的起降时间。小 h 想知道女朋友的航班飞行时间是多少。</p>
-<p>对于一个可能跨时区的航班，给定来回程的起降时间。假设飞机来回飞行时间相同，求飞机的飞行时间。</p>
-<p><strong>输入描述</strong></p>
-<p>一个输入包含多组数据。</p>
-<p>输入第一行为一个正整数 n ，表示输入数据组数。</p>
-<p>每组数据包含两行，第一行为去程的 起降 时间，第二行为回程的 起降 时间。</p>
-<p><strong>输出描述</strong></p>
-<p>对于每一组数据输出一行一个时间 hh:mm:ss，表示飞行时间为 hh 小时 mm 分 ss 秒。</p>
-<p>注意，当时间为一位数时，要补齐前导零。如三小时四分五秒应写 03:04:05。</p>
+<p>最大公共子串长度问题就是： 求两个串的所有子串中能够匹配上的最大长度是多少。</p>
+<p>比如：&ldquo;abcdkkk&rdquo; 和 &ldquo;baabcdadabc&rdquo;， 可以找到的最长的公共子串是&quot;abcd&quot;,所以最大公共子串长度为 4。</p>
+<p>下面的程序是采用矩阵法进行求解的，这对串的规模不大的情况还是比较有效的解法。</p>
+<p>请分析该解法的思路，并补全划线部分缺失的代码。</p>
 <h3 id="解析-5">解析</h3>
 <p>🟠 注意 scanf，printf 格式化输入输出的使用</p>
 <div class="highlight"><div class="chroma">
@@ -742,72 +608,6 @@
 </span><span class="lnt">22
 </span><span class="lnt">23
 </span><span class="lnt">24
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
-</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
-
-<span class="kt">int</span> <span class="nf">getTime</span><span class="p">(){</span>
-    <span class="kt">int</span> <span class="n">h1</span><span class="p">,</span><span class="n">h2</span><span class="p">,</span><span class="n">m1</span><span class="p">,</span><span class="n">m2</span><span class="p">,</span><span class="n">s1</span><span class="p">,</span><span class="n">s2</span><span class="p">,</span><span class="n">d</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">t</span><span class="p">;</span>        
-    <span class="c1">// 注意这种格式化输入方法！！！ 
-</span><span class="c1"></span>    <span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d:%d:%d %d:%d:%d (+%d)&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">h1</span><span class="p">,</span><span class="o">&amp;</span><span class="n">m1</span><span class="p">,</span><span class="o">&amp;</span><span class="n">s1</span><span class="p">,</span><span class="o">&amp;</span><span class="n">h2</span><span class="p">,</span><span class="o">&amp;</span><span class="n">m2</span><span class="p">,</span><span class="o">&amp;</span><span class="n">s2</span><span class="p">,</span><span class="o">&amp;</span><span class="n">d</span><span class="p">);</span>
-    <span class="c1">// 都换算成秒，不能用时分秒分别计算，容易出错！！！ 
-</span><span class="c1"></span>    <span class="n">t</span><span class="o">=</span><span class="n">d</span><span class="o">*</span><span class="mi">24</span><span class="o">*</span><span class="mi">60</span><span class="o">*</span><span class="mi">60</span><span class="o">+</span><span class="p">(</span><span class="n">h2</span><span class="o">*</span><span class="mi">3600</span><span class="o">+</span><span class="n">m2</span><span class="o">*</span><span class="mi">60</span><span class="o">+</span><span class="n">s2</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="n">h1</span><span class="o">*</span><span class="mi">3600</span><span class="o">+</span><span class="n">m1</span><span class="o">*</span><span class="mi">60</span><span class="o">+</span><span class="n">s1</span><span class="p">);</span>
-    <span class="k">return</span> <span class="n">t</span><span class="p">;</span> 
-<span class="p">}</span>
-
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
-    <span class="kt">int</span> <span class="n">n</span><span class="p">,</span><span class="n">t1</span><span class="p">,</span><span class="n">t2</span><span class="p">,</span><span class="n">t</span><span class="p">;</span>
-    <span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
-    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
-        <span class="n">t1</span><span class="o">=</span><span class="n">getTime</span><span class="p">();</span>
-        <span class="n">t2</span><span class="o">=</span><span class="n">getTime</span><span class="p">();</span>
-        <span class="n">t</span><span class="o">=</span><span class="p">(</span><span class="n">t1</span><span class="o">+</span><span class="n">t2</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
-        <span class="n">printf</span><span class="p">(</span><span class="s">&#34;%02d:%02d:%02d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">t</span><span class="o">/</span><span class="mi">3600</span><span class="p">,</span><span class="n">t</span><span class="o">/</span><span class="mi">60</span><span class="o">%</span><span class="mi">60</span><span class="p">,</span><span class="n">t</span><span class="o">%</span><span class="mi">60</span><span class="p">);</span>
-    <span class="p">}</span>
-    
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="7-正则问题">7 正则问题</h2>
-<h3 id="题目-6">题目</h3>
-<p>&ldquo;饱了么&quot;外卖系统中维护着 N 家外卖店，编号 1 ∼ N。每家外卖店都有 一个优先级，初始时 (0 时刻) 优先级都为 0。</p>
-<p>每经过 1 个时间单位，如果外卖店没有订单，则优先级会减少 1，最低减 到 0；而如果外卖店有订单，则优先级不减反加，每有一单优先级加 2。</p>
-<p>如果某家外卖店某时刻优先级大于 5，则会被系统加入优先缓存中；如果 优先级小于等于 3，则会被清除出优先缓存。</p>
-<p>给定 T 时刻以内的 M 条订单信息，请你计算 T 时刻时有多少外卖店在优 先缓存中?</p>
-<p><strong>输入描述</strong></p>
-<p>输入第一行包含两个整数 N 和 K 。</p>
-<p>第二行包含 N 个整数 $A_1, A_2,&hellip;,A_N$ 。</p>
-<p><strong>输出描述</strong></p>
-<p>输出一行包含一个整数表示答案。</p>
-<h3 id="解析-6">解析</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
 </span><span class="lnt">25
 </span><span class="lnt">26
 </span><span class="lnt">27
@@ -818,174 +618,102 @@
 </span><span class="lnt">32
 </span><span class="lnt">33
 </span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
-</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
-
-<span class="k">struct</span> <span class="nc">u</span><span class="p">{</span>
-    <span class="n">map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">t</span><span class="p">;</span>        					<span class="c1">// 表示用户有订单的时刻和订单数量 
-</span><span class="c1"></span><span class="p">};</span>
-<span class="n">u</span> <span class="n">user</span><span class="p">[</span><span class="mi">100005</span><span class="p">];</span>
-
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
-    <span class="kt">int</span> <span class="n">n</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">ts</span><span class="p">,</span><span class="n">id</span><span class="p">,</span><span class="n">cnt</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
-    <span class="n">map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">it</span><span class="p">;</span>
-    <span class="n">cin</span><span class="o">&gt;&gt;</span><span class="n">n</span><span class="o">&gt;&gt;</span><span class="n">m</span><span class="o">&gt;&gt;</span><span class="n">t</span><span class="p">;</span>
-    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">m</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>        			<span class="c1">// 输入订单信息 
-</span><span class="c1"></span>        <span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d %d&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">ts</span><span class="p">,</span><span class="o">&amp;</span><span class="n">id</span><span class="p">);</span>
-        <span class="p">(</span><span class="n">user</span><span class="p">[</span><span class="n">id</span><span class="p">].</span><span class="n">t</span><span class="p">[</span><span class="n">ts</span><span class="p">])</span><span class="o">++</span><span class="p">;</span>
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="cp">#define N 256
+</span><span class="cp"></span><span class="kt">int</span> <span class="nf">f</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">s1</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">s2</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="n">N</span><span class="p">][</span><span class="n">N</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="n">len1</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">s1</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">len2</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">s2</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">;</span>
+    
+    <span class="n">memset</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="o">*</span><span class="n">N</span><span class="o">*</span><span class="n">N</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">max</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">len1</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="k">for</span><span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">j</span><span class="o">&lt;=</span><span class="n">len2</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">){</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">s1</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="n">s2</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="p">{</span>
+                <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span> 
+                <span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">max</span><span class="p">)</span> <span class="n">max</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
     <span class="p">}</span>
     
-    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
-        <span class="kt">int</span> <span class="n">s</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">t1</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">t2</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">flag</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
-        <span class="k">for</span><span class="p">(</span><span class="n">it</span><span class="o">=</span><span class="n">user</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">t</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span><span class="n">it</span><span class="o">!=</span><span class="n">user</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">t</span><span class="p">.</span><span class="n">end</span><span class="p">();</span><span class="n">it</span><span class="o">++</span><span class="p">){</span>
-            <span class="n">t1</span><span class="o">=</span><span class="n">t2</span><span class="p">;</span><span class="n">t2</span><span class="o">=</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">first</span><span class="p">;</span>
-            <span class="k">if</span><span class="p">(</span><span class="n">s</span><span class="o">-</span><span class="p">(</span><span class="n">t2</span><span class="o">-</span><span class="n">t1</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span>    <span class="n">s</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>		<span class="c1">// 注意这里的 s 应该减去多少！！！ 
-</span><span class="c1"></span>            <span class="k">else</span> <span class="n">s</span><span class="o">-=</span><span class="p">(</span><span class="n">t2</span><span class="o">-</span><span class="n">t1</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
-            <span class="k">if</span><span class="p">(</span><span class="n">s</span><span class="o">&gt;</span><span class="mi">5</span><span class="p">)</span>    <span class="n">flag</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>				<span class="c1">// 注意这里也要判断一下！！！ 
-</span><span class="c1"></span>            <span class="k">if</span><span class="p">(</span><span class="n">s</span><span class="o">&lt;=</span><span class="mi">3</span> <span class="o">&amp;&amp;</span> <span class="n">flag</span><span class="p">)</span>    <span class="n">flag</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
-            
-            <span class="n">s</span><span class="o">+=</span><span class="p">(</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">second</span><span class="o">*</span><span class="mi">2</span><span class="p">);</span>
-            <span class="k">if</span><span class="p">(</span><span class="n">s</span><span class="o">&gt;</span><span class="mi">5</span><span class="p">)</span>    <span class="n">flag</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
-            <span class="k">if</span><span class="p">(</span><span class="n">s</span><span class="o">&lt;=</span><span class="mi">3</span> <span class="o">&amp;&amp;</span> <span class="n">flag</span><span class="p">)</span>    <span class="n">flag</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="k">if</span><span class="p">(</span><span class="n">user</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">t</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">!=</span><span class="mi">1</span><span class="p">)</span>
-            <span class="n">s</span><span class="o">-=</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">t2</span><span class="p">);</span>
-        <span class="k">if</span><span class="p">(</span><span class="n">s</span><span class="o">&gt;</span><span class="mi">5</span><span class="p">)</span>    <span class="n">flag</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
-        <span class="k">if</span><span class="p">(</span><span class="n">s</span><span class="o">&lt;=</span><span class="mi">3</span> <span class="o">&amp;&amp;</span> <span class="n">flag</span><span class="p">)</span>    <span class="n">flag</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
-        <span class="k">if</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span>    <span class="n">cnt</span><span class="o">++</span><span class="p">;</span>
-    <span class="p">}</span> 
-    
-    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">cnt</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">max</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="s">&#34;abcdkkk&#34;</span><span class="p">,</span> <span class="s">&#34;baabcdadabc&#34;</span><span class="p">));</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="s">&#34;aaakkkabababa&#34;</span><span class="p">,</span> <span class="s">&#34;baabababcdadabc&#34;</span><span class="p">));</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="s">&#34;abccbaacbcca&#34;</span><span class="p">,</span> <span class="s">&#34;ccccbbbbbaaaa&#34;</span><span class="p">));</span>    
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="s">&#34;abcd&#34;</span><span class="p">,</span> <span class="s">&#34;xyz&#34;</span><span class="p">));</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="s">&#34;ab&#34;</span><span class="p">,</span> <span class="s">&#34;ab&#34;</span><span class="p">));</span>
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
+</div><h2 id="7-正则问题">7 正则问题</h2>
+<h3 id="题目-6">题目</h3>
+<p>考虑一种简单的正则表达式：</p>
+<p>只由 x ( ) | 组成的正则表达式。</p>
+<p>小明想求出这个正则表达式能接受的最长字符串的长度。</p>
+<p>例如 ((xx|xxx)x|(x|xx))xx 能接受的最长字符串是： xxxxxx，长度是 6。</p>
+<p><strong>输入描述</strong></p>
+<p>一个由 x()| 组成的正则表达式。输入长度不超过 100，保证合法。</p>
+<p><strong>输出描述</strong></p>
+<p>这个正则表达式能接受的最长字符串的长度。</p>
+<h3 id="解析-6">解析</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++">
+</code></pre></td></tr></table>
+</div>
 </div><h2 id="8-包子凑数">8 包子凑数</h2>
 <h3 id="题目-7">题目</h3>
-<p>给定一个长度为 n 的数组 $A=[A_1,A_2,&hellip;A_n]$ ，数组中有可能有重复出现的整数。</p>
-<p>现在小明要按以下方法将其修改为没有重复整数的数组。小明会依次修改 $A_2,A_3&hellip;A_n$ 。</p>
-<p>当修改 $A_i$ 时，小明会检查 $A_i$ 是否在 $A_1&hellip;A_{i-1}$ 中出现过。如果出现过，则小明会给 $A_i$ 加上 1 ；如果新的 $A_i$ 仍在之前出现过，小明会持续给 $A_i$ 加 1 ，直 到 $A_i$ 没有在 $A_1&hellip;A_{i-1}$ 中出现过。</p>
-<p>当 $A_n$ 也经过上述修改之后，显然 A 数组中就没有重复的整数了。</p>
-<p>现在给定初始的 A 数组，请你计算出最终的 A 数组。</p>
+<p>小明几乎每天早晨都会在一家包子铺吃早餐。他发现这家包子铺有 N 种蒸笼，其中第 i 种蒸笼恰好能放 $A_i$ 个包子。每种蒸笼都有非常多笼，可以认为是无限笼。</p>
+<p>每当有顾客想买 X 个包子，卖包子的大叔就会迅速选出若干笼包子来，使得这若干笼中恰好一共有 X 个包子。比如一共有 3 种蒸笼，分别能放 3、4 和 5 个包子。当顾客想买 11 个包子时，大叔就会选 2 笼 3 个的再加 1 笼 5 个的（也可能选出 1 笼 3 个的再加 2 笼 4 个的）。</p>
+<p>当然有时包子大叔无论如何也凑不出顾客想买的数量。比如一共有 3 种蒸笼，分别能放 4、5 和 6 个包子。而顾客想买 7 个包子时，大叔就凑不出来了。</p>
+<p>小明想知道一共有多少种数目是包子大叔凑不出来的。</p>
 <p><strong>输入描述</strong></p>
-<p>第一行包含一个整数 n 。</p>
-<p>第二行包含 n 个整数 $A_1,A_2,&hellip;A_n$ 。</p>
-<p>其中，$1≤ n ≤ 10^5, 1≤ A_i ≤ 10^6$ 。</p>
+<p>第一行包含一个整数 N ( 1≤<em>N</em>≤100 )。</p>
+<p>以下 N 行每行包含一个整数  $A_i$  (1≤ $A_i$ ≤100 )。</p>
 <p><strong>输出描述</strong></p>
-<p>输出 n 个整数，依次是最终的 $A_1,A_2,&hellip;A_n$ 。</p>
+<p>一个整数代表答案。如果凑不出的数目有无限多个，输出 INF。</p>
 <h3 id="解析-7">解析</h3>
 <p>🟠 用 map 等 STL 容器容易超时，这道题不用可以过 80% 的样例，用了只能过 40% 。非必要不使用❗❗❗</p>
 <p>🟡 <strong>dev 数组开大会爆栈 ❗❗❗ 可以用 static 或者修改分配的栈大小 ❗❗❗</strong></p>
 <p>🟢 过80%的简单代码（会超时）：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
-</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
-
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
-	<span class="kt">int</span> <span class="n">n</span><span class="p">,</span><span class="n">t</span><span class="p">;</span>
-	<span class="k">static</span> <span class="kt">int</span> <span class="n">b</span><span class="p">[</span><span class="mi">1000005</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>	<span class="c1">// 注意这里不用static会爆栈！！！ 
-</span><span class="c1"></span>	<span class="n">cin</span><span class="o">&gt;&gt;</span><span class="n">n</span><span class="p">;</span>
-	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
-		<span class="n">cin</span><span class="o">&gt;&gt;</span><span class="n">t</span><span class="p">;</span>
-		<span class="k">if</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">){</span>			<span class="c1">// 找到第一个没用被用掉的 t 
-</span><span class="c1"></span>			<span class="k">while</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span>		<span class="c1">// 这里是超时的原因！！！ 
-</span><span class="c1"></span>				<span class="n">t</span><span class="o">++</span><span class="p">;</span>
-		<span class="p">}</span>
-		
-		<span class="n">b</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>					<span class="c1">// 这里多了个 &#34;=&#34; 
-</span><span class="c1"></span>		<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">t</span><span class="o">&lt;&lt;</span><span class="s">&#34; &#34;</span><span class="p">;</span>
-	<span class="p">}</span>
-	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span> 
-</code></pre></td></tr></table>
-</div>
-</div><p>🟣 优化后的代码：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
-</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
-
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
-	<span class="kt">int</span> <span class="n">n</span><span class="p">,</span><span class="n">t</span><span class="p">;</span>
-	<span class="k">static</span> <span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="mi">1000005</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
-	<span class="n">cin</span><span class="o">&gt;&gt;</span><span class="n">n</span><span class="p">;</span>
-	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
-		<span class="n">cin</span><span class="o">&gt;&gt;</span><span class="n">t</span><span class="p">;</span>
-		<span class="k">while</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">!=</span><span class="mi">0</span><span class="p">){</span>
-			<span class="n">a</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>			<span class="c1">// 用 a[t] 记录 t 出现的次数！！！ 
-</span><span class="c1"></span>			<span class="n">t</span><span class="o">+=</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>	<span class="c1">// 加速遍历！！！ 
-</span><span class="c1"></span>		<span class="p">}</span>
-		<span class="n">a</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
-		<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">t</span><span class="o">&lt;&lt;</span><span class="s">&#34; &#34;</span><span class="p">;</span>
-	<span class="p">}</span>
-	
-	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span> 
+<pre class="chroma"><code class="language-c++" data-lang="c++"> 
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="9-分巧克力">9 分巧克力</h2>
 <h3 id="题目-8">题目</h3>
-<p>糖果店的老板一共有 m 种口味的糖果出售。为了方便描述，我们将 m 种口味编号 1∼ m。</p>
-<p>小明希望能品尝到所有口味的糖果。遗憾的是老板并不单独出售糖果，而是 k 颗一包整包出售。</p>
-<p>幸好糖果包装上注明了其中 k 颗糖果的口味，所以小明可以在买之前就知道每包内的糖果口味。</p>
-<p>给定 n 包糖果，请你计算小明最少买几包，就可以品尝到所有口味的糖果。</p>
+<p>儿童节那天有 K 位小朋友到小明家做客。小明拿出了珍藏的巧克力招待小朋友们。</p>
+<p>小明一共有 N 块巧克力，其中第 i 块是 $H_i×W_i$ 的方格组成的长方形。为了公平起见，小明需要从这 N 块巧克力中切出 K 块巧克力分给小朋友们。切出的巧克力需要满足：</p>
+<ol>
+<li>形状是正方形，边长是整数;</li>
+<li>大小相同;</li>
+</ol>
+<p>例如一块 6x5 的巧克力可以切出 6 块 2x2 的巧克力或者 2 块 3x3 的巧克力。</p>
+<p>当然小朋友们都希望得到的巧克力尽可能大，你能帮小明计算出最大的边长是多少么？</p>
 <p><strong>输入描述</strong></p>
-<p>第一行包含三个整数 n,m,k。</p>
-<p>接下来 n 行每行 k 个整数 $t_1,t_2,&hellip;t_k$ ，代表一包糖果的口味。</p>
-<p>其中，1≤n≤100, 1≤m≤20, 1≤k≤20, $1≤t_i≤m$ 。</p>
+<p>第一行包含两个整数 N, K ( $1≤N,K≤10^5 $$)。</p>
+<p>以下 N 行每行包含两个整数  $H_i×W_i$  ( $1≤H_i×W_i≤10^5$ )。</p>
+<p>输入保证每位小朋友至少能获得一块 1x1 的巧克力。</p>
 <p><strong>输出描述</strong></p>
-<p>输出一个整数表示答案。如果小明无法品尝所有口味，输出 −1。</p>
+<p>输出切出的正方形巧克力最大可能的边长。</p>
 <h3 id="解析-8">解析</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1025,47 +753,43 @@
 </span><span class="lnt">34
 </span><span class="lnt">35
 </span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
 </span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 
+<span class="kt">int</span> <span class="n">n</span><span class="p">,</span><span class="n">k</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">h</span><span class="p">[</span><span class="mi">100005</span><span class="p">],</span><span class="n">w</span><span class="p">[</span><span class="mi">100005</span><span class="p">];</span>
+
+<span class="c1">// 检查分为边长为 t 的正方形是否符合条件 
+</span><span class="c1"></span><span class="kt">bool</span> <span class="nf">check</span><span class="p">(</span><span class="kt">int</span> <span class="n">t</span><span class="p">){</span>
+    <span class="kt">int</span> <span class="n">sum</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="n">sum</span><span class="o">+=</span><span class="p">(</span><span class="n">h</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">/</span><span class="n">t</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">/</span><span class="n">t</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">sum</span><span class="o">&gt;=</span><span class="n">k</span><span class="p">)</span>                    <span class="c1">// 可以分给的人数超过 k，返回true 
+</span><span class="c1"></span>            <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span> 
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">find_max</span><span class="p">(){</span>
+    <span class="kt">int</span> <span class="n">l</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">r</span><span class="o">=</span><span class="mi">100000</span><span class="p">,</span><span class="n">mid</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">l</span><span class="o">&lt;=</span><span class="n">r</span><span class="p">){</span>                    <span class="c1">// 注意这个条件是 &lt;= ！！！ 
+</span><span class="c1"></span>        <span class="n">mid</span><span class="o">=</span><span class="p">(</span><span class="n">l</span><span class="o">+</span><span class="n">r</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">check</span><span class="p">(</span><span class="n">mid</span><span class="p">))</span>                <span class="c1">// 正方形边长还可以继续变大 
+</span><span class="c1"></span>            <span class="n">l</span><span class="o">=</span><span class="n">mid</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+        <span class="k">else</span>
+            <span class="n">r</span><span class="o">=</span><span class="n">mid</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">r</span><span class="p">;</span>
+<span class="p">}</span>
+
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
-	<span class="kt">int</span> <span class="n">n</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">t</span><span class="p">;</span>
-	<span class="n">set</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">s</span><span class="p">;</span>						<span class="c1">// 用于判断 n 包糖的总种类数 
-</span><span class="c1"></span>	<span class="n">cin</span><span class="o">&gt;&gt;</span><span class="n">n</span><span class="o">&gt;&gt;</span><span class="n">m</span><span class="o">&gt;&gt;</span><span class="n">k</span><span class="p">;</span>
-	<span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="mi">105</span><span class="p">];</span>						<span class="c1">// 每包糖的状态
-</span><span class="c1"></span>	<span class="k">static</span> <span class="kt">int</span> <span class="n">dp</span><span class="p">[</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">20</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>			<span class="c1">// 每个状态所需的最小包数 
-</span><span class="c1"></span>	
-	<span class="c1">// 1. 输入并存储每包糖的状态 
-</span><span class="c1"></span>	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>			<span class="c1">// 遍历每包糖
-</span><span class="c1"></span>		<span class="kt">int</span> <span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">y</span><span class="p">;</span>
-		<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;=</span><span class="n">k</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">){</span>		<span class="c1">// 遍历一包糖的每颗糖 
-</span><span class="c1"></span>			<span class="n">cin</span><span class="o">&gt;&gt;</span><span class="n">y</span><span class="p">;</span>
-			<span class="n">x</span> <span class="o">|=</span> <span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="mi">1</span><span class="p">));</span>		<span class="c1">// 加上这颗糖的状态 
-</span><span class="c1"></span>			<span class="n">s</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>			<span class="c1">// 更新总种类 
-</span><span class="c1"></span>		<span class="p">}</span>
-		<span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">x</span><span class="p">;</span> 
-	<span class="p">}</span>
-	
-	<span class="c1">// 2. 判断总共是否有 m 种糖，如果没有则输出 -1 并退出
-</span><span class="c1"></span>	<span class="k">if</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="o">&lt;</span><span class="n">m</span><span class="p">){</span>
-		<span class="n">cout</span><span class="o">&lt;&lt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-	<span class="p">}</span> 
-	
-	<span class="c1">// 3. 动态规划找出每个状态所需的最小包数
-</span><span class="c1"></span>	<span class="n">fill</span><span class="p">(</span><span class="n">dp</span><span class="p">,</span><span class="n">dp</span><span class="o">+</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">20</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mh">0xffff</span><span class="p">);</span>	<span class="c1">// 初始化 
-</span><span class="c1"></span>	<span class="n">dp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>						<span class="c1">// 设置 base case 
-</span><span class="c1"></span>	<span class="n">t</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">m</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>						<span class="c1">// m 个 1 
-</span><span class="c1"></span>	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
-		<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="n">t</span><span class="p">;</span><span class="n">j</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">;</span><span class="n">j</span><span class="o">--</span><span class="p">)</span>		<span class="c1">// 遍历每个状态，决定要不要加这包糖 
-</span><span class="c1"></span>			<span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="o">|</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">=</span><span class="n">min</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="o">|</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span><span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
-	<span class="p">}</span>
-	
-	<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">dp</span><span class="p">[</span><span class="n">t</span><span class="p">];</span>
-	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d %d&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">n</span><span class="p">,</span><span class="o">&amp;</span><span class="n">k</span><span class="p">);</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d %d&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">h</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="o">&amp;</span><span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+    
+    <span class="n">cout</span><span class="o">&lt;&lt;</span> <span class="n">find_max</span><span class="p">();</span>
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
