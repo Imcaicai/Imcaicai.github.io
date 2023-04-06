@@ -6,7 +6,7 @@
         <meta name="robots" content="noodp" />
         <title>【蓝桥杯】2017题解 - 菜菜的秘密花园</title><meta name="Description" content="菜菜的秘密花园"><meta property="og:title" content="【蓝桥杯】2017题解" />
 <meta property="og:description" content="⏰总用时：170/240	🎯总分：32.5/100
-   题号 时间 结果 满分 难度 备注     1 45 ✅ 5 🌕 🔸 计算完一定要带入样例检验，漏加了 1 ❗❗❗   2 15 ❌ 11 🌓    3 5 ❌ 13 🌓    4 5 ❌ 17 🌓    5 5 ✅ 7 🌕    6 10 ✅ 9 🌕 🔹 注意 scanf，printf 格式化输入输出的使用   7 25 ❌ 19 🌓 🔸 模拟🔸   8 5 ❌ 21 🌓 🔹 并查集（不过没用）   9 30 50% 23 🌓    10 25 ❌ 25 🌓     1 【填空】迷宫 题目 X 星球的一处迷宫游乐场建在某个小山坡上。它是由 10×10 相互连通的小房间组成的。房间的地板上写着一个很大的字母。我们假设玩家是面朝上坡的方向站立，则：" />
+   题号 时间 结果 满分 难度 备注     1 45 ✅ 5 🌓 🔸 dfs🔸 注意考虑回路的情况   2 15 ❌ 11 🌓 🔹 考虑空盘子的跳法🔹 数据结构、bfs🔹 注意 set 容器的用法   3 5 ❌ 13 🌓    4 5 ❌ 17 🌓    5 5 ✅ 7 🌕    6 10 ✅ 9 🌕 🔹 注意 scanf，printf 格式化输入输出的使用   7 25 ❌ 19 🌓 🔸 模拟🔸   8 5 ❌ 21 🌓 🔹 并查集（不过没用）   9 30 50% 23 🌓    10 25 ❌ 25 🌓     1 【填空】迷宫 题目 X 星球的一处迷宫游乐场建在某个小山坡上。它是由 10×10 相互连通的小房间组成的。房间的地板上写着一个很大的字母。我们假设玩家是面朝上坡的方向站立，则：" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2017/" /><meta property="og:image" content="https://imcaicai.github.io/img/avatar.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-04-02T11:53:31&#43;08:00" />
@@ -17,7 +17,7 @@
 
 <meta name="twitter:title" content="【蓝桥杯】2017题解"/>
 <meta name="twitter:description" content="⏰总用时：170/240	🎯总分：32.5/100
-   题号 时间 结果 满分 难度 备注     1 45 ✅ 5 🌕 🔸 计算完一定要带入样例检验，漏加了 1 ❗❗❗   2 15 ❌ 11 🌓    3 5 ❌ 13 🌓    4 5 ❌ 17 🌓    5 5 ✅ 7 🌕    6 10 ✅ 9 🌕 🔹 注意 scanf，printf 格式化输入输出的使用   7 25 ❌ 19 🌓 🔸 模拟🔸   8 5 ❌ 21 🌓 🔹 并查集（不过没用）   9 30 50% 23 🌓    10 25 ❌ 25 🌓     1 【填空】迷宫 题目 X 星球的一处迷宫游乐场建在某个小山坡上。它是由 10×10 相互连通的小房间组成的。房间的地板上写着一个很大的字母。我们假设玩家是面朝上坡的方向站立，则："/>
+   题号 时间 结果 满分 难度 备注     1 45 ✅ 5 🌓 🔸 dfs🔸 注意考虑回路的情况   2 15 ❌ 11 🌓 🔹 考虑空盘子的跳法🔹 数据结构、bfs🔹 注意 set 容器的用法   3 5 ❌ 13 🌓    4 5 ❌ 17 🌓    5 5 ✅ 7 🌕    6 10 ✅ 9 🌕 🔹 注意 scanf，printf 格式化输入输出的使用   7 25 ❌ 19 🌓 🔸 模拟🔸   8 5 ❌ 21 🌓 🔹 并查集（不过没用）   9 30 50% 23 🌓    10 25 ❌ 25 🌓     1 【填空】迷宫 题目 X 星球的一处迷宫游乐场建在某个小山坡上。它是由 10×10 相互连通的小房间组成的。房间的地板上写着一个很大的字母。我们假设玩家是面朝上坡的方向站立，则："/>
 <meta name="application-name" content="菜菜的秘密花园">
 <meta name="apple-mobile-web-app-title" content="菜菜的秘密花园"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2017/" /><link rel="prev" href="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2018/" /><link rel="next" href="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2016/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -30,7 +30,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/imcaicai.github.io\/%E8%93%9D%E6%A1%A5%E6%9D%AF2017\/"
-        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "蓝桥杯, C\u002b\u002b","wordcount":  815 ,
+        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "蓝桥杯, C\u002b\u002b","wordcount":  972 ,
         "url": "https:\/\/imcaicai.github.io\/%E8%93%9D%E6%A1%A5%E6%9D%AF2017\/","datePublished": "2023-04-02T11:53:31+08:00","dateModified": "2023-04-02T11:53:31+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/imcaicai.github.io\/img\/avatar.jpg"},"author": {
@@ -124,8 +124,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">【蓝桥杯】2017题解</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>蓝桥杯刷题记录</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-04-02">2023-04-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;815 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;<span id="/%E8%93%9D%E6%A1%A5%E6%9D%AF2017/" class="leancloud_visitors" data-flag-title="【蓝桥杯】2017题解">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-04-02">2023-04-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;972 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;<span id="/%E8%93%9D%E6%A1%A5%E6%9D%AF2017/" class="leancloud_visitors" data-flag-title="【蓝桥杯】2017题解">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
@@ -210,8 +210,8 @@
 <td>45</td>
 <td>✅</td>
 <td>5</td>
-<td>🌕</td>
-<td>🔸 计算完一定要带入样例检验，漏加了 1 ❗❗❗</td>
+<td>🌓</td>
+<td>🔸 dfs<br/>🔸 注意考虑回路的情况</td>
 </tr>
 <tr>
 <td><strong>2</strong></td>
@@ -219,7 +219,7 @@
 <td>❌</td>
 <td>11</td>
 <td>🌓</td>
-<td></td>
+<td>🔹 考虑空盘子的跳法<br/>🔹 数据结构、bfs<br/>🔹 注意 set 容器的用法</td>
 </tr>
 <tr>
 <td><strong>3</strong></td>
@@ -325,6 +325,8 @@ ULRDLUURRR
 </div>
 </div><p>请你计算一下，最后，有多少玩家会走出迷宫，而不是在里边兜圈子？</p>
 <h3 id="解析">解析</h3>
+<p>🟠 <strong>【dfs】</strong> 遍历地图的坐标，用备忘录记录每个坐标点是否能走出地图，减少递归次数</p>
+<p>🔵 注意如果某个点 (x, y) 已经被访问过并且没有被标记为能出去，则直接返回 false 。 <strong>即如果有回路绕回来，也不能走出迷宫。</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -386,18 +388,13 @@ ULRDLUURRR
 </span><span class="lnt">57
 </span><span class="lnt">58
 </span><span class="lnt">59
-</span><span class="lnt">60
-</span><span class="lnt">61
-</span><span class="lnt">62
-</span><span class="lnt">63
-</span><span class="lnt">64
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
 </span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 
-<span class="kt">char</span> <span class="n">c</span><span class="p">[</span><span class="mi">10</span><span class="p">][</span><span class="mi">10</span><span class="p">];</span>
-<span class="kt">bool</span> <span class="n">d</span><span class="p">[</span><span class="mi">10</span><span class="p">][</span><span class="mi">10</span><span class="p">];</span>							<span class="c1">// 存储该坐标是否能出去
+<span class="kt">char</span> <span class="n">c</span><span class="p">[</span><span class="mi">10</span><span class="p">][</span><span class="mi">10</span><span class="p">];</span>							<span class="c1">// 记录整个迷宫
+</span><span class="c1"></span><span class="kt">bool</span> <span class="n">d</span><span class="p">[</span><span class="mi">10</span><span class="p">][</span><span class="mi">10</span><span class="p">];</span>							<span class="c1">// 存储该坐标是否能出去
 </span><span class="c1"></span><span class="kt">bool</span> <span class="n">v</span><span class="p">[</span><span class="mi">10</span><span class="p">][</span><span class="mi">10</span><span class="p">];</span>							<span class="c1">// 存储该坐标是否已访问过		
 </span><span class="c1"></span>
 <span class="kt">bool</span> <span class="nf">dfs</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span><span class="kt">int</span> <span class="n">y</span><span class="p">){</span>
@@ -406,7 +403,6 @@ ULRDLUURRR
 </span><span class="c1"></span>		<span class="k">else</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>				<span class="c1">// 如果有回路绕回来，也是直接返回 false 
 </span><span class="c1"></span>	<span class="p">}</span>						
 	
-	
 	<span class="n">v</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span><span class="o">=</span><span class="nb">true</span><span class="p">;</span>						<span class="c1">// 先标记该点已访问过 
 </span><span class="c1"></span>	<span class="k">switch</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]){</span>					<span class="c1">// 未知，则继续朝着坐标的方向走 
 </span><span class="c1"></span>		<span class="k">case</span> <span class="sc">&#39;U&#39;</span><span class="o">:</span>			
@@ -414,25 +410,21 @@ ULRDLUURRR
 </span><span class="c1"></span>				<span class="k">return</span> <span class="n">d</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span><span class="o">=</span><span class="nb">true</span><span class="p">;</span>					
 			<span class="k">else</span>						<span class="c1">// 否则继续递归 
 </span><span class="c1"></span>				<span class="k">return</span> <span class="n">d</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span><span class="o">=</span><span class="n">dfs</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">y</span><span class="p">);</span>		
-
 		<span class="k">case</span> <span class="sc">&#39;D&#39;</span><span class="o">:</span>
 			<span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">&gt;=</span><span class="mi">9</span><span class="p">)</span>					 
 				<span class="k">return</span> <span class="n">d</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span><span class="o">=</span><span class="nb">true</span><span class="p">;</span>	
 			<span class="k">else</span>					
 				<span class="k">return</span> <span class="n">d</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span><span class="o">=</span><span class="n">dfs</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">y</span><span class="p">);</span>
-
 		<span class="k">case</span> <span class="sc">&#39;L&#39;</span><span class="o">:</span>
 			<span class="k">if</span><span class="p">(</span><span class="n">y</span><span class="o">&lt;=</span><span class="mi">0</span><span class="p">)</span>					 
 				<span class="k">return</span> <span class="n">d</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span><span class="o">=</span><span class="nb">true</span><span class="p">;</span>	
 			<span class="k">else</span>			
 				<span class="k">return</span> <span class="n">d</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span><span class="o">=</span><span class="n">dfs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
-				
 		<span class="k">case</span> <span class="sc">&#39;R&#39;</span><span class="o">:</span>
 			<span class="k">if</span><span class="p">(</span><span class="n">y</span><span class="o">&gt;=</span><span class="mi">9</span><span class="p">)</span>					 
 				<span class="k">return</span> <span class="n">d</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span><span class="o">=</span><span class="nb">true</span><span class="p">;</span>	
 			<span class="k">else</span>					
 				<span class="k">return</span> <span class="n">d</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span><span class="o">=</span><span class="n">dfs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
-
 	<span class="p">}</span>
 <span class="p">}</span>
 
@@ -473,12 +465,84 @@ ULRDLUURRR
 <p>每只蚱蜢都可以跳到相邻的空盘中， 也可以再用点力，越过一个相邻的蚱蜢跳到空盘中。</p>
 <p>请你计算一下，如果要使得蚱蜢们的队形改为按照逆时针排列， 并且保持空盘的位置不变（也就是 1−8 换位，2−7换位,&hellip;），至少要经过多少次跳跃？</p>
 <h3 id="解析-1">解析</h3>
+<p>🟠 <strong>不考虑蚱蜢的跳法，而考虑空盘子的跳法。</strong> 这两个是等价的，但是空盘子的跳法只有固定 4 种：向左2格，向左1格，向右2格，向右1格。</p>
+<p>🔵 <strong>【数据结构】</strong> 用 <strong>node</strong> 记录每个状态，其中： string 记录9个盘子的摆放状态，idx 记录空盘子的索引，cnt 记录达到这个状态的交换次数。用 <strong>容器 set</strong> 存储所有遍历过的盘子状态。用 <strong>队列queue</strong> 进行广度优先遍历。</p>
+<p>🟡 <strong>【bfs】</strong> 每次遍历空盘子的 4 种走向。若当前状态未遍历过，则加入对应容器。</p>
+<p>🟢 注意 set 容器的 find 用法❗❗❗</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c++" data-lang="c++">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="k">struct</span> <span class="nc">node</span><span class="p">{</span>
+	<span class="n">string</span> <span class="n">s</span><span class="p">;</span>		<span class="c1">// 盘子的摆放状态
+</span><span class="c1"></span>	<span class="kt">int</span> <span class="n">idx</span><span class="p">;</span>		<span class="c1">// 空盘子的索引
+</span><span class="c1"></span>	<span class="kt">int</span> <span class="n">cnt</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>		<span class="c1">// 到达这个状态需要的步数 
+</span><span class="c1"></span><span class="p">};</span>
+<span class="n">set</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">s</span><span class="p">;</span>		<span class="c1">// 记录所有的状态 s 
+</span><span class="c1"></span><span class="n">queue</span><span class="o">&lt;</span><span class="n">node</span><span class="o">&gt;</span> <span class="n">q</span><span class="p">;</span>		<span class="c1">// 每次 bfs 的队列 
+</span><span class="c1"></span>
+<span class="kt">void</span> <span class="nf">bfs</span><span class="p">(</span><span class="n">node</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">){</span>					<span class="c1">// 当前的状态、下一步往哪走 
+</span><span class="c1"></span>	<span class="n">string</span> <span class="n">str</span><span class="o">=</span><span class="n">x</span><span class="p">.</span><span class="n">s</span><span class="p">;</span>
+	<span class="n">swap</span><span class="p">(</span><span class="n">str</span><span class="p">[</span><span class="n">x</span><span class="p">.</span><span class="n">idx</span><span class="p">],</span><span class="n">str</span><span class="p">[(</span><span class="n">x</span><span class="p">.</span><span class="n">idx</span><span class="o">+</span><span class="n">y</span><span class="o">+</span><span class="mi">9</span><span class="p">)</span><span class="o">%</span><span class="mi">9</span><span class="p">]);</span>	<span class="c1">// 更新跳跃后的字符串，注意取模模拟圆环
+</span><span class="c1"></span>	<span class="k">if</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">str</span><span class="p">)</span><span class="o">!=</span><span class="n">s</span><span class="p">.</span><span class="n">end</span><span class="p">())</span>	<span class="k">return</span><span class="p">;</span>		<span class="c1">// 此情况已经经历过，注意 set 的 find 用法！！！ 
+</span><span class="c1"></span>	
+	<span class="n">node</span> <span class="n">n</span><span class="p">;</span><span class="n">n</span><span class="p">.</span><span class="n">s</span><span class="o">=</span><span class="n">str</span><span class="p">;</span><span class="n">n</span><span class="p">.</span><span class="n">idx</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="n">idx</span><span class="o">+</span><span class="n">y</span><span class="o">+</span><span class="mi">9</span><span class="p">)</span><span class="o">%</span><span class="mi">9</span><span class="p">;</span><span class="n">n</span><span class="p">.</span><span class="n">cnt</span><span class="o">=</span><span class="n">x</span><span class="p">.</span><span class="n">cnt</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+	<span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">n</span><span class="p">);</span><span class="n">s</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">str</span><span class="p">);</span>				<span class="c1">// 此情况未经历过，加入此情况 
+</span><span class="c1"></span><span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+	<span class="n">node</span> <span class="n">n</span><span class="p">;</span><span class="n">n</span><span class="p">.</span><span class="n">s</span><span class="o">=</span><span class="s">&#34;012345678&#34;</span><span class="p">;</span><span class="n">n</span><span class="p">.</span><span class="n">idx</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">n</span><span class="p">.</span><span class="n">cnt</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+	<span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+	<span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">q</span><span class="p">.</span><span class="n">empty</span><span class="p">()){</span>
+		<span class="n">node</span> <span class="n">t</span><span class="o">=</span><span class="n">q</span><span class="p">.</span><span class="n">front</span><span class="p">();</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">t</span><span class="p">.</span><span class="n">s</span><span class="o">==</span><span class="s">&#34;087654321&#34;</span><span class="p">){</span>
+			<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">t</span><span class="p">.</span><span class="n">cnt</span><span class="p">;</span><span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+		<span class="p">}</span>
+		<span class="n">bfs</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">);</span><span class="n">bfs</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>				<span class="c1">// 空盘子左右跳 2 或 1格 
+</span><span class="c1"></span>		<span class="n">bfs</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="n">bfs</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+		<span class="n">q</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+	<span class="p">}</span>	
+	
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span> 
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="3-填空魔方状态">3 【填空】魔方状态</h2>
