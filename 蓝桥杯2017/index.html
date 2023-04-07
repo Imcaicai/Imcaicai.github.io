@@ -5,8 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <title>【蓝桥杯】2017题解 - 菜菜的秘密花园</title><meta name="Description" content="菜菜的秘密花园"><meta property="og:title" content="【蓝桥杯】2017题解" />
-<meta property="og:description" content="⏰总用时：170/240	🎯总分：32.5/100
-   题号 时间 结果 满分 难度 备注     1 45 ✅ 5 🌓 🔸 dfs🔸 注意考虑回路的情况   2 15 ❌ 11 🌓 🔹 考虑空盘子的跳法🔹 数据结构、bfs🔹 注意 set 容器的用法   3 5 ❌ 13 🌓    4 5 ❌ 17 🌓    5 5 ✅ 7 🌕    6 10 ✅ 9 🌕 🔹 注意 scanf，printf 格式化输入输出的使用   7 25 ❌ 19 🌓 🔸 模拟🔸   8 5 ❌ 21 🌓 🔹 并查集（不过没用）   9 30 50% 23 🌓    10 25 ❌ 25 🌓     1 【填空】迷宫 题目 X 星球的一处迷宫游乐场建在某个小山坡上。它是由 10×10 相互连通的小房间组成的。房间的地板上写着一个很大的字母。我们假设玩家是面朝上坡的方向站立，则：" />
+<meta property="og:description" content="⏰总用时：170/240	🎯总分：32.5/150
+   题号 时间 结果 满分 难度 备注     1 45 ✅ 5 🌓 🔸 dfs🔸 注意考虑回路的情况   2 15 ❌ 11 🌓 🔹 考虑空盘子的跳法🔹 数据结构、bfs🔹 注意 set 容器的用法   3 5 ❌ 13 🌑 🔸 Burnside引理   4 5 ❌ 17 🌓 🔹 考虑分割线的走法🔹 【dfs】从对称中心开始遍历   5 5 ✅ 7 🌕    6 10 ✅ 9 🌕    7 25 ❌ 19 🌓 🔸 dfs   8 5 ❌ 21 🌓 🔹 动态规划：要判断的包子数设置一个上限🔹 所有包子数最大公因数不为1，则凑不出来的有无数个   9 30 50% 23 🌓 🔸 二分   10 25 ❌ 25      1 【填空】迷宫 题目 X 星球的一处迷宫游乐场建在某个小山坡上。它是由 10×10 相互连通的小房间组成的。房间的地板上写着一个很大的字母。我们假设玩家是面朝上坡的方向站立，则：" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2017/" /><meta property="og:image" content="https://imcaicai.github.io/img/avatar.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-04-02T11:53:31&#43;08:00" />
@@ -16,8 +16,8 @@
 <meta name="twitter:image" content="https://imcaicai.github.io/img/avatar.jpg"/>
 
 <meta name="twitter:title" content="【蓝桥杯】2017题解"/>
-<meta name="twitter:description" content="⏰总用时：170/240	🎯总分：32.5/100
-   题号 时间 结果 满分 难度 备注     1 45 ✅ 5 🌓 🔸 dfs🔸 注意考虑回路的情况   2 15 ❌ 11 🌓 🔹 考虑空盘子的跳法🔹 数据结构、bfs🔹 注意 set 容器的用法   3 5 ❌ 13 🌓    4 5 ❌ 17 🌓    5 5 ✅ 7 🌕    6 10 ✅ 9 🌕 🔹 注意 scanf，printf 格式化输入输出的使用   7 25 ❌ 19 🌓 🔸 模拟🔸   8 5 ❌ 21 🌓 🔹 并查集（不过没用）   9 30 50% 23 🌓    10 25 ❌ 25 🌓     1 【填空】迷宫 题目 X 星球的一处迷宫游乐场建在某个小山坡上。它是由 10×10 相互连通的小房间组成的。房间的地板上写着一个很大的字母。我们假设玩家是面朝上坡的方向站立，则："/>
+<meta name="twitter:description" content="⏰总用时：170/240	🎯总分：32.5/150
+   题号 时间 结果 满分 难度 备注     1 45 ✅ 5 🌓 🔸 dfs🔸 注意考虑回路的情况   2 15 ❌ 11 🌓 🔹 考虑空盘子的跳法🔹 数据结构、bfs🔹 注意 set 容器的用法   3 5 ❌ 13 🌑 🔸 Burnside引理   4 5 ❌ 17 🌓 🔹 考虑分割线的走法🔹 【dfs】从对称中心开始遍历   5 5 ✅ 7 🌕    6 10 ✅ 9 🌕    7 25 ❌ 19 🌓 🔸 dfs   8 5 ❌ 21 🌓 🔹 动态规划：要判断的包子数设置一个上限🔹 所有包子数最大公因数不为1，则凑不出来的有无数个   9 30 50% 23 🌓 🔸 二分   10 25 ❌ 25      1 【填空】迷宫 题目 X 星球的一处迷宫游乐场建在某个小山坡上。它是由 10×10 相互连通的小房间组成的。房间的地板上写着一个很大的字母。我们假设玩家是面朝上坡的方向站立，则："/>
 <meta name="application-name" content="菜菜的秘密花园">
 <meta name="apple-mobile-web-app-title" content="菜菜的秘密花园"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2017/" /><link rel="prev" href="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2018/" /><link rel="next" href="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2016/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -30,7 +30,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/imcaicai.github.io\/%E8%93%9D%E6%A1%A5%E6%9D%AF2017\/"
-        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "蓝桥杯, C\u002b\u002b","wordcount":  972 ,
+        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "蓝桥杯, C\u002b\u002b","wordcount":  1254 ,
         "url": "https:\/\/imcaicai.github.io\/%E8%93%9D%E6%A1%A5%E6%9D%AF2017\/","datePublished": "2023-04-02T11:53:31+08:00","dateModified": "2023-04-02T11:53:31+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/imcaicai.github.io\/img\/avatar.jpg"},"author": {
@@ -124,8 +124,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">【蓝桥杯】2017题解</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>蓝桥杯刷题记录</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-04-02">2023-04-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;972 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;<span id="/%E8%93%9D%E6%A1%A5%E6%9D%AF2017/" class="leancloud_visitors" data-flag-title="【蓝桥杯】2017题解">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-04-02">2023-04-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1254 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;6 minutes&nbsp;<span id="/%E8%93%9D%E6%A1%A5%E6%9D%AF2017/" class="leancloud_visitors" data-flag-title="【蓝桥杯】2017题解">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
@@ -192,7 +192,7 @@
     <li><a href="#10-油漆面积">10 油漆面积</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p>⏰总用时：170/240			🎯总分：32.5/100</p>
+            </div><div class="content" id="content"><p>⏰总用时：170/240			🎯总分：32.5/150</p>
 <table>
 <thead>
 <tr>
@@ -226,8 +226,8 @@
 <td>5</td>
 <td>❌</td>
 <td>13</td>
-<td>🌓</td>
-<td></td>
+<td>🌑</td>
+<td>🔸 Burnside引理</td>
 </tr>
 <tr>
 <td><strong>4</strong></td>
@@ -235,7 +235,7 @@
 <td>❌</td>
 <td>17</td>
 <td>🌓</td>
-<td></td>
+<td>🔹 考虑分割线的走法<br/>🔹 【dfs】从对称中心开始遍历</td>
 </tr>
 <tr>
 <td><strong>5</strong></td>
@@ -251,7 +251,7 @@
 <td>✅</td>
 <td>9</td>
 <td>🌕</td>
-<td>🔹 注意 scanf，printf 格式化输入输出的使用</td>
+<td></td>
 </tr>
 <tr>
 <td><strong>7</strong></td>
@@ -259,7 +259,7 @@
 <td>❌</td>
 <td>19</td>
 <td>🌓</td>
-<td>🔸 模拟<br/>🔸</td>
+<td>🔸 dfs</td>
 </tr>
 <tr>
 <td><strong>8</strong></td>
@@ -267,7 +267,7 @@
 <td>❌</td>
 <td>21</td>
 <td>🌓</td>
-<td>🔹 并查集（不过没用）</td>
+<td>🔹 动态规划：要判断的包子数设置一个上限<br/>🔹 所有包子数最大公因数不为1，则凑不出来的有无数个</td>
 </tr>
 <tr>
 <td><strong>9</strong></td>
@@ -275,14 +275,14 @@
 <td>50%</td>
 <td>23</td>
 <td>🌓</td>
-<td></td>
+<td>🔸 二分</td>
 </tr>
 <tr>
 <td><strong>10</strong></td>
 <td>25</td>
 <td>❌</td>
 <td>25</td>
-<td>🌓</td>
+<td></td>
 <td></td>
 </tr>
 </tbody>
@@ -560,13 +560,13 @@ ULRDLUURRR
 <p>请你计算一下，这样的魔方被打乱后，一共有多少种不同的状态。</p>
 <p>如果两个状态经过魔方的整体旋转后，各个面的颜色都一致，则认为是同一状态。</p>
 <h3 id="解析-2">解析</h3>
-<p>🟠 注意 <code>10=2*5</code> ，只用看这100个数中因数 2 和 5 的个数分别为多少，不用乘出来。</p>
+<p>🟠 <strong>【Burnside引理】</strong> 不会。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c++" data-lang="c++">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="mi">229878</span>
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="4-填空方格分割">4 【填空】方格分割</h2>
@@ -582,13 +582,79 @@ ULRDLUURRR
         title="img1" /></p>
 <p>试计算： 包括这 3 种分法在内，一共有多少种不同的分割方法。 注意：旋转对称的属于同一种分割法。</p>
 <h3 id="解析-3">解析</h3>
-<p>🟠 直接遍历，注意每次遍历后 i, j, k 分别乘 3, 5, 7 。</p>
+<p>🟠 <strong>考虑分割线的走法而不是方格的走法。</strong> 左上角的点坐标为 (0, 0)，右上角的点坐标为 (6, 6)。我们从对称中心 (3, 3) 开始画一条分割线，当分割线走到边界，即 <code>（x == 0 || y == 0 || x == 6 || y == 6）</code> 时，分割线划分完毕，这就是一种分割方法。</p>
+<p>🟡 <strong>【dfs】</strong> 对每个坐标遍历上下左右四种情况，注意分割线也是中心对称的，我们在给每个走过的分割点标记时，也要给其对称的点标记。</p>
+<p>🔵 考虑到每种情况可以按 4 条边旋转，最终结果要除 4。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c++" data-lang="c++">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="n">cnt</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>								<span class="c1">// 总情况数 
+</span><span class="c1"></span><span class="kt">int</span> <span class="n">v</span><span class="p">[</span><span class="mi">7</span><span class="p">][</span><span class="mi">7</span><span class="p">];</span>							<span class="c1">// 标记每个网格点是否被访问 
+</span><span class="c1"></span><span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">};</span>					<span class="c1">// 坐标变化情况：上、下、左、右 
+</span><span class="c1"></span><span class="kt">int</span> <span class="n">b</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">};</span>
+
+<span class="kt">void</span> <span class="nf">dfs</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span><span class="kt">int</span> <span class="n">y</span><span class="p">){</span>
+	<span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">==</span><span class="mi">0</span><span class="o">||</span><span class="n">x</span><span class="o">==</span><span class="mi">6</span><span class="o">||</span><span class="n">y</span><span class="o">==</span><span class="mi">0</span><span class="o">||</span><span class="n">y</span><span class="o">==</span><span class="mi">6</span><span class="p">){</span>			<span class="c1">// 如果分割线划到了边界，这种情况遍历结束 
+</span><span class="c1"></span>		<span class="n">cnt</span><span class="o">++</span><span class="p">;</span><span class="k">return</span><span class="p">;</span>
+	<span class="p">}</span>
+	
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">4</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="n">x</span><span class="o">+</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]][</span><span class="n">y</span><span class="o">+</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">==</span><span class="mi">0</span><span class="p">){</span>
+			<span class="n">v</span><span class="p">[</span><span class="n">x</span><span class="o">+</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]][</span><span class="n">y</span><span class="o">+</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+			<span class="n">v</span><span class="p">[</span><span class="mi">6</span><span class="o">-</span><span class="n">x</span><span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]][</span><span class="mi">6</span><span class="o">-</span><span class="n">y</span><span class="o">-</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>	<span class="c1">// 中心对称的点也要被标记 
+</span><span class="c1"></span>			<span class="n">dfs</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">y</span><span class="o">+</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+			<span class="n">v</span><span class="p">[</span><span class="n">x</span><span class="o">+</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]][</span><span class="n">y</span><span class="o">+</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+			<span class="n">v</span><span class="p">[</span><span class="mi">6</span><span class="o">-</span><span class="n">x</span><span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]][</span><span class="mi">6</span><span class="o">-</span><span class="n">y</span><span class="o">-</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+	
+	<span class="n">memset</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">v</span><span class="p">));</span>
+	<span class="n">v</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+	<span class="n">dfs</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>							<span class="c1">// 从最中心开始遍历 
+</span><span class="c1"></span>	<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">cnt</span><span class="o">/</span><span class="mi">4</span><span class="p">;</span>						<span class="c1">// 去重旋转的 
+</span><span class="c1"></span>	
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span> 
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="5-填空字母组串">5 【填空】字母组串</h2>
@@ -731,12 +797,79 @@ ULRDLUURRR
 <p><strong>输出描述</strong></p>
 <p>这个正则表达式能接受的最长字符串的长度。</p>
 <h3 id="解析-6">解析</h3>
+<p>🟠 <strong>【dfs】</strong> 注意遇到 &lsquo;('，'|'，&lsquo;x&rsquo; 时的不同情况❗❗❗</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c++" data-lang="c++">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="n">string</span> <span class="n">s</span><span class="p">;</span> 
+<span class="kt">int</span> <span class="n">len</span><span class="p">,</span><span class="n">idx</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="kt">int</span> <span class="nf">dfs</span><span class="p">(){</span>							<span class="c1">// idx：当前遍历的数组下标，函数返回最大的 x 数量 
+</span><span class="c1"></span>	<span class="kt">int</span> <span class="n">ans</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+	<span class="k">while</span><span class="p">(</span><span class="n">idx</span><span class="o">&lt;</span><span class="n">len</span><span class="p">){</span>
+		<span class="kt">char</span> <span class="n">c</span><span class="o">=</span><span class="n">s</span><span class="p">[</span><span class="n">idx</span><span class="p">];</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">c</span><span class="o">==</span><span class="sc">&#39;(&#39;</span><span class="p">){</span>					<span class="c1">// 最好不要在 switch 里面用字符串，容易出错！！！ 
+</span><span class="c1"></span>			<span class="n">idx</span><span class="o">++</span><span class="p">;</span>					<span class="c1">// 遇到左括号跳过，继续遍历 
+</span><span class="c1"></span>			<span class="n">ans</span><span class="o">+=</span><span class="n">dfs</span><span class="p">();</span>
+			<span class="n">idx</span><span class="o">++</span><span class="p">;</span>					<span class="c1">// 这里要加一！！！ 
+</span><span class="c1"></span>		<span class="p">}</span>
+		<span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">c</span><span class="o">==</span><span class="sc">&#39;|&#39;</span><span class="p">){</span>
+			<span class="n">idx</span><span class="o">++</span><span class="p">;</span>
+			<span class="n">ans</span><span class="o">=</span><span class="n">max</span><span class="p">(</span><span class="n">ans</span><span class="p">,</span><span class="n">dfs</span><span class="p">());</span>	<span class="c1">// 遇到或，选最大的	
+</span><span class="c1"></span>		<span class="p">}</span>
+		<span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">c</span><span class="o">==</span><span class="sc">&#39;x&#39;</span><span class="p">){</span>
+			<span class="n">ans</span><span class="o">++</span><span class="p">;</span><span class="n">idx</span><span class="o">++</span><span class="p">;</span>		<span class="c1">// 遇到 x，计数器加一就行
+</span><span class="c1"></span>		<span class="p">}</span>
+		<span class="k">else</span> <span class="k">break</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+	<span class="n">cin</span><span class="o">&gt;&gt;</span><span class="n">s</span><span class="p">;</span>
+	<span class="n">len</span><span class="o">=</span><span class="n">s</span><span class="p">.</span><span class="n">length</span><span class="p">();</span>
+	<span class="kt">int</span> <span class="n">ans</span><span class="o">=</span><span class="n">dfs</span><span class="p">();</span>
+	<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">ans</span><span class="p">;</span>
+	
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span> 
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="8-包子凑数">8 包子凑数</h2>
@@ -751,15 +884,77 @@ ULRDLUURRR
 <p><strong>输出描述</strong></p>
 <p>一个整数代表答案。如果凑不出的数目有无限多个，输出 INF。</p>
 <h3 id="解析-7">解析</h3>
-<p>🟠 用 map 等 STL 容器容易超时，这道题不用可以过 80% 的样例，用了只能过 40% 。非必要不使用❗❗❗</p>
-<p>🟡 <strong>dev 数组开大会爆栈 ❗❗❗ 可以用 static 或者修改分配的栈大小 ❗❗❗</strong></p>
-<p>🟢 过80%的简单代码（会超时）：</p>
+<p>🟠 <strong>把要判断的包子数设置一个上限，只要前面能凑出来，后面都能凑出来</strong></p>
+<p>🟡 <strong>如果所有包子数的最大公因数不为 1，则凑不出来的有无数多个</strong> ❗❗❗</p>
+<p>🟢 <strong>【动态规划】</strong> 遍历每一个蒸笼和上限内的所有包子数，转移方程为： <code>dp[j]=dp[j]|dp[j-a[i]]</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c++" data-lang="c++"> 
+<pre class="chroma"><code class="language-c++" data-lang="c++"> <span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="cp">#define max 100000				</span><span class="c1">// 设定一个最大数，后面的一定都能凑出来 
+</span><span class="c1"></span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+	<span class="kt">int</span> <span class="n">n</span><span class="p">,</span><span class="n">g</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="mi">105</span><span class="p">],</span><span class="n">dp</span><span class="p">[</span><span class="n">max</span><span class="p">];</span>
+	<span class="n">cin</span><span class="o">&gt;&gt;</span><span class="n">n</span><span class="p">;</span><span class="n">cin</span><span class="o">&gt;&gt;</span><span class="n">g</span><span class="p">;</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="n">g</span><span class="p">;</span>
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+		<span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+		<span class="n">g</span><span class="o">=</span><span class="n">__gcd</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>		<span class="c1">// 所有包子数的最大公因数 
+</span><span class="c1"></span>	<span class="p">}</span>
+	
+	<span class="k">if</span><span class="p">(</span><span class="n">g</span><span class="o">!=</span><span class="mi">1</span><span class="p">){</span>
+		<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&#34;INF&#34;</span><span class="p">;</span><span class="k">return</span> <span class="mi">0</span><span class="p">;</span>	<span class="c1">// 最大公因数不为 1，则凑不出来的有无穷多个 
+</span><span class="c1"></span>	<span class="p">}</span> 
+	
+	<span class="n">memset</span><span class="p">(</span><span class="n">dp</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">dp</span><span class="p">));</span><span class="n">dp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>		<span class="c1">// 遍历每一个蒸笼，动态规划 
+</span><span class="c1"></span>		<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span><span class="n">j</span><span class="o">&lt;</span><span class="n">max</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">){</span>
+			<span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">|</span><span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]];</span>
+		<span class="p">}</span> 
+	<span class="p">}</span>
+	
+	<span class="kt">int</span> <span class="n">cnt</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">max</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>		<span class="c1">// 计算凑不出的包子数 
+</span><span class="c1"></span>		<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>	<span class="n">cnt</span><span class="o">++</span><span class="p">;</span>
+	<span class="p">}</span>
+	
+	<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">cnt</span><span class="p">;</span> 
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span> 
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="9-分巧克力">9 分巧克力</h2>
@@ -773,7 +968,7 @@ ULRDLUURRR
 <p>例如一块 6x5 的巧克力可以切出 6 块 2x2 的巧克力或者 2 块 3x3 的巧克力。</p>
 <p>当然小朋友们都希望得到的巧克力尽可能大，你能帮小明计算出最大的边长是多少么？</p>
 <p><strong>输入描述</strong></p>
-<p>第一行包含两个整数 N, K ( $1≤N,K≤10^5 $$)。</p>
+<p>第一行包含两个整数 N, K ( $1≤N,K≤10^5 $)。</p>
 <p>以下 N 行每行包含两个整数  $H_i×W_i$  ( $1≤H_i×W_i≤10^5$ )。</p>
 <p>输入保证每位小朋友至少能获得一块 1x1 的巧克力。</p>
 <p><strong>输出描述</strong></p>

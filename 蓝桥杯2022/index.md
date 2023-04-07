@@ -1,7 +1,7 @@
 # 【蓝桥杯】2022题解
 
 
-⏰总用时：125			🎯总分：14.5
+⏰总用时：125/240			🎯总分：14.5/150
 
 | 题号   | 时间 | 结果 | 满分 | 难度 | 备注                                                         |
 | ------ | ---- | ---- | ---- | ---- | ------------------------------------------------------------ |
@@ -12,9 +12,9 @@
 | **5**  | 5    | ❌    | 10   | 🌑    | 🔸 【分数取模】、【快速幂】<br/>🔸 注意找递推关系<br/>🔸 加快输入速度：ios::sync_with_stdio(false); cin.tie(0);<br/>🔸 c++自带求最大公约数的函数：__gcd(x,y)<br/>🔸 注意宏定义不能和下面的变量重名 |
 | **6**  | 15   | ❌    | 15   | 🌓    | 🔹 观察题目的判断结论<br/>🔹 二分查找                          |
 | **7**  | 30   | ❌    | 20   | 🌓    |                                                              |
-| **8**  | 5    | ❌    | 20   | 🌓    |                                                              |
-| **9**  | 20   | 10%  | 25   | 🌓    |                                                              |
-| **10** | 5    | ❌    | 25   | 🌑    |                                                              |
+| **8**  | 5    | ❌    | 20   |      |                                                              |
+| **9**  | 20   | 10%  | 25   |      |                                                              |
+| **10** | 5    | ❌    | 25   |      |                                                              |
 
 😭😭😭😭好难啊，太多不会的，所以好几题直接放弃了。。。
 
@@ -396,7 +396,81 @@ bool check(int y){
 
 ### 解析
 
+```c++
+#include <iostream>
+using namespace std;
 
+const int N=1e5+10;
+
+
+int n,k,low[N],high[N],nlow,nhigh,a[N],len[N],ans;
+
+
+
+int bin(int u,int l,int r)
+{
+  while(l<r){
+    int mid=(l+r)/2;
+    if(u<low[mid])r=mid;
+    else l=mid+1;
+  }
+  return l;
+}
+
+int binb(int u,int l,int r)
+{
+  while(l<r){
+    int mid=(l+r)/2;
+    if(u>high[mid])r=mid;
+    else l=mid+1;
+  }
+  return l;
+}
+
+int binc(int u,int l,int r)
+{
+  while(l<r){
+    int mid=(l+r+1)/2;
+    if(u<=high[mid])l=mid;
+    else r=mid-1;
+  }
+  return l;
+}
+
+int main()
+{
+  cin>>n>>k;
+  for(int i=1;i<=n;i++)cin>>a[i];
+  for(int i=1;i<=n;i++)low[i]=1e9+7;
+  
+  for(int i=1;i<=n;i++){
+    int x=bin(a[i],1,n);
+    low[x]=min(a[i],low[x]);
+    nlow=max(nlow,x);
+    len[i]=x;//末尾为x
+  }
+
+  for(int i=n;i-k>=0;i--){
+    int res;
+    if(i==n){
+      res=len[i-k]+k;
+    }
+    else if(i-k){
+      res=len[i-k]+k+binc(a[i-k],0,nhigh);
+    }
+    else{
+      res=k+nhigh;
+    }
+    ans=max(ans,res);
+    //update
+    int x=binb(a[i],1,n);
+    high[x]=max(a[i],high[x]);
+    nhigh=max(nhigh,x);
+  }
+  cout<<ans<<endl;
+  return 0;
+}
+```
 
 ## 8 扫描游戏
 

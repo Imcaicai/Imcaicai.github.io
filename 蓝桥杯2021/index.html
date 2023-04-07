@@ -5,8 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <title>【蓝桥杯】2021题解 - 菜菜的秘密花园</title><meta name="Description" content="菜菜的秘密花园"><meta property="og:title" content="【蓝桥杯】2021题解" />
-<meta property="og:description" content="⏰总用时：177min	🎯总分：0
-   题号 时间 结果 满分 难度 备注     1 20 ❌ 5 🌕 🔸【计算一个整数各位上的数字】：当 i/10!=0 时，不断取出 i%10 。   2 7 ❌ 5 🌕 🔹 确定一条直线要考虑斜率和截距   3 40 ❌ 10 🌓 🔸 整数问题常用【取模】   4 35 ❌ 10 🌕 🔹 二维数组太大容易引起报错：program received signal sigsegv, segmentation fault. （本题中用 int g[2022][2022]; 就报错了QAQ）   5 45 ❌ 10 🌑    6 25 ❌ 15 🌓 🔹 用迭代器循环时不能修改 set 内元素   7 5 ❌ 20 🌓    8   20     9   25     10   25      1 【填空】卡片 题目 小蓝有很多数字卡片，每张卡片上都是数字 0 到 9。小蓝准备用这些卡片来拼一些数，他想从 1 开始拼出正整数，每拼一个，就保存起来，卡片就不能用来拼其它数了。小蓝想知道自己能从 1 拼到多少。" />
+<meta property="og:description" content="⏰总用时：177/	🎯总分：0/150
+   题号 时间 结果 满分 难度 备注     1 20 ❌ 5 🌕 🔸【计算一个整数各位上的数字】：当 i/10!=0 时，不断取出 i%10 。   2 7 ❌ 5 🌕 🔹 确定一条直线要考虑斜率和截距   3 40 ❌ 10 🌓 🔸 整数问题常用【取模】   4 35 ❌ 10 🌕 🔹 二维数组太大容易引起报错：program received signal sigsegv, segmentation fault. （本题中用 int g[2022][2022]; 就报错了QAQ）   5 45 ❌ 10 🌑 🔸 状压dp🔸 移位操作较多，容易出错   6 25 ❌ 15 🌓 🔹 用迭代器循环时不能修改 set 内元素   7 5 ❌ 20 🌓 🔸 【博弈论】重点是判断必胜   8   20     9   25     10   25      1 【填空】卡片 题目 小蓝有很多数字卡片，每张卡片上都是数字 0 到 9。小蓝准备用这些卡片来拼一些数，他想从 1 开始拼出正整数，每拼一个，就保存起来，卡片就不能用来拼其它数了。小蓝想知道自己能从 1 拼到多少。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2021/" /><meta property="og:image" content="https://imcaicai.github.io/img/avatar.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-03-20T17:00:10&#43;08:00" />
@@ -16,8 +16,8 @@
 <meta name="twitter:image" content="https://imcaicai.github.io/img/avatar.jpg"/>
 
 <meta name="twitter:title" content="【蓝桥杯】2021题解"/>
-<meta name="twitter:description" content="⏰总用时：177min	🎯总分：0
-   题号 时间 结果 满分 难度 备注     1 20 ❌ 5 🌕 🔸【计算一个整数各位上的数字】：当 i/10!=0 时，不断取出 i%10 。   2 7 ❌ 5 🌕 🔹 确定一条直线要考虑斜率和截距   3 40 ❌ 10 🌓 🔸 整数问题常用【取模】   4 35 ❌ 10 🌕 🔹 二维数组太大容易引起报错：program received signal sigsegv, segmentation fault. （本题中用 int g[2022][2022]; 就报错了QAQ）   5 45 ❌ 10 🌑    6 25 ❌ 15 🌓 🔹 用迭代器循环时不能修改 set 内元素   7 5 ❌ 20 🌓    8   20     9   25     10   25      1 【填空】卡片 题目 小蓝有很多数字卡片，每张卡片上都是数字 0 到 9。小蓝准备用这些卡片来拼一些数，他想从 1 开始拼出正整数，每拼一个，就保存起来，卡片就不能用来拼其它数了。小蓝想知道自己能从 1 拼到多少。"/>
+<meta name="twitter:description" content="⏰总用时：177/	🎯总分：0/150
+   题号 时间 结果 满分 难度 备注     1 20 ❌ 5 🌕 🔸【计算一个整数各位上的数字】：当 i/10!=0 时，不断取出 i%10 。   2 7 ❌ 5 🌕 🔹 确定一条直线要考虑斜率和截距   3 40 ❌ 10 🌓 🔸 整数问题常用【取模】   4 35 ❌ 10 🌕 🔹 二维数组太大容易引起报错：program received signal sigsegv, segmentation fault. （本题中用 int g[2022][2022]; 就报错了QAQ）   5 45 ❌ 10 🌑 🔸 状压dp🔸 移位操作较多，容易出错   6 25 ❌ 15 🌓 🔹 用迭代器循环时不能修改 set 内元素   7 5 ❌ 20 🌓 🔸 【博弈论】重点是判断必胜   8   20     9   25     10   25      1 【填空】卡片 题目 小蓝有很多数字卡片，每张卡片上都是数字 0 到 9。小蓝准备用这些卡片来拼一些数，他想从 1 开始拼出正整数，每拼一个，就保存起来，卡片就不能用来拼其它数了。小蓝想知道自己能从 1 拼到多少。"/>
 <meta name="application-name" content="菜菜的秘密花园">
 <meta name="apple-mobile-web-app-title" content="菜菜的秘密花园"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2021/" /><link rel="prev" href="https://imcaicai.github.io/stlpair%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" /><link rel="next" href="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2022/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -30,7 +30,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/imcaicai.github.io\/%E8%93%9D%E6%A1%A5%E6%9D%AF2021\/"
-        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "蓝桥杯, C\u002b\u002b","wordcount":  830 ,
+        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "蓝桥杯, C\u002b\u002b","wordcount":  1177 ,
         "url": "https:\/\/imcaicai.github.io\/%E8%93%9D%E6%A1%A5%E6%9D%AF2021\/","datePublished": "2023-03-20T17:00:10+08:00","dateModified": "2023-03-20T17:00:10+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/imcaicai.github.io\/img\/avatar.jpg"},"author": {
@@ -124,8 +124,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">【蓝桥杯】2021题解</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>蓝桥杯刷题记录</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-20">2023-03-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;830 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;<span id="/%E8%93%9D%E6%A1%A5%E6%9D%AF2021/" class="leancloud_visitors" data-flag-title="【蓝桥杯】2021题解">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-20">2023-03-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1177 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;6 minutes&nbsp;<span id="/%E8%93%9D%E6%A1%A5%E6%9D%AF2021/" class="leancloud_visitors" data-flag-title="【蓝桥杯】2021题解">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
@@ -177,27 +177,12 @@
         <li><a href="#解析-6">解析</a></li>
       </ul>
     </li>
-    <li><a href="#8-左孩子右兄弟">8 左孩子右兄弟</a>
-      <ul>
-        <li><a href="#题目-7">题目</a></li>
-        <li><a href="#解析-7">解析</a></li>
-      </ul>
-    </li>
-    <li><a href="#9-括号序列">9 括号序列</a>
-      <ul>
-        <li><a href="#题目-8">题目</a></li>
-        <li><a href="#解析-8">解析</a></li>
-      </ul>
-    </li>
-    <li><a href="#10-分果果">10 分果果</a>
-      <ul>
-        <li><a href="#题目-9">题目</a></li>
-        <li><a href="#解析-9">解析</a></li>
-      </ul>
-    </li>
+    <li><a href="#8-左孩子右兄弟">8 左孩子右兄弟</a></li>
+    <li><a href="#9-括号序列">9 括号序列</a></li>
+    <li><a href="#10-分果果">10 分果果</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p>⏰总用时：177min			🎯总分：0</p>
+            </div><div class="content" id="content"><p>⏰总用时：177/			🎯总分：0/150</p>
 <table>
 <thead>
 <tr>
@@ -248,7 +233,7 @@
 <td>❌</td>
 <td>10</td>
 <td>🌑</td>
-<td></td>
+<td>🔸 状压dp<br/>🔸 移位操作较多，容易出错</td>
 </tr>
 <tr>
 <td><strong>6</strong></td>
@@ -264,7 +249,7 @@
 <td>❌</td>
 <td>20</td>
 <td>🌓</td>
-<td></td>
+<td>🔸 【博弈论】重点是判断必胜</td>
 </tr>
 <tr>
 <td><strong>8</strong></td>
@@ -579,12 +564,91 @@
 <p>小蓝现在在第一栋教学楼，他想要访问每栋教学楼正好一次，最终回到第一栋教学楼（即走一条哈密尔顿回路），请问他有多少种不同的访问方案？</p>
 <p>两个访问方案不同是指存在某个 i，小蓝在两个访问方法中访问完教学楼 i 后访问了不同的教学楼。</p>
 <h3 id="解析-4">解析</h3>
+<p>🟠 <strong>【状压dp】</strong> 用 <code>dp[i][j]</code> 表示从 1 走到 j 且状态为 i 的方案数。其中 i 的二进制第1-21位分别表示是否经过该教学楼。</p>
+<p>🟡 遍历每一种状态 i 和教学楼 j，若该状态经过该教学楼，则看这条路径是否可以由中转点 k 得到，即 i 是否满足 1→k→j，若满足则有转移方程 <code>dp[i][j]+=dp[i-(1&lt;&lt;j)][k]</code> 。<strong>注意经过 k 时还未经过 j 。</strong></p>
+<p>🔵 <strong>代码中移位操作较多，易出错。</strong> 此种方法需要运行好几秒，将 <code>1 ~ 21</code> 映射成 <code>0 ~ 20</code> 据说会快一点。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c++" data-lang="c++">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">ll</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">n</span><span class="o">=</span><span class="mi">22</span><span class="p">,</span><span class="n">m</span><span class="o">=</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">n</span><span class="p">;</span>
+
+<span class="n">ll</span> <span class="n">dp</span><span class="p">[</span><span class="n">m</span><span class="p">][</span><span class="n">n</span><span class="p">];</span>			<span class="c1">// dp[i][j]：从 1 走到 j 且状态为 i 的方案数
+</span><span class="c1"></span><span class="kt">bool</span> <span class="n">e</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="n">n</span><span class="p">];</span>			<span class="c1">// 记录两点间是否连通 
+</span><span class="c1"></span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+	
+	<span class="c1">// 判断两点间是否连通
+</span><span class="c1"></span>	<span class="n">memset</span><span class="p">(</span><span class="n">e</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">e</span><span class="p">));</span> 
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+		<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+			<span class="k">if</span><span class="p">(</span><span class="n">__gcd</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span>	
+				<span class="n">e</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">e</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+	<span class="p">}</span>
+	
+	<span class="c1">// 动态规划
+</span><span class="c1"></span>	<span class="n">dp</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">m</span><span class="o">-</span><span class="mi">2</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>						<span class="c1">// 遍历每一种状态 
+</span><span class="c1"></span>		<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">){</span>						<span class="c1">// 遍历每一个教学楼 
+</span><span class="c1"></span>			<span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">&gt;&gt;</span><span class="n">j</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">){</span>							<span class="c1">// 这个方案 i 经过了 j 
+</span><span class="c1"></span>				<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">k</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">k</span><span class="o">++</span><span class="p">){</span>				<span class="c1">// 遍历每一个中转教学楼 
+</span><span class="c1"></span>					<span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">&gt;&gt;</span><span class="n">k</span><span class="o">&amp;</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">e</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">])</span>			<span class="c1">// 这个状态可以经过教学楼 k 中转达到 
+</span><span class="c1"></span>						<span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">+=</span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">j</span><span class="p">)][</span><span class="n">k</span><span class="p">];</span>	<span class="c1">// 加上通过 k 到达 j 的方案数 
+</span><span class="c1"></span>				<span class="p">}</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+	<span class="p">}</span> 
+	
+	<span class="c1">// 合并倒数第二步落在各个教学楼的所有可能
+</span><span class="c1"></span>	<span class="n">ll</span> <span class="n">ans</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> 
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+		<span class="n">ans</span><span class="o">+=</span><span class="n">dp</span><span class="p">[</span><span class="n">m</span><span class="o">-</span><span class="mi">2</span><span class="p">][</span><span class="n">i</span><span class="p">];</span>
+	
+	<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">ans</span><span class="p">;</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span> 
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="6-砝码称重">6 砝码称重</h2>
@@ -669,21 +733,125 @@
 <p><strong>输出格式</strong></p>
 <p>输出 T 行，依次对应每组询问的答案。 每行包含一个整数 1、0 或 −1 分别表示 Alice 胜、平局或败。</p>
 <h3 id="解析-6">解析</h3>
-<h2 id="8-左孩子右兄弟">8 左孩子右兄弟</h2>
-<h3 id="题目-7">题目</h3>
-<p><strong>输入格式</strong></p>
-<p><strong>输出格式</strong></p>
-<h3 id="解析-7">解析</h3>
+<p>🟠 <strong>【博弈论】 考虑好所有输赢的可能</strong></p>
+<p>✔ <strong>只需考虑这最高位上 1 的个数。</strong> 我们用数组 <code>a[20]</code> 存储每位上 1 的个数，设最高位为 i 。</p>
+<p>✔ 当 <code>a[i]=1</code> 时，先手赢。因为先手只要拿走这个数，最终异或的结果必定大于后手。</p>
+<p>✔ 当 <code>a[i]</code> 为奇数、 n 为奇数时，先手赢。</p>
+<p>✔ 当 <code>a[i]</code> 为奇数、 n 为偶数时，后手赢。</p>
+<p>✔ 当 <code>a[i]</code> 为偶数时，最终这一位上二者会相同，继续看下一位。</p>
+<p>🟡 我们用 sum 记录 n 个数的异或，若 <code>sum=0</code> ，那么必然平局。（相当于每位上 1 的个数都为偶数）</p>
+<p>🔵 注意在计数时不要忘记判断 <code>if(x&amp;1)</code> 。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="n">t</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span>					<span class="c1">// 存储一组数中每位的个数 
+</span><span class="c1"></span>
+<span class="kt">void</span> <span class="nf">count</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">){</span>					<span class="c1">// 计算数 x 每位的 1 的个数 
+</span><span class="c1"></span>	<span class="kt">int</span> <span class="n">cnt</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+	<span class="k">while</span><span class="p">(</span><span class="n">x</span><span class="p">){</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">&amp;</span><span class="mi">1</span><span class="p">)</span>	<span class="n">a</span><span class="p">[</span><span class="n">cnt</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>			<span class="c1">// 注意只有这一位为1时，计数器才加一！！！ 
+</span><span class="c1"></span>		<span class="n">cnt</span><span class="o">++</span><span class="p">;</span>
+		<span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="o">&gt;&gt;</span><span class="mi">1</span><span class="p">;</span> 
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+	<span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">t</span><span class="p">);</span>
+	
+	<span class="k">while</span><span class="p">(</span><span class="n">t</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">){</span>
+		<span class="n">t</span><span class="o">--</span><span class="p">;</span>
+		<span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
+		
+		<span class="c1">// 计算这 n 个数每位 1 的个数 
+</span><span class="c1"></span>		<span class="kt">int</span> <span class="n">sum</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+		<span class="n">memset</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">a</span><span class="p">));</span>
+		<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+			<span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">x</span><span class="p">);</span>
+			<span class="n">sum</span><span class="o">=</span><span class="n">sum</span><span class="o">^</span><span class="n">x</span><span class="p">;</span>
+			<span class="n">count</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>				
+		<span class="p">}</span>
+		
+		<span class="c1">// 如果这 n 个数异或为0，那么平局
+</span><span class="c1"></span>		<span class="k">if</span><span class="p">(</span><span class="n">sum</span><span class="o">==</span><span class="mi">0</span><span class="p">){</span>
+			<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&#34;0&#34;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span><span class="k">continue</span><span class="p">;</span>
+		<span class="p">}</span> 
+		
+		<span class="c1">// 判断最高位
+</span><span class="c1"></span>		<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">19</span><span class="p">;</span><span class="n">i</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">--</span><span class="p">){</span>		
+			<span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">){</span>					<span class="c1">// 最高位只有1个1，先手赢 
+</span><span class="c1"></span>				<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&#34;1&#34;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span><span class="k">break</span><span class="p">;</span>
+			<span class="p">}</span>	
+			<span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">%</span><span class="mi">2</span><span class="o">==</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">n</span><span class="o">%</span><span class="mi">2</span><span class="o">==</span><span class="mi">1</span><span class="p">){</span>	<span class="c1">// 最高位有奇数个1，总数为奇数，先手赢 
+</span><span class="c1"></span>				<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&#34;1&#34;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span><span class="k">break</span><span class="p">;</span>
+			<span class="p">}</span>
+			<span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">%</span><span class="mi">2</span><span class="o">==</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">n</span><span class="o">%</span><span class="mi">2</span><span class="o">==</span><span class="mi">0</span><span class="p">){</span>	<span class="c1">// 最高位有奇数个1，总数为偶数，后手赢 
+</span><span class="c1"></span>				<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&#34;-1&#34;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span><span class="k">break</span><span class="p">;</span>
+			<span class="p">}</span>								<span class="c1">// 最高位有偶数个1时，最终会被抵消，继续判断下一位 
+</span><span class="c1"></span>		<span class="p">}</span> 
+	<span class="p">}</span>
+	
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span> 
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="8-左孩子右兄弟">8 左孩子右兄弟</h2>
 <h2 id="9-括号序列">9 括号序列</h2>
-<h3 id="题目-8">题目</h3>
-<p><strong>输入格式</strong></p>
-<p><strong>输出格式</strong></p>
-<h3 id="解析-8">解析</h3>
 <h2 id="10-分果果">10 分果果</h2>
-<h3 id="题目-9">题目</h3>
-<p><strong>输入格式</strong></p>
-<p><strong>输出格式</strong></p>
-<h3 id="解析-9">解析</h3>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
