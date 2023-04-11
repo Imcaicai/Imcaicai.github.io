@@ -6,7 +6,7 @@
         <meta name="robots" content="noodp" />
         <title>【蓝桥杯】2019题解 - 菜菜的秘密花园</title><meta name="Description" content="菜菜的秘密花园"><meta property="og:title" content="【蓝桥杯】2019题解" />
 <meta property="og:description" content="⏰总用时：170/240	🎯总分：39/150
-   题号 时间 结果 满分 难度 备注     1 5 ✅ 5 🌕    2 5 ✅ 5 🌕    3 5 ✅ 10 🌕    4 20 ❌ 10 🌓 🔹 用 BFS、queue 遍历🔹 输入地图时用 char 而不是 int   5 35 ❌ 10 🌓 🔸 快速计算 $a^b(mod p)$🔸 快速计算 $a*b(mod p)$   6 20 20% 15 🌓 🔹 二叉树🔹 先算出每个节点所在层数，再根据层数算总和，这样不会超时   7 40 40% 20 🌓 🔸 模拟🔸 用 map 容器，以外卖店的视角存储订单信息🔸 可以通过的，要注意易错的细节❗❗❗   8 30 40% 20 🌓 🔹 并查集（不过没用）   9 10 ❌ 25 🌑 🔸 动态规划   10   25      1 【填空】平方和 题目 小明对数位中含有 2、0、1、9 的数字很感兴趣，在 1 到 40 中这样的数包括 1、2、9、10 至 32、39 和 40，共 28 个，他们的和是 574。" />
+   题号 时间 结果 满分 难度 备注     1 5 ✅ 5 🌕    2 5 ✅ 5 🌕    3 5 ✅ 10 🌕    4 20 ❌ 10 🌓 🔹 用 BFS、queue 遍历🔹 输入地图时用 char 而不是 int   5 35 ❌ 10 🌓 🔸 快速计算 $a^b(mod p)$🔸 快速计算 $a*b(mod p)$   6 20 20% 15 🌓 🔹 二叉树🔹 先算出每个节点所在层数，再根据层数算总和，这样不会超时   7 40 40% 20 🌓 🔸 模拟🔸 用 map 容器，以外卖店的视角存储订单信息🔸 可以通过的，要注意易错的细节❗❗❗   8 30 40% 20 🌓 🔹 并查集（不过没用）   9 10 ❌ 25 🌑 🔸 状压dp🔸 fill()：初始化数组，填充内容可不为0   10   25      1 【填空】平方和 题目 小明对数位中含有 2、0、1、9 的数字很感兴趣，在 1 到 40 中这样的数包括 1、2、9、10 至 32、39 和 40，共 28 个，他们的和是 574。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2019/" /><meta property="og:image" content="https://imcaicai.github.io/img/avatar.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-03-28T08:43:22&#43;08:00" />
@@ -17,7 +17,7 @@
 
 <meta name="twitter:title" content="【蓝桥杯】2019题解"/>
 <meta name="twitter:description" content="⏰总用时：170/240	🎯总分：39/150
-   题号 时间 结果 满分 难度 备注     1 5 ✅ 5 🌕    2 5 ✅ 5 🌕    3 5 ✅ 10 🌕    4 20 ❌ 10 🌓 🔹 用 BFS、queue 遍历🔹 输入地图时用 char 而不是 int   5 35 ❌ 10 🌓 🔸 快速计算 $a^b(mod p)$🔸 快速计算 $a*b(mod p)$   6 20 20% 15 🌓 🔹 二叉树🔹 先算出每个节点所在层数，再根据层数算总和，这样不会超时   7 40 40% 20 🌓 🔸 模拟🔸 用 map 容器，以外卖店的视角存储订单信息🔸 可以通过的，要注意易错的细节❗❗❗   8 30 40% 20 🌓 🔹 并查集（不过没用）   9 10 ❌ 25 🌑 🔸 动态规划   10   25      1 【填空】平方和 题目 小明对数位中含有 2、0、1、9 的数字很感兴趣，在 1 到 40 中这样的数包括 1、2、9、10 至 32、39 和 40，共 28 个，他们的和是 574。"/>
+   题号 时间 结果 满分 难度 备注     1 5 ✅ 5 🌕    2 5 ✅ 5 🌕    3 5 ✅ 10 🌕    4 20 ❌ 10 🌓 🔹 用 BFS、queue 遍历🔹 输入地图时用 char 而不是 int   5 35 ❌ 10 🌓 🔸 快速计算 $a^b(mod p)$🔸 快速计算 $a*b(mod p)$   6 20 20% 15 🌓 🔹 二叉树🔹 先算出每个节点所在层数，再根据层数算总和，这样不会超时   7 40 40% 20 🌓 🔸 模拟🔸 用 map 容器，以外卖店的视角存储订单信息🔸 可以通过的，要注意易错的细节❗❗❗   8 30 40% 20 🌓 🔹 并查集（不过没用）   9 10 ❌ 25 🌑 🔸 状压dp🔸 fill()：初始化数组，填充内容可不为0   10   25      1 【填空】平方和 题目 小明对数位中含有 2、0、1、9 的数字很感兴趣，在 1 到 40 中这样的数包括 1、2、9、10 至 32、39 和 40，共 28 个，他们的和是 574。"/>
 <meta name="application-name" content="菜菜的秘密花园">
 <meta name="apple-mobile-web-app-title" content="菜菜的秘密花园"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2019/" /><link rel="prev" href="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2022/" /><link rel="next" href="https://imcaicai.github.io/stlqueue%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -30,7 +30,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/imcaicai.github.io\/%E8%93%9D%E6%A1%A5%E6%9D%AF2019\/"
-        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "蓝桥杯, C\u002b\u002b","wordcount":  1501 ,
+        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "蓝桥杯, C\u002b\u002b","wordcount":  1502 ,
         "url": "https:\/\/imcaicai.github.io\/%E8%93%9D%E6%A1%A5%E6%9D%AF2019\/","datePublished": "2023-03-28T08:43:22+08:00","dateModified": "2023-03-28T08:43:22+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/imcaicai.github.io\/img\/avatar.jpg"},"author": {
@@ -124,7 +124,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">【蓝桥杯】2019题解</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>蓝桥杯刷题记录</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-28">2023-03-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1501 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-28">2023-03-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1502 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;8 minutes&nbsp;<span id="/%E8%93%9D%E6%A1%A5%E6%9D%AF2019/" class="leancloud_visitors" data-flag-title="【蓝桥杯】2019题解">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
                     </span>&nbsp;</div>
@@ -275,7 +275,7 @@
 <td>❌</td>
 <td>25</td>
 <td>🌑</td>
-<td>🔸 动态规划</td>
+<td>🔸 状压dp<br/>🔸 fill()：初始化数组，填充内容可不为0</td>
 </tr>
 <tr>
 <td><strong>10</strong></td>

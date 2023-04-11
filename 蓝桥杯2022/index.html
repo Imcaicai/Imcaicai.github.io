@@ -30,7 +30,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/imcaicai.github.io\/%E8%93%9D%E6%A1%A5%E6%9D%AF2022\/"
-        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "蓝桥杯, C\u002b\u002b","wordcount":  1241 ,
+        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "蓝桥杯, C\u002b\u002b","wordcount":  1242 ,
         "url": "https:\/\/imcaicai.github.io\/%E8%93%9D%E6%A1%A5%E6%9D%AF2022\/","datePublished": "2023-03-22T10:39:32+08:00","dateModified": "2023-03-22T10:39:32+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/imcaicai.github.io\/img\/avatar.jpg"},"author": {
@@ -124,7 +124,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">【蓝桥杯】2022题解</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>蓝桥杯刷题记录</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-22">2023-03-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1241 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-22">2023-03-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1242 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;6 minutes&nbsp;<span id="/%E8%93%9D%E6%A1%A5%E6%9D%AF2022/" class="leancloud_visitors" data-flag-title="【蓝桥杯】2022题解">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
                     </span>&nbsp;</div>
@@ -431,7 +431,7 @@
 </div><h2 id="3-求和">3 求和</h2>
 <h3 id="题目-2">题目</h3>
 <p>给定 n 个整数 $a_1,a_2,&hellip;,a_n$ ，求它们两两相乘再相加的和，即：</p>
-<p>$S=a_1<em>a_2+a_1</em>a_3+&hellip;+a_{n-2}*a_{n-1}+a_{n-2}*a_{n}+a_{n-1}*a_n$</p>
+<p>$S=a_1×a_2+a_1×a_3+&hellip;+a_{n-2}×a_{n-1}+a_{n-2}×a_{n}+a_{n-1}×a_n$</p>
 <p><strong>输入格式</strong></p>
 <p>输入的第一行包含一个整数 n。</p>
 <p>第二行包含 n 个整数 $a_1,a_2,&hellip;,a_n$ 。</p>
@@ -682,7 +682,7 @@
 <p>输出一行, 包含一个整数, 表示小青蛙需要的最低跳跃能力。</p>
 <h3 id="解析-5">解析</h3>
 <p>🟠 <strong>当跳跃能力为 y 时，对每个长度为 y-1 的区间 [l, r]，2x 次全程都会经过这个区间 2x 次，因此这个区间的总高度至少为 2x 。</strong> 据此我们写出判断函数 check()。</p>
-<p>🟡 用**【二分查找】** ，找出最小的 y。注意判断后的转移式 ❗❗❗</p>
+<p>🟡 用 <strong>【二分查找】</strong> ，找出最小的 y。注意判断后的转移式 ❗❗❗</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
