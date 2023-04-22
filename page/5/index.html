@@ -118,6 +118,19 @@
         alt="/img/avatar.jpg"
         title="/img/avatar.jpg" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/git%E6%8A%A5%E9%94%99-ssh%E7%9B%B8%E5%85%B3%E9%94%99%E8%AF%AF/">Git报错-ssh相关错误</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-11-06">2022-11-06</time></span>&nbsp;<span class="post-category">included in <a href="/categories/git/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Git</a></span></div><div class="content">问题描述 在将本地的远程仓库push到github上时，出现报错：
+ ssh: Could not resolve hostname github.com: Temporary failure in name resolution fatal: Could not read from remote repository.
+Please make sure you have the correct access rights and the repository exists.
+ 情况1 ssh错误 解决方案：重新设置ssh
+1 重新在git设置身份的名字和邮箱 进入到需要提交的文件夹底下，执行命令：
+1 2  git config --global user.name &#34;yourname&#34; git config --global user.email &#34;your@email.com&#34;   注：yourname是你要设置的名字，your@email是你要设置的邮箱。
+2 删除known_hosts文件 进入 .ssh 文件夹，手动删除 known_hosts 文件
+3 重新设置ssh git输入命令：
+1  ssh-keygen -t rsa -C &#34;your@email.</div><div class="post-footer">
+        <a href="/git%E6%8A%A5%E9%94%99-ssh%E7%9B%B8%E5%85%B3%E9%94%99%E8%AF%AF/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/ssh/">SSH</a>,&nbsp;<a href="/tags/github/">Github</a>,&nbsp;<a href="/tags/git/">Git</a>,&nbsp;<a href="/tags/ping/">Ping</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/%E4%BD%BF%E7%94%A8adb%E5%91%BD%E4%BB%A4%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/">使用adb命令安装软件</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-11-06">2022-11-06</time></span>&nbsp;<span class="post-category">included in <a href="/categories/android/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Android</a></span></div><div class="content">1 安装软件  打开命令行，进入apk文件所在目录 输入命令：adb install xxx.apk  2 踩雷记录 报错1  android adb devices offline
  解决办法：重启adb服务
@@ -158,7 +171,7 @@
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/go/">Go</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/an-image-is-worth-graph-of-nodes/">Vision GNN: An Image is Worth Graph of Nodes</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-10-17">2022-10-17</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>深度学习</a></span></div><div class="content">本文为论文 Vision GNN: An Image is Worth Graph of Nodes 的阅读笔记。
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-10-17">2022-10-17</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>论文阅读笔记</a></span></div><div class="content">本文为论文 Vision GNN: An Image is Worth Graph of Nodes 的阅读笔记。
 论文下载：https://arxiv.org/abs/2206.00272
 引言 网络架构在基于深度学习的计算机视觉中起着关键作用。广泛使用的CNN和 transformer（变换器）将图像视为 grid（网格）或 sequence（序列）结构，这对于捕捉不规则、复杂的物体来说是不灵活的。本文建议将图像表示为一个 graph 结构，并引入一个新的 Vision GNN（ViG）架构来提取视觉任务的图层特征。
 文章主要工作：

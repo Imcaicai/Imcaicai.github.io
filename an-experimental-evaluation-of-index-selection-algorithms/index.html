@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>An Experimental Evaluation of Index Selection Algorithms - 菜菜的秘密花园</title><meta name="Description" content="菜菜的秘密花园"><meta property="og:title" content="An Experimental Evaluation of Index Selection Algorithms" />
+<meta property="og:description" content="本文为论文 Magic mirror in my hand, which is the best in the land?An Experimental Evaluation of Index Selection Algorithms 的阅读笔记。
+1 引言 🟠 索引对于高效处理数据库工作负载来说很重要，针对索引选择提出的方案有很多，主要的难点是：
+ 解空间是巨大的：随索引数量、列、类型增加 索引间相互作用 很难在部署运行前量化索引对工作负载的影响  🟡 本文描述和分析了 8 种基于不同概念的索引选择算法，并沿着不同的维度进行比较，如解决方案质量、运行时长、多列支持、解决方案粒度和复杂性。
+🟢 虚拟索引（hypothetical indexes）
+为了避免执行查询、创建索引，一些数据库系统支持虚拟索引，通过它来估计成本。
+2 索引选择算法 索引选择算法的里程碑时间轴如下：
+2.1 Drop
+这种方法依次删除候选索引，直到不能进一步降低成本为止。成本是由数据的特征决定的，而不是由查询优化器决定的。不支持多列索引的选择
+2.2 AutoAdmin
+该迭代算法通过在每次迭代中增加索引宽度来识别多列索引。首先从每个查询 $j=1,&hellip;Q$ 确定候选索引 $S_j$ ，再将所有查询的候选并集作为第二步的输入，确定最佳索引配置时考虑所有查询。
+2.3 (Anytime) DTA
+首先确定每个查询的候选索引，然后根据原始贪婪枚举确定整个工作负载的索引配置。
+2.4 DB2Advis
+① 确定候选索引：对每个查询 j ，在列上创建假设索引。然后，向优化器询问查询 j 的最佳计划，在结果计划中使用的假设索引被添加到索引候选集。
+② I 中的所有候选索引都按照它们的逐空间效益比降序排序。下面，如果索引对w1的比值更高，则组合索引对w1和w2，直到达到存储预算。
+③ 将先前计算的解决方案集与不属于的索引集交换，看成本是否降低。
+2.5 Relaxation
+① 为每个查询获取最佳索引配置。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://imcaicai.github.io/an-experimental-evaluation-of-index-selection-algorithms/" /><meta property="og:image" content="https://imcaicai.github.io/img/avatar.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-04-11T18:15:39&#43;08:00" />
+<meta property="article:modified_time" content="2023-04-11T18:15:39&#43;08:00" /><meta property="og:site_name" content="菜菜的秘密花园" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://imcaicai.github.io/img/avatar.jpg"/>
+
+<meta name="twitter:title" content="An Experimental Evaluation of Index Selection Algorithms"/>
+<meta name="twitter:description" content="本文为论文 Magic mirror in my hand, which is the best in the land?An Experimental Evaluation of Index Selection Algorithms 的阅读笔记。
+1 引言 🟠 索引对于高效处理数据库工作负载来说很重要，针对索引选择提出的方案有很多，主要的难点是：
+ 解空间是巨大的：随索引数量、列、类型增加 索引间相互作用 很难在部署运行前量化索引对工作负载的影响  🟡 本文描述和分析了 8 种基于不同概念的索引选择算法，并沿着不同的维度进行比较，如解决方案质量、运行时长、多列支持、解决方案粒度和复杂性。
+🟢 虚拟索引（hypothetical indexes）
+为了避免执行查询、创建索引，一些数据库系统支持虚拟索引，通过它来估计成本。
+2 索引选择算法 索引选择算法的里程碑时间轴如下：
+2.1 Drop
+这种方法依次删除候选索引，直到不能进一步降低成本为止。成本是由数据的特征决定的，而不是由查询优化器决定的。不支持多列索引的选择
+2.2 AutoAdmin
+该迭代算法通过在每次迭代中增加索引宽度来识别多列索引。首先从每个查询 $j=1,&hellip;Q$ 确定候选索引 $S_j$ ，再将所有查询的候选并集作为第二步的输入，确定最佳索引配置时考虑所有查询。
+2.3 (Anytime) DTA
+首先确定每个查询的候选索引，然后根据原始贪婪枚举确定整个工作负载的索引配置。
+2.4 DB2Advis
+① 确定候选索引：对每个查询 j ，在列上创建假设索引。然后，向优化器询问查询 j 的最佳计划，在结果计划中使用的假设索引被添加到索引候选集。
+② I 中的所有候选索引都按照它们的逐空间效益比降序排序。下面，如果索引对w1的比值更高，则组合索引对w1和w2，直到达到存储预算。
+③ 将先前计算的解决方案集与不属于的索引集交换，看成本是否降低。
+2.5 Relaxation
+① 为每个查询获取最佳索引配置。"/>
+<meta name="application-name" content="菜菜的秘密花园">
+<meta name="apple-mobile-web-app-title" content="菜菜的秘密花园"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://imcaicai.github.io/an-experimental-evaluation-of-index-selection-algorithms/" /><link rel="prev" href="https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2015/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "An Experimental Evaluation of Index Selection Algorithms",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/imcaicai.github.io\/an-experimental-evaluation-of-index-selection-algorithms\/"
+        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "index","wordcount":  224 ,
+        "url": "https:\/\/imcaicai.github.io\/an-experimental-evaluation-of-index-selection-algorithms\/","datePublished": "2023-04-11T18:15:39+08:00","dateModified": "2023-04-11T18:15:39+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/imcaicai.github.io\/img\/avatar.jpg"},"author": {
+                "@type": "Person",
+                "name": "菜菜"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="菜菜的秘密花园"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/avatar.jpg"
+        data-srcset="/img/avatar.jpg, /img/avatar.jpg 1.5x, /img/avatar.jpg 2x"
+        data-sizes="auto"
+        alt="/img/avatar.jpg"
+        title="/img/avatar.jpg" />菜菜的秘密花园</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/categories/documentation/"> Docs </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/Imcaicai" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="Select Language">
+                    <i class="fa fa-globe" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/an-experimental-evaluation-of-index-selection-algorithms/" selected>English</option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="菜菜的秘密花园"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/avatar.jpg"
+        data-srcset="/img/avatar.jpg, /img/avatar.jpg 1.5x, /img/avatar.jpg 2x"
+        data-sizes="auto"
+        alt="/img/avatar.jpg"
+        title="/img/avatar.jpg" />菜菜的秘密花园</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/categories/documentation/" title="">Docs</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/Imcaicai" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="Select Language">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/an-experimental-evaluation-of-index-selection-algorithms/" selected>English</option></select>
+                </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">An Experimental Evaluation of Index Selection Algorithms</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>论文阅读笔记</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-04-11">2023-04-11</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;224 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;<span id="/an-experimental-evaluation-of-index-selection-algorithms/" class="leancloud_visitors" data-flag-title="An Experimental Evaluation of Index Selection Algorithms">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1-引言">1 引言</a></li>
+        <li><a href="#2-索引选择算法">2 索引选择算法</a></li>
+        <li><a href="#3-methodology">3 METHODOLOGY</a>
+          <ul>
+            <li><a href="#31-workloads">3.1 Workloads</a></li>
+            <li><a href="#32-determining-query-cost">3.2 Determining Query Cost</a></li>
+            <li><a href="#33-constraints-and-optimization-goal">3.3 Constraints and Optimization Goal</a></li>
+          </ul>
+        </li>
+        <li><a href="#4-evaluation">4 EVALUATION</a>
+          <ul>
+            <li><a href="#41-tpc-h">4.1 TPC-H</a></li>
+            <li><a href="#42-tpc-ds">4.2 TPC-DS</a></li>
+            <li><a href="#43-join-order-benchmark">4.3 Join Order Benchmark</a></li>
+            <li><a href="#44-cost-breakdown-and-cost-requests">4.4 Cost Breakdown and Cost Requests</a></li>
+            <li><a href="#45-parameter-influence">4.5 Parameter Influence</a></li>
+          </ul>
+        </li>
+        <li><a href="#5-learnings">5 LEARNINGS</a>
+          <ul>
+            <li><a href="#51-general-insights">5.1 General Insights</a></li>
+            <li><a href="#52-drop">5.2 Drop</a></li>
+            <li><a href="#53-autoadmin">5.3 AutoAdmin</a></li>
+            <li><a href="#54-db2advis">5.4 DB2Advis</a></li>
+            <li><a href="#55-relaxation">5.5 Relaxation</a></li>
+            <li><a href="#56-cophy">5.6 CoPhy</a></li>
+            <li><a href="#57-dexter">5.7 Dexter</a></li>
+            <li><a href="#58-extend">5.8 Extend</a></li>
+            <li><a href="#59-dta">5.9 DTA</a></li>
+          </ul>
+        </li>
+        <li><a href="#6-conclusions">6 CONCLUSIONS</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>本文为论文 <em><strong>Magic mirror in my hand, which is the best in the land?An Experimental Evaluation of Index Selection Algorithms</strong></em> 的阅读笔记。</p>
+<h3 id="1-引言">1 引言</h3>
+<p>🟠 索引对于高效处理数据库工作负载来说很重要，针对索引选择提出的方案有很多，主要的难点是：</p>
+<ul>
+<li>解空间是巨大的：随索引数量、列、类型增加</li>
+<li>索引间相互作用</li>
+<li>很难在部署运行前量化索引对工作负载的影响</li>
+</ul>
+<p>🟡 本文描述和分析了 8 种基于不同概念的索引选择算法，并沿着不同的维度进行比较，如解决方案质量、运行时长、多列支持、解决方案粒度和复杂性。</p>
+<p>🟢 虚拟索引（hypothetical indexes）</p>
+<p>为了避免执行查询、创建索引，一些数据库系统支持虚拟索引，通过它来估计成本。</p>
+<h3 id="2-索引选择算法">2 索引选择算法</h3>
+<p>索引选择算法的里程碑时间轴如下：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/Index/1.png"
+        data-srcset="/img/Index/1.png, /img/Index/1.png 1.5x, /img/Index/1.png 2x"
+        data-sizes="auto"
+        alt="/img/Index/1.png"
+        title="image1" /></p>
+<p><strong>2.1 Drop</strong></p>
+<p>这种方法依次删除候选索引，直到不能进一步降低成本为止。成本是由数据的特征决定的，而不是由查询优化器决定的。不支持多列索引的选择</p>
+<p><strong>2.2 AutoAdmin</strong></p>
+<p>该迭代算法通过在每次迭代中增加索引宽度来识别多列索引。首先从每个查询 $j=1,&hellip;Q$ 确定候选索引 $S_j$ ，再将所有查询的候选并集作为第二步的输入，确定最佳索引配置时考虑所有查询。</p>
+<p><strong>2.3 (Anytime) DTA</strong></p>
+<p>首先确定每个查询的候选索引，然后根据原始贪婪枚举确定整个工作负载的索引配置。</p>
+<p><strong>2.4 DB2Advis</strong></p>
+<p>① 确定候选索引：对每个查询 j ，在列上创建假设索引。然后，向优化器询问查询 j 的最佳计划，在结果计划中使用的假设索引被添加到索引候选集。</p>
+<p>② I 中的所有候选索引都按照它们的逐空间效益比降序排序。下面，如果索引对w1的比值更高，则组合索引对w1和w2，直到达到存储预算。</p>
+<p>③ 将先前计算的解决方案集与不属于的索引集交换，看成本是否降低。</p>
+<p><strong>2.5 Relaxation</strong></p>
+<p>① 为每个查询获取最佳索引配置。</p>
+<p>② 整个工作负载的最优索引配置定义为所有查询的最优索引集的并集。</p>
+<p>③ 反复转换该配置，以降低其存储消耗，同时保持配置的收益尽可能高。</p>
+<p><strong>2.6 LP-based Approaches (CoPhy)</strong></p>
+<p>把索引选择视为整数LP问题，通过限制解空间来降低LP公式的复杂性。</p>
+<p><strong>2.7 Dexter</strong></p>
+<p>该算法建立在假设索引的基础上，分为两个阶段。首先，从计划缓存中收集已处理的查询及其运行时信息。具有相同模板但不同参数值的查询被分组。</p>
+<p>第二阶段包括多个子步骤。(i)收集的查询的初始成本(当前索引配置的)由EXPLAIN命令确定。(ii)为所有尚未建立索引的潜在单列和多列索引创建假想索引。(iii)同样，从查询优化器检索成本估计和查询计划。步骤(ii)中创建的假设索引是这些查询计划的一部分，成为相应查询的候选索引。(iv)对于所有查询，与步骤(i)中获得的成本相比，选择成本节省最显著的索引候选。</p>
+<p>仅限于两列索引。</p>
+<p><strong>2.8 Extend</strong></p>
+<p>以上八种比较指标选择算法的主要特点：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/Index/2.png"
+        data-srcset="/img/Index/2.png, /img/Index/2.png 1.5x, /img/Index/2.png 2x"
+        data-sizes="auto"
+        alt="/img/Index/2.png"
+        title="image2" /></p>
+<p><strong>Machine Learning-based Approaches</strong></p>
+<p>尽管将机器学习应用于指数选择的概念是有希望的，但我们没有将上述方法包括在本次评估中，因为目前它们仍然是有限的，不能应用于用于评估的基准。</p>
+<h3 id="3-methodology">3 METHODOLOGY</h3>
+<h4 id="31-workloads">3.1 Workloads</h4>
+<p>为了进行比较，我们使用了三种不同规模和特征的基准工作负载，以调查工作负载对算法解决方案质量和运行时间的潜在影响。以下是TPC-H[37]、TPC-DS[32]和连接顺序基准[28]的索引选择的相关指标。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/Index/3.png"
+        data-srcset="/img/Index/3.png, /img/Index/3.png 1.5x, /img/Index/3.png 2x"
+        data-sizes="auto"
+        alt="/img/Index/3.png"
+        title="image3" /></p>
+<p>这些指标展示了基准测试的不同规模。TPC-H基准相对较小，可用于快速评估，而TPC-DS基准代表更现实的场景，在每个维度上都更丰富。尽管JOB的工作负载包含最多的查询，但潜在(多列)索引的数量相对较低。</p>
+<h4 id="32-determining-query-cost">3.2 Determining Query Cost</h4>
+<p>通过物理地创建/删除索引和执行查询来获得查询成本是可能的，但将花费大量时间，并在很大程度上限制可行的算法设置，特别是候选索引的数量。因此，我们使用假设的索引来估计成本。</p>
+<h4 id="33-constraints-and-optimization-goal">3.3 Constraints and Optimization Goal</h4>
+<p>🟠 优化目标：索引的存储消耗、估计的工作负载成本。</p>
+<p>🟡 索引选择限制：算法在限制所选索引数量上的方式不同。对于所有工作负载和算法，我们报告不同存储消耗的工作负载成本。</p>
+<p>🔵 运行时：最初只有DTA支持限制选择过程的运行时间。一般来说，可以通过限制所调查的候选索引来间接控制运行时，例如，索引宽度或简单的枚举组合。</p>
+<h3 id="4-evaluation">4 EVALUATION</h3>
+<h4 id="41-tpc-h">4.1 TPC-H</h4>
+<ul>
+<li>
+<p>图3(a)描述了预算从0到10 GB的确定解决方案的性能，每个标记指示一个索引组合。</p>
+</li>
+<li>
+<p>大多数算法都没有充分利用10GB的最大预算，因为无法找到进一步降低工作负载成本的索引。例如，Extend只使用 6 G B。</p>
+</li>
+<li>
+<p>使用 <strong>最大索引数作为停止标准的算法</strong> 与 <strong>基于预算的算法</strong> 之间存在结构性差异。</p>
+</li>
+<li>
+<p>DB2Advis的运行时间一直很低，但仍能找到可接受的解决方案。低运行时是由它的操作方式造成的：大多数其他算法生成许多组合，并使用假设优化调用检查它们的影响，而DB2Advis只发出固定数量的2Q个代价请求。</p>
+</li>
+<li>
+<p>Dexter的运行时间是恒定的，因为它不依赖于预算，而是依赖于查询的数量和复杂性。虽然它的解决方案质量接近于最佳，但它不能产生细粒度的解决方案，并且只能为所有评估的预算确定两个解决方案。</p>
+</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/Index/4.png"
+        data-srcset="/img/Index/4.png, /img/Index/4.png 1.5x, /img/Index/4.png 2x"
+        data-sizes="auto"
+        alt="/img/Index/4.png"
+        title="image4" /></p>
+<ul>
+<li>图4(a)和4(b)显示了每个算法的最佳索引组合所实现的成本，每个查询不消耗超过5 GB的存储空间</li>
+<li>除了Dexter和Drop，大多数算法都能在索引适用的情况下识别出重要的查询索引</li>
+<li>DTA和Extend对所有显示的查询实现了最低的成本</li>
+<li>relax仅对查询9、12和21执行得稍差</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/Index/5.png"
+        data-srcset="/img/Index/5.png, /img/Index/5.png 1.5x, /img/Index/5.png 2x"
+        data-sizes="auto"
+        alt="/img/Index/5.png"
+        title="image5" /></p>
+<h4 id="42-tpc-ds">4.2 TPC-DS</h4>
+<ul>
+<li>对于TPC-H实验，Drop和AutoAdmin为相对较大的预算找到了第一个索引，大约2 GB。对于TPC-DS，它们更早地确定了有益的解决方案，因为在TPC-DS数据集中没有单一的主导表。</li>
+<li>对于2gb及以上的预算，差异开始变得明显，extend和DTA领先并生成最佳解决方案。</li>
+</ul>
+<h4 id="43-join-order-benchmark">4.3 Join Order Benchmark</h4>
+<ul>
+<li>对于TPC-H和TPC-DS, DTA和Extend为大多数检查的预算找到具有最低工作负载成本的解决方案。中等规模的预算(从2到3.5 GB)在这个实验中没有得到很好的处理，因为缺少细粒度的解决方案。</li>
+<li>Drop识别了许多小型索引，这些索引为中等规模的预算显著降低了工作负载成本，而它完全缺乏类似于AutoAdmin的小型预算解决方案。</li>
+<li>CoPhy, DB2Advis, DTA, Extend为小预算找到最佳解决方案。然而，对于较大的预算，CoPhy缺乏多列索引、每个查询只能有两个索引。</li>
+<li>图3(f)显示了与TPC-DS算法运行时比较的相似结果。AutoAdmin的运行时间增加了一半，Drop几乎减半，而Extend的运行时间略有减少。</li>
+</ul>
+<h4 id="44-cost-breakdown-and-cost-requests">4.4 Cost Breakdown and Cost Requests</h4>
+<ul>
+<li>基于what-if的索引选择算法的大部分运行时通常不是花在算法逻辑上，而是花在对what-if优化器的成本估计调用上。</li>
+<li>对于所有算法，大部分运行时都花费在成本请求(假设优化调用)上，Drop是唯一的例外。</li>
+<li>Drop和Relaxation在评估配置的数量上存在差异，但产生的成本请求数量最多。它们是最慢的两种方法，与所有其他方法相比，它们遵循相同的一般概念:它们从一个广泛的配置开始，然后减少它，直到它符合给定的预算。</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/Index/6.png"
+        data-srcset="/img/Index/6.png, /img/Index/6.png 1.5x, /img/Index/6.png 2x"
+        data-sizes="auto"
+        alt="/img/Index/6.png"
+        title="image6" /></p>
+<h4 id="45-parameter-influence">4.5 Parameter Influence</h4>
+<ul>
+<li>Index Width：在我们的评估中，每个索引的列数是多少，每个索引的列数对PostgreSQL上的工作负载没有太大的影响。</li>
+<li>DB2Advis - Try Variations：可测量影响通常很小。根据我们的实验，即使在核心算法运行时间为1、变化时间为30秒的情况下，变化也能使工作负载成本提高约1%。</li>
+<li>AutoAdmin - Naive Enumerations：对该方法的求解质量影响很小，但是对运行时影响很大。</li>
+</ul>
+<h3 id="5-learnings">5 LEARNINGS</h3>
+<h4 id="51-general-insights">5.1 General Insights</h4>
+<ul>
+<li>根据用户需求选择算法。在运行时、解决方案质量、解决方案粒度和多列索引支持方面的差异是显著的。</li>
+<li>基于查询的方法(DB2Advis、Dexter)，一次评估所有可能索引的好处；基于索引组合的方法(Extend、AutoAdmin、Drop、CoPhy、DTA)，它评估相对较小的索引集的好处。通常，后者考虑索引交互的程度更高，而基于查询的方法要快几个数量级。</li>
+<li>假设调用或成本请求的成本不是固定的，它们取决于查询和评估的索引组合(参见第6.5节)。</li>
+<li>按每个空间的效益而不是纯粹按效益排序索引候选项目是有益的，特别是中等预算。对于事务性工作负载，这种优势可能会消失。</li>
+</ul>
+<h4 id="52-drop">5.2 Drop</h4>
+<ul>
+<li>重复的功能导致大量的成本请求，同时显示出最高的缓存率。</li>
+<li>支持多列索引的扩展将导致需要某种预选的候选索引数量不可行。</li>
+</ul>
+<h4 id="53-autoadmin">5.3 AutoAdmin</h4>
+<ul>
+<li>单纯枚举选取的指标个数对求解质量影响不大，但对运行时的影响巨大。</li>
+<li>通过忽略索引的大小，多列索引只比单列索引收益略高，但内存消耗明显更高。</li>
+</ul>
+<h4 id="54-db2advis">5.4 DB2Advis</h4>
+<ul>
+<li>适用于高预算，同时运行时间较低。在这种情况下，索引组合会针对每个查询进行优化。</li>
+<li>对于较宽的指标，运行时间增加，而解决方案质量不是最好的。</li>
+<li>可能会错过局部劣等但全局优越的索引。</li>
+</ul>
+<h4 id="55-relaxation">5.5 Relaxation</h4>
+<ul>
+<li>大的候选集及其变换规则导致评估的配置数量巨大，从而可以最好地考虑索引交互。</li>
+<li>对于大预算，在评价基准中表现最好，但导致实际预算的运行时间较长。</li>
+</ul>
+<h4 id="56-cophy">5.6 CoPhy</h4>
+<ul>
+<li>解决方案的质量取决于精心选择的初始候选项和每个查询的适当索引组合选择。</li>
+<li>有了更多的候选项，成本请求在运行时占据主导地位，而每个查询的索引数量会影响求解器运行时。</li>
+</ul>
+<h4 id="57-dexter">5.7 Dexter</h4>
+<ul>
+<li>Dexter识别出合适的索引组合，并保证低的、恒定的运行时间。然而，解决方案的粒度通常过于粗糙。</li>
+</ul>
+<h4 id="58-extend">5.8 Extend</h4>
+<ul>
+<li>Extend是在可接受的时间内识别宽索引的唯一算法，索引宽度对运行时没有显著影响。</li>
+<li>对于较大的预算，运行时间可以减少，因为确定了较少但较大的索引。</li>
+<li>解决方案质量和运行时间之间的折中对于各种预算来说是最好的。</li>
+</ul>
+<h4 id="59-dta">5.9 DTA</h4>
+<ul>
+<li>大量的种子配置保证了合适的配置，特别是对于中小型预算，通常是最好的。</li>
+<li>当考虑到随时中断算法的能力时，它的运行时间可以与大多数其他方法相提并论。</li>
+</ul>
+<h3 id="6-conclusions">6 CONCLUSIONS</h3>
+<ul>
+<li>如果需要大预算的快速解决方案，并且索引宽度有限，建议使用AutoAdmin，特别是DB2Advis。</li>
+<li>如果更高的运行时间是可行的，我们建议Relaxation。</li>
+<li>对于所有相关的候选组合都可以被详尽列举的小问题，CoPhy的LP保证了任何预算的最优解。</li>
+<li>Dexter是一个简单易用的开源选项，开销很低。</li>
+<li>与其他算法相比，Drop是最容易实现的。</li>
+<li>总的来说，Extend和DTA在广泛的场景中提供了运行时和解决方案质量的最佳组合。</li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-04-11</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/an-experimental-evaluation-of-index-selection-algorithms/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://imcaicai.github.io/an-experimental-evaluation-of-index-selection-algorithms/" data-title="An Experimental Evaluation of Index Selection Algorithms" data-hashtags="index"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://imcaicai.github.io/an-experimental-evaluation-of-index-selection-algorithms/" data-hashtag="index"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://imcaicai.github.io/an-experimental-evaluation-of-index-selection-algorithms/" data-title="An Experimental Evaluation of Index Selection Algorithms"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://imcaicai.github.io/an-experimental-evaluation-of-index-selection-algorithms/" data-title="An Experimental Evaluation of Index Selection Algorithms"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://imcaicai.github.io/an-experimental-evaluation-of-index-selection-algorithms/" data-title="An Experimental Evaluation of Index Selection Algorithms"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/index/">index</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/%E8%93%9D%E6%A1%A5%E6%9D%AF2015/" class="prev" rel="prev" title="【蓝桥杯】2015题解"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>【蓝桥杯】2015题解</a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">菜菜</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

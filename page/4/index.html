@@ -118,6 +118,13 @@
         alt="/img/avatar.jpg"
         title="/img/avatar.jpg" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/c-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%80/">C++面向对象(一)</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-12-29">2022-12-29</time></span>&nbsp;<span class="post-category">included in <a href="/categories/c++/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>C++</a></span></div><div class="content">1 类&amp;对象 1.1 成员函数 成员函数可以定义在类定义内部：
+1 2 3 4 5 6 7 8 9 10 11 12  class Box { public: double length; // 长度  double breadth; // 宽度  double height; // 高度  double getVolume(void) { return length * breadth * height; } };   也可以在类的外部使用范围解析运算符 :: 定义该函数。
+1 2 3 4 5 6 7 8 9 10 11 12 13  class Box { public: double length; // 长度  double breadth; // 宽度  double height; // 高度  double getVolume(void);// 返回体积 }; double Box::getVolume(void) { return length * breadth * height; }   在 :: 运算符之前必须使用类名。</div><div class="post-footer">
+        <a href="/c-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%80/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>,&nbsp;<a href="/tags/%E7%B1%BB%E5%AF%B9%E8%B1%A1/">类&amp;对象</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/c-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%89/">C++基础语法(三)</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-12-27">2022-12-27</time></span>&nbsp;<span class="post-category">included in <a href="/categories/c++/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>C++</a></span></div><div class="content">11 字符串 C风格字符串 字符串实际上是使用 null 字符 \0 终止的一维字符数组。
 1 2  char site[7] = {&#39;R&#39;, &#39;U&#39;, &#39;N&#39;, &#39;O&#39;, &#39;O&#39;, &#39;B&#39;, &#39;\0&#39;}; char site[] = &#34;RUNOOB&#34;;   字符串相关函数：
@@ -218,7 +225,7 @@ drop user语句可删除用户。用户被删除时，该用户拥有的权限�
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/lemon/">Label Embedding Online Hashing for Cross-Modal Retrieval</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-11-18">2022-11-18</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>深度学习</a></span></div><div class="content">本文为论文 Label Embedding Online Hashing for Cross-Modal 的阅读笔记。
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-11-18">2022-11-18</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>论文阅读笔记</a></span></div><div class="content">本文为论文 Label Embedding Online Hashing for Cross-Modal 的阅读笔记。
 论文下载：https://doi.org/10.1145/3394171.3413971
 1 简介 学习散列，作为最著名的近似近邻搜索技术之一，近年来吸引了很多人的注意。它旨在将高维实值特征映射到紧凑的二进制编码，同时保留原始空间中的相似性。然后，可以用XOR操作在Hamming空间中进行搜索，效率高，存储成本低。
 许多跨模态散列方法已经被提出并取得了很好的性能。但大多数现有的方法通过批处理学习二进制代码或哈希函数。即在学习过程前，所有的训练数据都可用。这将产生以下问题：
@@ -230,7 +237,7 @@ drop user语句可删除用户。用户被删除时，该用户拥有的权限�
 跨模态：查询和要检索的文档模态不同（图像→文本）
  3 方法 3.1 Notations 假设每个样本由 $l$ 个模态组成。在第 $t$ 轮，一个新的数据块 $\vec{X}^{(t)}$ 被添加到数据库中。常用变量的说明如下：</div><div class="post-footer">
         <a href="/lemon/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习</a></div></div>
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/online-hashing/">online hashing</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/git%E6%8A%A5%E9%94%99-github%E6%96%87%E4%BB%B6%E5%A4%B9%E5%87%BA%E7%8E%B0%E7%AE%AD%E5%A4%B4%E4%B8%94%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80/">Git报错-GitHub文件夹出现箭头且无法打开</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-11-06">2022-11-06</time></span>&nbsp;<span class="post-category">included in <a href="/categories/git/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Git</a></span></div><div class="content">问题描述 将项目文件push到GitHub上时，发现GitHub上的文件夹图标上有箭头，且无法打开。
@@ -239,19 +246,6 @@ drop user语句可删除用户。用户被删除时，该用户拥有的权限�
 1 2 3 4  git rm --cached [文件夹名] git add [文件夹名] git commit -m &#34;commit messge&#34; git push origin main   </div><div class="post-footer">
         <a href="/git%E6%8A%A5%E9%94%99-github%E6%96%87%E4%BB%B6%E5%A4%B9%E5%87%BA%E7%8E%B0%E7%AE%AD%E5%A4%B4%E4%B8%94%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/github/">Github</a>,&nbsp;<a href="/tags/git/">Git</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/git%E6%8A%A5%E9%94%99-ssh%E7%9B%B8%E5%85%B3%E9%94%99%E8%AF%AF/">Git报错-ssh相关错误</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-11-06">2022-11-06</time></span>&nbsp;<span class="post-category">included in <a href="/categories/git/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Git</a></span></div><div class="content">问题描述 在将本地的远程仓库push到github上时，出现报错：
- ssh: Could not resolve hostname github.com: Temporary failure in name resolution fatal: Could not read from remote repository.
-Please make sure you have the correct access rights and the repository exists.
- 情况1 ssh错误 解决方案：重新设置ssh
-1 重新在git设置身份的名字和邮箱 进入到需要提交的文件夹底下，执行命令：
-1 2  git config --global user.name &#34;yourname&#34; git config --global user.email &#34;your@email.com&#34;   注：yourname是你要设置的名字，your@email是你要设置的邮箱。
-2 删除known_hosts文件 进入 .ssh 文件夹，手动删除 known_hosts 文件
-3 重新设置ssh git输入命令：
-1  ssh-keygen -t rsa -C &#34;your@email.</div><div class="post-footer">
-        <a href="/git%E6%8A%A5%E9%94%99-ssh%E7%9B%B8%E5%85%B3%E9%94%99%E8%AF%AF/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/ssh/">SSH</a>,&nbsp;<a href="/tags/github/">Github</a>,&nbsp;<a href="/tags/git/">Git</a>,&nbsp;<a href="/tags/ping/">Ping</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
