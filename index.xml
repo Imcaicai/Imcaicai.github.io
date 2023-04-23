@@ -3,9 +3,18 @@
         <title>菜菜的秘密花园</title>
         <link>https://imcaicai.github.io/</link>
         <description>菜菜的秘密花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 22 Apr 2023 13:08:20 &#43;0800</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 23 Apr 2023 19:27:41 &#43;0800</lastBuildDate>
             <atom:link href="https://imcaicai.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>【二叉树】纲领篇</title>
+    <link>https://imcaicai.github.io/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%BA%B2%E9%A2%86%E7%AF%87/</link>
+    <pubDate>Sun, 23 Apr 2023 19:27:41 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%BA%B2%E9%A2%86%E7%AF%87/</guid>
+    <description><![CDATA[1 快速排序&amp;归并排序 🔴 快速排序：二叉树的前序遍历 先构造分界点，然后去左右子数组构造分界点。 要对 nums[lo..hi] 进行排序，我们先找⼀个分界点 p，通过交换元素使得 nums[lo..p-1] 都小于等于 nums[p]，且 nums[p+1..hi] 都大于 nums[p]，然后递归地去 nums[lo..p-1] 和 nums[p+1..hi] 中寻找新的分界点。
+1 2 3 4 5 6 7 8  void sort(int[] nums, int lo, int hi) { /****** 前序遍历位置 ******/ // 通过交换元素构建分界点 p 	int p = partition(nums, lo, hi); sort(nums, lo, p - 1); sort(nums, p + 1, hi); }   🔵 归并排序：二叉树的后序遍历 先对左右子数组排序，然后合并，即分治算法。 （对 nums[lo..hi] 进行排序，我们先对 nums[lo..mid] 排序，再对 nums[mid+1.]]></description>
+</item>
+<item>
     <title>Slalom Coasting Through Raw Data via Adaptive Partitioning and Indexing</title>
     <link>https://imcaicai.github.io/slalom-coasting-through-raw-data-via-adaptive-partitioning-and-indexing/</link>
     <pubDate>Sat, 22 Apr 2023 13:08:20 &#43;0800</pubDate>
@@ -110,15 +119,6 @@
     <guid>https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2022/</guid>
     <description><![CDATA[⏰总用时：125/240	🎯总分：14.5/150
    题号 时间 结果 满分 难度 备注     1 5 ✅ 5 🌕    2 5 ❌ 5 🌓 🔹 博弈论：只能转移到必胜态的，均为必败态。可以转移到必败态的，均为必胜态🔹 c++中计算字符串中某字符个数：count(s.begin(),s.end(),&lsquo;o&rsquo;)🔹 DFS：深搜的时候保存已有结果🔹 二维数组可直接压缩为一维数组🔹 遍历不连续数组，可把要遍历的索引存储在一个数组中   3 5 30% 10 🌕 🔸 先观察所求式子能否化简，注意超时问题🔸 注意题目所给数据范围，答案应该用 long long型   4 30 40% 10 🌓 🔹 巧妙构造数组可以简化题目🔹 若 a ^ b=x，则 a ^ x=b， b ^ x=a。🔹 可以用 map 来映射一组数和他们的索引🔹 直接把异或表达式放 if 语句或输出语句中会出错   5 5 ❌ 10 🌑 🔸 【分数取模】、【快速幂】🔸 注意找递推关系🔸 加快输入速度：ios::sync_with_stdio(false); cin.]]></description>
-</item>
-<item>
-    <title>【蓝桥杯】2021题解</title>
-    <link>https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2021/</link>
-    <pubDate>Mon, 20 Mar 2023 17:00:10 &#43;0800</pubDate>
-    <author>菜菜</author>
-    <guid>https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2021/</guid>
-    <description><![CDATA[⏰总用时：177/	🎯总分：0/150
-   题号 时间 结果 满分 难度 备注     1 20 ❌ 5 🌕 🔸【计算一个整数各位上的数字】：当 i/10!=0 时，不断取出 i%10 。   2 7 ❌ 5 🌕 🔹 确定一条直线要考虑斜率和截距   3 40 ❌ 10 🌓 🔸 整数问题常用【取模】   4 35 ❌ 10 🌕 🔹 二维数组太大容易引起报错：program received signal sigsegv, segmentation fault. （本题中用 int g[2022][2022]; 就报错了QAQ）   5 45 ❌ 10 🌑 🔸 状压dp🔸 移位操作较多，容易出错   6 25 ❌ 15 🌓 🔹 用迭代器循环时不能修改 set 内元素   7 5 ❌ 20 🌓 🔸 【博弈论】重点是判断必胜   8   20     9   25     10   25      1 【填空】卡片 题目 小蓝有很多数字卡片，每张卡片上都是数字 0 到 9。小蓝准备用这些卡片来拼一些数，他想从 1 开始拼出正整数，每拼一个，就保存起来，卡片就不能用来拼其它数了。小蓝想知道自己能从 1 拼到多少。]]></description>
 </item>
 </channel>
 </rss>
