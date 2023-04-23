@@ -118,6 +118,17 @@
         alt="/img/avatar.jpg"
         title="/img/avatar.jpg" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/stlpair%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/">【STL】pair容器用法</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-03-18">2023-03-18</time></span>&nbsp;<span class="post-category">included in <a href="/categories/c++/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>C++</a></span></div><div class="content">1 简介 🟠 pair 容器将 2 个普通元素 first 和 second（C++ 基本数据类型、结构体、类自定的类型等）创建成一个新元素&lt;first, second&gt;。
+🔵 使用需加上头文件：#include &lt;utility&gt;
+2 创建map容器 1️⃣ 调用 pair 容器类的默认构造函数。
+1  pair &lt;string, int&gt; pair1;   2️⃣ 在创建 pair 容器的同时，进行初始化。
+1  pair &lt;string, int&gt; pair2(&#34;语文&#34;,90);   3️⃣ 利用先前已创建好的 pair 容器和拷贝构造函数，再创建一个新的 pair 容器。
+1  pair &lt;string, int&gt; pair3(pair2);   3 常见用法 3.1 手动为 pair 对象赋值
+1 2  pair1.first = &#34;数学&#34;; pair1.second = &#34;100&#34;;   3.</div><div class="post-footer">
+        <a href="/stlpair%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>,&nbsp;<a href="/tags/stl/">STL</a>,&nbsp;<a href="/tags/pair/">pair</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%A0%B8%E5%BF%83%E6%A1%86%E6%9E%B6/">【动态规划】动态规划核心框架</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-03-18">2023-03-18</time></span>&nbsp;<span class="post-category">included in <a href="/categories/labuladong%E7%9A%84%E7%AE%97%E6%B3%95%E7%A7%98%E7%B1%8D/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>labuladong的算法秘籍</a></span></div><div class="content">🔴 【动态规划三要素】重叠子问题、最优子结构、状态转移方程
 🟢 【思维框架】明确 base case → 明确「状态」→ 明确「选择」 → 定义 dp 数组/函数的含义。
@@ -213,14 +224,6 @@ v1 容器开始时就有 20 个元素，它们的默认初始值都为 0。圆�
 1 2  std::map&lt;std::string, int&gt; map1 { {&#34;语文&#34;,90} , {&#34;数学&#34;,100} }; std::map&lt;std::string, int&gt; newMap(++map1.</div><div class="post-footer">
         <a href="/stlmap%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>,&nbsp;<a href="/tags/stl/">STL</a>,&nbsp;<a href="/tags/map/">map</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/stlset%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/">【STL】set容器用法</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-03-13">2023-03-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/c++/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>C++</a></span></div><div class="content">1 简介 C++ 标准函数库中的 set 可以用来存储集合，set 里面的元素都是唯一的，不可以重复，可以新增或删除元素，但不可以修改元素的值。
-🔴 头文件：#include &lt;set&gt;
-2 初始化 std::set 的初始化有三种方式：1️⃣ 以 insert() 函數新增元素 2️⃣ 直接在创建时以大括号初始化 set 内部的元素 3️⃣ 通过数组初始化。
-1 2 3 4 5 6 7 8 9 10 11 12 13  // 第 1 种初始化方式 set&lt;int&gt; set1; set1.insert(1); set1.insert(2); set1.insert(3); // 第 2 种初始化方式 // 注意这里没有 &#39;=&#39; set&lt;int&gt; set2 {1,2,3}; // 第 3 种初始化方式 int num[] = {1,2,3}; set&lt;int&gt; set3(num, num+3);   3 增/删元素 std::set 若要新增、刪除元素，可以使用 insert() 和 erase() 函数。</div><div class="post-footer">
-        <a href="/stlset%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>,&nbsp;<a href="/tags/stl/">STL</a>,&nbsp;<a href="/tags/set/">set</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
