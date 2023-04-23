@@ -118,6 +118,14 @@
         alt="/img/avatar.jpg"
         title="/img/avatar.jpg" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/git%E6%8A%A5%E9%94%99-github%E6%96%87%E4%BB%B6%E5%A4%B9%E5%87%BA%E7%8E%B0%E7%AE%AD%E5%A4%B4%E4%B8%94%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80/">Git报错-GitHub文件夹出现箭头且无法打开</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-11-06">2022-11-06</time></span>&nbsp;<span class="post-category">included in <a href="/categories/git/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Git</a></span></div><div class="content">问题描述 将项目文件push到GitHub上时，发现GitHub上的文件夹图标上有箭头，且无法打开。
+出错原因 当在自己的项目里clone了别人的项目，github就将他视为一个子系统模块，导致在上传代码时该文件夹上传失败，并在github上显示向右的白色箭头。
+解决方案 删除子文件夹里面的.git文件，执行如下命令：
+1 2 3 4  git rm --cached [文件夹名] git add [文件夹名] git commit -m &#34;commit messge&#34; git push origin main   </div><div class="post-footer">
+        <a href="/git%E6%8A%A5%E9%94%99-github%E6%96%87%E4%BB%B6%E5%A4%B9%E5%87%BA%E7%8E%B0%E7%AE%AD%E5%A4%B4%E4%B8%94%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/github/">Github</a>,&nbsp;<a href="/tags/git/">Git</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/git%E6%8A%A5%E9%94%99-ssh%E7%9B%B8%E5%85%B3%E9%94%99%E8%AF%AF/">Git报错-ssh相关错误</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-11-06">2022-11-06</time></span>&nbsp;<span class="post-category">included in <a href="/categories/git/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Git</a></span></div><div class="content">问题描述 在将本地的远程仓库push到github上时，出现报错：
  ssh: Could not resolve hostname github.com: Temporary failure in name resolution fatal: Could not read from remote repository.

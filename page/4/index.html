@@ -118,6 +118,15 @@
         alt="/img/avatar.jpg"
         title="/img/avatar.jpg" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E5%89%8D%E7%BC%80%E5%92%8C/">【数组链表】前缀和</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-12-29">2022-12-29</time></span>&nbsp;<span class="post-category">included in <a href="/categories/labuladong%E7%9A%84%E7%AE%97%E6%B3%95%E7%A7%98%E7%B1%8D/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>labuladong的算法秘籍</a></span></div><div class="content">前缀和主要适⽤的场景是原始数组不会被修改的情况下，频繁查询某个区间的累加和。
+1 一维数组中的前缀和 题目 力扣 303. 区域和检索 - 数组不可变
+给定一个整数数组 nums，计算索引 left 和 right （包含 left 和 right）之间的 nums 元素的 和 ，其中 left &lt;= right，实现 NumArray 类：
+ NumArray(int[] nums) 使用数组 nums 初始化对象 int sumRange(int i, int j) 返回数组 nums 中索引 left 和 right 之间的元素的 总和 ，包含 left 和 right 两点（也就是 nums[left] + nums[left + 1] + ... + nums[right] )  示例：
+1 2 3 4 5 6 7 8 9 10 11  输入： [&#34;NumArray&#34;, &#34;sumRange&#34;, &#34;sumRange&#34;, &#34;sumRange&#34;] [[[-2, 0, 3, -5, 2, -1]], [0, 2], [2, 5], [0, 5]] 输出： [null, 1, -1, -3] 解释： NumArray numArray = new NumArray([-2, 0, 3, -5, 2, -1]); numArray.</div><div class="post-footer">
+        <a href="/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E5%89%8D%E7%BC%80%E5%92%8C/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/labuladong/">labuladong</a>,&nbsp;<a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>,&nbsp;<a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/">前缀和</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/c-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%80/">C++面向对象(一)</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-12-29">2022-12-29</time></span>&nbsp;<span class="post-category">included in <a href="/categories/c++/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>C++</a></span></div><div class="content">1 类&amp;对象 1.1 成员函数 成员函数可以定义在类定义内部：
 1 2 3 4 5 6 7 8 9 10 11 12  class Box { public: double length; // 长度  double breadth; // 宽度  double height; // 高度  double getVolume(void) { return length * breadth * height; } };   也可以在类的外部使用范围解析运算符 :: 定义该函数。
@@ -238,14 +247,6 @@ drop user语句可删除用户。用户被删除时，该用户拥有的权限�
  3 方法 3.1 Notations 假设每个样本由 $l$ 个模态组成。在第 $t$ 轮，一个新的数据块 $\vec{X}^{(t)}$ 被添加到数据库中。常用变量的说明如下：</div><div class="post-footer">
         <a href="/lemon/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/online-hashing/">online hashing</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/git%E6%8A%A5%E9%94%99-github%E6%96%87%E4%BB%B6%E5%A4%B9%E5%87%BA%E7%8E%B0%E7%AE%AD%E5%A4%B4%E4%B8%94%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80/">Git报错-GitHub文件夹出现箭头且无法打开</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-11-06">2022-11-06</time></span>&nbsp;<span class="post-category">included in <a href="/categories/git/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Git</a></span></div><div class="content">问题描述 将项目文件push到GitHub上时，发现GitHub上的文件夹图标上有箭头，且无法打开。
-出错原因 当在自己的项目里clone了别人的项目，github就将他视为一个子系统模块，导致在上传代码时该文件夹上传失败，并在github上显示向右的白色箭头。
-解决方案 删除子文件夹里面的.git文件，执行如下命令：
-1 2 3 4  git rm --cached [文件夹名] git add [文件夹名] git commit -m &#34;commit messge&#34; git push origin main   </div><div class="post-footer">
-        <a href="/git%E6%8A%A5%E9%94%99-github%E6%96%87%E4%BB%B6%E5%A4%B9%E5%87%BA%E7%8E%B0%E7%AE%AD%E5%A4%B4%E4%B8%94%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/github/">Github</a>,&nbsp;<a href="/tags/git/">Git</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>

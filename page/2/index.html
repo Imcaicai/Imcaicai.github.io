@@ -118,6 +118,17 @@
         alt="/img/avatar.jpg"
         title="/img/avatar.jpg" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%AE%A1%E7%AE%97%E5%99%A8/">【数据结构设计】实现一个计算器</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-03-16">2023-03-16</time></span>&nbsp;<span class="post-category">included in <a href="/categories/labuladong%E7%9A%84%E7%AE%97%E6%B3%95%E7%A7%98%E7%B1%8D/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>labuladong的算法秘籍</a></span></div><div class="content">1 题目 实现一个计算器，功能如下：
+1、输入一个字符串，可以包含 + - * /、数字、括号以及空格，你的算法返回运算结果。
+2、要符合运算法则，括号的优先级最高，先乘除后加减。
+3、除号是整数除法，无论正负都向 0 取整（5/2=2，-5/2=-2）。
+4、可以假定输入的算式⼀定合法，且计算过程不会出现整型溢出，不会出现除数为 0 的意外情况。
+2 解析 2.1 字符串转整数 1 2 3 4 5 6  // 把字符串s转为整数n int n = 0; for (int i = 0; i &lt; s.size(); i++) { char c = s[i]; n = 10 * n + (c - &#39;0&#39;); }   ❗❗❗ 注意 (c - &lsquo;0&rsquo;) 的括号不能省略，否则可能造成整型溢出。
+2.2 处理加减法 🟠 先给第⼀个数字加⼀个默认符号 +，变成 +1-12+3。</div><div class="post-footer">
+        <a href="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%AE%A1%E7%AE%97%E5%99%A8/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/labuladong/">labuladong</a>,&nbsp;<a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/stlvector%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/">【STL】vector容器用法</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-03-16">2023-03-16</time></span>&nbsp;<span class="post-category">included in <a href="/categories/c++/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>C++</a></span></div><div class="content">1 简介 🟠 vector 容器实现的是一个动态数组，即可以进行元素的插入和删除，并动态调整所占用的内存空间，整个过程无需人工干预。
 🟡 在尾部插入/删除元素时，时间复杂度为O(1)；在头部或者中部插入/删除元素时，时间复杂度为O(n)。
@@ -208,11 +219,6 @@ v1 容器开始时就有 20 个元素，它们的默认初始值都为 0。圆�
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-02-10">2023-02-10</time></span>&nbsp;<span class="post-category">included in <a href="/categories/os/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>OS</a></span></div><div class="content">1 绪论 2 OS的结构和硬件支持 3 操作系统的用户接口 4 进程及进程管理 5 资源分配与调度 6 处理机调度 7 主存管理 8 设备管理 9 文件系统 </div><div class="post-footer">
         <a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/os/">OS</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/">数据库原理知识总结</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-02-06">2023-02-06</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>数据库</a></span></div><div class="content">1 绪论 2 关系数据库 3 SQL语言 4 数据库安全性 5 数据库完整性 6 关系数据理论 7 数据库设计 8 关系数据库引擎基础 9 关系数据库查询优化 10 数据库恢复技术 11 并发控制 </div><div class="post-footer">
-        <a href="/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>

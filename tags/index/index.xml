@@ -3,7 +3,26 @@
         <title>index - Tag - 菜菜的秘密花园</title>
         <link>https://imcaicai.github.io/tags/index/</link>
         <description>index - Tag - 菜菜的秘密花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 11 Apr 2023 18:15:39 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/tags/index/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 22 Apr 2023 13:08:20 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/tags/index/" rel="self" type="application/rss+xml" /><item>
+    <title>Slalom Coasting Through Raw Data via Adaptive Partitioning and Indexing</title>
+    <link>https://imcaicai.github.io/slalom-coasting-through-raw-data-via-adaptive-partitioning-and-indexing/</link>
+    <pubDate>Sat, 22 Apr 2023 13:08:20 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/slalom-coasting-through-raw-data-via-adaptive-partitioning-and-indexing/</guid>
+    <description><![CDATA[本文为论文 Slalom: Coasting Through Raw Data via Adaptive Partitioning and Indexing 的阅读笔记。
+🟠🟡🟢🔵🟣🟤
+🟠 Slalom
+ 一个通过监视用户访问模式来适应工作负载变化的原位查询引擎。  🟡 关键组件
+ 在线分区和索引方案 为原位查询引擎量身定制的分区和索引调优器。  🟢 性能优势
+ 对原始数据文件进行逻辑分区；为每个分区构建轻量级分区特定的索引  1 INTRODUCTION 🟠 加载、索引和调优的成本
+考虑到所涉及的数据大小，对数据的任何转换、复制和准备步骤都会在查询数据前引入大量延迟。缺乏对工作负载的先验知识使得物理设计决策几乎不可能。
+🟡 自适应分区和细粒度索引
+ 使用第一次表扫描来生成分区和轻量级索引提示 数据集以动态方式部分索引，以适应三个关键工作负载特征：数据分布；查询类型；投影属性。 调优器通过以下方式降低数据访问成本:  对原始数据集进行逻辑分区，在不进行物理重构的情况下将其虚拟地分解为更易于管理的块 在每个逻辑分区上选择适当的索引策略，以提供有效的数据访问。（细粒度的索引决策）    🟢 基于Slalom的高效 In-Situ Query
+ 将在线分区和索引调谐器集成到原位查询处理原型系统Slalom中 Slalom在逻辑上将原始数据划分为分区，并根据每个分区的“热度”(访问频率)、针对每个分区的查询类型来选择构建哪个细粒度的分区索引。 Slalom填充二进制缓存(从原始数据转换为二进制数据的缓存)以进一步提高性能 Slalom使用基于随机成本的决策算法调整当前分区和索引方案来适应工作负载的变化  🔵 贡献
+ 我们提出了原始数据文件的逻辑分区方案，该方案支持在每个分区级别上进行细粒度的索引决策。 好处：带来了原位查询处理索引的好处；索引构建成本低；内存占用小。 我们将分区和索引调谐器集成到我们最先进的原型原位查询引擎Slalom中。  2 RELATED WORK 🟣 对原始数据的查询
+ Slalom使用的技术可以通过减少索引的大小、为每个文件分区构建内存效率高的索引来提高系统的可伸缩性。 Slalom不加载所有数据，而是利用工作负载局域性自适应地为原始数据创建细粒度索引方案，并逐渐减少I/O和访问成本，同时在适度的内存预算下运行。  🔵 数据库分区]]></description>
+</item>
+<item>
     <title>An Experimental Evaluation of Index Selection Algorithms</title>
     <link>https://imcaicai.github.io/an-experimental-evaluation-of-index-selection-algorithms/</link>
     <pubDate>Tue, 11 Apr 2023 18:15:39 &#43;0800</pubDate>
