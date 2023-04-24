@@ -132,7 +132,7 @@
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/csp202303/">【CSP】202303题解</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-04-23">2023-04-23</time></span>&nbsp;<span class="post-category">included in <a href="/categories/csp%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CSP刷题记录</a></span></div><div class="content">⏰ 时间：	🎯成绩：
-   题号 时间/min 正确率 备注     1 20 ✅    2      3      4      5       1 田地丈量 🔗 题目：田地丈量
+   题号 时间/min 正确率 备注     1 20 ✅    2 30 ✅    3      4      5       1 田地丈量 🔗 题目：田地丈量
 分情况求出长、宽，再计算总和即可。
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28  #include &lt;bits/stdc++.</div><div class="post-footer">
         <a href="/csp202303/">Read More</a><div class="post-tags">
@@ -146,11 +146,10 @@
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/slalom-coasting-through-raw-data-via-adaptive-partitioning-and-indexing/">Slalom Coasting Through Raw Data via Adaptive Partitioning and Indexing</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-04-22">2023-04-22</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>论文阅读笔记</a></span></div><div class="content">本文为论文 Slalom: Coasting Through Raw Data via Adaptive Partitioning and Indexing 的阅读笔记。
-🟠🟡🟢🔵🟣🟤
-🟠 Slalom
+ 🟠 Slalom
  一个通过监视用户访问模式来适应工作负载变化的原位查询引擎。  🟡 关键组件
  在线分区和索引方案 为原位查询引擎量身定制的分区和索引调优器。  🟢 性能优势
- 对原始数据文件进行逻辑分区；为每个分区构建轻量级分区特定的索引  1 简介 🟠 加载、索引和调优的成本
+ 对原始数据文件进行逻辑分区；为每个分区构建轻量级分区特定的索引   1 简介 🟠 加载、索引和调优的成本
 考虑到所涉及的数据大小，对数据的任何转换、复制和准备步骤都会在查询数据前引入大量延迟。缺乏对工作负载的先验知识使得物理设计决策几乎不可能。
 🟡 自适应分区和细粒度索引
  使用第一次表扫描来生成分区和轻量级索引提示 数据集以动态方式部分索引，以适应三个关键工作负载特征：数据分布；查询类型；投影属性。 调优器通过以下方式降低数据访问成本:  对原始数据集进行逻辑分区，在不进行物理重构的情况下将其虚拟地分解为更易于管理的块 在每个逻辑分区上选择适当的索引策略，以提供有效的数据访问。（细粒度的索引决策）    🟢 基于Slalom的高效 In-Situ Query
