@@ -3,7 +3,22 @@
         <title>All Posts - 菜菜的秘密花园</title>
         <link>https://imcaicai.github.io/posts/</link>
         <description>All Posts | 菜菜的秘密花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 23 Apr 2023 21:02:45 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 24 Apr 2023 09:56:38 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>【二叉树】思路篇</title>
+    <link>https://imcaicai.github.io/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%80%9D%E8%B7%AF%E7%AF%87/</link>
+    <pubDate>Mon, 24 Apr 2023 09:56:38 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%80%9D%E8%B7%AF%E7%AF%87/</guid>
+    <description><![CDATA[【二叉树问题的通用思路】
+🔴 是否可以通过 遍历一遍二叉树 得到答案？如果可以，用一个 traverse 函数配合外部变量来实现。
+🟡 是否可以定义一个 递归函数 ，通过 子问题（子树） 的答案推导出原问题的答案？如果可以，写出这个递归函数的定义，并充分利用这个函数的 返回值 。
+🔵 明白二叉树的 每个节点需要做什么 ，需要 在什么时候（前中后序）做 。
+ 1 翻转二叉树 题目 🔗力扣 226. 翻转二叉树
+给你一棵二叉树的根节点 root ，翻转这棵二叉树，并返回其根节点。
+遍历一遍二叉树 tips：遍历一遍二叉树一般比分解子问题快一些。
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21  class Solution { public: TreeNode* invertTree(TreeNode* root) { traverse(root); return root; } TreeNode* traverse(TreeNode* root){ if(root==nullptr) return nullptr; // 前序位置，交换左右子节点  TreeNode* temp = root-&gt;left; root-&gt;left = root-&gt;right; root-&gt;right = temp; traverse(root-&gt;left); traverse(root-&gt;right); return root; } };   分解问题 1 2 3 4 5 6 7 8 9 10 11  class Solution { public: TreeNode* invertTree(TreeNode* root) { if(root==nullptr) return nullptr; TreeNode* temp = invertTree(root-&gt;left); root-&gt;left = invertTree(root-&gt;right); root-&gt;right = temp; return root; } };   2 填充节点的右侧指针 题目 🔗力扣 116.]]></description>
+</item>
+<item>
     <title>【CSP】202303题解</title>
     <link>https://imcaicai.github.io/csp202303/</link>
     <pubDate>Sun, 23 Apr 2023 21:02:45 &#43;0800</pubDate>
@@ -110,15 +125,6 @@
     <author>菜菜</author>
     <guid>https://imcaicai.github.io/stlqueue%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/</guid>
     <description><![CDATA[1 创建queue 1  queue&lt;int&gt; q;   2 常用操作    front() 返回 queue 中第一个元素的引用。     back() 返回 queue 中最后一个元素的引用   push(T&amp;&amp; obj) 以移动的方式在 queue 的尾部添加元素。   pop() 删除 queue 中的第一个元素。   empty() 如果 queue 中没有元素的话，返回 true。   size() 返回 queue 中元素的个数。    ]]></description>
-</item>
-<item>
-    <title>【蓝桥杯】2019题解</title>
-    <link>https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2019/</link>
-    <pubDate>Tue, 28 Mar 2023 08:43:22 &#43;0800</pubDate>
-    <author>菜菜</author>
-    <guid>https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2019/</guid>
-    <description><![CDATA[⏰总用时：170/240	🎯总分：39/150
-   题号 时间 结果 满分 难度 备注     1 5 ✅ 5 🌕    2 5 ✅ 5 🌕    3 5 ✅ 10 🌕    4 20 ❌ 10 🌓 🔹 用 BFS、queue 遍历🔹 输入地图时用 char 而不是 int   5 35 ❌ 10 🌓 🔸 快速计算 $a^b(mod p)$🔸 快速计算 $a*b(mod p)$   6 20 20% 15 🌓 🔹 二叉树🔹 先算出每个节点所在层数，再根据层数算总和，这样不会超时   7 40 40% 20 🌓 🔸 模拟🔸 用 map 容器，以外卖店的视角存储订单信息🔸 可以通过的，要注意易错的细节❗❗❗   8 30 40% 20 🌓 🔹 并查集（不过没用）   9 10 ❌ 25 🌑 🔸 状压dp🔸 fill()：初始化数组，填充内容可不为0   10   25      1 【填空】平方和 题目 小明对数位中含有 2、0、1、9 的数字很感兴趣，在 1 到 40 中这样的数包括 1、2、9、10 至 32、39 和 40，共 28 个，他们的和是 574。]]></description>
 </item>
 </channel>
 </rss>

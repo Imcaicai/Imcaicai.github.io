@@ -1,0 +1,31 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>二叉树 - Tag - 菜菜的秘密花园</title>
+        <link>https://imcaicai.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/</link>
+        <description>二叉树 - Tag - 菜菜的秘密花园</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 24 Apr 2023 09:56:38 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="self" type="application/rss+xml" /><item>
+    <title>【二叉树】思路篇</title>
+    <link>https://imcaicai.github.io/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%80%9D%E8%B7%AF%E7%AF%87/</link>
+    <pubDate>Mon, 24 Apr 2023 09:56:38 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%80%9D%E8%B7%AF%E7%AF%87/</guid>
+    <description><![CDATA[【二叉树问题的通用思路】
+🔴 是否可以通过 遍历一遍二叉树 得到答案？如果可以，用一个 traverse 函数配合外部变量来实现。
+🟡 是否可以定义一个 递归函数 ，通过 子问题（子树） 的答案推导出原问题的答案？如果可以，写出这个递归函数的定义，并充分利用这个函数的 返回值 。
+🔵 明白二叉树的 每个节点需要做什么 ，需要 在什么时候（前中后序）做 。
+ 1 翻转二叉树 题目 🔗力扣 226. 翻转二叉树
+给你一棵二叉树的根节点 root ，翻转这棵二叉树，并返回其根节点。
+遍历一遍二叉树 tips：遍历一遍二叉树一般比分解子问题快一些。
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21  class Solution { public: TreeNode* invertTree(TreeNode* root) { traverse(root); return root; } TreeNode* traverse(TreeNode* root){ if(root==nullptr) return nullptr; // 前序位置，交换左右子节点  TreeNode* temp = root-&gt;left; root-&gt;left = root-&gt;right; root-&gt;right = temp; traverse(root-&gt;left); traverse(root-&gt;right); return root; } };   分解问题 1 2 3 4 5 6 7 8 9 10 11  class Solution { public: TreeNode* invertTree(TreeNode* root) { if(root==nullptr) return nullptr; TreeNode* temp = invertTree(root-&gt;left); root-&gt;left = invertTree(root-&gt;right); root-&gt;right = temp; return root; } };   2 填充节点的右侧指针 题目 🔗力扣 116.]]></description>
+</item>
+<item>
+    <title>【二叉树】纲领篇</title>
+    <link>https://imcaicai.github.io/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%BA%B2%E9%A2%86%E7%AF%87/</link>
+    <pubDate>Sun, 23 Apr 2023 19:27:41 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%BA%B2%E9%A2%86%E7%AF%87/</guid>
+    <description><![CDATA[1 快速排序&amp;归并排序 🔴 快速排序：二叉树的前序遍历 先构造分界点，然后去左右子数组构造分界点。 要对 nums[lo..hi] 进行排序，我们先找⼀个分界点 p，通过交换元素使得 nums[lo..p-1] 都小于等于 nums[p]，且 nums[p+1..hi] 都大于 nums[p]，然后递归地去 nums[lo..p-1] 和 nums[p+1..hi] 中寻找新的分界点。
+1 2 3 4 5 6 7 8  void sort(int[] nums, int lo, int hi) { /****** 前序遍历位置 ******/ // 通过交换元素构建分界点 p 	int p = partition(nums, lo, hi); sort(nums, lo, p - 1); sort(nums, p + 1, hi); }   🔵 归并排序：二叉树的后序遍历 先对左右子数组排序，然后合并，即分治算法。 （对 nums[lo..hi] 进行排序，我们先对 nums[lo..mid] 排序，再对 nums[mid+1.]]></description>
+</item>
+</channel>
+</rss>
