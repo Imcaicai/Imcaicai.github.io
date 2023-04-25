@@ -118,6 +118,13 @@
         alt="/img/avatar.jpg"
         title="/img/avatar.jpg" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/csp202212/">【CSP】202212题解</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-03-14">2023-03-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/csp%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CSP刷题记录</a></span></div><div class="content">1 现值计算 🔗 题目：现值计算
+🔴 注意 s=s/(1+i) + a[j] 是从后往前更新的，一开始写成从 a[0] 到 a[n] 出了 bug。
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22  #include &lt;iostream&gt;using namespace std; int main() { // 输入年数n，年利率i 	int n; double i; scanf(&#34;%d&#34;, &amp;n); scanf(&#34;%lf&#34;,&amp;i); double s=0;	// 保存最后结果 	int a[n+1];	// 每年收益 	for(int j=0;j&lt;n+1;j++){ scanf(&#34;%d&#34;, &amp;a[j]); } for(int j=n;j&gt;=0;j--){ s=s/(1+i) + a[j]; } printf(&#34;%f&#34;, s); }   2 训练计划 🔗 题目：训练计划</div><div class="post-footer">
+        <a href="/csp202212/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/csp/">CSP</a>,&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/stlmap%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/">【STL】map容器用法</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-03-14">2023-03-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/c++/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>C++</a></span></div><div class="content">1 简介 🟠 map 容器中键值对的键和值可以是任意数据类型，包括 C++ 基本数据类型（int、double 等）、使用结构体或类自定义的类型。
 🟡 容器会自动根据各键值对的键的大小，按照既定的规则进行排序。比如 std::less&lt;T&gt;、std::greater&lt;T&gt; 规则。
@@ -226,13 +233,6 @@
 1 二分查找框架 1 2 3 4 5 6 7 8 9 10 11 12 13 14  int binarySearch(int[] nums, int target) { int left = 0, right = ...; while(...) { int mid = left + (right - left) / 2; if (nums[mid] == target) { ... } else if (nums[mid] &lt; target) { left = ... } else if (nums[mid] &gt; target) { right = ... } } return .</div><div class="post-footer">
         <a href="/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/labuladong/">labuladong</a>,&nbsp;<a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>,&nbsp;<a href="/tags/%E4%BA%8C%E5%88%86/">二分</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E7%AE%97%E6%B3%95/">【数组链表】滑动窗口算法</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-01-06">2023-01-06</time></span>&nbsp;<span class="post-category">included in <a href="/categories/labuladong%E7%9A%84%E7%AE%97%E6%B3%95%E7%A7%98%E7%B1%8D/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>labuladong的算法秘籍</a></span></div><div class="content">本文主要记录最难掌握的一类双指针技巧——滑动窗口算法。算法思路很简单，就是维护一个窗口，不断滑动，时间复杂度为 O(N)。大致逻辑如下：
-1 2 3 4 5 6 7 8 9 10 11  int left = 0, right = 0; while (right &lt; s.size()) { // 增⼤窗⼝ 	window.add(s[right]); right++; while (window needs shrink) { // 缩⼩窗⼝ 	window.remove(s[left]); left++; } }   滑动窗口算法的代码框架如下：
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26  /* 滑动窗⼝算法框架 */ void slidingWindow(string s) { unordered_map&lt;char, int&gt; window; int left = 0, right = 0; while (right &lt; s.</div><div class="post-footer">
-        <a href="/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E7%AE%97%E6%B3%95/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/labuladong/">labuladong</a>,&nbsp;<a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>,&nbsp;<a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">双指针</a>,&nbsp;<a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">滑动窗口</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -252,6 +252,10 @@
                 </li><li class="page-item ">
                     <span class="page-link">
                         <a href="/page/5/">5</a>
+                    </span>
+                </li><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/page/6/">6</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">

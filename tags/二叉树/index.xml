@@ -3,7 +3,23 @@
         <title>二叉树 - Tag - 菜菜的秘密花园</title>
         <link>https://imcaicai.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/</link>
         <description>二叉树 - Tag - 菜菜的秘密花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 24 Apr 2023 09:56:38 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 25 Apr 2023 10:16:28 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="self" type="application/rss+xml" /><item>
+    <title>【二叉树】构造篇</title>
+    <link>https://imcaicai.github.io/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%9E%84%E9%80%A0%E7%AF%87/</link>
+    <pubDate>Tue, 25 Apr 2023 10:16:28 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%9E%84%E9%80%A0%E7%AF%87/</guid>
+    <description><![CDATA[【二叉树问题的通用思路】
+🔴 是否可以通过 遍历一遍二叉树 得到答案？如果可以，用一个 traverse 函数配合外部变量来实现。
+🟡 是否可以定义一个 递归函数 ，通过 子问题（子树） 的答案推导出原问题的答案？如果可以，写出这个递归函数的定义，并充分利用这个函数的 返回值 。
+🔵 明白二叉树的 每个节点需要做什么 ，需要 在什么时候（前中后序）做 。
+🟢 二叉树的构造问题⼀般使用【分解问题】的思路：构造整棵树 = 根节点 + 构造左子树 + 构造右子树。
+ 1 最大二叉树 题目 🔗力扣 654. 最大二叉树
+给定一个不重复的整数数组 nums 。 最大二叉树 可以用下面的算法从 nums 递归地构建:
+ 创建一个根节点，其值为 nums 中的最大值。 递归地在最大值 左边 的 子数组前缀上 构建左子树。 递归地在最大值 右边 的 子数组后缀上 构建右子树。  返回 nums 构建的 最大二叉树 。
+解析 🔴 遍历数组把找到最大值 maxVal，得出根节点 root 。]]></description>
+</item>
+<item>
     <title>【二叉树】思路篇</title>
     <link>https://imcaicai.github.io/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%80%9D%E8%B7%AF%E7%AF%87/</link>
     <pubDate>Mon, 24 Apr 2023 09:56:38 &#43;0800</pubDate>
