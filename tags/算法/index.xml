@@ -3,7 +3,18 @@
         <title>算法 - Tag - 菜菜的秘密花园</title>
         <link>https://imcaicai.github.io/tags/%E7%AE%97%E6%B3%95/</link>
         <description>算法 - Tag - 菜菜的秘密花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 25 Apr 2023 10:16:28 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/tags/%E7%AE%97%E6%B3%95/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 26 Apr 2023 17:16:19 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/tags/%E7%AE%97%E6%B3%95/" rel="self" type="application/rss+xml" /><item>
+    <title>【二叉树】归并排序详解及应用</title>
+    <link>https://imcaicai.github.io/%E4%BA%8C%E5%8F%89%E6%A0%91%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E8%AF%A6%E8%A7%A3%E5%8F%8A%E5%BA%94%E7%94%A8/</link>
+    <pubDate>Wed, 26 Apr 2023 17:16:19 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/%E4%BA%8C%E5%8F%89%E6%A0%91%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E8%AF%A6%E8%A7%A3%E5%8F%8A%E5%BA%94%E7%94%A8/</guid>
+    <description><![CDATA[1 算法思路 🔴 所有递归的算法，本质上都是在遍历一棵（递归）树，然后在节点（前中后序位置）上执行代码。
+🔵 【归并排序】类似于【二叉树的后序遍历】，使用【分治算法】的思想。
+🟡 递归的 sort 函数就是二叉树的遍历函数，而 merge 函数就是在每个节点上做 的事情
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20  // 定义：排序 nums[lo..hi] void sort(int[] nums, int lo, int hi) { if (lo == hi) { return; } int mid = (lo + hi) / 2; // 利⽤定义，排序 nums[lo..mid] 	sort(nums, lo, mid); // 利⽤定义，排序 nums[mid+1..hi] 	sort(nums, mid + 1, hi); /****** 后序位置 ******/ // 此时两部分⼦数组已经被排好序 	// 合并两个有序数组，使 nums[lo.]]></description>
+</item>
+<item>
     <title>【二叉树】构造篇</title>
     <link>https://imcaicai.github.io/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%9E%84%E9%80%A0%E7%AF%87/</link>
     <pubDate>Tue, 25 Apr 2023 10:16:28 &#43;0800</pubDate>
@@ -129,15 +140,6 @@
 将齐王和田忌的马按照战斗力排序，然后按照排名一一对比。如果田忌的马能赢，那就比赛，如果赢不了，那就换个垫底的来送人头，保存实力。
 结合已学过的双指针技巧，代码实现如下：
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34  class Solution { public int[] advantageCount(int[] nums1, int[] nums2) { int n=nums1.]]></description>
-</item>
-<item>
-    <title>【数组链表】二分查找算法</title>
-    <link>https://imcaicai.github.io/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/</link>
-    <pubDate>Sat, 07 Jan 2023 11:59:28 &#43;0800</pubDate>
-    <author>菜菜</author>
-    <guid>https://imcaicai.github.io/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/</guid>
-    <description><![CDATA[二分思维的精髓就是：通过已知信息尽可能多地收缩搜索空间，从而增加穷举效率，快速找到目标。
-1 二分查找框架 1 2 3 4 5 6 7 8 9 10 11 12 13 14  int binarySearch(int[] nums, int target) { int left = 0, right = ...; while(...) { int mid = left + (right - left) / 2; if (nums[mid] == target) { ... } else if (nums[mid] &lt; target) { left = ... } else if (nums[mid] &gt; target) { right = ... } } return .]]></description>
 </item>
 </channel>
 </rss>

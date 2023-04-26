@@ -3,9 +3,20 @@
         <title>菜菜的秘密花园</title>
         <link>https://imcaicai.github.io/</link>
         <description>菜菜的秘密花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 25 Apr 2023 10:16:28 &#43;0800</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 26 Apr 2023 17:16:19 &#43;0800</lastBuildDate>
             <atom:link href="https://imcaicai.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>【二叉树】归并排序详解及应用</title>
+    <link>https://imcaicai.github.io/%E4%BA%8C%E5%8F%89%E6%A0%91%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E8%AF%A6%E8%A7%A3%E5%8F%8A%E5%BA%94%E7%94%A8/</link>
+    <pubDate>Wed, 26 Apr 2023 17:16:19 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/%E4%BA%8C%E5%8F%89%E6%A0%91%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E8%AF%A6%E8%A7%A3%E5%8F%8A%E5%BA%94%E7%94%A8/</guid>
+    <description><![CDATA[1 算法思路 🔴 所有递归的算法，本质上都是在遍历一棵（递归）树，然后在节点（前中后序位置）上执行代码。
+🔵 【归并排序】类似于【二叉树的后序遍历】，使用【分治算法】的思想。
+🟡 递归的 sort 函数就是二叉树的遍历函数，而 merge 函数就是在每个节点上做 的事情
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20  // 定义：排序 nums[lo..hi] void sort(int[] nums, int lo, int hi) { if (lo == hi) { return; } int mid = (lo + hi) / 2; // 利⽤定义，排序 nums[lo..mid] 	sort(nums, lo, mid); // 利⽤定义，排序 nums[mid+1..hi] 	sort(nums, mid + 1, hi); /****** 后序位置 ******/ // 此时两部分⼦数组已经被排好序 	// 合并两个有序数组，使 nums[lo.]]></description>
+</item>
+<item>
     <title>【二叉树】构造篇</title>
     <link>https://imcaicai.github.io/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%9E%84%E9%80%A0%E7%AF%87/</link>
     <pubDate>Tue, 25 Apr 2023 10:16:28 &#43;0800</pubDate>
@@ -125,15 +136,6 @@
     <guid>https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2017/</guid>
     <description><![CDATA[⏰总用时：170/240	🎯总分：32.5/150
    题号 时间 结果 满分 难度 备注     1 45 ✅ 5 🌓 🔸 dfs🔸 注意考虑回路的情况   2 15 ❌ 11 🌓 🔹 考虑空盘子的跳法🔹 数据结构、bfs🔹 注意 set 容器的用法   3 5 ❌ 13 🌑 🔸 Burnside引理   4 5 ❌ 17 🌓 🔹 考虑分割线的走法🔹 【dfs】从对称中心开始遍历   5 5 ✅ 7 🌕    6 10 ✅ 9 🌕    7 25 ❌ 19 🌓 🔸 dfs   8 5 ❌ 21 🌓 🔹 动态规划：要判断的包子数设置一个上限🔹 所有包子数最大公因数不为1，则凑不出来的有无数个   9 30 50% 23 🌓 🔸 二分   10 25 ❌ 25      1 【填空】迷宫 题目 X 星球的一处迷宫游乐场建在某个小山坡上。它是由 10×10 相互连通的小房间组成的。房间的地板上写着一个很大的字母。我们假设玩家是面朝上坡的方向站立，则：]]></description>
-</item>
-<item>
-    <title>【蓝桥杯】2018题解</title>
-    <link>https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2018/</link>
-    <pubDate>Thu, 30 Mar 2023 15:48:27 &#43;0800</pubDate>
-    <author>菜菜</author>
-    <guid>https://imcaicai.github.io/%E8%93%9D%E6%A1%A5%E6%9D%AF2018/</guid>
-    <description><![CDATA[⏰总用时：245/240	🎯总分：59.1/150
-   题号 时间 结果 满分 难度 备注     1 5 ❌ 5 🌕 🔸 计算完一定要带入样例检验，漏加了 1 ❗❗❗   2 15 ✅ 7 🌕    3 40 ✅ 9 🌕    4 10 ✅ 13 🌕    5 5 ✅ 11 🌕    6 60 ✅ 17 🌕 🔹 注意 scanf，printf 格式化输入输出的使用   7 25 ❌ 19 🌑 🔸 三维差分数组🔸 二分法查找🔸 压缩数组🔸 memcpy()用法   8 25 10% 21 🌓 🔹 【dfs】每次遍历一整块岛屿，并标记其是否能幸存🔹 用%c时小心读入空行等🔹 注意代码中变量类型的错误   9 10 ❌ 23 🌓 🔸 暴力   10 50 ❌ 25      1 【填空】分数 题目 1/1+1/2+1/4+1/8+&hellip;&hellip;]]></description>
 </item>
 </channel>
 </rss>

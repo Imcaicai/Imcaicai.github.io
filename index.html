@@ -118,6 +118,14 @@
         alt="/img/avatar.jpg"
         title="/img/avatar.jpg" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/%E4%BA%8C%E5%8F%89%E6%A0%91%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E8%AF%A6%E8%A7%A3%E5%8F%8A%E5%BA%94%E7%94%A8/">【二叉树】归并排序详解及应用</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-04-26">2023-04-26</time></span>&nbsp;<span class="post-category">included in <a href="/categories/labuladong%E7%9A%84%E7%AE%97%E6%B3%95%E7%A7%98%E7%B1%8D/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>labuladong的算法秘籍</a></span></div><div class="content">1 算法思路 🔴 所有递归的算法，本质上都是在遍历一棵（递归）树，然后在节点（前中后序位置）上执行代码。
+🔵 【归并排序】类似于【二叉树的后序遍历】，使用【分治算法】的思想。
+🟡 递归的 sort 函数就是二叉树的遍历函数，而 merge 函数就是在每个节点上做 的事情
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20  // 定义：排序 nums[lo..hi] void sort(int[] nums, int lo, int hi) { if (lo == hi) { return; } int mid = (lo + hi) / 2; // 利⽤定义，排序 nums[lo..mid] 	sort(nums, lo, mid); // 利⽤定义，排序 nums[mid+1..hi] 	sort(nums, mid + 1, hi); /****** 后序位置 ******/ // 此时两部分⼦数组已经被排好序 	// 合并两个有序数组，使 nums[lo.</div><div class="post-footer">
+        <a href="/%E4%BA%8C%E5%8F%89%E6%A0%91%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E8%AF%A6%E8%A7%A3%E5%8F%8A%E5%BA%94%E7%94%A8/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/labuladong/">labuladong</a>,&nbsp;<a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>,&nbsp;<a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%9E%84%E9%80%A0%E7%AF%87/">【二叉树】构造篇</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-04-25">2023-04-25</time></span>&nbsp;<span class="post-category">included in <a href="/categories/labuladong%E7%9A%84%E7%AE%97%E6%B3%95%E7%A7%98%E7%B1%8D/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>labuladong的算法秘籍</a></span></div><div class="content">【二叉树问题的通用思路】
 🔴 是否可以通过 遍历一遍二叉树 得到答案？如果可以，用一个 traverse 函数配合外部变量来实现。
@@ -222,12 +230,6 @@
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-03-29">2023-03-29</time></span>&nbsp;<span class="post-category">included in <a href="/categories/c++/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>C++</a></span></div><div class="content">1 创建queue 1  queue&lt;int&gt; q;   2 常用操作    front() 返回 queue 中第一个元素的引用。     back() 返回 queue 中最后一个元素的引用   push(T&amp;&amp; obj) 以移动的方式在 queue 的尾部添加元素。   pop() 删除 queue 中的第一个元素。   empty() 如果 queue 中没有元素的话，返回 true。   size() 返回 queue 中元素的个数。    </div><div class="post-footer">
         <a href="/stlqueue%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>,&nbsp;<a href="/tags/stl/">STL</a>,&nbsp;<a href="/tags/set/">set</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/%E8%93%9D%E6%A1%A5%E6%9D%AF2019/">【蓝桥杯】2019题解</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-03-28">2023-03-28</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>蓝桥杯刷题记录</a></span></div><div class="content">⏰总用时：170/240	🎯总分：39/150
-   题号 时间 结果 满分 难度 备注     1 5 ✅ 5 🌕    2 5 ✅ 5 🌕    3 5 ✅ 10 🌕    4 20 ❌ 10 🌓 🔹 用 BFS、queue 遍历🔹 输入地图时用 char 而不是 int   5 35 ❌ 10 🌓 🔸 快速计算 $a^b(mod p)$🔸 快速计算 $a*b(mod p)$   6 20 20% 15 🌓 🔹 二叉树🔹 先算出每个节点所在层数，再根据层数算总和，这样不会超时   7 40 40% 20 🌓 🔸 模拟🔸 用 map 容器，以外卖店的视角存储订单信息🔸 可以通过的，要注意易错的细节❗❗❗   8 30 40% 20 🌓 🔹 并查集（不过没用）   9 10 ❌ 25 🌑 🔸 状压dp🔸 fill()：初始化数组，填充内容可不为0   10   25      1 【填空】平方和 题目 小明对数位中含有 2、0、1、9 的数字很感兴趣，在 1 到 40 中这样的数包括 1、2、9、10 至 32、39 和 40，共 28 个，他们的和是 574。</div><div class="post-footer">
-        <a href="/%E8%93%9D%E6%A1%A5%E6%9D%AF2019/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/">蓝桥杯</a>,&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a></div></div>
 </article><ul class="pagination"><li class="page-item active">
                     <span class="page-link">
                         <a href="/">1</a>

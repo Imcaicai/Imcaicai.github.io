@@ -3,7 +3,18 @@
         <title>labuladong的算法秘籍 - Category - 菜菜的秘密花园</title>
         <link>https://imcaicai.github.io/categories/labuladong%E7%9A%84%E7%AE%97%E6%B3%95%E7%A7%98%E7%B1%8D/</link>
         <description>labuladong的算法秘籍 - Category - 菜菜的秘密花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 25 Apr 2023 10:16:28 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/categories/labuladong%E7%9A%84%E7%AE%97%E6%B3%95%E7%A7%98%E7%B1%8D/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 26 Apr 2023 17:16:19 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/categories/labuladong%E7%9A%84%E7%AE%97%E6%B3%95%E7%A7%98%E7%B1%8D/" rel="self" type="application/rss+xml" /><item>
+    <title>【二叉树】归并排序详解及应用</title>
+    <link>https://imcaicai.github.io/%E4%BA%8C%E5%8F%89%E6%A0%91%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E8%AF%A6%E8%A7%A3%E5%8F%8A%E5%BA%94%E7%94%A8/</link>
+    <pubDate>Wed, 26 Apr 2023 17:16:19 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/%E4%BA%8C%E5%8F%89%E6%A0%91%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E8%AF%A6%E8%A7%A3%E5%8F%8A%E5%BA%94%E7%94%A8/</guid>
+    <description><![CDATA[1 算法思路 🔴 所有递归的算法，本质上都是在遍历一棵（递归）树，然后在节点（前中后序位置）上执行代码。
+🔵 【归并排序】类似于【二叉树的后序遍历】，使用【分治算法】的思想。
+🟡 递归的 sort 函数就是二叉树的遍历函数，而 merge 函数就是在每个节点上做 的事情
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20  // 定义：排序 nums[lo..hi] void sort(int[] nums, int lo, int hi) { if (lo == hi) { return; } int mid = (lo + hi) / 2; // 利⽤定义，排序 nums[lo..mid] 	sort(nums, lo, mid); // 利⽤定义，排序 nums[mid+1..hi] 	sort(nums, mid + 1, hi); /****** 后序位置 ******/ // 此时两部分⼦数组已经被排好序 	// 合并两个有序数组，使 nums[lo.]]></description>
+</item>
+<item>
     <title>【二叉树】构造篇</title>
     <link>https://imcaicai.github.io/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%9E%84%E9%80%A0%E7%AF%87/</link>
     <pubDate>Tue, 25 Apr 2023 10:16:28 &#43;0800</pubDate>
@@ -127,17 +138,6 @@
 图解：
 代码实现：
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18  int[] nextGreaterElement(int[] nums) { int n = nums.length; // 存放答案的数组 	int[] res = new int[n]; Stack&lt;Integer&gt; s = new Stack&lt;&gt;(); // 倒着往栈⾥放 	for (int i = n - 1; i &gt;= 0; i--) { // 判定个⼦⾼矮 	while (!]]></description>
-</item>
-<item>
-    <title>【队列和栈】详解3道括号题</title>
-    <link>https://imcaicai.github.io/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E8%AF%A6%E8%A7%A33%E9%81%93%E6%8B%AC%E5%8F%B7%E9%A2%98/</link>
-    <pubDate>Thu, 12 Jan 2023 17:30:44 &#43;0800</pubDate>
-    <author>菜菜</author>
-    <guid>https://imcaicai.github.io/%E9%98%9F%E5%88%97%E5%92%8C%E6%A0%88%E8%AF%A6%E8%A7%A33%E9%81%93%E6%8B%AC%E5%8F%B7%E9%A2%98/</guid>
-    <description><![CDATA[1.1 判断有效括号串 题目 给定一个只包括 '('，')' 的字符串 s ，判断字符串是否有效。即每个右括号 ')' 的左边必须有⼀个左括号 '(' 和它匹配。
-解析 用一个变量 left 记录 '(' 相对于 ')' 的数量，遇到 '(' 就 +1，遇到 ')' 就 -1。如果最后 left==0，则括号串有效，否则无效。并且，如果中间出现 left 数量为负，则说明有 ')' 出现在 '(' 之前，也为无效。
-代码实现：
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17  bool isValid(string str) { // 待匹配的左括号数量 	int left = 0; for (int i = 0; i &lt; str.]]></description>
 </item>
 </channel>
 </rss>
