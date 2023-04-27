@@ -3,7 +3,21 @@
         <title>算法 - Tag - 菜菜的秘密花园</title>
         <link>https://imcaicai.github.io/tags/%E7%AE%97%E6%B3%95/</link>
         <description>算法 - Tag - 菜菜的秘密花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 26 Apr 2023 17:16:19 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/tags/%E7%AE%97%E6%B3%95/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 27 Apr 2023 08:37:42 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/tags/%E7%AE%97%E6%B3%95/" rel="self" type="application/rss+xml" /><item>
+    <title>【二叉搜索树】特性篇</title>
+    <link>https://imcaicai.github.io/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%89%B9%E6%80%A7%E7%AF%87/</link>
+    <pubDate>Thu, 27 Apr 2023 08:37:42 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%89%B9%E6%80%A7%E7%AF%87/</guid>
+    <description><![CDATA[1 二叉搜索树BST  🔴 对于 BST 的每一个节点 node，左子树节点的值都比 node 的值要小，右子树节点的值都比 node 的值大。
+🔵 对于 BST 的每一个节点 node，它的左侧子树和右侧子树都是 BST。
+ 二叉搜索树问题的核心是【利用中序位置】。 以下代码可以将 BST 中每个节点的值升序打印出来：
+1 2 3 4 5 6 7  void traverse(TreeNode root) { if (root == null) return; traverse(root.left); // 中序遍历代码位置 	print(root.val); traverse(root.right); }   后面两道题都是基于这个性质实现的。
+2 二叉搜索树中第K小的元素 题目 🔗力扣 230. 二叉搜索树中第K小的元素
+给定一个二叉搜索树的根节点 root ，和一个整数 k ，请你设计一个算法查找其中第 k 个最小元素（从 1 开始计数）。
+解析 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23  class Solution { private: int count=0,k,ans; public: int kthSmallest(TreeNode* root, int k) { this-&gt;k = k; traverse(root); return ans; } void traverse(TreeNode* root){ if(root==nullptr) return; traverse(root-&gt;left); // 中序遍历位置，找到第k小的元素  count++; if(count == k){ ans = root-&gt;val;return; } traverse(root-&gt;right); } };   扩展 🔴 利用【BST 中序遍历就是升序排序结果】这个性质，寻找第 k 小的元素的时间复杂度是 O(N)。]]></description>
+</item>
+<item>
     <title>【二叉树】归并排序详解及应用</title>
     <link>https://imcaicai.github.io/%E4%BA%8C%E5%8F%89%E6%A0%91%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E8%AF%A6%E8%A7%A3%E5%8F%8A%E5%BA%94%E7%94%A8/</link>
     <pubDate>Wed, 26 Apr 2023 17:16:19 &#43;0800</pubDate>
@@ -121,25 +135,6 @@
 1 2 3 4 5 6 7 8 9 10  public ListNode reverseList(ListNode head) { if(head==null || head.next==null){ return head; } ListNode last=reverseList(head.next); head.next.next=head; head.next=null; return last; }   2个注意点：
 🟡 递归函数要有 base case，如果链表为空或者只有⼀个节点的时候，反转结果就是它自己。
 1 2 3  if (head == null || head.next == null) { return head; }   🟢 当链表递归反转之后，新的头结点是 last，而之前的 head 变成了最后⼀个节点，别忘了链表的末尾要指向 null。]]></description>
-</item>
-<item>
-    <title>【数组链表】田忌赛马背后的算法决策</title>
-    <link>https://imcaicai.github.io/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E7%94%B0%E5%BF%8C%E8%B5%9B%E9%A9%AC%E8%83%8C%E5%90%8E%E7%9A%84%E7%AE%97%E6%B3%95%E5%86%B3%E7%AD%96/</link>
-    <pubDate>Sun, 08 Jan 2023 15:48:52 &#43;0800</pubDate>
-    <author>菜菜</author>
-    <guid>https://imcaicai.github.io/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E7%94%B0%E5%BF%8C%E8%B5%9B%E9%A9%AC%E8%83%8C%E5%90%8E%E7%9A%84%E7%AE%97%E6%B3%95%E5%86%B3%E7%AD%96/</guid>
-    <description><![CDATA[题目 力扣 870. 优势洗牌
-给定两个大小相等的数组 nums1 和 nums2，nums1 相对于 nums2 的优势可以用满足 nums1[i] &gt; nums2[i] 的索引 i 的数目来描述。
-返回 nums1 的任意排列，使其相对于 nums2 的优势最大化。
-解析 这道题类似于【田忌赛马】，只不过马的数量变多了，精髓在于【打得过就打，打不过就拿自己的垃圾和对方的精锐互换 】。我们先分析【田忌赛马】，考虑以下 3 点：
-🟡 如果田忌的 1 号选手 &lt; 齐王的 1 号选手，显然应该用田忌垫底的马送人头，降低对方的战斗力。
-🟢 如果田忌的 1 号选手 &lt; 齐王的 1 号选手，则应该直接让两者相比。
-🟠 当出现第二种情况时，即 T1 &gt; Q1 时，要不要节约战斗力，用 T2 对抗 Q1？
-答案是不需要。假设 T2 &gt; Q1，那么不论换不换 T1，T1 和 T2 都能对抗所有的 Q，这种节约毫无意义。
-根据以上思路，我们的策略是：
-将齐王和田忌的马按照战斗力排序，然后按照排名一一对比。如果田忌的马能赢，那就比赛，如果赢不了，那就换个垫底的来送人头，保存实力。
-结合已学过的双指针技巧，代码实现如下：
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34  class Solution { public int[] advantageCount(int[] nums1, int[] nums2) { int n=nums1.]]></description>
 </item>
 </channel>
 </rss>

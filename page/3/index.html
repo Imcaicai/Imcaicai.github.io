@@ -118,6 +118,11 @@
         alt="/img/avatar.jpg"
         title="/img/avatar.jpg" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/csp202206/">【CSP】202206题解</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-03-14">2023-03-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/csp%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CSP刷题记录</a></span></div><div class="content">1 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35  #include &lt;iostream&gt;#include &lt;cmath&gt;// #define _USE_MATH_DEFINES  using namespace std; int main() { // 输入 n，a，计算总和 sum 	int n,sum=0; scanf(&#34;%d&#34;,&amp;n); int a[n]; for(int i=0;i&lt;n;i++){ scanf(&#34;%d&#34;,&amp;a[i]); sum+=a[i]; } // 计算平均数 x 	double x=(double)sum/n; // 计算方差 d 	double d=0; for(int i=0;i&lt;n;i++){ d=d+(a[i]-x)*(a[i]-x); } d=d/n; // 计算 f 	double f[n]; for(int i=0;i&lt;n;i++){ f[i]=(a[i]-x)/pow(d,0.</div><div class="post-footer">
+        <a href="/csp202206/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/csp/">CSP</a>,&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/csp202209/">【CSP】202209题解</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-03-14">2023-03-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/csp%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CSP刷题记录</a></span></div><div class="content">1 如此编码 🔗 题目：如此编码
 本来看到题目很迷茫来着，想着第一题怎么就那么难，后来发现题目最后有提示，看完之后醍醐灌顶， 【取模】 确实是很妙的思路，可以积累下来。
@@ -221,22 +226,6 @@
 1 2 3  if (head == null || head.next == null) { return head; }   🟢 当链表递归反转之后，新的头结点是 last，而之前的 head 变成了最后⼀个节点，别忘了链表的末尾要指向 null。</div><div class="post-footer">
         <a href="/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E9%80%92%E5%BD%92%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/labuladong/">labuladong</a>,&nbsp;<a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>,&nbsp;<a href="/tags/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/">反转链表</a>,&nbsp;<a href="/tags/%E9%80%92%E5%BD%92/">递归</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E7%94%B0%E5%BF%8C%E8%B5%9B%E9%A9%AC%E8%83%8C%E5%90%8E%E7%9A%84%E7%AE%97%E6%B3%95%E5%86%B3%E7%AD%96/">【数组链表】田忌赛马背后的算法决策</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-01-08">2023-01-08</time></span>&nbsp;<span class="post-category">included in <a href="/categories/labuladong%E7%9A%84%E7%AE%97%E6%B3%95%E7%A7%98%E7%B1%8D/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>labuladong的算法秘籍</a></span></div><div class="content">题目 力扣 870. 优势洗牌
-给定两个大小相等的数组 nums1 和 nums2，nums1 相对于 nums2 的优势可以用满足 nums1[i] &gt; nums2[i] 的索引 i 的数目来描述。
-返回 nums1 的任意排列，使其相对于 nums2 的优势最大化。
-解析 这道题类似于【田忌赛马】，只不过马的数量变多了，精髓在于【打得过就打，打不过就拿自己的垃圾和对方的精锐互换 】。我们先分析【田忌赛马】，考虑以下 3 点：
-🟡 如果田忌的 1 号选手 &lt; 齐王的 1 号选手，显然应该用田忌垫底的马送人头，降低对方的战斗力。
-🟢 如果田忌的 1 号选手 &lt; 齐王的 1 号选手，则应该直接让两者相比。
-🟠 当出现第二种情况时，即 T1 &gt; Q1 时，要不要节约战斗力，用 T2 对抗 Q1？
-答案是不需要。假设 T2 &gt; Q1，那么不论换不换 T1，T1 和 T2 都能对抗所有的 Q，这种节约毫无意义。
-根据以上思路，我们的策略是：
-将齐王和田忌的马按照战斗力排序，然后按照排名一一对比。如果田忌的马能赢，那就比赛，如果赢不了，那就换个垫底的来送人头，保存实力。
-结合已学过的双指针技巧，代码实现如下：
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34  class Solution { public int[] advantageCount(int[] nums1, int[] nums2) { int n=nums1.</div><div class="post-footer">
-        <a href="/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E7%94%B0%E5%BF%8C%E8%B5%9B%E9%A9%AC%E8%83%8C%E5%90%8E%E7%9A%84%E7%AE%97%E6%B3%95%E5%86%B3%E7%AD%96/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/labuladong/">labuladong</a>,&nbsp;<a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>,&nbsp;<a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">双指针</a>,&nbsp;<a href="/tags/%E6%95%B0%E7%BB%84/">数组</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
