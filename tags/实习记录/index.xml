@@ -9,11 +9,16 @@
     <pubDate>Mon, 01 May 2023 23:34:08 &#43;0800</pubDate>
     <author>菜菜</author>
     <guid>https://imcaicai.github.io/%E6%99%BA%E8%83%BD%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E4%B8%8E%E7%AE%A1%E7%90%86%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E5%AE%9E%E4%B9%A0%E8%AE%B0%E5%BD%95/</guid>
-    <description><![CDATA[2022.10
-2022.11
-2022.12
-2023.04
-2023.05]]></description>
+    <description><![CDATA[这里记录了在智能数据存储与管理实验室的实习经历。前部分是关于【深度学习】、【hash】的内容；后部分主要和【index】相关。
+2022 2022.10 🟥 看论文： Vision GNN: An Image is Worth Graph of Nodes
+🔗 阅读笔记
+🟥 参与论文修改： Supervised Hierarchical Online Hashing for Cross-modal Retrieval
+PS：主要是帮学长找语法错误、可以改进的地方
+ 2022.11 🟨 看论文： Label Embedding Online Hashing for Cross-Modal Retrieval
+🔗 阅读笔记
+🟨 参与论文修改： Supervised Hierarchical Online Hashing for Cross-modal Retrieval
+ 2022.12 🟩 参与论文修改： Supervised Hierarchical Online Hashing for Cross-modal Retrieval
+ 2023 2023.04 🟥 看论文： Magic mirror in my hand, which is the best in the land?]]></description>
 </item>
 </channel>
 </rss>
