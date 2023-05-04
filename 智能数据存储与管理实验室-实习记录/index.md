@@ -9,13 +9,15 @@
 
 ### 2022.10
 
-🟥 看论文： ***Vision GNN: An Image is Worth Graph of Nodes*** 
+⬜ 看论文： ***Vision GNN: An Image is Worth Graph of Nodes*** 
 
 🔗 [阅读笔记](https://imcaicai.github.io/an-image-is-worth-graph-of-nodes/)
 
-🟥 参与论文修改： ***Supervised Hierarchical Online Hashing for Cross-modal Retrieval***
+⬜ 参与论文修改： ***Supervised Hierarchical Online Hashing for Cross-modal Retrieval***
 
 PS：主要是帮学长找语法错误、可以改进的地方
+
+
 
 ------
 
@@ -23,11 +25,13 @@ PS：主要是帮学长找语法错误、可以改进的地方
 
 ### 2022.11
 
-🟨 看论文： ***Label Embedding Online Hashing for Cross-Modal Retrieval*** 
+⬛ 看论文： ***Label Embedding Online Hashing for Cross-Modal Retrieval*** 
 
 🔗 [阅读笔记](https://imcaicai.github.io/lemon/)
 
-🟨 参与论文修改： ***Supervised Hierarchical Online Hashing for Cross-modal Retrieval***
+⬛ 参与论文修改： ***Supervised Hierarchical Online Hashing for Cross-modal Retrieval***
+
+
 
 ------
 
@@ -35,7 +39,9 @@ PS：主要是帮学长找语法错误、可以改进的地方
 
 ### 2022.12
 
-🟩 参与论文修改： ***Supervised Hierarchical Online Hashing for Cross-modal Retrieval***
+🟫 参与论文修改： ***Supervised Hierarchical Online Hashing for Cross-modal Retrieval***
+
+
 
 ------
 
@@ -57,6 +63,8 @@ PS：主要是帮学长找语法错误、可以改进的地方
 
 重点：文章介绍了一个列存大数据分析引擎，里面提及到的partition是这种场景的核心。重点是理解parition上的索引和partition内部的索引有什么区别。
 
+
+
 ------
 
 
@@ -69,9 +77,11 @@ PS：主要是帮学长找语法错误、可以改进的地方
 
 重点：文章介绍了如何去评估索引价值的方法，这是whatif功能探索的核心。
 
+🟨 看论文：   ***SWIRL: Selection of Workload-aware Indexes using Reinforcement Learning*** 
 
+🔗 [阅读笔记](https://imcaicai.github.io/swirl/)
 
-
+重点：了解一种基于强化学习的索引推荐方法 SWIRL，这是我们目前参考的方法。
 
 
 
