@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>SWIRL: Selection of Workload-aware Indexes using Reinforcement Learning - 菜菜的秘密花园</title><meta name="Description" content="菜菜的秘密花园"><meta property="og:title" content="SWIRL: Selection of Workload-aware Indexes using Reinforcement Learning" />
+<meta property="og:description" content="本文为论文 SWIRL: Selection of Workload-aware Indexes using Reinforcement Learning 的阅读笔记。
+1 简介  🔴 我们提出了一种基于RL的索引选择方法，与最好的竞争者的性能相匹配。
+🟡 我们的解决方案采用了一个复杂的工作负载模型，以推广到具有未见过的查询的工作负载，并依靠无效动作屏蔽来减少训练时间。
+🔵 我们包括了基于RL的索引选择的首次调查和性能研究，并通过PostgreSQL上复杂的分析性数据库基准评估我们的方法。
+  2 背景 2.1 索引选择问题 大的解决方案空间。 相关候选索引的数量取决于工作负载查询访问的属性数量、每个索引的最大属性数量。评估所有候选组合通常是不切实际的，因为它们的数量超过了属性的数量级。
+索引交互。 一个索引的存在会影响其他索引的性能。因此，在索引选择的每个步骤中，必须要考虑到当前存在的索引，经常需要重新计算候选索引的收益。
+量化索引影响。 漫长的创建和执行时间使得物理上创建索引并不可行。索引选择方法通常依赖于估计而不是实际测量。（假设索引）
+2.2 问题定义 假设有 N 个查询，K 个属性，每个查询 n 的属性表示为 $q_n⊆{1,&hellip;,K},n=1,&hellip;,K$ 。 W为每个索引包含的属性个数（索引宽度），$m_i$ 为需要的存储空间。索引的选择由子集 $I^*⊆I$ 表示，其执行成本为 $c_n(I^*)$ ，出现频率为 $f_n$ 。总的工作负载成本为：
+目标是确定 $I^*$ 使 $C(I^*)$ 最小，并且不超过给定预算 B。
+2.3 强化学习 强化学习（RL）包括一组算法，用于解决决策问题。
+这些问题的特点是，在给定状态 $s_t∈S$ ，反复允许一个代理执行行动 $a_t$ ，其中 $a_t∈A$ 。在执行了所选择的行动后，达到新的状态 $s_{t&#43;1}$ ，重复该过程。为了向代理人提供关于行动是否选择得当的反馈，他们会收到反馈信号，即每次决策后的奖励 $r_t$ 。
+问题是要找到一个最佳决策，它将状态映射为行动，涉及到以时间 t 为开始状态的未来长期报酬：" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://imcaicai.github.io/swirl/" /><meta property="og:image" content="https://imcaicai.github.io/img/avatar.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-05-03T19:09:22&#43;08:00" />
+<meta property="article:modified_time" content="2023-05-03T19:09:22&#43;08:00" /><meta property="og:site_name" content="菜菜的秘密花园" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://imcaicai.github.io/img/avatar.jpg"/>
+
+<meta name="twitter:title" content="SWIRL: Selection of Workload-aware Indexes using Reinforcement Learning"/>
+<meta name="twitter:description" content="本文为论文 SWIRL: Selection of Workload-aware Indexes using Reinforcement Learning 的阅读笔记。
+1 简介  🔴 我们提出了一种基于RL的索引选择方法，与最好的竞争者的性能相匹配。
+🟡 我们的解决方案采用了一个复杂的工作负载模型，以推广到具有未见过的查询的工作负载，并依靠无效动作屏蔽来减少训练时间。
+🔵 我们包括了基于RL的索引选择的首次调查和性能研究，并通过PostgreSQL上复杂的分析性数据库基准评估我们的方法。
+  2 背景 2.1 索引选择问题 大的解决方案空间。 相关候选索引的数量取决于工作负载查询访问的属性数量、每个索引的最大属性数量。评估所有候选组合通常是不切实际的，因为它们的数量超过了属性的数量级。
+索引交互。 一个索引的存在会影响其他索引的性能。因此，在索引选择的每个步骤中，必须要考虑到当前存在的索引，经常需要重新计算候选索引的收益。
+量化索引影响。 漫长的创建和执行时间使得物理上创建索引并不可行。索引选择方法通常依赖于估计而不是实际测量。（假设索引）
+2.2 问题定义 假设有 N 个查询，K 个属性，每个查询 n 的属性表示为 $q_n⊆{1,&hellip;,K},n=1,&hellip;,K$ 。 W为每个索引包含的属性个数（索引宽度），$m_i$ 为需要的存储空间。索引的选择由子集 $I^*⊆I$ 表示，其执行成本为 $c_n(I^*)$ ，出现频率为 $f_n$ 。总的工作负载成本为：
+目标是确定 $I^*$ 使 $C(I^*)$ 最小，并且不超过给定预算 B。
+2.3 强化学习 强化学习（RL）包括一组算法，用于解决决策问题。
+这些问题的特点是，在给定状态 $s_t∈S$ ，反复允许一个代理执行行动 $a_t$ ，其中 $a_t∈A$ 。在执行了所选择的行动后，达到新的状态 $s_{t&#43;1}$ ，重复该过程。为了向代理人提供关于行动是否选择得当的反馈，他们会收到反馈信号，即每次决策后的奖励 $r_t$ 。
+问题是要找到一个最佳决策，它将状态映射为行动，涉及到以时间 t 为开始状态的未来长期报酬："/>
+<meta name="application-name" content="菜菜的秘密花园">
+<meta name="apple-mobile-web-app-title" content="菜菜的秘密花园"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://imcaicai.github.io/swirl/" /><link rel="prev" href="https://imcaicai.github.io/access-path-selection-in-main-memory-optimized-data-systems/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "SWIRL: Selection of Workload-aware Indexes using Reinforcement Learning",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/imcaicai.github.io\/swirl\/"
+        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "index","wordcount":  213 ,
+        "url": "https:\/\/imcaicai.github.io\/swirl\/","datePublished": "2023-05-03T19:09:22+08:00","dateModified": "2023-05-03T19:09:22+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/imcaicai.github.io\/img\/avatar.jpg"},"author": {
+                "@type": "Person",
+                "name": "菜菜"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="菜菜的秘密花园"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/avatar.jpg"
+        data-srcset="/img/avatar.jpg, /img/avatar.jpg 1.5x, /img/avatar.jpg 2x"
+        data-sizes="auto"
+        alt="/img/avatar.jpg"
+        title="/img/avatar.jpg" />菜菜的秘密花园</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/categories/documentation/"> Docs </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/Imcaicai" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="Select Language">
+                    <i class="fa fa-globe" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/swirl/" selected>English</option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="菜菜的秘密花园"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/avatar.jpg"
+        data-srcset="/img/avatar.jpg, /img/avatar.jpg 1.5x, /img/avatar.jpg 2x"
+        data-sizes="auto"
+        alt="/img/avatar.jpg"
+        title="/img/avatar.jpg" />菜菜的秘密花园</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/categories/documentation/" title="">Docs</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/Imcaicai" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="Select Language">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/swirl/" selected>English</option></select>
+                </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">SWIRL: Selection of Workload-aware Indexes using Reinforcement Learning</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>论文阅读笔记</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-05-03">2023-05-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;213 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;<span id="/swirl/" class="leancloud_visitors" data-flag-title="SWIRL: Selection of Workload-aware Indexes using Reinforcement Learning">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1-简介">1 简介</a></li>
+        <li><a href="#2-背景">2 背景</a>
+          <ul>
+            <li><a href="#21-索引选择问题">2.1 索引选择问题</a></li>
+            <li><a href="#22-问题定义">2.2 问题定义</a></li>
+            <li><a href="#23-强化学习">2.3 强化学习</a></li>
+          </ul>
+        </li>
+        <li><a href="#3-相关工作">3 相关工作</a></li>
+        <li><a href="#4-swirl">4 SWIRL</a>
+          <ul>
+            <li><a href="#41-概述">4.1 概述</a></li>
+            <li><a href="#42-模型">4.2 模型</a>
+              <ul>
+                <li><a href="#421-状态表示">4.2.1 状态表示</a></li>
+                <li><a href="#422-工作负载建模查询表示">4.2.2 工作负载建模&amp;查询表示</a></li>
+                <li><a href="#423-行动">4.2.3 行动</a></li>
+                <li><a href="#424-奖励">4.2.4 奖励</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#5-实验">5 实验</a>
+          <ul>
+            <li><a href="#51-表现">5.1 表现</a></li>
+            <li><a href="#52-训练时间工作量">5.2 训练时间&amp;工作量</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>本文为论文 <em><strong>SWIRL: Selection of Workload-aware Indexes using Reinforcement Learning</strong></em> 的阅读笔记。</p>
+<h3 id="1-简介">1 简介</h3>
+<blockquote>
+<p>🔴 我们提出了一种基于RL的索引选择方法，与最好的竞争者的性能相匹配。</p>
+<p>🟡 我们的解决方案采用了一个复杂的工作负载模型，以推广到具有未见过的查询的工作负载，并依靠无效动作屏蔽来减少训练时间。</p>
+<p>🔵 我们包括了基于RL的索引选择的首次调查和性能研究，并通过PostgreSQL上复杂的分析性数据库基准评估我们的方法。</p>
+</blockquote>
+<hr>
+<h3 id="2-背景">2 背景</h3>
+<h4 id="21-索引选择问题">2.1 索引选择问题</h4>
+<p><strong>大的解决方案空间。</strong> 相关候选索引的数量取决于工作负载查询访问的属性数量、每个索引的最大属性数量。评估所有候选组合通常是不切实际的，因为它们的数量超过了属性的数量级。</p>
+<p><strong>索引交互。</strong> 一个索引的存在会影响其他索引的性能。因此，在索引选择的每个步骤中，必须要考虑到当前存在的索引，经常需要重新计算候选索引的收益。</p>
+<p><strong>量化索引影响。</strong> 漫长的创建和执行时间使得物理上创建索引并不可行。索引选择方法通常依赖于估计而不是实际测量。（假设索引）</p>
+<h4 id="22-问题定义">2.2 问题定义</h4>
+<p>假设有 N 个查询，K 个属性，每个查询 n 的属性表示为 $q_n⊆{1,&hellip;,K},n=1,&hellip;,K$ 。 W为每个索引包含的属性个数（索引宽度），$m_i$ 为需要的存储空间。索引的选择由子集 $I^*⊆I$ 表示，其执行成本为 $c_n(I^*)$ ，出现频率为 $f_n$ 。总的工作负载成本为：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/Index/17.png"
+        data-srcset="/img/Index/17.png, /img/Index/17.png 1.5x, /img/Index/17.png 2x"
+        data-sizes="auto"
+        alt="/img/Index/17.png"
+        title="img1" /></p>
+<p><strong>目标是确定  $I^*$ 使 $C(I^*)$ 最小，并且不超过给定预算 B。</strong></p>
+<h4 id="23-强化学习">2.3 强化学习</h4>
+<p>强化学习（RL）包括一组算法，用于解决决策问题。</p>
+<p>这些问题的特点是，在给定状态 $s_t∈S$ ，反复允许一个代理执行行动 $a_t$ ，其中 $a_t∈A$ 。在执行了所选择的行动后，达到新的状态 $s_{t+1}$ ，重复该过程。为了向代理人提供关于行动是否选择得当的反馈，他们会收到反馈信号，即每次决策后的奖励 $r_t$ 。</p>
+<p>问题是要找到一个最佳决策，它将状态映射为行动，涉及到以时间 t 为开始状态的未来长期报酬：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/Index/18.png"
+        data-srcset="/img/Index/18.png, /img/Index/18.png 1.5x, /img/Index/18.png 2x"
+        data-sizes="auto"
+        alt="/img/Index/18.png"
+        title="img2" /></p>
+<p>Q-value 是给定状态 $s_t$ 和动作 $a_t$ 时，$G_t$ 的期望值： $Q(s,a)=E[G_t|s_t=s,a_t=a]$ 。η 为学习率，通过迭代可得：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/Index/19.png"
+        data-srcset="/img/Index/19.png, /img/Index/19.png 1.5x, /img/Index/19.png 2x"
+        data-sizes="auto"
+        alt="/img/Index/19.png"
+        title="img3" /></p>
+<p>不是所有 A 内的行动都适用，例如预算的限制。这种无效的行动可以通过分配大量负面奖励来建模。我们将引入另一种反馈机制： <strong>行动屏蔽。</strong></p>
+<hr>
+<h3 id="3-相关工作">3 相关工作</h3>
+<p>大多数技术要么迭代地将索引从零添加索引，要么从满状态一步步减少。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/Index/20.png"
+        data-srcset="/img/Index/20.png, /img/Index/20.png 1.5x, /img/Index/20.png 2x"
+        data-sizes="auto"
+        alt="/img/Index/20.png"
+        title="img4" /></p>
+<p>建议的解决方案应该接受存储预算作为停止标准，因为与限制索引数量相比，它们允许更多的细粒度解决方案。</p>
+<hr>
+<h3 id="4-swirl">4 SWIRL</h3>
+<h4 id="41-概述">4.1 概述</h4>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/Index/21.png"
+        data-srcset="/img/Index/21.png, /img/Index/21.png 1.5x, /img/Index/21.png 2x"
+        data-sizes="auto"
+        alt="/img/Index/21.png"
+        title="img5" /></p>
+<p>图2概述了基于RL的索引选择过程中涉及的实体以及它们如何交互。该过程分为三个阶段：</p>
+<p>🔴 预处理：生成训练和测试工作负载，确定候选指标，并准备工作负载表示模型；</p>
+<p>🟡 训练：代理学习哪些索引对所提供的查询有价值，以及这些索引如何交互；</p>
+<p>🔵 应用：代理应用训练后的模型来确定某些工作负载的索引。</p>
+<p><strong>【预处理】</strong></p>
+<p>① 用户指定一组具有代表性的查询。</p>
+<p>② 基于输入模式的属性和代表性查询集生成索引候选。</p>
+<p>③ 基于具有代表性的查询，生成随机工作负载，分为训练集和测试集。</p>
+<p>④ 工作负载模型负责创建工作负载表示，即将关于当前工作负载的查询的信息转换为可以传递给神经网络的数字表示。</p>
+<p><strong>【训练】</strong></p>
+<p>RL过程的核心组件是索引选择环境和索引选择代理。</p>
+<p>⑤ 环境为每个训练事件检索一个新的工作负载</p>
+<p>⑥ 在给定当前索引配置的情况下，向假设优化器传送当前工作负载的查询成本和计划。</p>
+<p>⑦ 代理的操作空间被限制为仅包含对当前状态有效的操作，尽快收敛候选索引。</p>
+<p>⑧ 环境的当前状态，如剩余预算、当前成本和活动索引，被转换为数字特征，以便将其传递给代理。</p>
+<p>⑨ 从工作负载模型中检索工作负载表示。</p>
+<p>⑩ 环境的状态和奖励被传递给代理。</p>
+<p>⑪ 代理返回有效操作。</p>
+<p>⑫ 在环境通过假设程序创建索引来实现代理的操作之后，该过程在步骤6继续，直到没有剩余的有效操作为止。</p>
+<p><strong>【应用】</strong></p>
+<p>⑤ 在这里接收实际工作负载</p>
+<p>⑪ 从空的索引集开始，代理重复评估ANN并选择行动（通过在 ⑩ 得到的最高回报）</p>
+<h4 id="42-模型">4.2 模型</h4>
+<h5 id="421-状态表示">4.2.1 状态表示</h5>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/Index/22.png"
+        data-srcset="/img/Index/22.png, /img/Index/22.png 1.5x, /img/Index/22.png 2x"
+        data-sizes="auto"
+        alt="/img/Index/22.png"
+        title="img6" /></p>
+<p><strong>【工作负载】</strong></p>
+<p>① N个长度为R的数值向量表示查询的内容 ② 一个长度为N的向量表示每个查询的频率 ③ 一个长度为N的向量表示每个查询的估计执行成本。</p>
+<p>虽然神经网络结构是固定的，一个用工作负载大小N训练的模型总是可以用来确定索引配置，即使当工作负载大小不是N时。</p>
+<p><strong>【元信息】</strong></p>
+<p>包含4个标量特征：① 当前指定的存储预算 ② 当前存储消耗（基于假设优化器的索引大小预测）③ 初始成本 ④ 当前成本。</p>
+<p><strong>【当前索引配置】</strong></p>
+<p>我们分别对每个可索引属性的当前索引配置信息进行编码，以避免大的特征空间。</p>
+<p><strong>【连接和规范化】</strong></p>
+<p>在呈现的状态信息被传递到神经网络之前，向量被连接起来，并进行均值为0、方差为1的归一化。</p>
+<p><strong>【特征数量】</strong></p>
+<p>F为特征数量，N为工作负载的查询数量，R为工作负载的指定宽度，MI为元信息，K为属性数量，则有：$F=N·R+N+N+MI+K$ 。</p>
+<h5 id="422-工作负载建模查询表示">4.2.2 工作负载建模&amp;查询表示</h5>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/Index/23.png"
+        data-srcset="/img/Index/23.png, /img/Index/23.png 1.5x, /img/Index/23.png 2x"
+        data-sizes="auto"
+        alt="/img/Index/23.png"
+        title="img7" /></p>
+<p>🔴 利用假设优化器和候选索引，从一组代表性查询中构建代表性计划。</p>
+<p>🟡 与索引选择相关的每个计划的操作符都转换为文本表示形式。</p>
+<p>🟢 所有代表性计划的文本表示都存储在操作符字典中，该字典为每个不同的操作符文本表示分配一个ID。这些ID将在下一步中用于构造操作符袋(BOO)，即查询操作符的数字表示。</p>
+<p>🔵 使用BOO而不进行进一步处理将导致每个查询产生大量稀疏特征。基于所有代表性计划的BOO表示，我们建立了一个潜在语义索引模型来减少特征数量。（随机预测、主成分分析等，也可用于降低维数）</p>
+<h5 id="423-行动">4.2.3 行动</h5>
+<p>我们利用【无效操作】屏蔽给定当前状态的操作，从而使代理只考虑所有可用操作的子集。有效的操作必须在每一步之前更新，并且有4个原因可以导致操作被标记为无效，如图5所示。</p>
+<p>① 候选索引与工作负载无关。即是否所有索引的属性都出现在工作负载中。</p>
+<p>② 索引将超出预算。</p>
+<p>③ 索引已经存在。</p>
+<p>④ 前提条件无效。在第一步之前，所有多属性索引都被屏蔽为无效。只有当agent选择了一个索引(A)之后，所有以A为第一属性的多属性索引(如(A, B)， (A, C))才会生效。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/Index/24.png"
+        data-srcset="/img/Index/24.png, /img/Index/24.png 1.5x, /img/Index/24.png 2x"
+        data-sizes="auto"
+        alt="/img/Index/24.png"
+        title="img8" /></p>
+<h5 id="424-奖励">4.2.4 奖励</h5>
+<p>为了一致地优化每个步骤中的存储使用，我们将索引选择 $I^*_t$ 额外使用的存储视为奖励：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/Index/25.png"
+        data-srcset="/img/Index/25.png, /img/Index/25.png 1.5x, /img/Index/25.png 2x"
+        data-sizes="auto"
+        alt="/img/Index/25.png"
+        title="img9" /></p>
+<hr>
+<h3 id="5-实验">5 实验</h3>
+<h4 id="51-表现">5.1 表现</h4>
+<p>测试的工作负载和训练的工作负载在以下方面有所不同：① 查询模板的确切组合 ② 在训练期间没有看到确切的频率-模板-组合 ③ 测试的工作负载包含训练时保留的未知模板。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/Index/26.png"
+        data-srcset="/img/Index/26.png, /img/Index/26.png 1.5x, /img/Index/26.png 2x"
+        data-sizes="auto"
+        alt="/img/Index/26.png"
+        title="img10" /></p>
+<p>SWIRL与最先进的方法相比具有竞争力，并且优于DRLinda：就成本而言，它的性能大致与表现最好的算法相当；在选择运行时方面，它在所有情况下都优于所有竞争对手。</p>
+<p>AutoAdmin和Extend在之前的性能研究中是最好的，但它们通常要慢几个数量级。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/Index/27.png"
+        data-srcset="/img/Index/27.png, /img/Index/27.png 1.5x, /img/Index/27.png 2x"
+        data-sizes="auto"
+        alt="/img/Index/27.png"
+        title="img11" /></p>
+<h4 id="52-训练时间工作量">5.2 训练时间&amp;工作量</h4>
+<p><strong>【训练时间】</strong></p>
+<p>训练持续时间是指在没有进一步改进之前收敛所需的时间。包含计算状态表示、应用动作掩蔽、创建假设索引、更新神经网络权重以及在训练期间使用神经网络进行预测所需的时间。</p>
+<p>以下几个方面影响了问题的复杂性，从而影响训练时间：① 工作负载大小 ② 查询的复杂性 ③ 索引候选数。</p>
+<p><strong>【动作屏蔽的有效性】</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/Index/28.png"
+        data-srcset="/img/Index/28.png, /img/Index/28.png 1.5x, /img/Index/28.png 2x"
+        data-sizes="auto"
+        alt="/img/Index/28.png"
+        title="img12" /></p>
+<p>图8显示，在开始时，只有8%的操作是有效的；随着剩余预算的减少，越来越多的索引因为太大而失效。此外，大多数有效操作引用宽度为1和2的索引。可见无效操作屏蔽是限制操作空间的一种有效技术。</p>
+<p>这种技术也减少了收敛所需的训练时间。在没有动作掩蔽的情况下，即使延长训练时间，整体性能也可能更差。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-05-03</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/swirl/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://imcaicai.github.io/swirl/" data-title="SWIRL: Selection of Workload-aware Indexes using Reinforcement Learning" data-hashtags="index"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://imcaicai.github.io/swirl/" data-hashtag="index"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://imcaicai.github.io/swirl/" data-title="SWIRL: Selection of Workload-aware Indexes using Reinforcement Learning"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://imcaicai.github.io/swirl/" data-title="SWIRL: Selection of Workload-aware Indexes using Reinforcement Learning"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://imcaicai.github.io/swirl/" data-title="SWIRL: Selection of Workload-aware Indexes using Reinforcement Learning"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/index/">index</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/access-path-selection-in-main-memory-optimized-data-systems/" class="prev" rel="prev" title="Access Path Selection in Main-Memory Optimized Data Systems"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Access Path Selection in Main-Memory Optimized Data Systems</a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">菜菜</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

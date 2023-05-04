@@ -118,6 +118,22 @@
         alt="/img/avatar.jpg"
         title="/img/avatar.jpg" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/swirl/">SWIRL: Selection of Workload-aware Indexes using Reinforcement Learning</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-05-03">2023-05-03</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>论文阅读笔记</a></span></div><div class="content">本文为论文 SWIRL: Selection of Workload-aware Indexes using Reinforcement Learning 的阅读笔记。
+1 简介  🔴 我们提出了一种基于RL的索引选择方法，与最好的竞争者的性能相匹配。
+🟡 我们的解决方案采用了一个复杂的工作负载模型，以推广到具有未见过的查询的工作负载，并依靠无效动作屏蔽来减少训练时间。
+🔵 我们包括了基于RL的索引选择的首次调查和性能研究，并通过PostgreSQL上复杂的分析性数据库基准评估我们的方法。
+  2 背景 2.1 索引选择问题 大的解决方案空间。 相关候选索引的数量取决于工作负载查询访问的属性数量、每个索引的最大属性数量。评估所有候选组合通常是不切实际的，因为它们的数量超过了属性的数量级。
+索引交互。 一个索引的存在会影响其他索引的性能。因此，在索引选择的每个步骤中，必须要考虑到当前存在的索引，经常需要重新计算候选索引的收益。
+量化索引影响。 漫长的创建和执行时间使得物理上创建索引并不可行。索引选择方法通常依赖于估计而不是实际测量。（假设索引）
+2.2 问题定义 假设有 N 个查询，K 个属性，每个查询 n 的属性表示为 $q_n⊆{1,&hellip;,K},n=1,&hellip;,K$ 。 W为每个索引包含的属性个数（索引宽度），$m_i$ 为需要的存储空间。索引的选择由子集 $I^*⊆I$ 表示，其执行成本为 $c_n(I^*)$ ，出现频率为 $f_n$ 。总的工作负载成本为：
+目标是确定 $I^*$ 使 $C(I^*)$ 最小，并且不超过给定预算 B。
+2.3 强化学习 强化学习（RL）包括一组算法，用于解决决策问题。
+这些问题的特点是，在给定状态 $s_t∈S$ ，反复允许一个代理执行行动 $a_t$ ，其中 $a_t∈A$ 。在执行了所选择的行动后，达到新的状态 $s_{t+1}$ ，重复该过程。为了向代理人提供关于行动是否选择得当的反馈，他们会收到反馈信号，即每次决策后的奖励 $r_t$ 。
+问题是要找到一个最佳决策，它将状态映射为行动，涉及到以时间 t 为开始状态的未来长期报酬：</div><div class="post-footer">
+        <a href="/swirl/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/index/">index</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/access-path-selection-in-main-memory-optimized-data-systems/">Access Path Selection in Main-Memory Optimized Data Systems</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-05-01">2023-05-01</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>论文阅读笔记</a></span></div><div class="content">本文为论文 Access Path Selection in Main-Memory Optimized Data Systems: Should I Scan or Should I Probe? 的阅读笔记。
 1 引言 🟥 我们提出了一个增强的访问路径成本模型，它可以捕捉到在支持访问共享的主内存优化的分析数据系统中的选择运算符的性能。
@@ -245,12 +261,6 @@ PS：主要是帮学长找语法错误、可以改进的地方
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-04-04">2023-04-04</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>蓝桥杯刷题记录</a></span></div><div class="content">⏰总用时：89/240	🎯总分：73/150
    题号 时间 结果 满分 难度 备注     1 3 ✅ 3 🌕    2 3 ✅ 5 🌕 🔹 在Excel中直接用日期格式拉出答案   3 10 ✅ 9 🌕 🔸 直接用next_permutation(a,a+10) 来枚举   4 15 ✅ 11 🌕 🔹 注意 printf、scanf 中 %*s 的用法   5 1 ✅ 15 🌕 🔸 注意此题 dfs 的用法   6 15 ✅ 17 🌕 🔹 dfs   7 10 ❌ 21 🌓 🔸 全排列+特殊去重🔸 去重旋转：判断 t 是否是 s+s 的子串🔸 在字符串中寻找子串：s.</div><div class="post-footer">
         <a href="/%E8%93%9D%E6%A1%A5%E6%9D%AF2015/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/">蓝桥杯</a>,&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/%E8%93%9D%E6%A1%A5%E6%9D%AF2016/">【蓝桥杯】2016题解</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-04-03">2023-04-03</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>蓝桥杯刷题记录</a></span></div><div class="content">⏰总用时：146/240	🎯总分：66/150
-   题号 时间 结果 满分 难度 备注     1 3 ✅ 3 🌕    2 3 ✅ 5 🌕    3 40 ❌ 11 🌓 🔸 直接用 next_permutation(a,a+10) 来枚举所有可能   4 5 ✅ 9 🌕    5 10 ✅ 13 🌓 🔸 消除末尾连续的 1 ： x&amp;(x+1)   6 35 ✅ 15 🌕 🔹 dfs   7 30 ❌ 19 🌓 🔸 先枚举，再用dfs判断连通性🔸 压缩：用一维数组存储2×3矩阵   8 10 ✅ 21 🌕 🔹 暴力枚举   9 5 ❌ 25 🌓 🔸 问题转化为求【最长回文子序列】🔸 动态规划、带备忘录   10 5 ❌ 29      1 【填空】网友年龄 题目 某君新认识一网友。 当问及年龄时，他的网友说： “我的年龄是个 2 位数，我比儿子大 27 岁, 如果把我的年龄的两位数字交换位置，刚好就是我儿子的年龄”</div><div class="post-footer">
-        <a href="/%E8%93%9D%E6%A1%A5%E6%9D%AF2016/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/">蓝桥杯</a>,&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a></div></div>
 </article><ul class="pagination"><li class="page-item active">
                     <span class="page-link">

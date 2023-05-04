@@ -3,7 +3,26 @@
         <title>论文阅读笔记 - Category - 菜菜的秘密花园</title>
         <link>https://imcaicai.github.io/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</link>
         <description>论文阅读笔记 - Category - 菜菜的秘密花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 01 May 2023 23:35:11 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 03 May 2023 19:09:22 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" rel="self" type="application/rss+xml" /><item>
+    <title>SWIRL: Selection of Workload-aware Indexes using Reinforcement Learning</title>
+    <link>https://imcaicai.github.io/swirl/</link>
+    <pubDate>Wed, 03 May 2023 19:09:22 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/swirl/</guid>
+    <description><![CDATA[本文为论文 SWIRL: Selection of Workload-aware Indexes using Reinforcement Learning 的阅读笔记。
+1 简介  🔴 我们提出了一种基于RL的索引选择方法，与最好的竞争者的性能相匹配。
+🟡 我们的解决方案采用了一个复杂的工作负载模型，以推广到具有未见过的查询的工作负载，并依靠无效动作屏蔽来减少训练时间。
+🔵 我们包括了基于RL的索引选择的首次调查和性能研究，并通过PostgreSQL上复杂的分析性数据库基准评估我们的方法。
+  2 背景 2.1 索引选择问题 大的解决方案空间。 相关候选索引的数量取决于工作负载查询访问的属性数量、每个索引的最大属性数量。评估所有候选组合通常是不切实际的，因为它们的数量超过了属性的数量级。
+索引交互。 一个索引的存在会影响其他索引的性能。因此，在索引选择的每个步骤中，必须要考虑到当前存在的索引，经常需要重新计算候选索引的收益。
+量化索引影响。 漫长的创建和执行时间使得物理上创建索引并不可行。索引选择方法通常依赖于估计而不是实际测量。（假设索引）
+2.2 问题定义 假设有 N 个查询，K 个属性，每个查询 n 的属性表示为 $q_n⊆{1,&hellip;,K},n=1,&hellip;,K$ 。 W为每个索引包含的属性个数（索引宽度），$m_i$ 为需要的存储空间。索引的选择由子集 $I^*⊆I$ 表示，其执行成本为 $c_n(I^*)$ ，出现频率为 $f_n$ 。总的工作负载成本为：
+目标是确定 $I^*$ 使 $C(I^*)$ 最小，并且不超过给定预算 B。
+2.3 强化学习 强化学习（RL）包括一组算法，用于解决决策问题。
+这些问题的特点是，在给定状态 $s_t∈S$ ，反复允许一个代理执行行动 $a_t$ ，其中 $a_t∈A$ 。在执行了所选择的行动后，达到新的状态 $s_{t+1}$ ，重复该过程。为了向代理人提供关于行动是否选择得当的反馈，他们会收到反馈信号，即每次决策后的奖励 $r_t$ 。
+问题是要找到一个最佳决策，它将状态映射为行动，涉及到以时间 t 为开始状态的未来长期报酬：]]></description>
+</item>
+<item>
     <title>Access Path Selection in Main-Memory Optimized Data Systems</title>
     <link>https://imcaicai.github.io/access-path-selection-in-main-memory-optimized-data-systems/</link>
     <pubDate>Mon, 01 May 2023 23:35:11 &#43;0800</pubDate>
