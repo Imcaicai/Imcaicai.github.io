@@ -5,31 +5,24 @@
 
 🔗 **题目：[现值计算](http://118.190.20.162/view.page?gpid=T160)**
 
-🔴 注意 `s=s/(1+i) + a[j]` 是从后往前更新的，一开始写成从 a[0] 到 a[n] 出了 bug。
-
 ```c++
-#include <iostream>
+#include<bits/stdc++.h>
 using namespace std;
-int main()
-{
-	// 输入年数n，年利率i 
-	int n;
-	double i;
-	scanf("%d", &n);
-	scanf("%lf",&i);
-	
-	double s=0;	// 保存最后结果 
-	int a[n+1];	// 每年收益 
-	for(int j=0;j<n+1;j++){
-		scanf("%d", &a[j]);
+
+int main(){
+
+	double i,ans,s;
+	int n,t;
+	cin>>n>>i>>ans;
+	i+=1;s=i;
+	for(int j=1;j<=n;j++){
+		scanf("%d",&t);
+		ans += t*1.0/s;
+		s*=i;
 	}
-	
-	for(int j=n;j>=0;j--){
-		s=s/(1+i) + a[j];
-	}
-	
-	printf("%f", s);
-} 
+	cout<<ans;
+	return 0;
+}
 ```
 
 ## 2 训练计划
