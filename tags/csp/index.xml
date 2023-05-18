@@ -3,16 +3,24 @@
         <title>CSP - Tag - 菜菜的秘密花园</title>
         <link>https://imcaicai.github.io/tags/csp/</link>
         <description>CSP - Tag - 菜菜的秘密花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 23 Apr 2023 21:02:45 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/tags/csp/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 18 May 2023 20:12:04 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/tags/csp/" rel="self" type="application/rss+xml" /><item>
+    <title>【CSP】刷题汇总</title>
+    <link>https://imcaicai.github.io/csp%E5%88%B7%E9%A2%98%E6%B1%87%E6%80%BB/</link>
+    <pubDate>Thu, 18 May 2023 20:12:04 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/csp%E5%88%B7%E9%A2%98%E6%B1%87%E6%80%BB/</guid>
+    <description><![CDATA[202303 ⏰ 时间：90	🎯成绩：200	🔗链接：
+   题号 时间/min 正确率 备注     1 20 ✅    2 30 ✅    3 40 ❌ 🔸bitset、map、set用法🔸堆栈    202212 ]]></description>
+</item>
+<item>
     <title>【CSP】202303题解</title>
     <link>https://imcaicai.github.io/csp202303/</link>
     <pubDate>Sun, 23 Apr 2023 21:02:45 &#43;0800</pubDate>
     <author>菜菜</author>
     <guid>https://imcaicai.github.io/csp202303/</guid>
-    <description><![CDATA[⏰ 时间：	🎯成绩：
-   题号 时间/min 正确率 备注     1 20 ✅    2 30 ✅    3 40 ❌    4      5       1 田地丈量 🔗 题目：田地丈量
+    <description><![CDATA[1 田地丈量 🔗 题目：田地丈量
 分情况求出长、宽，再计算总和即可。
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28  #include &lt;bits/stdc++.]]></description>
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28  #include &lt;bits/stdc++.h&gt;using namespace std; int main(){ int n,a,b,x,y,x1,x2,y1,y2,sum=0; cin&gt;&gt;n&gt;&gt;a&gt;&gt;b; for(int i=0;i&lt;n;i++){ scanf(&#34;%d %d %d %d&#34;,&amp;x1,&amp;y1,&amp;x2,&amp;y2); if(x1&lt;0 &amp;&amp; x2&gt;=0 &amp;&amp; x2&lt;=a)	x=x2; else if(x1&lt;0 &amp;&amp; x2&gt;a)	x=a; else if(x1&gt;=0 &amp;&amp; x1&lt;=a &amp;&amp; x2&gt;a)	x=a-x1; else if(x1&gt;=0 &amp;&amp; x1&lt;=a &amp;&amp; x2&gt;=0 &amp;&amp; x2&lt;=a)	x=x2-x1; else continue; if(y1&lt;0 &amp;&amp; y2&gt;=0 &amp;&amp; y2&lt;=b)	y=y2; else if(y1&lt;0 &amp;&amp; y2&gt;b)	y=b; else if(y1&gt;=0 &amp;&amp; y1&lt;=b &amp;&amp; y2&gt;b)	y=b-y1; else if(y1&gt;=0 &amp;&amp; y1&lt;=b &amp;&amp; y2&gt;=0 &amp;&amp; y2&lt;=b)	y=y2-y1; else continue; sum+=x*y; } cout&lt;&lt;sum; return 0; }   2 垦田计划 🔗 题目：垦田计划]]></description>
 </item>
 <item>
     <title>【CSP】202112题解</title>

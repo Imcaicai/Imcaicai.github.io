@@ -3,7 +3,26 @@
         <title>All Posts - 菜菜的秘密花园</title>
         <link>https://imcaicai.github.io/posts/</link>
         <description>All Posts | 菜菜的秘密花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 03 May 2023 19:09:22 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 18 May 2023 20:14:45 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>【STL】bitset容器用法</title>
+    <link>https://imcaicai.github.io/s/</link>
+    <pubDate>Thu, 18 May 2023 20:14:45 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/s/</guid>
+    <description><![CDATA[1 简介 🟠 由若干个位（bit）组成，它提供一些成员函数，使程序员不必通过位运算就能很方便地访问、修改其中的任意一位。
+2 创建 1️⃣ 调用默认构造函数。
+1  bitset&lt;N&gt; b;   3 常用的成员方法    成员方法 功能     count() 返回bitset中 1 的个数。   size() 返回位数。   test() 返回某一位下标是否为1   set() 全部置1,或者某一位置1或0   flip() 全部取反,或者某一位取反    ]]></description>
+</item>
+<item>
+    <title>【CSP】刷题汇总</title>
+    <link>https://imcaicai.github.io/csp%E5%88%B7%E9%A2%98%E6%B1%87%E6%80%BB/</link>
+    <pubDate>Thu, 18 May 2023 20:12:04 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/csp%E5%88%B7%E9%A2%98%E6%B1%87%E6%80%BB/</guid>
+    <description><![CDATA[202303 ⏰ 时间：90	🎯成绩：200	🔗链接：
+   题号 时间/min 正确率 备注     1 20 ✅    2 30 ✅    3 40 ❌ 🔸bitset、map、set用法🔸堆栈    202212 ]]></description>
+</item>
+<item>
     <title>SWIRL: Selection of Workload-aware Indexes using Reinforcement Learning</title>
     <link>https://imcaicai.github.io/swirl/</link>
     <pubDate>Wed, 03 May 2023 19:09:22 &#43;0800</pubDate>
@@ -118,37 +137,9 @@ PS：主要是帮学长找语法错误、可以改进的地方
     <pubDate>Sun, 23 Apr 2023 21:02:45 &#43;0800</pubDate>
     <author>菜菜</author>
     <guid>https://imcaicai.github.io/csp202303/</guid>
-    <description><![CDATA[⏰ 时间：	🎯成绩：
-   题号 时间/min 正确率 备注     1 20 ✅    2 30 ✅    3 40 ❌    4      5       1 田地丈量 🔗 题目：田地丈量
+    <description><![CDATA[1 田地丈量 🔗 题目：田地丈量
 分情况求出长、宽，再计算总和即可。
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28  #include &lt;bits/stdc++.]]></description>
-</item>
-<item>
-    <title>【二叉树】纲领篇</title>
-    <link>https://imcaicai.github.io/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%BA%B2%E9%A2%86%E7%AF%87/</link>
-    <pubDate>Sun, 23 Apr 2023 19:27:41 &#43;0800</pubDate>
-    <author>菜菜</author>
-    <guid>https://imcaicai.github.io/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%BA%B2%E9%A2%86%E7%AF%87/</guid>
-    <description><![CDATA[1 快速排序&amp;归并排序 🔴 快速排序：二叉树的前序遍历 先构造分界点，然后去左右子数组构造分界点。 要对 nums[lo..hi] 进行排序，我们先找⼀个分界点 p，通过交换元素使得 nums[lo..p-1] 都小于等于 nums[p]，且 nums[p+1..hi] 都大于 nums[p]，然后递归地去 nums[lo..p-1] 和 nums[p+1..hi] 中寻找新的分界点。
-1 2 3 4 5 6 7 8  void sort(int[] nums, int lo, int hi) { /****** 前序遍历位置 ******/ // 通过交换元素构建分界点 p 	int p = partition(nums, lo, hi); sort(nums, lo, p - 1); sort(nums, p + 1, hi); }   🔵 归并排序：二叉树的后序遍历 先对左右子数组排序，然后合并，即分治算法。 （对 nums[lo..hi] 进行排序，我们先对 nums[lo..mid] 排序，再对 nums[mid+1.]]></description>
-</item>
-<item>
-    <title>Slalom Coasting Through Raw Data via Adaptive Partitioning and Indexing</title>
-    <link>https://imcaicai.github.io/slalom-coasting-through-raw-data-via-adaptive-partitioning-and-indexing/</link>
-    <pubDate>Sat, 22 Apr 2023 13:08:20 &#43;0800</pubDate>
-    <author>菜菜</author>
-    <guid>https://imcaicai.github.io/slalom-coasting-through-raw-data-via-adaptive-partitioning-and-indexing/</guid>
-    <description><![CDATA[本文为论文 Slalom: Coasting Through Raw Data via Adaptive Partitioning and Indexing 的阅读笔记。
- 🟠 Slalom
- 一个通过监视用户访问模式来适应工作负载变化的原位查询引擎。  🟡 关键组件
- 在线分区和索引方案 为原位查询引擎量身定制的分区和索引调优器。  🟢 性能优势
- 对原始数据文件进行逻辑分区；为每个分区构建轻量级分区特定的索引   1 简介 🟠 加载、索引和调优的成本
-考虑到所涉及的数据大小，对数据的任何转换、复制和准备步骤都会在查询数据前引入大量延迟。缺乏对工作负载的先验知识使得物理设计决策几乎不可能。
-🟡 自适应分区和细粒度索引
- 使用第一次表扫描来生成分区和轻量级索引提示 数据集以动态方式部分索引，以适应三个关键工作负载特征：数据分布；查询类型；投影属性。 调优器通过以下方式降低数据访问成本:  对原始数据集进行逻辑分区，在不进行物理重构的情况下将其虚拟地分解为更易于管理的块 在每个逻辑分区上选择适当的索引策略，以提供有效的数据访问。（细粒度的索引决策）    🟢 基于Slalom的高效 In-Situ Query
- 将在线分区和索引调谐器集成到原位查询处理原型系统Slalom中 Slalom在逻辑上将原始数据划分为分区，并根据每个分区的“热度”(访问频率)、针对每个分区的查询类型来选择构建哪个细粒度的分区索引。 Slalom填充二进制缓存(从原始数据转换为二进制数据的缓存)以进一步提高性能 Slalom使用基于随机成本的决策算法调整当前分区和索引方案来适应工作负载的变化  🔵 贡献
- 我们提出了原始数据文件的逻辑分区方案，该方案支持在每个分区级别上进行细粒度的索引决策。 好处：带来了原位查询处理索引的好处；索引构建成本低；内存占用小。 我们将分区和索引调谐器集成到我们最先进的原型原位查询引擎Slalom中。  2 相关工作 🟣 对原始数据的查询
- Slalom使用的技术可以通过减少索引的大小、为每个文件分区构建内存效率高的索引来提高系统的可伸缩性。 Slalom不加载所有数据，而是利用工作负载局域性自适应地为原始数据创建细粒度索引方案，并逐渐减少I/O和访问成本，同时在适度的内存预算下运行。  🔵 数据库分区]]></description>
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28  #include &lt;bits/stdc++.h&gt;using namespace std; int main(){ int n,a,b,x,y,x1,x2,y1,y2,sum=0; cin&gt;&gt;n&gt;&gt;a&gt;&gt;b; for(int i=0;i&lt;n;i++){ scanf(&#34;%d %d %d %d&#34;,&amp;x1,&amp;y1,&amp;x2,&amp;y2); if(x1&lt;0 &amp;&amp; x2&gt;=0 &amp;&amp; x2&lt;=a)	x=x2; else if(x1&lt;0 &amp;&amp; x2&gt;a)	x=a; else if(x1&gt;=0 &amp;&amp; x1&lt;=a &amp;&amp; x2&gt;a)	x=a-x1; else if(x1&gt;=0 &amp;&amp; x1&lt;=a &amp;&amp; x2&gt;=0 &amp;&amp; x2&lt;=a)	x=x2-x1; else continue; if(y1&lt;0 &amp;&amp; y2&gt;=0 &amp;&amp; y2&lt;=b)	y=y2; else if(y1&lt;0 &amp;&amp; y2&gt;b)	y=b; else if(y1&gt;=0 &amp;&amp; y1&lt;=b &amp;&amp; y2&gt;b)	y=b-y1; else if(y1&gt;=0 &amp;&amp; y1&lt;=b &amp;&amp; y2&gt;=0 &amp;&amp; y2&lt;=b)	y=y2-y1; else continue; sum+=x*y; } cout&lt;&lt;sum; return 0; }   2 垦田计划 🔗 题目：垦田计划]]></description>
 </item>
 </channel>
 </rss>
