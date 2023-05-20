@@ -1,131 +1,57 @@
 # 【CSP】202203题解
 
 
-## 1
+## 1 未初始化警告
 
-错误的：
-
-```c++
-#include <iostream>
-#include <cmath>
-// #define _USE_MATH_DEFINES 
-
-using namespace std;
-int main()
-{
-
-	// 输入变量个数 n，语句个数 k
-	int n,k;
-	scanf("%d",&n);
-	scanf("%d",&k);
-	
-	// 输入语句
-	int x[n+1]={0},y[n+1]={0},a[n+1]={0};
-	for(int i=1;i<=k;i++){
-		scanf("%d",&x[i]);
-		scanf("%d",&y[i]);
-	} 
-	
-	for(int i=1;i<=k;i++){
-		if(a[x[i]]==0){
-			a[x[i]]=i;
-		}
-	}
-	
-	// 记录不符合的语句个数
-	int cnt=0;
-	for(int i=1;i<=k;i++){
-		if(y[i]!=0 && i<=a[y[i]]){
-			cnt++;
-		}
-	} 
-	
-	printf("%d",cnt);
-	
-	
-} 
-```
-
-正确的：
+🔗 **题目：[未初始化警告](http://118.190.20.162/view.page?gpid=T143)**
 
 ```c++
-// 需要用 CPP11 或 CPP14 
-// #include<bits/stdc++.h>
-#include <iostream>
+#include<bits/stdc++.h>
 using namespace std;
- 
+
 int main(){
-	
-	// 输入变量数量 n，赋值语句 k
-	int n,k;
-	scanf("%d %d",&n,&k);	// 用 cin 可能超时，改为 scanf 
-	
-	// 输入 k 行语句 x[i] y[i]
-	int x[k],y[k];
-	for(int i=0;i<k;i++){
+	int n,k,cnt=0,x[100005],y[100005],idx[100005]={0};
+	cin>>n>>k;
+	for(int i=1;i<=k;i++){
 		scanf("%d %d",&x[i],&y[i]);
-	} 
-	
-	// 判断有无不符合赋值规则的
-	int cnt=0;
-	for(int i=0;i<k;i++){
-		int flag=1;
-		if(y[i]==0)
-			continue;
-		for(int j=0;j<i;j++){
-			if(x[j]==y[i]){
-				flag=0;
-				break;
-			}
-		}
-		
-		cnt += flag;
-	} 
-	
+		if(idx[x[i]]==0)	idx[x[i]]=i;
+	}
+	for(int i=1;i<=k;i++){
+		if(y[i]!=0 && (idx[y[i]]>=i || idx[y[i]]==0))
+			cnt++;
+	}
 	cout<<cnt;
+	return 0;
 }
 ```
 
+## 2 出行计划
 
+🔗 **题目：[出行计划](http://118.190.20.162/view.page?gpid=T142)**
 
-## 2
+险些超时（
 
 ```c++
-// 需要用 CPP11 或 CPP14 
-// #include<bits/stdc++.h>
-#include <iostream>
+#include<bits/stdc++.h>
 using namespace std;
- 
+
 int main(){
-	
-	// 输入计划数 n，查询数 m，等核酸天数 k 
-	int n,m,k;
-	scanf("%d %d %d",&n,&m,&k);
-	
-	// 输入 t[i] c[i]
-	int t,c;
-	// 错误原因：1. 数组开的不够大 2. 数组没有初始化 
-	int r[200005]={0};
+	int n,m,k,q,t,c,a[200005]={0};
+	scanf("%d %d %d",&n,&m,&k);		// 出行计划数目、查询个数、等待结果所需时间
 	for(int i=0;i<n;i++){
-		scanf("%d %d",&t,&c);
-		if(t-k<1)
-			continue;
-		int temp=max(1,t-k-c+1);
-		for(int j=temp;j<=t-k;j++){
-			r[j]++;
-		} 
-	} 
-	
-	// 输入 m 个 q[i]
-	int q;
+		scanf("%d %d",&t,&c);	// 进入时间、所需多久内的核酸检测结果 
+		t -= k;c = t-c+1;
+		int j=max(0,c);
+		while(j<=t){
+			a[j]++;j++;
+		}
+	}
 	for(int i=0;i<m;i++){
-		int cnt=0;
 		scanf("%d",&q);
-		
-		printf("%d\n",r[q]);
+		printf("%d\n",a[q]);
 	} 
 	
-	
+	return 0;
 }
 ```
 

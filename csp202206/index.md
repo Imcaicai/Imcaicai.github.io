@@ -1,204 +1,198 @@
 # 【CSP】202206题解
 
 
-## 1
+## 1 归一化处理
 
-```c++
-#include <iostream>
-#include <cmath>
-// #define _USE_MATH_DEFINES 
-
-using namespace std;
-int main()
-{
-
-	// 输入 n，a，计算总和 sum 
-	int n,sum=0;
-	scanf("%d",&n);
-	int a[n];
-	for(int i=0;i<n;i++){
-		scanf("%d",&a[i]);
-		sum+=a[i];
-	} 
-	
-	// 计算平均数 x
-	double x=(double)sum/n;
-	// 计算方差 d
-	double d=0;
-	for(int i=0;i<n;i++){
-		d=d+(a[i]-x)*(a[i]-x);
-	} 
-	d=d/n;
-	
-	// 计算 f
-	double f[n];
-	for(int i=0;i<n;i++){
-		f[i]=(a[i]-x)/pow(d,0.5);
-		printf("%.16f\n",f[i]);
-	} 
-	
-	
-} 
-```
-
-## 2
-
-```c++
-#include <iostream>
-#include <cmath>
-
-using namespace std;
-
-
-int main()
-{
-
-	// 输入变量
-	int n,l,s;
-	scanf("%d %d %d",&n,&l,&s);
-	int b[s+1][s+1];
-	
-	// 输入树的位置 
-	int x[n],y[n];
-	for(int i=0;i<n;i++){
-		scanf("%d %d",&x[i],&y[i]);
-	} 
-	
-	// 输入矩阵 S 
-	for(int i=s;i>=0;i--){
-		for(int j=0;j<=s;j++){
-			scanf("%d",&b[i][j]); 
-		}
-	}
-	
-	int cnt=0;
-	for(int i=0;i<n;i++){
-		
-		// 考虑树为起点构成的数组不能超过矩阵 L
-		if(x[i]+s>l || y[i]+s>l){
-			continue;	// 救命！这里用 continue，不是 break 
-		} 
-		
-		// 构建新的矩阵 a 
-		int a[60][60]={0};
-		int flag=1;
-		for(int j=0;j<n;j++){
-			if(x[j]>=x[i] && x[j]<=x[i]+s && y[j]>=y[i] && y[j]<=y[i]+s){
-				a[x[j]-x[i]][y[j]-y[i]]=1;
-			} 
-		}
-		
-		for(int j=0;j<=s;j++){
-			for(int k=0;k<=s;k++){
-				if(a[j][k]!=b[j][k]){
-					flag=0;
-					break;
-				}
-			}
-			
-			if(flag==0)
-				break;
-		} 
-		
-		cnt += flag;
-	} 
-	
-	printf("%d",cnt);
-	
-	
-} 
-```
-
-## 3
+🔗 **题目：[归一化处理](http://118.190.20.162/view.page?gpid=T148)**
 
 ```c++
 #include<bits/stdc++.h>
 using namespace std;
- 
-class role{
-	public:
-		set<string> opl;
-		set<string> opt;
-		set<string> opn;
-};
- 
-class group{
-	public:
-		set<string> rol;	// 关联内的用户组 
-};
- 
-map<string,role> mpr;	// 角色：键为角色名，值为角色的操作名、资源种类、资源名 
-map<string,group> mpg;	// 关联：键为角色名，值为一组用户组名 
- 
-class user{
-	public:
-		set<string> rol;	// 用户所关联的角色 
-		set<string> grp;	// 用户所在的用户组 
-		
-		// 查看操作、资源种类、资源名是否能被用户使用 
-		bool check(string opl,string opt,string opn){
-			// 遍历用户所关联的角色
-			for(auto it:rol)	 
-				if(mpr[it].opl.count("*") || mpr[it].opl.count(opl))	// 操作是否符合 
-					if(mpr[it].opt.count("*") || mpr[it].opt.count(opt))	// 资源种类是否符合 
-						if(mpr[it].opn.empty() || mpr[it].opn.count(opn))	// 资源名是否符合 
-							return true;
-			
-			// 遍历用户所在的用户组所关联的角色 
-			for(auto it:grp)
-				if(mpg.count(it))	// 已关联的用户是否包含用户所在的用户组 
-					for(auto it1:mpg[it].rol)	// 遍历用户组所关联的角色 
-						if(mpr[it1].opl.count("*") || mpr[it1].opl.count(opl))
-							if(mpr[it1].opt.count("*") || mpr[it1].opt.count(opt))
-								if(mpr[it1].opn.empty() || mpr[it1].opn.count(opn))
-									return true;
-			return false;
-		}
-		
-};
-map<string,user> mpu;	// 关联：键为角色名，值为用户名 
- 
-signed main(){
-	//提高cin,cout的速度 
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
-	 
-	int n,m,q,nv,no,nn,k;
-	string name,rname,uname,x,y,z,ch;	
-	cin>>n>>m>>q;	// 输入角色数 n，角色关联数 m，操作数 q 
-	
+
+int main(){
+	int n,a[1005];
+	double avg=0,d=0,f;
+	scanf("%d",&n);
 	for(int i=0;i<n;i++){
-		cin>>name>>nv;	// 可以直接用 cin，不用标准输入 
-		while(nv--)
-			cin>>x,mpr[name].opl.emplace(x);	// 输入操作名 
-		cin>>no;
-		while(no--)
-			cin>>x,mpr[name].opt.emplace(x);	// 输入资源种类 
-		cin>>nn;
-		while(nn--)
-			cin>>x,mpr[name].opn.emplace(x);	// 输入资源名 
+		scanf("%d",&a[i]);
+		avg += a[i];
+	}
+	avg /= n;	
+	for(int i=0;i<n;i++)
+		d += (a[i]-avg)*(a[i]-avg);
+	d /= n;
+	d = pow(d,0.5);
+	for(int i=0;i<n;i++){
+		f = (a[i]-avg)/d;
+		printf("%.16f\n",f);
 	}
 	
-	for(int i=0;i<m;i++){
-		cin>>rname>>k;
-		for(int j=0;j<k;j++){
-			cin>>ch>>name;
-			if(ch == "g")
-				mpg[name].rol.emplace(rname);	// 在【用户组】中加入关联：角色名+用户组名 
-			else
-				mpu[name].rol.emplace(rname);	// 在【用户】中加入关联：角色名+用户名 
-		}
-	}
-	
-	for(int i=0;i<q;i++){
-		cin>>uname>>k;
-		for(int j=0;j<k;j++)
-			cin>>name,mpu[uname].grp.emplace(name);	// 输入用户所在的用户组 
-		cin>>x>>y>>z;
-		cout<<mpu[uname].check(x,y,z)<<endl;
-		mpu[uname].grp.clear();	// 每次要清空用户所在的用户组，role 不用清空！！！ 
-	}
-	 
+	return 0;
 }
 ```
+
+## 2 寻宝！大冒险！
+
+🔗 **题目：[寻宝！大冒险！](http://118.190.20.162/view.page?gpid=T147)**
+
+🔴 注意：题目中所给的一系列坐标 x[n]、y[n] 不一定是顺序的！！！
+
+```c++
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+	// 输入 
+	int n,l,s,cnt=0,x[1005],y[1005],b[60][60];	// 棵树、绿化图、藏宝图大小、计数器 
+	scanf("%d %d %d",&n,&l,&s); 
+	for(int i=0;i<n;i++)
+		scanf("%d %d",&x[i],&y[i]);
+	for(int i=s;i>=0;i--)
+		for(int j=0;j<=s;j++)
+			scanf("%d",&b[i][j]);
+	
+	for(int k=0;k<n;k++){
+		int flag=1;
+		if(x[k]+s>l || y[k]+s>l)	continue;	// 判断坐标是否溢出 
+		int a[60][60]={0};						// 构造大小(s+1)*(s+1)的矩阵a
+		for(int i=0;i<n;i++){
+			// 注意这里 x 和 y 不一定是从小到大排列的，不要想当然！！！ 
+			if(x[i]-x[k]>=0 && y[i]-y[k]>=0 && x[i]-x[k]<=s && y[i]-y[k]<=s)
+				a[x[i]-x[k]][y[i]-y[k]] = 1;
+		}
+		
+		for(int i=0;i<=s;i++){
+			for(int j=0;j<=s;j++)
+				if(a[i][j]!=b[i][j])	flag=0;
+		}
+		cnt += flag;
+	}
+
+	cout<<cnt;
+	return 0;
+} 
+```
+
+## 3 角色授权
+
+🔗 **题目：[角色授权](http://118.190.20.162/view.page?gpid=T146)**
+
+🔴 **数据结构**
+
+没什么很难的，都是常见的STL容器组装。
+
+- `ROLE`  ：角色（包含角色名称、操作清单、资源种类、资源名称）
+- `map<string,vector<int> > ump` ：用户名及其关联的角色下标
+- `map<string,vector<int> > zmp` ：用户组名及其关联的角色下标
+- `map<string,int> rmp` ：角色名称到其下标的映射
+
+🟡 **输入输出**
+
+- 用 scanf/printf 容易有奇奇怪怪的错误，可以用 cin/cout
+- cin/cout 加速：`ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);` ，此时不可以再用 scanf/printf
+
+🟢 vector 查找元素：find(v.begin(),v.end(),x) 和 v.end() 相比较
+
+🔵 用set查找元素更快！！！本来ROLE中用的是set而不是vector，测评的时候可能90（超时），也可能100；改成set速度会快很多。
+
+```c++
+#include<bits/stdc++.h>
+#include<iostream>
+using namespace std;
+
+struct ROLE{
+	string name;		// 角色名称 
+	set<string> op;		// 操作清单 
+	set<string> ret;	// 资源种类
+	set<string> ren;	// 资源名称 
+};
+ROLE role[500];			// 记录所有角色 
+map<string,vector<int> > ump;	// 键：用户名，值：角色下标 
+map<string,vector<int> > zmp;	// 键：用户组名，值：角色下标 
+map<string,int> rmp;			// 键：角色名称，值：角色在role中的下标 
+int n,m,q,nv,no,nn,ns,ng;
+string s,t,x,y,z;
+char c;
+
+bool isfind(int v){				// 下标为v的角色是否满足授权行为的要求 
+	if(role[v].op.count("*")==0 && role[v].op.count(x)==0)
+		return false;
+	else if(role[v].ret.count("*")==0 && role[v].ret.count(y)==0)
+		return false;
+	else if(role[v].ren.empty()==false && role[v].ren.count(z)==0)
+		return false;
+	else	return true;
+}
+
+void query(string u,int ng){			// 查询用户u是否满足授权行为的要求 
+	vector<string> group;
+	for(int i=0;i<ng;i++){				// 输入用户所属的用户组 
+		cin>>t;group.push_back(t);
+	}
+	cin>>x>>y>>z;						// 操作名称、资源种类、资源名称 
+	for(auto &v:ump[u]){				// 先判断用户自己是否有 
+		if(isfind(v)){
+			cout<<1<<endl;return;
+		}
+	}
+	for(int i=0;i<group.size();i++){	// 再判断用户组是否有 
+		for(auto &v:zmp[group[i]]){
+			if(isfind(v)){
+				cout<<1<<endl;return;
+			}
+		}
+	} 
+	cout<<0<<endl;return;
+}
+
+int main(){
+	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+	cin>>n>>m>>q;						// 角色数量、角色关联数量、待检查操作数 
+	for(int i=0;i<n;i++){				// 输入角色 
+		cin>>role[i].name;				// 角色名
+		rmp[role[i].name] = i; 
+		cin>>nv;						// 操作数量
+		for(int j=0;j<nv;j++){
+			cin>>s;
+			role[i].op.insert(s);
+		} 
+		cin>>no;						// 资源种类数量
+		for(int j=0;j<no;j++){
+			cin>>s;
+			role[i].ret.insert(s);
+		} 
+		cin>>nn;						// 资源名称数量
+		for(int j=0;j<nn;j++){
+			cin>>s;
+			role[i].ren.insert(s);
+		} 			 
+	}
+	
+	for(int i=0;i<m;i++){				// 输入角色关联
+		cin>>s>>ns;							// 角色名称、授权对象的数量 
+		int idx = rmp[s];				// 角色在role中的下标 
+		for(int j=0;j<ns;j++){
+			cin>>c>>t;						// 授权对象：用户/用户组、用户/用户组名称 
+			if(c=='u')	ump[t].push_back(idx);
+			else zmp[t].push_back(idx); 
+		} 
+	} 
+	
+	for(int i=0;i<q;i++){				// 待授权的行为 
+		cin>>s>>ng;						// 用户名称、用户组的数量 
+		query(s,ng);
+	}
+	
+	return 0;
+}
+```
+
+
+
+
+
+
+
+
 
 
