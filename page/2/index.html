@@ -118,6 +118,34 @@
         alt="/img/avatar.jpg"
         title="/img/avatar.jpg" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/csp202303/">【CSP】202303题解</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-04-23">2023-04-23</time></span>&nbsp;<span class="post-category">included in <a href="/categories/csp%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CSP刷题记录</a></span></div><div class="content">1 田地丈量 🔗 题目：田地丈量
+分情况求出长、宽，再计算总和即可。
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28  #include &lt;bits/stdc++.h&gt;using namespace std; int main(){ int n,a,b,x,y,x1,x2,y1,y2,sum=0; cin&gt;&gt;n&gt;&gt;a&gt;&gt;b; for(int i=0;i&lt;n;i++){ scanf(&#34;%d %d %d %d&#34;,&amp;x1,&amp;y1,&amp;x2,&amp;y2); if(x1&lt;0 &amp;&amp; x2&gt;=0 &amp;&amp; x2&lt;=a)	x=x2; else if(x1&lt;0 &amp;&amp; x2&gt;a)	x=a; else if(x1&gt;=0 &amp;&amp; x1&lt;=a &amp;&amp; x2&gt;a)	x=a-x1; else if(x1&gt;=0 &amp;&amp; x1&lt;=a &amp;&amp; x2&gt;=0 &amp;&amp; x2&lt;=a)	x=x2-x1; else continue; if(y1&lt;0 &amp;&amp; y2&gt;=0 &amp;&amp; y2&lt;=b)	y=y2; else if(y1&lt;0 &amp;&amp; y2&gt;b)	y=b; else if(y1&gt;=0 &amp;&amp; y1&lt;=b &amp;&amp; y2&gt;b)	y=b-y1; else if(y1&gt;=0 &amp;&amp; y1&lt;=b &amp;&amp; y2&gt;=0 &amp;&amp; y2&lt;=b)	y=y2-y1; else continue; sum+=x*y; } cout&lt;&lt;sum; return 0; }   2 垦田计划 🔗 题目：垦田计划</div><div class="post-footer">
+        <a href="/csp202303/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/csp/">CSP</a>,&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%BA%B2%E9%A2%86%E7%AF%87/">【二叉树】纲领篇</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-04-23">2023-04-23</time></span>&nbsp;<span class="post-category">included in <a href="/categories/labuladong%E7%9A%84%E7%AE%97%E6%B3%95%E7%A7%98%E7%B1%8D/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>labuladong的算法秘籍</a></span></div><div class="content">1 快速排序&amp;归并排序 🔴 快速排序：二叉树的前序遍历 先构造分界点，然后去左右子数组构造分界点。 要对 nums[lo..hi] 进行排序，我们先找⼀个分界点 p，通过交换元素使得 nums[lo..p-1] 都小于等于 nums[p]，且 nums[p+1..hi] 都大于 nums[p]，然后递归地去 nums[lo..p-1] 和 nums[p+1..hi] 中寻找新的分界点。
+1 2 3 4 5 6 7 8  void sort(int[] nums, int lo, int hi) { /****** 前序遍历位置 ******/ // 通过交换元素构建分界点 p 	int p = partition(nums, lo, hi); sort(nums, lo, p - 1); sort(nums, p + 1, hi); }   🔵 归并排序：二叉树的后序遍历 先对左右子数组排序，然后合并，即分治算法。 （对 nums[lo..hi] 进行排序，我们先对 nums[lo..mid] 排序，再对 nums[mid+1.</div><div class="post-footer">
+        <a href="/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%BA%B2%E9%A2%86%E7%AF%87/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/labuladong/">labuladong</a>,&nbsp;<a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>,&nbsp;<a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/slalom-coasting-through-raw-data-via-adaptive-partitioning-and-indexing/">Slalom Coasting Through Raw Data via Adaptive Partitioning and Indexing</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-04-22">2023-04-22</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>论文阅读笔记</a></span></div><div class="content">本文为论文 Slalom: Coasting Through Raw Data via Adaptive Partitioning and Indexing 的阅读笔记。
+ 🟠 Slalom
+ 一个通过监视用户访问模式来适应工作负载变化的原位查询引擎。  🟡 关键组件
+ 在线分区和索引方案 为原位查询引擎量身定制的分区和索引调优器。  🟢 性能优势
+ 对原始数据文件进行逻辑分区；为每个分区构建轻量级分区特定的索引   1 简介 🟠 加载、索引和调优的成本
+考虑到所涉及的数据大小，对数据的任何转换、复制和准备步骤都会在查询数据前引入大量延迟。缺乏对工作负载的先验知识使得物理设计决策几乎不可能。
+🟡 自适应分区和细粒度索引
+ 使用第一次表扫描来生成分区和轻量级索引提示 数据集以动态方式部分索引，以适应三个关键工作负载特征：数据分布；查询类型；投影属性。 调优器通过以下方式降低数据访问成本:  对原始数据集进行逻辑分区，在不进行物理重构的情况下将其虚拟地分解为更易于管理的块 在每个逻辑分区上选择适当的索引策略，以提供有效的数据访问。（细粒度的索引决策）    🟢 基于Slalom的高效 In-Situ Query
+ 将在线分区和索引调谐器集成到原位查询处理原型系统Slalom中 Slalom在逻辑上将原始数据划分为分区，并根据每个分区的“热度”(访问频率)、针对每个分区的查询类型来选择构建哪个细粒度的分区索引。 Slalom填充二进制缓存(从原始数据转换为二进制数据的缓存)以进一步提高性能 Slalom使用基于随机成本的决策算法调整当前分区和索引方案来适应工作负载的变化  🔵 贡献
+ 我们提出了原始数据文件的逻辑分区方案，该方案支持在每个分区级别上进行细粒度的索引决策。 好处：带来了原位查询处理索引的好处；索引构建成本低；内存占用小。 我们将分区和索引调谐器集成到我们最先进的原型原位查询引擎Slalom中。  2 相关工作 🟣 对原始数据的查询
+ Slalom使用的技术可以通过减少索引的大小、为每个文件分区构建内存效率高的索引来提高系统的可伸缩性。 Slalom不加载所有数据，而是利用工作负载局域性自适应地为原始数据创建细粒度索引方案，并逐渐减少I/O和访问成本，同时在适度的内存预算下运行。  🔵 数据库分区</div><div class="post-footer">
+        <a href="/slalom-coasting-through-raw-data-via-adaptive-partitioning-and-indexing/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/index/">index</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/an-experimental-evaluation-of-index-selection-algorithms/">An Experimental Evaluation of Index Selection Algorithms</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-04-11">2023-04-11</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>论文阅读笔记</a></span></div><div class="content">本文为论文 Magic mirror in my hand, which is the best in the land?An Experimental Evaluation of Index Selection Algorithms 的阅读笔记。
 1 引言 🟠 索引对于高效处理数据库工作负载来说很重要，针对索引选择提出的方案有很多，主要的难点是：
@@ -186,35 +214,6 @@
    题号 时间 结果 满分 难度 备注     1 20 ❌ 5 🌕 🔸【计算一个整数各位上的数字】：当 i/10!=0 时，不断取出 i%10 。   2 7 ❌ 5 🌕 🔹 确定一条直线要考虑斜率和截距   3 40 ❌ 10 🌓 🔸 整数问题常用【取模】   4 35 ❌ 10 🌕 🔹 二维数组太大容易引起报错：program received signal sigsegv, segmentation fault. （本题中用 int g[2022][2022]; 就报错了QAQ）   5 45 ❌ 10 🌑 🔸 状压dp🔸 移位操作较多，容易出错   6 25 ❌ 15 🌓 🔹 用迭代器循环时不能修改 set 内元素   7 5 ❌ 20 🌓 🔸 【博弈论】重点是判断必胜   8   20     9   25     10   25      1 【填空】卡片 题目 小蓝有很多数字卡片，每张卡片上都是数字 0 到 9。小蓝准备用这些卡片来拼一些数，他想从 1 开始拼出正整数，每拼一个，就保存起来，卡片就不能用来拼其它数了。小蓝想知道自己能从 1 拼到多少。</div><div class="post-footer">
         <a href="/%E8%93%9D%E6%A1%A5%E6%9D%AF2021/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/">蓝桥杯</a>,&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/stlpair%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/">【STL】pair容器用法</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-03-18">2023-03-18</time></span>&nbsp;<span class="post-category">included in <a href="/categories/c++/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>C++</a></span></div><div class="content">1 简介 🟠 pair 容器将 2 个普通元素 first 和 second（C++ 基本数据类型、结构体、类自定的类型等）创建成一个新元素&lt;first, second&gt;。
-🔵 使用需加上头文件：#include &lt;utility&gt;
-2 创建map容器 1️⃣ 调用 pair 容器类的默认构造函数。
-1  pair &lt;string, int&gt; pair1;   2️⃣ 在创建 pair 容器的同时，进行初始化。
-1  pair &lt;string, int&gt; pair2(&#34;语文&#34;,90);   3️⃣ 利用先前已创建好的 pair 容器和拷贝构造函数，再创建一个新的 pair 容器。
-1  pair &lt;string, int&gt; pair3(pair2);   3 常见用法 3.1 手动为 pair 对象赋值
-1 2  pair1.first = &#34;数学&#34;; pair1.second = &#34;100&#34;;   3.</div><div class="post-footer">
-        <a href="/stlpair%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>,&nbsp;<a href="/tags/stl/">STL</a>,&nbsp;<a href="/tags/pair/">pair</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%A0%B8%E5%BF%83%E6%A1%86%E6%9E%B6/">【动态规划】动态规划核心框架</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-03-18">2023-03-18</time></span>&nbsp;<span class="post-category">included in <a href="/categories/labuladong%E7%9A%84%E7%AE%97%E6%B3%95%E7%A7%98%E7%B1%8D/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>labuladong的算法秘籍</a></span></div><div class="content">🔴 【动态规划三要素】重叠子问题、最优子结构、状态转移方程
-🟢 【思维框架】明确 base case → 明确「状态」→ 明确「选择」 → 定义 dp 数组/函数的含义。
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15  # ⾃顶向下递归的动态规划 def dp(状态1, 状态2, ...): for 选择 in 所有可能的选择: # 此时的状态已经因为做了选择⽽改变 result = 求最值(result, dp(状态1, 状态2, ...)) return result # ⾃底向上迭代的动态规划 # 初始化 base case dp[0][0][...] = base case # 进⾏状态转移 for 状态1 in 状态1的所有取值： for 状态2 in 状态2的所有取值： for .</div><div class="post-footer">
-        <a href="/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%A0%B8%E5%BF%83%E6%A1%86%E6%9E%B6/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/labuladong/">labuladong</a>,&nbsp;<a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>,&nbsp;<a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%AE%A1%E7%AE%97%E5%99%A8/">【数据结构设计】实现一个计算器</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-03-16">2023-03-16</time></span>&nbsp;<span class="post-category">included in <a href="/categories/labuladong%E7%9A%84%E7%AE%97%E6%B3%95%E7%A7%98%E7%B1%8D/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>labuladong的算法秘籍</a></span></div><div class="content">1 题目 实现一个计算器，功能如下：
-1、输入一个字符串，可以包含 + - * /、数字、括号以及空格，你的算法返回运算结果。
-2、要符合运算法则，括号的优先级最高，先乘除后加减。
-3、除号是整数除法，无论正负都向 0 取整（5/2=2，-5/2=-2）。
-4、可以假定输入的算式⼀定合法，且计算过程不会出现整型溢出，不会出现除数为 0 的意外情况。
-2 解析 2.1 字符串转整数 1 2 3 4 5 6  // 把字符串s转为整数n int n = 0; for (int i = 0; i &lt; s.size(); i++) { char c = s[i]; n = 10 * n + (c - &#39;0&#39;); }   ❗❗❗ 注意 (c - &lsquo;0&rsquo;) 的括号不能省略，否则可能造成整型溢出。
-2.2 处理加减法 🟠 先给第⼀个数字加⼀个默认符号 +，变成 +1-12+3。</div><div class="post-footer">
-        <a href="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%AE%A1%E7%AE%97%E5%99%A8/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/labuladong/">labuladong</a>,&nbsp;<a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>

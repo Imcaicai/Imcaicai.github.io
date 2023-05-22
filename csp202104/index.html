@@ -4,32 +4,34 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>【CSP】刷题汇总 - 菜菜的秘密花园</title><meta name="Description" content="菜菜的秘密花园"><meta property="og:title" content="【CSP】刷题汇总" />
-<meta property="og:description" content="🔗 202303    题号 时间/min 正确率 备注     1 20 100    2 30 100    3 40 0 🔸 bitset、map、set用法🔸 堆栈    🔗 202212    题号 时间/min 正确率 备注     1 10 100    2 45 100 🔸 fill函数   3 65 100 🔸 蛇形填充：规模较小时，可用一个矩阵专门写出下标🔸 cos函数    🔗 202209    题号 时间/min 正确率 备注     1 10 100    2 40 100 🔸 动态规划：01背包问题   3       🔗 202206    题号 时间/min 正确率 备注     1 10 100    2 30 100 🔸 题目给的一串数字不一定是顺序的，不要想当然！   3 120 100 🔸 cin/cout 提速🔸 vector 查找元素较慢，可用 set    🔗 202203    题号 时间/min 正确率 备注     1 10 100    2 35 100    3       🔗 202112    题号 时间/min 正确率 备注     1 15 100    2 30 100    3 120 40 🔸 注意审题！bug调不出来最好重读一遍题目！🔸 计算多项式中x的系数：找递推关系🔸 模拟多项式除法    🔗 202109    题号 时间/min 正确率 备注     1 10 100    2 50 100 🔸 找前后递推关系🔸 set 的倒序遍历；map   3       🔗 202104    题号 时间/min 正确率 备注     1 10 100    2      3       🔗 202012    题号 时间/min 正确率 备注     1 5 100    2 40 100 🔸 找递推关系🔸 对不规则排列的数组，用 set 和 map 会快很多   3       🔗 202009    题号 时间/min 正确率 备注     1      2      3       " />
+        <title>【CSP】202104题解 - 菜菜的秘密花园</title><meta name="Description" content="菜菜的秘密花园"><meta property="og:title" content="【CSP】202104题解" />
+<meta property="og:description" content="1 灰度直方图 🔗 题目：灰度直方图
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16  #include&lt;bits/stdc&#43;&#43;.h&gt;using namespace std; int main(){ int n,m,l,a,h[300]={0}; scanf(&#34;%d %d %d&#34;,&amp;n,&amp;m,&amp;l); for(int i=0;i&lt;n;i&#43;&#43;){ for(int j=0;j&lt;m;j&#43;&#43;){ scanf(&#34;%d&#34;,&amp;a); h[a]&#43;&#43;; } } for(int i=0;i&lt;l;i&#43;&#43;) printf(&#34;%d &#34;,h[i]); return 0; }   " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://imcaicai.github.io/csp%E5%88%B7%E9%A2%98%E6%B1%87%E6%80%BB/" /><meta property="og:image" content="https://imcaicai.github.io/img/avatar.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-05-18T20:12:04&#43;08:00" />
-<meta property="article:modified_time" content="2023-05-18T20:12:04&#43;08:00" /><meta property="og:site_name" content="菜菜的秘密花园" />
+<meta property="og:url" content="https://imcaicai.github.io/csp202104/" /><meta property="og:image" content="https://imcaicai.github.io/img/avatar.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-05-21T13:03:16&#43;08:00" />
+<meta property="article:modified_time" content="2023-05-21T13:03:16&#43;08:00" /><meta property="og:site_name" content="菜菜的秘密花园" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://imcaicai.github.io/img/avatar.jpg"/>
 
-<meta name="twitter:title" content="【CSP】刷题汇总"/>
-<meta name="twitter:description" content="🔗 202303    题号 时间/min 正确率 备注     1 20 100    2 30 100    3 40 0 🔸 bitset、map、set用法🔸 堆栈    🔗 202212    题号 时间/min 正确率 备注     1 10 100    2 45 100 🔸 fill函数   3 65 100 🔸 蛇形填充：规模较小时，可用一个矩阵专门写出下标🔸 cos函数    🔗 202209    题号 时间/min 正确率 备注     1 10 100    2 40 100 🔸 动态规划：01背包问题   3       🔗 202206    题号 时间/min 正确率 备注     1 10 100    2 30 100 🔸 题目给的一串数字不一定是顺序的，不要想当然！   3 120 100 🔸 cin/cout 提速🔸 vector 查找元素较慢，可用 set    🔗 202203    题号 时间/min 正确率 备注     1 10 100    2 35 100    3       🔗 202112    题号 时间/min 正确率 备注     1 15 100    2 30 100    3 120 40 🔸 注意审题！bug调不出来最好重读一遍题目！🔸 计算多项式中x的系数：找递推关系🔸 模拟多项式除法    🔗 202109    题号 时间/min 正确率 备注     1 10 100    2 50 100 🔸 找前后递推关系🔸 set 的倒序遍历；map   3       🔗 202104    题号 时间/min 正确率 备注     1 10 100    2      3       🔗 202012    题号 时间/min 正确率 备注     1 5 100    2 40 100 🔸 找递推关系🔸 对不规则排列的数组，用 set 和 map 会快很多   3       🔗 202009    题号 时间/min 正确率 备注     1      2      3       "/>
+<meta name="twitter:title" content="【CSP】202104题解"/>
+<meta name="twitter:description" content="1 灰度直方图 🔗 题目：灰度直方图
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16  #include&lt;bits/stdc&#43;&#43;.h&gt;using namespace std; int main(){ int n,m,l,a,h[300]={0}; scanf(&#34;%d %d %d&#34;,&amp;n,&amp;m,&amp;l); for(int i=0;i&lt;n;i&#43;&#43;){ for(int j=0;j&lt;m;j&#43;&#43;){ scanf(&#34;%d&#34;,&amp;a); h[a]&#43;&#43;; } } for(int i=0;i&lt;l;i&#43;&#43;) printf(&#34;%d &#34;,h[i]); return 0; }   "/>
 <meta name="application-name" content="菜菜的秘密花园">
-<meta name="apple-mobile-web-app-title" content="菜菜的秘密花园"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://imcaicai.github.io/csp%E5%88%B7%E9%A2%98%E6%B1%87%E6%80%BB/" /><link rel="prev" href="https://imcaicai.github.io/swirl/" /><link rel="next" href="https://imcaicai.github.io/stlbitset%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<meta name="apple-mobile-web-app-title" content="菜菜的秘密花园"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://imcaicai.github.io/csp202104/" /><link rel="prev" href="https://imcaicai.github.io/csp202012/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "【CSP】刷题汇总",
+        "headline": "【CSP】202104题解",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/imcaicai.github.io\/csp%E5%88%B7%E9%A2%98%E6%B1%87%E6%80%BB\/"
-        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "CSP, C\u002b\u002b","wordcount":  165 ,
-        "url": "https:\/\/imcaicai.github.io\/csp%E5%88%B7%E9%A2%98%E6%B1%87%E6%80%BB\/","datePublished": "2023-05-18T20:12:04+08:00","dateModified": "2023-05-18T20:12:04+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@id": "https:\/\/imcaicai.github.io\/csp202104\/"
+        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "CSP, C\u002b\u002b","wordcount":  45 ,
+        "url": "https:\/\/imcaicai.github.io\/csp202104\/","datePublished": "2023-05-21T13:03:16+08:00","dateModified": "2023-05-21T13:03:16+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/imcaicai.github.io\/img\/avatar.jpg"},"author": {
                 "@type": "Person",
@@ -67,7 +69,7 @@
                     <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
                 </a><a href="javascript:void(0);" class="menu-item language" title="Select Language">
                     <i class="fa fa-globe" aria-hidden="true"></i>                      
-                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/csp%E5%88%B7%E9%A2%98%E6%B1%87%E6%80%BB/" selected>English</option></select>
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/csp202104/" selected>English</option></select>
                 </a></div>
         </div>
     </div>
@@ -108,7 +110,7 @@
                 <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a><a href="javascript:void(0);" class="menu-item" title="Select Language">
                     <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
-                    <select class="language-select" onchange="location = this.value;"><option value="/csp%E5%88%B7%E9%A2%98%E6%B1%87%E6%80%BB/" selected>English</option></select>
+                    <select class="language-select" onchange="location = this.value;"><option value="/csp202104/" selected>English</option></select>
                 </a></div>
     </div>
 </header><div class="search-dropdown desktop">
@@ -120,10 +122,10 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">【CSP】刷题汇总</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">【CSP】202104题解</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-category">included in <a href="/categories/csp%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CSP刷题记录</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-05-18">2023-05-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;165 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;<span id="/csp%E5%88%B7%E9%A2%98%E6%B1%87%E6%80%BB/" class="leancloud_visitors" data-flag-title="【CSP】刷题汇总">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-05-21">2023-05-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;45 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;<span id="/csp202104/" class="leancloud_visitors" data-flag-title="【CSP】202104题解">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
@@ -133,344 +135,61 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li>
-      <ul>
-        <li><a href="#-202303httpsimcaicaigithubiocsp202303">🔗 <a href="https://imcaicai.github.io/csp202303/">202303</a></a></li>
-        <li><a href="#-202212httpsimcaicaigithubiocsp202212">🔗 <a href="https://imcaicai.github.io/csp202212/">202212</a></a></li>
-        <li><a href="#-202209httpsimcaicaigithubiocsp202209">🔗 <a href="https://imcaicai.github.io/csp202209/">202209</a></a></li>
-        <li><a href="#-202206httpsimcaicaigithubiocsp202206">🔗 <a href="https://imcaicai.github.io/csp202206/">202206</a></a></li>
-        <li><a href="#-202203httpsimcaicaigithubiocsp202203">🔗 <a href="https://imcaicai.github.io/csp202203/">202203</a></a></li>
-        <li><a href="#-202112httpsimcaicaigithubiocsp202112">🔗 <a href="https://imcaicai.github.io/csp202112/">202112</a></a></li>
-        <li><a href="#-202109httpsimcaicaigithubiocsp202109">🔗 <a href="https://imcaicai.github.io/csp202109/">202109</a></a></li>
-        <li><a href="#-202104httpsimcaicaigithubiocsp202104">🔗 <a href="https://imcaicai.github.io/csp202104/">202104</a></a></li>
-        <li><a href="#-202012httpsimcaicaigithubiocsp202012">🔗 <a href="https://imcaicai.github.io/csp202012/">202012</a></a></li>
-        <li><a href="#-202009httpsimcaicaigithubiocsp202009">🔗 <a href="https://imcaicai.github.io/csp202009/">202009</a></a></li>
-      </ul>
-    </li>
+    <li><a href="#1-灰度直方图">1 灰度直方图</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h3 id="-202303httpsimcaicaigithubiocsp202303">🔗 <a href="https://imcaicai.github.io/csp202303/" target="_blank" rel="noopener noreffer ">202303</a></h3>
-<table>
-<thead>
-<tr>
-<th>题号</th>
-<th>时间/min</th>
-<th>正确率</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>20</td>
-<td>100</td>
-<td></td>
-</tr>
-<tr>
-<td>2</td>
-<td>30</td>
-<td>100</td>
-<td></td>
-</tr>
-<tr>
-<td>3</td>
-<td>40</td>
-<td>0</td>
-<td>🔸 bitset、map、set用法<br/>🔸 堆栈</td>
-</tr>
-</tbody>
-</table>
-<h3 id="-202212httpsimcaicaigithubiocsp202212">🔗 <a href="https://imcaicai.github.io/csp202212/" target="_blank" rel="noopener noreffer ">202212</a></h3>
-<table>
-<thead>
-<tr>
-<th>题号</th>
-<th>时间/min</th>
-<th>正确率</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>10</td>
-<td>100</td>
-<td></td>
-</tr>
-<tr>
-<td>2</td>
-<td>45</td>
-<td>100</td>
-<td>🔸 fill函数</td>
-</tr>
-<tr>
-<td>3</td>
-<td>65</td>
-<td>100</td>
-<td>🔸 蛇形填充：规模较小时，可用一个矩阵专门写出下标<br/>🔸 cos函数</td>
-</tr>
-</tbody>
-</table>
-<h3 id="-202209httpsimcaicaigithubiocsp202209">🔗 <a href="https://imcaicai.github.io/csp202209/" target="_blank" rel="noopener noreffer ">202209</a></h3>
-<table>
-<thead>
-<tr>
-<th>题号</th>
-<th>时间/min</th>
-<th>正确率</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>10</td>
-<td>100</td>
-<td></td>
-</tr>
-<tr>
-<td>2</td>
-<td>40</td>
-<td>100</td>
-<td>🔸 动态规划：01背包问题</td>
-</tr>
-<tr>
-<td>3</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h3 id="-202206httpsimcaicaigithubiocsp202206">🔗 <a href="https://imcaicai.github.io/csp202206/" target="_blank" rel="noopener noreffer ">202206</a></h3>
-<table>
-<thead>
-<tr>
-<th>题号</th>
-<th>时间/min</th>
-<th>正确率</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>10</td>
-<td>100</td>
-<td></td>
-</tr>
-<tr>
-<td>2</td>
-<td>30</td>
-<td>100</td>
-<td>🔸 题目给的一串数字不一定是顺序的，不要想当然！</td>
-</tr>
-<tr>
-<td>3</td>
-<td>120</td>
-<td>100</td>
-<td>🔸 cin/cout 提速<br/>🔸 vector 查找元素较慢，可用 set</td>
-</tr>
-</tbody>
-</table>
-<h3 id="-202203httpsimcaicaigithubiocsp202203">🔗 <a href="https://imcaicai.github.io/csp202203/" target="_blank" rel="noopener noreffer ">202203</a></h3>
-<table>
-<thead>
-<tr>
-<th>题号</th>
-<th>时间/min</th>
-<th>正确率</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>10</td>
-<td>100</td>
-<td></td>
-</tr>
-<tr>
-<td>2</td>
-<td>35</td>
-<td>100</td>
-<td></td>
-</tr>
-<tr>
-<td>3</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h3 id="-202112httpsimcaicaigithubiocsp202112">🔗 <a href="https://imcaicai.github.io/csp202112/" target="_blank" rel="noopener noreffer ">202112</a></h3>
-<table>
-<thead>
-<tr>
-<th>题号</th>
-<th>时间/min</th>
-<th>正确率</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>15</td>
-<td>100</td>
-<td></td>
-</tr>
-<tr>
-<td>2</td>
-<td>30</td>
-<td>100</td>
-<td></td>
-</tr>
-<tr>
-<td>3</td>
-<td>120</td>
-<td>40</td>
-<td>🔸 注意审题！bug调不出来最好重读一遍题目！<br/>🔸 计算多项式中x的系数：找递推关系<br/>🔸 模拟多项式除法</td>
-</tr>
-</tbody>
-</table>
-<h3 id="-202109httpsimcaicaigithubiocsp202109">🔗 <a href="https://imcaicai.github.io/csp202109/" target="_blank" rel="noopener noreffer ">202109</a></h3>
-<table>
-<thead>
-<tr>
-<th>题号</th>
-<th>时间/min</th>
-<th>正确率</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>10</td>
-<td>100</td>
-<td></td>
-</tr>
-<tr>
-<td>2</td>
-<td>50</td>
-<td>100</td>
-<td>🔸 找前后递推关系<br/>🔸 set 的倒序遍历；map</td>
-</tr>
-<tr>
-<td>3</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h3 id="-202104httpsimcaicaigithubiocsp202104">🔗 <a href="https://imcaicai.github.io/csp202104/" target="_blank" rel="noopener noreffer ">202104</a></h3>
-<table>
-<thead>
-<tr>
-<th>题号</th>
-<th>时间/min</th>
-<th>正确率</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>10</td>
-<td>100</td>
-<td></td>
-</tr>
-<tr>
-<td>2</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>3</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h3 id="-202012httpsimcaicaigithubiocsp202012">🔗 <a href="https://imcaicai.github.io/csp202012/" target="_blank" rel="noopener noreffer ">202012</a></h3>
-<table>
-<thead>
-<tr>
-<th>题号</th>
-<th>时间/min</th>
-<th>正确率</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>5</td>
-<td>100</td>
-<td></td>
-</tr>
-<tr>
-<td>2</td>
-<td>40</td>
-<td>100</td>
-<td>🔸 找递推关系<br/>🔸 对不规则排列的数组，用 set 和 map 会快很多</td>
-</tr>
-<tr>
-<td>3</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h3 id="-202009httpsimcaicaigithubiocsp202009">🔗 <a href="https://imcaicai.github.io/csp202009/" target="_blank" rel="noopener noreffer ">202009</a></h3>
-<table>
-<thead>
-<tr>
-<th>题号</th>
-<th>时间/min</th>
-<th>正确率</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>2</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>3</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div><div class="post-footer" id="post-footer">
+            </div><div class="content" id="content"><h2 id="1-灰度直方图">1 灰度直方图</h2>
+<p>🔗 <strong>题目：<a href="http://118.190.20.162/view.page?gpid=T128" target="_blank" rel="noopener noreffer ">灰度直方图</a></strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span><span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+	<span class="kt">int</span> <span class="n">n</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">l</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">h</span><span class="p">[</span><span class="mi">300</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+	<span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d %d %d&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">n</span><span class="p">,</span><span class="o">&amp;</span><span class="n">m</span><span class="p">,</span><span class="o">&amp;</span><span class="n">l</span><span class="p">);</span>
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+		<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;</span><span class="n">m</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">){</span>
+			<span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">a</span><span class="p">);</span>
+			<span class="n">h</span><span class="p">[</span><span class="n">a</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">l</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d &#34;</span><span class="p">,</span><span class="n">h</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2023-05-18</span>
+                <span>Updated on 2023-05-21</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
-                            <a class="link-to-markdown" href="/csp%E5%88%B7%E9%A2%98%E6%B1%87%E6%80%BB/index.md" target="_blank">Read Markdown</a>
+                            <a class="link-to-markdown" href="/csp202104/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://imcaicai.github.io/csp%E5%88%B7%E9%A2%98%E6%B1%87%E6%80%BB/" data-title="【CSP】刷题汇总" data-hashtags="CSP,C&#43;&#43;"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://imcaicai.github.io/csp%E5%88%B7%E9%A2%98%E6%B1%87%E6%80%BB/" data-hashtag="CSP"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://imcaicai.github.io/csp%E5%88%B7%E9%A2%98%E6%B1%87%E6%80%BB/" data-title="【CSP】刷题汇总"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://imcaicai.github.io/csp%E5%88%B7%E9%A2%98%E6%B1%87%E6%80%BB/" data-title="【CSP】刷题汇总"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://imcaicai.github.io/csp%E5%88%B7%E9%A2%98%E6%B1%87%E6%80%BB/" data-title="【CSP】刷题汇总"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://imcaicai.github.io/csp202104/" data-title="【CSP】202104题解" data-hashtags="CSP,C&#43;&#43;"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://imcaicai.github.io/csp202104/" data-hashtag="CSP"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://imcaicai.github.io/csp202104/" data-title="【CSP】202104题解"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://imcaicai.github.io/csp202104/" data-title="【CSP】202104题解"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://imcaicai.github.io/csp202104/" data-title="【CSP】202104题解"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -482,8 +201,7 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/swirl/" class="prev" rel="prev" title="SWIRL: Selection of Workload-aware Indexes using Reinforcement Learning"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>SWIRL: Selection of Workload-aware Indexes using Reinforcement Learning</a>
-            <a href="/stlbitset%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" class="next" rel="next" title="【STL】bitset容器用法">【STL】bitset容器用法<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/csp202012/" class="prev" rel="prev" title="【CSP】202012题解"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>【CSP】202012题解</a></div>
 </div>
 <div id="comments"><div id="valine" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.

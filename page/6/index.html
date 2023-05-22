@@ -118,6 +118,35 @@
         alt="/img/avatar.jpg"
         title="/img/avatar.jpg" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/">计算机网络知识总结</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-12-03">2022-12-03</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>计算机网络</a></span></div><div class="content">最近在复习计算机网络考试，于是按照《计算机网络自顶向下方法》（原书第7版）一书梳理了1-7章的知识，其中第五章的内容合并到第四章中了。
+1 计算机网络和因特网 2 应用层 3 运输层 4 网络层 6 链路层和局域网 7 无线网络和局域网 </div><div class="post-footer">
+        <a href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/lemon/">Label Embedding Online Hashing for Cross-Modal Retrieval</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-11-18">2022-11-18</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>论文阅读笔记</a></span></div><div class="content">本文为论文 Label Embedding Online Hashing for Cross-Modal 的阅读笔记。
+论文下载：https://doi.org/10.1145/3394171.3413971
+1 简介 学习散列，作为最著名的近似近邻搜索技术之一，近年来吸引了很多人的注意。它旨在将高维实值特征映射到紧凑的二进制编码，同时保留原始空间中的相似性。然后，可以用XOR操作在Hamming空间中进行搜索，效率高，存储成本低。
+许多跨模态散列方法已经被提出并取得了很好的性能。但大多数现有的方法通过批处理学习二进制代码或哈希函数。即在学习过程前，所有的训练数据都可用。这将产生以下问题：
+ 实际数据通常以流方式收集，有新数据到来时，批处理方法需要对所有数据重新训练 → 效率低 训练集随训练时间变大 → 计算成本高  为了解决这些问题，在线散列被提出，但仍存在问题：
+ 大多数在线散列方法是为单模态检索设计的，很难直接扩展到跨模态检索。少数在线跨模态散列模型被提出，但性能较差，因为异质模态之间的关联性难以捕捉。 只根据新到达的数据更新散列函数，忽略了新旧数据间的相关性 → 丢失现有数据的信息 → 现有在线散列。 新数据到来时，哈希函数可以有效地重新训练，但哈希码必须对所有累积数据重构 → 更新方案低效。 离散优化大多采用松弛策略 → 量化误差大。  为了解决上述问题，这篇文章提出了一种新的监督下的跨模式检索的在线散列方法，即Label EMbedding ONline hashing，简称LEMON。本文的主要贡献总结如下：
+  提出了一种新的有监督的在线散列检索方法，即LEMON。  它通过一个标签嵌入框架来捕捉语义结构，其中包括标签相似性的保存和标签重构，从而得到更有辨识度的二进制码。 通过优化内积最小化问题将新旧数据的哈希码连接起来，解决了更新不平衡问题。 采用两步学习策略，有效地更新哈希函数和二进制码，同时保持旧数据库的哈希代码不可更改，使其计算复杂度仅与流数据的大小有关。   提出了一种迭代优化算法来离散地解决二进制优化问题，极大地减少 量化误差。 在三个基准数据集上的实验结果表明，LEMON在跨模式检索任务上优于一些先进的离线和在线散列方法，并且可以扩展到大规模数据集。   2 相关工作 现有工作存在的问题：
+ 单模态：不能直接用于跨模态检索任务；必须在每一轮更新所有的二进制代码，效率非常低 多模态：不能跨模态检索 跨模态：不能充分利用原始特征、语义标签；不能很好地以流的方式来捕捉数据的相似性信息   单模态：查询和要检索的文档都只有一个模态（图像→图像）
+多模态：查询和要检索的文档必须至少有一个模态相同（图像、文本→图像、文本）
+跨模态：查询和要检索的文档模态不同（图像→文本）
+ 3 方法 3.1 Notations 假设每个样本由 $l$ 个模态组成。在第 $t$ 轮，一个新的数据块 $\vec{X}^{(t)}$ 被添加到数据库中。常用变量的说明如下：</div><div class="post-footer">
+        <a href="/lemon/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/online-hashing/">online hashing</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/git%E6%8A%A5%E9%94%99-github%E6%96%87%E4%BB%B6%E5%A4%B9%E5%87%BA%E7%8E%B0%E7%AE%AD%E5%A4%B4%E4%B8%94%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80/">Git报错-GitHub文件夹出现箭头且无法打开</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-11-06">2022-11-06</time></span>&nbsp;<span class="post-category">included in <a href="/categories/git/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Git</a></span></div><div class="content">问题描述 将项目文件push到GitHub上时，发现GitHub上的文件夹图标上有箭头，且无法打开。
+出错原因 当在自己的项目里clone了别人的项目，github就将他视为一个子系统模块，导致在上传代码时该文件夹上传失败，并在github上显示向右的白色箭头。
+解决方案 删除子文件夹里面的.git文件，执行如下命令：
+1 2 3 4  git rm --cached [文件夹名] git add [文件夹名] git commit -m &#34;commit messge&#34; git push origin main   </div><div class="post-footer">
+        <a href="/git%E6%8A%A5%E9%94%99-github%E6%96%87%E4%BB%B6%E5%A4%B9%E5%87%BA%E7%8E%B0%E7%AE%AD%E5%A4%B4%E4%B8%94%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/github/">Github</a>,&nbsp;<a href="/tags/git/">Git</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/git%E6%8A%A5%E9%94%99-ssh%E7%9B%B8%E5%85%B3%E9%94%99%E8%AF%AF/">Git报错-ssh相关错误</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-11-06">2022-11-06</time></span>&nbsp;<span class="post-category">included in <a href="/categories/git/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Git</a></span></div><div class="content">问题描述 在将本地的远程仓库push到github上时，出现报错：
  ssh: Could not resolve hostname github.com: Temporary failure in name resolution fatal: Could not read from remote repository.

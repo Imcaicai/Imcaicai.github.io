@@ -5,10 +5,10 @@
         <description>C&#43;&#43; - Category - 菜菜的秘密花园</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 18 May 2023 20:14:45 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/categories/c&#43;&#43;/" rel="self" type="application/rss+xml" /><item>
     <title>【STL】bitset容器用法</title>
-    <link>https://imcaicai.github.io/s/</link>
+    <link>https://imcaicai.github.io/stlbitset%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/</link>
     <pubDate>Thu, 18 May 2023 20:14:45 &#43;0800</pubDate>
     <author>菜菜</author>
-    <guid>https://imcaicai.github.io/s/</guid>
+    <guid>https://imcaicai.github.io/stlbitset%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/</guid>
     <description><![CDATA[1 简介 🟠 由若干个位（bit）组成，它提供一些成员函数，使程序员不必通过位运算就能很方便地访问、修改其中的任意一位。
 2 创建 1️⃣ 调用默认构造函数。
 1  bitset&lt;N&gt; b;   3 常用的成员方法    成员方法 功能     count() 返回bitset中 1 的个数。   size() 返回位数。   test() 返回某一位下标是否为1   set() 全部置1,或者某一位置1或0   flip() 全部取反,或者某一位取反    ]]></description>
