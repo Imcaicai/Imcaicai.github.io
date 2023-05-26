@@ -30,6 +30,8 @@ int main(){
 } 
 ```
 
+
+
 ## 2 何以包邮
 
 🔗 **题目：[何以包邮](http://118.190.20.162/view.page?gpid=T152)**
@@ -72,113 +74,77 @@ int main(){
 } 
 ```
 
+
+
 ## 3 防疫大数据
 
 🔗 **题目：[防疫大数据](http://118.190.20.162/view.page?gpid=T151)**
 
-🟠🟠🟠 这道题读题有点绕，最重要的是选择合适的数据结构，然后一步一步分析。重要结构如下：
+这题不算难，但要选好数据结构。另外，题目好绕，读懂题意很重要！
 
-✅ 首先考虑漫游数据 <d,u,r>，我们用结构 my 来存储，并构造一个 my 类型的容器存储风险用户： `vector<my> u1` 。这里之所以把 <d,u,r> 都存下来而不是只存 u，是为了方便后续判断用户某时某地的访问数据是否还有风险。
+🔴 **【数据结构】**
 
-✅ 考虑风险地区。由于是否有风险是由日期、地区共同决定的， **我们使用 `map<pair<int,int>,bool> mp` 来表示某时某地是否有风险。**  `pair<int,int>` 类型变量为键，存储地区、日期； `bool` 型变量为值，存储是否有风险。
+-  `struct my{ int d,u,r; };` ：表示一条漫游数据
+-  `vector<my> v1` ：保存前一天的风险用户
+-  `map<int,set<int>> mp;` ：键：日期，值：当天的风险地区（不仅包括今天的，还包括之前积累的风险地区）
 
-✅ 由于最终结果要按用户编号从小到大输出，且同一用户只能输出一次，所以我们 **选用有自动排序、自动去重功能的 set 容器** 。
+🔵 **【解题步骤】**
 
-🟡🟡🟡 解题步骤：
-
-✅ 清除 mp 中日期超过 7 天的记录，提高效率。（ **注意删除时要用 it1，直接 erase(iter) 会报错** ，虽然我还不知道为什么QAQ）
-
-✅ 添加风险地区： `mp[{p,j}]=1`
-
-✅ 更新以前日期的漫游数据中的风险用户。因为日期更新了一天，所以先前存的风险用户可能已经不再有风险了，需要更新。注意题目要求是 **【对所有的 D∈[j.d, i]，地区 j.r 都在风险范围内】** ，中间有任意一天不属于风险用户也要丢掉， **所以不能只看 j.d 或 i 那天是否为风险用户** 。（如果中间某天非风险，则说明原来那条漫游数据无风险，只是后面某天用户又去了同一个地点，那个地点刚好仍有风险。这里有点绕，很容易出错QAQ）
-
-✅ 更新今天漫游数据中的风险用户。和上一步的方法类似。
-
-✅ 输出答案。取 u1 中的 u 加入答案 ans 中输出。之所以不直接输出 u1 中的 u ，是因为题目要求最终结果由小到大排列且无重复用户。
-
-🔵🔵🔵 在步骤 3 中，我们新开了一个 `vector<my> u2` 来存放符合要求的数据，并让 u1=u2，而不是在 u1 中直接删改，是因为可以避免频繁修改数组，提高效率
-
-🟣🟣🟣 这种要求复杂、代码变量较多的题目，一定要自习检查变量是否用错，好几个 bug 都是因为容器索引的参数写错。 💢💢💢
+- 更新风险地区：每次删除7天外的风险地区信息，节省空间；每天的风险地区不仅包括当天新增的，还有7天内累积的风险地区
+- 筛掉不在7天内的风险用户。（这些用户访问的地区都是 [d,i-1] 天内连续风险的）
+- 新增今日的风险用户。（注意：严格判断用户访问的地区在 [d,i] 天内是否都为风险的；同时访问记录在7天内）
 
 ```c++
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 
-struct my{
-	int d;int u;int r;		// 一条漫游数据 
+struct my{					// 一条漫游数据 
+	int d,u,r;
 };
-vector<my> u1;				// 记录当天有风险的用户的漫游数据，因为不能重复存储，所以用vector 
-map<pair<int,int>,bool> mp;	// 记录有风险的地区。键：地区、日期，值：是否是风险地 
-
-int main()
-{
-	int n,r,m,p,di,ui,ri;
-	cin>>n;					// 输入天数 n
+vector<my> v1;				// 前一天的风险用户
+map<int,set<int>> mp;		// 键：日期，值：当天的风险地区 
+int n,ri,mi,p,d,u,r;
+ 
+int main(){
+	scanf("%d",&n);					// 总天数
 	for(int i=0;i<n;i++){
-		cin>>r>>m;			// 输入风险地数量、漫游数据数量
+		scanf("%d %d",&ri,&mi);		// 风险地区数、漫游数据数
 		
+		// 更新风险地区信息 
+		if(i-7>=0) mp.erase(i-7);	// 删除超过7天的风险地区信息 
+		for(int j=0;j<ri;j++){
+			scanf("%d",&p);			// 风险地区
+			for(int k=i;k<i+7;k++)
+				mp[k].insert(p);		 
+		} 
 		
-		// 1. 清除 mp 中日期超过 7 天的记录
-		for(map<pair<int,int>,bool>::iterator iter = mp.begin();iter!=mp.end();){
-			// 注意这里要用 it1，直接 erase(iter) 会报错 
-			map<pair<int,int>,bool>::iterator it1 = iter;		
-			iter++;												
-			// 每次新的一天，检查是否有 7 天外的风险地区数据，有就删掉
-			if(i - ((it1->first).second) >= 7)	mp.erase(it1);							
+		// 筛掉前一天中不再有风险的用户 
+		vector<my> v2;
+		for(auto v:v1){
+			if(i-v.d>=7) continue;	// 7天外的数据，忽略
+			if(mp[i].count(v.r)) v2.push_back(v); 
 		}
+		v1.clear();v1=v2; 
 		
-		
-		// 2. 添加风险地区 
-		for(int j=0;j<r;j++){
-			cin>>p;
-			for(int j=i;j<i+7;j++)
-				mp[{p,j}]=1;			// 这里的参数原来写错了 
-		}
-		
-		
-		// 3. 更新以前日期的漫游数据中的风险用户
-		vector<my> u2;
-		for(auto j:u1){					// 这里原来写错了，是 u1 而不是 u2 
-			if(i-j.d >= 7)				// 已经是 7 天前的数据了 
-				continue;
-			
+		// 更新今日新增的风险用户
+		for(int j=0;j<mi;j++){
+			scanf("%d %d %d",&d,&u,&r);
+			if(d<=i-7) continue;		// 7天外的数据，忽略
 			int flag=1;
-			for(int k=j.d;k<=i;k++){
-				if(!mp[{j.r, k}]){		// 不满足：对所有的 D∈[j.d, i]，地区 j.r 都在风险范围内 
+			for(int k=d;k<=i;k++){
+				if(!mp[k].count(r)){	// [d,i]有1天不是风险，就排除 
 					flag=0;break;
 				}
-			}
-			
-			if(flag)					// 只插入从漫游时间到现在，都满足风险的数据 
-				u2.push_back(j); 
-		}
-		u1.clear();						// 更新 u1
-		u1=u2;
+			} 
+			if(flag) v1.push_back({d,u,r});
+		} 
 		
-		
-		// 4. 更新今天漫游数据中的风险用户 
-		for(int j=0;j<m;j++){
-			cin>>di>>ui>>ri;
-			if(i-di>=7)	continue;		// 7 天外的数据不用考虑
-			int flag=1;
-			for(int k=di;k<=i;k++){
-				if(!mp[{ri, k}]){		// 不满足：对所有的 D∈[j.d, i]，地区 j.r 都在风险范围内 
-					flag=0;break;
-				}
-			}
-			
-			if(flag)
-				u1.push_back({di,ui,ri});
-		}
-		 
-		
-		// 5. 输出答案
+		// 输出结果
 		set<int> ans;
-		for(auto j:u1)	ans.insert(j.u);	// 只取用户，同时满足用户按顺序输出 
-		cout<< i << ' ';
-		for(auto j:ans)	cout<< j <<' ';
-		cout<< '\n'; 
-		 
+		for(auto v:v1) ans.insert(v.u);
+		printf("%d ",i);
+		for(auto &v:ans) printf("%d ",v);
+		printf("\n");
 	} 
 	return 0;
 }

@@ -3,14 +3,35 @@
         <title>CSP刷题记录 - Category - 菜菜的秘密花园</title>
         <link>https://imcaicai.github.io/categories/csp%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</link>
         <description>CSP刷题记录 - Category - 菜菜的秘密花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 21 May 2023 13:03:16 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/categories/csp%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 25 May 2023 19:09:17 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/categories/csp%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/" rel="self" type="application/rss+xml" /><item>
+    <title>【CSP】202006题解</title>
+    <link>https://imcaicai.github.io/csp202006/</link>
+    <pubDate>Thu, 25 May 2023 19:09:17 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/csp202006/</guid>
+    <description><![CDATA[1 线性分类器 🔗 题目：线性分类器
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47  #include&lt;bits/stdc++.h&gt;using namespace std; struct node{ int x,y; }; int main(){ int n,m,a,b,c,x,y,s; vector&lt;node&gt; v1,v2; char t; cin&gt;&gt;n&gt;&gt;m; for(int i=0;i&lt;n;i++){ cin&gt;&gt;x&gt;&gt;y&gt;&gt;t; if(t==&#39;A&#39;) v1.]]></description>
+</item>
+<item>
+    <title>【CSP】202009题解</title>
+    <link>https://imcaicai.github.io/csp202009/</link>
+    <pubDate>Tue, 23 May 2023 16:16:26 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/csp202009/</guid>
+    <description><![CDATA[1 称检测点查询 🔗 题目：称检测点查询
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27  #include&lt;bits/stdc++.h&gt;using namespace std; int main(){	int n,x,y,a,b,d,ans[3][2]; scanf(&#34;%d %d %d&#34;,&amp;n,&amp;x,&amp;y); ans[0][0]=ans[1][0]=ans[2][0]=100000000; for(int i=1;i&lt;=n;i++){ scanf(&#34;%d %d&#34;,&amp;a,&amp;b); d=(x-a)*(x-a)+(y-b)*(y-b); if(d&gt;=ans[0][0]) continue; else if(d&gt;=ans[1][0]){ ans[0][0]=d,ans[0][1]=i; } else if(d&gt;=ans[2][0]){ ans[0][0]=ans[1][0],ans[0][1]=ans[1][1]; ans[1][0]=d,ans[1][1]=i; } else{ ans[0][0]=ans[1][0],ans[0][1]=ans[1][1]; ans[1][0]=ans[2][0],ans[1][1]=ans[2][1]; ans[2][0]=d,ans[2][1]=i; } } printf(&#34;%d\n%d\n%d&#34;,ans[2][1],ans[1][1],ans[0][1]); return 0; }   1 风险人群筛查 🔗 题目：风险人群筛查]]></description>
+</item>
+<item>
     <title>【CSP】202104题解</title>
     <link>https://imcaicai.github.io/csp202104/</link>
     <pubDate>Sun, 21 May 2023 13:03:16 &#43;0800</pubDate>
     <author>菜菜</author>
     <guid>https://imcaicai.github.io/csp202104/</guid>
     <description><![CDATA[1 灰度直方图 🔗 题目：灰度直方图
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16  #include&lt;bits/stdc++.h&gt;using namespace std; int main(){ int n,m,l,a,h[300]={0}; scanf(&#34;%d %d %d&#34;,&amp;n,&amp;m,&amp;l); for(int i=0;i&lt;n;i++){ for(int j=0;j&lt;m;j++){ scanf(&#34;%d&#34;,&amp;a); h[a]++; } } for(int i=0;i&lt;l;i++) printf(&#34;%d &#34;,h[i]); return 0; }   ]]></description>
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16  #include&lt;bits/stdc++.h&gt;using namespace std; int main(){ int n,m,l,a,h[300]={0}; scanf(&#34;%d %d %d&#34;,&amp;n,&amp;m,&amp;l); for(int i=0;i&lt;n;i++){ for(int j=0;j&lt;m;j++){ scanf(&#34;%d&#34;,&amp;a); h[a]++; } } for(int i=0;i&lt;l;i++) printf(&#34;%d &#34;,h[i]); return 0; }   2 邻域均值 🔗 题目：邻域均值
+🔴 求矩阵中一个框内的元素和：用二维压缩数组
+🔵 判断时注意整数除法会向下取整，不能用 if(sum/t&lt;=num) ，而应用 if(sum&lt;=t*num) 。
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26  #include&lt;bits/stdc++.]]></description>
 </item>
 <item>
     <title>【CSP】202012题解</title>
@@ -41,7 +62,7 @@
     <pubDate>Thu, 18 May 2023 20:12:04 &#43;0800</pubDate>
     <author>菜菜</author>
     <guid>https://imcaicai.github.io/csp%E5%88%B7%E9%A2%98%E6%B1%87%E6%80%BB/</guid>
-    <description><![CDATA[🔗 202303    题号 时间/min 正确率 备注     1 20 100    2 30 100    3 40 0 🔸 bitset、map、set用法🔸 堆栈    🔗 202212    题号 时间/min 正确率 备注     1 10 100    2 45 100 🔸 fill函数   3 65 100 🔸 蛇形填充：规模较小时，可用一个矩阵专门写出下标🔸 cos函数    🔗 202209    题号 时间/min 正确率 备注     1 10 100    2 40 100 🔸 动态规划：01背包问题   3       🔗 202206    题号 时间/min 正确率 备注     1 10 100    2 30 100 🔸 题目给的一串数字不一定是顺序的，不要想当然！   3 120 100 🔸 cin/cout 提速🔸 vector 查找元素较慢，可用 set    🔗 202203    题号 时间/min 正确率 备注     1 10 100    2 35 100    3       🔗 202112    题号 时间/min 正确率 备注     1 15 100    2 30 100    3 120 40 🔸 注意审题！bug调不出来最好重读一遍题目！🔸 计算多项式中x的系数：找递推关系🔸 模拟多项式除法    🔗 202109    题号 时间/min 正确率 备注     1 10 100    2 50 100 🔸 找前后递推关系🔸 set 的倒序遍历；map   3       🔗 202104    题号 时间/min 正确率 备注     1 10 100    2      3       🔗 202012    题号 时间/min 正确率 备注     1 5 100    2 40 100 🔸 找递推关系🔸 对不规则排列的数组，用 set 和 map 会快很多   3       🔗 202009    题号 时间/min 正确率 备注     1      2      3       ]]></description>
+    <description><![CDATA[🔗 202303    题号 时间/min 正确率 备注     1 20 100    2 30 100    3 40 0 🔸 bitset、map、set用法🔸 堆栈    🔗 202212    题号 时间/min 正确率 备注     1 10 100    2 45 100 🔸 fill函数   3 65 100 🔸 蛇形填充：规模较小时，可用一个矩阵专门写出下标🔸 cos函数    🔗 202209    题号 时间/min 正确率 备注     1 10 100    2 40 100 🔸 动态规划：01背包问题   3 100 40 🔸 实在做不出来留1h把简单的情况做了🔸 map 的 erase 用法🔸 选好数据结构很重要！    🔗 202206    题号 时间/min 正确率 备注     1 10 100    2 30 100 🔸 题目给的一串数字不一定是顺序的，不要想当然！   3 120 100 🔸 cin/cout 提速🔸 vector 查找元素较慢，可用 set    🔗 202203    题号 时间/min 正确率 备注     1 10 100    2 35 100    3       🔗 202112    题号 时间/min 正确率 备注     1 15 100    2 30 100    3 120 40 🔸 注意审题！bug调不出来最好重读一遍题目！🔸 计算多项式中x的系数：找递推关系🔸 模拟多项式除法    🔗 202109    题号 时间/min 正确率 备注     1 10 100    2 50 100 🔸 找前后递推关系🔸 set 的倒序遍历；map   3       🔗 202104    题号 时间/min 正确率 备注     1 10 100    2 60 100 🔸 二维压缩数组🔸 判断时注意整数除法会向下取整   3       🔗 202012    题号 时间/min 正确率 备注     1 5 100    2 40 100 🔸 找递推关系🔸 对不规则排列的数组，用 set 和 map 会快很多   3       🔗 202009    题号 时间/min 正确率 备注     1 30 100    2 20 100    3       🔗 202006    题号 时间/min 正确率 备注     1 30 100    2 20 100    3       ]]></description>
 </item>
 <item>
     <title>【CSP】202303题解</title>
@@ -83,27 +104,6 @@
     <guid>https://imcaicai.github.io/csp202206/</guid>
     <description><![CDATA[1 归一化处理 🔗 题目：归一化处理
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23  #include&lt;bits/stdc++.h&gt;using namespace std; int main(){ int n,a[1005]; double avg=0,d=0,f; scanf(&#34;%d&#34;,&amp;n); for(int i=0;i&lt;n;i++){ scanf(&#34;%d&#34;,&amp;a[i]); avg += a[i]; } avg /= n;	for(int i=0;i&lt;n;i++) d += (a[i]-avg)*(a[i]-avg); d /= n; d = pow(d,0.5); for(int i=0;i&lt;n;i++){ f = (a[i]-avg)/d; printf(&#34;%.16f\n&#34;,f); } return 0; }   2 寻宝！大冒险！ 🔗 题目：寻宝！大冒险！]]></description>
-</item>
-<item>
-    <title>【CSP】202209题解</title>
-    <link>https://imcaicai.github.io/csp202209/</link>
-    <pubDate>Tue, 14 Mar 2023 17:15:09 &#43;0800</pubDate>
-    <author>菜菜</author>
-    <guid>https://imcaicai.github.io/csp202209/</guid>
-    <description><![CDATA[1 如此编码 🔗 题目：如此编码
-本来看到题目很迷茫来着，想着第一题怎么就那么难，后来发现题目最后有提示，看完之后醍醐灌顶， 【取模】 确实是很妙的思路，可以积累下来。
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18  #include&lt;bits/stdc++.h&gt;using namespace std; int main(){ int n,m,a[30],c[30],b,t=0; c[0] = 1; scanf(&#34;%d %d&#34;,&amp;n,&amp;m); for(int i=1;i&lt;=n;i++){ scanf(&#34;%d&#34;,&amp;a[i]); c[i] = c[i-1]*a[i]; } for(int i=1;i&lt;=n;i++){ b = (m%c[i]-t)/c[i-1]; t += c[i-1]*b; printf(&#34;%d &#34;,b); } return 0; }   2 何以包邮 🔗 题目：何以包邮
-🔴 【动态规划】 设 s 为所有参考书价格总和，题目可以理解为在 s-x 价格内，最大化被删除的书价格总和，这样就可以把这个问题看作经典的 01背包问题 。]]></description>
-</item>
-<item>
-    <title>【CSP】202212题解</title>
-    <link>https://imcaicai.github.io/csp202212/</link>
-    <pubDate>Tue, 14 Mar 2023 17:15:01 &#43;0800</pubDate>
-    <author>菜菜</author>
-    <guid>https://imcaicai.github.io/csp202212/</guid>
-    <description><![CDATA[1 现值计算 🔗 题目：现值计算
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17  #include&lt;bits/stdc++.h&gt;using namespace std; int main(){ double i,ans,s; int n,t; cin&gt;&gt;n&gt;&gt;i&gt;&gt;ans; i+=1;s=i; for(int j=1;j&lt;=n;j++){ scanf(&#34;%d&#34;,&amp;t); ans += t*1.0/s; s*=i; } cout&lt;&lt;ans; return 0; }   2 训练计划 🔗 题目：训练计划
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39  #include&lt;bits/stdc++.]]></description>
 </item>
 </channel>
 </rss>
