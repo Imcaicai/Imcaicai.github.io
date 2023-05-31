@@ -118,6 +118,12 @@
         alt="/img/avatar.jpg"
         title="/img/avatar.jpg" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/">【数组链表】二分查找算法</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-01-07">2023-01-07</time></span>&nbsp;<span class="post-category">included in <a href="/categories/labuladong%E7%9A%84%E7%AE%97%E6%B3%95%E7%A7%98%E7%B1%8D/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>labuladong的算法秘籍</a></span></div><div class="content">二分思维的精髓就是：通过已知信息尽可能多地收缩搜索空间，从而增加穷举效率，快速找到目标。
+1 二分查找框架 1 2 3 4 5 6 7 8 9 10 11 12 13 14  int binarySearch(int[] nums, int target) { int left = 0, right = ...; while(...) { int mid = left + (right - left) / 2; if (nums[mid] == target) { ... } else if (nums[mid] &lt; target) { left = ... } else if (nums[mid] &gt; target) { right = ... } } return .</div><div class="post-footer">
+        <a href="/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/labuladong/">labuladong</a>,&nbsp;<a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>,&nbsp;<a href="/tags/%E4%BA%8C%E5%88%86/">二分</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E7%AE%97%E6%B3%95/">【数组链表】滑动窗口算法</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-01-06">2023-01-06</time></span>&nbsp;<span class="post-category">included in <a href="/categories/labuladong%E7%9A%84%E7%AE%97%E6%B3%95%E7%A7%98%E7%B1%8D/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>labuladong的算法秘籍</a></span></div><div class="content">本文主要记录最难掌握的一类双指针技巧——滑动窗口算法。算法思路很简单，就是维护一个窗口，不断滑动，时间复杂度为 O(N)。大致逻辑如下：
 1 2 3 4 5 6 7 8 9 10 11  int left = 0, right = 0; while (right &lt; s.size()) { // 增⼤窗⼝ 	window.add(s[right]); right++; while (window needs shrink) { // 缩⼩窗⼝ 	window.remove(s[left]); left++; } }   滑动窗口算法的代码框架如下：
@@ -237,18 +243,6 @@ typedef 声明 可以使用 typedef 为一个已有的类型取一个新的名�
 7.3 不可重复读 不可重复读 不可重复读(unrepeatable read)，是指一个事务(t1)读取到某数据后，另一个事务(t2)修改了该，事务t1并未修改该数据，但当t1再次读取该数据时，发现两次读取的结果不一样。
 产生不可重复读的原因 显然，不可重复读产生的原因，是事务t1的两次读取之间，有另一个事务修改了t1读取的数据。</div><div class="post-footer">
         <a href="/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E5%9B%9B/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/mysql/">Mysql</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%89/">Mysql数据库基本语法(三)</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-12-07">2022-12-07</time></span>&nbsp;<span class="post-category">included in <a href="/categories/mysql/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Mysql</a></span></div><div class="content">5 用户自定义函数 函数其实有多种，比如标量函数(仅返回一个值)和表函数(返回结果是表),语法也各不相同。这里，我们仅给出一个简化的创建标量函数的语法:
-1 2 3 4 5 6  create function function_name([para data_type[,...]]) returns data_type begin function_body; return expression; end    function_name:函数名； para:参数名； data_type:参数的数据类型； 一个函数可以没有参数，也可以有多个。多参数间用逗号分隔。 function_body:函数体。即由合法的SQL语句组成的程序段。 expression:函数返回值，可以是常量、表达式，甚至是一条select语句查询的值（必须保证结果唯一);该值类型应与returns短语定义的类型相同。  函数一旦定义，就可以像内部函数一样使用，比如出现在select列表、表达式、以及where子句的条件中。
- MySQL的函数定义与存储过程的定义一样，在定义函数之前要用“delimiter 界符”语句指定函数定义的结束界符，并在函数定义后，再次使用“delimiter 界符”语句恢复MySQL语句的界符(分号)。
- 6 安全性控制 与大多数商用DBMS一样，MySQL采用自主存取控制(DAC)机制进行安全性管理。通过用户，数据对象，权限，授权，收回权限等要素进行存取控制。另外，为了方便批量授权给同一类用户，引入了角色。
-6.1 用户（User） MySQL创建用户的语句：
-1  create user 用户名 identified by 用户登录密码；   通常用户名可包含域名，限定用户在该域名内登录再有效。例：
-1  CREATE USER &#39;jeffrey&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;password&#39;;   该语句创建用户jeffrey,密码为&rsquo;password'，仅限在MySQL服务器本机上登录才有效。用户名与域合起来，被称为账户(account)。 注意不要写成：&lsquo;jeffrey@localhost&rsquo;，它代表账户： &lsquo;jeffrey@localhost&rsquo;@'%' 意即用户名为jefrrey@localhost，在任何机器上登录都有效。两者的含义完全不同。
-drop user语句可删除用户。用户被删除时，该用户拥有的权限自动被收回。</div><div class="post-footer">
-        <a href="/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%89/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/mysql/">Mysql</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">

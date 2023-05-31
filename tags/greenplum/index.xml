@@ -1,0 +1,20 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>greenplum - Tag - 菜菜的秘密花园</title>
+        <link>https://imcaicai.github.io/tags/greenplum/</link>
+        <description>greenplum - Tag - 菜菜的秘密花园</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 31 May 2023 22:56:44 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/tags/greenplum/" rel="self" type="application/rss+xml" /><item>
+    <title>ubuntu安装greenplum教程及踩坑记录</title>
+    <link>https://imcaicai.github.io/ubuntu%E5%AE%89%E8%A3%85greenplum%E6%95%99%E7%A8%8B%E5%8F%8A%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/</link>
+    <pubDate>Wed, 31 May 2023 22:56:44 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/ubuntu%E5%AE%89%E8%A3%85greenplum%E6%95%99%E7%A8%8B%E5%8F%8A%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/</guid>
+    <description><![CDATA[1 版本说明 在撰写本文时，Greenplum 的 Ubuntu 版本是为 Ubuntu 的 18.04 和 16.04 LTS（长期支持）发行版构建的。注意最好用 18.04 版本的ubuntu。（一开始用20及以上的，会有一些奇奇怪怪的错误）
+2 安装Greenplum 将 Greenplum PPA 存储库添加到 Ubuntu 系统：
+1 2 3  sudo apt update sudo apt install software-properties-common sudo add-apt-repository ppa:greenplum/db   更新 Ubuntu 系统以从最近添加的存储库中检索信息：
+1 2  sudo apt update sudo apt install greenplum-db-6   上述命令将自动在系统上安装 Greenplum 数据库软件和任何所需的依赖项，并将生成的软件放在 /opt 目录中，如下所示：
+将 Greenplum 数据库软件加载到环境中。注意，应该根据安装的 Greenplum 数据库版本选择 Greenplum 软件目录的确切路径。例如，这里是 greenplum-db-6.24.3 ：
+1 2 3  source /opt/greenplum-db-6.]]></description>
+</item>
+</channel>
+</rss>
