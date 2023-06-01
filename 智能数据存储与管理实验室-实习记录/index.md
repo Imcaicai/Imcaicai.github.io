@@ -83,6 +83,11 @@ PS：主要是帮学长找语法错误、可以改进的地方
 
 重点：了解一种基于强化学习的索引推荐方法 SWIRL，这是我们目前参考的方法。
 
+🟨 配环境
 
+🔗 [ubuntu安装greenplum教程及踩坑记录](https://imcaicai.github.io/ubuntu%E5%AE%89%E8%A3%85greenplum%E6%95%99%E7%A8%8B%E5%8F%8A%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/)
 
+🟨 看 SWIRL 的代码
+
+（穿插了五一假期、2门考试、CSP及一个比赛的答辩，进度稍微有点慢）
 
