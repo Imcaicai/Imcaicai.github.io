@@ -120,3 +120,12 @@ gpinitsystem -c gpinitsystem_singlenode
 
 之前的 master 和 primary 都应该是创建的文件夹，第一次创建成文件，就会有这样的报错，找了好久原因。（哭死
 
+### 5.4 
+
+
+
+[Ubuntu更改镜像源两种方式](https://cloud.tencent.com/developer/article/2030059?from=article.detail.1748201&areaSource=106000.5&traceId=NWIhsf2Zg3rwe3CFYDHef)
+
+
+
+

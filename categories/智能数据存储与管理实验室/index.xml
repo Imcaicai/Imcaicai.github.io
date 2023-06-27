@@ -3,7 +3,25 @@
         <title>智能数据存储与管理实验室 - Category - 菜菜的秘密花园</title>
         <link>https://imcaicai.github.io/categories/%E6%99%BA%E8%83%BD%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E4%B8%8E%E7%AE%A1%E7%90%86%E5%AE%9E%E9%AA%8C%E5%AE%A4/</link>
         <description>智能数据存储与管理实验室 - Category - 菜菜的秘密花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 31 May 2023 22:56:44 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/categories/%E6%99%BA%E8%83%BD%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E4%B8%8E%E7%AE%A1%E7%90%86%E5%AE%9E%E9%AA%8C%E5%AE%A4/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 26 Jun 2023 19:44:39 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/categories/%E6%99%BA%E8%83%BD%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E4%B8%8E%E7%AE%A1%E7%90%86%E5%AE%9E%E9%AA%8C%E5%AE%A4/" rel="self" type="application/rss+xml" /><item>
+    <title>cloudlab&#43;greenplum&#43;python3配置</title>
+    <link>https://imcaicai.github.io/cloudlab-greenplum-python3%E9%85%8D%E7%BD%AE/</link>
+    <pubDate>Mon, 26 Jun 2023 19:44:39 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/cloudlab-greenplum-python3%E9%85%8D%E7%BD%AE/</guid>
+    <description><![CDATA[参照论文 SWIRL: Selection of Workload-aware Indexes using Reinforcement Learning 在cloudlab提供的服务器上配置代码所需环境，本地机器为 Windows。
+1 本地ssh连接远程cloudlab服务器 登录cloudlab官网，注册并租一台服务器。（默认的时长为16小时，注意及时续期，不然服务器上的东西到期会被清理，一般每次续7天）
+点击刚刚租好的服务器，打开终端，下面配置本地和远程服务器的ssh连接。
+打开本地的.ssh目录（Windows一般是 C:\User\.ssh ），里面有个 id_rsa.pub 文件，用记事本的格式打开这个文件，并复制里面的所有内容，即ssh公钥。
+接着在远程服务器终端，打开 .ssh目录，里面有个 authorized_keys 文件，将刚刚复制的公钥粘贴到 authorized_keys 里面（从文件内容最后开始粘贴）。
+再打开vscode，进行远程连接（这里需要装一下远程资源管理器，就是remote development）。点击远程资源管理器的设置按钮，在配置文件中添加host、hostname、user。host可以自己随便取，hostname是远程服务器的ip地址，user是远程服务器的用户名。
+接着就可以在列表看到新连接的服务器了，右键点击 “connect to host in current window”，没问题就连接成功了，可以直接使用。
+2 在cloudlab上安装greenplum 和在本机上装一样，过程参照：ubuntu安装greenplum教程及踩坑记录
+3 在cloudlab上安装python3环境 wget工具下载压缩包
+1 2 3 4  $ wget https://www.python.org/ftp/python/3.7.9/Python-3.7.9.tgz $ tar -xzvf Python-3.7.9.tgz $ ls gpAdminLogs gpinitsystem_singlenode greenplum hostlist_singlenode Python-3.7.9 Python-3.7.9.tgz   进入解压后的python文件夹，安装python依赖库，并编译安装python
+1 2 3 4 5 6 7 8 9 10 11  $ cd Python-3.]]></description>
+</item>
+<item>
     <title>ubuntu安装greenplum教程及踩坑记录</title>
     <link>https://imcaicai.github.io/ubuntu%E5%AE%89%E8%A3%85greenplum%E6%95%99%E7%A8%8B%E5%8F%8A%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/</link>
     <pubDate>Wed, 31 May 2023 22:56:44 &#43;0800</pubDate>

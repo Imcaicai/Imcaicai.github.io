@@ -118,6 +118,22 @@
         alt="/img/avatar.jpg"
         title="/img/avatar.jpg" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E5%9B%9B/">Mysql数据库基本语法(四)</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-12-07">2022-12-07</time></span>&nbsp;<span class="post-category">included in <a href="/categories/mysql/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Mysql</a></span></div><div class="content">7 并发控制与事务的隔离级别 7.1 并发控制与事务的隔离级别 并发操作可能产生的数据不一致性 数据库是共享资源，允许多个用户同时访问同一数据库，特别是在互联网应用成为主流的当下，高可用性、高并发是所有应用追求的目标。但并发操作不加控制，便会产生数据的不一致性。 并发操作可能带来的数据不一致性包括：
+ 丢失修改(lost update) 读脏数据(dirty read) 不可重复读(non-repeatable read) 幻读(phantom read)  为解决上述不一致性问题,DBMS设计了专门的并发控制子系统，采用封锁机制进行并发控制，以保证事务的隔离性和一致性(事务是并发控制的基本单位)。
+但事务的隔离程度越高，固然一致性&ndash;或者説数据的正确性越有保障，但并发度就会越低。很多时候，需要在一致性和并发度间进行取舍，从而就生产了事务的隔离级别的概念。 隔离级别越高，一致性程度越高，并发度越低。反之，隔离级别越低，并发度越高，但代价是会出现某些数据不一致现象。
+低隔离级别可以支持更高的并发处理，同时占用的系统资源更少,但可能产生数据不一致的情形也更多一些。
+查询事务的隔离级别 可用以下语句查询MySQL的事务隔离级别：
+1  select @@GLOBAL.transaction_isolation, @@transaction_isolation;   其中，@@GLOBAL.transaction_isolation全局变量，@@transaction_isolation为本会话期内的变量。通常通过重设该变量的值以改变隔离级别。 上述两个变量的缺省值均为：REPEATABLE-READ，即可重复读。
+设置事务的隔离级别 以下语句设置事务的隔离级别为可读未提交(read uncommitted):
+1  set session transaction isolation level read uncommitted;   如需设置为其它级别，只需替换最后的隔离级别即可。 不同的事务隔离级别意味着不同的封锁协议，程序员只需设置事务的隔离级别即可，其它的交给DBMS并发子系统处理。 不过，MySQL也有lock tables和unlock tables语句，可以直接锁表，另外，MySQL还支持在select语句中使用for share或for update短语主动申请S锁或X锁(只到事务结束才释放)。这样，即使在隔离级别为read uncommitted的情形下，仍有机会保证可重复读，相关内容请参阅MySQL官方文档。
+7.2 读脏 读脏 读脏(dirty read)，或者又叫脏读，是指一个事务(t1)读取到另一个事务(t2)修改后的数据，后来事务t2又撤销了本次修改(即事务t2以roll back结束)，数据恢复原值。这样，事务t1读到的数据就与数据库里的实际数据不一致，这样的数据被称为“脏”数据，意即不正确的数据。
+读脏产生的原因 显然，产生读脏的原因，是事务t1读取数据时，修改该数据的事务t2还没有结束(commit或roll back，统称uncommitted),且t1读取的时间点又恰在t2修改该数据之后。
+7.3 不可重复读 不可重复读 不可重复读(unrepeatable read)，是指一个事务(t1)读取到某数据后，另一个事务(t2)修改了该，事务t1并未修改该数据，但当t1再次读取该数据时，发现两次读取的结果不一样。
+产生不可重复读的原因 显然，不可重复读产生的原因，是事务t1的两次读取之间，有另一个事务修改了t1读取的数据。</div><div class="post-footer">
+        <a href="/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E5%9B%9B/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/mysql/">Mysql</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%89/">Mysql数据库基本语法(三)</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-12-07">2022-12-07</time></span>&nbsp;<span class="post-category">included in <a href="/categories/mysql/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Mysql</a></span></div><div class="content">5 用户自定义函数 函数其实有多种，比如标量函数(仅返回一个值)和表函数(返回结果是表),语法也各不相同。这里，我们仅给出一个简化的创建标量函数的语法:
 1 2 3 4 5 6  create function function_name([para data_type[,...]]) returns data_type begin function_body; return expression; end    function_name:函数名； para:参数名； data_type:参数的数据类型； 一个函数可以没有参数，也可以有多个。多参数间用逗号分隔。 function_body:函数体。即由合法的SQL语句组成的程序段。 expression:函数返回值，可以是常量、表达式，甚至是一条select语句查询的值（必须保证结果唯一);该值类型应与returns短语定义的类型相同。  函数一旦定义，就可以像内部函数一样使用，比如出现在select列表、表达式、以及where子句的条件中。
@@ -220,14 +236,6 @@ Please make sure you have the correct access rights and the repository exists.
  静态url路径 带路径参数的url路径 带星号（*）模糊匹配参数的url路径  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23  // 例子1， 静态Url路径, 即不带任何参数的url路径 /users/center /user/101 /food/100 // 例子2，带路径参数的url路径，url路径上面带有参数,参数由冒号（:）跟着一个字符串定义。 // 路径参数值可以是数值，也可以是字符串  //定义参数:id， 可以匹配/user/1, /user/899 /user/xiaoli 这类Url路径 /user/:id //定义参数:id， 可以匹配/food/2, /food/100 /food/apple 这类Url路径 /food/:id //定义参数:type和:page， 可以匹配/foods/2/1, /food/100/25 /food/apple/30 这类Url路径 /foods/:type/:page // 例子3.</div><div class="post-footer">
         <a href="/echo%E6%A1%86%E6%9E%B6%E5%85%A5%E9%97%A8/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/echo/">Echo</a>,&nbsp;<a href="/tags/go/">Go</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/go-net%E6%A0%87%E5%87%86%E5%BA%93%E5%BA%94%E7%94%A8/">Go-net标准库应用</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-10-20">2022-10-20</time></span>&nbsp;<span class="post-category">included in <a href="/categories/go/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Go</a></span></div><div class="content">在go语言标准库中，net包提供了可移植的网络I/O接口，包括TCP/IP、UDP、域名解析和Unix域socket。
-1 服务端 1. 解析地址 在TCP服务端我们需要监听一个TCP地址，因此建立服务端前我们需要生成一个正确的TCP地址，这就需要用到 Resolve 函数。
-1 2 3 4 5 6 7 8  // ResolveTCPAddr函数会输出一个TCP连接地址和一个错误信息 func ResolveTCPAddr(network, address string) (*TCPAddr, error) // 解析IP地址 func ResolveIPAddr(net, addr string) (*IPAddr, error) // 解析UDP地址 func ResolveUDPAddr(net, addr string) (*UDPAddr, error) // 解析Unix地址 func ResolveUnixAddr(net, addr string) (*UnixAddr, error)   2. 监听请求 我们可以通过 Listen 方法监听我们解析后的网络地址。
-1 2 3 4 5 6 7 8 9 10 11 12  // 监听net类型，地址为laddr的地址 func Listen(net, laddr string) (Listener, error) // 监听TCP地址 func ListenTCP(network string, laddr *TCPAddr) (*TCPListener, error) // 监听IP地址 func ListenIP(netProto string, laddr *IPAddr) (*IPConn, error) // 监听UDP地址 func ListenMulticastUDP(net string, ifi *Interface, gaddr *UDPAddr) (*UDPConn, error) func ListenUDP(net string, laddr *UDPAddr) (*UDPConn, error) // 监听Unix地址 func ListenUnixgram(net string, laddr *UnixAddr) (*UnixConn, error) func ListenUnix(net string, laddr *UnixAddr) (*UnixListener, error)   3.</div><div class="post-footer">
-        <a href="/go-net%E6%A0%87%E5%87%86%E5%BA%93%E5%BA%94%E7%94%A8/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/go/">Go</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>

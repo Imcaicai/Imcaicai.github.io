@@ -3,7 +3,25 @@
         <title>All Posts - 菜菜的秘密花园</title>
         <link>https://imcaicai.github.io/posts/</link>
         <description>All Posts | 菜菜的秘密花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 31 May 2023 22:56:44 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 26 Jun 2023 19:44:39 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>cloudlab&#43;greenplum&#43;python3配置</title>
+    <link>https://imcaicai.github.io/cloudlab-greenplum-python3%E9%85%8D%E7%BD%AE/</link>
+    <pubDate>Mon, 26 Jun 2023 19:44:39 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/cloudlab-greenplum-python3%E9%85%8D%E7%BD%AE/</guid>
+    <description><![CDATA[参照论文 SWIRL: Selection of Workload-aware Indexes using Reinforcement Learning 在cloudlab提供的服务器上配置代码所需环境，本地机器为 Windows。
+1 本地ssh连接远程cloudlab服务器 登录cloudlab官网，注册并租一台服务器。（默认的时长为16小时，注意及时续期，不然服务器上的东西到期会被清理，一般每次续7天）
+点击刚刚租好的服务器，打开终端，下面配置本地和远程服务器的ssh连接。
+打开本地的.ssh目录（Windows一般是 C:\User\.ssh ），里面有个 id_rsa.pub 文件，用记事本的格式打开这个文件，并复制里面的所有内容，即ssh公钥。
+接着在远程服务器终端，打开 .ssh目录，里面有个 authorized_keys 文件，将刚刚复制的公钥粘贴到 authorized_keys 里面（从文件内容最后开始粘贴）。
+再打开vscode，进行远程连接（这里需要装一下远程资源管理器，就是remote development）。点击远程资源管理器的设置按钮，在配置文件中添加host、hostname、user。host可以自己随便取，hostname是远程服务器的ip地址，user是远程服务器的用户名。
+接着就可以在列表看到新连接的服务器了，右键点击 “connect to host in current window”，没问题就连接成功了，可以直接使用。
+2 在cloudlab上安装greenplum 和在本机上装一样，过程参照：ubuntu安装greenplum教程及踩坑记录
+3 在cloudlab上安装python3环境 wget工具下载压缩包
+1 2 3 4  $ wget https://www.python.org/ftp/python/3.7.9/Python-3.7.9.tgz $ tar -xzvf Python-3.7.9.tgz $ ls gpAdminLogs gpinitsystem_singlenode greenplum hostlist_singlenode Python-3.7.9 Python-3.7.9.tgz   进入解压后的python文件夹，安装python依赖库，并编译安装python
+1 2 3 4 5 6 7 8 9 10 11  $ cd Python-3.]]></description>
+</item>
+<item>
     <title>ubuntu安装greenplum教程及踩坑记录</title>
     <link>https://imcaicai.github.io/ubuntu%E5%AE%89%E8%A3%85greenplum%E6%95%99%E7%A8%8B%E5%8F%8A%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/</link>
     <pubDate>Wed, 31 May 2023 22:56:44 &#43;0800</pubDate>
@@ -105,23 +123,6 @@
 2.3 强化学习 强化学习（RL）包括一组算法，用于解决决策问题。
 这些问题的特点是，在给定状态 $s_t∈S$ ，反复允许一个代理执行行动 $a_t$ ，其中 $a_t∈A$ 。在执行了所选择的行动后，达到新的状态 $s_{t+1}$ ，重复该过程。为了向代理人提供关于行动是否选择得当的反馈，他们会收到反馈信号，即每次决策后的奖励 $r_t$ 。
 问题是要找到一个最佳决策，它将状态映射为行动，涉及到以时间 t 为开始状态的未来长期报酬：]]></description>
-</item>
-<item>
-    <title>Access Path Selection in Main-Memory Optimized Data Systems</title>
-    <link>https://imcaicai.github.io/access-path-selection-in-main-memory-optimized-data-systems/</link>
-    <pubDate>Mon, 01 May 2023 23:35:11 &#43;0800</pubDate>
-    <author>菜菜</author>
-    <guid>https://imcaicai.github.io/access-path-selection-in-main-memory-optimized-data-systems/</guid>
-    <description><![CDATA[本文为论文 Access Path Selection in Main-Memory Optimized Data Systems: Should I Scan or Should I Probe? 的阅读笔记。
-1 引言 🟥 我们提出了一个增强的访问路径成本模型，它可以捕捉到在支持访问共享的主内存优化的分析数据系统中的选择运算符的性能。
-🟨 访问路径的选择是需要的；即使在快速扫描时，经过调整的二级索引也是有用的。
-🟩 我们表明，除了【选择性】和【硬件特性】外，访问路径的选择还需要动态地考虑到【查询并发性】。
-🟦 我们将访问路径选择整合到一个现代分析原型的优化器中，并表明即使访问路径选择现在是一个更复杂的操作，必须考虑到更多的信息，它仍然可以快速完成；并且可以在各种工作负载上进行。
-🟪 使用该模型，我们展示了何时使用索引的决定是如何随着数据布局和硬件属性的变化而变化的。
-2 访问路径选择 2.1 模型准备工作  索引的选择性： 指不重复的索引值和数据表的记录总数的比值，取值范围在 [0,1] 之间。
-索引的选择性越高则查询效率越高，因为选择性高的索引可以让 MySQL 在查找时过滤掉更多的行。
- 2.2 内存中共享扫描建模 🔴 扫描的数据移动。给定内存带宽 $BW_S$ ，顺序扫描数据的成本为： $TD_S = \frac {N·ts}{BW_s}$ 。
-🟡 谓词评估。假设 p 是时钟周期，fp 是指令流水线的常数，则谓词评估 PE 的 CPU 为： $PE = 2 · fp · p · N$ 。]]></description>
 </item>
 </channel>
 </rss>

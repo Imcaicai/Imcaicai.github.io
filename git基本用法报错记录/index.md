@@ -26,6 +26,8 @@ git push -u origin main
 git push
 ```
 
+
+
 ## 其他用法
 
 #### 1 修改分支名
@@ -56,6 +58,13 @@ git commit -m "first commit"
 # 分别提交
 git push -u github main
 git push -u gitee main
+```
+
+#### 4 Github嵌套项目拉取
+
+```shell
+# 获取主项目和所有子项目源码
+git clone --recurse-submodules <main_project_url>  
 ```
 
 

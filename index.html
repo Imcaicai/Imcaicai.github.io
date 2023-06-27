@@ -118,6 +118,21 @@
         alt="/img/avatar.jpg"
         title="/img/avatar.jpg" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/cloudlab-greenplum-python3%E9%85%8D%E7%BD%AE/">cloudlab+greenplum+python3配置</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-06-26">2023-06-26</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E6%99%BA%E8%83%BD%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E4%B8%8E%E7%AE%A1%E7%90%86%E5%AE%9E%E9%AA%8C%E5%AE%A4/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>智能数据存储与管理实验室</a></span></div><div class="content">参照论文 SWIRL: Selection of Workload-aware Indexes using Reinforcement Learning 在cloudlab提供的服务器上配置代码所需环境，本地机器为 Windows。
+1 本地ssh连接远程cloudlab服务器 登录cloudlab官网，注册并租一台服务器。（默认的时长为16小时，注意及时续期，不然服务器上的东西到期会被清理，一般每次续7天）
+点击刚刚租好的服务器，打开终端，下面配置本地和远程服务器的ssh连接。
+打开本地的.ssh目录（Windows一般是 C:\User\.ssh ），里面有个 id_rsa.pub 文件，用记事本的格式打开这个文件，并复制里面的所有内容，即ssh公钥。
+接着在远程服务器终端，打开 .ssh目录，里面有个 authorized_keys 文件，将刚刚复制的公钥粘贴到 authorized_keys 里面（从文件内容最后开始粘贴）。
+再打开vscode，进行远程连接（这里需要装一下远程资源管理器，就是remote development）。点击远程资源管理器的设置按钮，在配置文件中添加host、hostname、user。host可以自己随便取，hostname是远程服务器的ip地址，user是远程服务器的用户名。
+接着就可以在列表看到新连接的服务器了，右键点击 “connect to host in current window”，没问题就连接成功了，可以直接使用。
+2 在cloudlab上安装greenplum 和在本机上装一样，过程参照：ubuntu安装greenplum教程及踩坑记录
+3 在cloudlab上安装python3环境 wget工具下载压缩包
+1 2 3 4  $ wget https://www.python.org/ftp/python/3.7.9/Python-3.7.9.tgz $ tar -xzvf Python-3.7.9.tgz $ ls gpAdminLogs gpinitsystem_singlenode greenplum hostlist_singlenode Python-3.7.9 Python-3.7.9.tgz   进入解压后的python文件夹，安装python依赖库，并编译安装python
+1 2 3 4 5 6 7 8 9 10 11  $ cd Python-3.</div><div class="post-footer">
+        <a href="/cloudlab-greenplum-python3%E9%85%8D%E7%BD%AE/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/cloudlab/">cloudlab</a>,&nbsp;<a href="/tags/greenplum/">greenplum</a>,&nbsp;<a href="/tags/python3/">python3</a>,&nbsp;<a href="/tags/swirl/">SWIRL</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/ubuntu%E5%AE%89%E8%A3%85greenplum%E6%95%99%E7%A8%8B%E5%8F%8A%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/">ubuntu安装greenplum教程及踩坑记录</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-05-31">2023-05-31</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E6%99%BA%E8%83%BD%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E4%B8%8E%E7%AE%A1%E7%90%86%E5%AE%9E%E9%AA%8C%E5%AE%A4/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>智能数据存储与管理实验室</a></span></div><div class="content">1 版本说明 在撰写本文时，Greenplum 的 Ubuntu 版本是为 Ubuntu 的 18.04 和 16.04 LTS（长期支持）发行版构建的。注意最好用 18.04 版本的ubuntu。（一开始用20及以上的，会有一些奇奇怪怪的错误）
 2 安装Greenplum 将 Greenplum PPA 存储库添加到 Ubuntu 系统：
@@ -221,17 +236,6 @@ PS：主要是帮学长找语法错误、可以改进的地方
  2023 2023.04 🟥 看论文： Magic mirror in my hand, which is the best in the land?</div><div class="post-footer">
         <a href="/%E6%99%BA%E8%83%BD%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E4%B8%8E%E7%AE%A1%E7%90%86%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E5%AE%9E%E4%B9%A0%E8%AE%B0%E5%BD%95/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E5%AE%9E%E4%B9%A0%E8%AE%B0%E5%BD%95/">实习记录</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%89%B9%E6%80%A7%E7%AF%87/">【二叉搜索树】特性篇</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-04-27">2023-04-27</time></span>&nbsp;<span class="post-category">included in <a href="/categories/labuladong%E7%9A%84%E7%AE%97%E6%B3%95%E7%A7%98%E7%B1%8D/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>labuladong的算法秘籍</a></span></div><div class="content">1 二叉搜索树BST  🔴 对于 BST 的每一个节点 node，左子树节点的值都比 node 的值要小，右子树节点的值都比 node 的值大。
-🔵 对于 BST 的每一个节点 node，它的左侧子树和右侧子树都是 BST。
- 二叉搜索树问题的核心是【利用中序位置】。 以下代码可以将 BST 中每个节点的值升序打印出来：
-1 2 3 4 5 6 7  void traverse(TreeNode root) { if (root == null) return; traverse(root.left); // 中序遍历代码位置 	print(root.val); traverse(root.right); }   后面两道题都是基于这个性质实现的。
-2 二叉搜索树中第K小的元素 题目 🔗力扣 230. 二叉搜索树中第K小的元素
-给定一个二叉搜索树的根节点 root ，和一个整数 k ，请你设计一个算法查找其中第 k 个最小元素（从 1 开始计数）。
-解析 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23  class Solution { private: int count=0,k,ans; public: int kthSmallest(TreeNode* root, int k) { this-&gt;k = k; traverse(root); return ans; } void traverse(TreeNode* root){ if(root==nullptr) return; traverse(root-&gt;left); // 中序遍历位置，找到第k小的元素  count++; if(count == k){ ans = root-&gt;val;return; } traverse(root-&gt;right); } };   扩展 🔴 利用【BST 中序遍历就是升序排序结果】这个性质，寻找第 k 小的元素的时间复杂度是 O(N)。</div><div class="post-footer">
-        <a href="/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%89%B9%E6%80%A7%E7%AF%87/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/labuladong/">labuladong</a>,&nbsp;<a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>,&nbsp;<a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a></div></div>
 </article><ul class="pagination"><li class="page-item active">
                     <span class="page-link">
                         <a href="/">1</a>

@@ -4,42 +4,52 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>ubuntu安装greenplum教程及踩坑记录 - 菜菜的秘密花园</title><meta name="Description" content="菜菜的秘密花园"><meta property="og:title" content="ubuntu安装greenplum教程及踩坑记录" />
-<meta property="og:description" content="1 版本说明 在撰写本文时，Greenplum 的 Ubuntu 版本是为 Ubuntu 的 18.04 和 16.04 LTS（长期支持）发行版构建的。注意最好用 18.04 版本的ubuntu。（一开始用20及以上的，会有一些奇奇怪怪的错误）
-2 安装Greenplum 将 Greenplum PPA 存储库添加到 Ubuntu 系统：
-1 2 3  sudo apt update sudo apt install software-properties-common sudo add-apt-repository ppa:greenplum/db   更新 Ubuntu 系统以从最近添加的存储库中检索信息：
-1 2  sudo apt update sudo apt install greenplum-db-6   上述命令将自动在系统上安装 Greenplum 数据库软件和任何所需的依赖项，并将生成的软件放在 /opt 目录中，如下所示：
-将 Greenplum 数据库软件加载到环境中。注意，应该根据安装的 Greenplum 数据库版本选择 Greenplum 软件目录的确切路径。例如，这里是 greenplum-db-6.24.3 ：
-1 2 3  source /opt/greenplum-db-6." />
+        <title>cloudlab&#43;greenplum&#43;python3配置 - 菜菜的秘密花园</title><meta name="Description" content="菜菜的秘密花园"><meta property="og:title" content="cloudlab&#43;greenplum&#43;python3配置" />
+<meta property="og:description" content="参照论文 SWIRL: Selection of Workload-aware Indexes using Reinforcement Learning 在cloudlab提供的服务器上配置代码所需环境，本地机器为 Windows。
+1 本地ssh连接远程cloudlab服务器 登录cloudlab官网，注册并租一台服务器。（默认的时长为16小时，注意及时续期，不然服务器上的东西到期会被清理，一般每次续7天）
+点击刚刚租好的服务器，打开终端，下面配置本地和远程服务器的ssh连接。
+打开本地的.ssh目录（Windows一般是 C:\User\.ssh ），里面有个 id_rsa.pub 文件，用记事本的格式打开这个文件，并复制里面的所有内容，即ssh公钥。
+接着在远程服务器终端，打开 .ssh目录，里面有个 authorized_keys 文件，将刚刚复制的公钥粘贴到 authorized_keys 里面（从文件内容最后开始粘贴）。
+再打开vscode，进行远程连接（这里需要装一下远程资源管理器，就是remote development）。点击远程资源管理器的设置按钮，在配置文件中添加host、hostname、user。host可以自己随便取，hostname是远程服务器的ip地址，user是远程服务器的用户名。
+接着就可以在列表看到新连接的服务器了，右键点击 “connect to host in current window”，没问题就连接成功了，可以直接使用。
+2 在cloudlab上安装greenplum 和在本机上装一样，过程参照：ubuntu安装greenplum教程及踩坑记录
+3 在cloudlab上安装python3环境 wget工具下载压缩包
+1 2 3 4  $ wget https://www.python.org/ftp/python/3.7.9/Python-3.7.9.tgz $ tar -xzvf Python-3.7.9.tgz $ ls gpAdminLogs gpinitsystem_singlenode greenplum hostlist_singlenode Python-3.7.9 Python-3.7.9.tgz   进入解压后的python文件夹，安装python依赖库，并编译安装python
+1 2 3 4 5 6 7 8 9 10 11  $ cd Python-3." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://imcaicai.github.io/ubuntu%E5%AE%89%E8%A3%85greenplum%E6%95%99%E7%A8%8B%E5%8F%8A%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/" /><meta property="og:image" content="https://imcaicai.github.io/img/avatar.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-05-31T22:56:44&#43;08:00" />
-<meta property="article:modified_time" content="2023-05-31T22:56:44&#43;08:00" /><meta property="og:site_name" content="菜菜的秘密花园" />
+<meta property="og:url" content="https://imcaicai.github.io/cloudlab-greenplum-python3%E9%85%8D%E7%BD%AE/" /><meta property="og:image" content="https://imcaicai.github.io/img/avatar.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-06-26T19:44:39&#43;08:00" />
+<meta property="article:modified_time" content="2023-06-26T19:44:39&#43;08:00" /><meta property="og:site_name" content="菜菜的秘密花园" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://imcaicai.github.io/img/avatar.jpg"/>
 
-<meta name="twitter:title" content="ubuntu安装greenplum教程及踩坑记录"/>
-<meta name="twitter:description" content="1 版本说明 在撰写本文时，Greenplum 的 Ubuntu 版本是为 Ubuntu 的 18.04 和 16.04 LTS（长期支持）发行版构建的。注意最好用 18.04 版本的ubuntu。（一开始用20及以上的，会有一些奇奇怪怪的错误）
-2 安装Greenplum 将 Greenplum PPA 存储库添加到 Ubuntu 系统：
-1 2 3  sudo apt update sudo apt install software-properties-common sudo add-apt-repository ppa:greenplum/db   更新 Ubuntu 系统以从最近添加的存储库中检索信息：
-1 2  sudo apt update sudo apt install greenplum-db-6   上述命令将自动在系统上安装 Greenplum 数据库软件和任何所需的依赖项，并将生成的软件放在 /opt 目录中，如下所示：
-将 Greenplum 数据库软件加载到环境中。注意，应该根据安装的 Greenplum 数据库版本选择 Greenplum 软件目录的确切路径。例如，这里是 greenplum-db-6.24.3 ：
-1 2 3  source /opt/greenplum-db-6."/>
+<meta name="twitter:title" content="cloudlab&#43;greenplum&#43;python3配置"/>
+<meta name="twitter:description" content="参照论文 SWIRL: Selection of Workload-aware Indexes using Reinforcement Learning 在cloudlab提供的服务器上配置代码所需环境，本地机器为 Windows。
+1 本地ssh连接远程cloudlab服务器 登录cloudlab官网，注册并租一台服务器。（默认的时长为16小时，注意及时续期，不然服务器上的东西到期会被清理，一般每次续7天）
+点击刚刚租好的服务器，打开终端，下面配置本地和远程服务器的ssh连接。
+打开本地的.ssh目录（Windows一般是 C:\User\.ssh ），里面有个 id_rsa.pub 文件，用记事本的格式打开这个文件，并复制里面的所有内容，即ssh公钥。
+接着在远程服务器终端，打开 .ssh目录，里面有个 authorized_keys 文件，将刚刚复制的公钥粘贴到 authorized_keys 里面（从文件内容最后开始粘贴）。
+再打开vscode，进行远程连接（这里需要装一下远程资源管理器，就是remote development）。点击远程资源管理器的设置按钮，在配置文件中添加host、hostname、user。host可以自己随便取，hostname是远程服务器的ip地址，user是远程服务器的用户名。
+接着就可以在列表看到新连接的服务器了，右键点击 “connect to host in current window”，没问题就连接成功了，可以直接使用。
+2 在cloudlab上安装greenplum 和在本机上装一样，过程参照：ubuntu安装greenplum教程及踩坑记录
+3 在cloudlab上安装python3环境 wget工具下载压缩包
+1 2 3 4  $ wget https://www.python.org/ftp/python/3.7.9/Python-3.7.9.tgz $ tar -xzvf Python-3.7.9.tgz $ ls gpAdminLogs gpinitsystem_singlenode greenplum hostlist_singlenode Python-3.7.9 Python-3.7.9.tgz   进入解压后的python文件夹，安装python依赖库，并编译安装python
+1 2 3 4 5 6 7 8 9 10 11  $ cd Python-3."/>
 <meta name="application-name" content="菜菜的秘密花园">
-<meta name="apple-mobile-web-app-title" content="菜菜的秘密花园"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://imcaicai.github.io/ubuntu%E5%AE%89%E8%A3%85greenplum%E6%95%99%E7%A8%8B%E5%8F%8A%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/" /><link rel="prev" href="https://imcaicai.github.io/csp202006/" /><link rel="next" href="https://imcaicai.github.io/cloudlab-greenplum-python3%E9%85%8D%E7%BD%AE/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<meta name="apple-mobile-web-app-title" content="菜菜的秘密花园"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://imcaicai.github.io/cloudlab-greenplum-python3%E9%85%8D%E7%BD%AE/" /><link rel="prev" href="https://imcaicai.github.io/ubuntu%E5%AE%89%E8%A3%85greenplum%E6%95%99%E7%A8%8B%E5%8F%8A%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "ubuntu安装greenplum教程及踩坑记录",
+        "headline": "cloudlab+greenplum+python3配置",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/imcaicai.github.io\/ubuntu%E5%AE%89%E8%A3%85greenplum%E6%95%99%E7%A8%8B%E5%8F%8A%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95\/"
-        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "ubuntu, greenplum","wordcount":  190 ,
-        "url": "https:\/\/imcaicai.github.io\/ubuntu%E5%AE%89%E8%A3%85greenplum%E6%95%99%E7%A8%8B%E5%8F%8A%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95\/","datePublished": "2023-05-31T22:56:44+08:00","dateModified": "2023-05-31T22:56:44+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@id": "https:\/\/imcaicai.github.io\/cloudlab-greenplum-python3%E9%85%8D%E7%BD%AE\/"
+        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "cloudlab, greenplum, python3, SWIRL","wordcount":  198 ,
+        "url": "https:\/\/imcaicai.github.io\/cloudlab-greenplum-python3%E9%85%8D%E7%BD%AE\/","datePublished": "2023-06-26T19:44:39+08:00","dateModified": "2023-06-26T19:44:39+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/imcaicai.github.io\/img\/avatar.jpg"},"author": {
                 "@type": "Person",
@@ -77,7 +87,7 @@
                     <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
                 </a><a href="javascript:void(0);" class="menu-item language" title="Select Language">
                     <i class="fa fa-globe" aria-hidden="true"></i>                      
-                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/ubuntu%E5%AE%89%E8%A3%85greenplum%E6%95%99%E7%A8%8B%E5%8F%8A%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/" selected>English</option></select>
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/cloudlab-greenplum-python3%E9%85%8D%E7%BD%AE/" selected>English</option></select>
                 </a></div>
         </div>
     </div>
@@ -118,7 +128,7 @@
                 <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a><a href="javascript:void(0);" class="menu-item" title="Select Language">
                     <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
-                    <select class="language-select" onchange="location = this.value;"><option value="/ubuntu%E5%AE%89%E8%A3%85greenplum%E6%95%99%E7%A8%8B%E5%8F%8A%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/" selected>English</option></select>
+                    <select class="language-select" onchange="location = this.value;"><option value="/cloudlab-greenplum-python3%E9%85%8D%E7%BD%AE/" selected>English</option></select>
                 </a></div>
     </div>
 </header><div class="search-dropdown desktop">
@@ -130,10 +140,10 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">ubuntu安装greenplum教程及踩坑记录</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">cloudlab+greenplum+python3配置</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E6%99%BA%E8%83%BD%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E4%B8%8E%E7%AE%A1%E7%90%86%E5%AE%9E%E9%AA%8C%E5%AE%A4/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>智能数据存储与管理实验室</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-05-31">2023-05-31</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;190 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;<span id="/ubuntu%E5%AE%89%E8%A3%85greenplum%E6%95%99%E7%A8%8B%E5%8F%8A%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/" class="leancloud_visitors" data-flag-title="ubuntu安装greenplum教程及踩坑记录">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-06-26">2023-06-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;198 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;<span id="/cloudlab-greenplum-python3%E9%85%8D%E7%BD%AE/" class="leancloud_visitors" data-flag-title="cloudlab&#43;greenplum&#43;python3配置">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
@@ -143,98 +153,52 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#1-版本说明">1 版本说明</a></li>
-    <li><a href="#2-安装greenplum">2 安装Greenplum</a></li>
-    <li><a href="#3-编辑-gpinitsystem-配置文件">3 编辑 gpinitsystem 配置文件</a></li>
-    <li><a href="#4-运行-gpinit-系统">4 运行 gpinit 系统</a></li>
-    <li><a href="#5-一些踩坑记录">5 一些踩坑记录</a>
+    <li>
       <ul>
-        <li><a href="#51-ubuntu版本问题">5.1 ubuntu版本问题</a></li>
-        <li><a href="#52-文件权限问题">5.2 文件权限问题</a></li>
-        <li><a href="#53-文件夹创建问题">5.3 文件夹创建问题</a></li>
-        <li><a href="#54">5.4</a></li>
+        <li><a href="#1-本地ssh连接远程cloudlab服务器">1 本地ssh连接远程cloudlab服务器</a></li>
+        <li><a href="#2-在cloudlab上安装greenplum">2 在cloudlab上安装greenplum</a></li>
+        <li><a href="#3-在cloudlab上安装python3环境">3 在cloudlab上安装python3环境</a></li>
+        <li><a href="#4-运行代码">4 运行代码</a></li>
       </ul>
     </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h2 id="1-版本说明">1 版本说明</h2>
-<p>在撰写本文时，Greenplum 的 Ubuntu 版本是为 Ubuntu 的 18.04 和 16.04 LTS（长期支持）发行版构建的。注意最好用 18.04 版本的ubuntu。（一开始用20及以上的，会有一些奇奇怪怪的错误）</p>
-<h2 id="2-安装greenplum">2 安装Greenplum</h2>
-<p>将 Greenplum PPA 存储库添加到 Ubuntu 系统：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">sudo apt update
-sudo apt install software-properties-common
-sudo add-apt-repository ppa:greenplum/db
-</code></pre></td></tr></table>
-</div>
-</div><p>更新 Ubuntu 系统以从最近添加的存储库中检索信息：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">sudo apt update
-sudo apt install greenplum-db-6
-</code></pre></td></tr></table>
-</div>
-</div><p>上述命令将自动在系统上安装 Greenplum 数据库软件和任何所需的依赖项，并将生成的软件放在 /opt 目录中，如下所示：</p>
+            </div><div class="content" id="content"><p>参照论文 <em><strong>SWIRL: Selection of Workload-aware Indexes using Reinforcement Learning</strong></em>  在cloudlab提供的服务器上配置代码所需环境，本地机器为 Windows。</p>
+<h3 id="1-本地ssh连接远程cloudlab服务器">1 本地ssh连接远程cloudlab服务器</h3>
+<p>登录cloudlab官网，注册并租一台服务器。（默认的时长为16小时，注意及时续期，不然服务器上的东西到期会被清理，一般每次续7天）</p>
+<p>点击刚刚租好的服务器，打开终端，下面配置本地和远程服务器的ssh连接。</p>
+<p>打开本地的.ssh目录（Windows一般是 <code>C:\User\.ssh</code> ），里面有个 id_rsa.pub 文件，用记事本的格式打开这个文件，并复制里面的所有内容，即ssh公钥。</p>
+<p>接着在远程服务器终端，打开 .ssh目录，里面有个 authorized_keys 文件，将刚刚复制的公钥粘贴到 authorized_keys 里面（从文件内容最后开始粘贴）。</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/img/greenplum/1.png"
-        data-srcset="/img/greenplum/1.png, /img/greenplum/1.png 1.5x, /img/greenplum/1.png 2x"
+        data-src="/img/cloudlab/1.png"
+        data-srcset="/img/cloudlab/1.png, /img/cloudlab/1.png 1.5x, /img/cloudlab/1.png 2x"
         data-sizes="auto"
-        alt="/img/greenplum/1.png"
+        alt="/img/cloudlab/1.png"
         title="img1" /></p>
-<p>将 Greenplum 数据库软件加载到环境中。注意，应该根据安装的 Greenplum 数据库版本选择 Greenplum 软件目录的确切路径。例如，这里是 <code>greenplum-db-6.24.3</code> ：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">source</span> /opt/greenplum-db-6.24.3/greenplum_path.sh
-which gpssh
-/opt/greenplum-db-6.24.3/bin/gpssh
-</code></pre></td></tr></table>
-</div>
-</div><p>可以通过上面的 <code>which</code> 命令测试，看到软件在路径上。现在可以将 Greenplum 集群配置文件模板复制到本地目录中进行编辑，如下所示：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="n">cp</span> <span class="err">$</span><span class="n">GPHOME</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">cli_help</span><span class="o">/</span><span class="n">gpconfigs</span><span class="o">/</span><span class="n">gpinitsystem_singlenode</span> <span class="p">.</span>
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="3-编辑-gpinitsystem-配置文件">3 编辑 gpinitsystem 配置文件</h2>
-<p>创建此文件并仅将主机名放入文件中：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">touch hostlist_singlenode
-</code></pre></td></tr></table>
-</div>
-</div><p>例如我这里是 <code>xjh-vm</code> ：</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/img/greenplum/2.png"
-        data-srcset="/img/greenplum/2.png, /img/greenplum/2.png 1.5x, /img/greenplum/2.png 2x"
+        data-src="/img/cloudlab/2.png"
+        data-srcset="/img/cloudlab/2.png, /img/cloudlab/2.png 1.5x, /img/cloudlab/2.png 2x"
         data-sizes="auto"
-        alt="/img/greenplum/2.png"
-        title="img2" /></p>
-<p>找一个路径（可以自己随便定）创建名为 master 和 primary 的文件夹，并设置他们的权限。（注意这里是创建文件夹而不是文件！设置权限很重要，否则后面会有报错！）</p>
+        alt="/img/cloudlab/2.png"
+        title="img1" /></p>
+<p>再打开vscode，进行远程连接（这里需要装一下远程资源管理器，就是remote development）。点击远程资源管理器的设置按钮，在配置文件中添加host、hostname、user。host可以自己随便取，hostname是远程服务器的ip地址，user是远程服务器的用户名。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/cloudlab/3.png"
+        data-srcset="/img/cloudlab/3.png, /img/cloudlab/3.png 1.5x, /img/cloudlab/3.png 2x"
+        data-sizes="auto"
+        alt="/img/cloudlab/3.png"
+        title="img1" /></p>
+<p>接着就可以在列表看到新连接的服务器了，右键点击 “connect to host in current window”，没问题就连接成功了，可以直接使用。</p>
+<h3 id="2-在cloudlab上安装greenplum">2 在cloudlab上安装greenplum</h3>
+<p>和在本机上装一样，过程参照：<a href="https://imcaicai.github.io/ubuntu%e5%ae%89%e8%a3%85greenplum%e6%95%99%e7%a8%8b%e5%8f%8a%e8%b8%a9%e5%9d%91%e8%ae%b0%e5%bd%95/" target="_blank" rel="noopener noreffer ">ubuntu安装greenplum教程及踩坑记录</a></p>
+<h3 id="3-在cloudlab上安装python3环境">3 在cloudlab上安装python3环境</h3>
+<p>wget工具下载压缩包</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -243,139 +207,119 @@ which gpssh
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">mkdir /home/xjh/Desktop/envs/greenplum/master
-sudo chmod <span class="m">777</span> -R /home/xjh/Desktop/envs/greenplum/master
-mkdir /home/xjh/Desktop/envs/greenplum/primary
-sudo chmod <span class="m">777</span> -R /home/xjh/Desktop/envs/greenplum/primary
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ wget https://www.python.org/ftp/python/3.7.9/Python-3.7.9.tgz
+$ tar -xzvf Python-3.7.9.tgz
+$ ls
+gpAdminLogs  gpinitsystem_singlenode  greenplum  hostlist_singlenode  Python-3.7.9  Python-3.7.9.tgz
 </code></pre></td></tr></table>
 </div>
-</div><p>用 vim 编辑 gpinitsystem_singlenode 文件，主要修改以下4个部分：</p>
+</div><p>进入解压后的python文件夹，安装python依赖库，并编译安装python</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ <span class="nb">cd</span> Python-3.7.9
+<span class="c1"># 安装依赖库（非常重要，不然有可能报各种奇奇怪怪的错！）</span>
+$ sudo apt-get install libbz2-dev libffi-dev libncurses5-dev libgdbm-dev liblzma-dev sqlite3 libsqlite3-dev openssl libssl-dev tcl8.6-dev tk8.6-dev libreadline-dev zlib1g-dev uuid-dev
+
+<span class="c1"># 编译，注意可以在--prefix后指定目录，也可以不指定</span>
+$ ./configure --prefix<span class="o">=</span>/usr/local/src/python37
+<span class="c1"># 安装</span>
+$ sudo make <span class="o">&amp;&amp;</span> sudo make install
+<span class="c1"># 链接，注意这里面的/usr/local/src/python37需要换成编译阶段--prefix后面指定的目录</span>
+$ sudo ln -s /usr/local/src/python37/bin/python3.7 /usr/bin/python3.7
+$ sudo ln -s /usr/local/src/python37/bin/pip3.7 /usr/bin/pip3.7
+</code></pre></td></tr></table>
+</div>
+</div><p>然后需要重新source以下，并重设PYTHONHOME和PYTHONPATH，因为被greenplum改过</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 这里统一改成这个</span>
-<span class="nv">MACHINE_LIST_FILE</span><span class="o">=</span>./hostlist_singlenode
-<span class="c1"># 这里的路径就是上面创建的文件夹路径，要改成自己设置的路径。注意需要重复2次，中间用空格隔开</span>
-<span class="nb">declare</span> -a <span class="nv">DATA_DIRECTORY</span><span class="o">=(</span>/home/xjh/Desktop/envs/greenplum/primary /home/xjh/Desktop/envs/greenplum/primary<span class="o">)</span>
-<span class="c1"># 这里要改成主机名，比如我的是 xjh-vm</span>
-<span class="nv">MASTER_HOSTNAME</span><span class="o">=</span>ubuntu
-<span class="c1"># 这里也要换成自己的路径</span>
-<span class="nv">MASTER_DIRECTORY</span><span class="o">=</span>/home/xjh/Desktop/envs/greenplum/master
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ <span class="nb">source</span> /opt/greenplum-db-6.24.3/greenplum_path.sh
+$ <span class="nb">unset</span> PYTHONHOME
+$ <span class="nb">unset</span> PYTHONPATH
 </code></pre></td></tr></table>
 </div>
-</div><p>改完就是这个样子的：</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/img/greenplum/3.png"
-        data-srcset="/img/greenplum/3.png, /img/greenplum/3.png 1.5x, /img/greenplum/3.png 2x"
-        data-sizes="auto"
-        alt="/img/greenplum/3.png"
-        title="img3" /></p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/img/greenplum/4.png"
-        data-srcset="/img/greenplum/4.png, /img/greenplum/4.png 1.5x, /img/greenplum/4.png 2x"
-        data-sizes="auto"
-        alt="/img/greenplum/4.png"
-        title="img4" /></p>
-<h2 id="4-运行-gpinit-系统">4 运行 gpinit 系统</h2>
-<p>首先，确保通过运行以下命令交换 ssh 密钥：</p>
+</div><h3 id="4-运行代码">4 运行代码</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">gpssh-exkeys -f hostlist_singlenode
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 创建环境</span>
+$ python3.7 -m venv venv
+<span class="c1"># 激活环境</span>
+$ <span class="nb">source</span> venv/bin/activate
+$ <span class="nb">source</span> /opt/greenplum-db-6.24.5/greenplum_path.sh
+$ <span class="nb">unset</span> PYTHONHOME
+$ <span class="nb">unset</span> PYTHONPATH
+
+<span class="c1"># 安装需要模块（只在第一次安装，后续都不要安装）</span>
+<span class="c1"># psycopg2-binary==2.8.6不能装</span>
+$ pip3 install -r requirements.txt
+
+<span class="c1"># 运行</span>
+$ python3 -m swirl experiments/tpch.json
+
+<span class="c1"># 每次运行前要删除文件：</span>
+$ rm -rf experiment_results/ID_TPCH_Test_Experiment
 </code></pre></td></tr></table>
 </div>
-</div><p>接着启动集群：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">gpinitsystem -c gpinitsystem_singlenode
-</code></pre></td></tr></table>
-</div>
-</div><p>下面狂按确认就可以，最后这样就是成功了（过程曲折，太不容易了😭🤧）</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/img/greenplum/5.png"
-        data-srcset="/img/greenplum/5.png, /img/greenplum/5.png 1.5x, /img/greenplum/5.png 2x"
-        data-sizes="auto"
-        alt="/img/greenplum/5.png"
-        title="img5" /></p>
-<p>至此可以成功创建数据库：</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/img/greenplum/6.png"
-        data-srcset="/img/greenplum/6.png, /img/greenplum/6.png 1.5x, /img/greenplum/6.png 2x"
-        data-sizes="auto"
-        alt="/img/greenplum/6.png"
-        title="img6" /></p>
-<h2 id="5-一些踩坑记录">5 一些踩坑记录</h2>
-<h3 id="51-ubuntu版本问题">5.1 ubuntu版本问题</h3>
-<p>原来用 20.06 版本的 ubuntu ，出现了一些奇怪的报错，具体忘了。改成 18.04 版本就可以正常安装。</p>
-<h3 id="52-文件权限问题">5.2 文件权限问题</h3>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/img/greenplum/7.png"
-        data-srcset="/img/greenplum/7.png, /img/greenplum/7.png 1.5x, /img/greenplum/7.png 2x"
-        data-sizes="auto"
-        alt="/img/greenplum/7.png"
-        title="img7" /></p>
-<p>需要修改 opt 目录的权限，权限修改方法参照前面的 <code>sudo chmod 777 -R</code> 。</p>
-<h3 id="53-文件夹创建问题">5.3 文件夹创建问题</h3>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/img/greenplum/8.png"
-        data-srcset="/img/greenplum/8.png, /img/greenplum/8.png 1.5x, /img/greenplum/8.png 2x"
-        data-sizes="auto"
-        alt="/img/greenplum/8.png"
-        title="img8" /></p>
-<p>之前的 master 和 primary 都应该是创建的文件夹，第一次创建成文件，就会有这样的报错，找了好久原因。（哭死</p>
-<h3 id="54">5.4</h3>
-<p><a href="https://cloud.tencent.com/developer/article/2030059?from=article.detail.1748201&amp;areaSource=106000.5&amp;traceId=NWIhsf2Zg3rwe3CFYDHef" target="_blank" rel="noopener noreffer ">Ubuntu更改镜像源两种方式</a></p>
-</div><div class="post-footer" id="post-footer">
+</div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2023-05-31</span>
+                <span>Updated on 2023-06-26</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
-                            <a class="link-to-markdown" href="/ubuntu%E5%AE%89%E8%A3%85greenplum%E6%95%99%E7%A8%8B%E5%8F%8A%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/index.md" target="_blank">Read Markdown</a>
+                            <a class="link-to-markdown" href="/cloudlab-greenplum-python3%E9%85%8D%E7%BD%AE/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://imcaicai.github.io/ubuntu%E5%AE%89%E8%A3%85greenplum%E6%95%99%E7%A8%8B%E5%8F%8A%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/" data-title="ubuntu安装greenplum教程及踩坑记录" data-hashtags="ubuntu,greenplum"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://imcaicai.github.io/ubuntu%E5%AE%89%E8%A3%85greenplum%E6%95%99%E7%A8%8B%E5%8F%8A%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/" data-hashtag="ubuntu"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://imcaicai.github.io/ubuntu%E5%AE%89%E8%A3%85greenplum%E6%95%99%E7%A8%8B%E5%8F%8A%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/" data-title="ubuntu安装greenplum教程及踩坑记录"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://imcaicai.github.io/ubuntu%E5%AE%89%E8%A3%85greenplum%E6%95%99%E7%A8%8B%E5%8F%8A%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/" data-title="ubuntu安装greenplum教程及踩坑记录"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://imcaicai.github.io/ubuntu%E5%AE%89%E8%A3%85greenplum%E6%95%99%E7%A8%8B%E5%8F%8A%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/" data-title="ubuntu安装greenplum教程及踩坑记录"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://imcaicai.github.io/cloudlab-greenplum-python3%E9%85%8D%E7%BD%AE/" data-title="cloudlab&#43;greenplum&#43;python3配置" data-hashtags="cloudlab,greenplum,python3,SWIRL"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://imcaicai.github.io/cloudlab-greenplum-python3%E9%85%8D%E7%BD%AE/" data-hashtag="cloudlab"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://imcaicai.github.io/cloudlab-greenplum-python3%E9%85%8D%E7%BD%AE/" data-title="cloudlab&#43;greenplum&#43;python3配置"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://imcaicai.github.io/cloudlab-greenplum-python3%E9%85%8D%E7%BD%AE/" data-title="cloudlab&#43;greenplum&#43;python3配置"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://imcaicai.github.io/cloudlab-greenplum-python3%E9%85%8D%E7%BD%AE/" data-title="cloudlab&#43;greenplum&#43;python3配置"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/ubuntu/">ubuntu</a>,&nbsp;<a href="/tags/greenplum/">greenplum</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/cloudlab/">cloudlab</a>,&nbsp;<a href="/tags/greenplum/">greenplum</a>,&nbsp;<a href="/tags/python3/">python3</a>,&nbsp;<a href="/tags/swirl/">SWIRL</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/csp202006/" class="prev" rel="prev" title="【CSP】202006题解"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>【CSP】202006题解</a>
-            <a href="/cloudlab-greenplum-python3%E9%85%8D%E7%BD%AE/" class="next" rel="next" title="cloudlab&#43;greenplum&#43;python3配置">cloudlab+greenplum+python3配置<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/ubuntu%E5%AE%89%E8%A3%85greenplum%E6%95%99%E7%A8%8B%E5%8F%8A%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/" class="prev" rel="prev" title="ubuntu安装greenplum教程及踩坑记录"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>ubuntu安装greenplum教程及踩坑记录</a></div>
 </div>
 <div id="comments"><div id="valine" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
