@@ -82,6 +82,11 @@ $ python3 -m swirl experiments/tpch.json
 
 # 每次运行前要删除文件：
 $ rm -rf experiment_results/ID_TPCH_Test_Experiment
+$ psql demo	
+\l	# 查看所有数据库
+drop database indexselection_tpch___0_01	# 删除数据库
+;
+\q	# 退出
 ```
 
 

@@ -48,7 +48,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/imcaicai.github.io\/cloudlab-greenplum-python3%E9%85%8D%E7%BD%AE\/"
-        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "cloudlab, greenplum, python3, SWIRL","wordcount":  198 ,
+        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "cloudlab, greenplum, python3, SWIRL","wordcount":  218 ,
         "url": "https:\/\/imcaicai.github.io\/cloudlab-greenplum-python3%E9%85%8D%E7%BD%AE\/","datePublished": "2023-06-26T19:44:39+08:00","dateModified": "2023-06-26T19:44:39+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/imcaicai.github.io\/img\/avatar.jpg"},"author": {
@@ -142,8 +142,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">cloudlab+greenplum+python3配置</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E6%99%BA%E8%83%BD%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E4%B8%8E%E7%AE%A1%E7%90%86%E5%AE%9E%E9%AA%8C%E5%AE%A4/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>智能数据存储与管理实验室</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-06-26">2023-06-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;198 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;<span id="/cloudlab-greenplum-python3%E9%85%8D%E7%BD%AE/" class="leancloud_visitors" data-flag-title="cloudlab&#43;greenplum&#43;python3配置">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-06-26">2023-06-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;218 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;<span id="/cloudlab-greenplum-python3%E9%85%8D%E7%BD%AE/" class="leancloud_visitors" data-flag-title="cloudlab&#43;greenplum&#43;python3配置">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
@@ -275,6 +275,11 @@ $ <span class="nb">unset</span> PYTHONPATH
 </span><span class="lnt">15
 </span><span class="lnt">16
 </span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 创建环境</span>
@@ -294,6 +299,11 @@ $ python3 -m swirl experiments/tpch.json
 
 <span class="c1"># 每次运行前要删除文件：</span>
 $ rm -rf experiment_results/ID_TPCH_Test_Experiment
+$ psql demo	
+<span class="se">\l</span>	<span class="c1"># 查看所有数据库</span>
+drop database indexselection_tpch___0_01	<span class="c1"># 删除数据库</span>
+<span class="p">;</span>
+<span class="se">\q</span>	<span class="c1"># 退出</span>
 </code></pre></td></tr></table>
 </div>
 </div></div><div class="post-footer" id="post-footer">
