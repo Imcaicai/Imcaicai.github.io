@@ -2,7 +2,7 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://imcaicai.github.io/categories/</loc><lastmod>2023-06-26T19:44:39&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority><xhtml:link
+            <loc>https://imcaicai.github.io/categories/</loc><lastmod>2023-08-15T14:16:17&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="zh-cn"
                         href="https://imcaicai.github.io/zh-cn/categories/"
@@ -11,13 +11,8 @@
                     hreflang="en"
                     href="https://imcaicai.github.io/categories/"
                     /></url><url>
-            <loc>https://imcaicai.github.io/tags/cloudlab/</loc><lastmod>2023-06-26T19:44:39&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>https://imcaicai.github.io/cloudlab-greenplum-python3%E9%85%8D%E7%BD%AE/</loc><lastmod>2023-06-26T19:44:39&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>https://imcaicai.github.io/tags/greenplum/</loc><lastmod>2023-06-26T19:44:39&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>https://imcaicai.github.io/posts/</loc><lastmod>2023-06-26T19:44:39&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>https://imcaicai.github.io/tags/python3/</loc><lastmod>2023-06-26T19:44:39&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>https://imcaicai.github.io/tags/swirl/</loc><lastmod>2023-06-26T19:44:39&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>https://imcaicai.github.io/tags/</loc><lastmod>2023-06-26T19:44:39&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority><xhtml:link
+            <loc>https://imcaicai.github.io/posts/</loc><lastmod>2023-08-15T14:16:17&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://imcaicai.github.io/tags/</loc><lastmod>2023-08-15T14:16:17&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="zh-cn"
                         href="https://imcaicai.github.io/zh-cn/tags/"
@@ -26,8 +21,10 @@
                     hreflang="en"
                     href="https://imcaicai.github.io/tags/"
                     /></url><url>
-            <loc>https://imcaicai.github.io/categories/%E6%99%BA%E8%83%BD%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E4%B8%8E%E7%AE%A1%E7%90%86%E5%AE%9E%E9%AA%8C%E5%AE%A4/</loc><lastmod>2023-06-26T19:44:39&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>https://imcaicai.github.io/</loc><lastmod>2023-06-26T19:44:39&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority><xhtml:link
+            <loc>https://imcaicai.github.io/tags/tmux/</loc><lastmod>2023-08-15T14:16:17&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://imcaicai.github.io/categories/tmux/</loc><lastmod>2023-08-15T14:16:17&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://imcaicai.github.io/tmux%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/</loc><lastmod>2023-08-15T14:16:17&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://imcaicai.github.io/</loc><lastmod>2023-08-15T14:16:17&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="zh-cn"
                         href="https://imcaicai.github.io/zh-cn/"
@@ -36,6 +33,12 @@
                     hreflang="en"
                     href="https://imcaicai.github.io/"
                     /></url><url>
+            <loc>https://imcaicai.github.io/tags/cloudlab/</loc><lastmod>2023-06-26T19:44:39&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://imcaicai.github.io/cloudlab-greenplum-python3%E9%85%8D%E7%BD%AE/</loc><lastmod>2023-06-26T19:44:39&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://imcaicai.github.io/tags/greenplum/</loc><lastmod>2023-06-26T19:44:39&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://imcaicai.github.io/tags/python3/</loc><lastmod>2023-06-26T19:44:39&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://imcaicai.github.io/tags/swirl/</loc><lastmod>2023-06-26T19:44:39&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://imcaicai.github.io/categories/%E6%99%BA%E8%83%BD%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E4%B8%8E%E7%AE%A1%E7%90%86%E5%AE%9E%E9%AA%8C%E5%AE%A4/</loc><lastmod>2023-06-26T19:44:39&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://imcaicai.github.io/tags/ubuntu/</loc><lastmod>2023-05-31T22:56:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://imcaicai.github.io/ubuntu%E5%AE%89%E8%A3%85greenplum%E6%95%99%E7%A8%8B%E5%8F%8A%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/</loc><lastmod>2023-05-31T22:56:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://imcaicai.github.io/tags/c&#43;&#43;/</loc><lastmod>2023-05-25T19:09:17&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>

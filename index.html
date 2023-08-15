@@ -118,6 +118,17 @@
         alt="/img/avatar.jpg"
         title="/img/avatar.jpg" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/tmux%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/">Tmux基本用法</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-08-15">2023-08-15</time></span>&nbsp;<span class="post-category">included in <a href="/categories/tmux/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Tmux</a></span></div><div class="content">1 Tmux简介 Tmux 可以让会话与窗口&quot;解绑&quot;：窗口关闭时，会话并不终止，而是继续运行，等到以后需要的时候，再让会话&quot;绑定&quot;其他窗口。
+  它允许在单个窗口中，同时访问多个会话。这对于同时运行多个命令行程序很有用。 它可以让新窗口&quot;接入&quot;已经存在的会话。 它允许每个会话有多个连接窗口，因此可以多人实时共享会话。 它还支持窗口任意的垂直和水平拆分。   2 基本使用 1 安装
+1 2  # Ubuntu 或 Debian $ sudo apt-get install tmux   2 新建会话
+1  $ tmux new -s &lt;session-name&gt;   3 分离会话
+在 Tmux 窗口中，按下Ctrl+b d或者输入tmux detach命令。
+4 接入会话
+1 2 3 4 5  # 使用会话编号 $ tmux attach -t 0 # 使用会话名称 $ tmux attach -t &lt;session-name&gt;   5 杀死会话</div><div class="post-footer">
+        <a href="/tmux%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/tmux/">Tmux</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/cloudlab-greenplum-python3%E9%85%8D%E7%BD%AE/">cloudlab+greenplum+python3配置</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-06-26">2023-06-26</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E6%99%BA%E8%83%BD%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E4%B8%8E%E7%AE%A1%E7%90%86%E5%AE%9E%E9%AA%8C%E5%AE%A4/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>智能数据存储与管理实验室</a></span></div><div class="content">参照论文 SWIRL: Selection of Workload-aware Indexes using Reinforcement Learning 在cloudlab提供的服务器上配置代码所需环境，本地机器为 Windows。
 1 本地ssh连接远程cloudlab服务器 登录cloudlab官网，注册并租一台服务器。（默认的时长为16小时，注意及时续期，不然服务器上的东西到期会被清理，一般每次续7天）
@@ -222,23 +233,6 @@
 🟡 谓词评估。假设 p 是时钟周期，fp 是指令流水线的常数，则谓词评估 PE 的 CPU 为： $PE = 2 · fp · p · N$ 。</div><div class="post-footer">
         <a href="/access-path-selection-in-main-memory-optimized-data-systems/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/index/">index</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/%E6%99%BA%E8%83%BD%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E4%B8%8E%E7%AE%A1%E7%90%86%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E5%AE%9E%E4%B9%A0%E8%AE%B0%E5%BD%95/">智能数据存储与管理实验室-实习记录</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-05-01">2023-05-01</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E6%99%BA%E8%83%BD%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E4%B8%8E%E7%AE%A1%E7%90%86%E5%AE%9E%E9%AA%8C%E5%AE%A4/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>智能数据存储与管理实验室</a></span></div><div class="content">这里记录了在智能数据存储与管理实验室的实习经历。前部分是关于【深度学习】、【hash】的内容；后部分主要和【index】相关。
-2022 【2022.10】
-  看论文： Vision GNN: An Image is Worth Graph of Nodes
-🔗 阅读笔记
-  参与论文修改： Supervised Hierarchical Online Hashing for Cross-modal Retrieval
-PS：主要是帮学长找语法错误、可以改进的地方
-  【2022.11】
-  看论文： Label Embedding Online Hashing for Cross-Modal Retrieval
-🔗 阅读笔记
-  参与论文修改： Supervised Hierarchical Online Hashing for Cross-modal Retrieval
-  【2022.12】
- 参与论文修改： Supervised Hierarchical Online Hashing for Cross-modal Retrieval   2023 【2023.04】
-  看论文： Magic mirror in my hand, which is the best in the land?</div><div class="post-footer">
-        <a href="/%E6%99%BA%E8%83%BD%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E4%B8%8E%E7%AE%A1%E7%90%86%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E5%AE%9E%E4%B9%A0%E8%AE%B0%E5%BD%95/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E5%AE%9E%E4%B9%A0%E8%AE%B0%E5%BD%95/">实习记录</a></div></div>
 </article><ul class="pagination"><li class="page-item active">
                     <span class="page-link">
                         <a href="/">1</a>

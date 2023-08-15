@@ -1,0 +1,21 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Tmux - Category - 菜菜的秘密花园</title>
+        <link>https://imcaicai.github.io/categories/tmux/</link>
+        <description>Tmux - Category - 菜菜的秘密花园</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 15 Aug 2023 14:16:17 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/categories/tmux/" rel="self" type="application/rss+xml" /><item>
+    <title>Tmux基本用法</title>
+    <link>https://imcaicai.github.io/tmux%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/</link>
+    <pubDate>Tue, 15 Aug 2023 14:16:17 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/tmux%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/</guid>
+    <description><![CDATA[1 Tmux简介 Tmux 可以让会话与窗口&quot;解绑&quot;：窗口关闭时，会话并不终止，而是继续运行，等到以后需要的时候，再让会话&quot;绑定&quot;其他窗口。
+  它允许在单个窗口中，同时访问多个会话。这对于同时运行多个命令行程序很有用。 它可以让新窗口&quot;接入&quot;已经存在的会话。 它允许每个会话有多个连接窗口，因此可以多人实时共享会话。 它还支持窗口任意的垂直和水平拆分。   2 基本使用 1 安装
+1 2  # Ubuntu 或 Debian $ sudo apt-get install tmux   2 新建会话
+1  $ tmux new -s &lt;session-name&gt;   3 分离会话
+在 Tmux 窗口中，按下Ctrl+b d或者输入tmux detach命令。
+4 接入会话
+1 2 3 4 5  # 使用会话编号 $ tmux attach -t 0 # 使用会话名称 $ tmux attach -t &lt;session-name&gt;   5 杀死会话]]></description>
+</item>
+</channel>
+</rss>
