@@ -118,6 +118,20 @@
         alt="/img/avatar.jpg"
         title="/img/avatar.jpg" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/access-path-selection-in-main-memory-optimized-data-systems/">Access Path Selection in Main-Memory Optimized Data Systems</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-05-01">2023-05-01</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>论文阅读笔记</a></span></div><div class="content">本文为论文 Access Path Selection in Main-Memory Optimized Data Systems: Should I Scan or Should I Probe? 的阅读笔记。
+1 引言 🟥 我们提出了一个增强的访问路径成本模型，它可以捕捉到在支持访问共享的主内存优化的分析数据系统中的选择运算符的性能。
+🟨 访问路径的选择是需要的；即使在快速扫描时，经过调整的二级索引也是有用的。
+🟩 我们表明，除了【选择性】和【硬件特性】外，访问路径的选择还需要动态地考虑到【查询并发性】。
+🟦 我们将访问路径选择整合到一个现代分析原型的优化器中，并表明即使访问路径选择现在是一个更复杂的操作，必须考虑到更多的信息，它仍然可以快速完成；并且可以在各种工作负载上进行。
+🟪 使用该模型，我们展示了何时使用索引的决定是如何随着数据布局和硬件属性的变化而变化的。
+2 访问路径选择 2.1 模型准备工作  索引的选择性： 指不重复的索引值和数据表的记录总数的比值，取值范围在 [0,1] 之间。
+索引的选择性越高则查询效率越高，因为选择性高的索引可以让 MySQL 在查找时过滤掉更多的行。
+ 2.2 内存中共享扫描建模 🔴 扫描的数据移动。给定内存带宽 $BW_S$ ，顺序扫描数据的成本为： $TD_S = \frac {N·ts}{BW_s}$ 。
+🟡 谓词评估。假设 p 是时钟周期，fp 是指令流水线的常数，则谓词评估 PE 的 CPU 为： $PE = 2 · fp · p · N$ 。</div><div class="post-footer">
+        <a href="/access-path-selection-in-main-memory-optimized-data-systems/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/index/">index</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/%E6%99%BA%E8%83%BD%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E4%B8%8E%E7%AE%A1%E7%90%86%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E5%AE%9E%E4%B9%A0%E8%AE%B0%E5%BD%95/">智能数据存储与管理实验室-实习记录</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-05-01">2023-05-01</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E6%99%BA%E8%83%BD%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E4%B8%8E%E7%AE%A1%E7%90%86%E5%AE%9E%E9%AA%8C%E5%AE%A4/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>智能数据存储与管理实验室</a></span></div><div class="content">这里记录了在智能数据存储与管理实验室的实习经历。前部分是关于【深度学习】、【hash】的内容；后部分主要和【index】相关。
 2022 【2022.10】
@@ -239,12 +253,6 @@ PS：主要是帮学长找语法错误、可以改进的地方
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-04-03">2023-04-03</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>蓝桥杯刷题记录</a></span></div><div class="content">⏰总用时：146/240	🎯总分：66/150
    题号 时间 结果 满分 难度 备注     1 3 ✅ 3 🌕    2 3 ✅ 5 🌕    3 40 ❌ 11 🌓 🔸 直接用 next_permutation(a,a+10) 来枚举所有可能   4 5 ✅ 9 🌕    5 10 ✅ 13 🌓 🔸 消除末尾连续的 1 ： x&amp;(x+1)   6 35 ✅ 15 🌕 🔹 dfs   7 30 ❌ 19 🌓 🔸 先枚举，再用dfs判断连通性🔸 压缩：用一维数组存储2×3矩阵   8 10 ✅ 21 🌕 🔹 暴力枚举   9 5 ❌ 25 🌓 🔸 问题转化为求【最长回文子序列】🔸 动态规划、带备忘录   10 5 ❌ 29      1 【填空】网友年龄 题目 某君新认识一网友。 当问及年龄时，他的网友说： “我的年龄是个 2 位数，我比儿子大 27 岁, 如果把我的年龄的两位数字交换位置，刚好就是我儿子的年龄”</div><div class="post-footer">
         <a href="/%E8%93%9D%E6%A1%A5%E6%9D%AF2016/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/">蓝桥杯</a>,&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/%E8%93%9D%E6%A1%A5%E6%9D%AF2017/">【蓝桥杯】2017题解</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-04-02">2023-04-02</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>蓝桥杯刷题记录</a></span></div><div class="content">⏰总用时：170/240	🎯总分：32.5/150
-   题号 时间 结果 满分 难度 备注     1 45 ✅ 5 🌓 🔸 dfs🔸 注意考虑回路的情况   2 15 ❌ 11 🌓 🔹 考虑空盘子的跳法🔹 数据结构、bfs🔹 注意 set 容器的用法   3 5 ❌ 13 🌑 🔸 Burnside引理   4 5 ❌ 17 🌓 🔹 考虑分割线的走法🔹 【dfs】从对称中心开始遍历   5 5 ✅ 7 🌕    6 10 ✅ 9 🌕    7 25 ❌ 19 🌓 🔸 dfs   8 5 ❌ 21 🌓 🔹 动态规划：要判断的包子数设置一个上限🔹 所有包子数最大公因数不为1，则凑不出来的有无数个   9 30 50% 23 🌓 🔸 二分   10 25 ❌ 25      1 【填空】迷宫 题目 X 星球的一处迷宫游乐场建在某个小山坡上。它是由 10×10 相互连通的小房间组成的。房间的地板上写着一个很大的字母。我们假设玩家是面朝上坡的方向站立，则：</div><div class="post-footer">
-        <a href="/%E8%93%9D%E6%A1%A5%E6%9D%AF2017/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/">蓝桥杯</a>,&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">

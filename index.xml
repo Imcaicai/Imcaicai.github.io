@@ -3,9 +3,21 @@
         <title>菜菜的秘密花园</title>
         <link>https://imcaicai.github.io/</link>
         <description>菜菜的秘密花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 15 Aug 2023 14:16:17 &#43;0800</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 23 Aug 2023 15:08:44 &#43;0800</lastBuildDate>
             <atom:link href="https://imcaicai.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>在Linux下创建shell脚本</title>
+    <link>https://imcaicai.github.io/%E5%9C%A8linux%E4%B8%8B%E5%88%9B%E5%BB%BAshell%E8%84%9A%E6%9C%AC/</link>
+    <pubDate>Wed, 23 Aug 2023 15:08:44 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/%E5%9C%A8linux%E4%B8%8B%E5%88%9B%E5%BB%BAshell%E8%84%9A%E6%9C%AC/</guid>
+    <description><![CDATA[1 创建脚本文件
+1  touch test.sh   2 编辑
+1  vim test.sh   3 改变权限
+1  chmod 700 test.sh   4 执行
+1  ./test.sh   ]]></description>
+</item>
+<item>
     <title>Tmux基本用法</title>
     <link>https://imcaicai.github.io/tmux%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/</link>
     <pubDate>Tue, 15 Aug 2023 14:16:17 &#43;0800</pubDate>
@@ -112,14 +124,6 @@
     <description><![CDATA[1 简介 🟠 由若干个位（bit）组成，它提供一些成员函数，使程序员不必通过位运算就能很方便地访问、修改其中的任意一位。
 2 创建 1️⃣ 调用默认构造函数。
 1  bitset&lt;N&gt; b;   3 常用的成员方法    成员方法 功能     count() 返回bitset中 1 的个数。   size() 返回位数。   test() 返回某一位下标是否为1   set() 全部置1,或者某一位置1或0   flip() 全部取反,或者某一位取反    ]]></description>
-</item>
-<item>
-    <title>【CSP】刷题汇总</title>
-    <link>https://imcaicai.github.io/csp%E5%88%B7%E9%A2%98%E6%B1%87%E6%80%BB/</link>
-    <pubDate>Thu, 18 May 2023 20:12:04 &#43;0800</pubDate>
-    <author>菜菜</author>
-    <guid>https://imcaicai.github.io/csp%E5%88%B7%E9%A2%98%E6%B1%87%E6%80%BB/</guid>
-    <description><![CDATA[🔗 202303    题号 时间/min 正确率 备注     1 20 100    2 30 100    3 40 0 🔸 bitset、map、set用法🔸 堆栈    🔗 202212    题号 时间/min 正确率 备注     1 10 100    2 45 100 🔸 fill函数   3 65 100 🔸 蛇形填充：规模较小时，可用一个矩阵专门写出下标🔸 cos函数    🔗 202209    题号 时间/min 正确率 备注     1 10 100    2 40 100 🔸 动态规划：01背包问题   3 100 40 🔸 实在做不出来留1h把简单的情况做了🔸 map 的 erase 用法🔸 选好数据结构很重要！    🔗 202206    题号 时间/min 正确率 备注     1 10 100    2 30 100 🔸 题目给的一串数字不一定是顺序的，不要想当然！   3 120 100 🔸 cin/cout 提速🔸 vector 查找元素较慢，可用 set    🔗 202203    题号 时间/min 正确率 备注     1 10 100    2 35 100    3       🔗 202112    题号 时间/min 正确率 备注     1 15 100    2 30 100    3 120 40 🔸 注意审题！bug调不出来最好重读一遍题目！🔸 计算多项式中x的系数：找递推关系🔸 模拟多项式除法    🔗 202109    题号 时间/min 正确率 备注     1 10 100    2 50 100 🔸 找前后递推关系🔸 set 的倒序遍历；map   3       🔗 202104    题号 时间/min 正确率 备注     1 10 100    2 60 100 🔸 二维压缩数组🔸 判断时注意整数除法会向下取整   3       🔗 202012    题号 时间/min 正确率 备注     1 5 100    2 40 100 🔸 找递推关系🔸 对不规则排列的数组，用 set 和 map 会快很多   3       🔗 202009    题号 时间/min 正确率 备注     1 30 100    2 20 100    3       🔗 202006    题号 时间/min 正确率 备注     1 30 100    2 20 100    3       ]]></description>
 </item>
 </channel>
 </rss>

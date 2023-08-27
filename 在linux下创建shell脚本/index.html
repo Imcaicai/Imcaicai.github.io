@@ -4,32 +4,40 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>操作系统知识总结 - 菜菜的秘密花园</title><meta name="Description" content="菜菜的秘密花园"><meta property="og:title" content="操作系统知识总结" />
-<meta property="og:description" content="1 绪论 2 OS的结构和硬件支持 3 操作系统的用户接口 4 进程及进程管理 5 资源分配与调度 6 处理机调度 7 主存管理 8 设备管理 9 文件系统 " />
+        <title>在Linux下创建shell脚本 - 菜菜的秘密花园</title><meta name="Description" content="菜菜的秘密花园"><meta property="og:title" content="在Linux下创建shell脚本" />
+<meta property="og:description" content="1 创建脚本文件
+1  touch test.sh   2 编辑
+1  vim test.sh   3 改变权限
+1  chmod 700 test.sh   4 执行
+1  ./test.sh   " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://imcaicai.github.io/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" /><meta property="og:image" content="https://imcaicai.github.io/img/avatar.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-02-10T20:13:49&#43;08:00" />
-<meta property="article:modified_time" content="2023-02-10T20:13:49&#43;08:00" /><meta property="og:site_name" content="菜菜的秘密花园" />
+<meta property="og:url" content="https://imcaicai.github.io/%E5%9C%A8linux%E4%B8%8B%E5%88%9B%E5%BB%BAshell%E8%84%9A%E6%9C%AC/" /><meta property="og:image" content="https://imcaicai.github.io/img/avatar.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-08-23T15:08:44&#43;08:00" />
+<meta property="article:modified_time" content="2023-08-23T15:08:44&#43;08:00" /><meta property="og:site_name" content="菜菜的秘密花园" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://imcaicai.github.io/img/avatar.jpg"/>
 
-<meta name="twitter:title" content="操作系统知识总结"/>
-<meta name="twitter:description" content="1 绪论 2 OS的结构和硬件支持 3 操作系统的用户接口 4 进程及进程管理 5 资源分配与调度 6 处理机调度 7 主存管理 8 设备管理 9 文件系统 "/>
+<meta name="twitter:title" content="在Linux下创建shell脚本"/>
+<meta name="twitter:description" content="1 创建脚本文件
+1  touch test.sh   2 编辑
+1  vim test.sh   3 改变权限
+1  chmod 700 test.sh   4 执行
+1  ./test.sh   "/>
 <meta name="application-name" content="菜菜的秘密花园">
-<meta name="apple-mobile-web-app-title" content="菜菜的秘密花园"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://imcaicai.github.io/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" /><link rel="prev" href="https://imcaicai.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" /><link rel="next" href="https://imcaicai.github.io/stlset%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<meta name="apple-mobile-web-app-title" content="菜菜的秘密花园"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://imcaicai.github.io/%E5%9C%A8linux%E4%B8%8B%E5%88%9B%E5%BB%BAshell%E8%84%9A%E6%9C%AC/" /><link rel="prev" href="https://imcaicai.github.io/tmux%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "操作系统知识总结",
+        "headline": "在Linux下创建shell脚本",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/imcaicai.github.io\/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93\/"
-        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "OS","wordcount":  18 ,
-        "url": "https:\/\/imcaicai.github.io\/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93\/","datePublished": "2023-02-10T20:13:49+08:00","dateModified": "2023-02-10T20:13:49+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@id": "https:\/\/imcaicai.github.io\/%E5%9C%A8linux%E4%B8%8B%E5%88%9B%E5%BB%BAshell%E8%84%9A%E6%9C%AC\/"
+        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "shell, linux","wordcount":  20 ,
+        "url": "https:\/\/imcaicai.github.io\/%E5%9C%A8linux%E4%B8%8B%E5%88%9B%E5%BB%BAshell%E8%84%9A%E6%9C%AC\/","datePublished": "2023-08-23T15:08:44+08:00","dateModified": "2023-08-23T15:08:44+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/imcaicai.github.io\/img\/avatar.jpg"},"author": {
                 "@type": "Person",
@@ -67,7 +75,7 @@
                     <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
                 </a><a href="javascript:void(0);" class="menu-item language" title="Select Language">
                     <i class="fa fa-globe" aria-hidden="true"></i>                      
-                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" selected>English</option></select>
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/%E5%9C%A8linux%E4%B8%8B%E5%88%9B%E5%BB%BAshell%E8%84%9A%E6%9C%AC/" selected>English</option></select>
                 </a></div>
         </div>
     </div>
@@ -108,7 +116,7 @@
                 <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a><a href="javascript:void(0);" class="menu-item" title="Select Language">
                     <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
-                    <select class="language-select" onchange="location = this.value;"><option value="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" selected>English</option></select>
+                    <select class="language-select" onchange="location = this.value;"><option value="/%E5%9C%A8linux%E4%B8%8B%E5%88%9B%E5%BB%BAshell%E8%84%9A%E6%9C%AC/" selected>English</option></select>
                 </a></div>
     </div>
 </header><div class="search-dropdown desktop">
@@ -120,10 +128,10 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">操作系统知识总结</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">在Linux下创建shell脚本</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-category">included in <a href="/categories/other/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Other</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-02-10">2023-02-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;18 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;<span id="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" class="leancloud_visitors" data-flag-title="操作系统知识总结">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-08-23">2023-08-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;20 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;<span id="/%E5%9C%A8linux%E4%B8%8B%E5%88%9B%E5%BB%BAshell%E8%84%9A%E6%9C%AC/" class="leancloud_visitors" data-flag-title="在Linux下创建shell脚本">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
@@ -131,125 +139,67 @@
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
-  <ul>
-    <li><a href="#1-绪论">1 绪论</a></li>
-    <li><a href="#2-os的结构和硬件支持">2 OS的结构和硬件支持</a></li>
-    <li><a href="#3-操作系统的用户接口">3 操作系统的用户接口</a></li>
-    <li><a href="#4-进程及进程管理">4 进程及进程管理</a></li>
-    <li><a href="#5-资源分配与调度">5 资源分配与调度</a></li>
-    <li><a href="#6-处理机调度">6 处理机调度</a></li>
-    <li><a href="#7-主存管理">7 主存管理</a></li>
-    <li><a href="#8-设备管理">8 设备管理</a></li>
-    <li><a href="#9-文件系统">9 文件系统</a></li>
-  </ul>
-</nav></div>
-            </div><div class="content" id="content"><h2 id="1-绪论">1 绪论</h2>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/1.png"
-        data-srcset="/img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/1.png, /img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/1.png 1.5x, /img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/1.png 2x"
-        data-sizes="auto"
-        alt="/img/操作系统复习/1.png"
-        title="image1" /></p>
-<h2 id="2-os的结构和硬件支持">2 OS的结构和硬件支持</h2>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/2.png"
-        data-srcset="/img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/2.png, /img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/2.png 1.5x, /img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/2.png 2x"
-        data-sizes="auto"
-        alt="/img/操作系统复习/2.png"
-        title="image2" /></p>
-<h2 id="3-操作系统的用户接口">3 操作系统的用户接口</h2>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/3.png"
-        data-srcset="/img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/3.png, /img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/3.png 1.5x, /img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/3.png 2x"
-        data-sizes="auto"
-        alt="/img/操作系统复习/3.png"
-        title="image3" /></p>
-<h2 id="4-进程及进程管理">4 进程及进程管理</h2>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/4.png"
-        data-srcset="/img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/4.png, /img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/4.png 1.5x, /img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/4.png 2x"
-        data-sizes="auto"
-        alt="/img/操作系统复习/4.png"
-        title="image4" /></p>
-<h2 id="5-资源分配与调度">5 资源分配与调度</h2>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/5.png"
-        data-srcset="/img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/5.png, /img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/5.png 1.5x, /img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/5.png 2x"
-        data-sizes="auto"
-        alt="/img/操作系统复习/5.png"
-        title="image5" /></p>
-<h2 id="6-处理机调度">6 处理机调度</h2>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/6.png"
-        data-srcset="/img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/6.png, /img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/6.png 1.5x, /img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/6.png 2x"
-        data-sizes="auto"
-        alt="/img/操作系统复习/6.png"
-        title="image6" /></p>
-<h2 id="7-主存管理">7 主存管理</h2>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/7.png"
-        data-srcset="/img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/7.png, /img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/7.png 1.5x, /img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/7.png 2x"
-        data-sizes="auto"
-        alt="/img/操作系统复习/7.png"
-        title="image7" /></p>
-<h2 id="8-设备管理">8 设备管理</h2>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/8.png"
-        data-srcset="/img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/8.png, /img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/8.png 1.5x, /img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/8.png 2x"
-        data-sizes="auto"
-        alt="/img/操作系统复习/8.png"
-        title="image8" /></p>
-<h2 id="9-文件系统">9 文件系统</h2>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/9.png"
-        data-srcset="/img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/9.png, /img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/9.png 1.5x, /img/%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%a4%8d%e4%b9%a0/9.png 2x"
-        data-sizes="auto"
-        alt="/img/操作系统复习/9.png"
-        title="image9" /></p>
-</div><div class="post-footer" id="post-footer">
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
+            </div><div class="content" id="content"><p>1 创建脚本文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">touch test.sh
+</code></pre></td></tr></table>
+</div>
+</div><p>2 编辑</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">vim test.sh
+</code></pre></td></tr></table>
+</div>
+</div><p>3 改变权限</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">chmod <span class="m">700</span> test.sh
+</code></pre></td></tr></table>
+</div>
+</div><p>4 执行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">./test.sh
+</code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2023-02-10</span>
+                <span>Updated on 2023-08-23</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
-                            <a class="link-to-markdown" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/index.md" target="_blank">Read Markdown</a>
+                            <a class="link-to-markdown" href="/%E5%9C%A8linux%E4%B8%8B%E5%88%9B%E5%BB%BAshell%E8%84%9A%E6%9C%AC/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://imcaicai.github.io/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" data-title="操作系统知识总结" data-hashtags="OS"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://imcaicai.github.io/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" data-hashtag="OS"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://imcaicai.github.io/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" data-title="操作系统知识总结"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://imcaicai.github.io/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" data-title="操作系统知识总结"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://imcaicai.github.io/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" data-title="操作系统知识总结"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://imcaicai.github.io/%E5%9C%A8linux%E4%B8%8B%E5%88%9B%E5%BB%BAshell%E8%84%9A%E6%9C%AC/" data-title="在Linux下创建shell脚本" data-hashtags="shell,linux"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://imcaicai.github.io/%E5%9C%A8linux%E4%B8%8B%E5%88%9B%E5%BB%BAshell%E8%84%9A%E6%9C%AC/" data-hashtag="shell"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://imcaicai.github.io/%E5%9C%A8linux%E4%B8%8B%E5%88%9B%E5%BB%BAshell%E8%84%9A%E6%9C%AC/" data-title="在Linux下创建shell脚本"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://imcaicai.github.io/%E5%9C%A8linux%E4%B8%8B%E5%88%9B%E5%BB%BAshell%E8%84%9A%E6%9C%AC/" data-title="在Linux下创建shell脚本"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://imcaicai.github.io/%E5%9C%A8linux%E4%B8%8B%E5%88%9B%E5%BB%BAshell%E8%84%9A%E6%9C%AC/" data-title="在Linux下创建shell脚本"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/os/">OS</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/shell/">shell</a>,&nbsp;<a href="/tags/linux/">linux</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" class="prev" rel="prev" title="数据库原理知识总结"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>数据库原理知识总结</a>
-            <a href="/stlset%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" class="next" rel="next" title="【STL】set容器用法">【STL】set容器用法<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/tmux%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/" class="prev" rel="prev" title="Tmux基本用法"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Tmux基本用法</a></div>
 </div>
 <div id="comments"><div id="valine" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.

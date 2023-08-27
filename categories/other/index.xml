@@ -3,16 +3,56 @@
         <title>Other - Category - 菜菜的秘密花园</title>
         <link>https://imcaicai.github.io/categories/other/</link>
         <description>Other - Category - 菜菜的秘密花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 10 Nov 2022 20:07:38 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/categories/other/" rel="self" type="application/rss+xml" /><item>
-    <title>Mjrty</title>
-    <link>https://imcaicai.github.io/mjrty/</link>
-    <pubDate>Thu, 10 Nov 2022 20:07:38 &#43;0800</pubDate>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 23 Aug 2023 15:08:44 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/categories/other/" rel="self" type="application/rss+xml" /><item>
+    <title>在Linux下创建shell脚本</title>
+    <link>https://imcaicai.github.io/%E5%9C%A8linux%E4%B8%8B%E5%88%9B%E5%BB%BAshell%E8%84%9A%E6%9C%AC/</link>
+    <pubDate>Wed, 23 Aug 2023 15:08:44 &#43;0800</pubDate>
     <author>菜菜</author>
-    <guid>https://imcaicai.github.io/mjrty/</guid>
-    <description><![CDATA[Introduction mjrty算法：用于确定在选举中任意数量的候选人中是否有任 何一个获得了多数票。
-最多需要2n次比较的算法。该算法不要求投票可以排序；仅执行相等性比较。
-The Algorithm 算法有两个部分：  **配对：**将不同意的代表配对，直到所有剩余的代表都同意为止。如果配对使某些代表任然站着，那么这些代表一致支持一名被提名人（如果存在多数票，他必定占多数） **计数：**用于确定被提名人是否获得了半数以上的选票。显然，计数阶段最多需要N次比较。  方法： 1 2 3 4 5  主席轮流访问每个代表，记住当前候选人的cand和初始化为0的计数器k。 在访问每个代表时，主席首先确定K是否为0。 如果是，则当前代表的候选人作为cand的新值，并将K设为1。 否则，主席问代表他的候选人是否是cand。如果是，则K加1。如果不是1，则K减1。 然后，主席请下一位代表发言。当所有代表都已处理完毕时，cand是多数。   证明： 1 2 3 4 5 6 7 8 9  假设有n个代表。主席访问第i个代表后，处理的代表可以分为两组：一组是支持cand的k个代表，另一组是可以配对的代表（配对的代表不同意）。如果存在多数，则cand具有多数。假设存在一个不同于cand的X，其投票数大于n/2。由于第二组可以配对，因此X最多从该组获得（n-k）/2票。因此，X必须收到来自第一组的投票，与第一组中的所有投票都支持cand 的事实相矛盾。 简单归纳法证明：即在主席处理了第一个i个代表之后，投票的代表可以被分成两个这样的组。 主席处理完第一个代表后，k和i都是1：通过的一组代表有1票投给cand。 设不变量在第i个代表之后成立，并假设到目前为止处理的i个代表可以被划分为具有上述性质的两个组U和P。 如果处理第i个代表后k是0，则cand被重置为第i+1个代表的候选人，K被设置为1。不变量告诉我们p包含所有前i个委托。因此，前i+1个委托可以分为两组：一组仅包含第i+1个代表，另一组是p。 如果在处理第i个代表后k不是0，第i+1个代表投票赞成或反对cand。若第i+1个代表投票赞成，前i+1个代表可分为两组：U+第i+1个代表和P。若第i+1个代表投票反对，则前i+1个代表可分为两组，如下所示。设j是U中的任意一个代表。设第一组为U减j，第二组为P加上j和第i+1个代表。   Examples 假设有3名候选人，唱票顺序如下：AAACCBBCCCBCC
-                cand k     A A A C C B B C C C B C C A 3   A A A C C B B C C C B C C B 1   A A A C C B B C C C B C C C 2   A A A C C B B C C C B C C C 3    ]]></description>
+    <guid>https://imcaicai.github.io/%E5%9C%A8linux%E4%B8%8B%E5%88%9B%E5%BB%BAshell%E8%84%9A%E6%9C%AC/</guid>
+    <description><![CDATA[1 创建脚本文件
+1  touch test.sh   2 编辑
+1  vim test.sh   3 改变权限
+1  chmod 700 test.sh   4 执行
+1  ./test.sh   ]]></description>
+</item>
+<item>
+    <title>Tmux基本用法</title>
+    <link>https://imcaicai.github.io/tmux%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/</link>
+    <pubDate>Tue, 15 Aug 2023 14:16:17 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/tmux%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/</guid>
+    <description><![CDATA[1 Tmux简介 Tmux 可以让会话与窗口&quot;解绑&quot;：窗口关闭时，会话并不终止，而是继续运行，等到以后需要的时候，再让会话&quot;绑定&quot;其他窗口。
+  它允许在单个窗口中，同时访问多个会话。这对于同时运行多个命令行程序很有用。 它可以让新窗口&quot;接入&quot;已经存在的会话。 它允许每个会话有多个连接窗口，因此可以多人实时共享会话。 它还支持窗口任意的垂直和水平拆分。   2 基本使用 1 安装
+1 2  # Ubuntu 或 Debian $ sudo apt-get install tmux   2 新建会话
+1  $ tmux new -s &lt;session-name&gt;   3 分离会话
+在 Tmux 窗口中，按下Ctrl+b d或者输入tmux detach命令。
+4 接入会话
+1 2 3 4 5  # 使用会话编号 $ tmux attach -t 0 # 使用会话名称 $ tmux attach -t &lt;session-name&gt;   5 杀死会话]]></description>
+</item>
+<item>
+    <title>操作系统知识总结</title>
+    <link>https://imcaicai.github.io/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/</link>
+    <pubDate>Fri, 10 Feb 2023 20:13:49 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/</guid>
+    <description><![CDATA[1 绪论 2 OS的结构和硬件支持 3 操作系统的用户接口 4 进程及进程管理 5 资源分配与调度 6 处理机调度 7 主存管理 8 设备管理 9 文件系统 ]]></description>
+</item>
+<item>
+    <title>数据库原理知识总结</title>
+    <link>https://imcaicai.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/</link>
+    <pubDate>Mon, 06 Feb 2023 15:40:28 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/</guid>
+    <description><![CDATA[1 绪论 2 关系数据库 3 SQL语言 4 数据库安全性 5 数据库完整性 6 关系数据理论 7 数据库设计 8 关系数据库引擎基础 9 关系数据库查询优化 10 数据库恢复技术 11 并发控制 ]]></description>
+</item>
+<item>
+    <title>计算机网络知识总结</title>
+    <link>https://imcaicai.github.io/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/</link>
+    <pubDate>Sat, 03 Dec 2022 11:05:24 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/</guid>
+    <description><![CDATA[最近在复习计算机网络考试，于是按照《计算机网络自顶向下方法》（原书第7版）一书梳理了1-7章的知识，其中第五章的内容合并到第四章中了。
+1 计算机网络和因特网 2 应用层 3 运输层 4 网络层 6 链路层和局域网 7 无线网络和局域网 ]]></description>
 </item>
 </channel>
 </rss>
