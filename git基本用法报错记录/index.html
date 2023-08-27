@@ -28,7 +28,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/imcaicai.github.io\/git%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95%E6%8A%A5%E9%94%99%E8%AE%B0%E5%BD%95\/"
-        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "Git, Github, Gitee","wordcount":  194 ,
+        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "Git, Github, Gitee","wordcount":  228 ,
         "url": "https:\/\/imcaicai.github.io\/git%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95%E6%8A%A5%E9%94%99%E8%AE%B0%E5%BD%95\/","datePublished": "2022-10-21T09:44:35+08:00","dateModified": "2022-10-21T09:44:35+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/imcaicai.github.io\/img\/avatar.jpg"},"author": {
@@ -122,8 +122,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Git基本用法&报错记录</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-category">included in <a href="/categories/git/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Git</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-21">2022-10-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;194 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;<span id="/git%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95%E6%8A%A5%E9%94%99%E8%AE%B0%E5%BD%95/" class="leancloud_visitors" data-flag-title="Git基本用法&amp;报错记录">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-21">2022-10-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;228 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;<span id="/git%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95%E6%8A%A5%E9%94%99%E8%AE%B0%E5%BD%95/" class="leancloud_visitors" data-flag-title="Git基本用法&amp;报错记录">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
@@ -142,6 +142,7 @@
             <li><a href="#2-取消与远程仓库的关联">2 取消与远程仓库的关联</a></li>
             <li><a href="#3-实现本地库同时关联github和gitee">3 实现本地库同时关联GitHub和Gitee</a></li>
             <li><a href="#4-github嵌套项目拉取">4 Github嵌套项目拉取</a></li>
+            <li><a href="#5-从远程拉取所有分支">5 从远程拉取所有分支</a></li>
           </ul>
         </li>
       </ul>
@@ -262,6 +263,21 @@ git push -u gitee main
 <td class="lntd">
 <pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 获取主项目和所有子项目源码</span>
 git clone --recurse-submodules &lt;main_project_url&gt;  
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="5-从远程拉取所有分支">5 从远程拉取所有分支</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># git clone xxx</span>
+git branch -r <span class="p">|</span> grep -v <span class="s1">&#39;\-&gt;&#39;</span> <span class="p">|</span> <span class="k">while</span> <span class="nb">read</span> remote<span class="p">;</span> <span class="k">do</span> git branch --track <span class="s2">&#34;</span><span class="si">${</span><span class="nv">remote</span><span class="p">#origin/</span><span class="si">}</span><span class="s2">&#34;</span> <span class="s2">&#34;</span><span class="nv">$remote</span><span class="s2">&#34;</span><span class="p">;</span> <span class="k">done</span>
+git fetch --all
+git pull --all
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="报错记录">报错记录</h2>

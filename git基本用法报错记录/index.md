@@ -67,6 +67,15 @@ git push -u gitee main
 git clone --recurse-submodules <main_project_url>  
 ```
 
+#### 5 从远程拉取所有分支
+
+```shell
+# git clone xxx
+git branch -r | grep -v '\->' | while read remote; do git branch --track "${remote#origin/}" "$remote"; done
+git fetch --all
+git pull --all
+```
+
 
 
 ## 报错记录
