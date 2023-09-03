@@ -1,62 +1,108 @@
 # 【CSP】202303题解
 
 
-## 1 田地丈量
+## 1 重复局面
 
-🔗 **题目：[田地丈量](http://118.190.20.162/submitlist.page?gpid=T165)**
+🔗 **题目：[重复局面](http://118.190.20.162/submitlist.page?gpid=T170)**
 
-分情况求出长、宽，再计算总和即可。
+将一盘局的局面表示为一个长度为64的字符串。
+
+建立map映射，key为字符串表示的局面，value为出现的次数。
 
 ```c++
 #include<bits/stdc++.h>
 using namespace std;
 
-int n,a,b,x1,y1,x2,y2,x,y,ans=0;
+map<string,int> mp;
+int n;
 
 int main(){
-	cin>>n>>a>>b;
+	cin>>n;
 	for(int i=0;i<n;i++){
-		cin>>x1>>y1>>x2>>y2;
-		if(x1>=a || y1>=b || x2<=0 || y2<=0)	continue;
-		if(x1<=0)	x=min(a,x2);
-		else	x=min(a,x2)-x1;
-		if(y1<=0)	y=min(b,y2);
-		else	y=min(b,y2)-y1;
-		ans += x*y;
+		string s="",tmp;
+		for(int j=0;j<8;j++){
+			cin>>tmp;
+			s = s+tmp;
+		}
+		mp[s] += 1;
+		cout<<mp[s]<<endl;
 	}
-	cout<<ans;
 }
 ```
 
+## 2 矩阵运算
 
+🔗 **题目：[矩阵运算](http://118.190.20.162/view.page?gpid=T169)**
 
-## 2 垦田计划
-
-🔗 **题目：[垦田计划](http://118.190.20.162/view.page?gpid=T164)**
+改变矩阵运算的顺序，可以减中间结果的存储空间和运行时间。
 
 ```c++
 #include<bits/stdc++.h>
 using namespace std;
 
-int n,m,k,t,c,maxd=0;
-int a[100005]={0};
-
 int main(){
-	cin>>n>>m>>k;
-	for(int i=0;i<n;i++){
-		cin>>t>>c;
-		a[t] += c;
-		if(t>maxd)	maxd=t;
+	int n,d;
+	cin>>n>>d;
+	int q[n][d],k[d][n],v[n][d],w[n]; 
+	long long tmp[d][d],ans,a,b,c;
+	memset(tmp,0,sizeof(tmp));
+ 
+	for(int i=0;i<n;i++)		// 输入q 
+		for(int j=0;j<d;j++)
+			cin>>q[i][j];
+	for(int i=0;i<n;i++)		// 输入k的转置 
+		for(int j=0;j<d;j++)
+			cin>>k[j][i];
+	for(int i=0;i<n;i++)		// 输入v
+		for(int j=0;j<d;j++)
+			cin>>v[i][j];
+	for(int i=0;i<n;i++)		// 输入w
+		cin>>w[i];
+		
+	for(int i=0;i<d;i++)
+		for(int j=0;j<d;j++)
+			for(int t=0;t<n;t++)
+				tmp[i][j] += k[i][t]*v[t][j];
+
+	for(int i=0;i<n;i++){		//  计算最终结果 
+		for(int j=0;j<d;j++){
+			ans=0;
+			for(int t=0;t<d;t++){
+				ans += (long long)w[i]*q[i][t]*tmp[t][j];
+			}
+			cout<<ans<<" ";
+		}
+		cout<<endl;
 	}
-	while(maxd>k && m>=a[maxd]){
-		m -= a[maxd];
-		maxd -= 1;
-		a[maxd] += a[maxd+1];
-	}
-	cout<<maxd;
 	return 0;
 }
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

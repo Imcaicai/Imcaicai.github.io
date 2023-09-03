@@ -118,6 +118,27 @@
         alt="/img/avatar.jpg"
         title="/img/avatar.jpg" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/csp%E5%88%B7%E9%A2%98%E6%B1%87%E6%80%BB/">【CSP】刷题汇总</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-05-18">2023-05-18</time></span>&nbsp;<span class="post-category">included in <a href="/categories/csp%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CSP刷题记录</a></span></div><div class="content">🔗 202303    题号 时间/min 正确率 备注     1 20 100    2 30 100    3 40 0 🔸 bitset、map、set用法🔸 堆栈    🔗 202212    题号 时间/min 正确率 备注     1 10 100    2 45 100 🔸 fill函数   3 65 100 🔸 蛇形填充：规模较小时，可用一个矩阵专门写出下标🔸 cos函数    🔗 202209    题号 时间/min 正确率 备注     1 10 100    2 40 100 🔸 动态规划：01背包问题   3 100 40 🔸 实在做不出来留1h把简单的情况做了🔸 map 的 erase 用法🔸 选好数据结构很重要！    🔗 202206    题号 时间/min 正确率 备注     1 10 100    2 30 100 🔸 题目给的一串数字不一定是顺序的，不要想当然！   3 120 100 🔸 cin/cout 提速🔸 vector 查找元素较慢，可用 set    🔗 202203    题号 时间/min 正确率 备注     1 10 100    2 35 100    3       🔗 202112    题号 时间/min 正确率 备注     1 15 100    2 30 100    3 120 40 🔸 注意审题！bug调不出来最好重读一遍题目！🔸 计算多项式中x的系数：找递推关系🔸 模拟多项式除法    🔗 202109    题号 时间/min 正确率 备注     1 10 100    2 50 100 🔸 找前后递推关系🔸 set 的倒序遍历；map   3       🔗 202104    题号 时间/min 正确率 备注     1 10 100    2 60 100 🔸 二维压缩数组🔸 判断时注意整数除法会向下取整   3       🔗 202012    题号 时间/min 正确率 备注     1 5 100    2 40 100 🔸 找递推关系🔸 对不规则排列的数组，用 set 和 map 会快很多   3       🔗 202009    题号 时间/min 正确率 备注     1 30 100    2 20 100    3       🔗 202006    题号 时间/min 正确率 备注     1 30 100    2 20 100    3       </div><div class="post-footer">
+        <a href="/csp%E5%88%B7%E9%A2%98%E6%B1%87%E6%80%BB/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/csp/">CSP</a>,&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/swirl/">SWIRL: Selection of Workload-aware Indexes using Reinforcement Learning</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-05-03">2023-05-03</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>论文阅读笔记</a></span></div><div class="content">本文为论文 SWIRL: Selection of Workload-aware Indexes using Reinforcement Learning 的阅读笔记。
+1 简介  🔴 我们提出了一种基于RL的索引选择方法，与最好的竞争者的性能相匹配。
+🟡 我们的解决方案采用了一个复杂的工作负载模型，以推广到具有未见过的查询的工作负载，并依靠无效动作屏蔽来减少训练时间。
+🔵 我们包括了基于RL的索引选择的首次调查和性能研究，并通过PostgreSQL上复杂的分析性数据库基准评估我们的方法。
+  2 背景 2.1 索引选择问题 大的解决方案空间。 相关候选索引的数量取决于工作负载查询访问的属性数量、每个索引的最大属性数量。评估所有候选组合通常是不切实际的，因为它们的数量超过了属性的数量级。
+索引交互。 一个索引的存在会影响其他索引的性能。因此，在索引选择的每个步骤中，必须要考虑到当前存在的索引，经常需要重新计算候选索引的收益。
+量化索引影响。 漫长的创建和执行时间使得物理上创建索引并不可行。索引选择方法通常依赖于估计而不是实际测量。（假设索引）
+2.2 问题定义 假设有 N 个查询，K 个属性，每个查询 n 的属性表示为 $q_n⊆{1,&hellip;,K},n=1,&hellip;,K$ 。 W为每个索引包含的属性个数（索引宽度），$m_i$ 为需要的存储空间。索引的选择由子集 $I^*⊆I$ 表示，其执行成本为 $c_n(I^*)$ ，出现频率为 $f_n$ 。总的工作负载成本为：
+目标是确定 $I^*$ 使 $C(I^*)$ 最小，并且不超过给定预算 B。
+2.3 强化学习 强化学习（RL）包括一组算法，用于解决决策问题。
+这些问题的特点是，在给定状态 $s_t∈S$ ，反复允许一个代理执行行动 $a_t$ ，其中 $a_t∈A$ 。在执行了所选择的行动后，达到新的状态 $s_{t+1}$ ，重复该过程。为了向代理人提供关于行动是否选择得当的反馈，他们会收到反馈信号，即每次决策后的奖励 $r_t$ 。
+问题是要找到一个最佳决策，它将状态映射为行动，涉及到以时间 t 为开始状态的未来长期报酬：</div><div class="post-footer">
+        <a href="/swirl/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/index/">index</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/access-path-selection-in-main-memory-optimized-data-systems/">Access Path Selection in Main-Memory Optimized Data Systems</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-05-01">2023-05-01</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>论文阅读笔记</a></span></div><div class="content">本文为论文 Access Path Selection in Main-Memory Optimized Data Systems: Should I Scan or Should I Probe? 的阅读笔记。
 1 引言 🟥 我们提出了一个增强的访问路径成本模型，它可以捕捉到在支持访问共享的主内存优化的分析数据系统中的选择运算符的性能。
@@ -196,7 +217,8 @@ PS：主要是帮学长找语法错误、可以改进的地方
         <a href="/csp202303/">【CSP】202303题解</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-04-23">2023-04-23</time></span>&nbsp;<span class="post-category">included in <a href="/categories/csp%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CSP刷题记录</a></span></div><div class="content">1 田地丈量 🔗 题目：田地丈量
 分情况求出长、宽，再计算总和即可。
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28  #include &lt;bits/stdc++.h&gt;using namespace std; int main(){ int n,a,b,x,y,x1,x2,y1,y2,sum=0; cin&gt;&gt;n&gt;&gt;a&gt;&gt;b; for(int i=0;i&lt;n;i++){ scanf(&#34;%d %d %d %d&#34;,&amp;x1,&amp;y1,&amp;x2,&amp;y2); if(x1&lt;0 &amp;&amp; x2&gt;=0 &amp;&amp; x2&lt;=a)	x=x2; else if(x1&lt;0 &amp;&amp; x2&gt;a)	x=a; else if(x1&gt;=0 &amp;&amp; x1&lt;=a &amp;&amp; x2&gt;a)	x=a-x1; else if(x1&gt;=0 &amp;&amp; x1&lt;=a &amp;&amp; x2&gt;=0 &amp;&amp; x2&lt;=a)	x=x2-x1; else continue; if(y1&lt;0 &amp;&amp; y2&gt;=0 &amp;&amp; y2&lt;=b)	y=y2; else if(y1&lt;0 &amp;&amp; y2&gt;b)	y=b; else if(y1&gt;=0 &amp;&amp; y1&lt;=b &amp;&amp; y2&gt;b)	y=b-y1; else if(y1&gt;=0 &amp;&amp; y1&lt;=b &amp;&amp; y2&gt;=0 &amp;&amp; y2&lt;=b)	y=y2-y1; else continue; sum+=x*y; } cout&lt;&lt;sum; return 0; }   2 垦田计划 🔗 题目：垦田计划</div><div class="post-footer">
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18  #include&lt;bits/stdc++.h&gt;using namespace std; int n,a,b,x1,y1,x2,y2,x,y,ans=0; int main(){ cin&gt;&gt;n&gt;&gt;a&gt;&gt;b; for(int i=0;i&lt;n;i++){ cin&gt;&gt;x1&gt;&gt;y1&gt;&gt;x2&gt;&gt;y2; if(x1&gt;=a || y1&gt;=b || x2&lt;=0 || y2&lt;=0)	continue; if(x1&lt;=0)	x=min(a,x2); else	x=min(a,x2)-x1; if(y1&lt;=0)	y=min(b,y2); else	y=min(b,y2)-y1; ans += x*y; } cout&lt;&lt;ans; }   2 垦田计划 🔗 题目：垦田计划
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21  #include&lt;bits/stdc++.</div><div class="post-footer">
         <a href="/csp202303/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/csp/">CSP</a>,&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
@@ -242,18 +264,6 @@ PS：主要是帮学长找语法错误、可以改进的地方
 ① 为每个查询获取最佳索引配置。</div><div class="post-footer">
         <a href="/an-experimental-evaluation-of-index-selection-algorithms/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/index/">index</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/%E8%93%9D%E6%A1%A5%E6%9D%AF2015/">【蓝桥杯】2015题解</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-04-04">2023-04-04</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>蓝桥杯刷题记录</a></span></div><div class="content">⏰总用时：89/240	🎯总分：73/150
-   题号 时间 结果 满分 难度 备注     1 3 ✅ 3 🌕    2 3 ✅ 5 🌕 🔹 在Excel中直接用日期格式拉出答案   3 10 ✅ 9 🌕 🔸 直接用next_permutation(a,a+10) 来枚举   4 15 ✅ 11 🌕 🔹 注意 printf、scanf 中 %*s 的用法   5 1 ✅ 15 🌕 🔸 注意此题 dfs 的用法   6 15 ✅ 17 🌕 🔹 dfs   7 10 ❌ 21 🌓 🔸 全排列+特殊去重🔸 去重旋转：判断 t 是否是 s+s 的子串🔸 在字符串中寻找子串：s.</div><div class="post-footer">
-        <a href="/%E8%93%9D%E6%A1%A5%E6%9D%AF2015/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/">蓝桥杯</a>,&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/%E8%93%9D%E6%A1%A5%E6%9D%AF2016/">【蓝桥杯】2016题解</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-04-03">2023-04-03</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>蓝桥杯刷题记录</a></span></div><div class="content">⏰总用时：146/240	🎯总分：66/150
-   题号 时间 结果 满分 难度 备注     1 3 ✅ 3 🌕    2 3 ✅ 5 🌕    3 40 ❌ 11 🌓 🔸 直接用 next_permutation(a,a+10) 来枚举所有可能   4 5 ✅ 9 🌕    5 10 ✅ 13 🌓 🔸 消除末尾连续的 1 ： x&amp;(x+1)   6 35 ✅ 15 🌕 🔹 dfs   7 30 ❌ 19 🌓 🔸 先枚举，再用dfs判断连通性🔸 压缩：用一维数组存储2×3矩阵   8 10 ✅ 21 🌕 🔹 暴力枚举   9 5 ❌ 25 🌓 🔸 问题转化为求【最长回文子序列】🔸 动态规划、带备忘录   10 5 ❌ 29      1 【填空】网友年龄 题目 某君新认识一网友。 当问及年龄时，他的网友说： “我的年龄是个 2 位数，我比儿子大 27 岁, 如果把我的年龄的两位数字交换位置，刚好就是我儿子的年龄”</div><div class="post-footer">
-        <a href="/%E8%93%9D%E6%A1%A5%E6%9D%AF2016/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/">蓝桥杯</a>,&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>

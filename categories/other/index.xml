@@ -3,7 +3,20 @@
         <title>Other - Category - 菜菜的秘密花园</title>
         <link>https://imcaicai.github.io/categories/other/</link>
         <description>Other - Category - 菜菜的秘密花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 23 Aug 2023 15:08:44 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/categories/other/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 03 Sep 2023 13:42:07 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/categories/other/" rel="self" type="application/rss+xml" /><item>
+    <title>PostgreSQL基本用法</title>
+    <link>https://imcaicai.github.io/postgresql%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/</link>
+    <pubDate>Sun, 03 Sep 2023 13:42:07 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/postgresql%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/</guid>
+    <description><![CDATA[greenplum服务器 1 进入服务器
+1  psql username   2 创建数据库
+1 2 3 4 5  # 方法1：在终端使用createdb命令 createdb databasename # 方法2：在PostgreSQL内使用命令 create database databasename   3 列出所有的数据库
+1  \l   4 进入其中一个数据库
+1  \c databasename   5 返回PostgreSQL主界面
+1  \q   ]]></description>
+</item>
+<item>
     <title>在Linux下创建shell脚本</title>
     <link>https://imcaicai.github.io/%E5%9C%A8linux%E4%B8%8B%E5%88%9B%E5%BB%BAshell%E8%84%9A%E6%9C%AC/</link>
     <pubDate>Wed, 23 Aug 2023 15:08:44 &#43;0800</pubDate>

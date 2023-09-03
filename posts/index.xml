@@ -3,7 +3,33 @@
         <title>All Posts - 菜菜的秘密花园</title>
         <link>https://imcaicai.github.io/posts/</link>
         <description>All Posts | 菜菜的秘密花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 23 Aug 2023 15:08:44 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 03 Sep 2023 13:42:07 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>PostgreSQL基本用法</title>
+    <link>https://imcaicai.github.io/postgresql%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/</link>
+    <pubDate>Sun, 03 Sep 2023 13:42:07 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/postgresql%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/</guid>
+    <description><![CDATA[greenplum服务器 1 进入服务器
+1  psql username   2 创建数据库
+1 2 3 4 5  # 方法1：在终端使用createdb命令 createdb databasename # 方法2：在PostgreSQL内使用命令 create database databasename   3 列出所有的数据库
+1  \l   4 进入其中一个数据库
+1  \c databasename   5 返回PostgreSQL主界面
+1  \q   ]]></description>
+</item>
+<item>
+    <title>【CSP】202303题解</title>
+    <link>https://imcaicai.github.io/csp202306/</link>
+    <pubDate>Thu, 31 Aug 2023 15:15:58 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/csp202306/</guid>
+    <description><![CDATA[1 重复局面 🔗 题目：重复局面
+将一盘局的局面表示为一个长度为64的字符串。
+建立map映射，key为字符串表示的局面，value为出现的次数。
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18  #include&lt;bits/stdc++.h&gt;using namespace std; map&lt;string,int&gt; mp; int n; int main(){ cin&gt;&gt;n; for(int i=0;i&lt;n;i++){ string s=&#34;&#34;,tmp; for(int j=0;j&lt;8;j++){ cin&gt;&gt;tmp; s = s+tmp; } mp[s] += 1; cout&lt;&lt;mp[s]&lt;&lt;endl; } }   2 矩阵运算 🔗 题目：矩阵运算
+改变矩阵运算的顺序，可以减中间结果的存储空间和运行时间。
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39  #include&lt;bits/stdc++.]]></description>
+</item>
+<item>
     <title>在Linux下创建shell脚本</title>
     <link>https://imcaicai.github.io/%E5%9C%A8linux%E4%B8%8B%E5%88%9B%E5%BB%BAshell%E8%84%9A%E6%9C%AC/</link>
     <pubDate>Wed, 23 Aug 2023 15:08:44 &#43;0800</pubDate>
@@ -100,28 +126,6 @@
 1 2 3 4 5 6 7 8 9 10 11 12 13 14  #include&lt;bits/stdc++.h&gt;using namespace std; int main(){ int n,w,s,y=0; scanf(&#34;%d&#34;,&amp;n); for(int i=0;i&lt;n;i++){ scanf(&#34;%d %d&#34;,&amp;w,&amp;s); y += w*s; } if(y&gt;0)	cout&lt;&lt;y; else cout&lt;&lt;0; return 0; }   2 期末预测之最佳阈值 🔗 题目：期末预测之最佳阈值
 用 set 和 map 会方便很多。要找递推关系！！！
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26  #include&lt;bits/stdc++.]]></description>
-</item>
-<item>
-    <title>【CSP】202109题解</title>
-    <link>https://imcaicai.github.io/csp202109/</link>
-    <pubDate>Sun, 21 May 2023 11:15:52 &#43;0800</pubDate>
-    <author>菜菜</author>
-    <guid>https://imcaicai.github.io/csp202109/</guid>
-    <description><![CDATA[1 数组推导 🔗 题目：数组推导
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15  #include&lt;bits/stdc++.h&gt;using namespace std; int main(){ int n,s1=0,s2=0,b[105]={0}; scanf(&#34;%d&#34;,&amp;n); for(int i=1;i&lt;=n;i++) scanf(&#34;%d&#34;,&amp;b[i]); for(int i=n;i&gt;=1;i--){ s1+=b[i]; if(b[i]&gt;b[i-1])	s2+=b[i];	// a[i]=b[i] 	} cout&lt;&lt;s1&lt;&lt;endl&lt;&lt;s2&lt;&lt;endl; return 0; }   2 非零段划分 🔗 题目：非零段划分
-🔴 这个题目刚看上去有点难，需要找前后的递推关系。倒序遍历 a[n]，来确定 p 的值。用 set 和 map 会方便很多。
-🔵 set 的倒序遍历：
-1 2  set&lt;int&gt;::reverse_iterator rit; for (rit=s.rbegin();rit!=s.rend();rit++){.....}   完整代码：]]></description>
-</item>
-<item>
-    <title>【STL】bitset容器用法</title>
-    <link>https://imcaicai.github.io/stlbitset%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/</link>
-    <pubDate>Thu, 18 May 2023 20:14:45 &#43;0800</pubDate>
-    <author>菜菜</author>
-    <guid>https://imcaicai.github.io/stlbitset%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/</guid>
-    <description><![CDATA[1 简介 🟠 由若干个位（bit）组成，它提供一些成员函数，使程序员不必通过位运算就能很方便地访问、修改其中的任意一位。
-2 创建 1️⃣ 调用默认构造函数。
-1  bitset&lt;N&gt; b;   3 常用的成员方法    成员方法 功能     count() 返回bitset中 1 的个数。   size() 返回位数。   test() 返回某一位下标是否为1   set() 全部置1,或者某一位置1或0   flip() 全部取反,或者某一位取反    ]]></description>
 </item>
 </channel>
 </rss>
