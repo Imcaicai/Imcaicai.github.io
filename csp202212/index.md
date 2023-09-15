@@ -84,78 +84,63 @@ int main(){
 ```c++
 #include<bits/stdc++.h>
 using namespace std;
+#define PI acos(-1)
 
-int q[8][8],m[8][8],sc[100]={0};
-double mm[8][8],pi=acos(-1);
-int n,t;
-
-// 量化：m和q相乘 
-void lh(){
-	for(int i=0;i<8;++i)
-		for(int j=0;j<8;++j)
-			m[i][j] *= q[i][j]; 
-}
-
-// 剩余解码工作
-void jm(){
-	for(int i=0;i<8;++i){
-		for(int j=0;j<8;++j){
-			double a=1,ans=0;
-			for(int u=0;u<8;++u){
-				for(int v=0;v<8;++v){
-					if(u==0 && v==0)	a=0.5;
-					else if(u*v==0)	a=pow(0.5,0.5);
-					else a=1;
-					ans += a*m[u][v]*cos((i+0.5)*pi*u/8)*cos((j+0.5)*pi*v/8);
-				}
-			}
-			mm[i][j] = ans/4;
-		}
-	}
-
-	for(int i=0;i<8;++i){
-		for(int j=0;j<8;++j){
-			m[i][j] = (int)(mm[i][j]+128.5);
-			if(m[i][j]>255)	m[i][j]=255;
-			else if(m[i][j]<0)	m[i][j]=0;
-		}
-	}
-}
+int Q[8][8],M[8][8]={0},S[64]={0},n,t;
+double a[8]={sqrt(0.5),1,1,1,1,1,1,1},N[8][8]={0}; 
+int idx[8][8]={{0,1,5,6,14,15,27,28},
+				{2,4,7,13,16,26,29,42},
+				{3,8,12,17,25,30,41,43},
+				{9,11,18,24,31,40,44,53},
+				{10,19,23,32,39,45,52,54},
+				{20,22,33,38,46,51,55,60},
+				{21,34,37,47,50,56,59,61},
+				{35,36,48,49,57,58,62,63}};
 
 int main(){
-	// 输入
-	for(int i=0;i<8;++i)
-		for(int j=0;j<8;++j)
-			scanf("%d",&q[i][j]);
-	scanf("%d",&n);scanf("%d",&t);
-	for(int i=0;i<n;++i)
-		scanf("%d",&sc[i]);
-	
-	// 计算m
-	int idx[8][8] = { {0,  1,  5,  6,  14, 15, 27, 28},
-                     {2,  4,  7,  13, 16, 26, 29, 42},
-                     {3,  8,  12, 17, 25, 30, 41, 43},
-                     {9,  11, 18, 24, 31, 40, 44, 53},
-                     {10, 19, 23, 32, 39, 45, 52, 54},
-                     {20, 22, 33, 38, 46, 51, 55, 60},
-                     {21, 34, 37, 47, 50, 56, 59, 61},
-                     {35, 36, 48, 49, 57, 58, 62, 63} };
-    for(int i=0;i<8;++i){
-    	for(int j=0;j<8;++j)
-    		m[i][j] = sc[idx[i][j]];
+	for(int i=0;i<8;i++)			// 读入量化矩阵 
+		for(int j=0;j<8;j++)
+			cin>>Q[i][j];
+	cin>>n>>t;
+	for(int i=0;i<n;i++)
+		cin>>S[i];
+	for(int i=0;i<8;i++)			// 读入扫描数据，乘以量化矩阵Q 
+		for(int j=0;j<8;j++)
+			M[i][j]=S[idx[i][j]],Q[i][j]*=M[i][j];	
+	if(t==0){						// t=0 输出扫描后的图像矩阵 
+		for(int i=0;i<8;i++){
+			for(int j=0;j<8;j++)
+				cout<<M[i][j]<<" ";
+			cout<<endl;
+		}
+		return 0;
 	}
 	
-	if(t>0)	lh();	// t=1或t=2：量化 
-	if(t>1)	jm(); 	// t=2：完成剩余解码工作 
-
-	// 输出答案 
-	for(int i=0;i<8;++i){
-		for(int j=0;j<8;++j)
-			cout<<m[i][j]<<" ";
+	if(t==1){						// t=1 输出量化后的图像矩阵 
+		for(int i=0;i<8;i++){
+			for(int j=0;j<8;j++)
+				cout<<Q[i][j]<<" ";
+			cout<<endl;
+		}
+		return 0;
+	}	
+	
+	for(int i=0;i<8;i++){
+		for(int j=0;j<8;j++){
+			for(int u=0;u<8;u++){
+				for(int v=0;v<8;v++){
+					N[i][j] += a[u]*a[v]*Q[u][v]*cos((i+0.5)*u*PI/8)*cos((j+0.5)*v*PI/8);
+				}
+			}
+			N[i][j] = (int)(N[i][j]/4+0.5+128);
+			if(N[i][j]>255)	N[i][j]=255;
+			else if(N[i][j]<0)	N[i][j]=0;
+			cout<<N[i][j]<<" ";
+		}
 		cout<<endl;
 	}
 	return 0;
-} 
+}
 ```
 
 

@@ -3,7 +3,38 @@
         <title>index - Tag - 菜菜的秘密花园</title>
         <link>https://imcaicai.github.io/tags/index/</link>
         <description>index - Tag - 菜菜的秘密花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 03 May 2023 19:09:22 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/tags/index/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 12 Sep 2023 11:13:46 &#43;0800</lastBuildDate><atom:link href="https://imcaicai.github.io/tags/index/" rel="self" type="application/rss+xml" /><item>
+    <title>Instance-Optimized Data Layouts for Cloud Analytics Workloads</title>
+    <link>https://imcaicai.github.io/instance-optimized-data-layouts-for-cloud-analytics-workloads/</link>
+    <pubDate>Tue, 12 Sep 2023 11:13:46 &#43;0800</pubDate>
+    <author>菜菜</author>
+    <guid>https://imcaicai.github.io/instance-optimized-data-layouts-for-cloud-analytics-workloads/</guid>
+    <description><![CDATA[本文为论文 Instance-Optimized Data Layouts for Cloud Analytics Workloads 的阅读笔记。
+ABSTRACT 逐块区域映射是一种常用的通过跳过块来减少I/O的技术，但其有效性取决于如何将记录分配给块，即数据布局。
+现有的优化数据布局的方法只针对单个表，在存在基于连接的查询时，它们的性能会受到影响。在本文中，我们提出了MTO(多表优化器)，目标是学习一种实例优化的布局，该布局可以最大化特定数据集和工作负载的块跳转。MTO利用连接传递的横向信息来优化所有表的布局，在基于云的商业数据分析服务上实现了高达93%的块访问减少和75%的端到端查询时间减少。
+1 INTRODUCTION 区域映射对于在查询执行期间跳过不相关的块很有用，但是它们的有效性取决于块之间数据的物理布局，即排序顺序。
+文章主要贡献：
+(1) MTO 是第一个用于优化整个数据集的实例-优化数据布局框架。（常用的优化多表数据集布局的方法是独立的优化每个表的布局，其性能并不高。）
+(2) 引入连接诱导谓词，在MTO中用于通过连接传递信息，更好的学习数据布局。
+(3) MTO 可以扩展到更大的数据集和工作负载，并适应工作负载转移和数据变化。
+2 CURRENT BLOCKING APPROACHES 【Sort Key】
+按特定列对每个表的数据进行排序，但只有过滤排序键列的查询才能从块跳过中受益。
+【Z-ordering】
+同时对多个列上的数据进行排序，但必须仔细调整才能实现高性能。即使经过适当调整，性能也不如 instance-optimized 方法。
+【Instance-optimized Layouts】
+在特定数据集和工作负载上表现良好，通过有目的地过拟合特定数据集和工作负载的布局，能够在该特定实例上优于现有方法。
+【Drawback of Current Approaches】
+独立地优化单个表的布局，而不是联合考虑所有表的布局，不能最大限度地提高块跳转性能。
+【Qd-tree】
+Qd-tree结构。 qd-tree是一棵二叉决策树。每个内部节点包含一个过滤器谓词，即cut，用于将记录子集划分为两个较小的子集，一个满足cut，另一个不满足。qd-tree的叶节点对应数据块。
+Qd-tree用法。 我们可以使用qd-tree进行离线块分配和在线查询处理。① 给定一个qd-tree和一个表，通过qd-tree路由表中的每条记录，将其分配到将存储在其中的数据块。② 在查询执行时，使用qd-tree来确定需要访问哪些块。
+Qd-tree构造算法。 我们采用贪心方法来构建。在每次迭代中，通过cut将叶节点拆分为两个子节点。从候选cut集合中选择cut中的一个，使结果qd-tree在给定工作负载上跳过的记录数量最大。迭代直至所有叶节点都达到所需的大小。
+3 MTO OVERVIEW MTO由两部分组成：① 记录到块的映射，其中每个块具有大致相同数量的记录，块只能包含来自单个表的记录。② 一个方法来确定哪些块可以被跳过。
+3.1 Sideways Information Passing 现有的单表布局方法在多表情况下不是最优的，因为它们没有利用表之间的横向信息传递。
+以图3为例。设块大小为1M条记录，表A有1M条记录，表B有8M条记录。表A的所有记录将落在同一个块中，因此表A的排序顺序不会影响块跳转。考虑如下工作负载：
+1  SELECT COUNT(*) FROM A, B WHERE A.]]></description>
+</item>
+<item>
     <title>SWIRL: Selection of Workload-aware Indexes using Reinforcement Learning</title>
     <link>https://imcaicai.github.io/swirl/</link>
     <pubDate>Wed, 03 May 2023 19:09:22 &#43;0800</pubDate>

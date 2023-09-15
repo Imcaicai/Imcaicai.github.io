@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Instance-Optimized Data Layouts for Cloud Analytics Workloads - 菜菜的秘密花园</title><meta name="Description" content="菜菜的秘密花园"><meta property="og:title" content="Instance-Optimized Data Layouts for Cloud Analytics Workloads" />
+<meta property="og:description" content="本文为论文 Instance-Optimized Data Layouts for Cloud Analytics Workloads 的阅读笔记。
+ABSTRACT 逐块区域映射是一种常用的通过跳过块来减少I/O的技术，但其有效性取决于如何将记录分配给块，即数据布局。
+现有的优化数据布局的方法只针对单个表，在存在基于连接的查询时，它们的性能会受到影响。在本文中，我们提出了MTO(多表优化器)，目标是学习一种实例优化的布局，该布局可以最大化特定数据集和工作负载的块跳转。MTO利用连接传递的横向信息来优化所有表的布局，在基于云的商业数据分析服务上实现了高达93%的块访问减少和75%的端到端查询时间减少。
+1 INTRODUCTION 区域映射对于在查询执行期间跳过不相关的块很有用，但是它们的有效性取决于块之间数据的物理布局，即排序顺序。
+文章主要贡献：
+(1) MTO 是第一个用于优化整个数据集的实例-优化数据布局框架。（常用的优化多表数据集布局的方法是独立的优化每个表的布局，其性能并不高。）
+(2) 引入连接诱导谓词，在MTO中用于通过连接传递信息，更好的学习数据布局。
+(3) MTO 可以扩展到更大的数据集和工作负载，并适应工作负载转移和数据变化。
+2 CURRENT BLOCKING APPROACHES 【Sort Key】
+按特定列对每个表的数据进行排序，但只有过滤排序键列的查询才能从块跳过中受益。
+【Z-ordering】
+同时对多个列上的数据进行排序，但必须仔细调整才能实现高性能。即使经过适当调整，性能也不如 instance-optimized 方法。
+【Instance-optimized Layouts】
+在特定数据集和工作负载上表现良好，通过有目的地过拟合特定数据集和工作负载的布局，能够在该特定实例上优于现有方法。
+【Drawback of Current Approaches】
+独立地优化单个表的布局，而不是联合考虑所有表的布局，不能最大限度地提高块跳转性能。
+【Qd-tree】
+Qd-tree结构。 qd-tree是一棵二叉决策树。每个内部节点包含一个过滤器谓词，即cut，用于将记录子集划分为两个较小的子集，一个满足cut，另一个不满足。qd-tree的叶节点对应数据块。
+Qd-tree用法。 我们可以使用qd-tree进行离线块分配和在线查询处理。① 给定一个qd-tree和一个表，通过qd-tree路由表中的每条记录，将其分配到将存储在其中的数据块。② 在查询执行时，使用qd-tree来确定需要访问哪些块。
+Qd-tree构造算法。 我们采用贪心方法来构建。在每次迭代中，通过cut将叶节点拆分为两个子节点。从候选cut集合中选择cut中的一个，使结果qd-tree在给定工作负载上跳过的记录数量最大。迭代直至所有叶节点都达到所需的大小。
+3 MTO OVERVIEW MTO由两部分组成：① 记录到块的映射，其中每个块具有大致相同数量的记录，块只能包含来自单个表的记录。② 一个方法来确定哪些块可以被跳过。
+3.1 Sideways Information Passing 现有的单表布局方法在多表情况下不是最优的，因为它们没有利用表之间的横向信息传递。
+以图3为例。设块大小为1M条记录，表A有1M条记录，表B有8M条记录。表A的所有记录将落在同一个块中，因此表A的排序顺序不会影响块跳转。考虑如下工作负载：
+1  SELECT COUNT(*) FROM A, B WHERE A." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://imcaicai.github.io/instance-optimized-data-layouts-for-cloud-analytics-workloads/" /><meta property="og:image" content="https://imcaicai.github.io/img/avatar.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-09-12T11:13:46&#43;08:00" />
+<meta property="article:modified_time" content="2023-09-12T11:13:46&#43;08:00" /><meta property="og:site_name" content="菜菜的秘密花园" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://imcaicai.github.io/img/avatar.jpg"/>
+
+<meta name="twitter:title" content="Instance-Optimized Data Layouts for Cloud Analytics Workloads"/>
+<meta name="twitter:description" content="本文为论文 Instance-Optimized Data Layouts for Cloud Analytics Workloads 的阅读笔记。
+ABSTRACT 逐块区域映射是一种常用的通过跳过块来减少I/O的技术，但其有效性取决于如何将记录分配给块，即数据布局。
+现有的优化数据布局的方法只针对单个表，在存在基于连接的查询时，它们的性能会受到影响。在本文中，我们提出了MTO(多表优化器)，目标是学习一种实例优化的布局，该布局可以最大化特定数据集和工作负载的块跳转。MTO利用连接传递的横向信息来优化所有表的布局，在基于云的商业数据分析服务上实现了高达93%的块访问减少和75%的端到端查询时间减少。
+1 INTRODUCTION 区域映射对于在查询执行期间跳过不相关的块很有用，但是它们的有效性取决于块之间数据的物理布局，即排序顺序。
+文章主要贡献：
+(1) MTO 是第一个用于优化整个数据集的实例-优化数据布局框架。（常用的优化多表数据集布局的方法是独立的优化每个表的布局，其性能并不高。）
+(2) 引入连接诱导谓词，在MTO中用于通过连接传递信息，更好的学习数据布局。
+(3) MTO 可以扩展到更大的数据集和工作负载，并适应工作负载转移和数据变化。
+2 CURRENT BLOCKING APPROACHES 【Sort Key】
+按特定列对每个表的数据进行排序，但只有过滤排序键列的查询才能从块跳过中受益。
+【Z-ordering】
+同时对多个列上的数据进行排序，但必须仔细调整才能实现高性能。即使经过适当调整，性能也不如 instance-optimized 方法。
+【Instance-optimized Layouts】
+在特定数据集和工作负载上表现良好，通过有目的地过拟合特定数据集和工作负载的布局，能够在该特定实例上优于现有方法。
+【Drawback of Current Approaches】
+独立地优化单个表的布局，而不是联合考虑所有表的布局，不能最大限度地提高块跳转性能。
+【Qd-tree】
+Qd-tree结构。 qd-tree是一棵二叉决策树。每个内部节点包含一个过滤器谓词，即cut，用于将记录子集划分为两个较小的子集，一个满足cut，另一个不满足。qd-tree的叶节点对应数据块。
+Qd-tree用法。 我们可以使用qd-tree进行离线块分配和在线查询处理。① 给定一个qd-tree和一个表，通过qd-tree路由表中的每条记录，将其分配到将存储在其中的数据块。② 在查询执行时，使用qd-tree来确定需要访问哪些块。
+Qd-tree构造算法。 我们采用贪心方法来构建。在每次迭代中，通过cut将叶节点拆分为两个子节点。从候选cut集合中选择cut中的一个，使结果qd-tree在给定工作负载上跳过的记录数量最大。迭代直至所有叶节点都达到所需的大小。
+3 MTO OVERVIEW MTO由两部分组成：① 记录到块的映射，其中每个块具有大致相同数量的记录，块只能包含来自单个表的记录。② 一个方法来确定哪些块可以被跳过。
+3.1 Sideways Information Passing 现有的单表布局方法在多表情况下不是最优的，因为它们没有利用表之间的横向信息传递。
+以图3为例。设块大小为1M条记录，表A有1M条记录，表B有8M条记录。表A的所有记录将落在同一个块中，因此表A的排序顺序不会影响块跳转。考虑如下工作负载：
+1  SELECT COUNT(*) FROM A, B WHERE A."/>
+<meta name="application-name" content="菜菜的秘密花园">
+<meta name="apple-mobile-web-app-title" content="菜菜的秘密花园"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/avatar.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://imcaicai.github.io/instance-optimized-data-layouts-for-cloud-analytics-workloads/" /><link rel="prev" href="https://imcaicai.github.io/postgresql%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Instance-Optimized Data Layouts for Cloud Analytics Workloads",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/imcaicai.github.io\/instance-optimized-data-layouts-for-cloud-analytics-workloads\/"
+        },"image": ["https:\/\/imcaicai.github.io\/img\/avatar.jpg"],"genre": "posts","keywords": "index","wordcount":  264 ,
+        "url": "https:\/\/imcaicai.github.io\/instance-optimized-data-layouts-for-cloud-analytics-workloads\/","datePublished": "2023-09-12T11:13:46+08:00","dateModified": "2023-09-12T11:13:46+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/imcaicai.github.io\/img\/avatar.jpg"},"author": {
+                "@type": "Person",
+                "name": "菜菜"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="菜菜的秘密花园"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/avatar.jpg"
+        data-srcset="/img/avatar.jpg, /img/avatar.jpg 1.5x, /img/avatar.jpg 2x"
+        data-sizes="auto"
+        alt="/img/avatar.jpg"
+        title="/img/avatar.jpg" />菜菜的秘密花园</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/categories/documentation/"> Docs </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/Imcaicai" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="Select Language">
+                    <i class="fa fa-globe" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/instance-optimized-data-layouts-for-cloud-analytics-workloads/" selected>English</option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="菜菜的秘密花园"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/avatar.jpg"
+        data-srcset="/img/avatar.jpg, /img/avatar.jpg 1.5x, /img/avatar.jpg 2x"
+        data-sizes="auto"
+        alt="/img/avatar.jpg"
+        title="/img/avatar.jpg" />菜菜的秘密花园</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/categories/documentation/" title="">Docs</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/Imcaicai" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="Select Language">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/instance-optimized-data-layouts-for-cloud-analytics-workloads/" selected>English</option></select>
+                </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Instance-Optimized Data Layouts for Cloud Analytics Workloads</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>论文阅读笔记</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-09-12">2023-09-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;264 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;<span id="/instance-optimized-data-layouts-for-cloud-analytics-workloads/" class="leancloud_visitors" data-flag-title="Instance-Optimized Data Layouts for Cloud Analytics Workloads">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#abstract">ABSTRACT</a></li>
+        <li><a href="#1-introduction">1 INTRODUCTION</a></li>
+        <li><a href="#2-current-blocking-approaches">2 CURRENT BLOCKING APPROACHES</a></li>
+        <li><a href="#3-mto-overview">3 MTO OVERVIEW</a>
+          <ul>
+            <li><a href="#31-sideways-information-passing">3.1 Sideways Information Passing</a></li>
+            <li><a href="#32-mto-workflow">3.2 MTO Workflow</a></li>
+          </ul>
+        </li>
+        <li><a href="#4-mto-algorithms">4 MTO ALGORITHMS</a>
+          <ul>
+            <li><a href="#41-join-induced-predicates">4.1 Join-induced Predicates</a></li>
+            <li><a href="#42-scalability-through-sampling">4.2 Scalability through Sampling</a></li>
+          </ul>
+        </li>
+        <li><a href="#5-workload-shift-and-data-changes">5 WORKLOAD SHIFT AND DATA CHANGES</a>
+          <ul>
+            <li><a href="#51-dynamic-workloads">5.1 Dynamic Workloads</a></li>
+            <li><a href="#52-dynamic-data">5.2 Dynamic Data</a></li>
+          </ul>
+        </li>
+        <li><a href="#6-evaluation">6 EVALUATION</a>
+          <ul>
+            <li><a href="#62-overall-results">6.2 Overall Results</a></li>
+            <li><a href="#63-performance-breakdown-by-query">6.3 Performance Breakdown by Query</a></li>
+            <li><a href="#65-dynamic-workloads-and-data">6.5 Dynamic Workloads and Data</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>本文为论文 <em><strong>Instance-Optimized Data Layouts for Cloud Analytics Workloads</strong></em> 的阅读笔记。</p>
+<h3 id="abstract">ABSTRACT</h3>
+<p>逐块区域映射是一种常用的通过跳过块来减少I/O的技术，但其有效性取决于如何将记录分配给块，即数据布局。</p>
+<p>现有的优化数据布局的方法只针对单个表，在存在基于连接的查询时，它们的性能会受到影响。在本文中，我们提出了MTO(多表优化器)，目标是学习一种实例优化的布局，该布局可以最大化特定数据集和工作负载的块跳转。MTO利用连接传递的横向信息来优化所有表的布局，在基于云的商业数据分析服务上实现了高达93%的块访问减少和75%的端到端查询时间减少。</p>
+<h3 id="1-introduction">1 INTRODUCTION</h3>
+<p>区域映射对于在查询执行期间跳过不相关的块很有用，但是它们的有效性取决于块之间数据的物理布局，即排序顺序。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/Index/29.png"
+        data-srcset="/img/Index/29.png, /img/Index/29.png 1.5x, /img/Index/29.png 2x"
+        data-sizes="auto"
+        alt="/img/Index/29.png"
+        title="imag1" /></p>
+<p>文章主要贡献：</p>
+<p>(1) MTO 是第一个用于优化整个数据集的实例-优化数据布局框架。（常用的优化多表数据集布局的方法是独立的优化每个表的布局，其性能并不高。）</p>
+<p>(2) 引入连接诱导谓词，在MTO中用于通过连接传递信息，更好的学习数据布局。</p>
+<p>(3) MTO 可以扩展到更大的数据集和工作负载，并适应工作负载转移和数据变化。</p>
+<h3 id="2-current-blocking-approaches">2 CURRENT BLOCKING APPROACHES</h3>
+<p><strong>【Sort Key】</strong></p>
+<p>按特定列对每个表的数据进行排序，但只有过滤排序键列的查询才能从块跳过中受益。</p>
+<p><strong>【Z-ordering】</strong></p>
+<p>同时对多个列上的数据进行排序，但必须仔细调整才能实现高性能。即使经过适当调整，性能也不如 instance-optimized 方法。</p>
+<p><strong>【Instance-optimized Layouts】</strong></p>
+<p>在特定数据集和工作负载上表现良好，通过有目的地过拟合特定数据集和工作负载的布局，能够在该特定实例上优于现有方法。</p>
+<p><strong>【Drawback of Current Approaches】</strong></p>
+<p>独立地优化单个表的布局，而不是联合考虑所有表的布局，不能最大限度地提高块跳转性能。</p>
+<p><strong>【Qd-tree】</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/Index/30.png"
+        data-srcset="/img/Index/30.png, /img/Index/30.png 1.5x, /img/Index/30.png 2x"
+        data-sizes="auto"
+        alt="/img/Index/30.png"
+        title="imag10" /></p>
+<p><strong>Qd-tree结构。</strong> qd-tree是一棵二叉决策树。每个内部节点包含一个过滤器谓词，即cut，用于将记录子集划分为两个较小的子集，一个满足cut，另一个不满足。qd-tree的叶节点对应数据块。</p>
+<p><strong>Qd-tree用法。</strong> 我们可以使用qd-tree进行离线块分配和在线查询处理。① 给定一个qd-tree和一个表，通过qd-tree路由表中的每条记录，将其分配到将存储在其中的数据块。② 在查询执行时，使用qd-tree来确定需要访问哪些块。</p>
+<p><strong>Qd-tree构造算法。</strong> 我们采用贪心方法来构建。在每次迭代中，通过cut将叶节点拆分为两个子节点。从候选cut集合中选择cut中的一个，使结果qd-tree在给定工作负载上跳过的记录数量最大。迭代直至所有叶节点都达到所需的大小。</p>
+<h3 id="3-mto-overview">3 MTO OVERVIEW</h3>
+<p>MTO由两部分组成：① 记录到块的映射，其中每个块具有大致相同数量的记录，块只能包含来自单个表的记录。② 一个方法来确定哪些块可以被跳过。</p>
+<h4 id="31-sideways-information-passing">3.1 Sideways Information Passing</h4>
+<p>现有的单表布局方法在多表情况下不是最优的，因为它们没有利用表之间的横向信息传递。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/Index/31.png"
+        data-srcset="/img/Index/31.png, /img/Index/31.png 1.5x, /img/Index/31.png 2x"
+        data-sizes="auto"
+        alt="/img/Index/31.png"
+        title="imag10" /></p>
+<p>以图3为例。设块大小为1M条记录，表A有1M条记录，表B有8M条记录。表A的所有记录将落在同一个块中，因此表A的排序顺序不会影响块跳转。考虑如下工作负载：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span> <span class="k">WHERE</span> <span class="n">A</span><span class="p">.</span><span class="k">KEY</span> <span class="o">=</span> <span class="n">B</span><span class="p">.</span><span class="k">KEY</span> <span class="k">AND</span> <span class="n">A</span><span class="p">.</span><span class="n">X</span> <span class="o">&lt;</span> <span class="mi">100</span> <span class="k">AND</span> <span class="n">B</span><span class="p">.</span><span class="n">Y</span> <span class="o">&gt;</span> <span class="mi">200</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>通过2个过滤器谓词，表A能够跳过基于谓词A.X &lt; 100的块，表B能够跳过B.Y &gt; 200的块。但根据与A的联接是否会产生相关记录，将B的记录分组在一起，可以进一步增加跳块。即B的分块是基于 <code>B.Y &gt; 200</code> 和一个新的连接-诱导谓词 <code>B.KEY IN (SELECT A.KEY FROM A WHERE A.X &lt; 100)</code> 。</p>
+<h4 id="32-mto-workflow">3.2 MTO Workflow</h4>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/Index/32.png"
+        data-srcset="/img/Index/32.png, /img/Index/32.png 1.5x, /img/Index/32.png 2x"
+        data-sizes="auto"
+        alt="/img/Index/32.png"
+        title="imag10" /></p>
+<p><strong>离线优化。</strong> MTO优化算法将一个多表数据集和一个查询工作负载作为输入，并为每个表创建一个qd树，它将确定该表记录的数据布局。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/Index/33.png"
+        data-srcset="/img/Index/33.png, /img/Index/33.png 1.5x, /img/Index/33.png 2x"
+        data-sizes="auto"
+        alt="/img/Index/33.png"
+        title="imag10" /></p>
+<p><strong>1a：</strong> 从查询中提取所有简单谓词，并根据它们过滤的表对其进行分组。</p>
+<p><strong>1b：</strong> 通过提取的简单谓词，创建连接-诱导谓词。一个简单的谓词可以通过多个连接传递到另一个表上。</p>
+<p><strong>1c：</strong> 对于每个连接引起的谓词，求值所有子查询以获得字面cut。在本例中，运行子查询(SELECT B.key FROM B WHERE B.y &gt; 200)返回集合(1,4,9)，因此表A上的连接诱导切割的字面形式是A.Key In(1,4,9)。</p>
+<p><strong>2：</strong> 将所有表和总体查询工作负载提供给qd-tree构建算法。在步骤1中提取的表上的谓词（简单谓词和连接-诱导谓词）成为qd树的候选cut。构造的qd树确定表的数据布局。</p>
+<p><strong>在线查询执行。</strong> 在查询执行时，MTO对每个表使用qd-tree来确定需要访问哪些块。图6显示了可能通过MTO优化算法为表B构建的qd树。</p>
+<p><strong>1：</strong> 从该表上的查询中识别所有谓词（简单谓词和连接-诱导谓词）</p>
+<p><strong>2：</strong> 使用谓词路由表构建qd-tree，以确定哪些块需要被访问。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/Index/34.png"
+        data-srcset="/img/Index/34.png, /img/Index/34.png 1.5x, /img/Index/34.png 2x"
+        data-sizes="auto"
+        alt="/img/Index/34.png"
+        title="imag10" /></p>
+<h3 id="4-mto-algorithms">4 MTO ALGORITHMS</h3>
+<h4 id="41-join-induced-predicates">4.1 Join-induced Predicates</h4>
+<p>考虑下面的查询，我们可以从A归纳到B，产生连接诱导谓词 <code>B. key IN (SELECT A. key from A WHERE A.X &lt; 100)</code> ，但不能从B归纳到a。因此我们制定了一组规则，用于确定何时可以在保持语义等效查询的同时归纳谓词。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="k">AVG</span><span class="p">(</span><span class="n">A</span><span class="p">.</span><span class="n">Z</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">A</span> <span class="k">WHERE</span> <span class="n">A</span><span class="p">.</span><span class="n">X</span> <span class="o">&lt;</span> <span class="mi">100</span> <span class="k">AND</span> <span class="n">A</span><span class="p">.</span><span class="n">Y</span> <span class="o">&lt;</span> <span class="p">(</span>
+	<span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">B</span> <span class="k">WHERE</span> <span class="n">A</span><span class="p">.</span><span class="k">KEY</span> <span class="o">=</span> <span class="n">B</span><span class="p">.</span><span class="k">KEY</span> <span class="k">AND</span> <span class="n">B</span><span class="p">.</span><span class="n">Z</span> <span class="o">&gt;</span> <span class="mi">200</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="42-scalability-through-sampling">4.2 Scalability through Sampling</h4>
+<p>为了减少在扩展到更大的数据集时优化布局所需的时间，MTO在数据集的统一样本上运行其优化算法，而不是在整个数据集上运行。给定采样率，MTO通过均匀随机地从数据集中的每个表中选择部分记录来创建一个样本。</p>
+<h3 id="5-workload-shift-and-data-changes">5 WORKLOAD SHIFT AND DATA CHANGES</h3>
+<h4 id="51-dynamic-workloads">5.1 Dynamic Workloads</h4>
+<p>工作负载特征经常随着时间的推移而变化，完全重组大型数据集可能需要大量的时间和计算资源，而MTO具有部分重组其布局的能力。MTO只重新组织qd-tree子树，从而获得最大的总体性能增益。例如，如果只有Europe的工作负载发生了变化，并且qd-tree根节点具有cut REGION = ' Europe &lsquo;，则MTO只会重新组织左子树。</p>
+<p>接下来，我们描述了一个用于确定重组qd-tree子树的价值(即收益减去成本)的奖励函数，然后我们描述了MTO如何使用该奖励函数来确定最佳重组策略。</p>
+<p><strong>最小化重组的影响。</strong> MTO启动了一个单独的进程，该进程使用数据的副本执行部分重组。在重组期间，查询仍然在现有数据布局上执行，查询服务不受影响。重组完成后，新的数据布局与现有布局交换，对工作负载的影响最小。</p>
+<p><strong>奖励函数。</strong> 子树T重组为T&rsquo;的回报为： $R(T,Q) = (q/w)·B(T,Q)-C(T)$</p>
+<p>$B(T,Q)$ 是完全重组 T 后，查询Q可以减少块访问的平均数量；$C(T)$ 是T中块的总数，代表完全重组T&rsquo;的成本；$w$ 是重组的相对开销（重新压缩写入vs读取的速度比）。 <strong>计算奖励并不需要我们实际执行任何物理重组。</strong></p>
+<p><strong>寻找最优重组策略。</strong></p>
+<p>寻找最优重组策略，即找到具有最大组合奖励的非重叠子树的集合。我们通过动态规划找到qd-tree的最优集：从叶子节点开始，向根节点工作。如果 $R(L,Q)$ &gt; 0，叶子 $L$ 的最优集为 ${L}$ ，否则为空。非叶节点 $T$ 的最优集要么是 ${T}$ ，要么是它的两个子节点的最优集的并集。图8显示了一个qd树，其中最优集有两个子树。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/Index/35.png"
+        data-srcset="/img/Index/35.png, /img/Index/35.png 1.5x, /img/Index/35.png 2x"
+        data-sizes="auto"
+        alt="/img/Index/35.png"
+        title="imag10" /></p>
+<p>对于大型qd树来说，计算每个子树的奖励是非常昂贵的。主要的瓶颈是将 T 优化为 T&rsquo; 来计算 $B(T,Q)$ 。文章使用 <strong>【剪枝】</strong> 算法，提出了一些帮助MTO淘汰不属于最优集合节点的规则，避免在该节点的子树上计算 B。</p>
+<h4 id="52-dynamic-data">5.2 Dynamic Data</h4>
+<h3 id="6-evaluation">6 EVALUATION</h3>
+<h4 id="62-overall-results">6.2 Overall Results</h4>
+<p>图10a和10b显示，在模拟或实际的 cloud DW场景上，与最佳替代方法相比，MTO的块访问都可以最多减少90%左右。</p>
+<p>图10c显示，与最佳替代方法相比，MTO实现了端到端查询运行时间减少20%-75%。</p>
+<p>此外，MTO的内存开销（来自每个表的qd树）最多只有几个GB，与数据的大小（约100GB）相比很小。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/Index/36.png"
+        data-srcset="/img/Index/36.png, /img/Index/36.png 1.5x, /img/Index/36.png 2x"
+        data-sizes="auto"
+        alt="/img/Index/36.png"
+        title="imag10" /></p>
+<h4 id="63-performance-breakdown-by-query">6.3 Performance Breakdown by Query</h4>
+<p>为了更好地理解MTO比STO和Baseline提供性能优势的条件，我们从TPC-H工作负载中选择了五个具有不同过滤器/连接特征的查询模板：Q1没有连接；Q14过滤器了列 L_SHIPDATE 但没有在连接表上过滤；Q6在非排序列上过滤但没有连接；Q4在连接表上和排序列相关的列上过滤；Q4在连接表上和排序列不相关的列上过滤。</p>
+<p>在连接表（Q4，Q5）上使用选择性过滤器进行查询时，MTO的性能大大优于所有替代方法。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/Index/37.png"
+        data-srcset="/img/Index/37.png, /img/Index/37.png 1.5x, /img/Index/37.png 2x"
+        data-sizes="auto"
+        alt="/img/Index/37.png"
+        title="imag10" /></p>
+<h4 id="65-dynamic-workloads-and-data">6.5 Dynamic Workloads and Data</h4>
+<p>在工作负载转换后，MTO 的初期表现较基线差，但在部分重组后的长期表现较佳。</p>
+<p>数据插入后，MTO仍保持其优于基线的优势。</p>
+<p>尽管在工作负载转移之后，MTO最初执行的查询比Baseline要少，但它能够在重组后迅速弥补损失的时间。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/Index/38.png"
+        data-srcset="/img/Index/38.png, /img/Index/38.png 1.5x, /img/Index/38.png 2x"
+        data-sizes="auto"
+        alt="/img/Index/38.png"
+        title="imag10" /></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-09-12</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/instance-optimized-data-layouts-for-cloud-analytics-workloads/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://imcaicai.github.io/instance-optimized-data-layouts-for-cloud-analytics-workloads/" data-title="Instance-Optimized Data Layouts for Cloud Analytics Workloads" data-hashtags="index"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://imcaicai.github.io/instance-optimized-data-layouts-for-cloud-analytics-workloads/" data-hashtag="index"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://imcaicai.github.io/instance-optimized-data-layouts-for-cloud-analytics-workloads/" data-title="Instance-Optimized Data Layouts for Cloud Analytics Workloads"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://imcaicai.github.io/instance-optimized-data-layouts-for-cloud-analytics-workloads/" data-title="Instance-Optimized Data Layouts for Cloud Analytics Workloads"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://imcaicai.github.io/instance-optimized-data-layouts-for-cloud-analytics-workloads/" data-title="Instance-Optimized Data Layouts for Cloud Analytics Workloads"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/index/">index</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/postgresql%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/" class="prev" rel="prev" title="PostgreSQL基本用法"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>PostgreSQL基本用法</a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">菜菜</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

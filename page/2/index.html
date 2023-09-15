@@ -118,6 +118,13 @@
         alt="/img/avatar.jpg"
         title="/img/avatar.jpg" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/stlbitset%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/">【STL】bitset容器用法</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-05-18">2023-05-18</time></span>&nbsp;<span class="post-category">included in <a href="/categories/c++/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>C++</a></span></div><div class="content">1 简介 🟠 由若干个位（bit）组成，它提供一些成员函数，使程序员不必通过位运算就能很方便地访问、修改其中的任意一位。
+2 创建 1️⃣ 调用默认构造函数。
+1  bitset&lt;N&gt; b;   3 常用的成员方法    成员方法 功能     count() 返回bitset中 1 的个数。   size() 返回位数。   test() 返回某一位下标是否为1   set() 全部置1,或者某一位置1或0   flip() 全部取反,或者某一位取反    </div><div class="post-footer">
+        <a href="/stlbitset%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>,&nbsp;<a href="/tags/stl/">STL</a>,&nbsp;<a href="/tags/bitset/">bitset</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/csp%E5%88%B7%E9%A2%98%E6%B1%87%E6%80%BB/">【CSP】刷题汇总</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-05-18">2023-05-18</time></span>&nbsp;<span class="post-category">included in <a href="/categories/csp%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CSP刷题记录</a></span></div><div class="content">🔗 202303    题号 时间/min 正确率 备注     1 20 100    2 30 100    3 40 0 🔸 bitset、map、set用法🔸 堆栈    🔗 202212    题号 时间/min 正确率 备注     1 10 100    2 45 100 🔸 fill函数   3 65 100 🔸 蛇形填充：规模较小时，可用一个矩阵专门写出下标🔸 cos函数    🔗 202209    题号 时间/min 正确率 备注     1 10 100    2 40 100 🔸 动态规划：01背包问题   3 100 40 🔸 实在做不出来留1h把简单的情况做了🔸 map 的 erase 用法🔸 选好数据结构很重要！    🔗 202206    题号 时间/min 正确率 备注     1 10 100    2 30 100 🔸 题目给的一串数字不一定是顺序的，不要想当然！   3 120 100 🔸 cin/cout 提速🔸 vector 查找元素较慢，可用 set    🔗 202203    题号 时间/min 正确率 备注     1 10 100    2 35 100    3       🔗 202112    题号 时间/min 正确率 备注     1 15 100    2 30 100    3 120 40 🔸 注意审题！bug调不出来最好重读一遍题目！🔸 计算多项式中x的系数：找递推关系🔸 模拟多项式除法    🔗 202109    题号 时间/min 正确率 备注     1 10 100    2 50 100 🔸 找前后递推关系🔸 set 的倒序遍历；map   3       🔗 202104    题号 时间/min 正确率 备注     1 10 100    2 60 100 🔸 二维压缩数组🔸 判断时注意整数除法会向下取整   3       🔗 202012    题号 时间/min 正确率 备注     1 5 100    2 40 100 🔸 找递推关系🔸 对不规则排列的数组，用 set 和 map 会快很多   3       🔗 202009    题号 时间/min 正确率 备注     1 30 100    2 20 100    3       🔗 202006    题号 时间/min 正确率 备注     1 30 100    2 20 100    3       </div><div class="post-footer">
         <a href="/csp%E5%88%B7%E9%A2%98%E6%B1%87%E6%80%BB/">Read More</a><div class="post-tags">
@@ -241,28 +248,6 @@ PS：主要是帮学长找语法错误、可以改进的地方
  我们提出了原始数据文件的逻辑分区方案，该方案支持在每个分区级别上进行细粒度的索引决策。 好处：带来了原位查询处理索引的好处；索引构建成本低；内存占用小。 我们将分区和索引调谐器集成到我们最先进的原型原位查询引擎Slalom中。  2 相关工作 🟣 对原始数据的查询
  Slalom使用的技术可以通过减少索引的大小、为每个文件分区构建内存效率高的索引来提高系统的可伸缩性。 Slalom不加载所有数据，而是利用工作负载局域性自适应地为原始数据创建细粒度索引方案，并逐渐减少I/O和访问成本，同时在适度的内存预算下运行。  🔵 数据库分区</div><div class="post-footer">
         <a href="/slalom-coasting-through-raw-data-via-adaptive-partitioning-and-indexing/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/index/">index</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/an-experimental-evaluation-of-index-selection-algorithms/">An Experimental Evaluation of Index Selection Algorithms</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-04-11">2023-04-11</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>论文阅读笔记</a></span></div><div class="content">本文为论文 Magic mirror in my hand, which is the best in the land?An Experimental Evaluation of Index Selection Algorithms 的阅读笔记。
-1 引言 🟠 索引对于高效处理数据库工作负载来说很重要，针对索引选择提出的方案有很多，主要的难点是：
- 解空间是巨大的：随索引数量、列、类型增加 索引间相互作用 很难在部署运行前量化索引对工作负载的影响  🟡 本文描述和分析了 8 种基于不同概念的索引选择算法，并沿着不同的维度进行比较，如解决方案质量、运行时长、多列支持、解决方案粒度和复杂性。
-🟢 虚拟索引（hypothetical indexes）
-为了避免执行查询、创建索引，一些数据库系统支持虚拟索引，通过它来估计成本。
-2 索引选择算法 索引选择算法的里程碑时间轴如下：
-2.1 Drop
-这种方法依次删除候选索引，直到不能进一步降低成本为止。成本是由数据的特征决定的，而不是由查询优化器决定的。不支持多列索引的选择
-2.2 AutoAdmin
-该迭代算法通过在每次迭代中增加索引宽度来识别多列索引。首先从每个查询 $j=1,&hellip;Q$ 确定候选索引 $S_j$ ，再将所有查询的候选并集作为第二步的输入，确定最佳索引配置时考虑所有查询。
-2.3 (Anytime) DTA
-首先确定每个查询的候选索引，然后根据原始贪婪枚举确定整个工作负载的索引配置。
-2.4 DB2Advis
-① 确定候选索引：对每个查询 j ，在列上创建假设索引。然后，向优化器询问查询 j 的最佳计划，在结果计划中使用的假设索引被添加到索引候选集。
-② I 中的所有候选索引都按照它们的逐空间效益比降序排序。下面，如果索引对w1的比值更高，则组合索引对w1和w2，直到达到存储预算。
-③ 将先前计算的解决方案集与不属于的索引集交换，看成本是否降低。
-2.5 Relaxation
-① 为每个查询获取最佳索引配置。</div><div class="post-footer">
-        <a href="/an-experimental-evaluation-of-index-selection-algorithms/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/index/">index</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">

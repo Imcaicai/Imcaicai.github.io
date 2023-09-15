@@ -118,6 +118,28 @@
         alt="/img/avatar.jpg"
         title="/img/avatar.jpg" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/an-experimental-evaluation-of-index-selection-algorithms/">An Experimental Evaluation of Index Selection Algorithms</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-04-11">2023-04-11</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>论文阅读笔记</a></span></div><div class="content">本文为论文 Magic mirror in my hand, which is the best in the land?An Experimental Evaluation of Index Selection Algorithms 的阅读笔记。
+1 引言 🟠 索引对于高效处理数据库工作负载来说很重要，针对索引选择提出的方案有很多，主要的难点是：
+ 解空间是巨大的：随索引数量、列、类型增加 索引间相互作用 很难在部署运行前量化索引对工作负载的影响  🟡 本文描述和分析了 8 种基于不同概念的索引选择算法，并沿着不同的维度进行比较，如解决方案质量、运行时长、多列支持、解决方案粒度和复杂性。
+🟢 虚拟索引（hypothetical indexes）
+为了避免执行查询、创建索引，一些数据库系统支持虚拟索引，通过它来估计成本。
+2 索引选择算法 索引选择算法的里程碑时间轴如下：
+2.1 Drop
+这种方法依次删除候选索引，直到不能进一步降低成本为止。成本是由数据的特征决定的，而不是由查询优化器决定的。不支持多列索引的选择
+2.2 AutoAdmin
+该迭代算法通过在每次迭代中增加索引宽度来识别多列索引。首先从每个查询 $j=1,&hellip;Q$ 确定候选索引 $S_j$ ，再将所有查询的候选并集作为第二步的输入，确定最佳索引配置时考虑所有查询。
+2.3 (Anytime) DTA
+首先确定每个查询的候选索引，然后根据原始贪婪枚举确定整个工作负载的索引配置。
+2.4 DB2Advis
+① 确定候选索引：对每个查询 j ，在列上创建假设索引。然后，向优化器询问查询 j 的最佳计划，在结果计划中使用的假设索引被添加到索引候选集。
+② I 中的所有候选索引都按照它们的逐空间效益比降序排序。下面，如果索引对w1的比值更高，则组合索引对w1和w2，直到达到存储预算。
+③ 将先前计算的解决方案集与不属于的索引集交换，看成本是否降低。
+2.5 Relaxation
+① 为每个查询获取最佳索引配置。</div><div class="post-footer">
+        <a href="/an-experimental-evaluation-of-index-selection-algorithms/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/index/">index</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/%E8%93%9D%E6%A1%A5%E6%9D%AF2015/">【蓝桥杯】2015题解</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-04-04">2023-04-04</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>蓝桥杯刷题记录</a></span></div><div class="content">⏰总用时：89/240	🎯总分：73/150
    题号 时间 结果 满分 难度 备注     1 3 ✅ 3 🌕    2 3 ✅ 5 🌕 🔹 在Excel中直接用日期格式拉出答案   3 10 ✅ 9 🌕 🔸 直接用next_permutation(a,a+10) 来枚举   4 15 ✅ 11 🌕 🔹 注意 printf、scanf 中 %*s 的用法   5 1 ✅ 15 🌕 🔸 注意此题 dfs 的用法   6 15 ✅ 17 🌕 🔹 dfs   7 10 ❌ 21 🌓 🔸 全排列+特殊去重🔸 去重旋转：判断 t 是否是 s+s 的子串🔸 在字符串中寻找子串：s.</div><div class="post-footer">
@@ -193,19 +215,6 @@
 2.2 处理加减法 🟠 先给第⼀个数字加⼀个默认符号 +，变成 +1-12+3。</div><div class="post-footer">
         <a href="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%AE%A1%E7%AE%97%E5%99%A8/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/labuladong/">labuladong</a>,&nbsp;<a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/stlvector%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/">【STL】vector容器用法</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>菜菜</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-03-16">2023-03-16</time></span>&nbsp;<span class="post-category">included in <a href="/categories/c++/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>C++</a></span></div><div class="content">1 简介 🟠 vector 容器实现的是一个动态数组，即可以进行元素的插入和删除，并动态调整所占用的内存空间，整个过程无需人工干预。
-🟡 在尾部插入/删除元素时，时间复杂度为O(1)；在头部或者中部插入/删除元素时，时间复杂度为O(n)。
-🔵 使用需加上头文件：#include &lt;vector&gt;
-2 创建vector容器 1️⃣ 调用 vector 容器类的默认构造函数。（若默认指定了 std 命令空间，则 std:: 可省略）
-1  std::vector&lt;int&gt; v1;   2️⃣ 在创建 vector 容器的同时，进行初始化。
-1  std::vector&lt;int&gt; v1 {2, 3, 5, 7, 11, 13, 17, 19};   3️⃣ 在创建 vector 容器时，指定元素个数。
-v1 容器开始时就有 20 个元素，它们的默认初始值都为 0。圆括号中的2个参数既可以是常量，也可以是变量。
-1  std::vector&lt;int&gt; v1(20, 0);   4️⃣ 通过迭代器，取已建 vector 容器中指定区域内的键值对，创建并初始化新的 vector 容器。
-1 2 3 4  int array[]={1,2,3}; std::vector&lt;int&gt;v1 (array, array+2);	//v1 将保存{1,2} std::vector&lt;int&gt;v1 {1,2,3,4,5}; std::vector&lt;int&gt;v2 (std::begin(v1),std::begin(v1)+3);	//v2保存{1,2,3}   3 常用的成员方法    成员方法 功能     begin() 返回指向容器中第一个元素的迭代器。   end() 返回指向容器最后一个元素所在位置后一个位置的迭代器，通常和 begin() 结合使用。   size() 返回实际元素个数。   capacity() 返回当前容量。   empty() 判断容器中是否有元素，若无元素，则返回 true；反之，返回 false。   reserve() 增加容器的容量。   front() 返回第一个元素的引用。   back() 返回最后一个元素的引用。   push_back() 在序列的尾部添加一个元素。   pop_back() 移出序列尾部的元素。   insert() 在指定的位置插入一个或多个元素。   erase() 移出一个元素或一段元素。   clear() 移出所有的元素，容器大小变为 0。   swap() 交换两个容器的所有元素。   emplace() 在指定的位置直接生成一个元素。    </div><div class="post-footer">
-        <a href="/stlvector%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>,&nbsp;<a href="/tags/stl/">STL</a>,&nbsp;<a href="/tags/vector/">vector</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
